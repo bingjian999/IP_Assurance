@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +10,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using AXv2MEnAgt7u10uonG1;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
+using PageRange;
+using AiSseStreamService3;
+using SseStreamInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -23,7 +23,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 	private readonly int cl3nhaSv0L;
 
 	[CompilerGenerated]
-	private IReadOnlyList<RsQuUTnPQGmBy8VcAkC> TIonaklIR2;
+	private IReadOnlyList<PageRange> TIonaklIR2;
 
 	internal TextBox txtRanges;
 
@@ -31,7 +31,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 
 	private bool PxLnq0HA0x;
 
-	internal IReadOnlyList<RsQuUTnPQGmBy8VcAkC> PageRanges
+	internal IReadOnlyList<PageRange> PageRanges
 	{
 		[CompilerGenerated]
 		get
@@ -47,10 +47,10 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 
 	public SplitPageRangesWindow(int totalPages)
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		cl3nhaSv0L = Math.Max(1, totalPages);
-		PageRanges = new List<RsQuUTnPQGmBy8VcAkC>();
+		PageRanges = new List<PageRange>();
 		txtHint.Text = string.Format("当前文档共 {0} 页。示例：5 或 8-12 或 3, 8-12, 20-21。", cl3nhaSv0L);
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -66,9 +66,9 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 		};
 	}
 
-	internal static bool GNen5M905m(string P_0, int P_1, out List<RsQuUTnPQGmBy8VcAkC> P_2, out string P_3)
+	internal static bool GNen5M905m(string P_0, int P_1, out List<PageRange> P_2, out string P_3)
 	{
-		P_2 = new List<RsQuUTnPQGmBy8VcAkC>();
+		P_2 = new List<PageRange>();
 		P_3 = null;
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -109,7 +109,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 			{
 				result2 = result;
 			}
-			RsQuUTnPQGmBy8VcAkC rsQuUTnPQGmBy8VcAkC = new RsQuUTnPQGmBy8VcAkC(result, result2);
+			PageRange rsQuUTnPQGmBy8VcAkC = new PageRange(result, result2);
 			if (result < 1 || result2 < 1)
 			{
 				P_3 = "页码必须从 1 开始：" + rsQuUTnPQGmBy8VcAkC.DisplayText;
@@ -203,7 +203,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 
 	static SplitPageRangesWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		VoenFWm86c = new Regex("^\\\\s*(\\\\d+)\\\\s*(?:[-－—–~～]\\\\s*(\\\\d+)\\\\s*)?$", RegexOptions.Compiled);
 	}
 

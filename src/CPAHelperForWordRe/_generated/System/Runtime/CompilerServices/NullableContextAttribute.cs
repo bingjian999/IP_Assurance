@@ -1,5 +1,5 @@
-using Microsoft.CodeAnalysis;
-using ndRERvVtEjasqN2cQqiN;
+﻿using Microsoft.CodeAnalysis;
+using SseStreamInitializer;
 
 namespace System.Runtime.CompilerServices;
 
@@ -12,7 +12,7 @@ internal sealed class NullableContextAttribute : Attribute
 
 	public NullableContextAttribute(byte P_0)
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		Flag = P_0;
 	}
 }

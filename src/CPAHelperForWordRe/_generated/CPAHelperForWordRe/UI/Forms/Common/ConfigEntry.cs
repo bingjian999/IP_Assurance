@@ -1,5 +1,5 @@
-using System.Runtime.CompilerServices;
-using ndRERvVtEjasqN2cQqiN;
+﻿using System.Runtime.CompilerServices;
+using SseStreamInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms.Common;
 
@@ -41,6 +41,6 @@ public sealed class ConfigEntry
 
 	public ConfigEntry()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 	}
 }

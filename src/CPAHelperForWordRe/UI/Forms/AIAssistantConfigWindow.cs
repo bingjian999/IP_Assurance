@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
-using fGo32Mwk81lacGmgK2T;
-using fGoxrBLg8puPL9tYJjH;
-using hgGWZZtyfkd02lD1RkA;
-using hJKpQrVSwRwMyI2RyDQN;
-using kRagWN68VotwykWvTA1;
-using ndRERvVtEjasqN2cQqiN;
-using qDDKriLz2Bft1Ehv17i;
-using RThZ3kVxfUi7Mv8W6AO;
-using SpVTc8tacuYMCr2uYIF;
-using TEiKKL66O1SYNtk5xW0;
-using umvBUyLZkdHOMijakx0;
-using YNri0QclKMfRh2PQoZV;
+using FileDownloadHelper;
+using AiProviderConfig;
+using Helper_22;
+using AiSseStreamService3;
+using IntranetAiConfigService;
+using SseStreamInitializer;
+using AiSseStreamService;
+using AiHelper_3;
+using ProviderConfig;
+using AiConfigManager;
+using AiHelper_9;
+using LoggerInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -33,25 +33,25 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 
 		public int NaWV2zGZ2I1;
 
-		public TjgkXoLTQE08rAvKTCC pbkV4R50dS0;
+		public AiProviderConfig pbkV4R50dS0;
 
 		public _G_c__DisplayClass4_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
-		internal void iICV2xcGsJ8(k8SSB2tefS63E9gSxuJ cfg)
+		internal void iICV2xcGsJ8(Helper_22 cfg)
 		{
 			cfg.Assistant.WebUrl = string.Empty;
 			cfg.Assistant.Providers = gWlGzv3R5r(LI8V2dgZYHL.fisCDWUc56);
 			cfg.Assistant.ActiveProviderIndex = NaWV2zGZ2I1;
 			cfg.Assistant.Runtime.FVULVTGET5(pbkV4R50dS0.OsCL8QJeMd());
-			cfg.Assistant.Summary = cfg.Assistant.Summary ?? new UM9LJeLY3PARcsaXCR2();
+			cfg.Assistant.Summary = cfg.Assistant.Summary ?? new AiHelper_9();
 			LI8V2dgZYHL.krdG0kvqar(cfg.Assistant.Summary);
 		}
 	}
 
-	private List<TjgkXoLTQE08rAvKTCC> fisCDWUc56;
+	private List<AiProviderConfig> fisCDWUc56;
 
 	private int Xh2CTxqH1Q;
 
@@ -101,8 +101,8 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 
 	public AIAssistantConfigWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
-		fisCDWUc56 = new List<TjgkXoLTQE08rAvKTCC>();
+		SseStreamInitializer.AlBVL0oCCKQ();
+		fisCDWUc56 = new List<AiProviderConfig>();
 		Xh2CTxqH1Q = -1;
 		InitializeComponent();
 		I7cGyHnOsl();
@@ -119,33 +119,33 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			WHIGPZyFCO();
 			CS_8_locals_9.NaWV2zGZ2I1 = RI6GALeVx5(Xh2CTxqH1Q);
 			CS_8_locals_9.pbkV4R50dS0 = fisCDWUc56[CS_8_locals_9.NaWV2zGZ2I1];
-			R3YZo3w0TC95VlJruO8.Instance.lpfwdhmiR3(delegate(k8SSB2tefS63E9gSxuJ cfg)
+			FileDownloadHelper.Instance.lpfwdhmiR3(delegate(Helper_22 cfg)
 			{
 				cfg.Assistant.WebUrl = string.Empty;
 				cfg.Assistant.Providers = gWlGzv3R5r(CS_8_locals_9.LI8V2dgZYHL.fisCDWUc56);
 				cfg.Assistant.ActiveProviderIndex = CS_8_locals_9.NaWV2zGZ2I1;
 				cfg.Assistant.Runtime.FVULVTGET5(CS_8_locals_9.pbkV4R50dS0.OsCL8QJeMd());
-				cfg.Assistant.Summary = cfg.Assistant.Summary ?? new UM9LJeLY3PARcsaXCR2();
+				cfg.Assistant.Summary = cfg.Assistant.Summary ?? new AiHelper_9();
 				CS_8_locals_9.LI8V2dgZYHL.krdG0kvqar(cfg.Assistant.Summary);
 			});
-			bool flag = TLTW0G6ghg2cXG3MkV9.Instance.xeF6QqxCkO();
+			bool flag = IntranetAiConfigService.Instance.xeF6QqxCkO();
 			if (!flag && !sicGvmbu2d(CS_8_locals_9.pbkV4R50dS0))
 			{
-				F2ZFeLcsiLlLr89kqUl.u0kcmnykTv("AI 配置已保存，但当前方案缺少 API Key 或模型名称。", "AI 配置");
+				LoggerInitializer.u0kcmnykTv("AI 配置已保存，但当前方案缺少 API Key 或模型名称。", "AI 配置");
 			}
 			else if (flag)
 			{
-				F2ZFeLcsiLlLr89kqUl.Ay3cNuEgJo("AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
+				LoggerInitializer.Ay3cNuEgJo("AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
 			}
 			else
 			{
-				F2ZFeLcsiLlLr89kqUl.Ay3cNuEgJo("AI 配置已保存。", "AI 配置");
+				LoggerInitializer.Ay3cNuEgJo("AI 配置已保存。", "AI 配置");
 			}
 			Close();
 		}
 		catch (Exception ex)
 		{
-			F2ZFeLcsiLlLr89kqUl.F9Ycoqv2I8("AI 配置保存失败：\r\n" + ex.Message, "AI 配置");
+			LoggerInitializer.F9Ycoqv2I8("AI 配置保存失败：\r\n" + ex.Message, "AI 配置");
 		}
 	}
 
@@ -156,8 +156,8 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 
 	private void kw2G5xe9uv(object P_0, RoutedEventArgs P_1)
 	{
-		W6xTwMLd5RvSHoqDfEV.i24sVuaOic(R3YZo3w0TC95VlJruO8.SharedConfigDir);
-		Process.Start(new ProcessStartInfo("explorer.exe", R3YZo3w0TC95VlJruO8.SharedConfigDir)
+		AiSseStreamService.i24sVuaOic(FileDownloadHelper.SharedConfigDir);
+		Process.Start(new ProcessStartInfo("explorer.exe", FileDownloadHelper.SharedConfigDir)
 		{
 			UseShellExecute = true
 		});
@@ -165,31 +165,31 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 
 	private void v8TGcXBvWr(object P_0, RoutedEventArgs P_1)
 	{
-		BbM0WAVkVliVUik2wgw.BWIBRayGaa();
+		AiHelper_3.BWIBRayGaa();
 	}
 
 	private async void aVsGe74PNw(object P_0, RoutedEventArgs P_1)
 	{
 		vTyGqN5uS6();
-		await wJfC6L7KBN(btnTestAssistantConnection, "AI 配置已保存，但当前方案缺少 API Key 或模型名称。", () => MdLt9p69TGVJDuxk4CF.Xq56uj14fX("AI 配置", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text), "AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
+		await wJfC6L7KBN(btnTestAssistantConnection, "AI 配置已保存，但当前方案缺少 API Key 或模型名称。", () => AiConfigManager.Xq56uj14fX("AI 配置", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text), "AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
 	}
 
 	private void I7cGyHnOsl()
 	{
-		k8SSB2tefS63E9gSxuJ ai = R3YZo3w0TC95VlJruO8.Current.Ai;
+		Helper_22 ai = FileDownloadHelper.Current.Ai;
 		yOUGFVIpfx(ai.Assistant);
 		qGyGW877wr(ai.Assistant?.Summary);
 	}
 
 	private void iTPGXIyvt5()
 	{
-		string text = TLTW0G6ghg2cXG3MkV9.Instance.ltA63dMPIj();
+		string text = IntranetAiConfigService.Instance.ltA63dMPIj();
 		bool flag = !string.IsNullOrWhiteSpace(text);
 		borderManagedHint.Visibility = ((!flag) ? Visibility.Collapsed : Visibility.Visible);
 		txtManagedHint.Text = (flag ? text : string.Empty);
 	}
 
-	private void yOUGFVIpfx(U1BaQMthYgroj1L5Uar P_0)
+	private void yOUGFVIpfx(ProviderConfig P_0)
 	{
 		fisCDWUc56 = gWlGzv3R5r(P_0?.Providers);
 		WHIGPZyFCO();
@@ -203,7 +203,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		if (P_0 >= 0 && P_0 < fisCDWUc56.Count)
 		{
 			tkZCgIqo5P = true;
-			TjgkXoLTQE08rAvKTCC tjgkXoLTQE08rAvKTCC = fisCDWUc56[P_0];
+			AiProviderConfig tjgkXoLTQE08rAvKTCC = fisCDWUc56[P_0];
 			txtAssistantProfileName.Text = tjgkXoLTQE08rAvKTCC.Name;
 			txtAssistantApiKey.Password = tjgkXoLTQE08rAvKTCC.ApiKey ?? string.Empty;
 			txtAssistantBaseUrl.Text = tjgkXoLTQE08rAvKTCC.BaseUrl ?? string.Empty;
@@ -217,7 +217,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	{
 		tkZCgIqo5P = true;
 		cboAssistantProfile.Items.Clear();
-		foreach (TjgkXoLTQE08rAvKTCC item in fisCDWUc56)
+		foreach (AiProviderConfig item in fisCDWUc56)
 		{
 			cboAssistantProfile.Items.Add(item.Name);
 		}
@@ -235,8 +235,8 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			return;
 		}
 		int selectedIndex = cboAssistantProfile.SelectedIndex;
-		TjgkXoLTQE08rAvKTCC tjgkXoLTQE08rAvKTCC = fisCDWUc56[Xh2CTxqH1Q];
-		tjgkXoLTQE08rAvKTCC.Name = TjgkXoLTQE08rAvKTCC.wFmLiEaskI(txtAssistantProfileName.Text, "配置" + (Xh2CTxqH1Q + 1));
+		AiProviderConfig tjgkXoLTQE08rAvKTCC = fisCDWUc56[Xh2CTxqH1Q];
+		tjgkXoLTQE08rAvKTCC.Name = AiProviderConfig.wFmLiEaskI(txtAssistantProfileName.Text, "配置" + (Xh2CTxqH1Q + 1));
 		tjgkXoLTQE08rAvKTCC.Provider = "openai";
 		tjgkXoLTQE08rAvKTCC.ApiKey = txtAssistantApiKey.Password.Trim();
 		tjgkXoLTQE08rAvKTCC.BaseUrl = txtAssistantBaseUrl.Text.Trim();
@@ -265,13 +265,13 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	{
 		if (fisCDWUc56 == null)
 		{
-			fisCDWUc56 = new List<TjgkXoLTQE08rAvKTCC>();
+			fisCDWUc56 = new List<AiProviderConfig>();
 		}
 		if (fisCDWUc56.Count != 0)
 		{
 			return;
 		}
-		foreach (TjgkXoLTQE08rAvKTCC item in TjgkXoLTQE08rAvKTCC.dV6LHfPZVP())
+		foreach (AiProviderConfig item in AiProviderConfig.dV6LHfPZVP())
 		{
 			fisCDWUc56.Add(xyrCRRI7mn(item));
 		}
@@ -287,7 +287,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		return 0;
 	}
 
-	private static bool sicGvmbu2d(TjgkXoLTQE08rAvKTCC P_0)
+	private static bool sicGvmbu2d(AiProviderConfig P_0)
 	{
 		if (P_0 != null && !string.IsNullOrWhiteSpace(P_0.ApiKey))
 		{
@@ -296,9 +296,9 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		return false;
 	}
 
-	private void qGyGW877wr(UM9LJeLY3PARcsaXCR2 P_0)
+	private void qGyGW877wr(AiHelper_9 P_0)
 	{
-		P_0 = P_0 ?? new UM9LJeLY3PARcsaXCR2();
+		P_0 = P_0 ?? new AiHelper_9();
 		P_0.qBDLf9An1g();
 		txtSummaryContextWindowTokens.Text = P_0.ContextWindowTokens.ToString();
 		txtSummaryTriggerRatio.Text = P_0.TriggerRatio.ToString("0.##", CultureInfo.InvariantCulture);
@@ -308,7 +308,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		txtSummaryTimeoutSeconds.Text = P_0.TimeoutSeconds.ToString();
 	}
 
-	private void krdG0kvqar(UM9LJeLY3PARcsaXCR2 P_0)
+	private void krdG0kvqar(AiHelper_9 P_0)
 	{
 		if (P_0 != null)
 		{
@@ -346,27 +346,27 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		lblAssistantEndpointHint.Text = (string.IsNullOrWhiteSpace(text) ? "完整请求地址：" : ("/chat/completions" + text + "完整请求地址：.../chat/completions"));
 	}
 
-	private static List<TjgkXoLTQE08rAvKTCC> gWlGzv3R5r(List<TjgkXoLTQE08rAvKTCC> P_0)
+	private static List<AiProviderConfig> gWlGzv3R5r(List<AiProviderConfig> P_0)
 	{
-		List<TjgkXoLTQE08rAvKTCC> list = new List<TjgkXoLTQE08rAvKTCC>();
+		List<AiProviderConfig> list = new List<AiProviderConfig>();
 		if (P_0 == null)
 		{
 			return list;
 		}
-		foreach (TjgkXoLTQE08rAvKTCC item in P_0)
+		foreach (AiProviderConfig item in P_0)
 		{
 			list.Add(xyrCRRI7mn(item));
 		}
 		return list;
 	}
 
-	private static TjgkXoLTQE08rAvKTCC xyrCRRI7mn(TjgkXoLTQE08rAvKTCC P_0)
+	private static AiProviderConfig xyrCRRI7mn(AiProviderConfig P_0)
 	{
 		if (P_0 == null)
 		{
-			return new TjgkXoLTQE08rAvKTCC();
+			return new AiProviderConfig();
 		}
-		return new TjgkXoLTQE08rAvKTCC
+		return new AiProviderConfig
 		{
 			Name = (P_0.Name ?? string.Empty),
 			Provider = "openai",
@@ -394,7 +394,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	{
 		vTyGqN5uS6();
 		WHIGPZyFCO();
-		fisCDWUc56.Add(new TjgkXoLTQE08rAvKTCC
+		fisCDWUc56.Add(new AiProviderConfig
 		{
 			Name = "新配置" + (fisCDWUc56.Count + 1),
 			Provider = "openai"
@@ -422,11 +422,11 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		try
 		{
 			await P_2().ConfigureAwait(continueOnCapturedContext: true);
-			F2ZFeLcsiLlLr89kqUl.Ay3cNuEgJo(P_3, "AI 配置已保存。");
+			LoggerInitializer.Ay3cNuEgJo(P_3, "AI 配置已保存。");
 		}
 		catch (Exception ex)
 		{
-			F2ZFeLcsiLlLr89kqUl.F9Ycoqv2I8(P_4 + (ex.InnerException?.Message ?? ex.Message), "AI 配置");
+			LoggerInitializer.F9Ycoqv2I8(P_4 + (ex.InnerException?.Message ?? ex.Message), "AI 配置");
 		}
 		finally
 		{
@@ -531,6 +531,6 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	[CompilerGenerated]
 	private Task lFtCuZnbgF()
 	{
-		return MdLt9p69TGVJDuxk4CF.Xq56uj14fX("openai", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text);
+		return AiConfigManager.Xq56uj14fX("openai", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text);
 	}
 }

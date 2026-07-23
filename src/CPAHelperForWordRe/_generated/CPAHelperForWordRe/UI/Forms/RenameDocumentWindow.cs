@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,10 +7,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using EI34OWB2Gdp9E1rgXZo;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
-using Teqm8VBmQ2O0x8vmB7L;
+using DocumentRenameService;
+using AiSseStreamService3;
+using SseStreamInitializer;
+using Helper_10;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -28,7 +28,7 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 
 	public RenameDocumentWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -47,10 +47,10 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 
 	private void HN9GNMbyHk()
 	{
-		txtCurrentName.Text = yGDZtRBEycSUOoslp57.p22B4gZ207() ?? "(当前没有打开的 Word 文档)";
-		txtNewName.Text = yGDZtRBEycSUOoslp57.yNrBjmtqCf();
+		txtCurrentName.Text = DocumentRenameService.p22B4gZ207() ?? "(当前没有打开的 Word 文档)";
+		txtNewName.Text = DocumentRenameService.yNrBjmtqCf();
 		string text;
-		bool flag = yGDZtRBEycSUOoslp57.NDgBYYaMnF(out text);
+		bool flag = DocumentRenameService.NDgBYYaMnF(out text);
 		btnRename.IsEnabled = flag;
 		lblState.Text = (flag ? "仅修改文件主名，后缀保持不变。" : text);
 	}
@@ -59,7 +59,7 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 	{
 		try
 		{
-			j5TqonBNY02JxhgwfnS j5TqonBNY02JxhgwfnS2 = yGDZtRBEycSUOoslp57.wqTBZIKo0s(txtNewName.Text, gJAGoM4wmO);
+			Helper_10 j5TqonBNY02JxhgwfnS2 = DocumentRenameService.wqTBZIKo0s(txtNewName.Text, gJAGoM4wmO);
 			if (j5TqonBNY02JxhgwfnS2.IsCanceled)
 			{
 				lblState.Text = "已取消重命名。";

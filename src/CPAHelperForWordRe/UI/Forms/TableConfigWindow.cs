@@ -1,29 +1,29 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Markup;
-using ghWYvT5gdl6wakj5jtn;
-using hJKpQrVSwRwMyI2RyDQN;
-using HTddqGNLSnobGkrvhXJ;
-using ndRERvVtEjasqN2cQqiN;
-using vUGRhtGtrlYF1FZxgIZ;
+using WordTableToolService5;
+using AiSseStreamService3;
+using FormatPresetConfig;
+using SseStreamInitializer;
+using JsonFileDialogHelper;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
 public sealed class TableConfigWindow : Window, IComponentConnector
 {
-	private readonly zq8V4sNtKK1fs0qvdVY tI5C4JoHK5;
+	private readonly FormatPresetConfig tI5C4JoHK5;
 
 	private bool I2tCjHwhcC;
 
 	public TableConfigWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
-		tI5C4JoHK5 = new zq8V4sNtKK1fs0qvdVY(new Cscw9SGwoXyXJj7IFKX());
+		tI5C4JoHK5 = new FormatPresetConfig(new JsonFileDialogHelper());
 		tI5C4JoHK5.BBoNAij429(base.Close);
 		tI5C4JoHK5.QdBN0W28SI(hJsC2ywgN3);
 		base.DataContext = tI5C4JoHK5;
@@ -40,7 +40,7 @@ public sealed class TableConfigWindow : Window, IComponentConnector
 
 	private void hJsC2ywgN3()
 	{
-		rA7neb5TDVvwyWyxwua.IPf5i0ZcV4(new ParagraphConfigWindow());
+		WordTableToolService5.IPf5i0ZcV4(new ParagraphConfigWindow());
 		Close();
 	}
 

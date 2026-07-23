@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,14 +12,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using AKH6LOLA6aSJuUH8t1v;
-using Cd59RULNsbZAAg3AwXt;
-using dL7TFPsQbAGqPywtHUK;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
-using P4BD1rLkpPbD4GJiVHK;
-using qDDKriLz2Bft1Ehv17i;
-using W3oCNxLnfOxdoFQL0mU;
+using FileDownloadHelper2;
+using HttpHelper_1;
+using AiConfigBootstrap;
+using AiSseStreamService3;
+using SseStreamInitializer;
+using HttpHelper_2;
+using AiSseStreamService;
+using AiSseStreamService4;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -30,7 +30,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	{
 		public UpdateWindow dEAVYI0saVx;
 
-		public Rei3DhLlLQm1bCVIXFi I8VVYisvYtR;
+		public HttpHelper_1 I8VVYisvYtR;
 
 		public bool SPMVYHHvWZj;
 
@@ -38,7 +38,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 		public _G_c__DisplayClass5_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal void OyMVYTEtbNt()
@@ -78,7 +78,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 		public _G_c__DisplayClass8_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal void grbVY1pDLQ2()
@@ -98,7 +98,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 		public _G_c__DisplayClass9_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal void MBKVY3YkeNX()
@@ -116,7 +116,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		}
 	}
 
-	private Rei3DhLlLQm1bCVIXFi znO71f1fyS;
+	private HttpHelper_1 znO71f1fyS;
 
 	private CancellationTokenSource QY27reFqRv;
 
@@ -144,7 +144,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	public UpdateWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -158,11 +158,11 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	private void jvrn0yOKXs(object P_0, RoutedEventArgs P_1)
 	{
-		lblCurrentVersion.Text = jgKlnXLOdt7NkxsJ5rg.mVoL74rdRf();
+		lblCurrentVersion.Text = AiSseStreamService4.mVoL74rdRf();
 		lblRemoteVersion.Text = "正在获取...";
 		lblRemoteDate.Text = "";
 		txtDescription.Text = "";
-		chkAutoUpdate.IsChecked = jgKlnXLOdt7NkxsJ5rg.pS8Leo78tt();
+		chkAutoUpdate.IsChecked = AiSseStreamService4.pS8Leo78tt();
 		btnDownload.IsEnabled = false;
 		hnYnkOQoh2();
 	}
@@ -181,7 +181,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			CS_8_locals_30.dEAVYI0saVx.progressBar.Visibility = Visibility.Collapsed;
 			CS_8_locals_30.dEAVYI0saVx.lblProgress.Visibility = Visibility.Collapsed;
 		});
-		CS_8_locals_30.I8VVYisvYtR = await jgKlnXLOdt7NkxsJ5rg.PJYL5bLAxq();
+		CS_8_locals_30.I8VVYisvYtR = await AiSseStreamService4.PJYL5bLAxq();
 		znO71f1fyS = CS_8_locals_30.I8VVYisvYtR;
 		if (CS_8_locals_30.I8VVYisvYtR == null)
 		{
@@ -194,7 +194,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			return;
 		}
 		CS_8_locals_30.UJeVYQhHWDY = MGO7uTfOsY(CS_8_locals_30.I8VVYisvYtR.Description);
-		CS_8_locals_30.SPMVYHHvWZj = jgKlnXLOdt7NkxsJ5rg.DodLcdpfxo(jgKlnXLOdt7NkxsJ5rg.mVoL74rdRf(), CS_8_locals_30.I8VVYisvYtR.VersionText);
+		CS_8_locals_30.SPMVYHHvWZj = AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.mVoL74rdRf(), CS_8_locals_30.I8VVYisvYtR.VersionText);
 		rhf7BnFSKl(delegate
 		{
 			CS_8_locals_30.dEAVYI0saVx.lblRemoteVersion.Text = CS_8_locals_30.I8VVYisvYtR.VersionText ?? ".exe";
@@ -246,16 +246,16 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		QY27reFqRv?.Dispose();
 		QY27reFqRv = new CancellationTokenSource();
 		CancellationToken token = QY27reFqRv.Token;
-		string tempDir = W6xTwMLd5RvSHoqDfEV.XOes64flqb(" KB");
+		string tempDir = AiSseStreamService.XOes64flqb(" KB");
 		string path = YDq7gFVLhY(P_0, null);
 		string tempPath = Path.Combine(tempDir, path);
 		try
 		{
-			if (!c20RPDLPO23hhBrU0ym.nejLvR3Pvv(P_0))
+			if (!FileDownloadHelper2.nejLvR3Pvv(P_0))
 			{
 				throw new InvalidOperationException("F1");
 			}
-			KN3FylL0CcE4FxM6SF8.BNmLxKn8Mc();
+			HttpHelper_2.BNmLxKn8Mc();
 			HttpClientHandler handler = new HttpClientHandler
 			{
 				AllowAutoRedirect = true
@@ -334,7 +334,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			djs7R66JV1(100, "\n");
 			if (!File.Exists(tempPath) || new FileInfo(tempPath).Length == 0L)
 			{
-				c20RPDLPO23hhBrU0ym.z26LWVWmdm(tempPath);
+				FileDownloadHelper2.z26LWVWmdm(tempPath);
 				rhf7BnFSKl(delegate
 				{
 					MessageBox.Show(this, "\\\\r", "\n", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -348,7 +348,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		}
 		catch (OperationCanceledException)
 		{
-			c20RPDLPO23hhBrU0ym.z26LWVWmdm(tempPath);
+			FileDownloadHelper2.z26LWVWmdm(tempPath);
 			rhf7BnFSKl(delegate
 			{
 				lblProgress.Text = "\n";
@@ -360,8 +360,8 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			CS_8_locals_5.Rc4VYJxfurr = this;
 			Exception h0VVYrHuupw = ex2;
 			CS_8_locals_5.H0VVYrHuupw = h0VVYrHuupw;
-			c20RPDLPO23hhBrU0ym.z26LWVWmdm(tempPath);
-			yR9thasHZ73xXm8eKwj.ujWsURly3F("explorer.exe", CS_8_locals_5.H0VVYrHuupw);
+			FileDownloadHelper2.z26LWVWmdm(tempPath);
+			AiConfigBootstrap.ujWsURly3F("explorer.exe", CS_8_locals_5.H0VVYrHuupw);
 			rhf7BnFSKl(delegate
 			{
 				MessageBox.Show(CS_8_locals_5.Rc4VYJxfurr, "/select,\"" + CS_8_locals_5.H0VVYrHuupw.Message, "\"", MessageBoxButton.OK, MessageBoxImage.Hand);
@@ -373,7 +373,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			rhf7BnFSKl(delegate
 			{
 				btnCheck.IsEnabled = true;
-				btnDownload.IsEnabled = znO71f1fyS != null && !string.IsNullOrWhiteSpace(znO71f1fyS.DownloadUrl) && jgKlnXLOdt7NkxsJ5rg.DodLcdpfxo(jgKlnXLOdt7NkxsJ5rg.mVoL74rdRf(), znO71f1fyS.VersionText);
+				btnDownload.IsEnabled = znO71f1fyS != null && !string.IsNullOrWhiteSpace(znO71f1fyS.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.mVoL74rdRf(), znO71f1fyS.VersionText);
 			});
 		}
 	}
@@ -401,7 +401,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	private void wEu7VM60YP(object P_0, RoutedEventArgs P_1)
 	{
-		jgKlnXLOdt7NkxsJ5rg.KkHLyG7lhV(chkAutoUpdate.IsChecked == true);
+		AiSseStreamService4.KkHLyG7lhV(chkAutoUpdate.IsChecked == true);
 	}
 
 	protected override void OnClosing(CancelEventArgs e)
@@ -658,6 +658,6 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	private void URg7Qvog35()
 	{
 		btnCheck.IsEnabled = true;
-		btnDownload.IsEnabled = znO71f1fyS != null && !string.IsNullOrWhiteSpace(znO71f1fyS.DownloadUrl) && jgKlnXLOdt7NkxsJ5rg.DodLcdpfxo(jgKlnXLOdt7NkxsJ5rg.mVoL74rdRf(), znO71f1fyS.VersionText);
+		btnDownload.IsEnabled = znO71f1fyS != null && !string.IsNullOrWhiteSpace(znO71f1fyS.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.mVoL74rdRf(), znO71f1fyS.VersionText);
 	}
 }

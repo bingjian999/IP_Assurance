@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -9,8 +9,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
+using AiSseStreamService3;
+using SseStreamInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -43,7 +43,7 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 
 	public SplitPagesWindow(int totalPages)
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		Yx4nOqBg2Q = Math.Max(1, totalPages);
 		int num = Math.Min(20, Yx4nOqBg2Q);

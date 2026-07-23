@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -9,10 +9,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using FiIb7mSOBD13BJBxsh0;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
-using YNri0QclKMfRh2PQoZV;
+using TableBorderConfig;
+using AiSseStreamService3;
+using SseStreamInitializer;
+using LoggerInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -24,9 +24,9 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 
 	public PageNumberStartWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
-		int num = dXHnSRT5B2(ftu1AgSpErBKqc6vp9f.Current.HYsSh2NDxY("页面_页码_起始值", 1));
+		int num = dXHnSRT5B2(TableBorderConfig.Current.HYsSh2NDxY("页面_页码_起始值", 1));
 		txtStartNumber.Text = num.ToString(CultureInfo.InvariantCulture);
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -53,8 +53,8 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 		}
 		else
 		{
-			ftu1AgSpErBKqc6vp9f.Current.pE1SyAiPWc("页面_页码_起始值", result.ToString(CultureInfo.InvariantCulture));
-			F2ZFeLcsiLlLr89kqUl.Ay3cNuEgJo("页码起始值已保存。", "IP_Assurance");
+			TableBorderConfig.Current.pE1SyAiPWc("页面_页码_起始值", result.ToString(CultureInfo.InvariantCulture));
+			LoggerInitializer.Ay3cNuEgJo("页码起始值已保存。", "IP_Assurance");
 			base.DialogResult = true;
 			Close();
 		}

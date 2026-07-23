@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,10 +7,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-using EF4JHh6WXLdDqp0W9j7;
-using hJKpQrVSwRwMyI2RyDQN;
-using kRagWN68VotwykWvTA1;
-using ndRERvVtEjasqN2cQqiN;
+using Helper_17;
+using AiSseStreamService3;
+using IntranetAiConfigService;
+using SseStreamInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms.General;
 
@@ -32,7 +32,7 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 
 	public IntranetLoginWindow(string rememberedUsername, string rememberedPassword, bool autoLoginEnabled, string description, string initialStatus)
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		txtUsername.Text = rememberedUsername ?? string.Empty;
 		txtPassword.Password = rememberedPassword ?? string.Empty;
@@ -77,7 +77,7 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 		qwP7aYKtCt( true, "登录", Brushes.DodgerBlue);
 		try
 		{
-			UJ41Qj6vhvynNA1tocZ uJ41Qj6vhvynNA1tocZ = await TLTW0G6ghg2cXG3MkV9.Instance.JrZ6E71S29(txtUsername.Text, txtPassword.Password, chkAutoLogin.IsChecked == true).ConfigureAwait(continueOnCapturedContext: true);
+			Helper_17 uJ41Qj6vhvynNA1tocZ = await IntranetAiConfigService.Instance.JrZ6E71S29(txtUsername.Text, txtPassword.Password, chkAutoLogin.IsChecked == true).ConfigureAwait(continueOnCapturedContext: true);
 			if (uJ41Qj6vhvynNA1tocZ.Succeeded)
 			{
 				base.DialogResult = true;

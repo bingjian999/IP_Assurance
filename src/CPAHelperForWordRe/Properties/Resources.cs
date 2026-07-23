@@ -1,9 +1,9 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Resources;
 using System.Runtime.CompilerServices;
-using ndRERvVtEjasqN2cQqiN;
+using SseStreamInitializer;
 
 namespace CPAHelperForWordRe.Properties;
 
@@ -43,6 +43,6 @@ internal class Resources
 
 	internal Resources()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 	}
 }

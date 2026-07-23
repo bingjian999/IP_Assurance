@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,8 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
+using AiSseStreamService3;
+using SseStreamInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms.Common;
 
@@ -24,7 +24,7 @@ public sealed class TextPromptWindow : Window, IComponentConnector
 
 	public TextPromptWindow(string title, string label, string defaultValue)
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		base.Title = title;
 		PromptLabel.Text = label;

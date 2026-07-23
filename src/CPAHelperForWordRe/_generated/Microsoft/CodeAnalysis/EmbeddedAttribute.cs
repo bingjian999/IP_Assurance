@@ -1,6 +1,6 @@
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
-using ndRERvVtEjasqN2cQqiN;
+using SseStreamInitializer;
 
 namespace Microsoft.CodeAnalysis;
 
@@ -10,6 +10,6 @@ internal sealed class EmbeddedAttribute : Attribute
 {
 	public EmbeddedAttribute()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 	}
 }

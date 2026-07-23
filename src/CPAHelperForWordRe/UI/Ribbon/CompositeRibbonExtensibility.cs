@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -8,15 +8,15 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using dL7TFPsQbAGqPywtHUK;
-using FiIb7mSOBD13BJBxsh0;
-using hJKpQrVSwRwMyI2RyDQN;
+using AiConfigBootstrap;
+using TableBorderConfig;
+using AiSseStreamService3;
 using Microsoft.Office.Core;
-using ndRERvVtEjasqN2cQqiN;
-using qDDKriLz2Bft1Ehv17i;
-using sNVQvmsNbF4pw13wHyu;
+using SseStreamInitializer;
+using AiSseStreamService;
+using WordTableToolService;
 using stdole;
-using Vn2FNvXfBBVtqPcjIyB;
+using ExcelDataSyncService;
 
 namespace CPAHelperForWordRe.UI.Ribbon;
 
@@ -28,7 +28,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 	{
 		private SmS6GoVbbfh1MhoEaGD5() : base(null)
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		public static IPictureDisp z7NVbSHZprT(Image P_0)
@@ -44,7 +44,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 		public _G_c__DisplayClass23_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal bool vLiVbLM0NPS(XElement group)
@@ -60,7 +60,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 		public _G_c__DisplayClass31_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal bool aGkVblrAXTG(string name)
@@ -93,7 +93,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 	public CompositeRibbonExtensibility(IRibbonExtensibility designerRibbon)
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		tFKXUdudKk = designerRibbon ?? throw new ArgumentNullException("designerRibbon");
 		CP2XKImP7l = designerRibbon as IReflect;
 	}
@@ -111,20 +111,20 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 		}
 		catch (Exception ex)
 		{
-			yR9thasHZ73xXm8eKwj.z7Us3dJ6Cl("[Ribbon] Excel sync context menu XML merge skipped: " + ex.Message);
+			AiConfigBootstrap.z7Us3dJ6Cl("[Ribbon] Excel sync context menu XML merge skipped: " + ex.Message);
 			return customUI;
 		}
 	}
 
 	public bool GetExcelSyncContextMenuVisible(IRibbonControl control)
 	{
-		return Xwl2EJXZ1waT9LlFYjb.tE8XLlC6V1();
+		return ExcelDataSyncService.tE8XLlC6V1();
 	}
 
 	public void OnCompositeRibbonLoaded(IRibbonUI ribbonUi)
 	{
 		hgIXHQ6ueX(ribbonUi);
-		Xwl2EJXZ1waT9LlFYjb.vpbXsP8YgS(ribbonUi);
+		ExcelDataSyncService.vpbXsP8YgS(ribbonUi);
 		C0ZX6OAUiX(ribbonUi);
 	}
 
@@ -146,7 +146,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 	public void OnExcelSyncContextMenuAction(IRibbonControl control)
 	{
-		Xwl2EJXZ1waT9LlFYjb.T25Xl7T74U(control?.Id);
+		ExcelDataSyncService.T25Xl7T74U(control?.Id);
 	}
 
 	public IPictureDisp GetExcelSyncContextMenuImage(IRibbonControl control)
@@ -198,7 +198,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 			xElement = new XElement(SRGXrKgLK0 + "contextMenus");
 			xDocument.Root.Add(xElement);
 		}
-		string[] array = (eSfxffslhXbaGAjFNv1.IsWps ? oi4X3VCs68 : Q2WXJBIxKt);
+		string[] array = (WordTableToolService.IsWps ? oi4X3VCs68 : Q2WXJBIxKt);
 		foreach (string text in array)
 		{
 			xElement.Add(Sp4Xu1mFJA(text));
@@ -284,7 +284,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 	{
 		try
 		{
-			string tabName = ftu1AgSpErBKqc6vp9f.Current.Config.System.TabName;
+			string tabName = TableBorderConfig.Current.Config.System.TabName;
 			return string.IsNullOrWhiteSpace(tabName) ? "IP_Assurance" : tabName.Trim();
 		}
 		catch
@@ -305,7 +305,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 		}
 		catch (Exception ex)
 		{
-			yR9thasHZ73xXm8eKwj.z7Us3dJ6Cl("[Ribbon] Designer onLoad callback skipped: " + AWbXE6MFgG + "; " + ex.Message);
+			AiConfigBootstrap.z7Us3dJ6Cl("[Ribbon] Designer onLoad callback skipped: " + AWbXE6MFgG + "; " + ex.Message);
 		}
 	}
 
@@ -357,7 +357,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 	private static Image h35XgFNX3f(string P_0)
 	{
 		string path = (P_0.StartsWith("Assets\\\\RibbonIcons\\\\", StringComparison.OrdinalIgnoreCase) ? P_0.Substring("Assets\\\\RibbonIcons\\\\".Length) : P_0);
-		string text = Path.Combine(W6xTwMLd5RvSHoqDfEV.RibbonIconAssetsDir, path);
+		string text = Path.Combine(AiSseStreamService.RibbonIconAssetsDir, path);
 		if (!File.Exists(text))
 		{
 			return null;
@@ -519,7 +519,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 			if (P_0[i] is IRibbonUI ribbonUI)
 			{
 				hgIXHQ6ueX(ribbonUI);
-				Xwl2EJXZ1waT9LlFYjb.vpbXsP8YgS(ribbonUI);
+				ExcelDataSyncService.vpbXsP8YgS(ribbonUI);
 				break;
 			}
 		}
@@ -548,7 +548,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 	static CompositeRibbonExtensibility()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		SRGXrKgLK0 = "http://schemas.microsoft.com/office/2009/07/customui";
 		Q2WXJBIxKt = new string[5]
 		{

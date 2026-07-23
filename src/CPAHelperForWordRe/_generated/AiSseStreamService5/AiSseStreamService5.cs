@@ -1,0 +1,43 @@
+﻿using CPAHelper.Agent.Abstractions;
+using FileDownloadHelper;
+using AiSseStreamService3;
+using IntranetAiConfigService;
+using SseStreamInitializer;
+using AiSseStreamService;
+using ProviderConfig;
+using AiHelper_9;
+
+namespace AiSseStreamService5;
+
+internal sealed class AiSseStreamService5 : IAgentConfigProvider, IAgentAuthenticationRecovery
+{
+	public AgentConfig GetActiveConfig()
+	{
+		ProviderConfig assistant = FileDownloadHelper.Current.Ai.Assistant;
+		AgentConfig agentConfig = IntranetAiConfigService.Instance.SyM6HN9NPf(assistant.Runtime);
+		agentConfig.Summary = (assistant.Summary ?? new AiHelper_9()).uMGLMZ4rvG();
+		agentConfig.Harness = new AgentHarnessOptions
+		{
+			FileAccessEnabled = true,
+			FileMemoryEnabled = true,
+			FileAccessRoot = AiSseStreamService.mSfs9VWIdb("Agent", "files"),
+			FileMemoryRoot = AiSseStreamService.mSfs9VWIdb("Agent", "memory")
+		};
+		return agentConfig;
+	}
+
+	public bool IsConfigValid()
+	{
+		return GetActiveConfig().IsValid();
+	}
+
+	public bool TryRecoverFromUnauthorized(string P_0)
+	{
+		return IntranetAiConfigService.Instance.CLv6Kfj0Mw(P_0);
+	}
+
+	public AiSseStreamService5()
+	{
+		SseStreamInitializer.AlBVL0oCCKQ();
+	}
+}

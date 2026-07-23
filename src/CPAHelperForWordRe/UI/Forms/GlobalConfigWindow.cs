@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,24 +7,24 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
-using vUGRhtGtrlYF1FZxgIZ;
-using YMrmJHou6ESHscBpC5K;
+using AiSseStreamService3;
+using SseStreamInitializer;
+using JsonFileDialogHelper;
+using NumberFormatConfig;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
 public sealed class GlobalConfigWindow : Window, IComponentConnector
 {
-	private readonly y2npfbo6niCkdy1TbCy qVQGscCNQi;
+	private readonly NumberFormatConfig qVQGscCNQi;
 
 	private bool ueIGlkr7f5;
 
 	public GlobalConfigWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
-		qVQGscCNQi = new y2npfbo6niCkdy1TbCy(new Cscw9SGwoXyXJj7IFKX());
+		qVQGscCNQi = new NumberFormatConfig(new JsonFileDialogHelper());
 		qVQGscCNQi.iVQon5Xo9R(base.Close);
 		base.DataContext = qVQGscCNQi;
 		base.PreviewKeyDown += OrgGL6BKje;

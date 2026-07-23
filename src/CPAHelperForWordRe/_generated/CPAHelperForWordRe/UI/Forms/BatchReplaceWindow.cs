@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +13,12 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Threading;
-using ghWYvT5gdl6wakj5jtn;
-using hJKpQrVSwRwMyI2RyDQN;
+using WordTableToolService5;
+using AiSseStreamService3;
 using Microsoft.Office.Interop.Word;
-using ndRERvVtEjasqN2cQqiN;
-using sNVQvmsNbF4pw13wHyu;
-using YNri0QclKMfRh2PQoZV;
+using SseStreamInitializer;
+using WordTableToolService;
+using LoggerInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -31,7 +31,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 
 		public _G_c__DisplayClass4_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal IEnumerable<string> RxXV4iAvo15(string pattern)
@@ -56,7 +56,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 
 	public BatchReplaceWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, System.Windows.Input.KeyEventArgs P_1)
 		{
@@ -72,24 +72,24 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 		string text = txtFolder.Text ?? string.Empty;
 		if (string.IsNullOrWhiteSpace(text) || !Directory.Exists(text))
 		{
-			F2ZFeLcsiLlLr89kqUl.u0kcmnykTv("请选择待替换文件所在文件夹。", "IP_Assurance");
+			LoggerInitializer.u0kcmnykTv("请选择待替换文件所在文件夹。", "IP_Assurance");
 			return;
 		}
 		string text2 = txtFind.Text ?? string.Empty;
 		if (string.IsNullOrEmpty(text2))
 		{
-			F2ZFeLcsiLlLr89kqUl.u0kcmnykTv("请输入查找内容。", "IP_Assurance");
+			LoggerInitializer.u0kcmnykTv("请输入查找内容。", "IP_Assurance");
 			return;
 		}
 		string[] array = NGTCMHOyQr(text).ToArray();
 		if (array.Length == 0)
 		{
-			F2ZFeLcsiLlLr89kqUl.u0kcmnykTv("所选文件夹中没有可处理的 Word 文档。", "IP_Assurance");
+			LoggerInitializer.u0kcmnykTv("所选文件夹中没有可处理的 Word 文档。", "IP_Assurance");
 			return;
 		}
-		Microsoft.Office.Interop.Word.Application wordApp = eSfxffslhXbaGAjFNv1.WordApp;
+		Microsoft.Office.Interop.Word.Application wordApp = WordTableToolService.WordApp;
 		ProgressWindow progressWindow = new ProgressWindow();
-		rA7neb5TDVvwyWyxwua.IPf5i0ZcV4(progressWindow);
+		WordTableToolService5.IPf5i0ZcV4(progressWindow);
 		int num = 0;
 		wordApp.ScreenUpdating = false;
 		try
@@ -110,7 +110,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 		}
 		catch (Exception ex)
 		{
-			F2ZFeLcsiLlLr89kqUl.F9Ycoqv2I8(ex.ToString(), "IP_Assurance");
+			LoggerInitializer.F9Ycoqv2I8(ex.ToString(), "IP_Assurance");
 		}
 		finally
 		{
@@ -123,7 +123,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 			{
 			}
 		}
-		F2ZFeLcsiLlLr89kqUl.Ay3cNuEgJo(string.Format("批量替换完成：{0} / {1}", num, array.Length), "IP_Assurance");
+		LoggerInitializer.Ay3cNuEgJo(string.Format("批量替换完成：{0} / {1}", num, array.Length), "IP_Assurance");
 	}
 
 	private void JVRCZQmyQv(object P_0, RoutedEventArgs P_1)
@@ -132,7 +132,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 		{
 			SelectedPath = "C:\\\\"
 		};
-		if (folderBrowserDialog.ShowDialog(rA7neb5TDVvwyWyxwua.KJy58rGLXb()) == System.Windows.Forms.DialogResult.OK)
+		if (folderBrowserDialog.ShowDialog(WordTableToolService5.KJy58rGLXb()) == System.Windows.Forms.DialogResult.OK)
 		{
 			txtFolder.Text = folderBrowserDialog.SelectedPath;
 		}

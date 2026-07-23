@@ -1,7 +1,7 @@
-using System.CodeDom.Compiler;
+﻿using System.CodeDom.Compiler;
 using System.Configuration;
 using System.Runtime.CompilerServices;
-using ndRERvVtEjasqN2cQqiN;
+using SseStreamInitializer;
 
 namespace CPAHelperForWordRe.Properties;
 
@@ -15,12 +15,12 @@ internal sealed class Settings : ApplicationSettingsBase
 
 	public Settings()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 	}
 
 	static Settings()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		defaultInstance = (Settings)SettingsBase.Synchronized(new Settings());
 	}
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +13,13 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Markup;
-using FiIb7mSOBD13BJBxsh0;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
-using sNVQvmsNbF4pw13wHyu;
-using t5EreDtgt3Im6sTEmsd;
-using tTkANOS1c3vUhsfiTtj;
-using UlhBxYS9XwGFrj2jlYt;
+using TableBorderConfig;
+using AiSseStreamService3;
+using SseStreamInitializer;
+using WordTableToolService;
+using AiHelper_12;
+using UiHelper_5;
+using UiHelper_4;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -53,10 +53,10 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	public AreaSumWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
-		chkUnitOnly.IsChecked = ftu1AgSpErBKqc6vp9f.Current.HYsSh2NDxY("选段求和_只提取带单位") != 0;
-		txtUnit.Text = ftu1AgSpErBKqc6vp9f.Current.KxPSXHwy4c("选段求和_单位", "元");
+		chkUnitOnly.IsChecked = TableBorderConfig.Current.HYsSh2NDxY("选段求和_只提取带单位") != 0;
+		txtUnit.Text = TableBorderConfig.Current.KxPSXHwy4c("选段求和_单位", "元");
 		base.PreviewKeyDown += delegate(object P_0, System.Windows.Input.KeyEventArgs P_1)
 		{
 			if (P_1.Key == Key.Escape)
@@ -89,7 +89,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	private void xmiCNJH4KU()
 	{
-		string text = eSfxffslhXbaGAjFNv1.WordApp.Selection.Text ?? string.Empty;
+		string text = WordTableToolService.WordApp.Selection.Text ?? string.Empty;
 		bool valueOrDefault = chkUnitOnly.IsChecked == true;
 		string text2 = (txtUnit.Text ?? string.Empty).Trim();
 		if (valueOrDefault && string.IsNullOrEmpty(text2))
@@ -98,7 +98,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			txtUnit.Focus();
 			return;
 		}
-		MatchCollection matchCollection = F3GMWWSQOH55IrwVEm4.K4hSE7usVJ.Matches(text);
+		MatchCollection matchCollection = UiHelper_5.K4hSE7usVJ.Matches(text);
 		if (matchCollection.Count == 0)
 		{
 			txtStatus.Text = "未找到任何数字。";
@@ -114,7 +114,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 				num2++;
 				continue;
 			}
-			if (valueOrDefault && !F3GMWWSQOH55IrwVEm4.q4TS36j7cA(text, item, text2))
+			if (valueOrDefault && !UiHelper_5.q4TS36j7cA(text, item, text2))
 			{
 				num2++;
 				continue;
@@ -136,7 +136,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	private bool HlxCmTEkPL(string P_0, Match P_1)
 	{
-		W9DpQgSBDhHwuwkYtki w9DpQgSBDhHwuwkYtki = new W9DpQgSBDhHwuwkYtki
+		UiHelper_4 w9DpQgSBDhHwuwkYtki = new UiHelper_4
 		{
 			ExcludeYear = (chkYear.IsChecked == true),
 			ExcludeMonth = (chkMonth.IsChecked == true),
@@ -146,7 +146,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			ExcludePercent = (chkPercent.IsChecked == true),
 			ExcludeDateFormat = false
 		};
-		return F3GMWWSQOH55IrwVEm4.bcbSJ1pxpn(P_0, P_1, w9DpQgSBDhHwuwkYtki, null);
+		return UiHelper_5.bcbSJ1pxpn(P_0, P_1, w9DpQgSBDhHwuwkYtki, null);
 	}
 
 	private void HNSCoD1ugn()
@@ -225,7 +225,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	private void tfxCOJejgv()
 	{
-		ftu1AgSpErBKqc6vp9f.Current.wpmS5yUw9A(delegate(NKy3wjtTwmsradOXPDy P_0)
+		TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 P_0)
 		{
 			P_0.Legacy["未找到任何数字。"] = ((chkUnitOnly.IsChecked == true) ? "找到 {0} 个数字，但均未通过当前筛选条件。" : "\r\n");
 			P_0.Legacy["求和"] = (string.IsNullOrWhiteSpace(txtUnit.Text) ? "已按筛选条件提取 {0} 个数字" : txtUnit.Text.Trim());
@@ -310,7 +310,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void EL5C5rjprK(NKy3wjtTwmsradOXPDy P_0)
+	private void EL5C5rjprK(AiHelper_12 P_0)
 	{
 		P_0.Legacy["选段求和_只提取带单位"] = ((chkUnitOnly.IsChecked == true) ? "0" : "1");
 		P_0.Legacy["选段求和_单位"] = (string.IsNullOrWhiteSpace(txtUnit.Text) ? "元" : txtUnit.Text.Trim());

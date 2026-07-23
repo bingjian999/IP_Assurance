@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,11 +7,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using hJKpQrVSwRwMyI2RyDQN;
-using LgmURjbT0s9Qufho1dJ;
-using ndRERvVtEjasqN2cQqiN;
-using w5Oql9FwFDU9FYHJXvj;
-using YNri0QclKMfRh2PQoZV;
+using AiSseStreamService3;
+using MarkdownImportService;
+using SseStreamInitializer;
+using AiHelper_7;
+using LoggerInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -26,12 +26,12 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 
 		public _G_c__DisplayClass2_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal void W8PV4Vx80ng()
 		{
-			xGtV4BI5U0F = s2nMCybDnhhNsDsld0f.XiHb8xdPLA(vI1V49iRKoi.txtMarkdown.Text, vI1V49iRKoi.chkApplyHeadingNumbering.IsChecked == true);
+			xGtV4BI5U0F = MarkdownImportService.XiHb8xdPLA(vI1V49iRKoi.txtMarkdown.Text, vI1V49iRKoi.chkApplyHeadingNumbering.IsChecked == true);
 		}
 	}
 
@@ -43,7 +43,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 
 	public MarkdownImportWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -64,7 +64,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		{
 			if (!Clipboard.ContainsText())
 			{
-				F2ZFeLcsiLlLr89kqUl.u0kcmnykTv("剪贴板中没有可粘贴的文本。", "IP_Assurance");
+				LoggerInitializer.u0kcmnykTv("剪贴板中没有可粘贴的文本。", "IP_Assurance");
 				return;
 			}
 			txtMarkdown.Text = Clipboard.GetText();
@@ -73,7 +73,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		}
 		catch (Exception ex)
 		{
-			F2ZFeLcsiLlLr89kqUl.F9Ycoqv2I8("读取剪贴板失败：" + ex.Message, "IP_Assurance");
+			LoggerInitializer.F9Ycoqv2I8("读取剪贴板失败：" + ex.Message, "IP_Assurance");
 		}
 	}
 
@@ -82,9 +82,9 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		_G_c__DisplayClass2_0 obj = new _G_c__DisplayClass2_0();
 		obj.vI1V49iRKoi = this;
 		obj.xGtV4BI5U0F = false;
-		okTG2rFSnxjcTsuMG3L.sY9FLcxGhc(delegate
+		AiHelper_7.sY9FLcxGhc(delegate
 		{
-			obj.xGtV4BI5U0F = s2nMCybDnhhNsDsld0f.XiHb8xdPLA(obj.vI1V49iRKoi.txtMarkdown.Text, obj.vI1V49iRKoi.chkApplyHeadingNumbering.IsChecked == true);
+			obj.xGtV4BI5U0F = MarkdownImportService.XiHb8xdPLA(obj.vI1V49iRKoi.txtMarkdown.Text, obj.vI1V49iRKoi.chkApplyHeadingNumbering.IsChecked == true);
 		}, "Markdown 导入");
 		if (obj.xGtV4BI5U0F)
 		{

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,11 +7,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
-using hJKpQrVSwRwMyI2RyDQN;
-using ndRERvVtEjasqN2cQqiN;
-using NXJWEcbKUBxyFgqYoDS;
-using UlhBxYS9XwGFrj2jlYt;
-using YNri0QclKMfRh2PQoZV;
+using AiSseStreamService3;
+using SseStreamInitializer;
+using ThousandsSeparatorService;
+using UiHelper_4;
+using LoggerInitializer;
 
 namespace CPAHelperForWordRe.UI.Forms;
 
@@ -41,7 +41,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 
 	public ThousandsSeparatorConfigWindow()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		InitializeComponent();
 		for (int i = 0; i <= 6; i++)
 		{
@@ -54,25 +54,25 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 				Close();
 			}
 		};
-		Ig8CaDUwk9(yfWCISbU8K9IAVpoVFu.i4XbnSK0XW(), yfWCISbU8K9IAVpoVFu.Wr8b0ba5yt());
+		Ig8CaDUwk9(ThousandsSeparatorService.i4XbnSK0XW(), ThousandsSeparatorService.Wr8b0ba5yt());
 	}
 
 	private void NjaCykTo2J(object P_0, RoutedEventArgs P_1)
 	{
 		if (vddCqqexkg(out var w9DpQgSBDhHwuwkYtki) && RkwCPY0rTt(out var num))
 		{
-			yfWCISbU8K9IAVpoVFu.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, num);
-			F2ZFeLcsiLlLr89kqUl.Ay3cNuEgJo("千分位符配置已保存。", "千分位符配置");
+			ThousandsSeparatorService.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, num);
+			LoggerInitializer.Ay3cNuEgJo("千分位符配置已保存。", "千分位符配置");
 			Close();
 		}
 	}
 
 	private void pK3CXMgb92(object P_0, RoutedEventArgs P_1)
 	{
-		W9DpQgSBDhHwuwkYtki w9DpQgSBDhHwuwkYtki = yfWCISbU8K9IAVpoVFu.iJpb7cZpBN();
+		UiHelper_4 w9DpQgSBDhHwuwkYtki = ThousandsSeparatorService.iJpb7cZpBN();
 		Ig8CaDUwk9(w9DpQgSBDhHwuwkYtki, 2);
-		yfWCISbU8K9IAVpoVFu.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, 2);
-		F2ZFeLcsiLlLr89kqUl.Ay3cNuEgJo("千分位符配置已恢复默认。", "千分位符配置");
+		ThousandsSeparatorService.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, 2);
+		LoggerInitializer.Ay3cNuEgJo("千分位符配置已恢复默认。", "千分位符配置");
 	}
 
 	private void rqlCFRtGUg(object P_0, RoutedEventArgs P_1)
@@ -85,13 +85,13 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		e6wCA4YH7g();
 	}
 
-	private void Ig8CaDUwk9(W9DpQgSBDhHwuwkYtki P_0, int P_1)
+	private void Ig8CaDUwk9(UiHelper_4 P_0, int P_1)
 	{
 		if (P_0 == null)
 		{
-			P_0 = yfWCISbU8K9IAVpoVFu.iJpb7cZpBN();
+			P_0 = ThousandsSeparatorService.iJpb7cZpBN();
 		}
-		cmbDecimalPlaces.Text = yfWCISbU8K9IAVpoVFu.JTHSRmZV4w(P_1).ToString();
+		cmbDecimalPlaces.Text = ThousandsSeparatorService.JTHSRmZV4w(P_1).ToString();
 		chkYear.IsChecked = P_0.ExcludeYear;
 		chkMonth.IsChecked = P_0.ExcludeMonth;
 		chkDay.IsChecked = P_0.ExcludeDay;
@@ -104,17 +104,17 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		e6wCA4YH7g();
 	}
 
-	private bool vddCqqexkg(out W9DpQgSBDhHwuwkYtki P_0)
+	private bool vddCqqexkg(out UiHelper_4 P_0)
 	{
 		P_0 = null;
 		string unitText = gVlCvRBiPn(txtUnit.Text);
 		if (chkUnitOnly.IsChecked == true && string.IsNullOrWhiteSpace(txtUnit.Text))
 		{
-			F2ZFeLcsiLlLr89kqUl.u0kcmnykTv("已启用“仅处理带单位数字”，请先填写匹配单位。", "千分位符配置");
+			LoggerInitializer.u0kcmnykTv("已启用“仅处理带单位数字”，请先填写匹配单位。", "千分位符配置");
 			txtUnit.Focus();
 			return false;
 		}
-		P_0 = new W9DpQgSBDhHwuwkYtki
+		P_0 = new UiHelper_4
 		{
 			ExcludeYear = (chkYear.IsChecked == true),
 			ExcludeMonth = (chkMonth.IsChecked == true),
@@ -134,7 +134,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		P_0 = 2;
 		if (!int.TryParse((cmbDecimalPlaces.Text ?? string.Empty).Trim(), out var result) || result < 0 || result > 6)
 		{
-			F2ZFeLcsiLlLr89kqUl.u0kcmnykTv("千分位符小数位数请输入 0 到 6 之间的整数。", "千分位符配置");
+			LoggerInitializer.u0kcmnykTv("千分位符小数位数请输入 0 到 6 之间的整数。", "千分位符配置");
 			cmbDecimalPlaces.Focus();
 			return false;
 		}

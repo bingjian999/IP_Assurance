@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,31 +10,31 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using System.Windows.Threading;
-using aQChPyBaZdbEBOJn4tr;
-using COg0IZLh2s7ArUStIRP;
+using AiAssistantHost2;
+using AiHelper_6;
 using CPAHelperForWordRe.UI.Forms;
 using CPAHelperForWordRe.UI.Ribbon;
-using cw0KtBshN86U0Owd58V;
-using dL7TFPsQbAGqPywtHUK;
-using e8p1CGVN194FjjKWWIg;
-using emAOMVBT4r0jD8Vun2A;
-using FiIb7mSOBD13BJBxsh0;
-using hJKpQrVSwRwMyI2RyDQN;
+using ShutdownStepRunner;
+using AiConfigBootstrap;
+using AiHelper_4;
+using ScreenshotService;
+using TableBorderConfig;
+using AiSseStreamService3;
 using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Word;
 using Microsoft.Office.Tools;
 using Microsoft.Office.Tools.Ribbon;
 using Microsoft.Office.Tools.Word;
 using Microsoft.VisualStudio.Tools.Applications.Runtime;
-using ndRERvVtEjasqN2cQqiN;
-using P4BD1rLkpPbD4GJiVHK;
-using qDDKriLz2Bft1Ehv17i;
-using sNVQvmsNbF4pw13wHyu;
-using UjKxD9CamCBgjOFybS;
-using Vn2FNvXfBBVtqPcjIyB;
-using VZXZf1ccDRAexK4cV58;
-using yHKZ4oscwrqgArrSJ9K;
-using zx0Oj9UTwBfDyTBLk9y;
+using SseStreamInitializer;
+using HttpHelper_2;
+using AiSseStreamService;
+using WordTableToolService;
+using UiHelper_1;
+using ExcelDataSyncService;
+using UiHelperService;
+using StartupStepRunner;
+using AiHelper_13;
 
 namespace CPAHelperForWordRe;
 
@@ -49,7 +49,7 @@ public sealed class ThisAddIn : AddInBase
 
 		public _G_c__DisplayClass10_0()
 		{
-			hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+			SseStreamInitializer.AlBVL0oCCKQ();
 		}
 
 		internal void Xi9F5XpDUc(object _, RoutedEventArgs __)
@@ -60,9 +60,9 @@ public sealed class ThisAddIn : AddInBase
 
 	private static readonly Uri ugVtXaQGa;
 
-	private readonly YulCYIsFR7cnsI3O2FF XvXL2tl66;
+	private readonly ShutdownStepRunner XvXL2tl66;
 
-	private readonly dmUPiks5RapQGMIgwpF QDMsw544U;
+	private readonly StartupStepRunner QDMsw544U;
 
 	internal CustomTaskPaneCollection D8nlJJriq;
 
@@ -78,49 +78,49 @@ public sealed class ThisAddIn : AddInBase
 	{
 		try
 		{
-			yR9thasHZ73xXm8eKwj.nCOs10kYTP();
-			XvXL2tl66.CdpsaonsgL("刷新并关闭日志", yR9thasHZ73xXm8eKwj.pnHsrIThtj);
+			AiConfigBootstrap.nCOs10kYTP();
+			XvXL2tl66.CdpsaonsgL("刷新并关闭日志", AiConfigBootstrap.pnHsrIThtj);
 			ScRJrclkY();
-			KN3FylL0CcE4FxM6SF8.BNmLxKn8Mc();
-			eSfxffslhXbaGAjFNv1.wTdsm97f8t(fM3oNckkd, SynchronizationContext.Current);
-			W6xTwMLd5RvSHoqDfEV.VyDsR9yN8r();
-			W6xTwMLd5RvSHoqDfEV.i24sVuaOic(W6xTwMLd5RvSHoqDfEV.ConfigDir);
+			HttpHelper_2.BNmLxKn8Mc();
+			WordTableToolService.wTdsm97f8t(fM3oNckkd, SynchronizationContext.Current);
+			AiSseStreamService.VyDsR9yN8r();
+			AiSseStreamService.i24sVuaOic(AiSseStreamService.ConfigDir);
 			QDMsw544U.f5nsePaaOi("加载配置", delegate
 			{
-				ftu1AgSpErBKqc6vp9f.Current.GZ2SaDxkVl();
+				TableBorderConfig.Current.GZ2SaDxkVl();
 			});
 			QDMsw544U.f5nsePaaOi("刷新 Ribbon 标题", CompositeRibbonExtensibility.S0ZyWdvYIm);
-			QDMsw544U.f5nsePaaOi("初始化轻量 AI 入口", RmFJn1BhW81y5YhCApL.GG6Bqc5aMd);
+			QDMsw544U.f5nsePaaOi("初始化轻量 AI 入口", AiAssistantHost2.GG6Bqc5aMd);
 			QDMsw544U.f5nsePaaOi("初始化 OfficeTab", delegate
 			{
-				if (ftu1AgSpErBKqc6vp9f.Current.Config.OfficeTab.Enabled)
+				if (TableBorderConfig.Current.Config.OfficeTab.Enabled)
 				{
-					C2D1AyUDiquViJ7oeR7.EnuUgD338d();
+					AiHelper_13.EnuUgD338d();
 				}
 			});
 			QDMsw544U.f5nsePaaOi("应用桌面钉图热键", delegate
 			{
-				if (!T2qy2kBDTEXPmLNlcDc.o6HBH667NB(out var text) && !string.IsNullOrWhiteSpace(text))
+				if (!ScreenshotService.o6HBH667NB(out var text) && !string.IsNullOrWhiteSpace(text))
 				{
-					yR9thasHZ73xXm8eKwj.z7Us3dJ6Cl("恢复 Excel 同步右键菜单" + text);
+					AiConfigBootstrap.z7Us3dJ6Cl("恢复 Excel 同步右键菜单" + text);
 				}
 			});
-			QDMsw544U.f5nsePaaOi("启动自动检查更新", Xwl2EJXZ1waT9LlFYjb.K5NXSH2mgl);
-			QDMsw544U.f5nsePaaOi("[Startup] IP_Assurance started; Version=", lZGsUOLFg0eiGa6Xr1Q.uJJLaq5Qdq);
+			QDMsw544U.f5nsePaaOi("启动自动检查更新", ExcelDataSyncService.K5NXSH2mgl);
+			QDMsw544U.f5nsePaaOi("[Startup] IP_Assurance started; Version=", AiHelper_6.uJJLaq5Qdq);
 			QDMsw544U.DQUsymt3gA();
-			yR9thasHZ73xXm8eKwj.swCsJ4IbrL("; Host=" + typeof(ThisAddIn).Assembly.GetName().Version?.ToString() + "Word" + (eSfxffslhXbaGAjFNv1.IsWps ? "WPS" : ""));
+			AiConfigBootstrap.swCsJ4IbrL("; Host=" + typeof(ThisAddIn).Assembly.GetName().Version?.ToString() + "Word" + (WordTableToolService.IsWps ? "WPS" : ""));
 			Y813TQXXJ();
-			XvXL2tl66.CdpsaonsgL("清理 OfficeTab", RmFJn1BhW81y5YhCApL.oCK9RZLXy4);
-			XvXL2tl66.CdpsaonsgL("清理桌面钉图", C2D1AyUDiquViJ7oeR7.PSkUiNYvdJ);
-			XvXL2tl66.CdpsaonsgL("清理 Excel 同步右键菜单", T2qy2kBDTEXPmLNlcDc.jTmBQtWvhT);
-			XvXL2tl66.CdpsaonsgL("清理系统托盘通知", Xwl2EJXZ1waT9LlFYjb.MXSXtSr5ZG);
-			XvXL2tl66.CdpsaonsgL("清理 WPF 键盘钩子", lRTy9Ic5uax0jm0RR1L.OpbcFWIPED);
-			XvXL2tl66.CdpsaonsgL("DocumentOpen", Rd81EOVl9ycTdnhNP7H.EdjVoDIVbd);
+			XvXL2tl66.CdpsaonsgL("清理 OfficeTab", AiAssistantHost2.oCK9RZLXy4);
+			XvXL2tl66.CdpsaonsgL("清理桌面钉图", AiHelper_13.PSkUiNYvdJ);
+			XvXL2tl66.CdpsaonsgL("清理 Excel 同步右键菜单", ScreenshotService.jTmBQtWvhT);
+			XvXL2tl66.CdpsaonsgL("清理系统托盘通知", ExcelDataSyncService.MXSXtSr5ZG);
+			XvXL2tl66.CdpsaonsgL("清理 WPF 键盘钩子", UiHelperService.OpbcFWIPED);
+			XvXL2tl66.CdpsaonsgL("DocumentOpen", AiHelper_4.EdjVoDIVbd);
 			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").AddEventHandler(fM3oNckkd, new ApplicationEvents4_DocumentOpenEventHandler(qZSrdDKvR));
 		}
 		catch (Exception ex)
 		{
-			yR9thasHZ73xXm8eKwj.ujWsURly3F("刷新并关闭日志", ex);
+			AiConfigBootstrap.ujWsURly3F("刷新并关闭日志", ex);
 		}
 	}
 
@@ -133,7 +133,7 @@ public sealed class ThisAddIn : AddInBase
 		}
 		catch (Exception ex)
 		{
-			yR9thasHZ73xXm8eKwj.ujWsURly3F("[Shutdown] Failure", ex);
+			AiConfigBootstrap.ujWsURly3F("[Shutdown] Failure", ex);
 		}
 	}
 
@@ -141,7 +141,7 @@ public sealed class ThisAddIn : AddInBase
 	{
 		try
 		{
-			if (P_0 == null || !ftu1AgSpErBKqc6vp9f.Current.Config.System.DisableAutomaticStyleUpdate)
+			if (P_0 == null || !TableBorderConfig.Current.Config.System.DisableAutomaticStyleUpdate)
 			{
 				return;
 			}
@@ -158,7 +158,7 @@ public sealed class ThisAddIn : AddInBase
 		}
 		catch (Exception ex)
 		{
-			yR9thasHZ73xXm8eKwj.ujWsURly3F("[DocumentOpen]", ex);
+			AiConfigBootstrap.ujWsURly3F("[DocumentOpen]", ex);
 		}
 	}
 
@@ -169,7 +169,7 @@ public sealed class ThisAddIn : AddInBase
 
 	protected override IRibbonExtensibility CreateRibbonExtensibilityObject()
 	{
-		return new CompositeRibbonExtensibility(d1MIweGrZBnHJqM9I4.Factory.GetRibbonFactory().CreateRibbonManager(this.CreateRibbonObjects()));
+		return new CompositeRibbonExtensibility(UiHelper_1.Factory.GetRibbonFactory().CreateRibbonManager(this.CreateRibbonObjects()));
 	}
 
 	private static void ScRJrclkY()
@@ -240,11 +240,11 @@ public sealed class ThisAddIn : AddInBase
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public ThisAddIn(ApplicationFactory factory, IServiceProvider serviceProvider) : base((Microsoft.Office.Tools.Factory)factory, serviceProvider, "加载配置", "刷新 Ribbon 标题")
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
-		XvXL2tl66 = new YulCYIsFR7cnsI3O2FF();
-		QDMsw544U = new dmUPiks5RapQGMIgwpF();
+		SseStreamInitializer.AlBVL0oCCKQ();
+		XvXL2tl66 = new ShutdownStepRunner();
+		QDMsw544U = new StartupStepRunner();
 		mu1mGcWsS = Type.Missing;
-		d1MIweGrZBnHJqM9I4.Factory = factory;
+		UiHelper_1.Factory = factory;
 	}
 
 	[DebuggerNonUserCode]
@@ -254,7 +254,7 @@ public sealed class ThisAddIn : AddInBase
 	{
 		base.Initialize();
 		fM3oNckkd = GetHostItem<Microsoft.Office.Interop.Word.Application>(typeof(Microsoft.Office.Interop.Word.Application), "Application");
-		d1MIweGrZBnHJqM9I4.ThisAddIn = this;
+		UiHelper_1.ThisAddIn = this;
 		System.Windows.Forms.Application.EnableVisualStyles();
 		N1SEFfDNL();
 		ViYbWSnJh();
@@ -352,8 +352,8 @@ public sealed class ThisAddIn : AddInBase
 	[DebuggerNonUserCode]
 	private void ViYbWSnJh()
 	{
-		D8nlJJriq = d1MIweGrZBnHJqM9I4.Factory.CreateCustomTaskPaneCollection(null, null, "CustomTaskPanes", "CustomTaskPanes", this);
-		tXBNqmaPS = d1MIweGrZBnHJqM9I4.Factory.CreateSmartTagCollection(null, null, "VstoSmartTags", "VstoSmartTags", this);
+		D8nlJJriq = UiHelper_1.Factory.CreateCustomTaskPaneCollection(null, null, "CustomTaskPanes", "CustomTaskPanes", this);
+		tXBNqmaPS = UiHelper_1.Factory.CreateSmartTagCollection(null, null, "VstoSmartTags", "VstoSmartTags", this);
 	}
 
 	[DebuggerNonUserCode]
@@ -382,7 +382,7 @@ public sealed class ThisAddIn : AddInBase
 
 	static ThisAddIn()
 	{
-		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		SseStreamInitializer.AlBVL0oCCKQ();
 		ugVtXaQGa = new Uri("/CPAHelperForWordRe;component/UI/Themes/EnterprisePanelTheme.xaml", UriKind.Relative);
 	}
 }
