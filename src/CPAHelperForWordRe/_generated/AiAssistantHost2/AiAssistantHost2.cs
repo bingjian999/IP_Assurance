@@ -46,10 +46,10 @@ namespace AiAssistantHost2;
 
 internal static class AiAssistantHost2
 {
-	private sealed class RXCwJGhHcxjX0yklsaw : IDisposable
+	private sealed class PaneBridgeHolder : IDisposable
 	{
 		[CompilerGenerated]
-		private DesktopAiBridgeServer zxQhQDWnk2;
+		private DesktopAiBridgeServer _server;
 
 		[CompilerGenerated]
 		private ServiceProvider _serviceProvider;
@@ -59,12 +59,12 @@ internal static class AiAssistantHost2
 			[CompilerGenerated]
 			get
 			{
-				return zxQhQDWnk2;
+				return _server;
 			}
 			[CompilerGenerated]
 			set
 			{
-				zxQhQDWnk2 = value;
+				_server = value;
 			}
 		}
 
@@ -102,7 +102,7 @@ internal static class AiAssistantHost2
 			}
 		}
 
-		public RXCwJGhHcxjX0yklsaw()
+		public PaneBridgeHolder()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
@@ -111,23 +111,23 @@ internal static class AiAssistantHost2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_0
 	{
-		public AiTargetBinder OTthKVmcnx;
+		public AiTargetBinder _targetBinder;
 
-		public WordAgentRuntimeGuard TKPhEGXwHy;
+		public WordAgentRuntimeGuard _runtimeGuard;
 
 		public _G_c__DisplayClass10_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void OgDhU55L8X(AgentArtifact artifact)
+		internal void OnArtifact(AgentArtifact artifact)
 		{
 			_G_c__DisplayClass10_1 CS_8_locals_4 = new _G_c__DisplayClass10_1();
 			CS_8_locals_4._G_c__DisplayClass10_0 = this;
 			CS_8_locals_4.agentArtifact = artifact;
-			TKPhEGXwHy.InvokeOnUiThread(delegate
+			_runtimeGuard.InvokeOnUiThread(delegate
 			{
-				AiHelper_17.VYkUViDjLf(CS_8_locals_4._G_c__DisplayClass10_0.OTthKVmcnx, CS_8_locals_4.agentArtifact);
+				AiHelper_17.VYkUViDjLf(CS_8_locals_4._G_c__DisplayClass10_0._targetBinder, CS_8_locals_4.agentArtifact);
 			});
 		}
 	}
@@ -144,82 +144,82 @@ internal static class AiAssistantHost2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void rIIh2mrLbO()
+		internal void ProcessArtifact()
 		{
-			AiHelper_17.VYkUViDjLf(_G_c__DisplayClass10_0.OTthKVmcnx, agentArtifact);
+			AiHelper_17.VYkUViDjLf(_G_c__DisplayClass10_0._targetBinder, agentArtifact);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass28_0
 	{
-		public AiTargetBinder OOrhMhZJqR;
+		public AiTargetBinder _targetBinder;
 
 		public _G_c__DisplayClass28_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_15 EfkhYTMjkF(IServiceProvider _)
+		internal AiHelper_15 CreateAiHelper15(IServiceProvider _)
 		{
-			return new AiHelper_15(OOrhMhZJqR);
+			return new AiHelper_15(_targetBinder);
 		}
 
-		internal BatchReplaceService2 frBhZbbW1E(IServiceProvider _)
+		internal BatchReplaceService2 CreateBatchReplaceService2(IServiceProvider _)
 		{
-			return new BatchReplaceService2(OOrhMhZJqR);
+			return new BatchReplaceService2(_targetBinder);
 		}
 
-		internal WpsVbaCompatService v1WhfuhFUu(IServiceProvider _)
+		internal WpsVbaCompatService CreateWpsVbaCompatService(IServiceProvider _)
 		{
-			return new WpsVbaCompatService(OOrhMhZJqR);
+			return new WpsVbaCompatService(_targetBinder);
 		}
 	}
 
-	private static readonly object CTS91vctKd;
+	private static readonly object _syncLock;
 
-	private static readonly HashSet<CustomTaskPane> Spc9riTU3E;
+	private static readonly HashSet<CustomTaskPane> _closingPanes;
 
-	private static readonly Dictionary<string, RXCwJGhHcxjX0yklsaw> HSw9JKPvWP;
+	private static readonly Dictionary<string, PaneBridgeHolder> _paneBridges;
 
-	private static bool uyS93RQrn8;
+	private static bool _isInitialized;
 
-	private static bool vyT9UyqU67;
+	private static bool _isShuttingDown;
 
-	public static void GG6Bqc5aMd()
+	public static void TriggerFileDownload()
 	{
 		FileDownloadHelper.Current.t9vwx1YSVk();
 	}
 
-	public static bool UnXBPRAlgg()
+	public static bool EnsureInitialized()
 	{
-		if (uyS93RQrn8)
+		if (_isInitialized)
 		{
 			return true;
 		}
-		lock (CTS91vctKd)
+		lock (_syncLock)
 		{
-			if (uyS93RQrn8)
+			if (_isInitialized)
 			{
 				return true;
 			}
 			try
 			{
-				HttpHelper_2.BNmLxKn8Mc();
-				wEr9HlqmQE();
+				HttpHelper_2.initializeHttpClient();
+				PrepareAgentRuntimeBase();
 				FileDownloadHelper.Current.t9vwx1YSVk();
-				if (!IntranetAiConfigService.Instance.gDh6IIK89w())
+				if (!IntranetAiConfigService.Instance.EnsureAuthenticated())
 				{
 					AiConfigBootstrap.LogInfo("Agent initialization aborted because intranet authentication was not completed.");
 					return false;
 				}
 				JsonSessionIndexManager.Initialize(AiSseStreamService.GetUserDataPath("Agent", "chat-sessions"));
-				uyS93RQrn8 = true;
+				_isInitialized = true;
 				return true;
 			}
 			catch (Exception ex)
 			{
-				RAo9QloHrl( false);
+				CleanupAndShutdown( false);
 				AiConfigBootstrap.LogError("[AI] Agent initialization failed", ex);
 				LoggerInitializer.ShowError("AI 助手初始化失败，请检查配置、网络环境和日志后重试。\r\n" + ex.Message, "AI 助手");
 				return false;
@@ -227,23 +227,23 @@ internal static class AiAssistantHost2
 		}
 	}
 
-	public static DesktopAiBridgeServer liEBA242hS()
+	public static DesktopAiBridgeServer GetOrCreateBridge()
 	{
-		return mJIBvnaH0F(null);
+		return CreatePaneBridge(null);
 	}
 
-	public static DesktopAiBridgeServer mJIBvnaH0F(AiTargetBinder P_0)
+	public static DesktopAiBridgeServer CreatePaneBridge(AiTargetBinder P_0)
 	{
 		_G_c__DisplayClass10_0 CS_8_locals_14 = new _G_c__DisplayClass10_0();
-		CS_8_locals_14.OTthKVmcnx = P_0;
-		if (!UnXBPRAlgg())
+		CS_8_locals_14._targetBinder = P_0;
+		if (!EnsureInitialized())
 		{
 			return null;
 		}
-		lock (CTS91vctKd)
+		lock (_syncLock)
 		{
-			string text = tvS9IeFZ37(CS_8_locals_14.OTthKVmcnx);
-			if (HSw9JKPvWP.TryGetValue(text, out var value))
+			string text = GetPaneKey(CS_8_locals_14._targetBinder);
+			if (_paneBridges.TryGetValue(text, out var value))
 			{
 				return value.Server;
 			}
@@ -251,26 +251,26 @@ internal static class AiAssistantHost2
 			DesktopAiBridgeServer desktopAiBridgeServer = null;
 			try
 			{
-				CS_8_locals_14.TKPhEGXwHy = new WordAgentRuntimeGuard(CS_8_locals_14.OTthKVmcnx);
-				HostActionDispatcher dguCpUJyDDpMGwLPwHA = new HostActionDispatcher(CS_8_locals_14.OTthKVmcnx);
-				serviceProvider = yeJ9iDW5Vn(CS_8_locals_14.OTthKVmcnx, CS_8_locals_14.TKPhEGXwHy, dguCpUJyDDpMGwLPwHA);
-				desktopAiBridgeServer = new DesktopAiBridgeServer(serviceProvider.GetRequiredService<AgentRuntime>(), serviceProvider.GetRequiredService<IAgentConfigProvider>(), serviceProvider.GetRequiredService<IAgentInstructionBuilder>(), instructionContextFactory: serviceProvider.GetRequiredService<AiHelper_19>().QhF3fbjxg1, hostContext: CS_8_locals_14.TKPhEGXwHy, onArtifact: delegate(AgentArtifact artifact)
+				CS_8_locals_14._runtimeGuard = new WordAgentRuntimeGuard(CS_8_locals_14._targetBinder);
+				HostActionDispatcher hostActionDispatcher = new HostActionDispatcher(CS_8_locals_14._targetBinder);
+				serviceProvider = BuildServiceProvider(CS_8_locals_14._targetBinder, CS_8_locals_14._runtimeGuard, hostActionDispatcher);
+				desktopAiBridgeServer = new DesktopAiBridgeServer(serviceProvider.GetRequiredService<AgentRuntime>(), serviceProvider.GetRequiredService<IAgentConfigProvider>(), serviceProvider.GetRequiredService<IAgentInstructionBuilder>(), instructionContextFactory: serviceProvider.GetRequiredService<AiHelper_19>().QhF3fbjxg1, hostContext: CS_8_locals_14._runtimeGuard, onArtifact: delegate(AgentArtifact artifact)
 				{
 					_G_c__DisplayClass10_1 CS_8_locals_16 = new _G_c__DisplayClass10_1();
 					CS_8_locals_16._G_c__DisplayClass10_0 = CS_8_locals_14;
 					CS_8_locals_16.agentArtifact = artifact;
-					CS_8_locals_14.TKPhEGXwHy.InvokeOnUiThread(delegate
+					CS_8_locals_14._runtimeGuard.InvokeOnUiThread(delegate
 					{
-						AiHelper_17.VYkUViDjLf(CS_8_locals_16._G_c__DisplayClass10_0.OTthKVmcnx, CS_8_locals_16.agentArtifact);
+						AiHelper_17.VYkUViDjLf(CS_8_locals_16._G_c__DisplayClass10_0._targetBinder, CS_8_locals_16.agentArtifact);
 					});
-				}, hostActionProvider: dguCpUJyDDpMGwLPwHA);
+				}, hostActionProvider: hostActionDispatcher);
 				desktopAiBridgeServer.Start();
-				HSw9JKPvWP[text] = new RXCwJGhHcxjX0yklsaw
+				_paneBridges[text] = new PaneBridgeHolder
 				{
 					Server = desktopAiBridgeServer,
 					ServiceProvider = serviceProvider
 				};
-				AiConfigBootstrap.LogInfo("[AI] Pane bridge started. Key=" + text + "; Port=" + desktopAiBridgeServer.Port + "; Target=" + (CS_8_locals_14.OTthKVmcnx?.DisplayName ?? "(active)"));
+				AiConfigBootstrap.LogInfo("[AI] Pane bridge started. Key=" + text + "; Port=" + desktopAiBridgeServer.Port + "; Target=" + (CS_8_locals_14._targetBinder?.DisplayName ?? "(active)"));
 				return desktopAiBridgeServer;
 			}
 			catch (Exception ex)
@@ -290,54 +290,54 @@ internal static class AiAssistantHost2
 		}
 	}
 
-	public static void Kf7BW0nRZX(string P_0)
+	public static void ClosePaneBridge(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
 			return;
 		}
-		lock (CTS91vctKd)
+		lock (_syncLock)
 		{
-			if (HSw9JKPvWP.TryGetValue(P_0, out var value))
+			if (_paneBridges.TryGetValue(P_0, out var value))
 			{
-				HSw9JKPvWP.Remove(P_0);
+				_paneBridges.Remove(P_0);
 				value.Dispose();
 			}
 		}
 	}
 
-	public static void aRJB0cfkok()
+	public static void OpenAssistantPane()
 	{
-		if (!UnXBPRAlgg() || !IntranetAiConfigService.Instance.gDh6IIK89w())
+		if (!EnsureInitialized() || !IntranetAiConfigService.Instance.EnsureAuthenticated())
 		{
 			return;
 		}
 		try
 		{
 			Window window;
-			AiTargetBinder rkZt4ZuLjXTP5cAL48p;
-			CustomTaskPane customTaskPane = Im899AXlNf(out window, out rkZt4ZuLjXTP5cAL48p);
-			if (window == null || rkZt4ZuLjXTP5cAL48p == null || string.IsNullOrWhiteSpace(rkZt4ZuLjXTP5cAL48p.WindowKey))
+			AiTargetBinder targetBinder;
+			CustomTaskPane customTaskPane = FindActivePane(out window, out targetBinder);
+			if (window == null || targetBinder == null || string.IsNullOrWhiteSpace(targetBinder.WindowKey))
 			{
 				LoggerInitializer.ShowWarning("当前没有可用的 Word 文档窗口，无法打开 AI 助手。", "AI 助手");
 				return;
 			}
 			if (customTaskPane == null)
 			{
-				customTaskPane = DCV9BmThLi(window, rkZt4ZuLjXTP5cAL48p);
+				customTaskPane = CreateTaskPane(window, targetBinder);
 			}
 			else
 			{
 				if (customTaskPane.Visible)
 				{
-					TXh9TEEUCx(customTaskPane);
+					CloseAndDisposePane(customTaskPane);
 					return;
 				}
 				customTaskPane.Visible = true;
 			}
-			if (customTaskPane.Visible && customTaskPane.Control is AiAssistantHost yS7xFb3LM4W2adGhkTa)
+			if (customTaskPane.Visible && customTaskPane.Control is AiAssistantHost assistantHost)
 			{
-				yS7xFb3LM4W2adGhkTa.nb43Nxg93w();
+				assistantHost.InitializeAsync();
 			}
 		}
 		catch (Exception ex)
@@ -347,30 +347,30 @@ internal static class AiAssistantHost2
 		}
 	}
 
-	public static void v7iBkI3KGG()
+	public static void EnsureAssistantPaneVisible()
 	{
-		if (!UnXBPRAlgg() || !IntranetAiConfigService.Instance.gDh6IIK89w())
+		if (!EnsureInitialized() || !IntranetAiConfigService.Instance.EnsureAuthenticated())
 		{
 			return;
 		}
 		try
 		{
 			Window window;
-			AiTargetBinder rkZt4ZuLjXTP5cAL48p;
-			CustomTaskPane customTaskPane = Im899AXlNf(out window, out rkZt4ZuLjXTP5cAL48p);
-			if (window != null && rkZt4ZuLjXTP5cAL48p != null && !string.IsNullOrWhiteSpace(rkZt4ZuLjXTP5cAL48p.WindowKey))
+			AiTargetBinder targetBinder;
+			CustomTaskPane customTaskPane = FindActivePane(out window, out targetBinder);
+			if (window != null && targetBinder != null && !string.IsNullOrWhiteSpace(targetBinder.WindowKey))
 			{
 				if (customTaskPane == null)
 				{
-					customTaskPane = DCV9BmThLi(window, rkZt4ZuLjXTP5cAL48p);
+					customTaskPane = CreateTaskPane(window, targetBinder);
 				}
 				else if (!customTaskPane.Visible)
 				{
 					customTaskPane.Visible = true;
 				}
-				if (customTaskPane.Control is AiAssistantHost yS7xFb3LM4W2adGhkTa)
+				if (customTaskPane.Control is AiAssistantHost assistantHost)
 				{
-					yS7xFb3LM4W2adGhkTa.nb43Nxg93w();
+					assistantHost.InitializeAsync();
 				}
 			}
 		}
@@ -380,37 +380,37 @@ internal static class AiAssistantHost2
 		}
 	}
 
-	public static void zRLBxbssPX(AiTargetBinder P_0)
+	public static void EnsureTargetPaneVisible(AiTargetBinder P_0)
 	{
 		if (P_0 == null)
 		{
-			v7iBkI3KGG();
+			EnsureAssistantPaneVisible();
 		}
 		else
 		{
-			if (!UnXBPRAlgg() || !IntranetAiConfigService.Instance.gDh6IIK89w())
+			if (!EnsureInitialized() || !IntranetAiConfigService.Instance.EnsureAuthenticated())
 			{
 				return;
 			}
 			try
 			{
-				CustomTaskPane customTaskPane = mEd96aKH0D(P_0.WindowKey);
+				CustomTaskPane customTaskPane = FindPaneByKey(P_0.WindowKey);
 				if (customTaskPane == null)
 				{
-					Window window = P_0.l1ouC0fgct(WordTableToolService.WordApp);
+					Window window = P_0.FindWindow(WordTableToolService.WordApp);
 					if (window == null)
 					{
 						return;
 					}
-					customTaskPane = DCV9BmThLi(window, P_0);
+					customTaskPane = CreateTaskPane(window, P_0);
 				}
 				else if (!customTaskPane.Visible)
 				{
 					customTaskPane.Visible = true;
 				}
-				if (customTaskPane.Control is AiAssistantHost yS7xFb3LM4W2adGhkTa)
+				if (customTaskPane.Control is AiAssistantHost assistantHost)
 				{
-					yS7xFb3LM4W2adGhkTa.nb43Nxg93w();
+					assistantHost.InitializeAsync();
 				}
 			}
 			catch (Exception ex)
@@ -420,42 +420,42 @@ internal static class AiAssistantHost2
 		}
 	}
 
-	public static void SIRBdRBylk()
+	public static void ShowConfigWindow()
 	{
 		WordTableToolService5.ShowWpfWindow(new AIAssistantConfigWindow());
 	}
 
-	public static void KAcBz9syTd()
+	public static void InvokeAiHelper3Action()
 	{
 		AiHelper_3.BWIBRayGaa();
 	}
 
-	public static void oCK9RZLXy4()
+	public static void ShutdownAll()
 	{
-		lock (CTS91vctKd)
+		lock (_syncLock)
 		{
-			RAo9QloHrl( true);
+			CleanupAndShutdown( true);
 		}
 	}
 
-	private static void ePA9VbeQpk(object P_0, EventArgs P_1)
+	private static void OnPaneVisibleChanged(object P_0, EventArgs P_1)
 	{
-		if (P_0 is CustomTaskPane customTaskPane && !Spc9riTU3E.Contains(customTaskPane))
+		if (P_0 is CustomTaskPane customTaskPane && !_closingPanes.Contains(customTaskPane))
 		{
-			if (customTaskPane.Visible && customTaskPane.Control is AiAssistantHost yS7xFb3LM4W2adGhkTa)
+			if (customTaskPane.Visible && customTaskPane.Control is AiAssistantHost assistantHost)
 			{
-				yS7xFb3LM4W2adGhkTa.nb43Nxg93w();
+				assistantHost.InitializeAsync();
 			}
 			else
 			{
-				TXh9TEEUCx(customTaskPane);
+				CloseAndDisposePane(customTaskPane);
 			}
 		}
 	}
 
-	private static CustomTaskPane DCV9BmThLi(Window P_0, AiTargetBinder P_1)
+	private static CustomTaskPane CreateTaskPane(Window P_0, AiTargetBinder P_1)
 	{
-		P_1 = P_1 ?? AiTargetBinder.wvGulrEfed(P_0);
+		P_1 = P_1 ?? AiTargetBinder.FromWindow(P_0);
 		AiAssistantHost control = new AiAssistantHost
 		{
 			Target = P_1,
@@ -463,21 +463,21 @@ internal static class AiAssistantHost2
 		};
 		CustomTaskPane customTaskPane = UiHelper_1.ThisAddIn.D8nlJJriq.Add(control, Helper_21.CurrentTitle, P_0);
 		customTaskPane.Width = 560;
-		customTaskPane.VisibleChanged += ePA9VbeQpk;
+		customTaskPane.VisibleChanged += OnPaneVisibleChanged;
 		customTaskPane.Visible = true;
 		return customTaskPane;
 	}
 
-	private static CustomTaskPane Im899AXlNf(out Window P_0, out AiTargetBinder P_1)
+	private static CustomTaskPane FindActivePane(out Window P_0, out AiTargetBinder P_1)
 	{
-		if (!bqr9uehUpM(out P_0, out P_1))
+		if (!TryResolveActiveWindow(out P_0, out P_1))
 		{
 			return null;
 		}
-		return mEd96aKH0D(P_1.WindowKey);
+		return FindPaneByKey(P_1.WindowKey);
 	}
 
-	private static CustomTaskPane mEd96aKH0D(string P_0)
+	private static CustomTaskPane FindPaneByKey(string P_0)
 	{
 		CustomTaskPaneCollection customTaskPaneCollection = UiHelper_1.ThisAddIn?.D8nlJJriq;
 		if (customTaskPaneCollection == null)
@@ -487,7 +487,7 @@ internal static class AiAssistantHost2
 		for (int num = customTaskPaneCollection.Count - 1; num >= 0; num--)
 		{
 			CustomTaskPane customTaskPane = customTaskPaneCollection[num];
-			if (X3S9DYhJgI(customTaskPane) && customTaskPane.Control is AiAssistantHost yS7xFb3LM4W2adGhkTa && string.Equals(yS7xFb3LM4W2adGhkTa.WindowKey, P_0, StringComparison.OrdinalIgnoreCase))
+			if (IsAssistantPane(customTaskPane) && customTaskPane.Control is AiAssistantHost assistantHost && string.Equals(assistantHost.WindowKey, P_0, StringComparison.OrdinalIgnoreCase))
 			{
 				return customTaskPane;
 			}
@@ -495,7 +495,7 @@ internal static class AiAssistantHost2
 		return null;
 	}
 
-	private static bool bqr9uehUpM(out Window P_0, out AiTargetBinder P_1)
+	private static bool TryResolveActiveWindow(out Window P_0, out AiTargetBinder P_1)
 	{
 		P_0 = null;
 		P_1 = null;
@@ -507,7 +507,7 @@ internal static class AiAssistantHost2
 				return false;
 			}
 			P_0 = application.ActiveWindow;
-			P_1 = AiTargetBinder.wvGulrEfed(P_0);
+			P_1 = AiTargetBinder.FromWindow(P_0);
 			return P_0 != null && P_1 != null && !string.IsNullOrWhiteSpace(P_1.WindowKey);
 		}
 		catch (Exception ex)
@@ -517,7 +517,7 @@ internal static class AiAssistantHost2
 		}
 	}
 
-	private static bool X3S9DYhJgI(CustomTaskPane P_0)
+	private static bool IsAssistantPane(CustomTaskPane P_0)
 	{
 		if (P_0 == null)
 		{
@@ -534,16 +534,16 @@ internal static class AiAssistantHost2
 		return true;
 	}
 
-	private static void TXh9TEEUCx(CustomTaskPane P_0)
+	private static void CloseAndDisposePane(CustomTaskPane P_0)
 	{
-		if (P_0 == null || Spc9riTU3E.Contains(P_0))
+		if (P_0 == null || _closingPanes.Contains(P_0))
 		{
 			return;
 		}
-		Spc9riTU3E.Add(P_0);
+		_closingPanes.Add(P_0);
 		try
 		{
-			P_0.VisibleChanged -= ePA9VbeQpk;
+			P_0.VisibleChanged -= OnPaneVisibleChanged;
 			try
 			{
 				if (P_0.Visible)
@@ -556,9 +556,9 @@ internal static class AiAssistantHost2
 			}
 			try
 			{
-				if (P_0.Control is AiAssistantHost yS7xFb3LM4W2adGhkTa)
+				if (P_0.Control is AiAssistantHost assistantHost)
 				{
-					Kf7BW0nRZX(yS7xFb3LM4W2adGhkTa.WindowKey);
+					ClosePaneBridge(assistantHost.WindowKey);
 				}
 				((IDisposable)P_0.Control)?.Dispose();
 			}
@@ -576,21 +576,21 @@ internal static class AiAssistantHost2
 		}
 		finally
 		{
-			Spc9riTU3E.Remove(P_0);
+			_closingPanes.Remove(P_0);
 		}
-		eFR9gjrSke();
+		TryShutdownIfAllClosed();
 	}
 
-	private static void eFR9gjrSke()
+	private static void TryShutdownIfAllClosed()
 	{
-		if (!vyT9UyqU67 && !q5U98g8CvW())
+		if (!_isShuttingDown && !HasAssistantPane())
 		{
-			oCK9RZLXy4();
+			ShutdownAll();
 			AiConfigBootstrap.LogInfo("All AI panes closed and bootstrapper shutdown completed.");
 		}
 	}
 
-	private static bool q5U98g8CvW()
+	private static bool HasAssistantPane()
 	{
 		try
 		{
@@ -601,7 +601,7 @@ internal static class AiAssistantHost2
 			}
 			for (int num = customTaskPaneCollection.Count - 1; num >= 0; num--)
 			{
-				if (X3S9DYhJgI(customTaskPaneCollection[num]))
+				if (IsAssistantPane(customTaskPaneCollection[num]))
 				{
 					return true;
 				}
@@ -614,7 +614,7 @@ internal static class AiAssistantHost2
 		return false;
 	}
 
-	private static string tvS9IeFZ37(AiTargetBinder P_0)
+	private static string GetPaneKey(AiTargetBinder P_0)
 	{
 		if (!string.IsNullOrWhiteSpace(P_0?.WindowKey))
 		{
@@ -631,24 +631,24 @@ internal static class AiAssistantHost2
 		return "__active__";
 	}
 
-	private static ServiceProvider yeJ9iDW5Vn(AiTargetBinder P_0, WordAgentRuntimeGuard P_1, HostActionDispatcher P_2)
+	private static ServiceProvider BuildServiceProvider(AiTargetBinder P_0, WordAgentRuntimeGuard P_1, HostActionDispatcher P_2)
 	{
 		_G_c__DisplayClass28_0 CS_8_locals_5 = new _G_c__DisplayClass28_0();
-		CS_8_locals_5.OOrhMhZJqR = P_0;
+		CS_8_locals_5._targetBinder = P_0;
 		ServiceCollection services = new ServiceCollection();
 		services.AddSingleton<IAgentConfigProvider, AiSseStreamService5>();
 		services.AddSingleton<IAgentInstructionBuilder, AiConfigManager2>();
-		services.AddSingleton(new WordTableToolService4(CS_8_locals_5.OOrhMhZJqR));
+		services.AddSingleton(new WordTableToolService4(CS_8_locals_5._targetBinder));
 		services.AddSingleton<AiHelper_19>();
 		((IServiceCollection)services).AddSingleton((Func<IServiceProvider, Func<AgentInstructionContext>>)((IServiceProvider sp) => sp.GetRequiredService<AiHelper_19>().QhF3fbjxg1));
 		((IServiceCollection)services).AddSingleton((IHostContext)P_1);
 		((IServiceCollection)services).AddSingleton((IHostActionProvider)P_2);
 		services.AddSingleton<IArtifactSink, ArtifactSinkRelay>();
 		services.AddSingleton<IChatHistoryStoreFactory, JsonChatHistoryStoreFactory>();
-		services.AddSingleton((IServiceProvider _) => new AiHelper_15(CS_8_locals_5.OOrhMhZJqR));
-		services.AddSingleton((IServiceProvider _) => new BatchReplaceService2(CS_8_locals_5.OOrhMhZJqR));
+		services.AddSingleton((IServiceProvider _) => new AiHelper_15(CS_8_locals_5._targetBinder));
+		services.AddSingleton((IServiceProvider _) => new BatchReplaceService2(CS_8_locals_5._targetBinder));
 		services.AddSingleton<AiConfigBootstrap2>();
-		services.AddSingleton((IServiceProvider _) => new WpsVbaCompatService(CS_8_locals_5.OOrhMhZJqR));
+		services.AddSingleton((IServiceProvider _) => new WpsVbaCompatService(CS_8_locals_5._targetBinder));
 		services.AddSingleton<IToolProvider, WordContextPreviewService>();
 		services.AddSingleton<IToolProvider, ExcelReadonlyService>();
 		services.AddSingleton<IToolProvider, VbaValidationService>();
@@ -658,7 +658,7 @@ internal static class AiAssistantHost2
 		return services.BuildServiceProvider();
 	}
 
-	private static void wEr9HlqmQE()
+	private static void PrepareAgentRuntimeBase()
 	{
 		string installPath = AiSseStreamService.InstallPath;
 		if (string.IsNullOrWhiteSpace(installPath))
@@ -680,9 +680,9 @@ internal static class AiAssistantHost2
 		}
 	}
 
-	private static void RAo9QloHrl(bool P_0)
+	private static void CleanupAndShutdown(bool P_0)
 	{
-		vyT9UyqU67 = true;
+		_isShuttingDown = true;
 		try
 		{
 			try
@@ -693,9 +693,9 @@ internal static class AiAssistantHost2
 					for (int num = customTaskPaneCollection.Count - 1; num >= 0; num--)
 					{
 						CustomTaskPane customTaskPane = customTaskPaneCollection[num];
-						if (X3S9DYhJgI(customTaskPane))
+						if (IsAssistantPane(customTaskPane))
 						{
-							TXh9TEEUCx(customTaskPane);
+							CloseAndDisposePane(customTaskPane);
 						}
 					}
 				}
@@ -706,7 +706,7 @@ internal static class AiAssistantHost2
 			}
 			try
 			{
-				foreach (RXCwJGhHcxjX0yklsaw value in HSw9JKPvWP.Values)
+				foreach (PaneBridgeHolder value in _paneBridges.Values)
 				{
 					try
 					{
@@ -717,7 +717,7 @@ internal static class AiAssistantHost2
 						AiConfigBootstrap.LogWarn("[AI] Bridge cleanup failed: " + ex2.Message);
 					}
 				}
-				HSw9JKPvWP.Clear();
+				_paneBridges.Clear();
 			}
 			catch (Exception ex3)
 			{
@@ -725,21 +725,21 @@ internal static class AiAssistantHost2
 			}
 			if (P_0)
 			{
-				IntranetAiConfigService.Instance.ySW62EK2TU();
+				IntranetAiConfigService.Instance.ResetAuthState();
 			}
-			uyS93RQrn8 = false;
+			_isInitialized = false;
 		}
 		finally
 		{
-			vyT9UyqU67 = false;
+			_isShuttingDown = false;
 		}
 	}
 
 	static AiAssistantHost2()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		CTS91vctKd = new object();
-		Spc9riTU3E = new HashSet<CustomTaskPane>();
-		HSw9JKPvWP = new Dictionary<string, RXCwJGhHcxjX0yklsaw>(StringComparer.OrdinalIgnoreCase);
+		_syncLock = new object();
+		_closingPanes = new HashSet<CustomTaskPane>();
+		_paneBridges = new Dictionary<string, PaneBridgeHolder>(StringComparer.OrdinalIgnoreCase);
 	}
 }

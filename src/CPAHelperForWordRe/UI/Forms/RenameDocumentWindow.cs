@@ -47,10 +47,10 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 
 	private void HN9GNMbyHk()
 	{
-		txtCurrentName.Text = DocumentRenameService.p22B4gZ207() ?? "(当前没有打开的 Word 文档)";
-		txtNewName.Text = DocumentRenameService.yNrBjmtqCf();
+		txtCurrentName.Text = DocumentRenameService.getActiveDocumentName() ?? "(当前没有打开的 Word 文档)";
+		txtNewName.Text = DocumentRenameService.getActiveDocumentNameWithoutExtension();
 		string text;
-		bool flag = DocumentRenameService.NDgBYYaMnF(out text);
+		bool flag = DocumentRenameService.validateRenamePreconditions(out text);
 		btnRename.IsEnabled = flag;
 		lblState.Text = (flag ? "仅修改文件主名，后缀保持不变。" : text);
 	}
@@ -59,7 +59,7 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 	{
 		try
 		{
-			Helper_10 j5TqonBNY02JxhgwfnS2 = DocumentRenameService.wqTBZIKo0s(txtNewName.Text, gJAGoM4wmO);
+			Helper_10 j5TqonBNY02JxhgwfnS2 = DocumentRenameService.renameDocument(txtNewName.Text, gJAGoM4wmO);
 			if (j5TqonBNY02JxhgwfnS2.IsCanceled)
 			{
 				lblState.Text = "已取消重命名。";

@@ -94,19 +94,19 @@ internal sealed class ExcelReadonlyService : IToolProvider
 	[Description("只读获取当前 Excel/WPS 表格上下文，包括当前活动工作簿、活动工作表和当前选区地址。Office Word 连接 Excel，WPS 文字连接 WPS 表格。")]
 	private AiHelper_5 GetCurrentExcelContext()
 	{
-		return _aiConfigBootstrap2.H1trPxTugZ();
+		return _aiConfigBootstrap2.GetCurrentExcelContext();
 	}
 
 	[Description("只读列出当前 Excel/WPS 表格实例中所有已打开的工作簿，包括名称、路径、活动状态和基本属性。")]
 	private AiHelper_5 ListOpenExcelWorkbooks()
 	{
-		return _aiConfigBootstrap2.dE6rAOoIGx();
+		return _aiConfigBootstrap2.ListOpenExcelWorkbooks();
 	}
 
 	[Description("只读列出 Excel/WPS 表格工作簿中的所有工作表名称。可选指定工作簿名，未指定时使用当前活动工作簿。")]
 	private AiHelper_5 GetExcelSheetList(string workbookName = "")
 	{
-		return _aiConfigBootstrap2.vgirvnM1Fs(workbookName);
+		return _aiConfigBootstrap2.GetExcelSheetList(workbookName);
 	}
 
 	[Description("只读快速预览指定工作表或当前工作表的 UsedRange，以及前几行/后几行内容；用于底稿概览，不修改工作簿。")]
@@ -118,13 +118,13 @@ internal sealed class ExcelReadonlyService : IToolProvider
 	[Description("只读快速预览当前选区或指定区域的前几行和后几行。sheetName/rangeAddress 为空时默认使用当前 Excel/WPS 表格选区；不修改工作簿。")]
 	private AiHelper_5 PreviewExcelRange(string sheetName = "", string rangeAddress = "", int headRows = 15, int tailRows = 10, int maxColumns = 30, bool visibleOnly = false, bool includeFormulas = true, bool includeFormats = false, string workbookName = "")
 	{
-		return _aiConfigBootstrap2.kDNr0R99Bs(sheetName, rangeAddress, workbookName, EYw9NTHISY(headRows, 15), EYw9NTHISY(tailRows, 10), EYw9NTHISY(maxColumns, 30), visibleOnly, includeFormulas, includeFormats);
+		return _aiConfigBootstrap2.PreviewExcelRange(sheetName, rangeAddress, workbookName, EYw9NTHISY(headRows, 15), EYw9NTHISY(tailRows, 10), EYw9NTHISY(maxColumns, 30), visibleOnly, includeFormulas, includeFormats);
 	}
 
 	[Description("只读按工作表名称和单元格区域地址读取 Excel/WPS 表格区域中的值和公式。可选指定工作簿名，未指定时默认使用当前活动工作簿。")]
 	private AiHelper_5 GetExcelRangeValuesAndFormulas(string sheetName, string address, string workbookName = "", bool visibleOnly = false)
 	{
-		return _aiConfigBootstrap2.XY6rk05nUf(sheetName, address, workbookName, visibleOnly);
+		return _aiConfigBootstrap2.GetExcelRangeValuesAndFormulas(sheetName, address, workbookName, visibleOnly);
 	}
 
 	[Description("只读读取当前 Excel/WPS 表格选区中的值和公式。适合用户已经手动选中底稿区域时直接查看。")]

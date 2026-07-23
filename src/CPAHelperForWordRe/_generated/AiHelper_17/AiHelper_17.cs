@@ -56,11 +56,11 @@ internal static class AiHelper_17
 			AiConfigBootstrap.LogInfo("Agent artifact published: " + (P_1.Type ?? "unknown") + " / " + (P_1.Title ?? "(no-title)"));
 			if (P_0 == null)
 			{
-				AiAssistantHost2.v7iBkI3KGG();
+				AiAssistantHost2.EnsureAssistantPaneVisible();
 			}
 			else
 			{
-				AiAssistantHost2.zRLBxbssPX(P_0);
+				AiAssistantHost2.EnsureTargetPaneVisible(P_0);
 			}
 			f5UUuAwKhH?.Invoke(P_0, P_1);
 		}

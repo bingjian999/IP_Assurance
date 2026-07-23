@@ -24,8 +24,8 @@ public sealed class ParagraphConfigWindow : Window, IComponentConnector
 		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		_legacyConfigMigrator2 = new LegacyConfigMigrator2(new JsonFileDialogHelper());
-		_legacyConfigMigrator2.Y0ZlOZZU1c(base.Close);
-		_legacyConfigMigrator2.hQml5xuThg(dTqC3t4uPZ);
+		_legacyConfigMigrator2.add_OpenTableRequested(base.Close);
+		_legacyConfigMigrator2.add_Closed(dTqC3t4uPZ);
 		base.DataContext = _legacyConfigMigrator2;
 		base.PreviewKeyDown += vg3CJM4XQx;
 	}

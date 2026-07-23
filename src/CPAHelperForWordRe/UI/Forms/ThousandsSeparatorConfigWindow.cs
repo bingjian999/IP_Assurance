@@ -54,14 +54,14 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 				Close();
 			}
 		};
-		Ig8CaDUwk9(ThousandsSeparatorService.i4XbnSK0XW(), ThousandsSeparatorService.Wr8b0ba5yt());
+		Ig8CaDUwk9(ThousandsSeparatorService.ReadSeparatorConfig(), ThousandsSeparatorService.GetDecimalPlaces());
 	}
 
 	private void NjaCykTo2J(object P_0, RoutedEventArgs P_1)
 	{
-		if (vddCqqexkg(out var w9DpQgSBDhHwuwkYtki) && RkwCPY0rTt(out var num))
+		if (vddCqqexkg(out var separatorConfig) && RkwCPY0rTt(out var num))
 		{
-			ThousandsSeparatorService.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, num);
+			ThousandsSeparatorService.WriteConfigWithOptions(separatorConfig, num);
 			LoggerInitializer.ShowInfo("千分位符配置已保存。", "千分位符配置");
 			Close();
 		}
@@ -69,9 +69,9 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 
 	private void pK3CXMgb92(object P_0, RoutedEventArgs P_1)
 	{
-		UiHelper_4 w9DpQgSBDhHwuwkYtki = ThousandsSeparatorService.iJpb7cZpBN();
-		Ig8CaDUwk9(w9DpQgSBDhHwuwkYtki, 2);
-		ThousandsSeparatorService.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, 2);
+		UiHelper_4 separatorConfig = ThousandsSeparatorService.CreateDefaultConfig();
+		Ig8CaDUwk9(separatorConfig, 2);
+		ThousandsSeparatorService.WriteConfigWithOptions(separatorConfig, 2);
 		LoggerInitializer.ShowInfo("千分位符配置已恢复默认。", "千分位符配置");
 	}
 
@@ -89,9 +89,9 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 	{
 		if (P_0 == null)
 		{
-			P_0 = ThousandsSeparatorService.iJpb7cZpBN();
+			P_0 = ThousandsSeparatorService.CreateDefaultConfig();
 		}
-		cmbDecimalPlaces.Text = ThousandsSeparatorService.JTHSRmZV4w(P_1).ToString();
+		cmbDecimalPlaces.Text = ThousandsSeparatorService.ClampDecimalPlaces(P_1).ToString();
 		chkYear.IsChecked = P_0.ExcludeYear;
 		chkMonth.IsChecked = P_0.ExcludeMonth;
 		chkDay.IsChecked = P_0.ExcludeDay;

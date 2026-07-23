@@ -48,7 +48,7 @@ internal sealed class BatchReplaceService3
 	{
 		public string OperationName;
 
-		public Func<Microsoft.Office.Interop.Word.Application, AiHelper_5> ntwPnGtes4;
+		public Func<Microsoft.Office.Interop.Word.Application, AiHelper_5> wordContextFunc;
 
 		public Stopwatch Timer;
 
@@ -57,7 +57,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 FmkPphZYfT(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 executeWithGuard(Microsoft.Office.Interop.Word.Application app)
 		{
 			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
@@ -65,7 +65,7 @@ internal sealed class BatchReplaceService3
 				return WordAgentRuntimeGuard2.CreateNotReadyError(text);
 			}
 			AiConfigBootstrap.LogInfo("[AI Tool][Word] Begin: " + OperationName);
-			AiHelper_5 insertResult = ntwPnGtes4(app);
+			AiHelper_5 insertResult = wordContextFunc(app);
 			Timer.Stop();
 			AiConfigBootstrap.LogInfo("[AI Tool][Word] End: " + OperationName + "; Success=" + (insertResult?.success ?? false) + "; ElapsedMs=" + Timer.ElapsedMilliseconds);
 			return insertResult;
@@ -131,7 +131,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int kLKPFHqUgc()
+		internal int getTableCountInRange()
 		{
 			return RangeForTableCount.Tables.Count;
 		}
@@ -190,7 +190,7 @@ internal sealed class BatchReplaceService3
 			return RangeForTableCount.Tables.Count;
 		}
 
-		internal int WoFPkInXyF()
+		internal int getAnchorCellRangeStart()
 		{
 			return AnchorCell.Range.Start;
 		}
@@ -211,7 +211,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string BokARIDrEs()
+		internal string getDocumentFullName()
 		{
 			return doc.FullName;
 		}
@@ -264,7 +264,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int mBsADRNVfJ()
+		internal int getAnchorCellRangeStart()
 		{
 			return AnchorCell.Range.Start;
 		}
@@ -298,14 +298,14 @@ internal sealed class BatchReplaceService3
 
 		public bool IncludeStatistics;
 
-		public bool XVvAQYyUwY;
+		public bool includeSelectionDetails;
 
 		public _G_c__DisplayClass13_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 RJvAIofXPq(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 readWordContext(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass13_1 CS_8_locals_9 = new _G_c__DisplayClass13_1();
 			CS_8_locals_9.doc = GetActiveDocument(app);
@@ -322,7 +322,7 @@ internal sealed class BatchReplaceService3
 				tableCount = ComputeIntValue(() => CS_8_locals_9.doc.Tables.Count),
 				commentCount = ComputeIntValue(() => CS_8_locals_9.doc.Comments.Count),
 				trackRevisions = CheckCondition(CS_8_locals_9.doc),
-				selection = BuildResultObject(selection, XVvAQYyUwY, num)
+				selection = BuildResultObject(selection, includeSelectionDetails, num)
 			});
 		}
 	}
@@ -408,7 +408,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass145_0
 	{
-		public string DojAYMESMP;
+		public string elementName;
 
 		public _G_c__DisplayClass145_0()
 		{
@@ -417,7 +417,7 @@ internal sealed class BatchReplaceService3
 
 		internal bool MatchElementByName(XElement p)
 		{
-			return string.Equals(p.Attribute(WordNamespace + "name")?.Value, DojAYMESMP, StringComparison.OrdinalIgnoreCase);
+			return string.Equals(p.Attribute(WordNamespace + "name")?.Value, elementName, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 
@@ -435,7 +435,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 joXAZFdTOi()
+		internal AiHelper_5 replaceRangeWithTrackChanges()
 		{
 			bool trackRevisions = doc.TrackRevisions;
 			try
@@ -465,7 +465,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass14_0
 	{
-		public int fYKASMsLjm;
+		public int headParagraphCount;
 
 		public int TailParagraphCount;
 
@@ -486,7 +486,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_10.doc = GetActiveDocument(app);
 			Selection selection = app.Selection;
 			int num = ComputeIntValue(() => CS_8_locals_10.doc.Paragraphs.Count);
-			int num2 = ClampValue(fYKASMsLjm, 8, 50);
+			int num2 = ClampValue(headParagraphCount, 8, 50);
 			int num3 = ClampValue(TailParagraphCount, 4, 50);
 			int num4 = ClampValue(HeadingCount, 50, 300);
 			int num5 = ClampValue(MaxPreviewChars, 180, 1000);
@@ -554,12 +554,12 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int FZuAldQelb()
+		internal int getParagraphCount()
 		{
 			return doc.Paragraphs.Count;
 		}
 
-		internal int VmXANckOSX()
+		internal int getTableCount()
 		{
 			return doc.Tables.Count;
 		}
@@ -573,7 +573,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass157_0
 	{
-		public Paragraph XbCACwggdo;
+		public Paragraph targetParagraph;
 
 		public _G_c__DisplayClass157_0()
 		{
@@ -582,12 +582,12 @@ internal sealed class BatchReplaceService3
 
 		internal string GetDocumentName()
 		{
-			return XbCACwggdo.Range.Document.Name;
+			return targetParagraph.Range.Document.Name;
 		}
 
 		internal string GetDocumentFullName()
 		{
-			return XbCACwggdo.Range.Document.FullName;
+			return targetParagraph.Range.Document.FullName;
 		}
 	}
 
@@ -626,7 +626,7 @@ internal sealed class BatchReplaceService3
 			return TargetTable.Range.Document.Name;
 		}
 
-		internal string wwjAcsiftb()
+		internal string getDocumentFullName()
 		{
 			return TargetTable.Range.Document.FullName;
 		}
@@ -636,7 +636,7 @@ internal sealed class BatchReplaceService3
 			return TargetTable.Title;
 		}
 
-		internal string mrvAyFTqpY()
+		internal string getTableDescription()
 		{
 			return TargetTable.Descr;
 		}
@@ -668,7 +668,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 gkxAhXRqiI(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 readSelection(Microsoft.Office.Interop.Word.Application app)
 		{
 			Document document = GetActiveDocument(app);
 			Selection selection = app.Selection;
@@ -717,7 +717,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass16_0
 	{
-		public int bEEAWaNvfx;
+		public int rangeStartPosition;
 
 		public int RangeEndPosition;
 
@@ -731,7 +731,7 @@ internal sealed class BatchReplaceService3
 		internal AiHelper_5 ReadRange(Microsoft.Office.Interop.Word.Application app)
 		{
 			Document document = GetActiveDocument(app);
-			Range range = GetRangeByPosition(document, bEEAWaNvfx, RangeEndPosition);
+			Range range = GetRangeByPosition(document, rangeStartPosition, RangeEndPosition);
 			int num = ClampValue(MaxCharLimit, 30000, 30000);
 			string text = NormalizeText(range.Text);
 			bool flag = text.Length > num;
@@ -760,7 +760,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int sQqAxpEtin()
+		internal int getCommentCount()
 		{
 			return CommentsCollection.Count;
 		}
@@ -776,7 +776,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string VNXAzPAdJT()
+		internal string getCommentAuthor()
 		{
 			return TargetComment.Author;
 		}
@@ -838,7 +838,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass179_0
 	{
-		public Comment HThvTPlNIo;
+		public Comment targetComment;
 
 		public _G_c__DisplayClass179_0()
 		{
@@ -847,7 +847,7 @@ internal sealed class BatchReplaceService3
 
 		internal string GetRangeText()
 		{
-			return HThvTPlNIo.Range.Text;
+			return targetComment.Range.Text;
 		}
 	}
 
@@ -856,7 +856,7 @@ internal sealed class BatchReplaceService3
 	{
 		public int NumericParameter;
 
-		public int xYgvIDRxGK;
+		public int endParagraphIndex;
 
 		public int MaxSnippetLength;
 
@@ -881,13 +881,13 @@ internal sealed class BatchReplaceService3
 				});
 			}
 			int num3;
-			if (xYgvIDRxGK > 0)
+			if (endParagraphIndex > 0)
 			{
-				if (xYgvIDRxGK < num2)
+				if (endParagraphIndex < num2)
 				{
 					return AiHelper_5.CreateError("endParagraphIndex must be greater than or equal to startParagraphIndex.", "invalid_arguments");
 				}
-				num3 = Math.Min(num, xYgvIDRxGK);
+				num3 = Math.Min(num, endParagraphIndex);
 			}
 			else
 			{
@@ -908,7 +908,7 @@ internal sealed class BatchReplaceService3
 				startParagraphIndex = num2,
 				endParagraphIndex = num3,
 				returned = list.Count,
-				truncated = (xYgvIDRxGK <= 0 && num3 < num),
+				truncated = (endParagraphIndex <= 0 && num3 < num),
 				paragraphs = list
 			});
 		}
@@ -924,7 +924,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int PqEvQuygdD()
+		internal int getParagraphCount()
 		{
 			return doc.Paragraphs.Count;
 		}
@@ -956,7 +956,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string iANvJlsHhm()
+		internal string getCommentDate()
 		{
 			return CommentForDate.Date.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture);
 		}
@@ -972,7 +972,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int ffIvUKbuZI()
+		internal int getCommentCount()
 		{
 			return CommentsCollection.Count;
 		}
@@ -990,7 +990,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string HlRvEAifbI()
+		internal string getDocumentFullName()
 		{
 			return doc.FullName;
 		}
@@ -1009,7 +1009,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass18_0
 	{
-		public int qdXvZGOPXC;
+		public int maxItemCount;
 
 		public int TableCount;
 
@@ -1024,7 +1024,7 @@ internal sealed class BatchReplaceService3
 		{
 			_G_c__DisplayClass18_1 CS_8_locals_5 = new _G_c__DisplayClass18_1();
 			CS_8_locals_5.doc = GetActiveDocument(app);
-			int num = ClampValue(qdXvZGOPXC, 300, 1000);
+			int num = ClampValue(maxItemCount, 300, 1000);
 			int num2 = ClampValue(TableCount);
 			int num3 = ComputeIntValue(() => CS_8_locals_5.doc.Paragraphs.Count);
 			List<object> list = new List<object>();
@@ -1071,7 +1071,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int kRTvbnOjRj()
+		internal int getParagraphCount()
 		{
 			return doc.Paragraphs.Count;
 		}
@@ -1101,7 +1101,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass194_0
 	{
-		public Selection KaavoKjFKG;
+		public Selection currentSelection;
 
 		public Microsoft.Office.Interop.Word.Application WordApplication;
 
@@ -1112,17 +1112,17 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int bgtvLPLLLr()
+		internal int getSelectionRangeStart()
 		{
-			return KaavoKjFKG.Range.Start;
+			return currentSelection.Range.Start;
 		}
 
-		internal int SquvsbslZx()
+		internal int getSelectionRangeEnd()
 		{
-			return KaavoKjFKG.Range.End;
+			return currentSelection.Range.End;
 		}
 
-		internal bool nxfvlwbZOb()
+		internal bool isScreenUpdating()
 		{
 			return WordApplication.ScreenUpdating;
 		}
@@ -1132,7 +1132,7 @@ internal sealed class BatchReplaceService3
 			return doc.Content.Start;
 		}
 
-		internal int ypvvmjQxqY()
+		internal int getContentEnd()
 		{
 			return doc.Content.End;
 		}
@@ -1141,21 +1141,21 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass194_1
 	{
-		public Range NSNvOLlBYV;
+		public Range targetRange;
 
 		public _G_c__DisplayClass194_1()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int EhSvCUAjhB()
+		internal int getRangeStart()
 		{
-			return NSNvOLlBYV.Start;
+			return targetRange.Start;
 		}
 
 		internal int GetRangeEnd()
 		{
-			return NSNvOLlBYV.End;
+			return targetRange.End;
 		}
 	}
 
@@ -1199,7 +1199,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass19_0
 	{
-		public string PxqveKcgAE;
+		public string headingText;
 
 		public int ParagraphNumber;
 
@@ -1207,7 +1207,7 @@ internal sealed class BatchReplaceService3
 
 		public string SearchPattern;
 
-		public int kDLvhCZhco;
+		public int startBlockIndex;
 
 		public int MaxSnippetLength;
 
@@ -1226,7 +1226,7 @@ internal sealed class BatchReplaceService3
 		{
 			_G_c__DisplayClass19_1 CS_8_locals_11 = new _G_c__DisplayClass19_1();
 			CS_8_locals_11.doc = GetActiveDocument(app);
-			Paragraph paragraph = GetParagraphByIndex(CS_8_locals_11.doc, PxqveKcgAE, ParagraphNumber, ParagraphNumber, SearchPattern);
+			Paragraph paragraph = GetParagraphByIndex(CS_8_locals_11.doc, headingText, ParagraphNumber, ParagraphNumber, SearchPattern);
 			if (paragraph == null)
 			{
 				return AiHelper_5.CreateError("未找到匹配的标题段落。", "not_found");
@@ -1251,7 +1251,7 @@ internal sealed class BatchReplaceService3
 					break;
 				}
 			}
-			int num7 = Math.Max(0, kDLvhCZhco);
+			int num7 = Math.Max(0, startBlockIndex);
 			int num8 = ClampValue(MaxSnippetLength, 200, 1000);
 			int num9 = ClampValue(MaxCharLimit, 1000, 5000);
 			int num10 = ClampValue(MaxSnippetLength, 80, 500);
@@ -1281,7 +1281,7 @@ internal sealed class BatchReplaceService3
 					{
 						Type = "table",
 						RangeStart = table.Range.Start,
-						Data = WhFgjeRETB(table, num13, num10, num11)
+						Data = buildTableInfo(table, num13, num10, num11)
 					});
 				}
 			}
@@ -1296,22 +1296,22 @@ internal sealed class BatchReplaceService3
 			int num14 = Math.Min(list.Count, num7 + num8);
 			for (int num15 = num7; num15 < num14; num15++)
 			{
-				Helper_20 jaDcyWQtOojM0IicNQ8 = list[num15];
+				Helper_20 contentBlock = list[num15];
 				var item = new
 				{
 					blockIndex = num15,
-					type = jaDcyWQtOojM0IicNQ8.Type,
-					rangeStart = jaDcyWQtOojM0IicNQ8.RangeStart,
-					data = jaDcyWQtOojM0IicNQ8.Data
+					type = contentBlock.Type,
+					rangeStart = contentBlock.RangeStart,
+					data = contentBlock.Data
 				};
 				list2.Add(item);
-				if (jaDcyWQtOojM0IicNQ8.Type == "paragraph")
+				if (contentBlock.Type == "paragraph")
 				{
-					list3.Add(jaDcyWQtOojM0IicNQ8.Data);
+					list3.Add(contentBlock.Data);
 				}
-				else if (jaDcyWQtOojM0IicNQ8.Type == "table")
+				else if (contentBlock.Type == "table")
 				{
-					list4.Add(jaDcyWQtOojM0IicNQ8.Data);
+					list4.Add(contentBlock.Data);
 				}
 			}
 			bool flag = num14 < list.Count;
@@ -1365,7 +1365,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string vfUvWndrUx()
+		internal string getStyleNameLocal()
 		{
 			return TargetStyle.NameLocal;
 		}
@@ -1374,9 +1374,9 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass20_0
 	{
-		public int XVXvxrblxn;
+		public int startTableIndex;
 
-		public int umIvdDfpSj;
+		public int maxTableCount;
 
 		public int MaxSnippetLength;
 
@@ -1402,8 +1402,8 @@ internal sealed class BatchReplaceService3
 					tables = new object[0]
 				});
 			}
-			int num2 = ((XVXvxrblxn <= 0) ? 1 : XVXvxrblxn);
-			int num3 = ((XVXvxrblxn > 0) ? XVXvxrblxn : Math.Min(num, ClampValue(umIvdDfpSj, 5, 100)));
+			int num2 = ((startTableIndex <= 0) ? 1 : startTableIndex);
+			int num3 = ((startTableIndex > 0) ? startTableIndex : Math.Min(num, ClampValue(maxTableCount, 5, 100)));
 			if (num2 < 1 || num2 > num)
 			{
 				return AiHelper_5.CreateError("tableIndex is out of range.", "invalid_arguments", new
@@ -1416,7 +1416,7 @@ internal sealed class BatchReplaceService3
 			List<object> list = new List<object>();
 			for (int num6 = num2; num6 <= num3; num6++)
 			{
-				list.Add(WhFgjeRETB(CS_8_locals_7.doc.Tables[num6], num6, num4, num5));
+				list.Add(buildTableInfo(CS_8_locals_7.doc.Tables[num6], num6, num4, num5));
 			}
 			return AiHelper_5.CreateSuccess("Word tables read.", new
 			{
@@ -1452,7 +1452,7 @@ internal sealed class BatchReplaceService3
 
 		public int MaxSnippetLength;
 
-		public int TjwWuYNRhv;
+		public int maxReplyLength;
 
 		public bool BooleanFlag;
 
@@ -1461,13 +1461,13 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 dAwWBlBdqL(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 readComments(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass21_1 CS_8_locals_6 = new _G_c__DisplayClass21_1();
 			CS_8_locals_6.doc = GetActiveDocument(app);
 			int num = ClampValue(MaxSnippetLength, 200, 1000);
 			int num2 = ClampValue(MaxSnippetLength, 120, 1000);
-			int num3 = ((TjwWuYNRhv < 0) ? 20 : Math.Min(TjwWuYNRhv, 200));
+			int num3 = ((maxReplyLength < 0) ? 20 : Math.Min(maxReplyLength, 200));
 			List<object> list = new List<object>();
 			int num4 = ComputeIntValue(() => CS_8_locals_6.doc.Comments.Count);
 			bool truncated = false;
@@ -1533,19 +1533,19 @@ internal sealed class BatchReplaceService3
 		internal AiHelper_5 ExecuteWordOperation(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass22_1 CS_8_locals_34 = new _G_c__DisplayClass22_1();
-			CS_8_locals_34.rvpWKhLSmL = this;
+			CS_8_locals_34.outerScope = this;
 			if (string.IsNullOrWhiteSpace(ReplyText))
 			{
 				return AiHelper_5.CreateError("replyText must not be empty.", "invalid_arguments");
 			}
 			CS_8_locals_34.doc = GetActiveDocument(app);
-			AiHelper_5 insertResult = (string.IsNullOrWhiteSpace(CommentToken) ? ExecuteOperation(CS_8_locals_34.doc, CommentIndex, out CS_8_locals_34.TargetComment, out CS_8_locals_34.FUKWrYRDvi) : CLCgCUGOui(CS_8_locals_34.doc, CommentToken, CommentIndex, out CS_8_locals_34.TargetComment, out CS_8_locals_34.FUKWrYRDvi));
+			AiHelper_5 insertResult = (string.IsNullOrWhiteSpace(CommentToken) ? ExecuteOperation(CS_8_locals_34.doc, CommentIndex, out CS_8_locals_34.TargetComment, out CS_8_locals_34.scopeComment) : CLCgCUGOui(CS_8_locals_34.doc, CommentToken, CommentIndex, out CS_8_locals_34.TargetComment, out CS_8_locals_34.scopeComment));
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
 			string text = GetCommentText(CS_8_locals_34.TargetComment);
-			string text2 = XPEgcZYWAO(CS_8_locals_34.FUKWrYRDvi);
+			string text2 = XPEgcZYWAO(CS_8_locals_34.scopeComment);
 			string text3 = NormalizeScopeText(ExpectedScopeText);
 			string text4 = NormalizeScopeText(ExpectedScopeText);
 			if (!string.IsNullOrWhiteSpace(text3) && !string.Equals(NormalizeScopeText(text), text3, StringComparison.Ordinal))
@@ -1568,34 +1568,34 @@ internal sealed class BatchReplaceService3
 					currentScopeText = TruncateText(text2, 500)
 				});
 			}
-			CS_8_locals_34.ComputedRange = GetCommentAnchorRange(CS_8_locals_34.FUKWrYRDvi) ?? GetCommentScopeRange(CS_8_locals_34.FUKWrYRDvi);
+			CS_8_locals_34.ComputedRange = GetCommentAnchorRange(CS_8_locals_34.scopeComment) ?? GetCommentScopeRange(CS_8_locals_34.scopeComment);
 			if (CS_8_locals_34.ComputedRange == null)
 			{
 				return AiHelper_5.CreateError("无法定位批注对应的正文范围。请重新读取批注后再回复。", "comment_anchor_unavailable", new
 				{
 					commentToken = SanitizeToken(CommentToken),
 					commentIndex = CommentIndex,
-					threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.FUKWrYRDvi)
+					threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.scopeComment)
 				});
 			}
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ValidateRange(app, CS_8_locals_34.doc, CS_8_locals_34.ComputedRange);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ValidateRange(app, CS_8_locals_34.doc, CS_8_locals_34.ComputedRange);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			CS_8_locals_34.ReplyText = ReplyText.Trim();
-			return oBKTTgZY41(app, "AI 回复批注", delegate
+			return executeWithUndoContext(app, "AI 回复批注", delegate
 			{
 				try
 				{
-					Comments comments = DOYgOEfqSy(CS_8_locals_34.FUKWrYRDvi);
+					Comments comments = DOYgOEfqSy(CS_8_locals_34.scopeComment);
 					if (comments == null)
 					{
 						return AiHelper_5.CreateError("replyText must not be empty.", "invalid_arguments", new
 						{
-							commentToken = SanitizeToken(CS_8_locals_34.rvpWKhLSmL.CommentToken),
-							commentIndex = CS_8_locals_34.rvpWKhLSmL.CommentIndex,
-							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.FUKWrYRDvi)
+							commentToken = SanitizeToken(CS_8_locals_34.outerScope.CommentToken),
+							commentIndex = CS_8_locals_34.outerScope.CommentIndex,
+							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.scopeComment)
 						});
 					}
 					object Text = CS_8_locals_34.ReplyText;
@@ -1604,20 +1604,20 @@ internal sealed class BatchReplaceService3
 					{
 						return AiHelper_5.CreateError("当前批注内容与 expectedCommentText 不一致。请重新读取批注后再回复。", "comment_target_mismatch", new
 						{
-							commentToken = SanitizeToken(CS_8_locals_34.rvpWKhLSmL.CommentToken),
-							commentIndex = CS_8_locals_34.rvpWKhLSmL.CommentIndex,
-							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.FUKWrYRDvi)
+							commentToken = SanitizeToken(CS_8_locals_34.outerScope.CommentToken),
+							commentIndex = CS_8_locals_34.outerScope.CommentIndex,
+							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.scopeComment)
 						});
 					}
-					return AiHelper_5.CreateSuccess("当前批注原文与 expectedScopeText 不一致。请重新读取批注后再回复。", BuildCommentReplyInfo(CS_8_locals_34.doc, CS_8_locals_34.FUKWrYRDvi, CS_8_locals_34.TargetComment, comment, CS_8_locals_34.ReplyText));
+					return AiHelper_5.CreateSuccess("当前批注原文与 expectedScopeText 不一致。请重新读取批注后再回复。", BuildCommentReplyInfo(CS_8_locals_34.doc, CS_8_locals_34.scopeComment, CS_8_locals_34.TargetComment, comment, CS_8_locals_34.ReplyText));
 				}
 				catch (Exception ex)
 				{
 					return AiHelper_5.CreateExceptionError("comment_target_mismatch", "无法定位批注对应的正文范围。请重新读取批注后再回复。", ex, new
 					{
-						commentToken = SanitizeToken(CS_8_locals_34.rvpWKhLSmL.CommentToken),
-						commentIndex = CS_8_locals_34.rvpWKhLSmL.CommentIndex,
-						threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.FUKWrYRDvi)
+						commentToken = SanitizeToken(CS_8_locals_34.outerScope.CommentToken),
+						commentIndex = CS_8_locals_34.outerScope.CommentIndex,
+						threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.scopeComment)
 					});
 				}
 			});
@@ -1627,7 +1627,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass22_1
 	{
-		public Comment FUKWrYRDvi;
+		public Comment scopeComment;
 
 		public string ReplyText;
 
@@ -1637,7 +1637,7 @@ internal sealed class BatchReplaceService3
 
 		public Comment TargetComment;
 
-		public _G_c__DisplayClass22_0 rvpWKhLSmL;
+		public _G_c__DisplayClass22_0 outerScope;
 
 		public _G_c__DisplayClass22_1()
 		{
@@ -1648,14 +1648,14 @@ internal sealed class BatchReplaceService3
 		{
 			try
 			{
-				Comments comments = DOYgOEfqSy(FUKWrYRDvi);
+				Comments comments = DOYgOEfqSy(scopeComment);
 				if (comments == null)
 				{
 					return AiHelper_5.CreateError("当前 Word/WPS 不支持通过 COM 回复批注。", "comment_reply_not_supported", new
 					{
-						commentToken = SanitizeToken(rvpWKhLSmL.CommentToken),
-						commentIndex = rvpWKhLSmL.CommentIndex,
-						threadCommentIndex = GetCommentThreadIndex(FUKWrYRDvi)
+						commentToken = SanitizeToken(outerScope.CommentToken),
+						commentIndex = outerScope.CommentIndex,
+						threadCommentIndex = GetCommentThreadIndex(scopeComment)
 					});
 				}
 				object Text = ReplyText;
@@ -1664,20 +1664,20 @@ internal sealed class BatchReplaceService3
 				{
 					return AiHelper_5.CreateError("Word 未返回新增的批注回复。", "comment_reply_failed", new
 					{
-						commentToken = SanitizeToken(rvpWKhLSmL.CommentToken),
-						commentIndex = rvpWKhLSmL.CommentIndex,
-						threadCommentIndex = GetCommentThreadIndex(FUKWrYRDvi)
+						commentToken = SanitizeToken(outerScope.CommentToken),
+						commentIndex = outerScope.CommentIndex,
+						threadCommentIndex = GetCommentThreadIndex(scopeComment)
 					});
 				}
-				return AiHelper_5.CreateSuccess("Word comment reply added.", BuildCommentReplyInfo(doc, FUKWrYRDvi, TargetComment, comment, ReplyText));
+				return AiHelper_5.CreateSuccess("Word comment reply added.", BuildCommentReplyInfo(doc, scopeComment, TargetComment, comment, ReplyText));
 			}
 			catch (Exception ex)
 			{
 				return AiHelper_5.CreateExceptionError("Word comment reply failed", "comment_reply_not_supported", ex, new
 				{
-					commentToken = SanitizeToken(rvpWKhLSmL.CommentToken),
-					commentIndex = rvpWKhLSmL.CommentIndex,
-					threadCommentIndex = GetCommentThreadIndex(FUKWrYRDvi)
+					commentToken = SanitizeToken(outerScope.CommentToken),
+					commentIndex = outerScope.CommentIndex,
+					threadCommentIndex = GetCommentThreadIndex(scopeComment)
 				});
 			}
 		}
@@ -1773,13 +1773,13 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass24_0
 	{
-		public string kJMWMFbwEh;
+		public string searchText;
 
 		public int MaxResultCount;
 
 		public bool BooleanFlag;
 
-		public bool PFZWwdLEQF;
+		public bool matchWholeWord;
 
 		public _G_c__DisplayClass24_0()
 		{
@@ -1788,13 +1788,13 @@ internal sealed class BatchReplaceService3
 
 		internal AiHelper_5 ValidateTextOperation(Microsoft.Office.Interop.Word.Application app)
 		{
-			if (string.IsNullOrEmpty(kJMWMFbwEh))
+			if (string.IsNullOrEmpty(searchText))
 			{
 				return AiHelper_5.CreateError("text must not be empty.", "invalid_arguments");
 			}
 			Document document = GetActiveDocument(app);
 			int num = ClampValue(MaxResultCount, 100, 500);
-			List<WordSearchResult> list = BuildList(app, document, kJMWMFbwEh, BooleanFlag, PFZWwdLEQF, num);
+			List<WordSearchResult> list = BuildList(app, document, searchText, BooleanFlag, matchWholeWord, num);
 			return AiHelper_5.CreateSuccess("Word text range find completed.", BuildResultObject(document, list, num));
 		}
 	}
@@ -1802,11 +1802,11 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass25_0
 	{
-		public string IOPWLBITxB;
+		public string regexPattern;
 
 		public int MaxResultCount;
 
-		public bool EyLWlEVNRV;
+		public bool matchCase;
 
 		public _G_c__DisplayClass25_0()
 		{
@@ -1815,13 +1815,13 @@ internal sealed class BatchReplaceService3
 
 		internal AiHelper_5 SearchDocument(Microsoft.Office.Interop.Word.Application app)
 		{
-			if (string.IsNullOrEmpty(IOPWLBITxB))
+			if (string.IsNullOrEmpty(regexPattern))
 			{
 				return AiHelper_5.CreateError("pattern must not be empty.", "invalid_arguments");
 			}
 			Document document = GetActiveDocument(app);
 			int num = ClampValue(MaxResultCount, 100, 500);
-			List<RegexMatchResult> list = FindRegexMatches(document, IOPWLBITxB, EyLWlEVNRV, num);
+			List<RegexMatchResult> list = FindRegexMatches(document, regexPattern, matchCase, num);
 			return AiHelper_5.CreateSuccess("Word regex find completed.", BuildRegexResults(document, list, num));
 		}
 	}
@@ -1829,7 +1829,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass26_0
 	{
-		public string EJdWmMjUeA;
+		public string findText;
 
 		public int MaxResultCount;
 
@@ -1842,7 +1842,7 @@ internal sealed class BatchReplaceService3
 
 		internal AiHelper_5 ValidateTextOperation(Microsoft.Office.Interop.Word.Application app)
 		{
-			if (string.IsNullOrEmpty(EJdWmMjUeA))
+			if (string.IsNullOrEmpty(findText))
 			{
 				return AiHelper_5.CreateError("text must not be empty.", "invalid_arguments");
 			}
@@ -1856,14 +1856,14 @@ internal sealed class BatchReplaceService3
 					break;
 				}
 				_G_c__DisplayClass26_1 CS_8_locals_4 = new _G_c__DisplayClass26_1();
-				CS_8_locals_4.sEvWprZlaY = document.Tables[i];
-				int num2 = Ex5TMxi7X1(() => CS_8_locals_4.sEvWprZlaY.Range.End, 0);
-				Range range = CS_8_locals_4.sEvWprZlaY.Range.Duplicate;
+				CS_8_locals_4.targetTable = document.Tables[i];
+				int num2 = tryGetValueOrDefault(() => CS_8_locals_4.targetTable.Range.End, 0);
+				Range range = CS_8_locals_4.targetTable.Range.Duplicate;
 				while (list.Count < num)
 				{
 					range.Find.ClearFormatting();
 					Find find = range.Find;
-					object FindText = EJdWmMjUeA;
+					object FindText = findText;
 					object MatchCase = MatchCase;
 					object MatchWholeWord = false;
 					object MatchWildcards = false;
@@ -1883,7 +1883,7 @@ internal sealed class BatchReplaceService3
 						break;
 					}
 					Range duplicate = range.Duplicate;
-					list.Add(BuildTableInfo(document, CS_8_locals_4.sEvWprZlaY, i, duplicate));
+					list.Add(BuildTableInfo(document, CS_8_locals_4.targetTable, i, duplicate));
 					int num3 = Math.Max(duplicate.End, duplicate.Start + 1);
 					if (num2 <= 0 || num3 >= num2)
 					{
@@ -1915,7 +1915,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass26_1
 	{
-		public Table sEvWprZlaY;
+		public Table targetTable;
 
 		public _G_c__DisplayClass26_1()
 		{
@@ -1924,7 +1924,7 @@ internal sealed class BatchReplaceService3
 
 		internal int GetRangeEnd()
 		{
-			return sEvWprZlaY.Range.End;
+			return targetTable.Range.End;
 		}
 	}
 
@@ -2002,10 +2002,10 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 zQhWespjjC(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 addCommentAtSelection(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass29_1 CS_8_locals_13 = new _G_c__DisplayClass29_1();
-			CS_8_locals_13.DTFWhrapJW = this;
+			CS_8_locals_13.outerScope = this;
 			if (string.IsNullOrWhiteSpace(CommentText))
 			{
 				return AiHelper_5.CreateError("commentText must not be empty.", "invalid_arguments");
@@ -2020,13 +2020,13 @@ internal sealed class BatchReplaceService3
 			{
 				return AiHelper_5.CreateError("当前选区不在正文区域，可能选中了批注或批注窗格。请先选中正文，或用 find_word_text 获取真实 Range 后调用 add_word_comment_at_range。", "selection_not_in_main_document");
 			}
-			return oBKTTgZY41(app, "AI 添加批注", delegate
+			return executeWithUndoContext(app, "AI 添加批注", delegate
 			{
 				Comments comments = CS_8_locals_13.doc.Comments;
 				Range range = CS_8_locals_13.CurrentSelection.Range;
-				object Text = CS_8_locals_13.DTFWhrapJW.CommentText.Trim();
+				object Text = CS_8_locals_13.outerScope.CommentText.Trim();
 				Comment comment = comments.Add(range, ref Text);
-				return AiHelper_5.CreateSuccess("commentText must not be empty.", BuildCommentAddedInfo(CS_8_locals_13.doc, CS_8_locals_13.CurrentSelection.Range, comment.Index, CS_8_locals_13.DTFWhrapJW.CommentText));
+				return AiHelper_5.CreateSuccess("commentText must not be empty.", BuildCommentAddedInfo(CS_8_locals_13.doc, CS_8_locals_13.CurrentSelection.Range, comment.Index, CS_8_locals_13.outerScope.CommentText));
 			});
 		}
 	}
@@ -2038,20 +2038,20 @@ internal sealed class BatchReplaceService3
 
 		public Selection CurrentSelection;
 
-		public _G_c__DisplayClass29_0 DTFWhrapJW;
+		public _G_c__DisplayClass29_0 outerScope;
 
 		public _G_c__DisplayClass29_1()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 MRrWXOwniT()
+		internal AiHelper_5 addCommentInternal()
 		{
 			Comments comments = doc.Comments;
 			Range range = CurrentSelection.Range;
-			object Text = DTFWhrapJW.CommentText.Trim();
+			object Text = outerScope.CommentText.Trim();
 			Comment comment = comments.Add(range, ref Text);
-			return AiHelper_5.CreateSuccess("Word comment added.", BuildCommentAddedInfo(doc, CurrentSelection.Range, comment.Index, DTFWhrapJW.CommentText));
+			return AiHelper_5.CreateSuccess("Word comment added.", BuildCommentAddedInfo(doc, CurrentSelection.Range, comment.Index, outerScope.CommentText));
 		}
 	}
 
@@ -2060,9 +2060,9 @@ internal sealed class BatchReplaceService3
 	{
 		public string CommentText;
 
-		public int bHXWPpRCjJ;
+		public int rangeStartPosition;
 
-		public int WKMWApZUrG;
+		public int rangeEndPosition;
 
 		public _G_c__DisplayClass30_0()
 		{
@@ -2078,13 +2078,13 @@ internal sealed class BatchReplaceService3
 				return AiHelper_5.CreateError("commentText must not be empty.", "invalid_arguments");
 			}
 			CS_8_locals_12.doc = GetActiveDocument(app);
-			CS_8_locals_12.ComputedRange = GetRangeByPosition(CS_8_locals_12.doc, bHXWPpRCjJ, WKMWApZUrG);
+			CS_8_locals_12.ComputedRange = GetRangeByPosition(CS_8_locals_12.doc, rangeStartPosition, rangeEndPosition);
 			AiHelper_5 insertResult = ValidateRange(app, CS_8_locals_12.doc, CS_8_locals_12.ComputedRange);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
-			return oBKTTgZY41(app, "AI 添加批注", delegate
+			return executeWithUndoContext(app, "AI 添加批注", delegate
 			{
 				Comments comments = CS_8_locals_12.doc.Comments;
 				Range range = CS_8_locals_12.ComputedRange;
@@ -2122,9 +2122,9 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass31_0
 	{
-		public string JbiWxBXGfL;
+		public string commentText;
 
-		public int rNUWdaMass;
+		public int tableIndex;
 
 		public int NumericParameter;
 
@@ -2135,32 +2135,32 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 DepWkJtShM(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 addCommentAtTableCell(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass31_1 CS_8_locals_12 = new _G_c__DisplayClass31_1();
 			CS_8_locals_12.ClosureScope = this;
-			if (string.IsNullOrWhiteSpace(JbiWxBXGfL))
+			if (string.IsNullOrWhiteSpace(commentText))
 			{
 				return AiHelper_5.CreateError("commentText must not be empty.", "invalid_arguments");
 			}
 			CS_8_locals_12.doc = GetActiveDocument(app);
-			AiHelper_5 insertResult = JXpTldftkV(CS_8_locals_12.doc, rNUWdaMass, NumericParameter, NumericParameter, out CS_8_locals_12.ComputedRange);
+			AiHelper_5 insertResult = JXpTldftkV(CS_8_locals_12.doc, tableIndex, NumericParameter, NumericParameter, out CS_8_locals_12.ComputedRange);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ValidateRange(app, CS_8_locals_12.doc, CS_8_locals_12.ComputedRange);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ValidateRange(app, CS_8_locals_12.doc, CS_8_locals_12.ComputedRange);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
-			return oBKTTgZY41(app, "AI 添加批注", delegate
+			return executeWithUndoContext(app, "AI 添加批注", delegate
 			{
 				Comments comments = CS_8_locals_12.doc.Comments;
 				Range range = CS_8_locals_12.ComputedRange;
-				object Text = CS_8_locals_12.ClosureScope.JbiWxBXGfL.Trim();
+				object Text = CS_8_locals_12.ClosureScope.commentText.Trim();
 				Comment comment = comments.Add(range, ref Text);
-				return AiHelper_5.CreateSuccess("commentText must not be empty.", BuildCommentAddedInfo(CS_8_locals_12.doc, CS_8_locals_12.ComputedRange, comment.Index, CS_8_locals_12.ClosureScope.JbiWxBXGfL));
+				return AiHelper_5.CreateSuccess("commentText must not be empty.", BuildCommentAddedInfo(CS_8_locals_12.doc, CS_8_locals_12.ComputedRange, comment.Index, CS_8_locals_12.ClosureScope.commentText));
 			});
 		}
 	}
@@ -2183,9 +2183,9 @@ internal sealed class BatchReplaceService3
 		{
 			Comments comments = doc.Comments;
 			Range range = ComputedRange;
-			object Text = ClosureScope.JbiWxBXGfL.Trim();
+			object Text = ClosureScope.commentText.Trim();
 			Comment comment = comments.Add(range, ref Text);
-			return AiHelper_5.CreateSuccess("Word comment added.", BuildCommentAddedInfo(doc, ComputedRange, comment.Index, ClosureScope.JbiWxBXGfL));
+			return AiHelper_5.CreateSuccess("Word comment added.", BuildCommentAddedInfo(doc, ComputedRange, comment.Index, ClosureScope.commentText));
 		}
 	}
 
@@ -2220,7 +2220,7 @@ internal sealed class BatchReplaceService3
 			{
 				return insertResult;
 			}
-			return oBKTTgZY41(app, "AI 添加表格批注", delegate
+			return executeWithUndoContext(app, "AI 添加表格批注", delegate
 			{
 				Comments comments = CS_8_locals_19.doc.Comments;
 				Range range = CS_8_locals_19.TargetCell.Range;
@@ -2497,7 +2497,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_29.ResultList = new List<object>();
 			CS_8_locals_29.ChangedCount = 0;
 			CS_8_locals_29.OutlineLevel = 0;
-			DyITDXSmDr(app, "AI 设置段落大纲级次", delegate
+			executeWithUndoRecord(app, "AI 设置段落大纲级次", delegate
 			{
 				foreach (AiHelper_1 item in CS_8_locals_29.ParagraphList)
 				{
@@ -2711,10 +2711,10 @@ internal sealed class BatchReplaceService3
 					message = ex.Message
 				});
 			}
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ExecuteOperation(range, list, out CS_8_locals_41.CellChangeList);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ExecuteOperation(range, list, out CS_8_locals_41.CellChangeList);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			CS_8_locals_41.PreviewToken = BuildPreviewToken(CS_8_locals_41.doc, RangeStart, RangeEnd, CS_8_locals_41.CellChangeList);
 			object obj = iLJTdpgWxW(CS_8_locals_41.doc, RangeStart, RangeEnd, AllowHeaderEdit, UseTrackChanges, CS_8_locals_41.PreviewToken, CS_8_locals_41.CellChangeList);
@@ -2761,8 +2761,8 @@ internal sealed class BatchReplaceService3
 						columnIndex = CS_8_locals_43.CellChange.ColumnIndex,
 						isHeader = CS_8_locals_43.CellChange.IsHeader,
 						page = ComputeIntValue(CS_8_locals_43.CellChange.Cell.Range),
-						rangeStart = Ex5TMxi7X1(() => CS_8_locals_43.CellChange.Cell.Range.Start, CS_8_locals_43.CellChange.RangeStart),
-						rangeEnd = Ex5TMxi7X1(() => CS_8_locals_43.CellChange.Cell.Range.End, CS_8_locals_43.CellChange.RangeEnd),
+						rangeStart = tryGetValueOrDefault(() => CS_8_locals_43.CellChange.Cell.Range.Start, CS_8_locals_43.CellChange.RangeStart),
+						rangeEnd = tryGetValueOrDefault(() => CS_8_locals_43.CellChange.Cell.Range.End, CS_8_locals_43.CellChange.RangeEnd),
 						oldText = CS_8_locals_43.CellChange.OldText,
 						newText = CS_8_locals_43.CellChange.NewText,
 						changed = (flag && flag2),
@@ -2826,8 +2826,8 @@ internal sealed class BatchReplaceService3
 					columnIndex = CS_8_locals_15.CellChange.ColumnIndex,
 					isHeader = CS_8_locals_15.CellChange.IsHeader,
 					page = ComputeIntValue(CS_8_locals_15.CellChange.Cell.Range),
-					rangeStart = Ex5TMxi7X1(() => CS_8_locals_15.CellChange.Cell.Range.Start, CS_8_locals_15.CellChange.RangeStart),
-					rangeEnd = Ex5TMxi7X1(() => CS_8_locals_15.CellChange.Cell.Range.End, CS_8_locals_15.CellChange.RangeEnd),
+					rangeStart = tryGetValueOrDefault(() => CS_8_locals_15.CellChange.Cell.Range.Start, CS_8_locals_15.CellChange.RangeStart),
+					rangeEnd = tryGetValueOrDefault(() => CS_8_locals_15.CellChange.Cell.Range.End, CS_8_locals_15.CellChange.RangeEnd),
 					oldText = CS_8_locals_15.CellChange.OldText,
 					newText = CS_8_locals_15.CellChange.NewText,
 					changed = (flag && flag2),
@@ -2903,7 +2903,7 @@ internal sealed class BatchReplaceService3
 		internal AiHelper_5 PreviewChanges(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass36_1 CS_8_locals_42 = new _G_c__DisplayClass36_1();
-			CS_8_locals_42.gZUkBpLoZF = this;
+			CS_8_locals_42.outerScope = this;
 			CS_8_locals_42.WordApplication = app;
 			string a = (OperationMode ?? "preview").Trim().ToLowerInvariant();
 			if (!string.Equals(a, "preview", StringComparison.Ordinal) && !string.Equals(a, "execute", StringComparison.Ordinal))
@@ -2955,8 +2955,8 @@ internal sealed class BatchReplaceService3
 			{
 				return insertResult;
 			}
-			CS_8_locals_42.PreviewToken = lKeTPQlpbN(CS_8_locals_42.doc, RangeStart, RangeEnd, CS_8_locals_42.TableToolService);
-			object obj = fYyThhstYU(CS_8_locals_42.doc, RangeStart, RangeEnd, CS_8_locals_42.PreviewToken, CS_8_locals_42.TableToolService);
+			CS_8_locals_42.PreviewToken = computeRowInsertHash(CS_8_locals_42.doc, RangeStart, RangeEnd, CS_8_locals_42.TableToolService);
+			object obj = buildRowInsertResult(CS_8_locals_42.doc, RangeStart, RangeEnd, CS_8_locals_42.PreviewToken, CS_8_locals_42.TableToolService);
 			if (string.Equals(a, "preview", StringComparison.Ordinal))
 			{
 				return AiHelper_5.CreateSuccess("Model table row insert preview prepared.", obj);
@@ -2974,12 +2974,12 @@ internal sealed class BatchReplaceService3
 			}
 			return PPXTOUDVLE(CS_8_locals_42.doc, UseTrackChanges, delegate
 			{
-				if (!M4PTA9V6B2(CS_8_locals_42.WordApplication, CS_8_locals_42.TableToolService.AnchorCell, CS_8_locals_42.TableToolService.Position, CS_8_locals_42.TableToolService.Count, out var error))
+				if (!tryInsertRowsAtAnchor(CS_8_locals_42.WordApplication, CS_8_locals_42.TableToolService.AnchorCell, CS_8_locals_42.TableToolService.Position, CS_8_locals_42.TableToolService.Count, out var error))
 				{
 					return AiHelper_5.CreateError("AI 表格插行", "preview", new
 					{
-						rangeStart = CS_8_locals_42.gZUkBpLoZF.RangeStart,
-						rangeEnd = CS_8_locals_42.gZUkBpLoZF.RangeEnd,
+						rangeStart = CS_8_locals_42.outerScope.RangeStart,
+						rangeEnd = CS_8_locals_42.outerScope.RangeEnd,
 						LocalTableIndex = CS_8_locals_42.TableToolService.LocalTableIndex,
 						AnchorRowIndex = CS_8_locals_42.TableToolService.AnchorRowIndex,
 						Position = CS_8_locals_42.TableToolService.Position,
@@ -2992,13 +2992,13 @@ internal sealed class BatchReplaceService3
 				{
 					document = CS_8_locals_42.doc.Name,
 					documentFullName = CS_8_locals_42.doc.FullName,
-					rangeStart = CS_8_locals_42.gZUkBpLoZF.RangeStart,
-					rangeEnd = CS_8_locals_42.gZUkBpLoZF.RangeEnd,
+					rangeStart = CS_8_locals_42.outerScope.RangeStart,
+					rangeEnd = CS_8_locals_42.outerScope.RangeEnd,
 					localTableIndex = CS_8_locals_42.TableToolService.LocalTableIndex,
 					anchorRowIndex = CS_8_locals_42.TableToolService.AnchorRowIndex,
 					position = CS_8_locals_42.TableToolService.Position,
 					count = CS_8_locals_42.TableToolService.Count,
-					useTrackChanges = CS_8_locals_42.gZUkBpLoZF.UseTrackChanges,
+					useTrackChanges = CS_8_locals_42.outerScope.UseTrackChanges,
 					previewToken = CS_8_locals_42.PreviewToken,
 					rowsBefore = CS_8_locals_42.TableToolService.RowsBefore,
 					rowsAfter = rowsAfter,
@@ -3022,7 +3022,7 @@ internal sealed class BatchReplaceService3
 
 		public string PreviewToken;
 
-		public _G_c__DisplayClass36_0 gZUkBpLoZF;
+		public _G_c__DisplayClass36_0 outerScope;
 
 		public _G_c__DisplayClass36_1()
 		{
@@ -3031,12 +3031,12 @@ internal sealed class BatchReplaceService3
 
 		internal AiHelper_5 EditTableCells()
 		{
-			if (!M4PTA9V6B2(WordApplication, TableToolService.AnchorCell, TableToolService.Position, TableToolService.Count, out var error))
+			if (!tryInsertRowsAtAnchor(WordApplication, TableToolService.AnchorCell, TableToolService.Position, TableToolService.Count, out var error))
 			{
 				return AiHelper_5.CreateError("表格插行失败。", "table_row_insert_failed", new
 				{
-					rangeStart = gZUkBpLoZF.RangeStart,
-					rangeEnd = gZUkBpLoZF.RangeEnd,
+					rangeStart = outerScope.RangeStart,
+					rangeEnd = outerScope.RangeEnd,
 					LocalTableIndex = TableToolService.LocalTableIndex,
 					AnchorRowIndex = TableToolService.AnchorRowIndex,
 					Position = TableToolService.Position,
@@ -3049,13 +3049,13 @@ internal sealed class BatchReplaceService3
 			{
 				document = doc.Name,
 				documentFullName = doc.FullName,
-				rangeStart = gZUkBpLoZF.RangeStart,
-				rangeEnd = gZUkBpLoZF.RangeEnd,
+				rangeStart = outerScope.RangeStart,
+				rangeEnd = outerScope.RangeEnd,
 				localTableIndex = TableToolService.LocalTableIndex,
 				anchorRowIndex = TableToolService.AnchorRowIndex,
 				position = TableToolService.Position,
 				count = TableToolService.Count,
-				useTrackChanges = gZUkBpLoZF.UseTrackChanges,
+				useTrackChanges = outerScope.UseTrackChanges,
 				previewToken = PreviewToken,
 				rowsBefore = TableToolService.RowsBefore,
 				rowsAfter = rowsAfter,
@@ -3072,21 +3072,21 @@ internal sealed class BatchReplaceService3
 	{
 		public string OperationMode;
 
-		public string tBmkugaqPB;
+		public string placement;
 
-		public int fnLkDwNHkT;
+		public int rowCount;
 
-		public int FAJkTvvVfq;
+		public int columnCount;
 
 		public string ExpectedPreviewToken;
 
 		public int RangeStart;
 
-		public int FHWkIpxSEj;
+		public int rangeEnd;
 
 		public bool UseTrackChanges;
 
-		public bool jdmkHkXOfG;
+		public bool adjustAfterInsert;
 
 		public _G_c__DisplayClass37_0()
 		{
@@ -3105,28 +3105,28 @@ internal sealed class BatchReplaceService3
 					mode = OperationMode
 				});
 			}
-			string text = NormalizeConfigKey(tBmkugaqPB);
+			string text = NormalizeConfigKey(placement);
 			if (text == null)
 			{
 				return AiHelper_5.CreateError("placement 仅支持 replace_empty_paragraph、before 或 after。", "invalid_arguments", new
 				{
-					placement = tBmkugaqPB
+					placement = placement
 				});
 			}
-			if (fnLkDwNHkT < 1 || fnLkDwNHkT > 200)
+			if (rowCount < 1 || rowCount > 200)
 			{
 				return AiHelper_5.CreateError("rows 必须在 1 到 200 之间。", "invalid_arguments", new
 				{
-					rows = fnLkDwNHkT,
+					rows = rowCount,
 					min = 1,
 					max = 200
 				});
 			}
-			if (FAJkTvvVfq < 1 || FAJkTvvVfq > 63)
+			if (columnCount < 1 || columnCount > 63)
 			{
 				return AiHelper_5.CreateError("columns 必须在 1 到 63 之间。", "invalid_arguments", new
 				{
-					columns = FAJkTvvVfq,
+					columns = columnCount,
 					min = 1,
 					max = 63
 				});
@@ -3139,25 +3139,25 @@ internal sealed class BatchReplaceService3
 			Range range;
 			try
 			{
-				range = GetRangeByPosition(CS_8_locals_48.doc, RangeStart, FHWkIpxSEj);
+				range = GetRangeByPosition(CS_8_locals_48.doc, RangeStart, rangeEnd);
 			}
 			catch (Exception ex)
 			{
 				return AiHelper_5.CreateError("rangeStart/rangeEnd 超出文档范围或顺序无效。", "invalid_arguments", new
 				{
 					rangeStart = RangeStart,
-					rangeEnd = FHWkIpxSEj,
+					rangeEnd = rangeEnd,
 					exception = ex.GetType().Name,
 					message = ex.Message
 				});
 			}
-			AiHelper_5 insertResult = ExecuteTableEdit(CS_8_locals_48.doc, range, fnLkDwNHkT, FAJkTvvVfq, text, UseTrackChanges, jdmkHkXOfG, out CS_8_locals_48.TableEditService);
+			AiHelper_5 insertResult = ExecuteTableEdit(CS_8_locals_48.doc, range, rowCount, columnCount, text, UseTrackChanges, adjustAfterInsert, out CS_8_locals_48.TableEditService);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
-			CS_8_locals_48.PreviewToken = BIJTcpAmqJ(CS_8_locals_48.doc, RangeStart, FHWkIpxSEj, CS_8_locals_48.TableEditService);
-			object obj = BuildResultObject(CS_8_locals_48.doc, RangeStart, FHWkIpxSEj, CS_8_locals_48.PreviewToken, CS_8_locals_48.TableEditService);
+			CS_8_locals_48.PreviewToken = computeTableEditHash(CS_8_locals_48.doc, RangeStart, rangeEnd, CS_8_locals_48.TableEditService);
+			object obj = BuildResultObject(CS_8_locals_48.doc, RangeStart, rangeEnd, CS_8_locals_48.PreviewToken, CS_8_locals_48.TableEditService);
 			if (string.Equals(a, "preview", StringComparison.Ordinal))
 			{
 				return AiHelper_5.CreateSuccess("Word table insert preview prepared.", obj);
@@ -3167,7 +3167,7 @@ internal sealed class BatchReplaceService3
 				return AiHelper_5.CreateError("当前插表位置与预览结果不一致，已停止执行。请重新 preview 后再 execute。", "preview_mismatch", new
 				{
 					rangeStart = RangeStart,
-					rangeEnd = FHWkIpxSEj,
+					rangeEnd = rangeEnd,
 					expectedPreviewToken = ExpectedPreviewToken,
 					currentPreviewToken = CS_8_locals_48.PreviewToken,
 					preview = obj
@@ -3176,12 +3176,12 @@ internal sealed class BatchReplaceService3
 			return PPXTOUDVLE(CS_8_locals_48.doc, UseTrackChanges, delegate
 			{
 				_G_c__DisplayClass37_2 CS_8_locals_52 = new _G_c__DisplayClass37_2();
-				if (!psHTenZWYL(CS_8_locals_48.doc, CS_8_locals_48.TableEditService, out CS_8_locals_52.TargetTable, out var error))
+				if (!tryInsertTableAtParagraph(CS_8_locals_48.doc, CS_8_locals_48.TableEditService, out CS_8_locals_52.TargetTable, out var error))
 				{
 					return AiHelper_5.CreateError("AI 插入表格", "preview", new
 					{
 						rangeStart = CS_8_locals_48.ClosureScope.RangeStart,
-						rangeEnd = CS_8_locals_48.ClosureScope.FHWkIpxSEj,
+						rangeEnd = CS_8_locals_48.ClosureScope.rangeEnd,
 						Rows = CS_8_locals_48.TableEditService.Rows,
 						Columns = CS_8_locals_48.TableEditService.Columns,
 						Placement = CS_8_locals_48.TableEditService.Placement,
@@ -3198,27 +3198,27 @@ internal sealed class BatchReplaceService3
 						return AiHelper_5.CreateError("preview", "execute", new
 						{
 							rangeStart = CS_8_locals_48.ClosureScope.RangeStart,
-							rangeEnd = CS_8_locals_48.ClosureScope.FHWkIpxSEj,
+							rangeEnd = CS_8_locals_48.ClosureScope.rangeEnd,
 							Rows = CS_8_locals_48.TableEditService.Rows,
 							Columns = CS_8_locals_48.TableEditService.Columns,
 							Placement = CS_8_locals_48.TableEditService.Placement,
 							tableIndex = GetTableIndex(CS_8_locals_48.doc, CS_8_locals_52.TargetTable),
-							tableRangeStart = Ex5TMxi7X1(() => CS_8_locals_52.TargetTable.Range.Start, 0),
-							tableRangeEnd = Ex5TMxi7X1(() => CS_8_locals_52.TargetTable.Range.End, 0),
+							tableRangeStart = tryGetValueOrDefault(() => CS_8_locals_52.TargetTable.Range.Start, 0),
+							tableRangeEnd = tryGetValueOrDefault(() => CS_8_locals_52.TargetTable.Range.End, 0),
 							error = text2
 						});
 					}
 				}
 				int tableIndex = GetTableIndex(CS_8_locals_48.doc, CS_8_locals_52.TargetTable);
-				int num = Ex5TMxi7X1(() => CS_8_locals_52.TargetTable.Range.Start, 0);
-				int num2 = Ex5TMxi7X1(() => CS_8_locals_52.TargetTable.Range.End, 0);
+				int num = tryGetValueOrDefault(() => CS_8_locals_52.TargetTable.Range.Start, 0);
+				int num2 = tryGetValueOrDefault(() => CS_8_locals_52.TargetTable.Range.End, 0);
 				HbPTWYrAup(CS_8_locals_52.TargetTable, out var num3, out var num4);
 				return AiHelper_5.CreateSuccess("mode 仅支持 preview 或 execute。", new
 				{
 					document = CS_8_locals_48.doc.Name,
 					documentFullName = CS_8_locals_48.doc.FullName,
 					rangeStart = CS_8_locals_48.ClosureScope.RangeStart,
-					rangeEnd = CS_8_locals_48.ClosureScope.FHWkIpxSEj,
+					rangeEnd = CS_8_locals_48.ClosureScope.rangeEnd,
 					placement = CS_8_locals_48.TableEditService.Placement,
 					rows = ((num3 > 0) ? num3 : CS_8_locals_48.TableEditService.Rows),
 					columns = ((num4 > 0) ? num4 : CS_8_locals_48.TableEditService.Columns),
@@ -3266,12 +3266,12 @@ internal sealed class BatchReplaceService3
 		internal AiHelper_5 InsertTableRow()
 		{
 			_G_c__DisplayClass37_2 CS_8_locals_9 = new _G_c__DisplayClass37_2();
-			if (!psHTenZWYL(doc, TableEditService, out CS_8_locals_9.TargetTable, out var error))
+			if (!tryInsertTableAtParagraph(doc, TableEditService, out CS_8_locals_9.TargetTable, out var error))
 			{
 				return AiHelper_5.CreateError("插入 Word 表格失败。", "table_insert_failed", new
 				{
 					rangeStart = ClosureScope.RangeStart,
-					rangeEnd = ClosureScope.FHWkIpxSEj,
+					rangeEnd = ClosureScope.rangeEnd,
 					Rows = TableEditService.Rows,
 					Columns = TableEditService.Columns,
 					Placement = TableEditService.Placement,
@@ -3288,27 +3288,27 @@ internal sealed class BatchReplaceService3
 					return AiHelper_5.CreateError("表格已插入，但一键表格调整失败。", "table_inserted_adjust_failed", new
 					{
 						rangeStart = ClosureScope.RangeStart,
-						rangeEnd = ClosureScope.FHWkIpxSEj,
+						rangeEnd = ClosureScope.rangeEnd,
 						Rows = TableEditService.Rows,
 						Columns = TableEditService.Columns,
 						Placement = TableEditService.Placement,
 						tableIndex = GetTableIndex(doc, CS_8_locals_9.TargetTable),
-						tableRangeStart = Ex5TMxi7X1(() => CS_8_locals_9.TargetTable.Range.Start, 0),
-						tableRangeEnd = Ex5TMxi7X1(() => CS_8_locals_9.TargetTable.Range.End, 0),
+						tableRangeStart = tryGetValueOrDefault(() => CS_8_locals_9.TargetTable.Range.Start, 0),
+						tableRangeEnd = tryGetValueOrDefault(() => CS_8_locals_9.TargetTable.Range.End, 0),
 						error = text
 					});
 				}
 			}
 			int tableIndex = GetTableIndex(doc, CS_8_locals_9.TargetTable);
-			int num = Ex5TMxi7X1(() => CS_8_locals_9.TargetTable.Range.Start, 0);
-			int num2 = Ex5TMxi7X1(() => CS_8_locals_9.TargetTable.Range.End, 0);
+			int num = tryGetValueOrDefault(() => CS_8_locals_9.TargetTable.Range.Start, 0);
+			int num2 = tryGetValueOrDefault(() => CS_8_locals_9.TargetTable.Range.End, 0);
 			HbPTWYrAup(CS_8_locals_9.TargetTable, out var num3, out var num4);
 			return AiHelper_5.CreateSuccess("Word table inserted.", new
 			{
 				document = doc.Name,
 				documentFullName = doc.FullName,
 				rangeStart = ClosureScope.RangeStart,
-				rangeEnd = ClosureScope.FHWkIpxSEj,
+				rangeEnd = ClosureScope.rangeEnd,
 				placement = TableEditService.Placement,
 				rows = ((num3 > 0) ? num3 : TableEditService.Rows),
 				columns = ((num4 > 0) ? num4 : TableEditService.Columns),
@@ -3361,7 +3361,7 @@ internal sealed class BatchReplaceService3
 			return TargetTable.Range.Start;
 		}
 
-		internal int jhEkEvllsj()
+		internal int getRangeEnd()
 		{
 			return TargetTable.Range.End;
 		}
@@ -3372,9 +3372,9 @@ internal sealed class BatchReplaceService3
 	{
 		public int RangeEndPosition;
 
-		public int SeWkYUegMC;
+		public int rangeEnd;
 
-		public string TlKkZRlAoO;
+		public string configJson;
 
 		public _G_c__DisplayClass38_0()
 		{
@@ -3384,8 +3384,8 @@ internal sealed class BatchReplaceService3
 		internal AiHelper_5 ExecuteTableEdit(Microsoft.Office.Interop.Word.Application app)
 		{
 			Document document = GetActiveDocument(app);
-			Range range = GetRangeByPosition(document, RangeEndPosition, SeWkYUegMC);
-			return ExecuteOperation(app, document, range, TlKkZRlAoO ?? string.Empty);
+			Range range = GetRangeByPosition(document, RangeEndPosition, rangeEnd);
+			return ExecuteOperation(app, document, range, configJson ?? string.Empty);
 		}
 	}
 
@@ -3399,7 +3399,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 HnYkfgiwLF(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 replaceSelectionContent(Microsoft.Office.Interop.Word.Application app)
 		{
 			Document document = GetActiveDocument(app);
 			Selection selection = app.Selection;
@@ -3420,11 +3420,11 @@ internal sealed class BatchReplaceService3
 	{
 		public string FindText;
 
-		public string PibkwEgMgL;
+		public string replaceText;
 
-		public bool wQVktjGfvi;
+		public bool matchCase;
 
-		public bool bfxkLTOfxK;
+		public bool matchWholeWord;
 
 		public bool UseTrackChanges;
 
@@ -3440,42 +3440,42 @@ internal sealed class BatchReplaceService3
 		internal AiHelper_5 SearchDocument(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass40_1 CS_8_locals_34 = new _G_c__DisplayClass40_1();
-			CS_8_locals_34.obZkGStNVx = this;
-			CS_8_locals_34.cQAkoUnyRF = app;
+			CS_8_locals_34.outerScope = this;
+			CS_8_locals_34.wordApplication = app;
 			if (string.IsNullOrEmpty(FindText))
 			{
 				return AiHelper_5.CreateError("findText must not be empty.", "invalid_arguments");
 			}
-			CS_8_locals_34.doc = GetActiveDocument(CS_8_locals_34.cQAkoUnyRF);
+			CS_8_locals_34.doc = GetActiveDocument(CS_8_locals_34.wordApplication);
 			Document document = CS_8_locals_34.doc;
 			object Start = CS_8_locals_34.doc.Content.Start;
 			object End = Math.Min(CS_8_locals_34.doc.Content.End, CS_8_locals_34.doc.Content.Start + 1);
 			Range range = document.Range(ref Start, ref End);
-			AiHelper_5 insertResult = ValidateRange(CS_8_locals_34.cQAkoUnyRF, CS_8_locals_34.doc, range);
+			AiHelper_5 insertResult = ValidateRange(CS_8_locals_34.wordApplication, CS_8_locals_34.doc, range);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
-			return oBKTTgZY41(CS_8_locals_34.cQAkoUnyRF, "AI 批量替换", delegate
+			return executeWithUndoContext(CS_8_locals_34.wordApplication, "AI 批量替换", delegate
 			{
 				bool trackRevisions = CS_8_locals_34.doc.TrackRevisions;
-				bool screenUpdating = CS_8_locals_34.cQAkoUnyRF.ScreenUpdating;
-				WdAlertLevel displayAlerts = CS_8_locals_34.cQAkoUnyRF.DisplayAlerts;
+				bool screenUpdating = CS_8_locals_34.wordApplication.ScreenUpdating;
+				WdAlertLevel displayAlerts = CS_8_locals_34.wordApplication.DisplayAlerts;
 				try
 				{
-					CS_8_locals_34.cQAkoUnyRF.ScreenUpdating = false;
-					CS_8_locals_34.cQAkoUnyRF.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+					CS_8_locals_34.wordApplication.ScreenUpdating = false;
+					CS_8_locals_34.wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 					CS_8_locals_34.doc.TrackRevisions = true;
 					Find find = CS_8_locals_34.doc.Content.Duplicate.Find;
 					find.ClearFormatting();
 					find.Replacement.ClearFormatting();
-					find.Text = CS_8_locals_34.obZkGStNVx.FindText;
-					find.Replacement.Text = CS_8_locals_34.obZkGStNVx.PibkwEgMgL ?? string.Empty;
+					find.Text = CS_8_locals_34.outerScope.FindText;
+					find.Replacement.Text = CS_8_locals_34.outerScope.replaceText ?? string.Empty;
 					find.Forward = true;
 					find.Wrap = WdFindWrap.wdFindStop;
 					find.Format = false;
-					find.MatchCase = CS_8_locals_34.obZkGStNVx.wQVktjGfvi;
-					find.MatchWholeWord = CS_8_locals_34.obZkGStNVx.bfxkLTOfxK;
+					find.MatchCase = CS_8_locals_34.outerScope.matchCase;
+					find.MatchWholeWord = CS_8_locals_34.outerScope.matchWholeWord;
 					find.MatchWildcards = false;
 					find.MatchSoundsLike = false;
 					find.MatchAllWordForms = false;
@@ -3499,25 +3499,25 @@ internal sealed class BatchReplaceService3
 					{
 						document = CS_8_locals_34.doc.Name,
 						documentFullName = CS_8_locals_34.doc.FullName,
-						findText = CS_8_locals_34.obZkGStNVx.FindText,
-						replaceText = (CS_8_locals_34.obZkGStNVx.PibkwEgMgL ?? string.Empty),
-						matchCase = CS_8_locals_34.obZkGStNVx.wQVktjGfvi,
-						wholeWord = CS_8_locals_34.obZkGStNVx.bfxkLTOfxK,
+						findText = CS_8_locals_34.outerScope.FindText,
+						replaceText = (CS_8_locals_34.outerScope.replaceText ?? string.Empty),
+						matchCase = CS_8_locals_34.outerScope.matchCase,
+						wholeWord = CS_8_locals_34.outerScope.matchWholeWord,
 						useTrackChanges = true,
-						requestedUseTrackChanges = CS_8_locals_34.obZkGStNVx.UseTrackChanges,
+						requestedUseTrackChanges = CS_8_locals_34.outerScope.UseTrackChanges,
 						forcedTrackChanges = true,
 						replaceMethod = "invalid_arguments",
-						expectedMatchCount = CS_8_locals_34.obZkGStNVx.ExpectedCount,
+						expectedMatchCount = CS_8_locals_34.outerScope.ExpectedCount,
 						replacedCountKnown = false,
 						previewRequired = false,
-						maxMatchesIgnored = CS_8_locals_34.obZkGStNVx.MaxMatchesIgnored
+						maxMatchesIgnored = CS_8_locals_34.outerScope.MaxMatchesIgnored
 					});
 				}
 				finally
 				{
 					CS_8_locals_34.doc.TrackRevisions = trackRevisions;
-					CS_8_locals_34.cQAkoUnyRF.DisplayAlerts = displayAlerts;
-					CS_8_locals_34.cQAkoUnyRF.ScreenUpdating = screenUpdating;
+					CS_8_locals_34.wordApplication.DisplayAlerts = displayAlerts;
+					CS_8_locals_34.wordApplication.ScreenUpdating = screenUpdating;
 				}
 			});
 		}
@@ -3528,9 +3528,9 @@ internal sealed class BatchReplaceService3
 	{
 		public Document doc;
 
-		public Microsoft.Office.Interop.Word.Application cQAkoUnyRF;
+		public Microsoft.Office.Interop.Word.Application wordApplication;
 
-		public _G_c__DisplayClass40_0 obZkGStNVx;
+		public _G_c__DisplayClass40_0 outerScope;
 
 		public _G_c__DisplayClass40_1()
 		{
@@ -3540,23 +3540,23 @@ internal sealed class BatchReplaceService3
 		internal AiHelper_5 SearchDocument()
 		{
 			bool trackRevisions = doc.TrackRevisions;
-			bool screenUpdating = cQAkoUnyRF.ScreenUpdating;
-			WdAlertLevel displayAlerts = cQAkoUnyRF.DisplayAlerts;
+			bool screenUpdating = wordApplication.ScreenUpdating;
+			WdAlertLevel displayAlerts = wordApplication.DisplayAlerts;
 			try
 			{
-				cQAkoUnyRF.ScreenUpdating = false;
-				cQAkoUnyRF.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+				wordApplication.ScreenUpdating = false;
+				wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 				doc.TrackRevisions = true;
 				Find find = doc.Content.Duplicate.Find;
 				find.ClearFormatting();
 				find.Replacement.ClearFormatting();
-				find.Text = obZkGStNVx.FindText;
-				find.Replacement.Text = obZkGStNVx.PibkwEgMgL ?? string.Empty;
+				find.Text = outerScope.FindText;
+				find.Replacement.Text = outerScope.replaceText ?? string.Empty;
 				find.Forward = true;
 				find.Wrap = WdFindWrap.wdFindStop;
 				find.Format = false;
-				find.MatchCase = obZkGStNVx.wQVktjGfvi;
-				find.MatchWholeWord = obZkGStNVx.bfxkLTOfxK;
+				find.MatchCase = outerScope.matchCase;
+				find.MatchWholeWord = outerScope.matchWholeWord;
 				find.MatchWildcards = false;
 				find.MatchSoundsLike = false;
 				find.MatchAllWordForms = false;
@@ -3580,25 +3580,25 @@ internal sealed class BatchReplaceService3
 				{
 					document = doc.Name,
 					documentFullName = doc.FullName,
-					findText = obZkGStNVx.FindText,
-					replaceText = (obZkGStNVx.PibkwEgMgL ?? string.Empty),
-					matchCase = obZkGStNVx.wQVktjGfvi,
-					wholeWord = obZkGStNVx.bfxkLTOfxK,
+					findText = outerScope.FindText,
+					replaceText = (outerScope.replaceText ?? string.Empty),
+					matchCase = outerScope.matchCase,
+					wholeWord = outerScope.matchWholeWord,
 					useTrackChanges = true,
-					requestedUseTrackChanges = obZkGStNVx.UseTrackChanges,
+					requestedUseTrackChanges = outerScope.UseTrackChanges,
 					forcedTrackChanges = true,
 					replaceMethod = "word_find_replace_all",
-					expectedMatchCount = obZkGStNVx.ExpectedCount,
+					expectedMatchCount = outerScope.ExpectedCount,
 					replacedCountKnown = false,
 					previewRequired = false,
-					maxMatchesIgnored = obZkGStNVx.MaxMatchesIgnored
+					maxMatchesIgnored = outerScope.MaxMatchesIgnored
 				});
 			}
 			finally
 			{
 				doc.TrackRevisions = trackRevisions;
-				cQAkoUnyRF.DisplayAlerts = displayAlerts;
-				cQAkoUnyRF.ScreenUpdating = screenUpdating;
+				wordApplication.DisplayAlerts = displayAlerts;
+				wordApplication.ScreenUpdating = screenUpdating;
 			}
 		}
 	}
@@ -3613,7 +3613,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int vdckCjHjSK()
+		internal int getCommentCount()
 		{
 			return doc.Comments.Count;
 		}
@@ -3654,7 +3654,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass45_0
 	{
-		public Dictionary<string, object> UpVkclndys;
+		public Dictionary<string, object> dictionary;
 
 		public _G_c__DisplayClass45_0()
 		{
@@ -3663,7 +3663,7 @@ internal sealed class BatchReplaceService3
 
 		internal object GetDictValue(string item)
 		{
-			return GetDictValue(UpVkclndys, item);
+			return GetDictValue(dictionary, item);
 		}
 	}
 
@@ -3677,7 +3677,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 UjgkeDHLMq(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 inspectTableFormat(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass46_1 CS_8_locals_26 = new _G_c__DisplayClass46_1();
 			Document document = GetActiveDocument(app);
@@ -3696,27 +3696,27 @@ internal sealed class BatchReplaceService3
 				rangeEnd = CS_8_locals_26.TargetTable.Range.End,
 				rows = GetTableRowCount(CS_8_locals_26.TargetTable),
 				columns = GetTableColumnCount(CS_8_locals_26.TargetTable),
-				preferredWidthType = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.PreferredWidthType, WdPreferredWidthType.wdPreferredWidthAuto)),
-				preferredWidth = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.PreferredWidth, 0f),
-				rowAlignment = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.Rows.Alignment, WdRowAlignment.wdAlignRowLeft)),
-				allowPageBreaks = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.AllowPageBreaks, ypQS6RTSiCdpSgKNQtr: false),
-				spacing = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.Spacing, 0f),
+				preferredWidthType = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.PreferredWidthType, WdPreferredWidthType.wdPreferredWidthAuto)),
+				preferredWidth = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.PreferredWidth, 0f),
+				rowAlignment = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.Rows.Alignment, WdRowAlignment.wdAlignRowLeft)),
+				allowPageBreaks = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.AllowPageBreaks, defaultValue: false),
+				spacing = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.Spacing, 0f),
 				cellPadding = new
 				{
-					top = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.TopPadding, 0f),
-					bottom = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.BottomPadding, 0f),
-					left = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.LeftPadding, 0f),
-					right = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.RightPadding, 0f)
+					top = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.TopPadding, 0f),
+					bottom = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.BottomPadding, 0f),
+					left = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.LeftPadding, 0f),
+					right = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.RightPadding, 0f)
 				},
 				row = new
 				{
-					height = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.Rows.Height, 0f),
-					heightRule = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.Rows.HeightRule, WdRowHeightRule.wdRowHeightAuto)),
-					allowBreakAcrossPages = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.Rows.AllowBreakAcrossPages, 0),
-					firstRowHeadingFormat = Ex5TMxi7X1(() => CS_8_locals_26.TargetTable.Rows[1].HeadingFormat, 0)
+					height = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.Rows.Height, 0f),
+					heightRule = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.Rows.HeightRule, WdRowHeightRule.wdRowHeightAuto)),
+					allowBreakAcrossPages = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.Rows.AllowBreakAcrossPages, 0),
+					firstRowHeadingFormat = tryGetValueOrDefault(() => CS_8_locals_26.TargetTable.Rows[1].HeadingFormat, 0)
 				},
 				rangeFont = BuildFontInfo(CS_8_locals_26.TargetTable.Range.Font),
-				paragraphFormat = pyaTKvLinx(CS_8_locals_26.TargetTable.Range.ParagraphFormat),
+				paragraphFormat = buildParagraphFormatObject(CS_8_locals_26.TargetTable.Range.ParagraphFormat),
 				borders = BuildResultObject(CS_8_locals_26.TargetTable),
 				sampleCells = BuildResultObject(CS_8_locals_26.TargetTable)
 			});
@@ -3753,12 +3753,12 @@ internal sealed class BatchReplaceService3
 			return TargetTable.PreferredWidth;
 		}
 
-		internal WdRowAlignment OTgkqFcCvn()
+		internal WdRowAlignment getRowAlignment()
 		{
 			return TargetTable.Rows.Alignment;
 		}
 
-		internal bool uPhkPcNasu()
+		internal bool getAllowPageBreaks()
 		{
 			return TargetTable.AllowPageBreaks;
 		}
@@ -3783,12 +3783,12 @@ internal sealed class BatchReplaceService3
 			return TargetTable.LeftPadding;
 		}
 
-		internal float wUpkkOJxJK()
+		internal float getRightPadding()
 		{
 			return TargetTable.RightPadding;
 		}
 
-		internal float yaQkxeXKrG()
+		internal float getRowHeight()
 		{
 			return TargetTable.Rows.Height;
 		}
@@ -3819,7 +3819,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 ajwxBUxtBx(Microsoft.Office.Interop.Word.Application app)
+		internal AiHelper_5 inspectParagraphFormat(Microsoft.Office.Interop.Word.Application app)
 		{
 			Document document = GetActiveDocument(app);
 			Paragraph paragraph = ((ParagraphIndex > 0) ? GetParagraphByIndex(document, ParagraphIndex) : GetFirstParagraph(app, document));
@@ -3840,7 +3840,7 @@ internal sealed class BatchReplaceService3
 				styleName = GetParagraphStyleName(paragraph),
 				excerpt = TruncateText(NormalizeText(paragraph.Range.Text), 240),
 				font = BuildFontInfo(paragraph.Range.Font),
-				paragraphFormat = pyaTKvLinx(paragraph.Range.ParagraphFormat)
+				paragraphFormat = buildParagraphFormatObject(paragraph.Range.ParagraphFormat)
 			});
 		}
 	}
@@ -3848,7 +3848,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass48_0
 	{
-		public string hGNxuJMRRe;
+		public string configJson;
 
 		public int ParagraphIndex;
 
@@ -3861,17 +3861,17 @@ internal sealed class BatchReplaceService3
 
 		internal AiHelper_5 FormatParagraphs(Microsoft.Office.Interop.Word.Application app)
 		{
-			ParagraphFormatConfig tqHECLHh7ExNw6c0RJi;
-			AiHelper_5 insertResult = KESDFbjWCy(hGNxuJMRRe, out tqHECLHh7ExNw6c0RJi);
+			ParagraphFormatConfig paragraphFormatConfig;
+			AiHelper_5 insertResult = parseParagraphFormatConfig(configJson, out paragraphFormatConfig);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
 			Document document = GetActiveDocument(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ReadParagraphRange(document, ParagraphIndex, ParagraphIndex);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ReadParagraphRange(document, ParagraphIndex, ParagraphIndex);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			List<AiHelper_1> list = CollectParagraphs(app, document, ParagraphIndex, ParagraphIndex);
 			if (list.Count == 0)
@@ -3889,8 +3889,8 @@ internal sealed class BatchReplaceService3
 				startParagraphIndex = ParagraphIndex,
 				endParagraphIndex = ParagraphIndex,
 				expectedChangeCount = list.Count,
-				supportedFields = ParagraphFormatConfig.CsBHPhLn0y,
-				requestedChanges = tqHECLHh7ExNw6c0RJi.WK3Hqw863W(),
+				supportedFields = ParagraphFormatConfig.supportedFields,
+				requestedChanges = paragraphFormatConfig.getRequestedChangeCount(),
 				paragraphs = list.Select((AiHelper_1 item) => BuildParagraphChangeInfo(item)).ToList()
 			});
 		}
@@ -3903,7 +3903,7 @@ internal sealed class BatchReplaceService3
 
 		public string ConfigJson;
 
-		public int sexxiKXvvR;
+		public int startParagraphIndex;
 
 		public int ParagraphIndex;
 
@@ -3919,18 +3919,18 @@ internal sealed class BatchReplaceService3
 			{
 				return AiHelper_5.CreateError("执行段落格式修改前必须先调用 preview_word_paragraph_format_change，并把 expectedChangeCount 传入执行工具。", "preview_required");
 			}
-			AiHelper_5 insertResult = KESDFbjWCy(ConfigJson, out CS_8_locals_14.JdkxrYYqxL);
+			AiHelper_5 insertResult = parseParagraphFormatConfig(ConfigJson, out CS_8_locals_14.paragraphFormatConfig);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
 			Document document = GetActiveDocument(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ReadParagraphRange(document, sexxiKXvvR, ParagraphIndex);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ReadParagraphRange(document, startParagraphIndex, ParagraphIndex);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
-			CS_8_locals_14.ParagraphList = CollectParagraphs(app, document, sexxiKXvvR, ParagraphIndex);
+			CS_8_locals_14.ParagraphList = CollectParagraphs(app, document, startParagraphIndex, ParagraphIndex);
 			if (CS_8_locals_14.ParagraphList.Count != ExpectedCount)
 			{
 				return AiHelper_5.CreateError("当前段落数量与预览结果不一致，已停止执行。请重新预览后再执行。", "preview_mismatch", new
@@ -3941,17 +3941,17 @@ internal sealed class BatchReplaceService3
 			}
 			CS_8_locals_14.ResultList = new List<object>();
 			CS_8_locals_14.ChangedCount = 0;
-			AiHelper_5 rU18qH9owXvBsPZ0iiU4 = ValidateRange(app, document, CS_8_locals_14.ParagraphList[0].Paragraph.Range);
-			if (rU18qH9owXvBsPZ0iiU4 != null)
+			AiHelper_5 validationResult = ValidateRange(app, document, CS_8_locals_14.ParagraphList[0].Paragraph.Range);
+			if (validationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU4;
+				return validationResult;
 			}
-			DyITDXSmDr(app, "AI 自定义段落格式", delegate
+			executeWithUndoRecord(app, "AI 自定义段落格式", delegate
 			{
 				foreach (AiHelper_1 item in CS_8_locals_14.ParagraphList)
 				{
 					object before = BuildParagraphRangeInfo(item.Paragraph);
-					ApplyParagraphFormat(item.Paragraph.Range, CS_8_locals_14.JdkxrYYqxL);
+					ApplyParagraphFormat(item.Paragraph.Range, CS_8_locals_14.paragraphFormatConfig);
 					object after = BuildParagraphRangeInfo(item.Paragraph);
 					CS_8_locals_14.ChangedCount++;
 					CS_8_locals_14.ResultList.Add(new
@@ -3971,11 +3971,11 @@ internal sealed class BatchReplaceService3
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
-				startParagraphIndex = sexxiKXvvR,
+				startParagraphIndex = startParagraphIndex,
 				endParagraphIndex = ParagraphIndex,
 				expectedChangeCount = ExpectedCount,
 				changed = CS_8_locals_14.ChangedCount,
-				requestedChanges = CS_8_locals_14.JdkxrYYqxL.WK3Hqw863W(),
+				requestedChanges = CS_8_locals_14.paragraphFormatConfig.getRequestedChangeCount(),
 				paragraphs = CS_8_locals_14.ResultList
 			});
 		}
@@ -3986,7 +3986,7 @@ internal sealed class BatchReplaceService3
 	{
 		public List<AiHelper_1> ParagraphList;
 
-		public ParagraphFormatConfig JdkxrYYqxL;
+		public ParagraphFormatConfig paragraphFormatConfig;
 
 		public int ChangedCount;
 
@@ -3997,12 +3997,12 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void UNoxQXVbiW()
+		internal void applyParagraphFormatToAll()
 		{
 			foreach (AiHelper_1 item in ParagraphList)
 			{
 				object before = BuildParagraphRangeInfo(item.Paragraph);
-				ApplyParagraphFormat(item.Paragraph.Range, JdkxrYYqxL);
+				ApplyParagraphFormat(item.Paragraph.Range, paragraphFormatConfig);
 				object after = BuildParagraphRangeInfo(item.Paragraph);
 				ChangedCount++;
 				ResultList.Add(new
@@ -4023,7 +4023,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass50_0
 	{
-		public string noTxKIkNHF;
+		public string configJson;
 
 		public int TableIndex;
 
@@ -4036,8 +4036,8 @@ internal sealed class BatchReplaceService3
 
 		internal AiHelper_5 ExecuteTableConfig(Microsoft.Office.Interop.Word.Application app)
 		{
-			Helper_9 xqsyBVQI7dsGuEiUT3v;
-			AiHelper_5 insertResult = ParseTableConfig(noTxKIkNHF, out xqsyBVQI7dsGuEiUT3v);
+			Helper_9 cellResolution;
+			AiHelper_5 insertResult = ParseTableConfig(configJson, out cellResolution);
 			if (insertResult != null)
 			{
 				return insertResult;
@@ -4047,10 +4047,10 @@ internal sealed class BatchReplaceService3
 			int tableIndex = GetTableIndex(document, table);
 			Range range;
 			string target;
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ResolveTableCell(document, table, CellSelector, out range, out target);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ResolveTableCell(document, table, CellSelector, out range, out target);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			return AiHelper_5.CreateSuccess("Word table format change preview prepared.", new
 			{
@@ -4061,7 +4061,7 @@ internal sealed class BatchReplaceService3
 				target = target,
 				expectedChangeCount = 1,
 				supportedFields = Helper_9.TcvQQSKPF8,
-				requestedChanges = xqsyBVQI7dsGuEiUT3v.hhNQHAECG8(),
+				requestedChanges = cellResolution.hhNQHAECG8(),
 				before = BuildRangeSnapshot(table, range)
 			});
 		}
@@ -4098,7 +4098,7 @@ internal sealed class BatchReplaceService3
 					currentChangeCount = 1
 				});
 			}
-			AiHelper_5 insertResult = ParseTableConfig(ConfigJson, out CS_8_locals_14.vsUxwGPQsX);
+			AiHelper_5 insertResult = ParseTableConfig(ConfigJson, out CS_8_locals_14.tableConfig);
 			if (insertResult != null)
 			{
 				return insertResult;
@@ -4107,20 +4107,20 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_14.TargetTable = GetTableByIndex(app, document, TableIndex);
 			int tableIndex = GetTableIndex(document, CS_8_locals_14.TargetTable);
 			string target;
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ResolveTableCell(document, CS_8_locals_14.TargetTable, CellSelector, out CS_8_locals_14.ComputedRange, out target);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ResolveTableCell(document, CS_8_locals_14.TargetTable, CellSelector, out CS_8_locals_14.ComputedRange, out target);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			object before = BuildRangeSnapshot(CS_8_locals_14.TargetTable, CS_8_locals_14.ComputedRange);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU4 = ValidateRange(app, document, CS_8_locals_14.ComputedRange);
-			if (rU18qH9owXvBsPZ0iiU4 != null)
+			AiHelper_5 validationResult = ValidateRange(app, document, CS_8_locals_14.ComputedRange);
+			if (validationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU4;
+				return validationResult;
 			}
-			DyITDXSmDr(app, "AI 自定义表格格式", delegate
+			executeWithUndoRecord(app, "AI 自定义表格格式", delegate
 			{
-				ApplyTableChanges(CS_8_locals_14.TargetTable, CS_8_locals_14.ComputedRange, CS_8_locals_14.vsUxwGPQsX);
+				ApplyTableChanges(CS_8_locals_14.TargetTable, CS_8_locals_14.ComputedRange, CS_8_locals_14.tableConfig);
 			});
 			object after = BuildRangeSnapshot(CS_8_locals_14.TargetTable, CS_8_locals_14.ComputedRange);
 			return AiHelper_5.CreateSuccess("Word table format changed.", new
@@ -4132,7 +4132,7 @@ internal sealed class BatchReplaceService3
 				target = target,
 				expectedChangeCount = ExpectedCount,
 				changed = 1,
-				requestedChanges = CS_8_locals_14.vsUxwGPQsX.hhNQHAECG8(),
+				requestedChanges = CS_8_locals_14.tableConfig.hhNQHAECG8(),
 				before = before,
 				after = after
 			});
@@ -4146,7 +4146,7 @@ internal sealed class BatchReplaceService3
 
 		public Range ComputedRange;
 
-		public Helper_9 vsUxwGPQsX;
+		public Helper_9 tableConfig;
 
 		public _G_c__DisplayClass51_1()
 		{
@@ -4155,7 +4155,7 @@ internal sealed class BatchReplaceService3
 
 		internal void ExecuteAction()
 		{
-			ApplyTableChanges(TargetTable, ComputedRange, vsUxwGPQsX);
+			ApplyTableChanges(TargetTable, ComputedRange, tableConfig);
 		}
 	}
 
@@ -4185,7 +4185,7 @@ internal sealed class BatchReplaceService3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal WdPreferredWidthType eawxLOhAFX()
+		internal WdPreferredWidthType getPreferredWidthType()
 		{
 			return TableForProperties.PreferredWidthType;
 		}
@@ -4210,12 +4210,12 @@ internal sealed class BatchReplaceService3
 			return TableForProperties.BottomPadding;
 		}
 
-		internal float xTKxorsjvd()
+		internal float getLeftPadding()
 		{
 			return TableForProperties.LeftPadding;
 		}
 
-		internal float KswxGsfymk()
+		internal float getRightPadding()
 		{
 			return TableForProperties.RightPadding;
 		}
@@ -4413,7 +4413,7 @@ internal sealed class BatchReplaceService3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass98_0
 	{
-		public Cell gAJdIPCcIZ;
+		public Cell targetCell;
 
 		public _G_c__DisplayClass98_0()
 		{
@@ -4422,52 +4422,52 @@ internal sealed class BatchReplaceService3
 
 		internal WdCellVerticalAlignment GetVerticalAlignment()
 		{
-			return gAJdIPCcIZ.VerticalAlignment;
+			return targetCell.VerticalAlignment;
 		}
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__125
 	{
-		public static CallSite<Func<CallSite, object, object, object>> kbNdiDdW73;
+		public static CallSite<Func<CallSite, object, object, object>> _tryInsertRowsAboveCallSiteA;
 
-		public static CallSite<Func<CallSite, object, bool>> ttRdHUMlNl;
+		public static CallSite<Func<CallSite, object, bool>> _tryInsertRowsAboveBoolCallSite;
 
-		public static CallSite<object> R5GdQcN6Hi;
+		public static CallSite<object> _tryInsertRowsAboveSite;
 
-		public static CallSite<Func<CallSite, object, bool>> D1hd1EroU6;
+		public static CallSite<Func<CallSite, object, bool>> _tryInsertRowsBelowBoolCallSite;
 
-		public static CallSite<object> YnvdrUZ7MP;
+		public static CallSite<object> _tryInsertRowsBelowSite;
 
-		public static CallSite<Func<CallSite, object, bool>> JmwdJ4I3EK;
+		public static CallSite<Func<CallSite, object, bool>> _dynamicBoolCallSite;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__126
 	{
-		public static CallSite<Action<CallSite, object, int>> KfAd3MVCte;
+		public static CallSite<Action<CallSite, object, int>> _insertRowsBelowIntSite;
 
-		public static CallSite<Action<CallSite, object>> Nx0dUcI0Fd;
+		public static CallSite<Action<CallSite, object>> _insertRowsBelowSite;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__127
 	{
-		public static CallSite<Action<CallSite, object, int>> b9pdKn5QbP;
+		public static CallSite<Action<CallSite, object, int>> _insertRowsAboveIntSite;
 
-		public static CallSite<Action<CallSite, object>> p2TdEhwotK;
+		public static CallSite<Action<CallSite, object>> _insertRowsAboveSite;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__209
 	{
-		public static CallSite<Func<CallSite, object, object>> faad26YgtT;
+		public static CallSite<Func<CallSite, object, object>> _getNameLocalSite;
 
-		public static CallSite<Func<CallSite, object, string>> Xwtd4n7mLV;
+		public static CallSite<Func<CallSite, object, string>> _getStringMemberSite;
 
-		public static CallSite<Func<CallSite, object, object>> Tncdj71sno;
+		public static CallSite<Func<CallSite, object, object>> _getNameSite;
 
-		public static CallSite<Func<CallSite, object, string>> zPcdYOhCB2;
+		public static CallSite<Func<CallSite, object, string>> _getStringMemberSite2;
 	}
 
 	private static readonly XNamespace WordmlNamespace;
@@ -4495,7 +4495,7 @@ internal sealed class BatchReplaceService3
 		_G_c__DisplayClass13_0 CS_8_locals_15 = new _G_c__DisplayClass13_0();
 		CS_8_locals_15.MaxCharLimit = P_2;
 		CS_8_locals_15.IncludeStatistics = P_0;
-		CS_8_locals_15.XVvAQYyUwY = P_1;
+		CS_8_locals_15.includeSelectionDetails = P_1;
 		return GetCurrentWordContext("get_current_word_context", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass13_1 CS_8_locals_18 = new _G_c__DisplayClass13_1();
@@ -4513,7 +4513,7 @@ internal sealed class BatchReplaceService3
 				tableCount = ComputeIntValue(() => CS_8_locals_18.doc.Tables.Count),
 				commentCount = ComputeIntValue(() => CS_8_locals_18.doc.Comments.Count),
 				trackRevisions = CheckCondition(CS_8_locals_18.doc),
-				selection = BuildResultObject(selection, CS_8_locals_15.XVvAQYyUwY, num)
+				selection = BuildResultObject(selection, CS_8_locals_15.includeSelectionDetails, num)
 			});
 		});
 	}
@@ -4521,7 +4521,7 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 PreviewWordDocument(int P_0, int P_1, int P_2, int P_3, int P_4)
 	{
 		_G_c__DisplayClass14_0 CS_8_locals_12 = new _G_c__DisplayClass14_0();
-		CS_8_locals_12.fYKASMsLjm = P_0;
+		CS_8_locals_12.headParagraphCount = P_0;
 		CS_8_locals_12.TailParagraphCount = P_1;
 		CS_8_locals_12.HeadingCount = P_2;
 		CS_8_locals_12.MaxPreviewChars = P_3;
@@ -4532,7 +4532,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_21.doc = GetActiveDocument(app);
 			Selection selection = app.Selection;
 			int num = ComputeIntValue(() => CS_8_locals_21.doc.Paragraphs.Count);
-			int num2 = ClampValue(CS_8_locals_12.fYKASMsLjm, 8, 50);
+			int num2 = ClampValue(CS_8_locals_12.headParagraphCount, 8, 50);
 			int num3 = ClampValue(CS_8_locals_12.TailParagraphCount, 4, 50);
 			int num4 = ClampValue(CS_8_locals_12.HeadingCount, 50, 300);
 			int num5 = ClampValue(CS_8_locals_12.MaxPreviewChars, 180, 1000);
@@ -4622,13 +4622,13 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 ReadWordRange(int P_0, int P_1, int P_2)
 	{
 		_G_c__DisplayClass16_0 CS_8_locals_6 = new _G_c__DisplayClass16_0();
-		CS_8_locals_6.bEEAWaNvfx = P_0;
+		CS_8_locals_6.rangeStartPosition = P_0;
 		CS_8_locals_6.RangeEndPosition = P_1;
 		CS_8_locals_6.MaxCharLimit = P_2;
 		return GetCurrentWordContext("read_word_range", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			Document document = GetActiveDocument(app);
-			Range range = GetRangeByPosition(document, CS_8_locals_6.bEEAWaNvfx, CS_8_locals_6.RangeEndPosition);
+			Range range = GetRangeByPosition(document, CS_8_locals_6.rangeStartPosition, CS_8_locals_6.RangeEndPosition);
 			int num = ClampValue(CS_8_locals_6.MaxCharLimit, 30000, 30000);
 			string text = NormalizeText(range.Text);
 			bool flag = text.Length > num;
@@ -4651,7 +4651,7 @@ internal sealed class BatchReplaceService3
 	{
 		_G_c__DisplayClass17_0 CS_8_locals_17 = new _G_c__DisplayClass17_0();
 		CS_8_locals_17.NumericParameter = P_0;
-		CS_8_locals_17.xYgvIDRxGK = P_2;
+		CS_8_locals_17.endParagraphIndex = P_2;
 		CS_8_locals_17.MaxSnippetLength = P_1;
 		CS_8_locals_17.MaxCharLimit = P_3;
 		return GetCurrentWordContext("read_word_paragraphs", delegate(Microsoft.Office.Interop.Word.Application app)
@@ -4668,13 +4668,13 @@ internal sealed class BatchReplaceService3
 				});
 			}
 			int num3;
-			if (CS_8_locals_17.xYgvIDRxGK > 0)
+			if (CS_8_locals_17.endParagraphIndex > 0)
 			{
-				if (CS_8_locals_17.xYgvIDRxGK < num2)
+				if (CS_8_locals_17.endParagraphIndex < num2)
 				{
 					return AiHelper_5.CreateError("tr", "tc");
 				}
-				num3 = Math.Min(num, CS_8_locals_17.xYgvIDRxGK);
+				num3 = Math.Min(num, CS_8_locals_17.endParagraphIndex);
 			}
 			else
 			{
@@ -4695,7 +4695,7 @@ internal sealed class BatchReplaceService3
 				startParagraphIndex = num2,
 				endParagraphIndex = num3,
 				returned = list.Count,
-				truncated = (CS_8_locals_17.xYgvIDRxGK <= 0 && num3 < num),
+				truncated = (CS_8_locals_17.endParagraphIndex <= 0 && num3 < num),
 				paragraphs = list
 			});
 		});
@@ -4704,14 +4704,14 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 SetParagraphOutlineOperation(int P_0, bool P_1, int P_2)
 	{
 		_G_c__DisplayClass18_0 CS_8_locals_12 = new _G_c__DisplayClass18_0();
-		CS_8_locals_12.qdXvZGOPXC = P_0;
+		CS_8_locals_12.maxItemCount = P_0;
 		CS_8_locals_12.TableCount = P_2;
 		CS_8_locals_12.IncludeBodyText = P_1;
 		return GetCurrentWordContext("read_word_outline", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass18_1 CS_8_locals_13 = new _G_c__DisplayClass18_1();
 			CS_8_locals_13.doc = GetActiveDocument(app);
-			int num = ClampValue(CS_8_locals_12.qdXvZGOPXC, 300, 1000);
+			int num = ClampValue(CS_8_locals_12.maxItemCount, 300, 1000);
 			int num2 = ClampValue(CS_8_locals_12.TableCount);
 			int num3 = ComputeIntValue(() => CS_8_locals_13.doc.Paragraphs.Count);
 			List<object> list = new List<object>();
@@ -4751,11 +4751,11 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 ParagraphOperation(string P_0, int P_1, int P_2, string P_3, int P_4, int P_5, int P_6, int P_7, int P_8)
 	{
 		_G_c__DisplayClass19_0 CS_8_locals_25 = new _G_c__DisplayClass19_0();
-		CS_8_locals_25.PxqveKcgAE = P_0;
+		CS_8_locals_25.headingText = P_0;
 		CS_8_locals_25.ParagraphNumber = P_1;
 		CS_8_locals_25.ParagraphNumber = P_2;
 		CS_8_locals_25.SearchPattern = P_3;
-		CS_8_locals_25.kDLvhCZhco = P_4;
+		CS_8_locals_25.startBlockIndex = P_4;
 		CS_8_locals_25.MaxSnippetLength = P_5;
 		CS_8_locals_25.MaxCharLimit = P_6;
 		CS_8_locals_25.MaxSnippetLength = P_7;
@@ -4764,7 +4764,7 @@ internal sealed class BatchReplaceService3
 		{
 			_G_c__DisplayClass19_1 CS_8_locals_32 = new _G_c__DisplayClass19_1();
 			CS_8_locals_32.doc = GetActiveDocument(app);
-			Paragraph paragraph = GetParagraphByIndex(CS_8_locals_32.doc, CS_8_locals_25.PxqveKcgAE, CS_8_locals_25.ParagraphNumber, CS_8_locals_25.ParagraphNumber, CS_8_locals_25.SearchPattern);
+			Paragraph paragraph = GetParagraphByIndex(CS_8_locals_32.doc, CS_8_locals_25.headingText, CS_8_locals_25.ParagraphNumber, CS_8_locals_25.ParagraphNumber, CS_8_locals_25.SearchPattern);
 			if (paragraph == null)
 			{
 				return AiHelper_5.CreateError("document", "/word/document.xml");
@@ -4789,7 +4789,7 @@ internal sealed class BatchReplaceService3
 					break;
 				}
 			}
-			int num7 = Math.Max(0, CS_8_locals_25.kDLvhCZhco);
+			int num7 = Math.Max(0, CS_8_locals_25.startBlockIndex);
 			int num8 = ClampValue(CS_8_locals_25.MaxSnippetLength, 200, 1000);
 			int num9 = ClampValue(CS_8_locals_25.MaxCharLimit, 1000, 5000);
 			int num10 = ClampValue(CS_8_locals_25.MaxSnippetLength, 80, 500);
@@ -4819,7 +4819,7 @@ internal sealed class BatchReplaceService3
 					{
 						Type = "gridSpan",
 						RangeStart = table.Range.Start,
-						Data = WhFgjeRETB(table, num13, num10, num11)
+						Data = buildTableInfo(table, num13, num10, num11)
 					});
 				}
 			}
@@ -4834,22 +4834,22 @@ internal sealed class BatchReplaceService3
 			int num14 = Math.Min(list.Count, num7 + num8);
 			for (int num15 = num7; num15 < num14; num15++)
 			{
-				Helper_20 jaDcyWQtOojM0IicNQ8 = list[num15];
+				Helper_20 contentBlock = list[num15];
 				var item = new
 				{
 					blockIndex = num15,
-					type = jaDcyWQtOojM0IicNQ8.Type,
-					rangeStart = jaDcyWQtOojM0IicNQ8.RangeStart,
-					data = jaDcyWQtOojM0IicNQ8.Data
+					type = contentBlock.Type,
+					rangeStart = contentBlock.RangeStart,
+					data = contentBlock.Data
 				};
 				list2.Add(item);
-				if (jaDcyWQtOojM0IicNQ8.Type == "val")
+				if (contentBlock.Type == "val")
 				{
-					list3.Add(jaDcyWQtOojM0IicNQ8.Data);
+					list3.Add(contentBlock.Data);
 				}
-				else if (jaDcyWQtOojM0IicNQ8.Type == "tcPr")
+				else if (contentBlock.Type == "tcPr")
 				{
-					list4.Add(jaDcyWQtOojM0IicNQ8.Data);
+					list4.Add(contentBlock.Data);
 				}
 			}
 			bool flag = num14 < list.Count;
@@ -4880,8 +4880,8 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 ReadTableOperation(int P_0, int P_1, int P_2, int P_3)
 	{
 		_G_c__DisplayClass20_0 CS_8_locals_15 = new _G_c__DisplayClass20_0();
-		CS_8_locals_15.XVXvxrblxn = P_0;
-		CS_8_locals_15.umIvdDfpSj = P_1;
+		CS_8_locals_15.startTableIndex = P_0;
+		CS_8_locals_15.maxTableCount = P_1;
 		CS_8_locals_15.MaxSnippetLength = P_2;
 		CS_8_locals_15.MaxSnippetLength = P_3;
 		return GetCurrentWordContext("read_word_tables", delegate(Microsoft.Office.Interop.Word.Application app)
@@ -4899,8 +4899,8 @@ internal sealed class BatchReplaceService3
 					tables = new object[0]
 				});
 			}
-			int num2 = ((CS_8_locals_15.XVXvxrblxn <= 0) ? 1 : CS_8_locals_15.XVXvxrblxn);
-			int num3 = ((CS_8_locals_15.XVXvxrblxn > 0) ? CS_8_locals_15.XVXvxrblxn : Math.Min(num, ClampValue(CS_8_locals_15.umIvdDfpSj, 5, 100)));
+			int num2 = ((CS_8_locals_15.startTableIndex <= 0) ? 1 : CS_8_locals_15.startTableIndex);
+			int num3 = ((CS_8_locals_15.startTableIndex > 0) ? CS_8_locals_15.startTableIndex : Math.Min(num, ClampValue(CS_8_locals_15.maxTableCount, 5, 100)));
 			if (num2 < 1 || num2 > num)
 			{
 				return AiHelper_5.CreateError("continue", "AI 修订替换", new
@@ -4913,7 +4913,7 @@ internal sealed class BatchReplaceService3
 			List<object> list = new List<object>();
 			for (int num6 = num2; num6 <= num3; num6++)
 			{
-				list.Add(WhFgjeRETB(CS_8_locals_19.doc.Tables[num6], num6, num4, num5));
+				list.Add(buildTableInfo(CS_8_locals_19.doc.Tables[num6], num6, num4, num5));
 			}
 			return AiHelper_5.CreateSuccess("Word 应用或目标文档不可用。", new
 			{
@@ -4931,7 +4931,7 @@ internal sealed class BatchReplaceService3
 		_G_c__DisplayClass21_0 CS_8_locals_13 = new _G_c__DisplayClass21_0();
 		CS_8_locals_13.MaxSnippetLength = P_0;
 		CS_8_locals_13.MaxSnippetLength = P_2;
-		CS_8_locals_13.TjwWuYNRhv = P_3;
+		CS_8_locals_13.maxReplyLength = P_3;
 		CS_8_locals_13.BooleanFlag = P_1;
 		return GetCurrentWordContext("read_word_comments", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
@@ -4939,7 +4939,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_16.doc = GetActiveDocument(app);
 			int num = ClampValue(CS_8_locals_13.MaxSnippetLength, 200, 1000);
 			int num2 = ClampValue(CS_8_locals_13.MaxSnippetLength, 120, 1000);
-			int num3 = ((CS_8_locals_13.TjwWuYNRhv < 0) ? 20 : Math.Min(CS_8_locals_13.TjwWuYNRhv, 200));
+			int num3 = ((CS_8_locals_13.maxReplyLength < 0) ? 20 : Math.Min(CS_8_locals_13.maxReplyLength, 200));
 			List<object> list = new List<object>();
 			int num4 = ComputeIntValue(() => CS_8_locals_16.doc.Comments.Count);
 			bool truncated = false;
@@ -4979,19 +4979,19 @@ internal sealed class BatchReplaceService3
 		return GetCurrentWordContext("reply_word_comment", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass22_1 CS_8_locals_55 = new _G_c__DisplayClass22_1();
-			CS_8_locals_55.rvpWKhLSmL = CS_8_locals_39;
+			CS_8_locals_55.outerScope = CS_8_locals_39;
 			if (string.IsNullOrWhiteSpace(CS_8_locals_39.ReplyText))
 			{
 				return AiHelper_5.CreateError("无法将 Word 焦点切回正文区域。请点击正文后重试同一工具，不要改用无修订写入。", "main_document_focus_failed");
 			}
 			CS_8_locals_55.doc = GetActiveDocument(app);
-			AiHelper_5 insertResult = (string.IsNullOrWhiteSpace(CS_8_locals_39.CommentToken) ? ExecuteOperation(CS_8_locals_55.doc, CS_8_locals_39.CommentIndex, out CS_8_locals_55.TargetComment, out CS_8_locals_55.FUKWrYRDvi) : CLCgCUGOui(CS_8_locals_55.doc, CS_8_locals_39.CommentToken, CS_8_locals_39.CommentIndex, out CS_8_locals_55.TargetComment, out CS_8_locals_55.FUKWrYRDvi));
+			AiHelper_5 insertResult = (string.IsNullOrWhiteSpace(CS_8_locals_39.CommentToken) ? ExecuteOperation(CS_8_locals_55.doc, CS_8_locals_39.CommentIndex, out CS_8_locals_55.TargetComment, out CS_8_locals_55.scopeComment) : CLCgCUGOui(CS_8_locals_55.doc, CS_8_locals_39.CommentToken, CS_8_locals_39.CommentIndex, out CS_8_locals_55.TargetComment, out CS_8_locals_55.scopeComment));
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
 			string text = GetCommentText(CS_8_locals_55.TargetComment);
-			string text2 = XPEgcZYWAO(CS_8_locals_55.FUKWrYRDvi);
+			string text2 = XPEgcZYWAO(CS_8_locals_55.scopeComment);
 			string text3 = NormalizeScopeText(CS_8_locals_39.ExpectedScopeText);
 			string text4 = NormalizeScopeText(CS_8_locals_39.ExpectedScopeText);
 			if (!string.IsNullOrWhiteSpace(text3) && !string.Equals(NormalizeScopeText(text), text3, StringComparison.Ordinal))
@@ -5014,34 +5014,34 @@ internal sealed class BatchReplaceService3
 					currentScopeText = TruncateText(text2, 500)
 				});
 			}
-			CS_8_locals_55.ComputedRange = GetCommentAnchorRange(CS_8_locals_55.FUKWrYRDvi) ?? GetCommentScopeRange(CS_8_locals_55.FUKWrYRDvi);
+			CS_8_locals_55.ComputedRange = GetCommentAnchorRange(CS_8_locals_55.scopeComment) ?? GetCommentScopeRange(CS_8_locals_55.scopeComment);
 			if (CS_8_locals_55.ComputedRange == null)
 			{
 				return AiHelper_5.CreateError("startswith", "body", new
 				{
 					commentToken = SanitizeToken(CS_8_locals_39.CommentToken),
 					commentIndex = CS_8_locals_39.CommentIndex,
-					threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.FUKWrYRDvi)
+					threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.scopeComment)
 				});
 			}
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ValidateRange(app, CS_8_locals_55.doc, CS_8_locals_55.ComputedRange);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ValidateRange(app, CS_8_locals_55.doc, CS_8_locals_55.ComputedRange);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			CS_8_locals_55.ReplyText = CS_8_locals_39.ReplyText.Trim();
-			return oBKTTgZY41(app, "heading", delegate
+			return executeWithUndoContext(app, "heading", delegate
 			{
 				try
 				{
-					Comments comments = DOYgOEfqSy(CS_8_locals_55.FUKWrYRDvi);
+					Comments comments = DOYgOEfqSy(CS_8_locals_55.scopeComment);
 					if (comments == null)
 					{
 						return AiHelper_5.CreateError("body", "heading", new
 						{
-							commentToken = SanitizeToken(CS_8_locals_55.rvpWKhLSmL.CommentToken),
-							commentIndex = CS_8_locals_55.rvpWKhLSmL.CommentIndex,
-							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.FUKWrYRDvi)
+							commentToken = SanitizeToken(CS_8_locals_55.outerScope.CommentToken),
+							commentIndex = CS_8_locals_55.outerScope.CommentIndex,
+							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.scopeComment)
 						});
 					}
 					object Text = CS_8_locals_55.ReplyText;
@@ -5050,20 +5050,20 @@ internal sealed class BatchReplaceService3
 					{
 						return AiHelper_5.CreateError("The table has merged cells or mixed widths and could not be read by row/column coordinates.", "Cell limit reached.", new
 						{
-							commentToken = SanitizeToken(CS_8_locals_55.rvpWKhLSmL.CommentToken),
-							commentIndex = CS_8_locals_55.rvpWKhLSmL.CommentIndex,
-							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.FUKWrYRDvi)
+							commentToken = SanitizeToken(CS_8_locals_55.outerScope.CommentToken),
+							commentIndex = CS_8_locals_55.outerScope.CommentIndex,
+							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.scopeComment)
 						});
 					}
-					return AiHelper_5.CreateSuccess("[merged/unavailable]", BuildCommentReplyInfo(CS_8_locals_55.doc, CS_8_locals_55.FUKWrYRDvi, CS_8_locals_55.TargetComment, comment, CS_8_locals_55.ReplyText));
+					return AiHelper_5.CreateSuccess("[merged/unavailable]", BuildCommentReplyInfo(CS_8_locals_55.doc, CS_8_locals_55.scopeComment, CS_8_locals_55.TargetComment, comment, CS_8_locals_55.ReplyText));
 				}
 				catch (Exception ex)
 				{
 					return AiHelper_5.CreateExceptionError("Some merged cells could not be read by row/column coordinates.", "Merged cells were expanded from table.Range.Cells where possible.", ex, new
 					{
-						commentToken = SanitizeToken(CS_8_locals_55.rvpWKhLSmL.CommentToken),
-						commentIndex = CS_8_locals_55.rvpWKhLSmL.CommentIndex,
-						threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.FUKWrYRDvi)
+						commentToken = SanitizeToken(CS_8_locals_55.outerScope.CommentToken),
+						commentIndex = CS_8_locals_55.outerScope.CommentIndex,
+						threadCommentIndex = GetCommentThreadIndex(CS_8_locals_55.scopeComment)
 					});
 				}
 			});
@@ -5135,19 +5135,19 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 gLSDIXjNAd(string P_0, bool P_1, bool P_2, int P_3)
 	{
 		_G_c__DisplayClass24_0 CS_8_locals_9 = new _G_c__DisplayClass24_0();
-		CS_8_locals_9.kJMWMFbwEh = P_0;
+		CS_8_locals_9.searchText = P_0;
 		CS_8_locals_9.MaxResultCount = P_3;
 		CS_8_locals_9.BooleanFlag = P_1;
-		CS_8_locals_9.PFZWwdLEQF = P_2;
+		CS_8_locals_9.matchWholeWord = P_2;
 		return GetCurrentWordContext("find_word_text", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
-			if (string.IsNullOrEmpty(CS_8_locals_9.kJMWMFbwEh))
+			if (string.IsNullOrEmpty(CS_8_locals_9.searchText))
 			{
 				return AiHelper_5.CreateError(" |", "| ");
 			}
 			Document document = GetActiveDocument(app);
 			int num = ClampValue(CS_8_locals_9.MaxResultCount, 100, 500);
-			List<WordSearchResult> list = BuildList(app, document, CS_8_locals_9.kJMWMFbwEh, CS_8_locals_9.BooleanFlag, CS_8_locals_9.PFZWwdLEQF, num);
+			List<WordSearchResult> list = BuildList(app, document, CS_8_locals_9.searchText, CS_8_locals_9.BooleanFlag, CS_8_locals_9.matchWholeWord, num);
 			return AiHelper_5.CreateSuccess(" | ", BuildResultObject(document, list, num));
 		});
 	}
@@ -5155,18 +5155,18 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 SearchDocumentOperation(string P_0, bool P_1, int P_2)
 	{
 		_G_c__DisplayClass25_0 CS_8_locals_7 = new _G_c__DisplayClass25_0();
-		CS_8_locals_7.IOPWLBITxB = P_0;
+		CS_8_locals_7.regexPattern = P_0;
 		CS_8_locals_7.MaxResultCount = P_2;
-		CS_8_locals_7.EyLWlEVNRV = P_1;
+		CS_8_locals_7.matchCase = P_1;
 		return GetCurrentWordContext("find_word_regex", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
-			if (string.IsNullOrEmpty(CS_8_locals_7.IOPWLBITxB))
+			if (string.IsNullOrEmpty(CS_8_locals_7.regexPattern))
 			{
 				return AiHelper_5.CreateError("---", " |");
 			}
 			Document document = GetActiveDocument(app);
 			int num = ClampValue(CS_8_locals_7.MaxResultCount, 100, 500);
-			List<RegexMatchResult> list = FindRegexMatches(document, CS_8_locals_7.IOPWLBITxB, CS_8_locals_7.EyLWlEVNRV, num);
+			List<RegexMatchResult> list = FindRegexMatches(document, CS_8_locals_7.regexPattern, CS_8_locals_7.matchCase, num);
 			return AiHelper_5.CreateSuccess("commentToken", BuildRegexResults(document, list, num));
 		});
 	}
@@ -5174,12 +5174,12 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 TableOperation(string P_0, bool P_1, int P_2)
 	{
 		_G_c__DisplayClass26_0 CS_8_locals_10 = new _G_c__DisplayClass26_0();
-		CS_8_locals_10.EJdWmMjUeA = P_0;
+		CS_8_locals_10.findText = P_0;
 		CS_8_locals_10.MaxResultCount = P_2;
 		CS_8_locals_10.MatchCase = P_1;
 		return GetCurrentWordContext("find_word_table_text", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
-			if (string.IsNullOrEmpty(CS_8_locals_10.EJdWmMjUeA))
+			if (string.IsNullOrEmpty(CS_8_locals_10.findText))
 			{
 				return AiHelper_5.CreateError("index", "author");
 			}
@@ -5193,14 +5193,14 @@ internal sealed class BatchReplaceService3
 					break;
 				}
 				_G_c__DisplayClass26_1 CS_8_locals_12 = new _G_c__DisplayClass26_1();
-				CS_8_locals_12.sEvWprZlaY = document.Tables[i];
-				int num2 = Ex5TMxi7X1(() => CS_8_locals_12.sEvWprZlaY.Range.End, 0);
-				Range range = CS_8_locals_12.sEvWprZlaY.Range.Duplicate;
+				CS_8_locals_12.targetTable = document.Tables[i];
+				int num2 = tryGetValueOrDefault(() => CS_8_locals_12.targetTable.Range.End, 0);
+				Range range = CS_8_locals_12.targetTable.Range.Duplicate;
 				while (list.Count < num)
 				{
 					range.Find.ClearFormatting();
 					Find find = range.Find;
-					object FindText = CS_8_locals_10.EJdWmMjUeA;
+					object FindText = CS_8_locals_10.findText;
 					object MatchCase = CS_8_locals_10.MatchCase;
 					object MatchWholeWord = false;
 					object MatchWildcards = false;
@@ -5220,7 +5220,7 @@ internal sealed class BatchReplaceService3
 						break;
 					}
 					Range duplicate = range.Duplicate;
-					list.Add(BuildTableInfo(document, CS_8_locals_12.sEvWprZlaY, i, duplicate));
+					list.Add(BuildTableInfo(document, CS_8_locals_12.targetTable, i, duplicate));
 					int num3 = Math.Max(duplicate.End, duplicate.Start + 1);
 					if (num2 <= 0 || num3 >= num2)
 					{
@@ -5307,7 +5307,7 @@ internal sealed class BatchReplaceService3
 		return GetCurrentWordContext("add_word_comment_at_selection", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass29_1 CS_8_locals_17 = new _G_c__DisplayClass29_1();
-			CS_8_locals_17.DTFWhrapJW = CS_8_locals_5;
+			CS_8_locals_17.outerScope = CS_8_locals_5;
 			if (string.IsNullOrWhiteSpace(CS_8_locals_5.CommentText))
 			{
 				return AiHelper_5.CreateError("repliesTruncated", "replies");
@@ -5318,13 +5318,13 @@ internal sealed class BatchReplaceService3
 			{
 				return AiHelper_5.CreateError("anchorRangeStart", "anchorRangeEnd");
 			}
-			return (!IsRangeValid(CS_8_locals_17.CurrentSelection.Range)) ? AiHelper_5.CreateError("anchorText", "commentToken") : oBKTTgZY41(app, "index", delegate
+			return (!IsRangeValid(CS_8_locals_17.CurrentSelection.Range)) ? AiHelper_5.CreateError("anchorText", "commentToken") : executeWithUndoContext(app, "index", delegate
 			{
 				Comments comments = CS_8_locals_17.doc.Comments;
 				Range range = CS_8_locals_17.CurrentSelection.Range;
-				object Text = CS_8_locals_17.DTFWhrapJW.CommentText.Trim();
+				object Text = CS_8_locals_17.outerScope.CommentText.Trim();
 				Comment comment = comments.Add(range, ref Text);
-				return AiHelper_5.CreateSuccess("author", BuildCommentAddedInfo(CS_8_locals_17.doc, CS_8_locals_17.CurrentSelection.Range, comment.Index, CS_8_locals_17.DTFWhrapJW.CommentText));
+				return AiHelper_5.CreateSuccess("author", BuildCommentAddedInfo(CS_8_locals_17.doc, CS_8_locals_17.CurrentSelection.Range, comment.Index, CS_8_locals_17.outerScope.CommentText));
 			});
 		});
 	}
@@ -5333,8 +5333,8 @@ internal sealed class BatchReplaceService3
 	{
 		_G_c__DisplayClass30_0 CS_8_locals_12 = new _G_c__DisplayClass30_0();
 		CS_8_locals_12.CommentText = P_2;
-		CS_8_locals_12.bHXWPpRCjJ = P_0;
-		CS_8_locals_12.WKMWApZUrG = P_1;
+		CS_8_locals_12.rangeStartPosition = P_0;
+		CS_8_locals_12.rangeEndPosition = P_1;
 		return GetCurrentWordContext("add_word_comment_at_range", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass30_1 CS_8_locals_20 = new _G_c__DisplayClass30_1();
@@ -5344,9 +5344,9 @@ internal sealed class BatchReplaceService3
 				return AiHelper_5.CreateError("date", "done");
 			}
 			CS_8_locals_20.doc = GetActiveDocument(app);
-			CS_8_locals_20.ComputedRange = GetRangeByPosition(CS_8_locals_20.doc, CS_8_locals_12.bHXWPpRCjJ, CS_8_locals_12.WKMWApZUrG);
+			CS_8_locals_20.ComputedRange = GetRangeByPosition(CS_8_locals_20.doc, CS_8_locals_12.rangeStartPosition, CS_8_locals_12.rangeEndPosition);
 			AiHelper_5 insertResult = ValidateRange(app, CS_8_locals_20.doc, CS_8_locals_20.ComputedRange);
-			return (insertResult != null) ? insertResult : oBKTTgZY41(app, "commentText", delegate
+			return (insertResult != null) ? insertResult : executeWithUndoContext(app, "commentText", delegate
 			{
 				Comments comments = CS_8_locals_20.doc.Comments;
 				Range range = CS_8_locals_20.ComputedRange;
@@ -5360,32 +5360,32 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 AddCommentOperation(int P_0, int P_1, int P_2, string P_3)
 	{
 		_G_c__DisplayClass31_0 CS_8_locals_13 = new _G_c__DisplayClass31_0();
-		CS_8_locals_13.JbiWxBXGfL = P_3;
-		CS_8_locals_13.rNUWdaMass = P_0;
+		CS_8_locals_13.commentText = P_3;
+		CS_8_locals_13.tableIndex = P_0;
 		CS_8_locals_13.NumericParameter = P_1;
 		CS_8_locals_13.NumericParameter = P_2;
 		return GetCurrentWordContext("add_word_comment_at_paragraph_range", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass31_1 CS_8_locals_22 = new _G_c__DisplayClass31_1();
 			CS_8_locals_22.ClosureScope = CS_8_locals_13;
-			if (string.IsNullOrWhiteSpace(CS_8_locals_13.JbiWxBXGfL))
+			if (string.IsNullOrWhiteSpace(CS_8_locals_13.commentText))
 			{
 				return AiHelper_5.CreateError("no_document", "commentToken 或正整数 commentIndex 至少需要提供一个。");
 			}
 			CS_8_locals_22.doc = GetActiveDocument(app);
-			AiHelper_5 insertResult = JXpTldftkV(CS_8_locals_22.doc, CS_8_locals_13.rNUWdaMass, CS_8_locals_13.NumericParameter, CS_8_locals_13.NumericParameter, out CS_8_locals_22.ComputedRange);
+			AiHelper_5 insertResult = JXpTldftkV(CS_8_locals_22.doc, CS_8_locals_13.tableIndex, CS_8_locals_13.NumericParameter, CS_8_locals_13.NumericParameter, out CS_8_locals_22.ComputedRange);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ValidateRange(app, CS_8_locals_22.doc, CS_8_locals_22.ComputedRange);
-			return (rU18qH9owXvBsPZ0iiU3 != null) ? rU18qH9owXvBsPZ0iiU3 : oBKTTgZY41(app, "invalid_arguments", delegate
+			AiHelper_5 operationResult = ValidateRange(app, CS_8_locals_22.doc, CS_8_locals_22.ComputedRange);
+			return (operationResult != null) ? operationResult : executeWithUndoContext(app, "invalid_arguments", delegate
 			{
 				Comments comments = CS_8_locals_22.doc.Comments;
 				Range range = CS_8_locals_22.ComputedRange;
-				object Text = CS_8_locals_22.ClosureScope.JbiWxBXGfL.Trim();
+				object Text = CS_8_locals_22.ClosureScope.commentText.Trim();
 				Comment comment = comments.Add(range, ref Text);
-				return AiHelper_5.CreateSuccess("未找到指定 index 的 Word 批注。请重新读取批注后再回复。", BuildCommentAddedInfo(CS_8_locals_22.doc, CS_8_locals_22.ComputedRange, comment.Index, CS_8_locals_22.ClosureScope.JbiWxBXGfL));
+				return AiHelper_5.CreateSuccess("未找到指定 index 的 Word 批注。请重新读取批注后再回复。", BuildCommentAddedInfo(CS_8_locals_22.doc, CS_8_locals_22.ComputedRange, comment.Index, CS_8_locals_22.ClosureScope.commentText));
 			});
 		});
 	}
@@ -5408,7 +5408,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_29.doc = GetActiveDocument(app);
 			CS_8_locals_29.TargetCell = DOQTmyyLCk(CS_8_locals_29.doc, CS_8_locals_14.TableIndex, CS_8_locals_14.RowIndex, CS_8_locals_14.ColumnIndex);
 			AiHelper_5 insertResult = ValidateRange(app, CS_8_locals_29.doc, CS_8_locals_29.TargetCell.Range);
-			return (insertResult != null) ? insertResult : oBKTTgZY41(app, "no_document", delegate
+			return (insertResult != null) ? insertResult : executeWithUndoContext(app, "no_document", delegate
 			{
 				Comments comments = CS_8_locals_29.doc.Comments;
 				Range range = CS_8_locals_29.TargetCell.Range;
@@ -5573,7 +5573,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_64.ResultList = new List<object>();
 			CS_8_locals_64.ChangedCount = 0;
 			CS_8_locals_64.OutlineLevel = 0;
-			DyITDXSmDr(app, "Name", delegate
+			executeWithUndoRecord(app, "Name", delegate
 			{
 				foreach (AiHelper_1 item in CS_8_locals_64.ParagraphList)
 				{
@@ -5690,10 +5690,10 @@ internal sealed class BatchReplaceService3
 					message = ex.Message
 				});
 			}
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ExecuteOperation(range, list, out CS_8_locals_69.CellChangeList);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ExecuteOperation(range, list, out CS_8_locals_69.CellChangeList);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			CS_8_locals_69.PreviewToken = BuildPreviewToken(CS_8_locals_69.doc, CS_8_locals_45.RangeStart, CS_8_locals_45.RangeEnd, CS_8_locals_69.CellChangeList);
 			object obj = iLJTdpgWxW(CS_8_locals_69.doc, CS_8_locals_45.RangeStart, CS_8_locals_45.RangeEnd, CS_8_locals_45.AllowHeaderEdit, CS_8_locals_45.UseTrackChanges, CS_8_locals_69.PreviewToken, CS_8_locals_69.CellChangeList);
@@ -5740,8 +5740,8 @@ internal sealed class BatchReplaceService3
 						columnIndex = CS_8_locals_71.CellChange.ColumnIndex,
 						isHeader = CS_8_locals_71.CellChange.IsHeader,
 						page = ComputeIntValue(CS_8_locals_71.CellChange.Cell.Range),
-						rangeStart = Ex5TMxi7X1(() => CS_8_locals_71.CellChange.Cell.Range.Start, CS_8_locals_71.CellChange.RangeStart),
-						rangeEnd = Ex5TMxi7X1(() => CS_8_locals_71.CellChange.Cell.Range.End, CS_8_locals_71.CellChange.RangeEnd),
+						rangeStart = tryGetValueOrDefault(() => CS_8_locals_71.CellChange.Cell.Range.Start, CS_8_locals_71.CellChange.RangeStart),
+						rangeEnd = tryGetValueOrDefault(() => CS_8_locals_71.CellChange.Cell.Range.End, CS_8_locals_71.CellChange.RangeEnd),
 						oldText = CS_8_locals_71.CellChange.OldText,
 						newText = CS_8_locals_71.CellChange.NewText,
 						changed = (flag && flag2),
@@ -5782,7 +5782,7 @@ internal sealed class BatchReplaceService3
 		return GetCurrentWordContext("insert_word_table_rows_by_model", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass36_1 CS_8_locals_80 = new _G_c__DisplayClass36_1();
-			CS_8_locals_80.gZUkBpLoZF = CS_8_locals_53;
+			CS_8_locals_80.outerScope = CS_8_locals_53;
 			CS_8_locals_80.WordApplication = app;
 			string a = (CS_8_locals_53.OperationMode ?? "add_word_comment_at_table_cell").Trim().ToLowerInvariant();
 			if (!string.Equals(a, "insert_word_paragraph", StringComparison.Ordinal) && !string.Equals(a, "set_word_paragraph_outline_level", StringComparison.Ordinal))
@@ -5834,8 +5834,8 @@ internal sealed class BatchReplaceService3
 			{
 				return insertResult;
 			}
-			CS_8_locals_80.PreviewToken = lKeTPQlpbN(CS_8_locals_80.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.RangeEnd, CS_8_locals_80.TableToolService);
-			object obj = fYyThhstYU(CS_8_locals_80.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.RangeEnd, CS_8_locals_80.PreviewToken, CS_8_locals_80.TableToolService);
+			CS_8_locals_80.PreviewToken = computeRowInsertHash(CS_8_locals_80.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.RangeEnd, CS_8_locals_80.TableToolService);
+			object obj = buildRowInsertResult(CS_8_locals_80.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.RangeEnd, CS_8_locals_80.PreviewToken, CS_8_locals_80.TableToolService);
 			if (string.Equals(a, "table", StringComparison.Ordinal))
 			{
 				return AiHelper_5.CreateSuccess("表格配置_方案名", obj);
@@ -5849,12 +5849,12 @@ internal sealed class BatchReplaceService3
 				preview = obj
 			}) : PPXTOUDVLE(CS_8_locals_80.doc, CS_8_locals_53.UseTrackChanges, delegate
 			{
-				if (!M4PTA9V6B2(CS_8_locals_80.WordApplication, CS_8_locals_80.TableToolService.AnchorCell, CS_8_locals_80.TableToolService.Position, CS_8_locals_80.TableToolService.Count, out var error))
+				if (!tryInsertRowsAtAnchor(CS_8_locals_80.WordApplication, CS_8_locals_80.TableToolService.AnchorCell, CS_8_locals_80.TableToolService.Position, CS_8_locals_80.TableToolService.Count, out var error))
 				{
 					return AiHelper_5.CreateError("表格_单元格_下边距", "0", new
 					{
-						rangeStart = CS_8_locals_80.gZUkBpLoZF.RangeStart,
-						rangeEnd = CS_8_locals_80.gZUkBpLoZF.RangeEnd,
+						rangeStart = CS_8_locals_80.outerScope.RangeStart,
+						rangeEnd = CS_8_locals_80.outerScope.RangeEnd,
 						LocalTableIndex = CS_8_locals_80.TableToolService.LocalTableIndex,
 						AnchorRowIndex = CS_8_locals_80.TableToolService.AnchorRowIndex,
 						Position = CS_8_locals_80.TableToolService.Position,
@@ -5867,13 +5867,13 @@ internal sealed class BatchReplaceService3
 				{
 					document = CS_8_locals_80.doc.Name,
 					documentFullName = CS_8_locals_80.doc.FullName,
-					rangeStart = CS_8_locals_80.gZUkBpLoZF.RangeStart,
-					rangeEnd = CS_8_locals_80.gZUkBpLoZF.RangeEnd,
+					rangeStart = CS_8_locals_80.outerScope.RangeStart,
+					rangeEnd = CS_8_locals_80.outerScope.RangeEnd,
 					localTableIndex = CS_8_locals_80.TableToolService.LocalTableIndex,
 					anchorRowIndex = CS_8_locals_80.TableToolService.AnchorRowIndex,
 					position = CS_8_locals_80.TableToolService.Position,
 					count = CS_8_locals_80.TableToolService.Count,
-					useTrackChanges = CS_8_locals_80.gZUkBpLoZF.UseTrackChanges,
+					useTrackChanges = CS_8_locals_80.outerScope.UseTrackChanges,
 					previewToken = CS_8_locals_80.PreviewToken,
 					rowsBefore = CS_8_locals_80.TableToolService.RowsBefore,
 					rowsAfter = rowsAfter,
@@ -5890,14 +5890,14 @@ internal sealed class BatchReplaceService3
 	{
 		_G_c__DisplayClass37_0 CS_8_locals_53 = new _G_c__DisplayClass37_0();
 		CS_8_locals_53.OperationMode = P_5;
-		CS_8_locals_53.tBmkugaqPB = P_4;
-		CS_8_locals_53.fnLkDwNHkT = P_2;
-		CS_8_locals_53.FAJkTvvVfq = P_3;
+		CS_8_locals_53.placement = P_4;
+		CS_8_locals_53.rowCount = P_2;
+		CS_8_locals_53.columnCount = P_3;
 		CS_8_locals_53.ExpectedPreviewToken = P_6;
 		CS_8_locals_53.RangeStart = P_0;
-		CS_8_locals_53.FHWkIpxSEj = P_1;
+		CS_8_locals_53.rangeEnd = P_1;
 		CS_8_locals_53.UseTrackChanges = P_7;
-		CS_8_locals_53.jdmkHkXOfG = P_8;
+		CS_8_locals_53.adjustAfterInsert = P_8;
 		return GetCurrentWordContext("insert_word_table_at_range", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass37_1 CS_8_locals_87 = new _G_c__DisplayClass37_1();
@@ -5910,28 +5910,28 @@ internal sealed class BatchReplaceService3
 					mode = CS_8_locals_53.OperationMode
 				});
 			}
-			string text = NormalizeConfigKey(CS_8_locals_53.tBmkugaqPB);
+			string text = NormalizeConfigKey(CS_8_locals_53.placement);
 			if (text == null)
 			{
 				return AiHelper_5.CreateError("0.7", "表格_宽度模式", new
 				{
-					placement = CS_8_locals_53.tBmkugaqPB
+					placement = CS_8_locals_53.placement
 				});
 			}
-			if (CS_8_locals_53.fnLkDwNHkT < 1 || CS_8_locals_53.fnLkDwNHkT > 200)
+			if (CS_8_locals_53.rowCount < 1 || CS_8_locals_53.rowCount > 200)
 			{
 				return AiHelper_5.CreateError("自适应宽度", "表格_最大列宽_宽度", new
 				{
-					rows = CS_8_locals_53.fnLkDwNHkT,
+					rows = CS_8_locals_53.rowCount,
 					min = 1,
 					max = 200
 				});
 			}
-			if (CS_8_locals_53.FAJkTvvVfq < 1 || CS_8_locals_53.FAJkTvvVfq > 63)
+			if (CS_8_locals_53.columnCount < 1 || CS_8_locals_53.columnCount > 63)
 			{
 				return AiHelper_5.CreateError("18.5", "表格_段落格式_中文字体", new
 				{
-					columns = CS_8_locals_53.FAJkTvvVfq,
+					columns = CS_8_locals_53.columnCount,
 					min = 1,
 					max = 63
 				});
@@ -5944,25 +5944,25 @@ internal sealed class BatchReplaceService3
 			Range range;
 			try
 			{
-				range = GetRangeByPosition(CS_8_locals_87.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.FHWkIpxSEj);
+				range = GetRangeByPosition(CS_8_locals_87.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.rangeEnd);
 			}
 			catch (Exception ex)
 			{
 				return AiHelper_5.CreateError("表格_段落格式_字号", "9", new
 				{
 					rangeStart = CS_8_locals_53.RangeStart,
-					rangeEnd = CS_8_locals_53.FHWkIpxSEj,
+					rangeEnd = CS_8_locals_53.rangeEnd,
 					exception = ex.GetType().Name,
 					message = ex.Message
 				});
 			}
-			AiHelper_5 insertResult = ExecuteTableEdit(CS_8_locals_87.doc, range, CS_8_locals_53.fnLkDwNHkT, CS_8_locals_53.FAJkTvvVfq, text, CS_8_locals_53.UseTrackChanges, CS_8_locals_53.jdmkHkXOfG, out CS_8_locals_87.TableEditService);
+			AiHelper_5 insertResult = ExecuteTableEdit(CS_8_locals_87.doc, range, CS_8_locals_53.rowCount, CS_8_locals_53.columnCount, text, CS_8_locals_53.UseTrackChanges, CS_8_locals_53.adjustAfterInsert, out CS_8_locals_87.TableEditService);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
-			CS_8_locals_87.PreviewToken = BIJTcpAmqJ(CS_8_locals_87.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.FHWkIpxSEj, CS_8_locals_87.TableEditService);
-			object obj = BuildResultObject(CS_8_locals_87.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.FHWkIpxSEj, CS_8_locals_87.PreviewToken, CS_8_locals_87.TableEditService);
+			CS_8_locals_87.PreviewToken = computeTableEditHash(CS_8_locals_87.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.rangeEnd, CS_8_locals_87.TableEditService);
+			object obj = BuildResultObject(CS_8_locals_87.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.rangeEnd, CS_8_locals_87.PreviewToken, CS_8_locals_87.TableEditService);
 			if (string.Equals(a, "表格_段落格式_加粗", StringComparison.Ordinal))
 			{
 				return AiHelper_5.CreateSuccess("1", obj);
@@ -5970,19 +5970,19 @@ internal sealed class BatchReplaceService3
 			return (!ValidatePreviewToken(CS_8_locals_87.PreviewToken, CS_8_locals_53.ExpectedPreviewToken)) ? AiHelper_5.CreateError("表格_段落格式_行距样式", "4", new
 			{
 				rangeStart = CS_8_locals_53.RangeStart,
-				rangeEnd = CS_8_locals_53.FHWkIpxSEj,
+				rangeEnd = CS_8_locals_53.rangeEnd,
 				expectedPreviewToken = CS_8_locals_53.ExpectedPreviewToken,
 				currentPreviewToken = CS_8_locals_87.PreviewToken,
 				preview = obj
 			}) : PPXTOUDVLE(CS_8_locals_87.doc, CS_8_locals_53.UseTrackChanges, delegate
 			{
 				_G_c__DisplayClass37_2 CS_8_locals_91 = new _G_c__DisplayClass37_2();
-				if (!psHTenZWYL(CS_8_locals_87.doc, CS_8_locals_87.TableEditService, out CS_8_locals_91.TargetTable, out var error))
+				if (!tryInsertTableAtParagraph(CS_8_locals_87.doc, CS_8_locals_87.TableEditService, out CS_8_locals_91.TargetTable, out var error))
 				{
 					return AiHelper_5.CreateError("表格_段落格式_行距值", "18", new
 					{
 						rangeStart = CS_8_locals_87.ClosureScope.RangeStart,
-						rangeEnd = CS_8_locals_87.ClosureScope.FHWkIpxSEj,
+						rangeEnd = CS_8_locals_87.ClosureScope.rangeEnd,
 						Rows = CS_8_locals_87.TableEditService.Rows,
 						Columns = CS_8_locals_87.TableEditService.Columns,
 						Placement = CS_8_locals_87.TableEditService.Placement,
@@ -5999,27 +5999,27 @@ internal sealed class BatchReplaceService3
 						return AiHelper_5.CreateError("表格_段落格式_段前距单位", "行", new
 						{
 							rangeStart = CS_8_locals_87.ClosureScope.RangeStart,
-							rangeEnd = CS_8_locals_87.ClosureScope.FHWkIpxSEj,
+							rangeEnd = CS_8_locals_87.ClosureScope.rangeEnd,
 							Rows = CS_8_locals_87.TableEditService.Rows,
 							Columns = CS_8_locals_87.TableEditService.Columns,
 							Placement = CS_8_locals_87.TableEditService.Placement,
 							tableIndex = GetTableIndex(CS_8_locals_87.doc, CS_8_locals_91.TargetTable),
-							tableRangeStart = Ex5TMxi7X1(() => CS_8_locals_91.TargetTable.Range.Start, 0),
-							tableRangeEnd = Ex5TMxi7X1(() => CS_8_locals_91.TargetTable.Range.End, 0),
+							tableRangeStart = tryGetValueOrDefault(() => CS_8_locals_91.TargetTable.Range.Start, 0),
+							tableRangeEnd = tryGetValueOrDefault(() => CS_8_locals_91.TargetTable.Range.End, 0),
 							error = text2
 						});
 					}
 				}
 				int tableIndex = GetTableIndex(CS_8_locals_87.doc, CS_8_locals_91.TargetTable);
-				int num = Ex5TMxi7X1(() => CS_8_locals_91.TargetTable.Range.Start, 0);
-				int num2 = Ex5TMxi7X1(() => CS_8_locals_91.TargetTable.Range.End, 0);
+				int num = tryGetValueOrDefault(() => CS_8_locals_91.TargetTable.Range.Start, 0);
+				int num2 = tryGetValueOrDefault(() => CS_8_locals_91.TargetTable.Range.End, 0);
 				HbPTWYrAup(CS_8_locals_91.TargetTable, out var num3, out var num4);
 				return AiHelper_5.CreateSuccess("表格_段落格式_段前距", new
 				{
 					document = CS_8_locals_87.doc.Name,
 					documentFullName = CS_8_locals_87.doc.FullName,
 					rangeStart = CS_8_locals_87.ClosureScope.RangeStart,
-					rangeEnd = CS_8_locals_87.ClosureScope.FHWkIpxSEj,
+					rangeEnd = CS_8_locals_87.ClosureScope.rangeEnd,
 					placement = CS_8_locals_87.TableEditService.Placement,
 					rows = ((num3 > 0) ? num3 : CS_8_locals_87.TableEditService.Rows),
 					columns = ((num4 > 0) ? num4 : CS_8_locals_87.TableEditService.Columns),
@@ -6052,13 +6052,13 @@ internal sealed class BatchReplaceService3
 	{
 		_G_c__DisplayClass38_0 CS_8_locals_6 = new _G_c__DisplayClass38_0();
 		CS_8_locals_6.RangeEndPosition = P_0;
-		CS_8_locals_6.SeWkYUegMC = P_1;
-		CS_8_locals_6.TlKkZRlAoO = P_2;
+		CS_8_locals_6.rangeEnd = P_1;
+		CS_8_locals_6.configJson = P_2;
 		return GetCurrentWordContext("replace_word_range_with_track_changes", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			Document document = GetActiveDocument(app);
-			Range range = GetRangeByPosition(document, CS_8_locals_6.RangeEndPosition, CS_8_locals_6.SeWkYUegMC);
-			return ExecuteOperation(app, document, range, CS_8_locals_6.TlKkZRlAoO ?? string.Empty);
+			Range range = GetRangeByPosition(document, CS_8_locals_6.RangeEndPosition, CS_8_locals_6.rangeEnd);
+			return ExecuteOperation(app, document, range, CS_8_locals_6.configJson ?? string.Empty);
 		});
 	}
 
@@ -6082,47 +6082,47 @@ internal sealed class BatchReplaceService3
 	{
 		_G_c__DisplayClass40_0 CS_8_locals_12 = new _G_c__DisplayClass40_0();
 		CS_8_locals_12.FindText = P_0;
-		CS_8_locals_12.PibkwEgMgL = P_1;
-		CS_8_locals_12.wQVktjGfvi = P_3;
-		CS_8_locals_12.bfxkLTOfxK = P_4;
+		CS_8_locals_12.replaceText = P_1;
+		CS_8_locals_12.matchCase = P_3;
+		CS_8_locals_12.matchWholeWord = P_4;
 		CS_8_locals_12.UseTrackChanges = P_5;
 		CS_8_locals_12.ExpectedCount = P_2;
 		CS_8_locals_12.MaxMatchesIgnored = P_6;
 		return GetCurrentWordContext("batch_replace_word_text_execute", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			_G_c__DisplayClass40_1 CS_8_locals_44 = new _G_c__DisplayClass40_1();
-			CS_8_locals_44.obZkGStNVx = CS_8_locals_12;
-			CS_8_locals_44.cQAkoUnyRF = app;
+			CS_8_locals_44.outerScope = CS_8_locals_12;
+			CS_8_locals_44.wordApplication = app;
 			if (string.IsNullOrEmpty(CS_8_locals_12.FindText))
 			{
 				return AiHelper_5.CreateError("表格_合计小计处理_下划线包含文字", "表格_合计处理_下划线包含合计");
 			}
-			CS_8_locals_44.doc = GetActiveDocument(CS_8_locals_44.cQAkoUnyRF);
+			CS_8_locals_44.doc = GetActiveDocument(CS_8_locals_44.wordApplication);
 			Document document = CS_8_locals_44.doc;
 			object Start = CS_8_locals_44.doc.Content.Start;
 			object End = Math.Min(CS_8_locals_44.doc.Content.End, CS_8_locals_44.doc.Content.Start + 1);
 			Range range = document.Range(ref Start, ref End);
-			AiHelper_5 insertResult = ValidateRange(CS_8_locals_44.cQAkoUnyRF, CS_8_locals_44.doc, range);
-			return (insertResult != null) ? insertResult : oBKTTgZY41(CS_8_locals_44.cQAkoUnyRF, "0", delegate
+			AiHelper_5 insertResult = ValidateRange(CS_8_locals_44.wordApplication, CS_8_locals_44.doc, range);
+			return (insertResult != null) ? insertResult : executeWithUndoContext(CS_8_locals_44.wordApplication, "0", delegate
 			{
 				bool trackRevisions = CS_8_locals_44.doc.TrackRevisions;
-				bool screenUpdating = CS_8_locals_44.cQAkoUnyRF.ScreenUpdating;
-				WdAlertLevel displayAlerts = CS_8_locals_44.cQAkoUnyRF.DisplayAlerts;
+				bool screenUpdating = CS_8_locals_44.wordApplication.ScreenUpdating;
+				WdAlertLevel displayAlerts = CS_8_locals_44.wordApplication.DisplayAlerts;
 				try
 				{
-					CS_8_locals_44.cQAkoUnyRF.ScreenUpdating = false;
-					CS_8_locals_44.cQAkoUnyRF.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+					CS_8_locals_44.wordApplication.ScreenUpdating = false;
+					CS_8_locals_44.wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 					CS_8_locals_44.doc.TrackRevisions = true;
 					Find find = CS_8_locals_44.doc.Content.Duplicate.Find;
 					find.ClearFormatting();
 					find.Replacement.ClearFormatting();
-					find.Text = CS_8_locals_44.obZkGStNVx.FindText;
-					find.Replacement.Text = CS_8_locals_44.obZkGStNVx.PibkwEgMgL ?? string.Empty;
+					find.Text = CS_8_locals_44.outerScope.FindText;
+					find.Replacement.Text = CS_8_locals_44.outerScope.replaceText ?? string.Empty;
 					find.Forward = true;
 					find.Wrap = WdFindWrap.wdFindStop;
 					find.Format = false;
-					find.MatchCase = CS_8_locals_44.obZkGStNVx.wQVktjGfvi;
-					find.MatchWholeWord = CS_8_locals_44.obZkGStNVx.bfxkLTOfxK;
+					find.MatchCase = CS_8_locals_44.outerScope.matchCase;
+					find.MatchWholeWord = CS_8_locals_44.outerScope.matchWholeWord;
 					find.MatchWildcards = false;
 					find.MatchSoundsLike = false;
 					find.MatchAllWordForms = false;
@@ -6146,25 +6146,25 @@ internal sealed class BatchReplaceService3
 					{
 						document = CS_8_locals_44.doc.Name,
 						documentFullName = CS_8_locals_44.doc.FullName,
-						findText = CS_8_locals_44.obZkGStNVx.FindText,
-						replaceText = (CS_8_locals_44.obZkGStNVx.PibkwEgMgL ?? string.Empty),
-						matchCase = CS_8_locals_44.obZkGStNVx.wQVktjGfvi,
-						wholeWord = CS_8_locals_44.obZkGStNVx.bfxkLTOfxK,
+						findText = CS_8_locals_44.outerScope.FindText,
+						replaceText = (CS_8_locals_44.outerScope.replaceText ?? string.Empty),
+						matchCase = CS_8_locals_44.outerScope.matchCase,
+						wholeWord = CS_8_locals_44.outerScope.matchWholeWord,
 						useTrackChanges = true,
-						requestedUseTrackChanges = CS_8_locals_44.obZkGStNVx.UseTrackChanges,
+						requestedUseTrackChanges = CS_8_locals_44.outerScope.UseTrackChanges,
 						forcedTrackChanges = true,
 						replaceMethod = "0",
-						expectedMatchCount = CS_8_locals_44.obZkGStNVx.ExpectedCount,
+						expectedMatchCount = CS_8_locals_44.outerScope.ExpectedCount,
 						replacedCountKnown = false,
 						previewRequired = false,
-						maxMatchesIgnored = CS_8_locals_44.obZkGStNVx.MaxMatchesIgnored
+						maxMatchesIgnored = CS_8_locals_44.outerScope.MaxMatchesIgnored
 					});
 				}
 				finally
 				{
 					CS_8_locals_44.doc.TrackRevisions = trackRevisions;
-					CS_8_locals_44.cQAkoUnyRF.DisplayAlerts = displayAlerts;
-					CS_8_locals_44.cQAkoUnyRF.ScreenUpdating = screenUpdating;
+					CS_8_locals_44.wordApplication.DisplayAlerts = displayAlerts;
+					CS_8_locals_44.wordApplication.ScreenUpdating = screenUpdating;
 				}
 			});
 		});
@@ -6176,7 +6176,7 @@ internal sealed class BatchReplaceService3
 		{
 			_G_c__DisplayClass41_0 CS_8_locals_4 = new _G_c__DisplayClass41_0();
 			CS_8_locals_4.doc = GetActiveDocument(app);
-			TableValidationService.CKSKKAnPKH();
+			TableValidationService.ExportCommentsToExcel();
 			return AiHelper_5.CreateSuccess("表格_小计处理_加粗", new
 			{
 				document = CS_8_locals_4.doc.Name,
@@ -6203,7 +6203,7 @@ internal sealed class BatchReplaceService3
 			{
 				return AiHelper_5.CreateError("表格_合计处理_加粗包含合计", "0");
 			}
-			DyITDXSmDr(CS_8_locals_7.WordApplication, "read_word_table_adjustment_config failed", BatchTableAdjustService.HUeflwYrZr);
+			executeWithUndoRecord(CS_8_locals_7.WordApplication, "read_word_table_adjustment_config failed", BatchTableAdjustService.BatchAdjustTables);
 			return AiHelper_5.CreateSuccess("config_error", new
 			{
 				document = document.Name,
@@ -6231,7 +6231,7 @@ internal sealed class BatchReplaceService3
 			{
 				return AiHelper_5.CreateError("三级", "四级");
 			}
-			DyITDXSmDr(CS_8_locals_7.WordApplication, "五级", BatchReplaceService.BBAMen3SA4);
+			executeWithUndoRecord(CS_8_locals_7.WordApplication, "五级", BatchReplaceService.FormatSelectionParagraphs);
 			return AiHelper_5.CreateSuccess("其他", new
 			{
 				document = document.Name,
@@ -6310,7 +6310,7 @@ internal sealed class BatchReplaceService3
 		{
 			_G_c__DisplayClass45_0 CS_8_locals_5 = new _G_c__DisplayClass45_0();
 			TableBorderConfig.Current.SaveToFile();
-			CS_8_locals_5.UpVkclndys = TableBorderConfig.Current.GetAllLegacy();
+			CS_8_locals_5.dictionary = TableBorderConfig.Current.GetAllLegacy();
 			string text = NormalizeKey(P_0);
 			List<object> levels = ((!string.IsNullOrWhiteSpace(text)) ? new string[1] { text } : new string[9]
 			{
@@ -6323,14 +6323,14 @@ internal sealed class BatchReplaceService3
 				"表前单位",
 				"表后注释",
 				"表后段落"
-			}).Select((string item) => GetDictValue(CS_8_locals_5.UpVkclndys, item)).ToList();
+			}).Select((string item) => GetDictValue(CS_8_locals_5.dictionary, item)).ToList();
 			return AiHelper_5.CreateSuccess("Word paragraph adjustment config read.", new
 			{
 				configType = "paragraph",
-				preset = GetConfigValue(CS_8_locals_5.UpVkclndys, "段落配置_方案名", GetConfigValue(CS_8_locals_5.UpVkclndys, "段落配置_当前方案")),
+				preset = GetConfigValue(CS_8_locals_5.dictionary, "段落配置_方案名", GetConfigValue(CS_8_locals_5.dictionary, "段落配置_当前方案")),
 				level = (string.IsNullOrWhiteSpace(text) ? null : text),
 				levels = levels,
-				raw = ExtractConfigEntries(CS_8_locals_5.UpVkclndys, "段落_")
+				raw = ExtractConfigEntries(CS_8_locals_5.dictionary, "段落_")
 			});
 		}
 		catch (Exception ex)
@@ -6362,27 +6362,27 @@ internal sealed class BatchReplaceService3
 				rangeEnd = CS_8_locals_30.TargetTable.Range.End,
 				rows = GetTableRowCount(CS_8_locals_30.TargetTable),
 				columns = GetTableColumnCount(CS_8_locals_30.TargetTable),
-				preferredWidthType = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.PreferredWidthType, WdPreferredWidthType.wdPreferredWidthAuto)),
-				preferredWidth = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.PreferredWidth, 0f),
-				rowAlignment = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.Rows.Alignment, WdRowAlignment.wdAlignRowLeft)),
-				allowPageBreaks = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.AllowPageBreaks, ypQS6RTSiCdpSgKNQtr: false),
-				spacing = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.Spacing, 0f),
+				preferredWidthType = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.PreferredWidthType, WdPreferredWidthType.wdPreferredWidthAuto)),
+				preferredWidth = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.PreferredWidth, 0f),
+				rowAlignment = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.Rows.Alignment, WdRowAlignment.wdAlignRowLeft)),
+				allowPageBreaks = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.AllowPageBreaks, defaultValue: false),
+				spacing = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.Spacing, 0f),
 				cellPadding = new
 				{
-					top = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.TopPadding, 0f),
-					bottom = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.BottomPadding, 0f),
-					left = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.LeftPadding, 0f),
-					right = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.RightPadding, 0f)
+					top = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.TopPadding, 0f),
+					bottom = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.BottomPadding, 0f),
+					left = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.LeftPadding, 0f),
+					right = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.RightPadding, 0f)
 				},
 				row = new
 				{
-					height = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.Rows.Height, 0f),
-					heightRule = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.Rows.HeightRule, WdRowHeightRule.wdRowHeightAuto)),
-					allowBreakAcrossPages = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.Rows.AllowBreakAcrossPages, 0),
-					firstRowHeadingFormat = Ex5TMxi7X1(() => CS_8_locals_30.TargetTable.Rows[1].HeadingFormat, 0)
+					height = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.Rows.Height, 0f),
+					heightRule = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.Rows.HeightRule, WdRowHeightRule.wdRowHeightAuto)),
+					allowBreakAcrossPages = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.Rows.AllowBreakAcrossPages, 0),
+					firstRowHeadingFormat = tryGetValueOrDefault(() => CS_8_locals_30.TargetTable.Rows[1].HeadingFormat, 0)
 				},
 				rangeFont = BuildFontInfo(CS_8_locals_30.TargetTable.Range.Font),
-				paragraphFormat = pyaTKvLinx(CS_8_locals_30.TargetTable.Range.ParagraphFormat),
+				paragraphFormat = buildParagraphFormatObject(CS_8_locals_30.TargetTable.Range.ParagraphFormat),
 				borders = BuildResultObject(CS_8_locals_30.TargetTable),
 				sampleCells = BuildResultObject(CS_8_locals_30.TargetTable)
 			});
@@ -6414,7 +6414,7 @@ internal sealed class BatchReplaceService3
 				styleName = GetParagraphStyleName(paragraph),
 				excerpt = TruncateText(NormalizeText(paragraph.Range.Text), 240),
 				font = BuildFontInfo(paragraph.Range.Font),
-				paragraphFormat = pyaTKvLinx(paragraph.Range.ParagraphFormat)
+				paragraphFormat = buildParagraphFormatObject(paragraph.Range.ParagraphFormat)
 			});
 		});
 	}
@@ -6422,22 +6422,22 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 FormatParagraphsOperation(int P_0, int P_1, string P_2)
 	{
 		_G_c__DisplayClass48_0 CS_8_locals_12 = new _G_c__DisplayClass48_0();
-		CS_8_locals_12.hGNxuJMRRe = P_2;
+		CS_8_locals_12.configJson = P_2;
 		CS_8_locals_12.ParagraphIndex = P_0;
 		CS_8_locals_12.ParagraphIndex = P_1;
 		return GetCurrentWordContext("preview_word_paragraph_format_change", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
-			ParagraphFormatConfig tqHECLHh7ExNw6c0RJi;
-			AiHelper_5 insertResult = KESDFbjWCy(CS_8_locals_12.hGNxuJMRRe, out tqHECLHh7ExNw6c0RJi);
+			ParagraphFormatConfig paragraphFormatConfig;
+			AiHelper_5 insertResult = parseParagraphFormatConfig(CS_8_locals_12.configJson, out paragraphFormatConfig);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
 			Document document = GetActiveDocument(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ReadParagraphRange(document, CS_8_locals_12.ParagraphIndex, CS_8_locals_12.ParagraphIndex);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ReadParagraphRange(document, CS_8_locals_12.ParagraphIndex, CS_8_locals_12.ParagraphIndex);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			List<AiHelper_1> list = CollectParagraphs(app, document, CS_8_locals_12.ParagraphIndex, CS_8_locals_12.ParagraphIndex);
 			return (list.Count == 0) ? AiHelper_5.CreateError("表后段落", "Word paragraph adjustment config read.", new
@@ -6451,8 +6451,8 @@ internal sealed class BatchReplaceService3
 				startParagraphIndex = CS_8_locals_12.ParagraphIndex,
 				endParagraphIndex = CS_8_locals_12.ParagraphIndex,
 				expectedChangeCount = list.Count,
-				supportedFields = ParagraphFormatConfig.CsBHPhLn0y,
-				requestedChanges = tqHECLHh7ExNw6c0RJi.WK3Hqw863W(),
+				supportedFields = ParagraphFormatConfig.supportedFields,
+				requestedChanges = paragraphFormatConfig.getRequestedChangeCount(),
 				paragraphs = list.Select((AiHelper_1 item) => BuildParagraphChangeInfo(item)).ToList()
 			});
 		});
@@ -6463,7 +6463,7 @@ internal sealed class BatchReplaceService3
 		_G_c__DisplayClass49_0 CS_8_locals_23 = new _G_c__DisplayClass49_0();
 		CS_8_locals_23.ExpectedCount = P_3;
 		CS_8_locals_23.ConfigJson = P_2;
-		CS_8_locals_23.sexxiKXvvR = P_0;
+		CS_8_locals_23.startParagraphIndex = P_0;
 		CS_8_locals_23.ParagraphIndex = P_1;
 		return GetCurrentWordContext("apply_word_paragraph_format_change", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
@@ -6472,18 +6472,18 @@ internal sealed class BatchReplaceService3
 			{
 				return AiHelper_5.CreateError("段落配置_方案名", "段落配置_当前方案");
 			}
-			AiHelper_5 insertResult = KESDFbjWCy(CS_8_locals_23.ConfigJson, out CS_8_locals_30.JdkxrYYqxL);
+			AiHelper_5 insertResult = parseParagraphFormatConfig(CS_8_locals_23.ConfigJson, out CS_8_locals_30.paragraphFormatConfig);
 			if (insertResult != null)
 			{
 				return insertResult;
 			}
 			Document document = GetActiveDocument(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ReadParagraphRange(document, CS_8_locals_23.sexxiKXvvR, CS_8_locals_23.ParagraphIndex);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ReadParagraphRange(document, CS_8_locals_23.startParagraphIndex, CS_8_locals_23.ParagraphIndex);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
-			CS_8_locals_30.ParagraphList = CollectParagraphs(app, document, CS_8_locals_23.sexxiKXvvR, CS_8_locals_23.ParagraphIndex);
+			CS_8_locals_30.ParagraphList = CollectParagraphs(app, document, CS_8_locals_23.startParagraphIndex, CS_8_locals_23.ParagraphIndex);
 			if (CS_8_locals_30.ParagraphList.Count != CS_8_locals_23.ExpectedCount)
 			{
 				return AiHelper_5.CreateError("段落_", "read_word_paragraph_adjustment_config failed", new
@@ -6494,17 +6494,17 @@ internal sealed class BatchReplaceService3
 			}
 			CS_8_locals_30.ResultList = new List<object>();
 			CS_8_locals_30.ChangedCount = 0;
-			AiHelper_5 rU18qH9owXvBsPZ0iiU4 = ValidateRange(app, document, CS_8_locals_30.ParagraphList[0].Paragraph.Range);
-			if (rU18qH9owXvBsPZ0iiU4 != null)
+			AiHelper_5 validationResult = ValidateRange(app, document, CS_8_locals_30.ParagraphList[0].Paragraph.Range);
+			if (validationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU4;
+				return validationResult;
 			}
-			DyITDXSmDr(app, "config_error", delegate
+			executeWithUndoRecord(app, "config_error", delegate
 			{
 				foreach (AiHelper_1 item in CS_8_locals_30.ParagraphList)
 				{
 					object before = BuildParagraphRangeInfo(item.Paragraph);
-					ApplyParagraphFormat(item.Paragraph.Range, CS_8_locals_30.JdkxrYYqxL);
+					ApplyParagraphFormat(item.Paragraph.Range, CS_8_locals_30.paragraphFormatConfig);
 					object after = BuildParagraphRangeInfo(item.Paragraph);
 					CS_8_locals_30.ChangedCount++;
 					CS_8_locals_30.ResultList.Add(new
@@ -6524,11 +6524,11 @@ internal sealed class BatchReplaceService3
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
-				startParagraphIndex = CS_8_locals_23.sexxiKXvvR,
+				startParagraphIndex = CS_8_locals_23.startParagraphIndex,
 				endParagraphIndex = CS_8_locals_23.ParagraphIndex,
 				expectedChangeCount = CS_8_locals_23.ExpectedCount,
 				changed = CS_8_locals_30.ChangedCount,
-				requestedChanges = CS_8_locals_30.JdkxrYYqxL.WK3Hqw863W(),
+				requestedChanges = CS_8_locals_30.paragraphFormatConfig.getRequestedChangeCount(),
 				paragraphs = CS_8_locals_30.ResultList
 			});
 		});
@@ -6537,13 +6537,13 @@ internal sealed class BatchReplaceService3
 	public AiHelper_5 PreviewTableOperation(int P_0, string P_1, string P_2)
 	{
 		_G_c__DisplayClass50_0 CS_8_locals_7 = new _G_c__DisplayClass50_0();
-		CS_8_locals_7.noTxKIkNHF = P_2;
+		CS_8_locals_7.configJson = P_2;
 		CS_8_locals_7.TableIndex = P_0;
 		CS_8_locals_7.CellSelector = P_1;
 		return GetCurrentWordContext("preview_word_table_format_change", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
-			Helper_9 xqsyBVQI7dsGuEiUT3v;
-			AiHelper_5 insertResult = ParseTableConfig(CS_8_locals_7.noTxKIkNHF, out xqsyBVQI7dsGuEiUT3v);
+			Helper_9 cellResolution;
+			AiHelper_5 insertResult = ParseTableConfig(CS_8_locals_7.configJson, out cellResolution);
 			if (insertResult != null)
 			{
 				return insertResult;
@@ -6553,8 +6553,8 @@ internal sealed class BatchReplaceService3
 			int tableIndex = GetTableIndex(document, table);
 			Range range;
 			string target;
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ResolveTableCell(document, table, CS_8_locals_7.CellSelector, out range, out target);
-			return (rU18qH9owXvBsPZ0iiU3 != null) ? rU18qH9owXvBsPZ0iiU3 : AiHelper_5.CreateSuccess("inspect_word_paragraph_format", new
+			AiHelper_5 operationResult = ResolveTableCell(document, table, CS_8_locals_7.CellSelector, out range, out target);
+			return (operationResult != null) ? operationResult : AiHelper_5.CreateSuccess("inspect_word_paragraph_format", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6563,7 +6563,7 @@ internal sealed class BatchReplaceService3
 				target = target,
 				expectedChangeCount = 1,
 				supportedFields = Helper_9.TcvQQSKPF8,
-				requestedChanges = xqsyBVQI7dsGuEiUT3v.hhNQHAECG8(),
+				requestedChanges = cellResolution.hhNQHAECG8(),
 				before = BuildRangeSnapshot(table, range)
 			});
 		});
@@ -6591,7 +6591,7 @@ internal sealed class BatchReplaceService3
 					currentChangeCount = 1
 				});
 			}
-			AiHelper_5 insertResult = ParseTableConfig(CS_8_locals_23.ConfigJson, out CS_8_locals_27.vsUxwGPQsX);
+			AiHelper_5 insertResult = ParseTableConfig(CS_8_locals_23.ConfigJson, out CS_8_locals_27.tableConfig);
 			if (insertResult != null)
 			{
 				return insertResult;
@@ -6600,20 +6600,20 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_27.TargetTable = GetTableByIndex(app, document, CS_8_locals_23.TableIndex);
 			int tableIndex = GetTableIndex(document, CS_8_locals_27.TargetTable);
 			string target;
-			AiHelper_5 rU18qH9owXvBsPZ0iiU3 = ResolveTableCell(document, CS_8_locals_27.TargetTable, CS_8_locals_23.CellSelector, out CS_8_locals_27.ComputedRange, out target);
-			if (rU18qH9owXvBsPZ0iiU3 != null)
+			AiHelper_5 operationResult = ResolveTableCell(document, CS_8_locals_27.TargetTable, CS_8_locals_23.CellSelector, out CS_8_locals_27.ComputedRange, out target);
+			if (operationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU3;
+				return operationResult;
 			}
 			object before = BuildRangeSnapshot(CS_8_locals_27.TargetTable, CS_8_locals_27.ComputedRange);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU4 = ValidateRange(app, document, CS_8_locals_27.ComputedRange);
-			if (rU18qH9owXvBsPZ0iiU4 != null)
+			AiHelper_5 validationResult = ValidateRange(app, document, CS_8_locals_27.ComputedRange);
+			if (validationResult != null)
 			{
-				return rU18qH9owXvBsPZ0iiU4;
+				return validationResult;
 			}
-			DyITDXSmDr(app, "startParagraphIndex 和 endParagraphIndex 不能为负数。", delegate
+			executeWithUndoRecord(app, "startParagraphIndex 和 endParagraphIndex 不能为负数。", delegate
 			{
-				ApplyTableChanges(CS_8_locals_27.TargetTable, CS_8_locals_27.ComputedRange, CS_8_locals_27.vsUxwGPQsX);
+				ApplyTableChanges(CS_8_locals_27.TargetTable, CS_8_locals_27.ComputedRange, CS_8_locals_27.tableConfig);
 			});
 			object after = BuildRangeSnapshot(CS_8_locals_27.TargetTable, CS_8_locals_27.ComputedRange);
 			return AiHelper_5.CreateSuccess("invalid_arguments", new
@@ -6625,7 +6625,7 @@ internal sealed class BatchReplaceService3
 				target = target,
 				expectedChangeCount = CS_8_locals_23.ExpectedCount,
 				changed = 1,
-				requestedChanges = CS_8_locals_27.vsUxwGPQsX.hhNQHAECG8(),
+				requestedChanges = CS_8_locals_27.tableConfig.hhNQHAECG8(),
 				before = before,
 				after = after
 			});
@@ -6702,7 +6702,7 @@ internal sealed class BatchReplaceService3
 			outlineLevel = ClampOutlineLevel(GetOutlineLevel(P_0)),
 			styleName = GetParagraphStyleName(P_0),
 			font = BuildFontInfo(P_0.Range.Font),
-			paragraphFormat = pyaTKvLinx(P_0.Range.ParagraphFormat)
+			paragraphFormat = buildParagraphFormatObject(P_0.Range.ParagraphFormat)
 		};
 	}
 
@@ -6717,23 +6717,23 @@ internal sealed class BatchReplaceService3
 			page = ComputeIntValue(P_1),
 			rows = GetTableRowCount(CS_8_locals_13.TableForProperties),
 			columns = GetTableColumnCount(CS_8_locals_13.TableForProperties),
-			preferredWidthType = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.PreferredWidthType, WdPreferredWidthType.wdPreferredWidthAuto)),
-			preferredWidth = Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.PreferredWidth, 0f),
-			rowAlignment = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.Rows.Alignment, WdRowAlignment.wdAlignRowLeft)),
+			preferredWidthType = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.PreferredWidthType, WdPreferredWidthType.wdPreferredWidthAuto)),
+			preferredWidth = tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.PreferredWidth, 0f),
+			rowAlignment = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.Rows.Alignment, WdRowAlignment.wdAlignRowLeft)),
 			cellPadding = new
 			{
-				top = Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.TopPadding, 0f),
-				bottom = Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.BottomPadding, 0f),
-				left = Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.LeftPadding, 0f),
-				right = Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.RightPadding, 0f)
+				top = tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.TopPadding, 0f),
+				bottom = tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.BottomPadding, 0f),
+				left = tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.LeftPadding, 0f),
+				right = tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.RightPadding, 0f)
 			},
 			row = new
 			{
-				height = Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.Rows.Height, 0f),
-				heightRule = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_13.TableForProperties.Rows.HeightRule, WdRowHeightRule.wdRowHeightAuto))
+				height = tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.Rows.Height, 0f),
+				heightRule = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_13.TableForProperties.Rows.HeightRule, WdRowHeightRule.wdRowHeightAuto))
 			},
 			targetFont = BuildFontInfo(P_1.Font),
-			targetParagraphFormat = pyaTKvLinx(P_1.ParagraphFormat),
+			targetParagraphFormat = buildParagraphFormatObject(P_1.ParagraphFormat),
 			borders = BuildResultObject(CS_8_locals_13.TableForProperties)
 		};
 	}
@@ -6979,11 +6979,11 @@ internal sealed class BatchReplaceService3
 		}
 	}
 
-	private static AiHelper_5 KESDFbjWCy(string P_0, out ParagraphFormatConfig P_1)
+	private static AiHelper_5 parseParagraphFormatConfig(string P_0, out ParagraphFormatConfig P_1)
 	{
 		P_1 = null;
 		JObject jObject;
-		AiHelper_5 insertResult = ParseFormatConfig(P_0, ParagraphFormatConfig.CsBHPhLn0y, out jObject);
+		AiHelper_5 insertResult = ParseFormatConfig(P_0, ParagraphFormatConfig.supportedFields, out jObject);
 		if (insertResult != null)
 		{
 			return insertResult;
@@ -7953,7 +7953,7 @@ internal sealed class BatchReplaceService3
 		return P_0 * 28.346457f;
 	}
 
-	private static void DyITDXSmDr(Microsoft.Office.Interop.Word.Application P_0, string P_1, Action P_2)
+	private static void executeWithUndoRecord(Microsoft.Office.Interop.Word.Application P_0, string P_1, Action P_2)
 	{
 		if (P_2 == null)
 		{
@@ -7987,20 +7987,20 @@ internal sealed class BatchReplaceService3
 		}
 	}
 
-	private static leN7VeTgf6SMcL2iBhQ oBKTTgZY41<leN7VeTgf6SMcL2iBhQ>(Microsoft.Office.Interop.Word.Application P_0, string P_1, Func<leN7VeTgf6SMcL2iBhQ> P_2)
+	private static TResult executeWithUndoContext<TResult>(Microsoft.Office.Interop.Word.Application P_0, string P_1, Func<TResult> P_2)
 	{
-		_G_c__DisplayClass83_0<leN7VeTgf6SMcL2iBhQ> CS_8_locals_6 = new _G_c__DisplayClass83_0<leN7VeTgf6SMcL2iBhQ>();
+		_G_c__DisplayClass83_0<TResult> CS_8_locals_6 = new _G_c__DisplayClass83_0<TResult>();
 		CS_8_locals_6.action = P_2;
 		if (CS_8_locals_6.action == null)
 		{
-			return default(leN7VeTgf6SMcL2iBhQ);
+			return default(TResult);
 		}
-		CS_8_locals_6.result = default(leN7VeTgf6SMcL2iBhQ);
+		CS_8_locals_6.result = default(TResult);
 		Action action = delegate
 		{
 			CS_8_locals_6.result = CS_8_locals_6.action();
 		};
-		DyITDXSmDr(P_0, P_1, action);
+		executeWithUndoRecord(P_0, P_1, action);
 		return CS_8_locals_6.result;
 	}
 
@@ -8207,32 +8207,32 @@ internal sealed class BatchReplaceService3
 			nameFarEast = SafeExecute(() => CS_8_locals_8.TargetFont.NameFarEast),
 			nameAscii = SafeExecute(() => CS_8_locals_8.TargetFont.NameAscii),
 			nameOther = SafeExecute(() => CS_8_locals_8.TargetFont.NameOther),
-			size = Ex5TMxi7X1(() => CS_8_locals_8.TargetFont.Size, 0f),
-			bold = Ex5TMxi7X1(() => CS_8_locals_8.TargetFont.Bold, 0),
-			italic = Ex5TMxi7X1(() => CS_8_locals_8.TargetFont.Italic, 0),
-			underline = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_8.TargetFont.Underline, WdUnderline.wdUnderlineNone))
+			size = tryGetValueOrDefault(() => CS_8_locals_8.TargetFont.Size, 0f),
+			bold = tryGetValueOrDefault(() => CS_8_locals_8.TargetFont.Bold, 0),
+			italic = tryGetValueOrDefault(() => CS_8_locals_8.TargetFont.Italic, 0),
+			underline = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_8.TargetFont.Underline, WdUnderline.wdUnderlineNone))
 		};
 	}
 
-	private static object pyaTKvLinx(ParagraphFormat P_0)
+	private static object buildParagraphFormatObject(ParagraphFormat P_0)
 	{
 		_G_c__DisplayClass94_0 CS_8_locals_14 = new _G_c__DisplayClass94_0();
 		CS_8_locals_14.TargetParagraphFormat = P_0;
 		return new
 		{
-			alignment = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.Alignment, WdParagraphAlignment.wdAlignParagraphLeft)),
-			lineSpacingRule = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.LineSpacingRule, WdLineSpacing.wdLineSpaceSingle)),
-			lineSpacing = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.LineSpacing, 0f),
-			spaceBefore = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.SpaceBefore, 0f),
-			spaceAfter = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.SpaceAfter, 0f),
-			lineUnitBefore = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.LineUnitBefore, 0f),
-			lineUnitAfter = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.LineUnitAfter, 0f),
-			leftIndent = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.LeftIndent, 0f),
-			rightIndent = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.RightIndent, 0f),
-			firstLineIndent = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.FirstLineIndent, 0f),
-			characterUnitLeftIndent = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.CharacterUnitLeftIndent, 0f),
-			characterUnitRightIndent = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.CharacterUnitRightIndent, 0f),
-			characterUnitFirstLineIndent = Ex5TMxi7X1(() => CS_8_locals_14.TargetParagraphFormat.CharacterUnitFirstLineIndent, 0f)
+			alignment = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.Alignment, WdParagraphAlignment.wdAlignParagraphLeft)),
+			lineSpacingRule = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.LineSpacingRule, WdLineSpacing.wdLineSpaceSingle)),
+			lineSpacing = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.LineSpacing, 0f),
+			spaceBefore = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.SpaceBefore, 0f),
+			spaceAfter = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.SpaceAfter, 0f),
+			lineUnitBefore = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.LineUnitBefore, 0f),
+			lineUnitAfter = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.LineUnitAfter, 0f),
+			leftIndent = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.LeftIndent, 0f),
+			rightIndent = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.RightIndent, 0f),
+			firstLineIndent = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.FirstLineIndent, 0f),
+			characterUnitLeftIndent = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.CharacterUnitLeftIndent, 0f),
+			characterUnitRightIndent = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.CharacterUnitRightIndent, 0f),
+			characterUnitFirstLineIndent = tryGetValueOrDefault(() => CS_8_locals_14.TargetParagraphFormat.CharacterUnitFirstLineIndent, 0f)
 		};
 	}
 
@@ -8255,8 +8255,8 @@ internal sealed class BatchReplaceService3
 		CS_8_locals_6.BorderType = P_3;
 		P_0[P_2] = new
 		{
-			lineStyle = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_6.TableForBorders.Borders[CS_8_locals_6.BorderType].LineStyle, WdLineStyle.wdLineStyleNone)),
-			lineWidth = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_6.TableForBorders.Borders[CS_8_locals_6.BorderType].LineWidth, WdLineWidth.wdLineWidth025pt))
+			lineStyle = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_6.TableForBorders.Borders[CS_8_locals_6.BorderType].LineStyle, WdLineStyle.wdLineStyleNone)),
+			lineWidth = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_6.TableForBorders.Borders[CS_8_locals_6.BorderType].LineWidth, WdLineWidth.wdLineWidth025pt))
 		};
 	}
 
@@ -8283,16 +8283,16 @@ internal sealed class BatchReplaceService3
 		try
 		{
 			_G_c__DisplayClass98_0 CS_8_locals_5 = new _G_c__DisplayClass98_0();
-			CS_8_locals_5.gAJdIPCcIZ = P_1.Cell(P_3, P_4);
+			CS_8_locals_5.targetCell = P_1.Cell(P_3, P_4);
 			P_0.Add(new
 			{
 				role = P_2,
 				rowIndex = P_3,
 				columnIndex = P_4,
-				text = TruncateText(NormalizeText(CS_8_locals_5.gAJdIPCcIZ.Range.Text), 120),
-				font = BuildFontInfo(CS_8_locals_5.gAJdIPCcIZ.Range.Font),
-				paragraphFormat = pyaTKvLinx(CS_8_locals_5.gAJdIPCcIZ.Range.ParagraphFormat),
-				verticalAlignment = NYGTYpKoUO(Ex5TMxi7X1(() => CS_8_locals_5.gAJdIPCcIZ.VerticalAlignment, WdCellVerticalAlignment.wdCellAlignVerticalTop))
+				text = TruncateText(NormalizeText(CS_8_locals_5.targetCell.Range.Text), 120),
+				font = BuildFontInfo(CS_8_locals_5.targetCell.Range.Font),
+				paragraphFormat = buildParagraphFormatObject(CS_8_locals_5.targetCell.Range.ParagraphFormat),
+				verticalAlignment = convertEnumToObject(tryGetValueOrDefault(() => CS_8_locals_5.targetCell.VerticalAlignment, WdCellVerticalAlignment.wdCellAlignVerticalTop))
 			});
 		}
 		catch
@@ -8300,16 +8300,16 @@ internal sealed class BatchReplaceService3
 		}
 	}
 
-	private static object NYGTYpKoUO<dRrZRuTZCuWialCJa6A>(dRrZRuTZCuWialCJa6A TZst1wTfm3IVIg126Al) where dRrZRuTZCuWialCJa6A : struct
+	private static object convertEnumToObject<TEnum>(TEnum enumValue) where TEnum : struct
 	{
 		return new
 		{
-			value = Convert.ToInt32(TZst1wTfm3IVIg126Al, CultureInfo.InvariantCulture),
-			name = TZst1wTfm3IVIg126Al.ToString()
+			value = Convert.ToInt32(enumValue, CultureInfo.InvariantCulture),
+			name = enumValue.ToString()
 		};
 	}
 
-	private static FWTDfCTb4Iku8JfLc66 Ex5TMxi7X1<FWTDfCTb4Iku8JfLc66>(Func<FWTDfCTb4Iku8JfLc66> P_0, FWTDfCTb4Iku8JfLc66 ypQS6RTSiCdpSgKNQtr)
+	private static TValue tryGetValueOrDefault<TValue>(Func<TValue> P_0, TValue defaultValue)
 	{
 		try
 		{
@@ -8317,7 +8317,7 @@ internal sealed class BatchReplaceService3
 		}
 		catch
 		{
-			return ypQS6RTSiCdpSgKNQtr;
+			return defaultValue;
 		}
 	}
 
@@ -8325,11 +8325,11 @@ internal sealed class BatchReplaceService3
 	{
 		_G_c__DisplayClass101_0 CS_8_locals_14 = new _G_c__DisplayClass101_0();
 		CS_8_locals_14.OperationName = P_0;
-		CS_8_locals_14.ntwPnGtes4 = P_1;
+		CS_8_locals_14.wordContextFunc = P_1;
 		CS_8_locals_14.Timer = Stopwatch.StartNew();
 		try
 		{
-			return TableToolService.MdXJlVhPku(CS_8_locals_14.OperationName, delegate(Microsoft.Office.Interop.Word.Application app)
+			return TableToolService.runOperation(CS_8_locals_14.OperationName, delegate(Microsoft.Office.Interop.Word.Application app)
 			{
 				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))
@@ -8337,7 +8337,7 @@ internal sealed class BatchReplaceService3
 					return WordAgentRuntimeGuard2.CreateNotReadyError(text);
 				}
 				AiConfigBootstrap.LogInfo("[AI Tool][Word] " + CS_8_locals_14.OperationName);
-				AiHelper_5 insertResult = CS_8_locals_14.ntwPnGtes4(app);
+				AiHelper_5 insertResult = CS_8_locals_14.wordContextFunc(app);
 				CS_8_locals_14.Timer.Stop();
 				AiConfigBootstrap.LogInfo(" failed; ElapsedMs=" + CS_8_locals_14.OperationName + " failed" + (insertResult?.success ?? false) + "word_error" + CS_8_locals_14.Timer.ElapsedMilliseconds);
 				return insertResult;
@@ -8642,7 +8642,7 @@ internal sealed class BatchReplaceService3
 		};
 		if (P_3 != null && !string.IsNullOrWhiteSpace(P_5))
 		{
-			return oBKTTgZY41(P_3, P_5, func);
+			return executeWithUndoContext(P_3, P_5, func);
 		}
 		return func();
 	}
@@ -8706,8 +8706,8 @@ internal sealed class BatchReplaceService3
 				paragraphText = TruncateText(text, 240)
 			});
 		}
-		int num = Ex5TMxi7X1(() => CS_8_locals_15.TargetRange.Start, CS_8_locals_15.RangeForTableCount.Start);
-		int num2 = Ex5TMxi7X1(() => CS_8_locals_15.TargetRange.End, CS_8_locals_15.RangeForTableCount.End);
+		int num = tryGetValueOrDefault(() => CS_8_locals_15.TargetRange.Start, CS_8_locals_15.RangeForTableCount.Start);
+		int num2 = tryGetValueOrDefault(() => CS_8_locals_15.TargetRange.End, CS_8_locals_15.RangeForTableCount.End);
 		int insertionStart = num;
 		if (string.Equals(P_4, "after", StringComparison.Ordinal))
 		{
@@ -8759,7 +8759,7 @@ internal sealed class BatchReplaceService3
 		};
 	}
 
-	private static string BIJTcpAmqJ(Document P_0, int P_1, int P_2, WordTableToolService3 P_3)
+	private static string computeTableEditHash(Document P_0, int P_1, int P_2, WordTableToolService3 P_3)
 	{
 		_G_c__DisplayClass116_0 CS_8_locals_2 = new _G_c__DisplayClass116_0();
 		CS_8_locals_2.doc = P_0;
@@ -8795,7 +8795,7 @@ internal sealed class BatchReplaceService3
 			.Replace('/', '_');
 	}
 
-	private static bool psHTenZWYL(Document P_0, WordTableToolService3 P_1, out Table P_2, out string P_3)
+	private static bool tryInsertTableAtParagraph(Document P_0, WordTableToolService3 P_1, out Table P_2, out string P_3)
 	{
 		P_2 = null;
 		P_3 = string.Empty;
@@ -8866,7 +8866,7 @@ internal sealed class BatchReplaceService3
 			}
 			P_0.Range.Select();
 			InitializeRuntime();
-			BatchTableAdjustService.HUeflwYrZr();
+			BatchTableAdjustService.BatchAdjustTables();
 			try
 			{
 				P_0.Range.Select();
@@ -8978,8 +8978,8 @@ internal sealed class BatchReplaceService3
 			AnchorRowText = text,
 			RowsBefore = num2,
 			ColumnsBefore = columnsBefore,
-			AnchorRangeStart = Ex5TMxi7X1(() => CS_8_locals_10.AnchorCell.Range.Start, 0),
-			AnchorRangeEnd = Ex5TMxi7X1(() => CS_8_locals_10.AnchorCell.Range.End, 0),
+			AnchorRangeStart = tryGetValueOrDefault(() => CS_8_locals_10.AnchorCell.Range.Start, 0),
+			AnchorRangeEnd = tryGetValueOrDefault(() => CS_8_locals_10.AnchorCell.Range.End, 0),
 			Page = ComputeIntValue(CS_8_locals_10.AnchorCell.Range),
 			Table = table,
 			AnchorCell = CS_8_locals_10.AnchorCell
@@ -8987,7 +8987,7 @@ internal sealed class BatchReplaceService3
 		return null;
 	}
 
-	private static object fYyThhstYU(Document P_0, int P_1, int P_2, string P_3, WordTableToolService2 P_4)
+	private static object buildRowInsertResult(Document P_0, int P_1, int P_2, string P_3, WordTableToolService2 P_4)
 	{
 		return new
 		{
@@ -9040,7 +9040,7 @@ internal sealed class BatchReplaceService3
 		return list;
 	}
 
-	private static string lKeTPQlpbN(Document P_0, int P_1, int P_2, WordTableToolService2 P_3)
+	private static string computeRowInsertHash(Document P_0, int P_1, int P_2, WordTableToolService2 P_3)
 	{
 		_G_c__DisplayClass124_0 CS_8_locals_2 = new _G_c__DisplayClass124_0();
 		CS_8_locals_2.doc = P_0;
@@ -9076,7 +9076,7 @@ internal sealed class BatchReplaceService3
 			.Replace('/', '_');
 	}
 
-	private static bool M4PTA9V6B2(Microsoft.Office.Interop.Word.Application P_0, Cell P_1, string P_2, int P_3, out string P_4)
+	private static bool tryInsertRowsAtAnchor(Microsoft.Office.Interop.Word.Application P_0, Cell P_1, string P_2, int P_3, out string P_4)
 	{
 		P_4 = string.Empty;
 		try
@@ -9096,9 +9096,9 @@ internal sealed class BatchReplaceService3
 			}
 			if (string.Equals(P_2, "before", StringComparison.Ordinal))
 			{
-				if (_G_o__125.R5GdQcN6Hi == null)
+				if (_G_o__125._tryInsertRowsAboveSite == null)
 				{
-					_G_o__125.R5GdQcN6Hi = CallSite<object>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "TryInsertRowsAbove", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[4]
+					_G_o__125._tryInsertRowsAboveSite = CallSite<object>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "TryInsertRowsAbove", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[4]
 					{
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
@@ -9106,11 +9106,11 @@ internal sealed class BatchReplaceService3
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsOut, null)
 					}));
 				}
-				return (dynamic)((System.Delegate)(object)_G_o__125.R5GdQcN6Hi.Target).DynamicInvoke(_G_o__125.R5GdQcN6Hi, typeof(BatchReplaceService3), (object)selection, P_3, P_4);
+				return (dynamic)((System.Delegate)(object)_G_o__125._tryInsertRowsAboveSite.Target).DynamicInvoke(_G_o__125._tryInsertRowsAboveSite, typeof(BatchReplaceService3), (object)selection, P_3, P_4);
 			}
-			if (_G_o__125.YnvdrUZ7MP == null)
+			if (_G_o__125._tryInsertRowsBelowSite == null)
 			{
-				_G_o__125.YnvdrUZ7MP = CallSite<object>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "TryInsertRowsBelow", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[4]
+				_G_o__125._tryInsertRowsBelowSite = CallSite<object>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "TryInsertRowsBelow", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[4]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
@@ -9118,7 +9118,7 @@ internal sealed class BatchReplaceService3
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsOut, null)
 				}));
 			}
-			return (dynamic)((System.Delegate)(object)_G_o__125.YnvdrUZ7MP.Target).DynamicInvoke(_G_o__125.YnvdrUZ7MP, typeof(BatchReplaceService3), (object)selection, P_3, P_4);
+			return (dynamic)((System.Delegate)(object)_G_o__125._tryInsertRowsBelowSite.Target).DynamicInvoke(_G_o__125._tryInsertRowsBelowSite, typeof(BatchReplaceService3), (object)selection, P_3, P_4);
 		}
 		catch (Exception ex)
 		{
@@ -9132,15 +9132,15 @@ internal sealed class BatchReplaceService3
 		failureReason = string.Empty;
 		try
 		{
-			if (_G_o__126.KfAd3MVCte == null)
+			if (_G_o__126._insertRowsBelowIntSite == null)
 			{
-				_G_o__126.KfAd3MVCte = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[2]
+				_G_o__126._insertRowsBelowIntSite = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType, null)
 				}));
 			}
-			_G_o__126.KfAd3MVCte.Target(_G_o__126.KfAd3MVCte, (object)selection, count);
+			_G_o__126._insertRowsBelowIntSite.Target(_G_o__126._insertRowsBelowIntSite, (object)selection, count);
 			return true;
 		}
 		catch
@@ -9150,11 +9150,11 @@ internal sealed class BatchReplaceService3
 		{
 			for (int i = 0; i < count; i++)
 			{
-				if (_G_o__126.Nx0dUcI0Fd == null)
+				if (_G_o__126._insertRowsBelowSite == null)
 				{
-					_G_o__126.Nx0dUcI0Fd = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__126._insertRowsBelowSite = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				_G_o__126.Nx0dUcI0Fd.Target(_G_o__126.Nx0dUcI0Fd, (object)selection);
+				_G_o__126._insertRowsBelowSite.Target(_G_o__126._insertRowsBelowSite, (object)selection);
 			}
 			return true;
 		}
@@ -9170,15 +9170,15 @@ internal sealed class BatchReplaceService3
 		failureReason = string.Empty;
 		try
 		{
-			if (_G_o__127.b9pdKn5QbP == null)
+			if (_G_o__127._insertRowsAboveIntSite == null)
 			{
-				_G_o__127.b9pdKn5QbP = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsAbove", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[2]
+				_G_o__127._insertRowsAboveIntSite = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsAbove", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType, null)
 				}));
 			}
-			_G_o__127.b9pdKn5QbP.Target(_G_o__127.b9pdKn5QbP, (object)selection, count);
+			_G_o__127._insertRowsAboveIntSite.Target(_G_o__127._insertRowsAboveIntSite, (object)selection, count);
 			return true;
 		}
 		catch
@@ -9188,11 +9188,11 @@ internal sealed class BatchReplaceService3
 		{
 			for (int i = 0; i < count; i++)
 			{
-				if (_G_o__127.p2TdEhwotK == null)
+				if (_G_o__127._insertRowsAboveSite == null)
 				{
-					_G_o__127.p2TdEhwotK = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsAbove", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__127._insertRowsAboveSite = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsAbove", null, typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				_G_o__127.p2TdEhwotK.Target(_G_o__127.p2TdEhwotK, (object)selection);
+				_G_o__127._insertRowsAboveSite.Target(_G_o__127._insertRowsAboveSite, (object)selection);
 			}
 			return true;
 		}
@@ -9275,11 +9275,11 @@ internal sealed class BatchReplaceService3
 		}
 		if (P_1 <= 0)
 		{
-			P_1 = Ex5TMxi7X1(() => CS_8_locals_5.TargetTable.Rows.Count, 0);
+			P_1 = tryGetValueOrDefault(() => CS_8_locals_5.TargetTable.Rows.Count, 0);
 		}
 		if (P_2 <= 0)
 		{
-			P_2 = Ex5TMxi7X1(() => CS_8_locals_5.TargetTable.Columns.Count, 0);
+			P_2 = tryGetValueOrDefault(() => CS_8_locals_5.TargetTable.Columns.Count, 0);
 		}
 	}
 
@@ -9345,35 +9345,35 @@ internal sealed class BatchReplaceService3
 		}
 		for (int i = 0; i < P_1.Count; i++)
 		{
-			TableCellModel oGfXaqipg6f7TvJ8dbc = P_1[i];
-			if (oGfXaqipg6f7TvJ8dbc == null)
+			TableCellModel tableCell = P_1[i];
+			if (tableCell == null)
 			{
 				return AiHelper_5.CreateError("cellsJson 包含空请求。", "invalid_arguments", new
 				{
 					requestIndex = i + 1
 				});
 			}
-			if (oGfXaqipg6f7TvJ8dbc.LocalTableIndex <= 0 && oGfXaqipg6f7TvJ8dbc.TableIndex > 0)
+			if (tableCell.LocalTableIndex <= 0 && tableCell.TableIndex > 0)
 			{
-				oGfXaqipg6f7TvJ8dbc.LocalTableIndex = oGfXaqipg6f7TvJ8dbc.TableIndex;
+				tableCell.LocalTableIndex = tableCell.TableIndex;
 			}
-			if (oGfXaqipg6f7TvJ8dbc.RowIndex < 1 || oGfXaqipg6f7TvJ8dbc.ColumnIndex < 1 || oGfXaqipg6f7TvJ8dbc.LocalTableIndex < 1)
+			if (tableCell.RowIndex < 1 || tableCell.ColumnIndex < 1 || tableCell.LocalTableIndex < 1)
 			{
 				return AiHelper_5.CreateError("localTableIndex、rowIndex、columnIndex 必须都是 1-based 正整数。", "invalid_arguments", new
 				{
 					requestIndex = i + 1,
-					LocalTableIndex = oGfXaqipg6f7TvJ8dbc.LocalTableIndex,
-					RowIndex = oGfXaqipg6f7TvJ8dbc.RowIndex,
-					ColumnIndex = oGfXaqipg6f7TvJ8dbc.ColumnIndex
+					LocalTableIndex = tableCell.LocalTableIndex,
+					RowIndex = tableCell.RowIndex,
+					ColumnIndex = tableCell.ColumnIndex
 				});
 			}
-			if (oGfXaqipg6f7TvJ8dbc.Text == null)
+			if (tableCell.Text == null)
 			{
-				oGfXaqipg6f7TvJ8dbc.Text = oGfXaqipg6f7TvJ8dbc.NewText ?? string.Empty;
+				tableCell.Text = tableCell.NewText ?? string.Empty;
 			}
 			else
 			{
-				oGfXaqipg6f7TvJ8dbc.Text = oGfXaqipg6f7TvJ8dbc.Text ?? string.Empty;
+				tableCell.Text = tableCell.Text ?? string.Empty;
 			}
 		}
 		return null;
@@ -9395,29 +9395,29 @@ internal sealed class BatchReplaceService3
 		for (int num2 = 0; num2 < P_1.Count; num2++)
 		{
 			_G_c__DisplayClass132_1 CS_8_locals_11 = new _G_c__DisplayClass132_1();
-			TableCellModel oGfXaqipg6f7TvJ8dbc = P_1[num2];
+			TableCellModel tableCell = P_1[num2];
 			AiHelper_21 csQGCih5R8sKlcw64k = new AiHelper_21
 			{
 				RequestIndex = num2 + 1,
-				LocalTableIndex = oGfXaqipg6f7TvJ8dbc.LocalTableIndex,
-				RowIndex = oGfXaqipg6f7TvJ8dbc.RowIndex,
-				ColumnIndex = oGfXaqipg6f7TvJ8dbc.ColumnIndex,
-				NewText = (oGfXaqipg6f7TvJ8dbc.Text ?? string.Empty),
-				ExpectedOldText = oGfXaqipg6f7TvJ8dbc.ExpectedOldText,
-				IsHeader = oGfXaqipg6f7TvJ8dbc.IsHeader
+				LocalTableIndex = tableCell.LocalTableIndex,
+				RowIndex = tableCell.RowIndex,
+				ColumnIndex = tableCell.ColumnIndex,
+				NewText = (tableCell.Text ?? string.Empty),
+				ExpectedOldText = tableCell.ExpectedOldText,
+				IsHeader = tableCell.IsHeader
 			};
 			P_2.Add(csQGCih5R8sKlcw64k);
-			if (oGfXaqipg6f7TvJ8dbc.LocalTableIndex < 1 || oGfXaqipg6f7TvJ8dbc.LocalTableIndex > num)
+			if (tableCell.LocalTableIndex < 1 || tableCell.LocalTableIndex > num)
 			{
 				SetCellError(csQGCih5R8sKlcw64k, "local_table_index_out_of_range", "localTableIndex 超出引用选区内表格数量。");
 				continue;
 			}
-			if (!dictionary.TryGetValue(oGfXaqipg6f7TvJ8dbc.LocalTableIndex, out var value))
+			if (!dictionary.TryGetValue(tableCell.LocalTableIndex, out var value))
 			{
 				try
 				{
-					value = CS_8_locals_9.RangeForTableCount.Tables[oGfXaqipg6f7TvJ8dbc.LocalTableIndex];
-					dictionary[oGfXaqipg6f7TvJ8dbc.LocalTableIndex] = value;
+					value = CS_8_locals_9.RangeForTableCount.Tables[tableCell.LocalTableIndex];
+					dictionary[tableCell.LocalTableIndex] = value;
 				}
 				catch (Exception ex)
 				{
@@ -9425,30 +9425,30 @@ internal sealed class BatchReplaceService3
 					continue;
 				}
 			}
-			if (!dictionary3.TryGetValue(oGfXaqipg6f7TvJ8dbc.LocalTableIndex, out var value2))
+			if (!dictionary3.TryGetValue(tableCell.LocalTableIndex, out var value2))
 			{
 				value2 = YGSggVPnQb(value);
-				dictionary3[oGfXaqipg6f7TvJ8dbc.LocalTableIndex] = value2;
+				dictionary3[tableCell.LocalTableIndex] = value2;
 			}
 			csQGCih5R8sKlcw64k.HeaderRowCount = value2;
-			csQGCih5R8sKlcw64k.IsHeader = oGfXaqipg6f7TvJ8dbc.IsHeader || (value2 > 0 && oGfXaqipg6f7TvJ8dbc.RowIndex <= value2);
-			if (!dictionary2.TryGetValue(oGfXaqipg6f7TvJ8dbc.LocalTableIndex, out var value3))
+			csQGCih5R8sKlcw64k.IsHeader = tableCell.IsHeader || (value2 > 0 && tableCell.RowIndex <= value2);
+			if (!dictionary2.TryGetValue(tableCell.LocalTableIndex, out var value3))
 			{
 				value3 = BuildCellMap(value);
-				dictionary2[oGfXaqipg6f7TvJ8dbc.LocalTableIndex] = value3;
+				dictionary2[tableCell.LocalTableIndex] = value3;
 			}
-			string key = ProcessString(oGfXaqipg6f7TvJ8dbc.RowIndex, oGfXaqipg6f7TvJ8dbc.ColumnIndex);
+			string key = ProcessString(tableCell.RowIndex, tableCell.ColumnIndex);
 			if (!value3.TryGetValue(key, out CS_8_locals_11.AnchorCell))
 			{
 				SetCellError(csQGCih5R8sKlcw64k, "model_cell_unavailable", "目标坐标不是 Word 真实单元格起点，可能是合并区域内部坐标。请使用 read_word_tables_in_range 返回的 origin/fillableCells 坐标。");
 				continue;
 			}
 			csQGCih5R8sKlcw64k.Cell = CS_8_locals_11.AnchorCell;
-			csQGCih5R8sKlcw64k.RangeStart = Ex5TMxi7X1(() => CS_8_locals_11.AnchorCell.Range.Start, 0);
-			csQGCih5R8sKlcw64k.RangeEnd = Ex5TMxi7X1(() => CS_8_locals_11.AnchorCell.Range.End, 0);
+			csQGCih5R8sKlcw64k.RangeStart = tryGetValueOrDefault(() => CS_8_locals_11.AnchorCell.Range.Start, 0);
+			csQGCih5R8sKlcw64k.RangeEnd = tryGetValueOrDefault(() => CS_8_locals_11.AnchorCell.Range.End, 0);
 			csQGCih5R8sKlcw64k.Page = ComputeIntValue(CS_8_locals_11.AnchorCell.Range);
 			csQGCih5R8sKlcw64k.OldText = NormalizeText(ProcessString(CS_8_locals_11.AnchorCell));
-			if (oGfXaqipg6f7TvJ8dbc.ExpectedOldText != null && !string.Equals(NormalizeText(oGfXaqipg6f7TvJ8dbc.ExpectedOldText), csQGCih5R8sKlcw64k.OldText, StringComparison.Ordinal))
+			if (tableCell.ExpectedOldText != null && !string.Equals(NormalizeText(tableCell.ExpectedOldText), csQGCih5R8sKlcw64k.OldText, StringComparison.Ordinal))
 			{
 				SetCellError(csQGCih5R8sKlcw64k, "old_text_mismatch", "目标单元格当前旧值与 expectedOldText 不一致。请重新读取表格模型后再写入。");
 			}
@@ -9774,17 +9774,17 @@ internal sealed class BatchReplaceService3
 	private static XDocument MRrgIiUJxs(XDocument P_0, string P_1)
 	{
 		_G_c__DisplayClass145_0 CS_8_locals_3 = new _G_c__DisplayClass145_0();
-		CS_8_locals_3.DojAYMESMP = P_1;
+		CS_8_locals_3.elementName = P_1;
 		if (P_0 == null || P_0.Root == null)
 		{
 			return null;
 		}
 		_ = P_0.Root.Attribute(WordNamespace + "name")?.Value;
-		if (P_0.Root.Name == WordmlNamespace + "document" && string.Equals(CS_8_locals_3.DojAYMESMP, "/word/document.xml", StringComparison.OrdinalIgnoreCase))
+		if (P_0.Root.Name == WordmlNamespace + "document" && string.Equals(CS_8_locals_3.elementName, "/word/document.xml", StringComparison.OrdinalIgnoreCase))
 		{
 			return P_0;
 		}
-		XElement xElement = P_0.Root.Elements(WordNamespace + "part").FirstOrDefault((XElement p) => string.Equals(p.Attribute(WordNamespace + "xmlData")?.Value, CS_8_locals_3.DojAYMESMP, StringComparison.OrdinalIgnoreCase))?.Element(WordNamespace + "startParagraphIndex is out of range.")?.Elements().FirstOrDefault();
+		XElement xElement = P_0.Root.Elements(WordNamespace + "part").FirstOrDefault((XElement p) => string.Equals(p.Attribute(WordNamespace + "xmlData")?.Value, CS_8_locals_3.elementName, StringComparison.OrdinalIgnoreCase))?.Element(WordNamespace + "startParagraphIndex is out of range.")?.Elements().FirstOrDefault();
 		if (xElement == null)
 		{
 			return null;
@@ -9827,7 +9827,7 @@ internal sealed class BatchReplaceService3
 		{
 			return insertResult;
 		}
-		return oBKTTgZY41(P_0, "AI 修订替换", delegate
+		return executeWithUndoContext(P_0, "AI 修订替换", delegate
 		{
 			bool trackRevisions = CS_8_locals_16.doc.TrackRevisions;
 			try
@@ -10054,32 +10054,32 @@ internal sealed class BatchReplaceService3
 	private static object BuildParagraphInfo(Paragraph P_0, int P_1, int P_2)
 	{
 		_G_c__DisplayClass157_0 CS_8_locals_9 = new _G_c__DisplayClass157_0();
-		CS_8_locals_9.XbCACwggdo = P_0;
-		string text = NormalizeText(CS_8_locals_9.XbCACwggdo.Range.Text);
+		CS_8_locals_9.targetParagraph = P_0;
+		string text = NormalizeText(CS_8_locals_9.targetParagraph.Range.Text);
 		bool flag = text.Length > P_2;
-		int num = ClampOutlineLevel(GetOutlineLevel(CS_8_locals_9.XbCACwggdo));
+		int num = ClampOutlineLevel(GetOutlineLevel(CS_8_locals_9.targetParagraph));
 		bool flag2 = num >= 1 && num <= 9;
-		string styleName = GetParagraphStyleName(CS_8_locals_9.XbCACwggdo);
+		string styleName = GetParagraphStyleName(CS_8_locals_9.targetParagraph);
 		return new
 		{
-			document = SafeExecute(() => CS_8_locals_9.XbCACwggdo.Range.Document.Name),
-			documentFullName = SafeExecute(() => CS_8_locals_9.XbCACwggdo.Range.Document.FullName),
-			page = ComputeIntValue(CS_8_locals_9.XbCACwggdo.Range),
+			document = SafeExecute(() => CS_8_locals_9.targetParagraph.Range.Document.Name),
+			documentFullName = SafeExecute(() => CS_8_locals_9.targetParagraph.Range.Document.FullName),
+			page = ComputeIntValue(CS_8_locals_9.targetParagraph.Range),
 			paragraphIndex = P_1,
 			isHeading = flag2,
 			outlineKind = (flag2 ? "body" : "heading"),
 			outlineLevel = num,
 			rawOutlineLevel = num,
 			styleName = styleName,
-			rangeStart = CS_8_locals_9.XbCACwggdo.Range.Start,
-			rangeEnd = CS_8_locals_9.XbCACwggdo.Range.End,
+			rangeStart = CS_8_locals_9.targetParagraph.Range.Start,
+			rangeEnd = CS_8_locals_9.targetParagraph.Range.End,
 			characters = text.Length,
 			truncated = flag,
 			text = (flag ? text.Substring(0, P_2) : text)
 		};
 	}
 
-	private static object WhFgjeRETB(Table P_0, int P_1, int P_2, int P_3)
+	private static object buildTableInfo(Table P_0, int P_1, int P_2, int P_3)
 	{
 		_G_c__DisplayClass158_0 CS_8_locals_28 = new _G_c__DisplayClass158_0();
 		CS_8_locals_28.TargetTable = P_0;
@@ -10432,7 +10432,7 @@ internal sealed class BatchReplaceService3
 			["index"] = GetCommentThreadIndex(CS_8_locals_11.TargetComment),
 			["author"] = SafeExecute(() => CS_8_locals_11.TargetComment.Author),
 			["date"] = MmigeqmiRt(CS_8_locals_11.TargetComment),
-			["done"] = Ex5TMxi7X1(() => CS_8_locals_11.TargetComment.Done, ypQS6RTSiCdpSgKNQtr: false),
+			["done"] = tryGetValueOrDefault(() => CS_8_locals_11.TargetComment.Done, defaultValue: false),
 			["commentText"] = GetCommentText(CS_8_locals_11.TargetComment),
 			["replyCount"] = num,
 			["repliesReturned"] = list.Count,
@@ -10484,7 +10484,7 @@ internal sealed class BatchReplaceService3
 			["index"] = GetCommentThreadIndex(CS_8_locals_7.TargetComment),
 			["author"] = SafeExecute(() => CS_8_locals_7.TargetComment.Author),
 			["date"] = MmigeqmiRt(CS_8_locals_7.TargetComment),
-			["done"] = Ex5TMxi7X1(() => CS_8_locals_7.TargetComment.Done, ypQS6RTSiCdpSgKNQtr: false),
+			["done"] = tryGetValueOrDefault(() => CS_8_locals_7.TargetComment.Done, defaultValue: false),
 			["commentText"] = GetCommentText(CS_8_locals_7.TargetComment)
 		};
 	}
@@ -10710,8 +10710,8 @@ internal sealed class BatchReplaceService3
 	private static string GetCommentText(Comment P_0)
 	{
 		_G_c__DisplayClass179_0 obj = new _G_c__DisplayClass179_0();
-		obj.HThvTPlNIo = P_0;
-		return NormalizeText(SafeExecute(() => obj.HThvTPlNIo.Range.Text));
+		obj.targetComment = P_0;
+		return NormalizeText(SafeExecute(() => obj.targetComment.Range.Text));
 	}
 
 	private static string XPEgcZYWAO(Comment P_0)
@@ -10903,8 +10903,8 @@ internal sealed class BatchReplaceService3
 			matchText = NormalizeText(P_3.Text),
 			excerpt = GetRangeExcerpt(P_0, P_3, 160),
 			cellTextPreview = (string.IsNullOrEmpty(text) ? null : TruncateText(text, 240)),
-			tableRangeStart = Ex5TMxi7X1(() => CS_8_locals_3.TargetTable.Range.Start, 0),
-			tableRangeEnd = Ex5TMxi7X1(() => CS_8_locals_3.TargetTable.Range.End, 0)
+			tableRangeStart = tryGetValueOrDefault(() => CS_8_locals_3.TargetTable.Range.Start, 0),
+			tableRangeEnd = tryGetValueOrDefault(() => CS_8_locals_3.TargetTable.Range.End, 0)
 		};
 	}
 
@@ -10918,16 +10918,16 @@ internal sealed class BatchReplaceService3
 		{
 			return list;
 		}
-		CS_8_locals_24.KaavoKjFKG = CS_8_locals_24.WordApplication.Selection;
-		if (CS_8_locals_24.KaavoKjFKG == null || CS_8_locals_24.KaavoKjFKG.Range == null)
+		CS_8_locals_24.currentSelection = CS_8_locals_24.WordApplication.Selection;
+		if (CS_8_locals_24.currentSelection == null || CS_8_locals_24.currentSelection.Range == null)
 		{
 			return list;
 		}
-		int num = Ex5TMxi7X1(() => CS_8_locals_24.KaavoKjFKG.Range.Start, CS_8_locals_24.doc.Content.Start);
-		int end = Ex5TMxi7X1(() => CS_8_locals_24.KaavoKjFKG.Range.End, num);
-		bool screenUpdating = Ex5TMxi7X1(() => CS_8_locals_24.WordApplication.ScreenUpdating, ypQS6RTSiCdpSgKNQtr: true);
-		int num2 = Ex5TMxi7X1(() => CS_8_locals_24.doc.Content.Start, 0);
-		int num3 = Ex5TMxi7X1(() => CS_8_locals_24.doc.Content.End, num2);
+		int num = tryGetValueOrDefault(() => CS_8_locals_24.currentSelection.Range.Start, CS_8_locals_24.doc.Content.Start);
+		int end = tryGetValueOrDefault(() => CS_8_locals_24.currentSelection.Range.End, num);
+		bool screenUpdating = tryGetValueOrDefault(() => CS_8_locals_24.WordApplication.ScreenUpdating, defaultValue: true);
+		int num2 = tryGetValueOrDefault(() => CS_8_locals_24.doc.Content.Start, 0);
+		int num3 = tryGetValueOrDefault(() => CS_8_locals_24.doc.Content.End, num2);
 		if (num3 <= num2)
 		{
 			return list;
@@ -10949,8 +10949,8 @@ internal sealed class BatchReplaceService3
 			{
 				_G_c__DisplayClass194_1 CS_8_locals_26 = new _G_c__DisplayClass194_1();
 				num5++;
-				CS_8_locals_24.KaavoKjFKG.SetRange(num4, num4);
-				Find find = CS_8_locals_24.KaavoKjFKG.Find;
+				CS_8_locals_24.currentSelection.SetRange(num4, num4);
+				Find find = CS_8_locals_24.currentSelection.Find;
 				find.ClearFormatting();
 				find.Text = P_2;
 				find.MatchCase = P_3;
@@ -10976,13 +10976,13 @@ internal sealed class BatchReplaceService3
 				object MatchDiacritics = Type.Missing;
 				object MatchAlefHamza = Type.Missing;
 				object MatchControl = Type.Missing;
-				if (!find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl) || CS_8_locals_24.KaavoKjFKG.Range == null)
+				if (!find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl) || CS_8_locals_24.currentSelection.Range == null)
 				{
 					break;
 				}
-				CS_8_locals_26.NSNvOLlBYV = CS_8_locals_24.KaavoKjFKG.Range.Duplicate;
-				int num7 = Ex5TMxi7X1(() => CS_8_locals_26.NSNvOLlBYV.Start, num4);
-				int num8 = Ex5TMxi7X1(() => CS_8_locals_26.NSNvOLlBYV.End, num7);
+				CS_8_locals_26.targetRange = CS_8_locals_24.currentSelection.Range.Duplicate;
+				int num7 = tryGetValueOrDefault(() => CS_8_locals_26.targetRange.Start, num4);
+				int num8 = tryGetValueOrDefault(() => CS_8_locals_26.targetRange.End, num7);
 				if (num8 <= num7)
 				{
 					num4 = Math.Min(num3, Math.Max(num4 + 1, num7 + 1));
@@ -10991,7 +10991,7 @@ internal sealed class BatchReplaceService3
 				string item = num7.ToString(CultureInfo.InvariantCulture) + ":" + num8.ToString(CultureInfo.InvariantCulture);
 				if (hashSet.Add(item))
 				{
-					list.Add(BuildSearchResult(CS_8_locals_26.NSNvOLlBYV));
+					list.Add(BuildSearchResult(CS_8_locals_26.targetRange));
 				}
 				int num9 = Math.Max(num8, num7 + 1);
 				if (num9 <= num4)
@@ -11005,7 +11005,7 @@ internal sealed class BatchReplaceService3
 		{
 			try
 			{
-				CS_8_locals_24.KaavoKjFKG.SetRange(num, end);
+				CS_8_locals_24.currentSelection.SetRange(num, end);
 			}
 			catch
 			{
@@ -11049,8 +11049,8 @@ internal sealed class BatchReplaceService3
 			_G_c__DisplayClass196_0 obj = new _G_c__DisplayClass196_0();
 			obj.doc = P_0.Document;
 			int num = Math.Max(20, P_1 / 2);
-			int val = Ex5TMxi7X1(() => obj.doc.Content.Start, P_0.Start);
-			int val2 = Ex5TMxi7X1(() => obj.doc.Content.End, P_0.End);
+			int val = tryGetValueOrDefault(() => obj.doc.Content.Start, P_0.Start);
+			int val2 = tryGetValueOrDefault(() => obj.doc.Content.End, P_0.End);
 			int num2 = Math.Max(val, P_0.Start - num);
 			int num3 = Math.Min(val2, P_0.End + num);
 			Document document = obj.doc;
@@ -11302,11 +11302,11 @@ internal sealed class BatchReplaceService3
 			try
 			{
 				object arg = style;
-				if (_G_o__209.faad26YgtT == null)
+				if (_G_o__209._getNameLocalSite == null)
 				{
-					_G_o__209.faad26YgtT = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "NameLocal", typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__209._getNameLocalSite = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "NameLocal", typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				string text3 = (dynamic)_G_o__209.faad26YgtT.Target(_G_o__209.faad26YgtT, arg);
+				string text3 = (dynamic)_G_o__209._getNameLocalSite.Target(_G_o__209._getNameLocalSite, arg);
 				if (!string.IsNullOrWhiteSpace(text3))
 				{
 					return text3;
@@ -11318,11 +11318,11 @@ internal sealed class BatchReplaceService3
 			try
 			{
 				object arg2 = style;
-				if (_G_o__209.Tncdj71sno == null)
+				if (_G_o__209._getNameSite == null)
 				{
-					_G_o__209.Tncdj71sno = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Name", typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__209._getNameSite = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Name", typeof(BatchReplaceService3), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				string text4 = (dynamic)_G_o__209.Tncdj71sno.Target(_G_o__209.Tncdj71sno, arg2);
+				string text4 = (dynamic)_G_o__209._getNameSite.Target(_G_o__209._getNameSite, arg2);
 				if (!string.IsNullOrWhiteSpace(text4))
 				{
 					return text4;

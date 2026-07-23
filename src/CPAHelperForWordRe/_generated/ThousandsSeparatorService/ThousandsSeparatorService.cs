@@ -19,7 +19,7 @@ namespace ThousandsSeparatorService;
 
 internal static class ThousandsSeparatorService
 {
-	private enum Qf9l8XVKaY8crinpPDHi
+	private enum DateFormatMode
 	{
 
 	}
@@ -38,13 +38,13 @@ internal static class ThousandsSeparatorService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string KKVVKvaAt7O(string text)
+		internal string DivideAndAddSuffix(string text)
 		{
-			if (!dU3bP2kG38(text, out var num))
+			if (!TryParseDouble(text, out var num))
 			{
 				return text;
 			}
-			string text2 = k5Fbv3LNWS(num / double);
+			string text2 = FormatNumberWith2Decimals(num / double);
 			if (!flag)
 			{
 				return text2;
@@ -56,20 +56,20 @@ internal static class ThousandsSeparatorService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass28_0
 	{
-		public string qKLVKdoJqxG;
+		public string _suffixChar;
 
 		public _G_c__DisplayClass28_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string nqqVKxeWDyP(string text)
+		internal string FormatNumberWithSuffix(string text)
 		{
-			if (!dU3bP2kG38(text, out var num))
+			if (!TryParseDouble(text, out var num))
 			{
 				return text;
 			}
-			return k5Fbv3LNWS(num) + qKLVKdoJqxG;
+			return FormatNumberWith2Decimals(num) + _suffixChar;
 		}
 	}
 
@@ -83,20 +83,20 @@ internal static class ThousandsSeparatorService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string qJ0VKzip8Ky(string text)
+		internal string FormatWithThousandsSeparator(string text)
 		{
-			if (!dU3bP2kG38(text, out var num))
+			if (!TryParseDouble(text, out var num))
 			{
 				return text;
 			}
-			return MZYbWulvTX(num, value);
+			return FormatNumberWithDecimals(num, value);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass38_0
 	{
-		public Qf9l8XVKaY8crinpPDHi qf9l8XVKaY8crinpPDHi;
+		public DateFormatMode dateFormatMode;
 
 		public int value;
 
@@ -105,13 +105,13 @@ internal static class ThousandsSeparatorService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string hTZVEVqbXSY(Match match)
+		internal string ReplaceDateMatch(Match match)
 		{
-			if (!OvKbpnjTaJ(match, out var dateTime))
+			if (!TryParseDateFromMatch(match, out var dateTime))
 			{
 				return match.Value;
 			}
-			string text = OfkbO4QThB(dateTime, qf9l8XVKaY8crinpPDHi);
+			string text = FormatDate(dateTime, dateFormatMode);
 			if (string.Equals(text, match.Value, StringComparison.Ordinal))
 			{
 				return match.Value;
@@ -126,25 +126,25 @@ internal static class ThousandsSeparatorService
 	{
 		public int value;
 
-		public UiHelper_4 gPiVEDhoZEL;
+		public UiHelper_4 _configOptions;
 
 		public _G_c__DisplayClass44_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void GTwVE6iegvP(AiHelper_12 c)
+		internal void WriteConfigToLegacy(AiHelper_12 c)
 		{
 			c.Legacy["数字_千分位符_小数位数"] = value.ToString(CultureInfo.InvariantCulture);
-			c.Legacy["数字_千分位符_排除年"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeYear);
-			c.Legacy["数字_千分位符_排除月"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeMonth);
-			c.Legacy["数字_千分位符_排除日"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeDay);
-			c.Legacy["数字_千分位符_排除号"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeNumber);
-			c.Legacy["数字_千分位符_排除序号"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeOrdinal);
-			c.Legacy["数字_千分位符_排除百分比"] = KhrbxSmalP(gPiVEDhoZEL.ExcludePercent);
-			c.Legacy["数字_千分位符_排除日期格式"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeDateFormat);
-			c.Legacy["数字_千分位符_只处理带单位"] = KhrbxSmalP(gPiVEDhoZEL.IncludeUnitOnly);
-			c.Legacy["数字_千分位符_单位"] = SG9bdAH5sJ(gPiVEDhoZEL.UnitText);
+			c.Legacy["数字_千分位符_排除年"] = BoolToString(_configOptions.ExcludeYear);
+			c.Legacy["数字_千分位符_排除月"] = BoolToString(_configOptions.ExcludeMonth);
+			c.Legacy["数字_千分位符_排除日"] = BoolToString(_configOptions.ExcludeDay);
+			c.Legacy["数字_千分位符_排除号"] = BoolToString(_configOptions.ExcludeNumber);
+			c.Legacy["数字_千分位符_排除序号"] = BoolToString(_configOptions.ExcludeOrdinal);
+			c.Legacy["数字_千分位符_排除百分比"] = BoolToString(_configOptions.ExcludePercent);
+			c.Legacy["数字_千分位符_排除日期格式"] = BoolToString(_configOptions.ExcludeDateFormat);
+			c.Legacy["数字_千分位符_只处理带单位"] = BoolToString(_configOptions.IncludeUnitOnly);
+			c.Legacy["数字_千分位符_单位"] = NormalizeUnitText(_configOptions.UnitText);
 		}
 	}
 
@@ -160,13 +160,13 @@ internal static class ThousandsSeparatorService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string enGVETZB4xO(string text)
+		internal string MultiplyAndAddPercent(string text)
 		{
-			if (!dU3bP2kG38(text, out var num))
+			if (!TryParseDouble(text, out var num))
 			{
 				return text;
 			}
-			string text2 = k5Fbv3LNWS(num * double);
+			string text2 = FormatNumberWith2Decimals(num * double);
 			if (!flag)
 			{
 				return text2;
@@ -175,13 +175,13 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	private static readonly Regex F2GSVZQYM6;
+	private static readonly Regex _dateRegex;
 
 	private static Application App => WordTableToolService.WordApp;
 
 	private static TableBorderConfig Cfg => TableBorderConfig.Current;
 
-	public static void n48bEYCJjN()
+	public static void ToggleHighlight()
 	{
 		Selection selection = App.Selection;
 		if (selection != null)
@@ -197,7 +197,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	public static void OQqb2EBLne()
+	public static void CleanSpacesAndParagraphs()
 	{
 		App.ScreenUpdating = false;
 		try
@@ -215,11 +215,11 @@ internal static class ThousandsSeparatorService
 				}
 				if (flag)
 				{
-					QQFb4klfac();
+					CleanTableCells();
 				}
 				else
 				{
-					yxnbY4Y1FT(selection.Range);
+					RemoveSpacesAndBlankParagraphs(selection.Range);
 				}
 			}
 		}
@@ -229,7 +229,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	private static void QQFb4klfac()
+	private static void CleanTableCells()
 	{
 		Cells cells = null;
 		try
@@ -245,7 +245,7 @@ internal static class ThousandsSeparatorService
 			{
 				if (App.Selection.Cells.Count > 0)
 				{
-					WAMbjHXtLH(App.Selection.Cells[1]);
+					CleanCell(App.Selection.Cells[1]);
 				}
 				return;
 			}
@@ -256,29 +256,29 @@ internal static class ThousandsSeparatorService
 		}
 		foreach (Cell item in cells)
 		{
-			WAMbjHXtLH(item);
+			CleanCell(item);
 		}
 	}
 
-	private static void WAMbjHXtLH(Cell P_0)
+	private static void CleanCell(Cell P_0)
 	{
 		if (P_0 != null && P_0.Range.End > P_0.Range.Start + 1)
 		{
 			Document activeDocument = App.ActiveDocument;
 			object Start = P_0.Range.Start;
 			object End = P_0.Range.End - 1;
-			yxnbY4Y1FT(activeDocument.Range(ref Start, ref End));
+			RemoveSpacesAndBlankParagraphs(activeDocument.Range(ref Start, ref End));
 		}
 	}
 
-	private static void yxnbY4Y1FT(Range P_0)
+	private static void RemoveSpacesAndBlankParagraphs(Range P_0)
 	{
-		hGcbZddjwr(P_0, " ", "");
-		hGcbZddjwr(P_0, "　", "");
-		hGcbZddjwr(P_0, "^p^p", "^p");
+		FindAndReplaceInRange(P_0, " ", "");
+		FindAndReplaceInRange(P_0, "　", "");
+		FindAndReplaceInRange(P_0, "^p^p", "^p");
 	}
 
-	private static void hGcbZddjwr(Range P_0, string P_1, string P_2)
+	private static void FindAndReplaceInRange(Range P_0, string P_1, string P_2)
 	{
 		Find find = P_0.Duplicate.Find;
 		find.ClearFormatting();
@@ -312,7 +312,7 @@ internal static class ThousandsSeparatorService
 		find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl);
 	}
 
-	public static void EkabfuVGQg()
+	public static void SetMixedFont()
 	{
 		Font font = App.Selection.Font;
 		font.NameFarEast = "宋体";
@@ -320,7 +320,7 @@ internal static class ThousandsSeparatorService
 		font.NameOther = "Times New Roman";
 	}
 
-	public static void ugebMMSbUc()
+	public static void SetSongTiFont()
 	{
 		Font font = App.Selection.Font;
 		font.NameFarEast = "宋体";
@@ -328,7 +328,7 @@ internal static class ThousandsSeparatorService
 		font.NameOther = "宋体";
 	}
 
-	public static void dSnbbZLY1r()
+	public static void DivideByTenThousand()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -342,13 +342,13 @@ internal static class ThousandsSeparatorService
 			}
 			CS_8_locals_8.flag = Cfg.GetInt("数字_除以一万_执行添加万") != 0;
 			CS_8_locals_8.text = Cfg.GetString("数字_添加万字_添加的字符", "万");
-			q9PbqGOMSk(delegate(string text)
+			ApplyToSelection(delegate(string text)
 			{
-				if (!dU3bP2kG38(text, out var num))
+				if (!TryParseDouble(text, out var num))
 				{
 					return text;
 				}
-				string text2 = k5Fbv3LNWS(num / CS_8_locals_8.double);
+				string text2 = FormatNumberWith2Decimals(num / CS_8_locals_8.double);
 				return (!CS_8_locals_8.flag) ? text2 : (text2 + CS_8_locals_8.text);
 			});
 		}
@@ -358,15 +358,15 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	public static void jyWbS77xyK()
+	public static void AddWanSuffix()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
 			_G_c__DisplayClass28_0 obj = new _G_c__DisplayClass28_0();
-			obj.qKLVKdoJqxG = Cfg.GetString("数字_添加万字_添加的字符", "万");
-			q9PbqGOMSk((string text) => (!dU3bP2kG38(text, out var num)) ? text : (k5Fbv3LNWS(num) + obj.qKLVKdoJqxG));
+			obj._suffixChar = Cfg.GetString("数字_添加万字_添加的字符", "万");
+			ApplyToSelection((string text) => (!TryParseDouble(text, out var num)) ? text : (FormatNumberWith2Decimals(num) + obj._suffixChar));
 		}
 		finally
 		{
@@ -374,11 +374,11 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	public static void tl1bwFFDD1()
+	public static void ApplyThousandsSeparator()
 	{
 		_G_c__DisplayClass29_0 CS_8_locals_3 = new _G_c__DisplayClass29_0();
 		Cfg.SaveToFile();
-		CS_8_locals_3.value = Wr8b0ba5yt();
+		CS_8_locals_3.value = GetDecimalPlaces();
 		Selection selection = App.Selection;
 		if (selection == null)
 		{
@@ -389,14 +389,14 @@ internal static class ThousandsSeparatorService
 			Range range = selection.Range;
 			string text = range.Text ?? string.Empty;
 			string text2 = text;
-			UiHelper_4 w9DpQgSBDhHwuwkYtki = i4XbnSK0XW();
-			List<TextRange> list = (w9DpQgSBDhHwuwkYtki.ExcludeDateFormat ? UiHelper_5.teSSr7AnNl(text) : new List<TextRange>());
+			UiHelper_4 separatorConfig = ReadSeparatorConfig();
+			List<TextRange> list = (separatorConfig.ExcludeDateFormat ? UiHelper_5.teSSr7AnNl(text) : new List<TextRange>());
 			int num = 0;
 			foreach (Match item in UiHelper_5.K4hSE7usVJ.Matches(text))
 			{
-				if (!UiHelper_5.bcbSJ1pxpn(text, item, w9DpQgSBDhHwuwkYtki, list) && dU3bP2kG38(item.Value, out var num2))
+				if (!UiHelper_5.bcbSJ1pxpn(text, item, separatorConfig, list) && TryParseDouble(item.Value, out var num2))
 				{
-					string text3 = MZYbWulvTX(num2, CS_8_locals_3.value);
+					string text3 = FormatNumberWithDecimals(num2, CS_8_locals_3.value);
 					int startIndex = item.Index + num;
 					text2 = text2.Remove(startIndex, item.Length).Insert(startIndex, text3);
 					num += text3.Length - item.Length;
@@ -406,31 +406,31 @@ internal static class ThousandsSeparatorService
 		}
 		else if (selection.Type == WdSelectionType.wdSelectionColumn || selection.Type == WdSelectionType.wdSelectionRow)
 		{
-			q9PbqGOMSk((string text4) => (!dU3bP2kG38(text4, out var num3)) ? text4 : MZYbWulvTX(num3, CS_8_locals_3.value));
+			ApplyToSelection((string text4) => (!TryParseDouble(text4, out var num3)) ? text4 : FormatNumberWithDecimals(num3, CS_8_locals_3.value));
 		}
 	}
 
-	public static void RG3btZhbBZ()
+	public static void ConvertDatesToDotFormat()
 	{
-		bngbNpSg2Y((Qf9l8XVKaY8crinpPDHi)0);
+		ConvertDates((DateFormatMode)0);
 	}
 
-	public static void IjpbLTQyda()
+	public static void ConvertDatesToSlashFormat()
 	{
-		bngbNpSg2Y((Qf9l8XVKaY8crinpPDHi)1);
+		ConvertDates((DateFormatMode)1);
 	}
 
-	public static void klPbsBaHvp()
+	public static void ConvertDatesToDashFormat()
 	{
-		bngbNpSg2Y((Qf9l8XVKaY8crinpPDHi)2);
+		ConvertDates((DateFormatMode)2);
 	}
 
-	public static void U40blaH8Pe()
+	public static void ConvertDatesToChineseFormat()
 	{
-		bngbNpSg2Y((Qf9l8XVKaY8crinpPDHi)3);
+		ConvertDates((DateFormatMode)3);
 	}
 
-	private static void bngbNpSg2Y(Qf9l8XVKaY8crinpPDHi P_0)
+	private static void ConvertDates(DateFormatMode P_0)
 	{
 		App.ScreenUpdating = false;
 		try
@@ -441,9 +441,9 @@ internal static class ThousandsSeparatorService
 				LoggerInitializer.ShowInfo("请先选中需要转换的日期范围。", "日期转换");
 				return;
 			}
-			if (!Etnbmn4y4x(selection, P_0, out var num))
+			if (!TryConvertDatesInTable(selection, P_0, out var num))
 			{
-				num = JMbbGeNwbs(selection.Range, P_0);
+				num = ConvertDatesInRange(selection.Range, P_0);
 			}
 			if (num == 0)
 			{
@@ -460,7 +460,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	private static bool Etnbmn4y4x(Selection P_0, Qf9l8XVKaY8crinpPDHi P_1, out int P_2)
+	private static bool TryConvertDatesInTable(Selection P_0, DateFormatMode P_1, out int P_2)
 	{
 		P_2 = 0;
 		Cells cells = null;
@@ -471,7 +471,7 @@ internal static class ThousandsSeparatorService
 		catch
 		{
 		}
-		if (cells == null || cells.Count == 0 || !LMgboPVm9N(P_0, cells))
+		if (cells == null || cells.Count == 0 || !IsFullCellSelection(P_0, cells))
 		{
 			return false;
 		}
@@ -483,13 +483,13 @@ internal static class ThousandsSeparatorService
 				object Start = item.Range.Start;
 				object End = item.Range.End - 1;
 				Range range = activeDocument.Range(ref Start, ref End);
-				P_2 += JMbbGeNwbs(range, P_1);
+				P_2 += ConvertDatesInRange(range, P_1);
 			}
 		}
 		return true;
 	}
 
-	private static bool LMgboPVm9N(Selection P_0, Cells P_1)
+	private static bool IsFullCellSelection(Selection P_0, Cells P_1)
 	{
 		try
 		{
@@ -518,14 +518,14 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	private static int JMbbGeNwbs(Range P_0, Qf9l8XVKaY8crinpPDHi P_1)
+	private static int ConvertDatesInRange(Range P_0, DateFormatMode P_1)
 	{
 		if (P_0 == null)
 		{
 			return 0;
 		}
 		int num;
-		string text = LRCbCUXZ5H(P_0.Text ?? string.Empty, P_1, out num);
+		string text = ReplaceDatesInText(P_0.Text ?? string.Empty, P_1, out num);
 		if (num > 0)
 		{
 			P_0.Text = text;
@@ -533,23 +533,23 @@ internal static class ThousandsSeparatorService
 		return num;
 	}
 
-	private static string LRCbCUXZ5H(string P_0, Qf9l8XVKaY8crinpPDHi P_1, out int P_2)
+	private static string ReplaceDatesInText(string P_0, DateFormatMode P_1, out int P_2)
 	{
 		_G_c__DisplayClass38_0 CS_8_locals_5 = new _G_c__DisplayClass38_0();
-		CS_8_locals_5.qf9l8XVKaY8crinpPDHi = P_1;
+		CS_8_locals_5.dateFormatMode = P_1;
 		P_2 = 0;
 		if (string.IsNullOrEmpty(P_0))
 		{
 			return P_0 ?? string.Empty;
 		}
 		CS_8_locals_5.value = 0;
-		string result = F2GSVZQYM6.Replace(P_0, delegate(Match match)
+		string result = _dateRegex.Replace(P_0, delegate(Match match)
 		{
-			if (!OvKbpnjTaJ(match, out var dateTime))
+			if (!TryParseDateFromMatch(match, out var dateTime))
 			{
 				return match.Value;
 			}
-			string text = OfkbO4QThB(dateTime, CS_8_locals_5.qf9l8XVKaY8crinpPDHi);
+			string text = FormatDate(dateTime, CS_8_locals_5.dateFormatMode);
 			if (string.Equals(text, match.Value, StringComparison.Ordinal))
 			{
 				return match.Value;
@@ -561,7 +561,7 @@ internal static class ThousandsSeparatorService
 		return result;
 	}
 
-	private static bool OvKbpnjTaJ(Match P_0, out DateTime P_1)
+	private static bool TryParseDateFromMatch(Match P_0, out DateTime P_1)
 	{
 		P_1 = default(DateTime);
 		if (P_0 == null || !P_0.Success)
@@ -585,36 +585,36 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	private static string OfkbO4QThB(DateTime P_0, Qf9l8XVKaY8crinpPDHi P_1)
+	private static string FormatDate(DateTime P_0, DateFormatMode P_1)
 	{
 		return P_1 switch
 		{
-			(Qf9l8XVKaY8crinpPDHi)0 => P_0.ToString("yyyy.MM.dd", CultureInfo.InvariantCulture), 
-			(Qf9l8XVKaY8crinpPDHi)1 => P_0.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture), 
-			(Qf9l8XVKaY8crinpPDHi)2 => P_0.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), 
-			(Qf9l8XVKaY8crinpPDHi)3 => string.Format(CultureInfo.InvariantCulture, "{0:yyyy}年{0:MM}月{0:dd}日", P_0), 
+			(DateFormatMode)0 => P_0.ToString("yyyy.MM.dd", CultureInfo.InvariantCulture), 
+			(DateFormatMode)1 => P_0.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture), 
+			(DateFormatMode)2 => P_0.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), 
+			(DateFormatMode)3 => string.Format(CultureInfo.InvariantCulture, "{0:yyyy}年{0:MM}月{0:dd}日", P_0), 
 			_ => P_0.ToString("yyyy.MM.dd", CultureInfo.InvariantCulture), 
 		};
 	}
 
-	internal static UiHelper_4 i4XbnSK0XW()
+	internal static UiHelper_4 ReadSeparatorConfig()
 	{
 		Cfg.SaveToFile();
 		return new UiHelper_4
 		{
-			ExcludeYear = yMebkbEGjS("数字_千分位符_排除年", true),
-			ExcludeMonth = yMebkbEGjS("数字_千分位符_排除月", true),
-			ExcludeDay = yMebkbEGjS("数字_千分位符_排除日", true),
-			ExcludeNumber = yMebkbEGjS("数字_千分位符_排除号", false),
-			ExcludeOrdinal = yMebkbEGjS("数字_千分位符_排除序号", false),
-			ExcludePercent = yMebkbEGjS("数字_千分位符_排除百分比", false),
-			ExcludeDateFormat = yMebkbEGjS("数字_千分位符_排除日期格式", true),
-			IncludeUnitOnly = yMebkbEGjS("数字_千分位符_只处理带单位", false),
-			UnitText = SG9bdAH5sJ(Cfg.GetString("数字_千分位符_单位", "元"))
+			ExcludeYear = GetBoolConfig("数字_千分位符_排除年", true),
+			ExcludeMonth = GetBoolConfig("数字_千分位符_排除月", true),
+			ExcludeDay = GetBoolConfig("数字_千分位符_排除日", true),
+			ExcludeNumber = GetBoolConfig("数字_千分位符_排除号", false),
+			ExcludeOrdinal = GetBoolConfig("数字_千分位符_排除序号", false),
+			ExcludePercent = GetBoolConfig("数字_千分位符_排除百分比", false),
+			ExcludeDateFormat = GetBoolConfig("数字_千分位符_排除日期格式", true),
+			IncludeUnitOnly = GetBoolConfig("数字_千分位符_只处理带单位", false),
+			UnitText = NormalizeUnitText(Cfg.GetString("数字_千分位符_单位", "元"))
 		};
 	}
 
-	internal static UiHelper_4 iJpb7cZpBN()
+	internal static UiHelper_4 CreateDefaultConfig()
 	{
 		return new UiHelper_4
 		{
@@ -630,42 +630,42 @@ internal static class ThousandsSeparatorService
 		};
 	}
 
-	internal static void FZAb5nb4jx(UiHelper_4 P_0)
+	internal static void SaveConfig(UiHelper_4 P_0)
 	{
-		w81bcr8VrJ(P_0, Wr8b0ba5yt());
+		WriteConfigWithOptions(P_0, GetDecimalPlaces());
 	}
 
-	internal static void w81bcr8VrJ(UiHelper_4 P_0, int P_1)
+	internal static void WriteConfigWithOptions(UiHelper_4 P_0, int P_1)
 	{
 		_G_c__DisplayClass44_0 CS_8_locals_14 = new _G_c__DisplayClass44_0();
-		CS_8_locals_14.gPiVEDhoZEL = P_0;
-		if (CS_8_locals_14.gPiVEDhoZEL == null)
+		CS_8_locals_14._configOptions = P_0;
+		if (CS_8_locals_14._configOptions == null)
 		{
-			CS_8_locals_14.gPiVEDhoZEL = iJpb7cZpBN();
+			CS_8_locals_14._configOptions = CreateDefaultConfig();
 		}
-		CS_8_locals_14.value = JTHSRmZV4w(P_1);
+		CS_8_locals_14.value = ClampDecimalPlaces(P_1);
 		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 c)
 		{
 			c.Legacy[" "] = CS_8_locals_14.value.ToString(CultureInfo.InvariantCulture);
-			c.Legacy["　"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeYear);
-			c.Legacy["^p^p"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeMonth);
-			c.Legacy["^p"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeDay);
-			c.Legacy["宋体"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeNumber);
-			c.Legacy["Times New Roman"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeOrdinal);
-			c.Legacy["Times New Roman"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludePercent);
-			c.Legacy["宋体"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeDateFormat);
-			c.Legacy["宋体"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.IncludeUnitOnly);
-			c.Legacy["宋体"] = SG9bdAH5sJ(CS_8_locals_14.gPiVEDhoZEL.UnitText);
+			c.Legacy["　"] = BoolToString(CS_8_locals_14._configOptions.ExcludeYear);
+			c.Legacy["^p^p"] = BoolToString(CS_8_locals_14._configOptions.ExcludeMonth);
+			c.Legacy["^p"] = BoolToString(CS_8_locals_14._configOptions.ExcludeDay);
+			c.Legacy["宋体"] = BoolToString(CS_8_locals_14._configOptions.ExcludeNumber);
+			c.Legacy["Times New Roman"] = BoolToString(CS_8_locals_14._configOptions.ExcludeOrdinal);
+			c.Legacy["Times New Roman"] = BoolToString(CS_8_locals_14._configOptions.ExcludePercent);
+			c.Legacy["宋体"] = BoolToString(CS_8_locals_14._configOptions.ExcludeDateFormat);
+			c.Legacy["宋体"] = BoolToString(CS_8_locals_14._configOptions.IncludeUnitOnly);
+			c.Legacy["宋体"] = NormalizeUnitText(CS_8_locals_14._configOptions.UnitText);
 		});
 	}
 
-	public static void W2IbekWIMv()
+	public static void AddPercentSign()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
-			q9PbqGOMSk((string text) => (!dU3bP2kG38(text, out var _)) ? text : uSLbAQX9Hb(text));
+			ApplyToSelection((string text) => (!TryParseDouble(text, out var _)) ? text : EnsurePercentSign(text));
 		}
 		finally
 		{
@@ -673,7 +673,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	public static void nySbyq4v2j()
+	public static void MultiplyByHundred()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -686,13 +686,13 @@ internal static class ThousandsSeparatorService
 				CS_8_locals_6.double = 100.0;
 			}
 			CS_8_locals_6.flag = Cfg.GetInt("数字_乘以一百_执行添加%") != 0;
-			q9PbqGOMSk(delegate(string text)
+			ApplyToSelection(delegate(string text)
 			{
-				if (!dU3bP2kG38(text, out var num))
+				if (!TryParseDouble(text, out var num))
 				{
 					return text;
 				}
-				string text2 = k5Fbv3LNWS(num * CS_8_locals_6.double);
+				string text2 = FormatNumberWith2Decimals(num * CS_8_locals_6.double);
 				return (!CS_8_locals_6.flag) ? text2 : (text2 + "数字_除以一万_自定义");
 			});
 		}
@@ -702,7 +702,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	public static void Ws1bXTwZbX()
+	public static void ConvertFullWidthToHalfWidthPunctuation()
 	{
 		App.ScreenUpdating = false;
 		try
@@ -795,7 +795,7 @@ internal static class ThousandsSeparatorService
 				object Extend = WdMovementType.wdExtend;
 				selection.MoveLeft(ref Unit, ref Count, ref Extend);
 			}
-			wRXbF2Mbbk();
+			FixPunctuationAroundDigits();
 		}
 		finally
 		{
@@ -803,7 +803,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	public static void wRXbF2Mbbk()
+	public static void FixPunctuationAroundDigits()
 	{
 		string[] array = new string[6]
 		{
@@ -847,7 +847,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	public static void VAIbhPgq9q()
+	public static void RemoveDuplicateParagraphMarks()
 	{
 		Find find = App.Selection.Range.Find;
 		find.ClearFormatting();
@@ -894,7 +894,7 @@ internal static class ThousandsSeparatorService
 		while (find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl) && ++num <= 100);
 	}
 
-	public static void wHlbaJxKRr()
+	public static void RemoveParagraphMarksAndLineBreaks()
 	{
 		Find find = App.Selection.Range.Find;
 		find.ClearFormatting();
@@ -940,7 +940,7 @@ internal static class ThousandsSeparatorService
 		find.Execute(ref MatchControl, ref MatchAlefHamza, ref MatchDiacritics, ref MatchKashida, ref Replace, ref ReplaceWith, ref Format, ref Wrap, ref Forward, ref MatchAllWordForms, ref MatchSoundsLike, ref MatchWildcards, ref MatchWholeWord, ref MatchCase, ref FindText);
 	}
 
-	private static void q9PbqGOMSk(Func<string, string> P_0)
+	private static void ApplyToSelection(Func<string, string> P_0)
 	{
 		Selection selection = App.Selection;
 		if (selection == null)
@@ -951,7 +951,7 @@ internal static class ThousandsSeparatorService
 		if (selection.Type == WdSelectionType.wdSelectionNormal)
 		{
 			string text = selection.Text ?? string.Empty;
-			if (dU3bP2kG38(text, out num))
+			if (TryParseDouble(text, out num))
 			{
 				selection.Text = P_0(text);
 			}
@@ -969,7 +969,7 @@ internal static class ThousandsSeparatorService
 				object End = cell.Range.End - 1;
 				Range range = activeDocument.Range(ref Start, ref End);
 				string text2 = range.Text ?? string.Empty;
-				if (dU3bP2kG38(text2, out num))
+				if (TryParseDouble(text2, out num))
 				{
 					range.Text = P_0(text2);
 				}
@@ -977,7 +977,7 @@ internal static class ThousandsSeparatorService
 		}
 	}
 
-	private static bool dU3bP2kG38(string P_0, out double P_1)
+	private static bool TryParseDouble(string P_0, out double P_1)
 	{
 		string s = (P_0 ?? string.Empty).Trim().Trim('\r', '\a', '\a');
 		if (!double.TryParse(s, NumberStyles.Any, CultureInfo.CurrentCulture, out P_1))
@@ -987,7 +987,7 @@ internal static class ThousandsSeparatorService
 		return true;
 	}
 
-	private static string uSLbAQX9Hb(string P_0)
+	private static string EnsurePercentSign(string P_0)
 	{
 		string text = (P_0 ?? string.Empty).Trim().Trim('\r', '\a', '\a');
 		if (!text.EndsWith("%", StringComparison.Ordinal) && !text.EndsWith("％", StringComparison.Ordinal))
@@ -997,24 +997,24 @@ internal static class ThousandsSeparatorService
 		return text;
 	}
 
-	private static string k5Fbv3LNWS(double P_0)
+	private static string FormatNumberWith2Decimals(double P_0)
 	{
-		return MZYbWulvTX(P_0, 2);
+		return FormatNumberWithDecimals(P_0, 2);
 	}
 
-	private static string MZYbWulvTX(double P_0, int P_1)
+	private static string FormatNumberWithDecimals(double P_0, int P_1)
 	{
-		P_1 = JTHSRmZV4w(P_1);
+		P_1 = ClampDecimalPlaces(P_1);
 		string text = "#,##0" + ((P_1 > 0) ? ("." + new string('0', P_1)) : string.Empty);
 		return P_0.ToString(text, CultureInfo.InvariantCulture);
 	}
 
-	internal static int Wr8b0ba5yt()
+	internal static int GetDecimalPlaces()
 	{
-		return JTHSRmZV4w(Cfg.GetInt("数字_千分位符_小数位数", 2));
+		return ClampDecimalPlaces(Cfg.GetInt("数字_千分位符_小数位数", 2));
 	}
 
-	private static bool yMebkbEGjS(string P_0, bool P_1)
+	private static bool GetBoolConfig(string P_0, bool P_1)
 	{
 		string text = (P_1 ? "1" : "0");
 		string a = Cfg.GetString(P_0, text);
@@ -1025,7 +1025,7 @@ internal static class ThousandsSeparatorService
 		return true;
 	}
 
-	private static string KhrbxSmalP(bool P_0)
+	private static string BoolToString(bool P_0)
 	{
 		if (!P_0)
 		{
@@ -1034,7 +1034,7 @@ internal static class ThousandsSeparatorService
 		return "1";
 	}
 
-	private static string SG9bdAH5sJ(string P_0)
+	private static string NormalizeUnitText(string P_0)
 	{
 		if (!string.IsNullOrWhiteSpace(P_0))
 		{
@@ -1043,16 +1043,16 @@ internal static class ThousandsSeparatorService
 		return "元";
 	}
 
-	internal static int Sg0bz3s0DU(string P_0)
+	internal static int ParseDecimalPlaces(string P_0)
 	{
 		if (!int.TryParse((P_0 ?? string.Empty).Trim(), out var result))
 		{
 			return 2;
 		}
-		return JTHSRmZV4w(result);
+		return ClampDecimalPlaces(result);
 	}
 
-	internal static int JTHSRmZV4w(int P_0)
+	internal static int ClampDecimalPlaces(int P_0)
 	{
 		if (P_0 < 0)
 		{
@@ -1068,6 +1068,6 @@ internal static class ThousandsSeparatorService
 	static ThousandsSeparatorService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		F2GSVZQYM6 = new Regex("(?<!\\\\d)(?<year>\\\\d{4})\\\\s*(?:(?<sep>[./-])\\\\s*(?<month>\\\\d{1,2})\\\\s*\\\\k<sep>\\\\s*(?<day>\\\\d{1,2})|年\\\\s*(?<monthCn>\\\\d{1,2})\\\\s*月\\\\s*(?<dayCn>\\\\d{1,2})\\\\s*日)(?!\\\\d)", RegexOptions.Compiled);
+		_dateRegex = new Regex("(?<!\\\\d)(?<year>\\\\d{4})\\\\s*(?:(?<sep>[./-])\\\\s*(?<month>\\\\d{1,2})\\\\s*\\\\k<sep>\\\\s*(?<day>\\\\d{1,2})|年\\\\s*(?<monthCn>\\\\d{1,2})\\\\s*月\\\\s*(?<dayCn>\\\\d{1,2})\\\\s*日)(?!\\\\d)", RegexOptions.Compiled);
 	}
 }

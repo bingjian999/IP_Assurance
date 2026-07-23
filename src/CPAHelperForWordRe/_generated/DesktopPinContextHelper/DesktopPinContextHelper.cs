@@ -17,16 +17,16 @@ internal class DesktopPinContextHelper : Form
 	{
 		public double double;
 
-		public DesktopPinContextHelper zkqVZDdaibO;
+		public DesktopPinContextHelper helper;
 
 		public _G_c__DisplayClass23_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void gC7VZ69pkvH(object _, EventArgs __)
+		internal void OnScaleMenuItemClick(object _, EventArgs __)
 		{
-			zkqVZDdaibO.AVx5CX60a1(double);
+			helper.SetScale(double);
 		}
 	}
 
@@ -42,7 +42,7 @@ internal class DesktopPinContextHelper : Form
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void rtUVZTmATRl(object _, EventArgs __)
+		internal void OnOpacityMenuItemClick(object _, EventArgs __)
 		{
 			desktopPinContextHelper.Opacity = (double)value / 100.0;
 			desktopPinContextHelper.Invalidate();
@@ -59,9 +59,9 @@ internal class DesktopPinContextHelper : Form
 
 	private ToolStripMenuItem _toolStripMenuItem;
 
-	private bool iJncVAFqx1;
+	private bool _isDragging;
 
-	private Point hdWcBtSmSo;
+	private Point _dragOffset;
 
 	private double _double;
 
@@ -74,7 +74,7 @@ internal class DesktopPinContextHelper : Form
 		SseStreamInitializer.InitializeRuntime();
 		_bool = true;
 		_image = P_0 ?? throw new ArgumentNullException("image");
-		_double = vxZ5yKGr8m(P_2);
+		_double = ClampScale(P_2);
 		Font = new Font("Microsoft YaHei UI", 9f);
 		base.FormBorderStyle = FormBorderStyle.None;
 		base.KeyPreview = true;
@@ -85,35 +85,35 @@ internal class DesktopPinContextHelper : Form
 		base.TopMost = true;
 		BackColor = Color.Black;
 		DoubleBuffered = true;
-		FHT5O4ouqE();
+		UpdateClientSize();
 		if (P_1.HasValue)
 		{
 			base.Location = P_1.Value;
 		}
-		_contextMenuStrip = gnZ5sArDPc();
+		_contextMenuStrip = CreateContextMenuStrip();
 		ContextMenuStrip = _contextMenuStrip;
 		_timer = new Timer
 		{
 			Interval = 1000
 		};
-		_timer.Tick += JFo5FdcSkH;
+		_timer.Tick += OnTimerTick;
 		base.DoubleClick += delegate
 		{
 			Close();
 		};
-		base.MouseDown += SGn5STtVxD;
-		base.MouseMove += OiP5wPGJVh;
-		base.MouseUp += VtL5tIkqVF;
-		base.MouseWheel += E4G5LDGJVX;
-		base.KeyDown += Wn55MugekH;
-		base.FormClosed += Ybr5bphpiG;
+		base.MouseDown += OnMouseDown;
+		base.MouseMove += OnMouseMove;
+		base.MouseUp += OnMouseUp;
+		base.MouseWheel += OnMouseWheel;
+		base.KeyDown += OnKeyDown;
+		base.FormClosed += OnFormClosed;
 		base.MouseEnter += delegate
 		{
 			Focus();
 		};
 	}
 
-	private void Wn55MugekH(object P_0, KeyEventArgs P_1)
+	private void OnKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.KeyCode == Keys.Escape)
 		{
@@ -121,31 +121,31 @@ internal class DesktopPinContextHelper : Form
 		}
 		else if (P_1.Control && P_1.KeyCode == Keys.C)
 		{
-			dv55ljYQbl();
+			CopyImageToClipboard();
 		}
 		else if (P_1.Control && P_1.KeyCode == Keys.S)
 		{
-			Ik05NdFNPN();
+			SaveImageToFile();
 		}
 		else if (P_1.Control && (P_1.KeyCode == Keys.Oemplus || P_1.KeyCode == Keys.Add))
 		{
-			Rv65onvxdk(0.1, new Point(base.ClientSize.Width / 2, base.ClientSize.Height / 2));
+			ApplyZoom(0.1, new Point(base.ClientSize.Width / 2, base.ClientSize.Height / 2));
 		}
 		else if (P_1.Control && (P_1.KeyCode == Keys.OemMinus || P_1.KeyCode == Keys.Subtract))
 		{
-			Rv65onvxdk(-0.1, new Point(base.ClientSize.Width / 2, base.ClientSize.Height / 2));
+			ApplyZoom(-0.1, new Point(base.ClientSize.Width / 2, base.ClientSize.Height / 2));
 		}
 		else if (P_1.Control && (P_1.KeyCode == Keys.D0 || P_1.KeyCode == Keys.NumPad0))
 		{
-			Gty5GKE6Ph();
+			ResetZoom();
 		}
 		else if (P_1.Control && P_1.KeyCode == Keys.B)
 		{
-			NIp5pEGFUW(!_bool);
+			SetBorderVisible(!_bool);
 		}
 	}
 
-	private void Ybr5bphpiG(object P_0, FormClosedEventArgs P_1)
+	private void OnFormClosed(object P_0, FormClosedEventArgs P_1)
 	{
 		_timer.Stop();
 		_timer.Dispose();
@@ -157,7 +157,7 @@ internal class DesktopPinContextHelper : Form
 	{
 		base.OnPaint(P_0);
 		P_0.Graphics.Clear(BackColor);
-		Rectangle rect = NSp57mPLhM();
+		Rectangle rect = GetImageRectangle();
 		P_0.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 		P_0.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 		P_0.Graphics.SmoothingMode = SmoothingMode.HighQuality;
@@ -167,7 +167,7 @@ internal class DesktopPinContextHelper : Form
 			using Pen pen = new Pen(Color.Gray, 2f);
 			P_0.Graphics.DrawRectangle(pen, rect);
 		}
-		string value = nTD5cAMJI9();
+		string value = GetStatusText();
 		if (string.IsNullOrEmpty(value))
 		{
 			return;
@@ -183,56 +183,56 @@ internal class DesktopPinContextHelper : Form
 		}
 	}
 
-	private void SGn5STtVxD(object P_0, MouseEventArgs P_1)
+	private void OnMouseDown(object P_0, MouseEventArgs P_1)
 	{
 		if (P_1.Button == MouseButtons.Left)
 		{
-			iJncVAFqx1 = true;
-			hdWcBtSmSo = P_1.Location;
+			_isDragging = true;
+			_dragOffset = P_1.Location;
 		}
 	}
 
-	private void OiP5wPGJVh(object P_0, MouseEventArgs P_1)
+	private void OnMouseMove(object P_0, MouseEventArgs P_1)
 	{
-		if (iJncVAFqx1)
+		if (_isDragging)
 		{
-			base.Location = new Point(base.Location.X + P_1.X - hdWcBtSmSo.X, base.Location.Y + P_1.Y - hdWcBtSmSo.Y);
+			base.Location = new Point(base.Location.X + P_1.X - _dragOffset.X, base.Location.Y + P_1.Y - _dragOffset.Y);
 		}
 	}
 
-	private void VtL5tIkqVF(object P_0, MouseEventArgs P_1)
+	private void OnMouseUp(object P_0, MouseEventArgs P_1)
 	{
-		iJncVAFqx1 = false;
+		_isDragging = false;
 	}
 
-	private void E4G5LDGJVX(object P_0, MouseEventArgs P_1)
+	private void OnMouseWheel(object P_0, MouseEventArgs P_1)
 	{
 		if (Control.ModifierKeys == Keys.Control)
 		{
 			double val = base.Opacity + ((P_1.Delta > 0) ? 0.1 : (-0.1));
 			base.Opacity = Math.Max(0.1, Math.Min(1.0, val));
-			PeS5Xuey1N(string.Format("透明度: {0}%", (int)Math.Round(base.Opacity * 100.0)));
+			ShowStatusText(string.Format("透明度: {0}%", (int)Math.Round(base.Opacity * 100.0)));
 			Invalidate();
 		}
 		else
 		{
-			Rv65onvxdk((P_1.Delta > 0) ? 0.1 : (-0.1), P_1.Location);
+			ApplyZoom((P_1.Delta > 0) ? 0.1 : (-0.1), P_1.Location);
 		}
 	}
 
-	private ContextMenuStrip gnZ5sArDPc()
+	private ContextMenuStrip CreateContextMenuStrip()
 	{
 		ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
 		ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem("复制到剪贴板");
 		toolStripMenuItem.Click += delegate
 		{
-			dv55ljYQbl();
+			CopyImageToClipboard();
 		};
 		contextMenuStrip.Items.Add(toolStripMenuItem);
 		ToolStripMenuItem toolStripMenuItem2 = new ToolStripMenuItem("保存到文件...");
 		toolStripMenuItem2.Click += delegate
 		{
-			Ik05NdFNPN();
+			SaveImageToFile();
 		};
 		contextMenuStrip.Items.Add(toolStripMenuItem2);
 		contextMenuStrip.Items.Add(new ToolStripSeparator());
@@ -240,7 +240,7 @@ internal class DesktopPinContextHelper : Form
 		ToolStripMenuItem toolStripMenuItem4 = new ToolStripMenuItem("重置到100%");
 		toolStripMenuItem4.Click += delegate
 		{
-			Gty5GKE6Ph();
+			ResetZoom();
 		};
 		toolStripMenuItem3.DropDownItems.Add(toolStripMenuItem4);
 		toolStripMenuItem3.DropDownItems.Add(new ToolStripSeparator());
@@ -248,12 +248,12 @@ internal class DesktopPinContextHelper : Form
 		foreach (double double in array)
 		{
 			_G_c__DisplayClass23_0 CS_8_locals_9 = new _G_c__DisplayClass23_0();
-			CS_8_locals_9.zkqVZDdaibO = this;
+			CS_8_locals_9.helper = this;
 			CS_8_locals_9.double = double;
 			ToolStripMenuItem toolStripMenuItem5 = new ToolStripMenuItem(string.Format("{0}%", (int)(CS_8_locals_9.double * 100.0)));
 			toolStripMenuItem5.Click += delegate
 			{
-				CS_8_locals_9.zkqVZDdaibO.AVx5CX60a1(CS_8_locals_9.double);
+				CS_8_locals_9.helper.SetScale(CS_8_locals_9.double);
 			};
 			toolStripMenuItem3.DropDownItems.Add(toolStripMenuItem5);
 		}
@@ -279,12 +279,12 @@ internal class DesktopPinContextHelper : Form
 		_toolStripMenuItem = new ToolStripMenuItem("显示边框");
 		_toolStripMenuItem.Click += delegate
 		{
-			NIp5pEGFUW( true);
+			SetBorderVisible( true);
 		};
 		_toolStripMenuItem = new ToolStripMenuItem("隐藏边框");
 		_toolStripMenuItem.Click += delegate
 		{
-			NIp5pEGFUW( false);
+			SetBorderVisible( false);
 		};
 		toolStripMenuItem8.DropDownItems.Add(_toolStripMenuItem);
 		toolStripMenuItem8.DropDownItems.Add(_toolStripMenuItem);
@@ -319,11 +319,11 @@ internal class DesktopPinContextHelper : Form
 			Close();
 		};
 		contextMenuStrip.Items.Add(toolStripMenuItem10);
-		Y6W5ea9aYR();
+		UpdateBorderMenuChecks();
 		return contextMenuStrip;
 	}
 
-	private void dv55ljYQbl()
+	private void CopyImageToClipboard()
 	{
 		try
 		{
@@ -335,7 +335,7 @@ internal class DesktopPinContextHelper : Form
 		}
 	}
 
-	private void Ik05NdFNPN()
+	private void SaveImageToFile()
 	{
 		using SaveFileDialog saveFileDialog = new SaveFileDialog();
 		saveFileDialog.Filter = "PNG文件|*.png|JPEG文件|*.jpg|BMP文件|*.bmp";
@@ -347,7 +347,7 @@ internal class DesktopPinContextHelper : Form
 		}
 		try
 		{
-			_image.Save(saveFileDialog.FileName, vxK5m4IL5D(saveFileDialog.FileName));
+			_image.Save(saveFileDialog.FileName, GetImageFormatFromExtension(saveFileDialog.FileName));
 			MessageBox.Show(this, "保存成功。", "IP_Assurance", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 		}
 		catch (Exception ex)
@@ -356,7 +356,7 @@ internal class DesktopPinContextHelper : Form
 		}
 	}
 
-	private static ImageFormat vxK5m4IL5D(string P_0)
+	private static ImageFormat GetImageFormatFromExtension(string P_0)
 	{
 		string text = Path.GetExtension(P_0)?.ToLowerInvariant();
 		if (!(text == ".jpg") && !(text == ".jpeg"))
@@ -370,57 +370,57 @@ internal class DesktopPinContextHelper : Form
 		return ImageFormat.Jpeg;
 	}
 
-	private void Rv65onvxdk(double P_0, Point P_1)
+	private void ApplyZoom(double P_0, Point P_1)
 	{
-		double num = vxZ5yKGr8m(_double + P_0);
+		double num = ClampScale(_double + P_0);
 		if (!(Math.Abs(num - _double) < 0.001))
 		{
-			Rectangle rectangle = NSp57mPLhM();
+			Rectangle rectangle = GetImageRectangle();
 			Point point = PointToScreen(P_1);
 			double val = ((rectangle.Width > 0) ? ((double)(P_1.X - rectangle.X) / (double)rectangle.Width) : 0.5);
 			double val2 = ((rectangle.Height > 0) ? ((double)(P_1.Y - rectangle.Y) / (double)rectangle.Height) : 0.5);
 			val = Math.Max(0.0, Math.Min(1.0, val));
 			val2 = Math.Max(0.0, Math.Min(1.0, val2));
 			_double = num;
-			Size size = ItL5nwIcAP();
-			Rectangle rectangle2 = Yfh55ZW0I6(size);
+			Size size = CalculateClientSize();
+			Rectangle rectangle2 = GetImageRectangleFromSize(size);
 			base.ClientSize = size;
 			base.Location = new Point(point.X - (int)Math.Round((double)rectangle2.X + (double)rectangle2.Width * val), point.Y - (int)Math.Round((double)rectangle2.Y + (double)rectangle2.Height * val2));
-			PeS5Xuey1N(string.Format("缩放: {0}%", (int)Math.Round(_double * 100.0)));
+			ShowStatusText(string.Format("缩放: {0}%", (int)Math.Round(_double * 100.0)));
 			Invalidate();
 		}
 	}
 
-	private void Gty5GKE6Ph()
+	private void ResetZoom()
 	{
-		AVx5CX60a1(1.0);
+		SetScale(1.0);
 	}
 
-	private void AVx5CX60a1(double P_0)
+	private void SetScale(double P_0)
 	{
-		_double = vxZ5yKGr8m(P_0);
-		FHT5O4ouqE();
+		_double = ClampScale(P_0);
+		UpdateClientSize();
 		Invalidate();
 	}
 
-	private void NIp5pEGFUW(bool P_0)
+	private void SetBorderVisible(bool P_0)
 	{
 		if (_bool != P_0)
 		{
 			_bool = P_0;
-			FHT5O4ouqE();
-			Y6W5ea9aYR();
-			PeS5Xuey1N(_bool ? "已隐藏边框" : "已显示边框");
+			UpdateClientSize();
+			UpdateBorderMenuChecks();
+			ShowStatusText(_bool ? "已隐藏边框" : "已显示边框");
 			Invalidate();
 		}
 	}
 
-	private void FHT5O4ouqE()
+	private void UpdateClientSize()
 	{
-		base.ClientSize = ItL5nwIcAP();
+		base.ClientSize = CalculateClientSize();
 	}
 
-	private Size ItL5nwIcAP()
+	private Size CalculateClientSize()
 	{
 		int num = (_bool ? 4 : 0);
 		int num2 = Math.Max(1, (int)Math.Round((double)_image.Width * _double));
@@ -428,23 +428,23 @@ internal class DesktopPinContextHelper : Form
 		return new Size(num2 + num, num3 + num);
 	}
 
-	private Rectangle NSp57mPLhM()
+	private Rectangle GetImageRectangle()
 	{
-		return Yfh55ZW0I6(base.ClientSize);
+		return GetImageRectangleFromSize(base.ClientSize);
 	}
 
-	private Rectangle Yfh55ZW0I6(Size P_0)
+	private Rectangle GetImageRectangleFromSize(Size P_0)
 	{
 		int num = (_bool ? 2 : 0);
 		return new Rectangle(num, num, Math.Max(1, P_0.Width - num * 2), Math.Max(1, P_0.Height - num * 2));
 	}
 
-	private string nTD5cAMJI9()
+	private string GetStatusText()
 	{
 		return _string;
 	}
 
-	private void Y6W5ea9aYR()
+	private void UpdateBorderMenuChecks()
 	{
 		if (_toolStripMenuItem != null && _toolStripMenuItem != null)
 		{
@@ -453,19 +453,19 @@ internal class DesktopPinContextHelper : Form
 		}
 	}
 
-	private static double vxZ5yKGr8m(double P_0)
+	private static double ClampScale(double P_0)
 	{
 		return Math.Max(0.2, Math.Min(3.0, P_0));
 	}
 
-	private void PeS5Xuey1N(string P_0)
+	private void ShowStatusText(string P_0)
 	{
 		_string = P_0;
 		_timer.Stop();
 		_timer.Start();
 	}
 
-	private void JFo5FdcSkH(object P_0, EventArgs P_1)
+	private void OnTimerTick(object P_0, EventArgs P_1)
 	{
 		_timer.Stop();
 		_string = null;
@@ -473,49 +473,49 @@ internal class DesktopPinContextHelper : Form
 	}
 
 	[CompilerGenerated]
-	private void DrH5hRN8iy(object P_0, EventArgs P_1)
+	private void OnDoubleClickClose(object P_0, EventArgs P_1)
 	{
 		Close();
 	}
 
 	[CompilerGenerated]
-	private void Xpb5acg4CY(object P_0, EventArgs P_1)
+	private void OnMouseEnterFocus(object P_0, EventArgs P_1)
 	{
 		Focus();
 	}
 
 	[CompilerGenerated]
-	private void ceq5qYtqKR(object P_0, EventArgs P_1)
+	private void OnCopyMenuItemClick(object P_0, EventArgs P_1)
 	{
-		dv55ljYQbl();
+		CopyImageToClipboard();
 	}
 
 	[CompilerGenerated]
-	private void Pn55PZykQw(object P_0, EventArgs P_1)
+	private void OnSaveMenuItemClick(object P_0, EventArgs P_1)
 	{
-		Ik05NdFNPN();
+		SaveImageToFile();
 	}
 
 	[CompilerGenerated]
-	private void rXP5ALkgsH(object P_0, EventArgs P_1)
+	private void OnResetZoomMenuItemClick(object P_0, EventArgs P_1)
 	{
-		Gty5GKE6Ph();
+		ResetZoom();
 	}
 
 	[CompilerGenerated]
-	private void ia25vxXoFY(object P_0, EventArgs P_1)
+	private void OnShowBorderMenuItemClick(object P_0, EventArgs P_1)
 	{
-		NIp5pEGFUW( true);
+		SetBorderVisible( true);
 	}
 
 	[CompilerGenerated]
-	private void Qgq5WWCmqA(object P_0, EventArgs P_1)
+	private void OnHideBorderMenuItemClick(object P_0, EventArgs P_1)
 	{
-		NIp5pEGFUW( false);
+		SetBorderVisible( false);
 	}
 
 	[CompilerGenerated]
-	private void FP750j6gFS(object P_0, EventArgs P_1)
+	private void OnCloseMenuItemClick(object P_0, EventArgs P_1)
 	{
 		Close();
 	}

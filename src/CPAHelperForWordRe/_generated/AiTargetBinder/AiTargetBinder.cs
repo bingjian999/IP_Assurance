@@ -23,12 +23,12 @@ internal sealed class AiTargetBinder
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string rvxqW9cAcd()
+		internal string GetFullName()
 		{
 			return doc.FullName;
 		}
 
-		internal string owkq0LTwqi()
+		internal string GetName()
 		{
 			return doc.Name;
 		}
@@ -44,17 +44,17 @@ internal sealed class AiTargetBinder
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string EShqkH5YFs()
+		internal string GetName()
 		{
 			return doc.Name;
 		}
 
-		internal string N4pqx6IsCx()
+		internal string GetFullName()
 		{
 			return doc.FullName;
 		}
 
-		internal string BMuqdAhyxs()
+		internal string GetPath()
 		{
 			return doc.Path;
 		}
@@ -63,21 +63,21 @@ internal sealed class AiTargetBinder
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass38_0
 	{
-		public Document IcoPBTyHo2;
+		public Document document;
 
 		public _G_c__DisplayClass38_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string BwoPRYb6HE()
+		internal string GetFullName()
 		{
-			return IcoPBTyHo2.FullName;
+			return document.FullName;
 		}
 
-		internal string WcLPVMnm2Z()
+		internal string GetName()
 		{
-			return IcoPBTyHo2.Name;
+			return document.Name;
 		}
 	}
 
@@ -91,7 +91,7 @@ internal sealed class AiTargetBinder
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string Q1lP9djNlS()
+		internal string GetFullName()
 		{
 			return doc.FullName;
 		}
@@ -100,33 +100,33 @@ internal sealed class AiTargetBinder
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass40_0
 	{
-		public Document khWPDeUAXa;
+		public Document document;
 
 		public _G_c__DisplayClass40_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string gNtPuTLHwo()
+		internal string GetName()
 		{
-			return khWPDeUAXa.Name;
+			return document.Name;
 		}
 	}
 
 	[CompilerGenerated]
-	private string EJBuqWERwe;
+	private string _windowKey;
 
 	[CompilerGenerated]
 	private int _windowHwnd;
 
 	[CompilerGenerated]
-	private string JqBuASpfAI;
+	private string _documentName;
 
 	[CompilerGenerated]
 	private string _documentFullName;
 
 	[CompilerGenerated]
-	private string sCPuWnOnOg;
+	private string _documentPath;
 
 	private Window _window;
 
@@ -137,12 +137,12 @@ internal sealed class AiTargetBinder
 		[CompilerGenerated]
 		get
 		{
-			return EJBuqWERwe;
+			return _windowKey;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			EJBuqWERwe = value;
+			_windowKey = value;
 		}
 	}
 
@@ -165,12 +165,12 @@ internal sealed class AiTargetBinder
 		[CompilerGenerated]
 		get
 		{
-			return JqBuASpfAI;
+			return _documentName;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			JqBuASpfAI = value;
+			_documentName = value;
 		}
 	}
 
@@ -193,12 +193,12 @@ internal sealed class AiTargetBinder
 		[CompilerGenerated]
 		get
 		{
-			return sCPuWnOnOg;
+			return _documentPath;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			sCPuWnOnOg = value;
+			_documentPath = value;
 		}
 	}
 
@@ -232,29 +232,29 @@ internal sealed class AiTargetBinder
 		}
 	}
 
-	public static AiTargetBinder wvGulrEfed(Window P_0)
+	public static AiTargetBinder FromWindow(Window P_0)
 	{
 		if (P_0 == null)
 		{
 			return null;
 		}
-		AiTargetBinder rkZt4ZuLjXTP5cAL48p = new AiTargetBinder
+		AiTargetBinder targetBinder = new AiTargetBinder
 		{
 			_window = P_0,
-			WindowHwnd = ORluoOGP40(P_0)
+			WindowHwnd = GetWindowHwnd(P_0)
 		};
 		try
 		{
-			rkZt4ZuLjXTP5cAL48p.ML7uGGyNIv(P_0.Document);
+			targetBinder.BindDocument(P_0.Document);
 		}
 		catch
 		{
 		}
-		rkZt4ZuLjXTP5cAL48p.WindowKey = sssuXl8Uty(rkZt4ZuLjXTP5cAL48p.WindowHwnd, rkZt4ZuLjXTP5cAL48p.DocumentFullName, rkZt4ZuLjXTP5cAL48p.DocumentName);
-		return rkZt4ZuLjXTP5cAL48p;
+		targetBinder.WindowKey = BuildWindowKeyString(targetBinder.WindowHwnd, targetBinder.DocumentFullName, targetBinder.DocumentName);
+		return targetBinder;
 	}
 
-	public static AiTargetBinder hYCuNwB2K0(WordWindowInfo P_0)
+	public static AiTargetBinder FromWordWindowInfo(WordWindowInfo P_0)
 	{
 		if (P_0 == null)
 		{
@@ -270,13 +270,13 @@ internal sealed class AiTargetBinder
 		};
 	}
 
-	public static string xZLum40ueh(Window P_0)
+	public static string BuildWindowKey(Window P_0)
 	{
 		if (P_0 == null)
 		{
 			return string.Empty;
 		}
-		int num = ORluoOGP40(P_0);
+		int num = GetWindowHwnd(P_0);
 		string text = string.Empty;
 		string text2 = string.Empty;
 		try
@@ -285,17 +285,17 @@ internal sealed class AiTargetBinder
 			CS_8_locals_4.doc = P_0.Document;
 			if (CS_8_locals_4.doc != null)
 			{
-				text = b0QuaLFO45(() => CS_8_locals_4.doc.FullName);
-				text2 = b0QuaLFO45(() => CS_8_locals_4.doc.Name);
+				text = SafeInvokeStringFunc(() => CS_8_locals_4.doc.FullName);
+				text2 = SafeInvokeStringFunc(() => CS_8_locals_4.doc.Name);
 			}
 		}
 		catch
 		{
 		}
-		return sssuXl8Uty(num, text, text2);
+		return BuildWindowKeyString(num, text, text2);
 	}
 
-	public static int ORluoOGP40(Window P_0)
+	public static int GetWindowHwnd(Window P_0)
 	{
 		if (P_0 == null)
 		{
@@ -311,20 +311,20 @@ internal sealed class AiTargetBinder
 		}
 	}
 
-	public void ML7uGGyNIv(Document P_0)
+	public void BindDocument(Document P_0)
 	{
 		_G_c__DisplayClass32_0 CS_8_locals_6 = new _G_c__DisplayClass32_0();
 		CS_8_locals_6.doc = P_0;
 		if (CS_8_locals_6.doc != null)
 		{
-			DocumentName = b0QuaLFO45(() => CS_8_locals_6.doc.Name);
-			DocumentFullName = b0QuaLFO45(() => CS_8_locals_6.doc.FullName);
-			DocumentPath = b0QuaLFO45(() => CS_8_locals_6.doc.Path);
+			DocumentName = SafeInvokeStringFunc(() => CS_8_locals_6.doc.Name);
+			DocumentFullName = SafeInvokeStringFunc(() => CS_8_locals_6.doc.FullName);
+			DocumentPath = SafeInvokeStringFunc(() => CS_8_locals_6.doc.Path);
 			_document = CS_8_locals_6.doc;
 		}
 	}
 
-	public Window l1ouC0fgct(Application P_0)
+	public Window FindWindow(Application P_0)
 	{
 		if (P_0 == null || string.IsNullOrWhiteSpace(WindowKey))
 		{
@@ -338,18 +338,18 @@ internal sealed class AiTargetBinder
 				{
 					continue;
 				}
-				if (DrMuhvXNA4(window, _window))
+				if (IsSameComObject(window, _window))
 				{
 					return window;
 				}
-				if (mIAuFp0oKe(xZLum40ueh(window), WindowKey))
+				if (EqualsOrdinalIgnoreCase(BuildWindowKey(window), WindowKey))
 				{
 					return window;
 				}
 				try
 				{
 					Document document = window.Document;
-					if (AXWu5GjCxV(document))
+					if (IsDocumentMatch(document))
 					{
 						_window = window;
 						return window;
@@ -366,34 +366,34 @@ internal sealed class AiTargetBinder
 		return null;
 	}
 
-	public Document iHlupRS7Nk(Application P_0)
+	public Document ResolveDocument(Application P_0)
 	{
 		if (P_0 == null)
 		{
 			return null;
 		}
-		Document document = liEu7Hj5L6(P_0);
+		Document document = FindDocumentByReference(P_0);
 		if (document != null)
 		{
 			return document;
 		}
-		Window window = l1ouC0fgct(P_0);
+		Window window = FindWindow(P_0);
 		if (window != null)
 		{
 			try
 			{
 				Document document2 = window.Document;
-				ML7uGGyNIv(document2);
+				BindDocument(document2);
 				return document2;
 			}
 			catch
 			{
 			}
 		}
-		return a0SucXphrE(P_0, DocumentFullName) ?? NQhuemeD11(P_0, DocumentName);
+		return FindDocumentByFullName(P_0, DocumentFullName) ?? FindDocumentByName(P_0, DocumentName);
 	}
 
-	public bool c38uOkT1SI(Application P_0, out string P_1)
+	public bool TryActivate(Application P_0, out string P_1)
 	{
 		P_1 = null;
 		if (P_0 == null)
@@ -401,13 +401,13 @@ internal sealed class AiTargetBinder
 			P_1 = "Word 应用尚未初始化。";
 			return false;
 		}
-		Window window = l1ouC0fgct(P_0);
+		Window window = FindWindow(P_0);
 		if (window != null)
 		{
 			try
 			{
 				window.Activate();
-				ML7uGGyNIv(window.Document);
+				BindDocument(window.Document);
 				return true;
 			}
 			catch (Exception ex)
@@ -416,13 +416,13 @@ internal sealed class AiTargetBinder
 				return false;
 			}
 		}
-		Document document = iHlupRS7Nk(P_0);
+		Document document = ResolveDocument(P_0);
 		if (document != null)
 		{
 			try
 			{
 				document.Activate();
-				ML7uGGyNIv(document);
+				BindDocument(document);
 				return true;
 			}
 			catch (Exception ex2)
@@ -431,11 +431,11 @@ internal sealed class AiTargetBinder
 				return false;
 			}
 		}
-		P_1 = FUHunlB6Z7();
+		P_1 = BuildUnavailableMessage();
 		return false;
 	}
 
-	public string FUHunlB6Z7()
+	public string BuildUnavailableMessage()
 	{
 		string text = DisplayName;
 		if (string.IsNullOrWhiteSpace(text))
@@ -445,7 +445,7 @@ internal sealed class AiTargetBinder
 		return "AI 助手绑定的目标 Word 文档已关闭或不可用，已停止读取/写入以避免操作当前活动文档。目标文档：" + text;
 	}
 
-	private Document liEu7Hj5L6(Application P_0)
+	private Document FindDocumentByReference(Application P_0)
 	{
 		if (P_0 == null || _document == null)
 		{
@@ -455,9 +455,9 @@ internal sealed class AiTargetBinder
 		{
 			foreach (Document document in P_0.Documents)
 			{
-				if (DrMuhvXNA4(document, _document))
+				if (IsSameComObject(document, _document))
 				{
-					ML7uGGyNIv(document);
+					BindDocument(document);
 					return document;
 				}
 			}
@@ -468,26 +468,26 @@ internal sealed class AiTargetBinder
 		return null;
 	}
 
-	private bool AXWu5GjCxV(Document P_0)
+	private bool IsDocumentMatch(Document P_0)
 	{
 		_G_c__DisplayClass38_0 CS_8_locals_5 = new _G_c__DisplayClass38_0();
-		CS_8_locals_5.IcoPBTyHo2 = P_0;
-		if (CS_8_locals_5.IcoPBTyHo2 == null)
+		CS_8_locals_5.document = P_0;
+		if (CS_8_locals_5.document == null)
 		{
 			return false;
 		}
-		if (DrMuhvXNA4(CS_8_locals_5.IcoPBTyHo2, _document))
+		if (IsSameComObject(CS_8_locals_5.document, _document))
 		{
 			return true;
 		}
-		if (!k40uyLIsKC(b0QuaLFO45(() => CS_8_locals_5.IcoPBTyHo2.FullName), DocumentFullName))
+		if (!StringEqualsIgnoreCase(SafeInvokeStringFunc(() => CS_8_locals_5.document.FullName), DocumentFullName))
 		{
-			return k40uyLIsKC(b0QuaLFO45(() => CS_8_locals_5.IcoPBTyHo2.Name), DocumentName);
+			return StringEqualsIgnoreCase(SafeInvokeStringFunc(() => CS_8_locals_5.document.Name), DocumentName);
 		}
 		return true;
 	}
 
-	private static Document a0SucXphrE(Application P_0, string P_1)
+	private static Document FindDocumentByFullName(Application P_0, string P_1)
 	{
 		if (P_0 == null || string.IsNullOrWhiteSpace(P_1))
 		{
@@ -503,7 +503,7 @@ internal sealed class AiTargetBinder
 				{
 					_G_c__DisplayClass39_0 CS_8_locals_3 = new _G_c__DisplayClass39_0();
 					CS_8_locals_3.doc = (Document)enumerator.Current;
-					if (k40uyLIsKC(b0QuaLFO45(() => CS_8_locals_3.doc.FullName), text))
+					if (StringEqualsIgnoreCase(SafeInvokeStringFunc(() => CS_8_locals_3.doc.FullName), text))
 					{
 						return CS_8_locals_3.doc;
 					}
@@ -524,7 +524,7 @@ internal sealed class AiTargetBinder
 		return null;
 	}
 
-	private static Document NQhuemeD11(Application P_0, string P_1)
+	private static Document FindDocumentByName(Application P_0, string P_1)
 	{
 		if (P_0 == null || string.IsNullOrWhiteSpace(P_1))
 		{
@@ -539,10 +539,10 @@ internal sealed class AiTargetBinder
 				while (enumerator.MoveNext())
 				{
 					_G_c__DisplayClass40_0 CS_8_locals_3 = new _G_c__DisplayClass40_0();
-					CS_8_locals_3.khWPDeUAXa = (Document)enumerator.Current;
-					if (k40uyLIsKC(b0QuaLFO45(() => CS_8_locals_3.khWPDeUAXa.Name), text))
+					CS_8_locals_3.document = (Document)enumerator.Current;
+					if (StringEqualsIgnoreCase(SafeInvokeStringFunc(() => CS_8_locals_3.document.Name), text))
 					{
-						return CS_8_locals_3.khWPDeUAXa;
+						return CS_8_locals_3.document;
 					}
 				}
 			}
@@ -561,12 +561,12 @@ internal sealed class AiTargetBinder
 		return null;
 	}
 
-	private static bool k40uyLIsKC(string P_0, string P_1)
+	private static bool StringEqualsIgnoreCase(string P_0, string P_1)
 	{
-		return mIAuFp0oKe(P_0, P_1);
+		return EqualsOrdinalIgnoreCase(P_0, P_1);
 	}
 
-	private static string sssuXl8Uty(int P_0, string P_1, string P_2)
+	private static string BuildWindowKeyString(int P_0, string P_1, string P_2)
 	{
 		string text = ((!string.IsNullOrWhiteSpace(P_1)) ? P_1 : P_2);
 		if (P_0 != 0 && !string.IsNullOrWhiteSpace(text))
@@ -584,7 +584,7 @@ internal sealed class AiTargetBinder
 		return string.Empty;
 	}
 
-	private static bool mIAuFp0oKe(string P_0, string P_1)
+	private static bool EqualsOrdinalIgnoreCase(string P_0, string P_1)
 	{
 		if (string.IsNullOrWhiteSpace(P_0) || string.IsNullOrWhiteSpace(P_1))
 		{
@@ -593,7 +593,7 @@ internal sealed class AiTargetBinder
 		return string.Equals(P_0.Trim(), P_1.Trim(), StringComparison.OrdinalIgnoreCase);
 	}
 
-	private static bool DrMuhvXNA4(object P_0, object P_1)
+	private static bool IsSameComObject(object P_0, object P_1)
 	{
 		if (P_0 == null || P_1 == null)
 		{
@@ -632,7 +632,7 @@ internal sealed class AiTargetBinder
 		}
 	}
 
-	private static string b0QuaLFO45(Func<string> P_0)
+	private static string SafeInvokeStringFunc(Func<string> P_0)
 	{
 		try
 		{

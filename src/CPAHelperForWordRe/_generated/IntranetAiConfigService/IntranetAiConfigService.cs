@@ -31,30 +31,30 @@ internal sealed class IntranetAiConfigService
 	{
 		public string text;
 
-		public string OhnqftjvMe;
+		public string requiredVersion;
 
-		public Action UNgqMgJkv1;
+		public Action showUpdatePromptAction;
 
 		public _G_c__DisplayClass18_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void h7yqjt6cRs()
+		internal void ShowVersionMismatchMessage()
 		{
-			MessageBox.Show("当前内网 AI 版本低于要求版本，暂时无法继续使用内网 AI。\\n\\n当前 AI 版本：" + text + "\\n要求 AI 版本：" + OhnqftjvMe + "\\n\\n请前往梭梭集市更新后再试。", "需要更新插件", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+			MessageBox.Show("当前内网 AI 版本低于要求版本，暂时无法继续使用内网 AI。\\n\\n当前 AI 版本：" + text + "\\n要求 AI 版本：" + requiredVersion + "\\n\\n请前往梭梭集市更新后再试。", "需要更新插件", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 		}
 
-		internal void nT6qYHvI8e(object _)
+		internal void InvokeAction(object _)
 		{
-			UNgqMgJkv1();
+			showUpdatePromptAction();
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass23_0
 	{
-		public string OIPqSKrpgR;
+		public string username;
 
 		public string text;
 
@@ -65,9 +65,9 @@ internal sealed class IntranetAiConfigService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void xffqbtCR9m(Helper_22 cfg)
+		internal void SaveCredentialsToConfig(Helper_22 cfg)
 		{
-			cfg.Assistant.Intranet.RememberedUsername = OIPqSKrpgR;
+			cfg.Assistant.Intranet.RememberedUsername = username;
 			cfg.Assistant.Intranet.RememberedPassword = text;
 			cfg.Assistant.Intranet.AutoLoginEnabled = flag;
 		}
@@ -76,7 +76,7 @@ internal sealed class IntranetAiConfigService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass26_0
 	{
-		public IntranetAiConfigService MqsqsqwoRw;
+		public IntranetAiConfigService serviceInstance;
 
 		public string text;
 
@@ -85,9 +85,9 @@ internal sealed class IntranetAiConfigService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool irPqLvGlX8()
+		internal bool CallEnsureLogin()
 		{
-			return MqsqsqwoRw.ARi6j7UZph(text);
+			return serviceInstance.EnsureLoginWithDialog(text);
 		}
 	}
 
@@ -96,7 +96,7 @@ internal sealed class IntranetAiConfigService
 	{
 		public bool flag;
 
-		public Func<bool> J0Oqokk6Fc;
+		public Func<bool> retryFunction;
 
 		public Exception exception;
 
@@ -105,26 +105,26 @@ internal sealed class IntranetAiConfigService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void ycuqNhKHAH(object _)
+		internal void ExecuteAndCaptureException(object _)
 		{
 			try
 			{
-				flag = J0Oqokk6Fc();
+				flag = retryFunction();
 			}
-			catch (Exception bdxqG9M9Mt)
+			catch (Exception caughtException)
 			{
-				exception = bdxqG9M9Mt;
+				exception = caughtException;
 			}
 		}
 	}
 
-	private static readonly Lazy<IntranetAiConfigService> Qx86tBAOby;
+	private static readonly Lazy<IntranetAiConfigService> _lazyInstance;
 
-	private static readonly TimeSpan Qg26LQWnKJ;
+	private static readonly TimeSpan probeInterval;
 
-	private static readonly JavaScriptSerializer nvl6spHxmW;
+	private static readonly JavaScriptSerializer jsonSerializer;
 
-	private static readonly HttpClient j486lb3YOS;
+	private static readonly HttpClient httpClient;
 
 	private readonly object _object;
 
@@ -132,7 +132,7 @@ internal sealed class IntranetAiConfigService
 
 	private string _string;
 
-	public static IntranetAiConfigService Instance => Qx86tBAOby.Value;
+	public static IntranetAiConfigService Instance => _lazyInstance.Value;
 
 	static IntranetAiConfigService()
 	{
@@ -142,37 +142,37 @@ internal sealed class IntranetAiConfigService
 		//IL_0064: Unknown result type (might be due to invalid IL or missing references)
 		//IL_006e: Expected O, but got Unknown
 		SseStreamInitializer.InitializeRuntime();
-		Qx86tBAOby = new Lazy<IntranetAiConfigService>(() => new IntranetAiConfigService());
-		Qg26LQWnKJ = TimeSpan.FromMinutes(2.0);
-		nvl6spHxmW = new JavaScriptSerializer
+		_lazyInstance = new Lazy<IntranetAiConfigService>(() => new IntranetAiConfigService());
+		probeInterval = TimeSpan.FromMinutes(2.0);
+		jsonSerializer = new JavaScriptSerializer
 		{
 			MaxJsonLength = int.MaxValue
 		};
 		ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
-		j486lb3YOS = new HttpClient((HttpMessageHandler)new HttpClientHandler
+		httpClient = new HttpClient((HttpMessageHandler)new HttpClientHandler
 		{
 			AutomaticDecompression = (DecompressionMethods.GZip | DecompressionMethods.Deflate)
 		});
 	}
 
-	public bool gDh6IIK89w(string P_0 = null)
+	public bool EnsureAuthenticated(string P_0 = null)
 	{
 		try
 		{
-			IntranetAuthState rMlEPI6GFJYIok22dBB = nnc64FEB7B();
-			if (!rMlEPI6GFJYIok22dBB.IsIntranetEnvironment)
+			IntranetAuthState authState = ProbeIntranetEnvironment();
+			if (!authState.IsIntranetEnvironment)
 			{
 				return true;
 			}
-			if (!Aod618kkq1(rMlEPI6GFJYIok22dBB))
+			if (!CheckVersionRequirement(authState))
 			{
 				return false;
 			}
-			if (rMlEPI6GFJYIok22dBB.IsAuthenticated && !string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB.AccessToken))
+			if (authState.IsAuthenticated && !string.IsNullOrWhiteSpace(authState.AccessToken))
 			{
 				return true;
 			}
-			return ARi6j7UZph(P_0);
+			return EnsureLoginWithDialog(P_0);
 		}
 		catch (Exception ex)
 		{
@@ -191,21 +191,21 @@ internal sealed class IntranetAiConfigService
 	{
 		lock (_object)
 		{
-			return _intranetAuthState.TZk6pi7Ssm();
+			return _intranetAuthState.Clone();
 		}
 	}
 
-	public AgentConfig SyM6HN9NPf(AiHelper_8 P_0)
+	public AgentConfig GetAgentConfig(AiHelper_8 P_0)
 	{
-		IntranetAuthState rMlEPI6GFJYIok22dBB = GetConfig();
-		if (rMlEPI6GFJYIok22dBB.IsIntranetEnvironment && rMlEPI6GFJYIok22dBB.IsAuthenticated && !string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB.AccessToken) && !string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB.ChatModel) && !string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB.ChatBaseUrl))
+		IntranetAuthState authState = GetConfig();
+		if (authState.IsIntranetEnvironment && authState.IsAuthenticated && !string.IsNullOrWhiteSpace(authState.AccessToken) && !string.IsNullOrWhiteSpace(authState.ChatModel) && !string.IsNullOrWhiteSpace(authState.ChatBaseUrl))
 		{
 			return new AgentConfig
 			{
 				Provider = "openai",
-				ApiKey = rMlEPI6GFJYIok22dBB.AccessToken,
-				BaseUrl = rMlEPI6GFJYIok22dBB.ChatBaseUrl,
-				Model = rMlEPI6GFJYIok22dBB.ChatModel
+				ApiKey = authState.AccessToken,
+				BaseUrl = authState.ChatBaseUrl,
+				Model = authState.ChatModel
 			};
 		}
 		return new AgentConfig
@@ -217,12 +217,12 @@ internal sealed class IntranetAiConfigService
 		};
 	}
 
-	public bool xeF6QqxCkO()
+	public bool IsManagedModeActive()
 	{
 		return GetConfig().IsManagedModeActive;
 	}
 
-	private bool Aod618kkq1(IntranetAuthState P_0)
+	private bool CheckVersionRequirement(IntranetAuthState P_0)
 	{
 		if (P_0 == null || string.IsNullOrWhiteSpace(P_0.ManagedVersion))
 		{
@@ -230,7 +230,7 @@ internal sealed class IntranetAiConfigService
 		}
 		string text = "1.1.3";
 		string text2 = P_0.ManagedVersion.Trim();
-		if (!Ecj6J2070f(text, text2))
+		if (!IsVersionNewer(text, text2))
 		{
 			return true;
 		}
@@ -238,16 +238,16 @@ internal sealed class IntranetAiConfigService
 		{
 			_intranetAuthState.LastErrorMessage = "当前内网 AI 版本 " + text + " 低于要求版本 " + text2 + "。";
 		}
-		ik76rSKYTI(text, text2);
+		ShowVersionUpdatePrompt(text, text2);
 		return false;
 	}
 
-	private void ik76rSKYTI(string P_0, string P_1)
+	private void ShowVersionUpdatePrompt(string P_0, string P_1)
 	{
 		_G_c__DisplayClass18_0 CS_8_locals_9 = new _G_c__DisplayClass18_0();
 		CS_8_locals_9.text = P_0;
-		CS_8_locals_9.OhnqftjvMe = P_1;
-		string text = CS_8_locals_9.text + "->" + CS_8_locals_9.OhnqftjvMe;
+		CS_8_locals_9.requiredVersion = P_1;
+		string text = CS_8_locals_9.text + "->" + CS_8_locals_9.requiredVersion;
 		lock (_object)
 		{
 			if (string.Equals(_string, text, StringComparison.Ordinal))
@@ -256,25 +256,25 @@ internal sealed class IntranetAiConfigService
 			}
 			_string = text;
 		}
-		CS_8_locals_9.UNgqMgJkv1 = delegate
+		CS_8_locals_9.showUpdatePromptAction = delegate
 		{
-			MessageBox.Show("[AI] Intranet environment probe failed, falling back to local config: " + CS_8_locals_9.text + "openai" + CS_8_locals_9.OhnqftjvMe + "1.1.3", "当前内网 AI 版本 ", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+			MessageBox.Show("[AI] Intranet environment probe failed, falling back to local config: " + CS_8_locals_9.text + "openai" + CS_8_locals_9.requiredVersion + "1.1.3", "当前内网 AI 版本 ", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 		};
 		SynchronizationContext syncContext = WordTableToolService.SyncContext;
 		if (syncContext != null && SynchronizationContext.Current != syncContext)
 		{
 			syncContext.Send(delegate
 			{
-				CS_8_locals_9.UNgqMgJkv1();
+				CS_8_locals_9.showUpdatePromptAction();
 			}, null);
 		}
 		else
 		{
-			CS_8_locals_9.UNgqMgJkv1();
+			CS_8_locals_9.showUpdatePromptAction();
 		}
 	}
 
-	private static bool Ecj6J2070f(string P_0, string P_1)
+	private static bool IsVersionNewer(string P_0, string P_1)
 	{
 		if (string.IsNullOrWhiteSpace(P_1))
 		{
@@ -291,21 +291,21 @@ internal sealed class IntranetAiConfigService
 		return result2 > result;
 	}
 
-	public string ltA63dMPIj()
+	public string GetEnvironmentDescription()
 	{
-		IntranetAuthState rMlEPI6GFJYIok22dBB = nnc64FEB7B();
-		if (!rMlEPI6GFJYIok22dBB.IsIntranetEnvironment)
+		IntranetAuthState authState = ProbeIntranetEnvironment();
+		if (!authState.IsIntranetEnvironment)
 		{
 			return string.Empty;
 		}
-		if (rMlEPI6GFJYIok22dBB.IsManagedModeActive)
+		if (authState.IsManagedModeActive)
 		{
 			return "在内网环境中，Agent 配置已集中下发；本地配置仅作为外网回退。";
 		}
 		return "当前已识别为内网环境。登录成功后，Agent 将自动使用集中下发配置。";
 	}
 
-	public void GPA6UvJ0oX(string P_0)
+	public void ClearAuthentication(string P_0)
 	{
 		lock (_object)
 		{
@@ -316,30 +316,30 @@ internal sealed class IntranetAiConfigService
 		}
 	}
 
-	public bool CLv6Kfj0Mw(string P_0)
+	public bool ReAuthenticate(string P_0)
 	{
-		GPA6UvJ0oX(P_0);
-		return ARi6j7UZph(P_0 ?? "当前登录状态已失效，请重新登录后继续使用 AI 助手。");
+		ClearAuthentication(P_0);
+		return EnsureLoginWithDialog(P_0 ?? "当前登录状态已失效，请重新登录后继续使用 AI 助手。");
 	}
 
-	public async Task<Helper_17> JrZ6E71S29(string P_0, string P_1, bool P_2 = false)
+	public async Task<Helper_17> LoginAsync(string P_0, string P_1, bool P_2 = false)
 	{
 		_G_c__DisplayClass23_0 CS_8_locals_14 = new _G_c__DisplayClass23_0();
 		CS_8_locals_14.flag = P_2;
-		CS_8_locals_14.OIPqSKrpgR = (P_0 ?? string.Empty).Trim();
+		CS_8_locals_14.username = (P_0 ?? string.Empty).Trim();
 		CS_8_locals_14.text = P_1 ?? string.Empty;
-		if (string.IsNullOrWhiteSpace(CS_8_locals_14.OIPqSKrpgR))
+		if (string.IsNullOrWhiteSpace(CS_8_locals_14.username))
 		{
-			return Helper_17.Kr16k5pGs6(" 低于要求版本 ", false);
+			return Helper_17.CreateFailureResult(" 低于要求版本 ", false);
 		}
 		if (string.IsNullOrWhiteSpace(CS_8_locals_14.text))
 		{
-			return Helper_17.Kr16k5pGs6("。", false);
+			return Helper_17.CreateFailureResult("。", false);
 		}
-		nnc64FEB7B();
-		string text = nvl6spHxmW.Serialize(new
+		ProbeIntranetEnvironment();
+		string text = jsonSerializer.Serialize(new
 		{
-			username = "->" + CS_8_locals_14.OIPqSKrpgR,
+			username = "->" + CS_8_locals_14.username,
 			password = CS_8_locals_14.text
 		});
 		HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "在内网环境中，Agent 配置已集中下发；本地配置仅作为外网回退。");
@@ -350,16 +350,16 @@ internal sealed class IntranetAiConfigService
 			string input = string.Empty;
 			try
 			{
-				response = await MFH6Zwxt7Y(request, TimeSpan.FromSeconds(10.0)).ConfigureAwait(continueOnCapturedContext: false);
+				response = await SendHttpRequestAsync(request, TimeSpan.FromSeconds(10.0)).ConfigureAwait(continueOnCapturedContext: false);
 				input = await response.Content.ReadAsStringAsync().ConfigureAwait(continueOnCapturedContext: false);
 			}
 			catch (TaskCanceledException)
 			{
-				return Helper_17.Kr16k5pGs6("当前登录状态已失效，请重新登录后继续使用 AI 助手。", false);
+				return Helper_17.CreateFailureResult("当前登录状态已失效，请重新登录后继续使用 AI 助手。", false);
 			}
 			catch (Exception ex2)
 			{
-				return Helper_17.Kr16k5pGs6("http://open.tzcpa.com/com.tzcpa.copilot/version" + ex2.Message, false);
+				return Helper_17.CreateFailureResult("http://open.tzcpa.com/com.tzcpa.copilot/version" + ex2.Message, false);
 			}
 			finally
 			{
@@ -369,39 +369,39 @@ internal sealed class IntranetAiConfigService
 					obj.Dispose();
 				}
 			}
-			Dictionary<string, object> dictionary = nvl6spHxmW.DeserializeObject(input) as Dictionary<string, object>;
-			if (uVA6b2Kxt3(dictionary, "dataV2", (response != null && response.IsSuccessStatusCode) ? 200 : 500) != 200 && !eqc6SIgZZ7(dictionary, "data", false))
+			Dictionary<string, object> dictionary = jsonSerializer.DeserializeObject(input) as Dictionary<string, object>;
+			if (GetIntValue(dictionary, "dataV2", (response != null && response.IsSuccessStatusCode) ? 200 : 500) != 200 && !GetBoolValue(dictionary, "data", false))
 			{
-				return Helper_17.Kr16k5pGs6(Eg86Md9DQi(dictionary, "dataV2") ?? Eg86Md9DQi(dictionary, "chat_model") ?? "chat_base_url", false);
+				return Helper_17.CreateFailureResult(GetStringValue(dictionary, "dataV2") ?? GetStringValue(dictionary, "chat_model") ?? "chat_base_url", false);
 			}
-			string text2 = nsb6wZVkYI(tT96fyhcXV(dictionary, "version"), "当前为内网环境，请先登录后再使用 AI 助手。", "accessToken", "token", "api_key", "apiKey");
+			string text2 = GetFirstNonEmptyStringValue(GetNestedDictionary(dictionary, "version"), "当前为内网环境，请先登录后再使用 AI 助手。", "accessToken", "token", "api_key", "apiKey");
 			if (string.IsNullOrWhiteSpace(text2))
 			{
-				text2 = nsb6wZVkYI(dictionary, "access_token", "accessToken", "token", "api_key", "apiKey");
+				text2 = GetFirstNonEmptyStringValue(dictionary, "access_token", "accessToken", "token", "api_key", "apiKey");
 			}
 			if (string.IsNullOrWhiteSpace(text2))
 			{
-				return Helper_17.Kr16k5pGs6("登录成功但未返回 access_token。", false);
+				return Helper_17.CreateFailureResult("登录成功但未返回 access_token。", false);
 			}
-			FileDownloadHelper.Instance.lpfwdhmiR3(delegate(Helper_22 cfg)
+			FileDownloadHelper.Instance.UpdateConfig(delegate(Helper_22 cfg)
 			{
-				cfg.Assistant.Intranet.RememberedUsername = CS_8_locals_14.OIPqSKrpgR;
+				cfg.Assistant.Intranet.RememberedUsername = CS_8_locals_14.username;
 				cfg.Assistant.Intranet.RememberedPassword = CS_8_locals_14.text;
 				cfg.Assistant.Intranet.AutoLoginEnabled = CS_8_locals_14.flag;
 			});
 			lock (_object)
 			{
 				_intranetAuthState.AccessToken = text2;
-				_intranetAuthState.UserName = CS_8_locals_14.OIPqSKrpgR;
+				_intranetAuthState.UserName = CS_8_locals_14.username;
 				_intranetAuthState.IsAuthenticated = true;
 				_intranetAuthState.IsManagedModeActive = _intranetAuthState.IsIntranetEnvironment && _intranetAuthState.HasManagedMeta;
 				_intranetAuthState.LastLoginUtc = DateTime.UtcNow;
 				_intranetAuthState.LastErrorMessage = string.Empty;
-				_intranetAuthState.RememberedUsername = CS_8_locals_14.OIPqSKrpgR;
+				_intranetAuthState.RememberedUsername = CS_8_locals_14.username;
 				_intranetAuthState.RememberedPassword = CS_8_locals_14.text;
 				_intranetAuthState.AutoLoginEnabled = CS_8_locals_14.flag;
 			}
-			return Helper_17.Rvo60brAFr(text2);
+			return Helper_17.CreateSuccessResult(text2);
 		}
 		finally
 		{
@@ -409,7 +409,7 @@ internal sealed class IntranetAiConfigService
 		}
 	}
 
-	public void ySW62EK2TU()
+	public void ResetAuthState()
 	{
 		lock (_object)
 		{
@@ -417,17 +417,17 @@ internal sealed class IntranetAiConfigService
 		}
 	}
 
-	private IntranetAuthState nnc64FEB7B()
+	private IntranetAuthState ProbeIntranetEnvironment()
 	{
 		//IL_00ea: Unknown result type (might be due to invalid IL or missing references)
 		//IL_00f0: Expected O, but got Unknown
-		IntranetAuthState rMlEPI6GFJYIok22dBB = GetConfig();
-		if (rMlEPI6GFJYIok22dBB.LastProbeUtc != DateTime.MinValue && DateTime.UtcNow - rMlEPI6GFJYIok22dBB.LastProbeUtc < Qg26LQWnKJ)
+		IntranetAuthState authState = GetConfig();
+		if (authState.LastProbeUtc != DateTime.MinValue && DateTime.UtcNow - authState.LastProbeUtc < probeInterval)
 		{
-			return rMlEPI6GFJYIok22dBB;
+			return authState;
 		}
 		Helper_23 intranet = FileDownloadHelper.Current.Ai.Assistant.Intranet;
-		IntranetAuthState rMlEPI6GFJYIok22dBB2 = new IntranetAuthState
+		IntranetAuthState newAuthState = new IntranetAuthState
 		{
 			RememberedUsername = (intranet?.RememberedUsername ?? string.Empty),
 			RememberedPassword = (intranet?.RememberedPassword ?? string.Empty),
@@ -439,28 +439,28 @@ internal sealed class IntranetAiConfigService
 			HttpRequestMessage val = new HttpRequestMessage(HttpMethod.Get, "http://open.tzcpa.com/com.tzcpa.copilot/version");
 			try
 			{
-				HttpResponseMessage result = MFH6Zwxt7Y(val, TimeSpan.FromSeconds(1.0)).GetAwaiter().GetResult();
+				HttpResponseMessage result = SendHttpRequestAsync(val, TimeSpan.FromSeconds(1.0)).GetAwaiter().GetResult();
 				try
 				{
 					if (result.IsSuccessStatusCode)
 					{
 						string result2 = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-						Dictionary<string, object> dictionary = nvl6spHxmW.DeserializeObject(result2) as Dictionary<string, object>;
-						Dictionary<string, object> dictionary2 = tT96fyhcXV(dictionary, "dataV2") ?? tT96fyhcXV(tT96fyhcXV(dictionary, "data"), "dataV2");
-						string text = Eg86Md9DQi(dictionary2, "chat_model");
-						string text2 = Eg86Md9DQi(dictionary2, "chat_base_url");
+						Dictionary<string, object> dictionary = jsonSerializer.DeserializeObject(result2) as Dictionary<string, object>;
+						Dictionary<string, object> dictionary2 = GetNestedDictionary(dictionary, "dataV2") ?? GetNestedDictionary(GetNestedDictionary(dictionary, "data"), "dataV2");
+						string text = GetStringValue(dictionary2, "chat_model");
+						string text2 = GetStringValue(dictionary2, "chat_base_url");
 						if (!string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(text2))
 						{
-							IntranetAuthState rMlEPI6GFJYIok22dBB3 = GetConfig();
-							rMlEPI6GFJYIok22dBB2.IsIntranetEnvironment = true;
-							rMlEPI6GFJYIok22dBB2.ChatModel = text;
-							rMlEPI6GFJYIok22dBB2.ChatBaseUrl = text2;
-							rMlEPI6GFJYIok22dBB2.ManagedVersion = Eg86Md9DQi(dictionary2, "version");
-							rMlEPI6GFJYIok22dBB2.AccessToken = rMlEPI6GFJYIok22dBB3.AccessToken;
-							rMlEPI6GFJYIok22dBB2.IsAuthenticated = rMlEPI6GFJYIok22dBB3.IsAuthenticated && !string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB3.AccessToken);
-							rMlEPI6GFJYIok22dBB2.UserName = (string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB3.UserName) ? rMlEPI6GFJYIok22dBB2.RememberedUsername : rMlEPI6GFJYIok22dBB3.UserName);
-							rMlEPI6GFJYIok22dBB2.LastLoginUtc = rMlEPI6GFJYIok22dBB3.LastLoginUtc;
-							rMlEPI6GFJYIok22dBB2.IsManagedModeActive = rMlEPI6GFJYIok22dBB2.IsAuthenticated && rMlEPI6GFJYIok22dBB2.HasManagedMeta;
+							IntranetAuthState existingAuthState = GetConfig();
+							newAuthState.IsIntranetEnvironment = true;
+							newAuthState.ChatModel = text;
+							newAuthState.ChatBaseUrl = text2;
+							newAuthState.ManagedVersion = GetStringValue(dictionary2, "version");
+							newAuthState.AccessToken = existingAuthState.AccessToken;
+							newAuthState.IsAuthenticated = existingAuthState.IsAuthenticated && !string.IsNullOrWhiteSpace(existingAuthState.AccessToken);
+							newAuthState.UserName = (string.IsNullOrWhiteSpace(existingAuthState.UserName) ? newAuthState.RememberedUsername : existingAuthState.UserName);
+							newAuthState.LastLoginUtc = existingAuthState.LastLoginUtc;
+							newAuthState.IsManagedModeActive = newAuthState.IsAuthenticated && newAuthState.HasManagedMeta;
 						}
 					}
 				}
@@ -479,55 +479,55 @@ internal sealed class IntranetAiConfigService
 		}
 		lock (_object)
 		{
-			_intranetAuthState = rMlEPI6GFJYIok22dBB2;
-			return _intranetAuthState.TZk6pi7Ssm();
+			_intranetAuthState = newAuthState;
+			return _intranetAuthState.Clone();
 		}
 	}
 
-	private bool ARi6j7UZph(string P_0)
+	private bool EnsureLoginWithDialog(string P_0)
 	{
 		_G_c__DisplayClass26_0 CS_8_locals_6 = new _G_c__DisplayClass26_0();
-		CS_8_locals_6.MqsqsqwoRw = this;
+		CS_8_locals_6.serviceInstance = this;
 		CS_8_locals_6.text = P_0;
 		SynchronizationContext syncContext = WordTableToolService.SyncContext;
 		if (syncContext != null && SynchronizationContext.Current != syncContext)
 		{
-			return TBp6YoQIo5(syncContext, () => CS_8_locals_6.MqsqsqwoRw.ARi6j7UZph(CS_8_locals_6.text));
+			return RunOnUiThread(syncContext, () => CS_8_locals_6.serviceInstance.EnsureLoginWithDialog(CS_8_locals_6.text));
 		}
-		IntranetAuthState rMlEPI6GFJYIok22dBB = nnc64FEB7B();
-		if (!rMlEPI6GFJYIok22dBB.IsIntranetEnvironment)
+		IntranetAuthState authState = ProbeIntranetEnvironment();
+		if (!authState.IsIntranetEnvironment)
 		{
 			return true;
 		}
 		string initialStatus = string.Empty;
-		if (rMlEPI6GFJYIok22dBB.AutoLoginEnabled && !string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB.RememberedUsername) && !string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB.RememberedPassword) && (!rMlEPI6GFJYIok22dBB.IsAuthenticated || string.IsNullOrWhiteSpace(rMlEPI6GFJYIok22dBB.AccessToken)))
+		if (authState.AutoLoginEnabled && !string.IsNullOrWhiteSpace(authState.RememberedUsername) && !string.IsNullOrWhiteSpace(authState.RememberedPassword) && (!authState.IsAuthenticated || string.IsNullOrWhiteSpace(authState.AccessToken)))
 		{
-			Helper_17 result = JrZ6E71S29(rMlEPI6GFJYIok22dBB.RememberedUsername, rMlEPI6GFJYIok22dBB.RememberedPassword, true).GetAwaiter().GetResult();
+			Helper_17 result = LoginAsync(authState.RememberedUsername, authState.RememberedPassword, true).GetAwaiter().GetResult();
 			if (result.Succeeded)
 			{
 				return true;
 			}
 			initialStatus = result.Message;
-			rMlEPI6GFJYIok22dBB = GetConfig();
+			authState = GetConfig();
 		}
-		return WordTableToolService5.ShowWpfDialog(new IntranetLoginWindow(rMlEPI6GFJYIok22dBB.RememberedUsername, rMlEPI6GFJYIok22dBB.RememberedPassword, rMlEPI6GFJYIok22dBB.AutoLoginEnabled, string.IsNullOrWhiteSpace(CS_8_locals_6.text) ? "当前为内网环境，请先登录后再使用 AI 助手。" : CS_8_locals_6.text, initialStatus)) == true;
+		return WordTableToolService5.ShowWpfDialog(new IntranetLoginWindow(authState.RememberedUsername, authState.RememberedPassword, authState.AutoLoginEnabled, string.IsNullOrWhiteSpace(CS_8_locals_6.text) ? "当前为内网环境，请先登录后再使用 AI 助手。" : CS_8_locals_6.text, initialStatus)) == true;
 	}
 
-	private static bool TBp6YoQIo5(SynchronizationContext P_0, Func<bool> P_1)
+	private static bool RunOnUiThread(SynchronizationContext P_0, Func<bool> P_1)
 	{
 		_G_c__DisplayClass27_0 CS_8_locals_9 = new _G_c__DisplayClass27_0();
-		CS_8_locals_9.J0Oqokk6Fc = P_1;
+		CS_8_locals_9.retryFunction = P_1;
 		CS_8_locals_9.flag = false;
 		CS_8_locals_9.exception = null;
 		P_0.Send(delegate
 		{
 			try
 			{
-				CS_8_locals_9.flag = CS_8_locals_9.J0Oqokk6Fc();
+				CS_8_locals_9.flag = CS_8_locals_9.retryFunction();
 			}
-			catch (Exception bdxqG9M9Mt)
+			catch (Exception caughtException)
 			{
-				CS_8_locals_9.exception = bdxqG9M9Mt;
+				CS_8_locals_9.exception = caughtException;
 			}
 		}, null);
 		if (CS_8_locals_9.exception != null)
@@ -537,13 +537,13 @@ internal sealed class IntranetAiConfigService
 		return CS_8_locals_9.flag;
 	}
 
-	private static async Task<HttpResponseMessage> MFH6Zwxt7Y(HttpRequestMessage P_0, TimeSpan P_1)
+	private static async Task<HttpResponseMessage> SendHttpRequestAsync(HttpRequestMessage P_0, TimeSpan P_1)
 	{
 		using CancellationTokenSource cts = new CancellationTokenSource(P_1);
-		return await ((HttpMessageInvoker)j486lb3YOS).SendAsync(P_0, cts.Token).ConfigureAwait(continueOnCapturedContext: false);
+		return await ((HttpMessageInvoker)httpClient).SendAsync(P_0, cts.Token).ConfigureAwait(continueOnCapturedContext: false);
 	}
 
-	private static Dictionary<string, object> tT96fyhcXV(Dictionary<string, object> P_0, string P_1)
+	private static Dictionary<string, object> GetNestedDictionary(Dictionary<string, object> P_0, string P_1)
 	{
 		if (P_0 == null || !P_0.ContainsKey(P_1))
 		{
@@ -552,7 +552,7 @@ internal sealed class IntranetAiConfigService
 		return P_0[P_1] as Dictionary<string, object>;
 	}
 
-	private static string Eg86Md9DQi(Dictionary<string, object> P_0, string P_1)
+	private static string GetStringValue(Dictionary<string, object> P_0, string P_1)
 	{
 		if (P_0 == null || !P_0.ContainsKey(P_1) || P_0[P_1] == null)
 		{
@@ -561,7 +561,7 @@ internal sealed class IntranetAiConfigService
 		return P_0[P_1].ToString();
 	}
 
-	private static int uVA6b2Kxt3(Dictionary<string, object> P_0, string P_1, int P_2)
+	private static int GetIntValue(Dictionary<string, object> P_0, string P_1, int P_2)
 	{
 		try
 		{
@@ -573,7 +573,7 @@ internal sealed class IntranetAiConfigService
 		}
 	}
 
-	private static bool eqc6SIgZZ7(Dictionary<string, object> P_0, string P_1, bool P_2)
+	private static bool GetBoolValue(Dictionary<string, object> P_0, string P_1, bool P_2)
 	{
 		try
 		{
@@ -585,11 +585,11 @@ internal sealed class IntranetAiConfigService
 		}
 	}
 
-	private static string nsb6wZVkYI(Dictionary<string, object> P_0, params string[] keys)
+	private static string GetFirstNonEmptyStringValue(Dictionary<string, object> P_0, params string[] keys)
 	{
 		foreach (string text in keys)
 		{
-			string text2 = Eg86Md9DQi(P_0, text);
+			string text2 = GetStringValue(P_0, text);
 			if (!string.IsNullOrWhiteSpace(text2))
 			{
 				return text2;

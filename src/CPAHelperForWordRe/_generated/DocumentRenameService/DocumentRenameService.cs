@@ -23,7 +23,7 @@ internal static class DocumentRenameService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string sudhRsvTpt()
+		internal string getDocumentName()
 		{
 			return doc.Name;
 		}
@@ -32,31 +32,31 @@ internal static class DocumentRenameService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass4_0
 	{
-		public Document LOthDsSCy9;
+		public Document document;
 
 		public _G_c__DisplayClass4_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string QhVhBdk0xM()
+		internal string getDocumentPath()
 		{
-			return LOthDsSCy9.Path;
+			return document.Path;
 		}
 
-		internal string fcPh9DS39f()
+		internal string getDocumentFullName()
 		{
-			return LOthDsSCy9.FullName;
+			return document.FullName;
 		}
 
-		internal string oMgh6K0G10()
+		internal string getDocumentName()
 		{
-			return LOthDsSCy9.Name;
+			return document.Name;
 		}
 
-		internal bool ohwhuqJZqk()
+		internal bool isReadOnly()
 		{
-			return LOthDsSCy9.ReadOnly;
+			return document.ReadOnly;
 		}
 	}
 
@@ -70,22 +70,22 @@ internal static class DocumentRenameService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string g1WhTVKb0a()
+		internal string getDocumentName()
 		{
 			return doc.Name;
 		}
 
-		internal string JlEhg71oo6()
+		internal string getDocumentFullName()
 		{
 			return doc.FullName;
 		}
 
-		internal string Sfwh8GwEht()
+		internal string getDocumentPath()
 		{
 			return doc.Path;
 		}
 
-		internal bool gc1hIpwXjJ()
+		internal bool isDocumentSaved()
 		{
 			return doc.Saved;
 		}
@@ -93,20 +93,20 @@ internal static class DocumentRenameService
 
 	private static Application App => WordTableToolService.WordApp;
 
-	internal static string p22B4gZ207()
+	internal static string getActiveDocumentName()
 	{
 		_G_c__DisplayClass2_0 CS_8_locals_3 = new _G_c__DisplayClass2_0();
-		CS_8_locals_3.doc = JrbBtdamCI();
+		CS_8_locals_3.doc = getActiveDocument();
 		if (CS_8_locals_3.doc != null)
 		{
-			return fwlBshSt6y(() => CS_8_locals_3.doc.Name);
+			return tryGetString(() => CS_8_locals_3.doc.Name);
 		}
 		return null;
 	}
 
-	internal static string yNrBjmtqCf()
+	internal static string getActiveDocumentNameWithoutExtension()
 	{
-		string text = p22B4gZ207();
+		string text = getActiveDocumentName();
 		if (string.IsNullOrWhiteSpace(text))
 		{
 			return string.Empty;
@@ -119,24 +119,24 @@ internal static class DocumentRenameService
 		return text;
 	}
 
-	internal static bool NDgBYYaMnF(out string P_0)
+	internal static bool validateRenamePreconditions(out string P_0)
 	{
 		_G_c__DisplayClass4_0 CS_8_locals_6 = new _G_c__DisplayClass4_0();
-		CS_8_locals_6.LOthDsSCy9 = JrbBtdamCI();
-		if (CS_8_locals_6.LOthDsSCy9 == null)
+		CS_8_locals_6.document = getActiveDocument();
+		if (CS_8_locals_6.document == null)
 		{
 			P_0 = "当前没有打开的 Word 文档。";
 			return false;
 		}
-		string value = fwlBshSt6y(() => CS_8_locals_6.LOthDsSCy9.Path);
-		string text = fwlBshSt6y(() => CS_8_locals_6.LOthDsSCy9.FullName);
-		string value2 = vG2BwOq8Bw(fwlBshSt6y(() => CS_8_locals_6.LOthDsSCy9.Name), text);
+		string value = tryGetString(() => CS_8_locals_6.document.Path);
+		string text = tryGetString(() => CS_8_locals_6.document.FullName);
+		string value2 = getFileExtension(tryGetString(() => CS_8_locals_6.document.Name), text);
 		if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(text) || string.IsNullOrWhiteSpace(value2))
 		{
 			P_0 = "当前文件无法重命名，请先保存文档。";
 			return false;
 		}
-		if (A3eBlQ6j8f(() => CS_8_locals_6.LOthDsSCy9.ReadOnly, false))
+		if (tryGetBool(() => CS_8_locals_6.document.ReadOnly, false))
 		{
 			P_0 = "当前文档为只读状态，无法重命名。";
 			return false;
@@ -150,21 +150,21 @@ internal static class DocumentRenameService
 		return true;
 	}
 
-	internal static Helper_10 wqTBZIKo0s(string P_0, Func<string, bool> P_1 = null)
+	internal static Helper_10 renameDocument(string P_0, Func<string, bool> P_1 = null)
 	{
 		_G_c__DisplayClass5_0 CS_8_locals_7 = new _G_c__DisplayClass5_0();
-		if (!NDgBYYaMnF(out var message))
+		if (!validateRenamePreconditions(out var message))
 		{
 			throw new InvalidOperationException(message);
 		}
-		CS_8_locals_7.doc = JrbBtdamCI();
-		string text = fwlBshSt6y(() => CS_8_locals_7.doc.Name);
-		string text2 = fwlBshSt6y(() => CS_8_locals_7.doc.FullName);
-		string path = fwlBshSt6y(() => CS_8_locals_7.doc.Path);
-		string text3 = vG2BwOq8Bw(text, text2);
-		string text4 = ur0Bb9fPt3(P_0);
+		CS_8_locals_7.doc = getActiveDocument();
+		string text = tryGetString(() => CS_8_locals_7.doc.Name);
+		string text2 = tryGetString(() => CS_8_locals_7.doc.FullName);
+		string path = tryGetString(() => CS_8_locals_7.doc.Path);
+		string text3 = getFileExtension(text, text2);
+		string text4 = validateNewFileName(P_0);
 		string text5 = Path.Combine(path, text4 + text3);
-		if (cJXBLP7fcQ(text2, text5))
+		if (arePathsEqual(text2, text5))
 		{
 			return Helper_10.Wm0BGukN7S(text2);
 		}
@@ -172,7 +172,7 @@ internal static class DocumentRenameService
 		{
 			throw new InvalidOperationException("目标文件已存在，请更换一个文件名。");
 		}
-		if (!A3eBlQ6j8f(() => CS_8_locals_7.doc.Saved, true))
+		if (!tryGetBool(() => CS_8_locals_7.doc.Saved, true))
 		{
 			string text6 = "当前文档有尚未保存的修改。继续重命名将保存这些修改，是否继续？";
 			if (!(P_1?.Invoke(text6) ?? LoggerInitializer.ShowConfirm(text6, "IP_Assurance")))
@@ -180,7 +180,7 @@ internal static class DocumentRenameService
 				return Helper_10.UdoBCP2Rh6(text2);
 			}
 		}
-		Y9cBf0FXlN(CS_8_locals_7.doc, text5);
+		saveDocumentAs(CS_8_locals_7.doc, text5);
 		if (!File.Exists(text5))
 		{
 			throw new InvalidOperationException("重命名失败：新文件未成功生成。");
@@ -194,7 +194,7 @@ internal static class DocumentRenameService
 		}
 		bool flag = true;
 		string text7 = null;
-		if (!cJXBLP7fcQ(text2, text5) && File.Exists(text2))
+		if (!arePathsEqual(text2, text5) && File.Exists(text2))
 		{
 			try
 			{
@@ -214,10 +214,10 @@ internal static class DocumentRenameService
 		return Helper_10.ONEBochSpq(text2, text5, flag, text7);
 	}
 
-	private static void Y9cBf0FXlN(Document P_0, string P_1)
+	private static void saveDocumentAs(Document P_0, string P_1)
 	{
 		object FileName = P_1;
-		object FileFormat = wbXBMKescZ(P_0);
+		object FileFormat = getSaveFormat(P_0);
 		try
 		{
 			object LockComments = Type.Missing;
@@ -240,7 +240,7 @@ internal static class DocumentRenameService
 		catch (COMException)
 		{
 			FileName = P_1;
-			FileFormat = wbXBMKescZ(P_0);
+			FileFormat = getSaveFormat(P_0);
 			object CompatibilityMode = Type.Missing;
 			object AddBiDiMarks = Type.Missing;
 			object LineEnding = Type.Missing;
@@ -260,7 +260,7 @@ internal static class DocumentRenameService
 		catch (MissingMethodException)
 		{
 			FileName = P_1;
-			FileFormat = wbXBMKescZ(P_0);
+			FileFormat = getSaveFormat(P_0);
 			object Password = Type.Missing;
 			object AddToRecentFiles = Type.Missing;
 			object WritePassword = Type.Missing;
@@ -279,7 +279,7 @@ internal static class DocumentRenameService
 		}
 	}
 
-	private static object wbXBMKescZ(Document P_0)
+	private static object getSaveFormat(Document P_0)
 	{
 		try
 		{
@@ -291,7 +291,7 @@ internal static class DocumentRenameService
 		}
 	}
 
-	private static string ur0Bb9fPt3(string P_0)
+	private static string validateNewFileName(string P_0)
 	{
 		string text = (P_0 ?? string.Empty).Trim();
 		if (string.IsNullOrWhiteSpace(text))
@@ -306,14 +306,14 @@ internal static class DocumentRenameService
 		{
 			throw new InvalidOperationException("新文件名不能以空格或点号结尾。");
 		}
-		if (BrRBSEtSCs(text))
+		if (isReservedDeviceName(text))
 		{
 			throw new InvalidOperationException("新文件名是 Windows 保留设备名，请重新输入。");
 		}
 		return text;
 	}
 
-	private static bool BrRBSEtSCs(string P_0)
+	private static bool isReservedDeviceName(string P_0)
 	{
 		string text = P_0;
 		int num = text.IndexOf('.');
@@ -338,7 +338,7 @@ internal static class DocumentRenameService
 		return false;
 	}
 
-	private static string vG2BwOq8Bw(string P_0, string P_1)
+	private static string getFileExtension(string P_0, string P_1)
 	{
 		string extension = Path.GetExtension(P_0);
 		if (string.IsNullOrWhiteSpace(extension) || extension == ".")
@@ -352,7 +352,7 @@ internal static class DocumentRenameService
 		return string.Empty;
 	}
 
-	private static Document JrbBtdamCI()
+	private static Document getActiveDocument()
 	{
 		try
 		{
@@ -364,7 +364,7 @@ internal static class DocumentRenameService
 		}
 	}
 
-	private static bool cJXBLP7fcQ(string P_0, string P_1)
+	private static bool arePathsEqual(string P_0, string P_1)
 	{
 		if (string.IsNullOrWhiteSpace(P_0) || string.IsNullOrWhiteSpace(P_1))
 		{
@@ -380,7 +380,7 @@ internal static class DocumentRenameService
 		}
 	}
 
-	private static string fwlBshSt6y(Func<string> P_0)
+	private static string tryGetString(Func<string> P_0)
 	{
 		try
 		{
@@ -392,7 +392,7 @@ internal static class DocumentRenameService
 		}
 	}
 
-	private static bool A3eBlQ6j8f(Func<bool> P_0, bool P_1)
+	private static bool tryGetBool(Func<bool> P_0, bool P_1)
 	{
 		try
 		{

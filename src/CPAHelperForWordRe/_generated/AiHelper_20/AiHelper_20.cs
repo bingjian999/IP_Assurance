@@ -62,7 +62,7 @@ internal static class AiHelper_20
 		return false;
 	}
 
-	public static double NgZw6CkHuw(string P_0, double P_1)
+	public static double GetConfigFontSize(string P_0, double P_1)
 	{
 		if (!TryParse(P_0, out var points))
 		{

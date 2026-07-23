@@ -81,7 +81,7 @@ public sealed class ThisAddIn : AddInBase
 			AiConfigBootstrap.InitializeLogger();
 			XvXL2tl66.CdpsaonsgL("刷新并关闭日志", AiConfigBootstrap.ShutdownLogger);
 			ScRJrclkY();
-			HttpHelper_2.BNmLxKn8Mc();
+			HttpHelper_2.initializeHttpClient();
 			WordTableToolService.wTdsm97f8t(fM3oNckkd, SynchronizationContext.Current);
 			AiSseStreamService.InitializeDirectories();
 			AiSseStreamService.EnsureDirectory(AiSseStreamService.ConfigDir);
@@ -90,12 +90,12 @@ public sealed class ThisAddIn : AddInBase
 				TableBorderConfig.Current.GZ2SaDxkVl();
 			});
 			ConfigValidator.ValidateConfig("刷新 Ribbon 标题", CompositeRibbonExtensibility.S0ZyWdvYIm);
-			ConfigValidator.ValidateConfig("初始化轻量 AI 入口", AiAssistantHost2.GG6Bqc5aMd);
+			ConfigValidator.ValidateConfig("初始化轻量 AI 入口", AiAssistantHost2.TriggerFileDownload);
 			ConfigValidator.ValidateConfig("初始化 OfficeTab", delegate
 			{
 				if (TableBorderConfig.Current.Config.OfficeTab.Enabled)
 				{
-					AiHelper_13.EnuUgD338d();
+					AiHelper_13.Enable();
 				}
 			});
 			ConfigValidator.ValidateConfig("应用桌面钉图热键", delegate
@@ -105,17 +105,17 @@ public sealed class ThisAddIn : AddInBase
 					AiConfigBootstrap.LogWarn("恢复 Excel 同步右键菜单" + text);
 				}
 			});
-			ConfigValidator.ValidateConfig("启动自动检查更新", ExcelDataSyncService.K5NXSH2mgl);
+			ConfigValidator.ValidateConfig("启动自动检查更新", ExcelDataSyncService.AutoLoadContextMenu);
 			ConfigValidator.ValidateConfig("[Startup] IP_Assurance started; Version=", AiHelper_6.uJJLaq5Qdq);
 			ConfigValidator.RunStartup();
 			AiConfigBootstrap.LogInfo("; Host=" + typeof(ThisAddIn).Assembly.GetName().Version?.ToString() + "Word" + (WordTableToolService.IsWps ? "WPS" : ""));
 			Y813TQXXJ();
-			XvXL2tl66.CdpsaonsgL("清理 OfficeTab", AiAssistantHost2.oCK9RZLXy4);
-			XvXL2tl66.CdpsaonsgL("清理桌面钉图", AiHelper_13.PSkUiNYvdJ);
+			XvXL2tl66.CdpsaonsgL("清理 OfficeTab", AiAssistantHost2.ShutdownAll);
+			XvXL2tl66.CdpsaonsgL("清理桌面钉图", AiHelper_13.Shutdown);
 			XvXL2tl66.CdpsaonsgL("清理 Excel 同步右键菜单", ScreenshotService.jTmBQtWvhT);
-			XvXL2tl66.CdpsaonsgL("清理系统托盘通知", ExcelDataSyncService.MXSXtSr5ZG);
+			XvXL2tl66.CdpsaonsgL("清理系统托盘通知", ExcelDataSyncService.ResetContextMenu);
 			XvXL2tl66.CdpsaonsgL("清理 WPF 键盘钩子", UiHelperService.DisposeNotifyIcon);
-			XvXL2tl66.CdpsaonsgL("DocumentOpen", AiHelper_4.EdjVoDIVbd);
+			XvXL2tl66.CdpsaonsgL("DocumentOpen", AiHelper_4.UnregisterAll);
 			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").AddEventHandler(fM3oNckkd, new ApplicationEvents4_DocumentOpenEventHandler(qZSrdDKvR));
 		}
 		catch (Exception ex)

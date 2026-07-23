@@ -77,7 +77,7 @@ internal sealed class FileDownloadHelper
 		}
 	}
 
-	public void lpfwdhmiR3(Action<Helper_22> P_0)
+	public void UpdateConfig(Action<Helper_22> P_0)
 	{
 		if (P_0 == null)
 		{

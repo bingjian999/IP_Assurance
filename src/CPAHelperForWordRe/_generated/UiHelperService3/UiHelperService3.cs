@@ -18,50 +18,50 @@ namespace UiHelperService3;
 
 internal sealed class UiHelperService3 : Form
 {
-	private enum YB3JfAVY2lmMnyG9udwr
+	private enum TabHitZone
 	{
 		None
 	}
 
-	private struct s64GrAVY4oaB7t7vkJ1d
+	private struct TabHitTestResult
 	{
-		public YB3JfAVY2lmMnyG9udwr yB3JfAVY2lmMnyG9udwr;
+		public TabHitZone tabHitZone;
 
-		public string vlwVYYOlrqX;
+		public string tabKey;
 
 		public string ToolTip;
 	}
 
-	private struct DrhxL2VYZcXZxBQhNUGG
+	private struct TabLayoutItem
 	{
 		public AiHelper_10 aiHelper_10;
 
 		public string text;
 
-		public Rectangle ybLVYbRtSje;
+		public Rectangle bounds;
 
 		public Rectangle rectangle;
 
 		public Rectangle rectangle;
 	}
 
-	private sealed class k1OnlOVYt3JiSMCcv4U3
+	private sealed class TabLayoutResult
 	{
 		[CompilerGenerated]
-		private readonly List<DrhxL2VYZcXZxBQhNUGG> gU0VYL38pjI;
+		private readonly List<TabLayoutItem> _items;
 
 		[CompilerGenerated]
-		private int IDTVYsQZcoh;
+		private int _rowCount;
 
 		[CompilerGenerated]
 		private int _desiredHeight;
 
-		public List<DrhxL2VYZcXZxBQhNUGG> Items
+		public List<TabLayoutItem> Items
 		{
 			[CompilerGenerated]
 			get
 			{
-				return gU0VYL38pjI;
+				return _items;
 			}
 		}
 
@@ -70,12 +70,12 @@ internal sealed class UiHelperService3 : Form
 			[CompilerGenerated]
 			get
 			{
-				return IDTVYsQZcoh;
+				return _rowCount;
 			}
 			[CompilerGenerated]
 			set
 			{
-				IDTVYsQZcoh = value;
+				_rowCount = value;
 			}
 		}
 
@@ -93,14 +93,14 @@ internal sealed class UiHelperService3 : Form
 			}
 		}
 
-		public k1OnlOVYt3JiSMCcv4U3()
+		public TabLayoutResult()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			gU0VYL38pjI = new List<DrhxL2VYZcXZxBQhNUGG>();
+			_items = new List<TabLayoutItem>();
 		}
 	}
 
-	private struct KHeUdEVYNDni2Diabntx
+	private struct TabLayoutMetrics
 	{
 		public int value;
 
@@ -127,7 +127,7 @@ internal sealed class UiHelperService3 : Form
 
 	private readonly ToolTip _toolTip;
 
-	private List<AiHelper_10> TkZ7O3mOur;
+	private List<AiHelper_10> _tabs;
 
 	private string _string;
 
@@ -139,7 +139,7 @@ internal sealed class UiHelperService3 : Form
 
 	private float _float;
 
-	private KHeUdEVYNDni2Diabntx _kHeUdEVYNDni2Diabntx;
+	private TabLayoutMetrics _layoutMetrics;
 
 	protected override bool ShowWithoutActivation => true;
 
@@ -159,13 +159,13 @@ internal sealed class UiHelperService3 : Form
 	{
 		SseStreamInitializer.InitializeRuntime();
 		_toolTip = new ToolTip();
-		TkZ7O3mOur = new List<AiHelper_10>();
+		_tabs = new List<AiHelper_10>();
 		SetStyle(ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, value: true);
 		base.FormBorderStyle = FormBorderStyle.None;
 		base.ShowInTaskbar = false;
 		base.StartPosition = FormStartPosition.Manual;
 		BackColor = Color.FromArgb(242, 244, 248);
-		DNm7LNT9WI();
+		UpdateLayout();
 	}
 
 	protected override void WndProc(ref Message P_0)
@@ -180,9 +180,9 @@ internal sealed class UiHelperService3 : Form
 		}
 	}
 
-	public void lr57EfRfpj()
+	public void ShowOverlay()
 	{
-		DNm7LNT9WI();
+		UpdateLayout();
 		if (!base.Visible)
 		{
 			ScreenshotCaptureHelper2.CaptureScreen(base.Handle, 4);
@@ -195,40 +195,40 @@ internal sealed class UiHelperService3 : Form
 		base.Visible = false;
 	}
 
-	public void WNa744ZxJ3(List<AiHelper_10> P_0)
+	public void SetTabs(List<AiHelper_10> P_0)
 	{
-		DNm7LNT9WI();
-		TkZ7O3mOur = P_0 ?? new List<AiHelper_10>();
+		UpdateLayout();
+		_tabs = P_0 ?? new List<AiHelper_10>();
 		Invalidate();
 	}
 
-	public int o1Y7jLQCiS(int P_0)
+	public int GetDesiredHeight(int P_0)
 	{
-		DNm7LNT9WI();
+		UpdateLayout();
 		if (P_0 <= 0)
 		{
-			return _kHeUdEVYNDni2Diabntx.value;
+			return _layoutMetrics.value;
 		}
 		using Graphics graphics = CreateGraphics();
-		return bpQ7Z6Vn1c(graphics, P_0).DesiredHeight;
+		return CalculateLayout(graphics, P_0).DesiredHeight;
 	}
 
-	public int til7YV9F4s(int P_0)
+	public int GetDesiredWidth(int P_0)
 	{
-		DNm7LNT9WI();
+		UpdateLayout();
 		if (P_0 <= 0)
 		{
 			return 0;
 		}
 		using Graphics graphics = CreateGraphics();
-		int val = R9D7MNqcbg(graphics);
-		return Math.Min(P_0, Math.Max(_kHeUdEVYNDni2Diabntx.value * 2 + 1, val));
+		int val = MeasureTotalWidth(graphics);
+		return Math.Min(P_0, Math.Max(_layoutMetrics.value * 2 + 1, val));
 	}
 
 	protected override void OnPaint(PaintEventArgs P_0)
 	{
 		base.OnPaint(P_0);
-		DNm7LNT9WI();
+		UpdateLayout();
 		Graphics graphics = P_0.Graphics;
 		graphics.SmoothingMode = SmoothingMode.AntiAlias;
 		graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
@@ -236,9 +236,9 @@ internal sealed class UiHelperService3 : Form
 		{
 			graphics.FillRectangle(brush, base.ClientRectangle);
 		}
-		foreach (DrhxL2VYZcXZxBQhNUGG item in bpQ7Z6Vn1c(graphics, base.Width).Items)
+		foreach (TabLayoutItem item in CalculateLayout(graphics, base.Width).Items)
 		{
-			Doh7bjag9i(graphics, item);
+			DrawTabItem(graphics, item);
 		}
 		using Pen pen = new Pen(Color.FromArgb(211, 216, 224));
 		graphics.DrawLine(pen, 0, base.Height - 1, base.Width, base.Height - 1);
@@ -247,14 +247,14 @@ internal sealed class UiHelperService3 : Form
 	protected override void OnMouseMove(MouseEventArgs P_0)
 	{
 		base.OnMouseMove(P_0);
-		s64GrAVY4oaB7t7vkJ1d s64GrAVY4oaB7t7vkJ1d2 = t3R7wwREte(P_0.Location);
-		string vlwVYYOlrqX = s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX;
-		string text = ((s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == (YB3JfAVY2lmMnyG9udwr)2) ? s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX : null);
-		Cursor = ((s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == YB3JfAVY2lmMnyG9udwr.None) ? Cursors.Default : Cursors.Hand);
-		_toolTip.SetToolTip(this, s64GrAVY4oaB7t7vkJ1d2.ToolTip ?? string.Empty);
-		if (vlwVYYOlrqX != _string || text != _string)
+		TabHitTestResult hitTestResult = HitTest(P_0.Location);
+		string tabKey = hitTestResult.tabKey;
+		string text = ((hitTestResult.tabHitZone == (TabHitZone)2) ? hitTestResult.tabKey : null);
+		Cursor = ((hitTestResult.tabHitZone == TabHitZone.None) ? Cursors.Default : Cursors.Hand);
+		_toolTip.SetToolTip(this, hitTestResult.ToolTip ?? string.Empty);
+		if (tabKey != _string || text != _string)
 		{
-			_string = vlwVYYOlrqX;
+			_string = tabKey;
 			_string = text;
 			Invalidate();
 		}
@@ -274,86 +274,86 @@ internal sealed class UiHelperService3 : Form
 		base.OnMouseClick(P_0);
 		if (P_0.Button == MouseButtons.Left)
 		{
-			s64GrAVY4oaB7t7vkJ1d s64GrAVY4oaB7t7vkJ1d2 = t3R7wwREte(P_0.Location);
-			if (s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == (YB3JfAVY2lmMnyG9udwr)2)
+			TabHitTestResult hitTestResult = HitTest(P_0.Location);
+			if (hitTestResult.tabHitZone == (TabHitZone)2)
 			{
-				AiHelper_13.hMTU1YUAHc(s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX);
+				AiHelper_13.CloseTab(hitTestResult.tabKey);
 			}
-			else if (s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == (YB3JfAVY2lmMnyG9udwr)1)
+			else if (hitTestResult.tabHitZone == (TabHitZone)1)
 			{
-				AiHelper_13.fgqUQKfffo(s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX);
+				AiHelper_13.ActivateTab(hitTestResult.tabKey);
 			}
 		}
 	}
 
-	private k1OnlOVYt3JiSMCcv4U3 bpQ7Z6Vn1c(Graphics P_0, int P_1)
+	private TabLayoutResult CalculateLayout(Graphics P_0, int P_1)
 	{
-		int num = Math.Max(P_1, _kHeUdEVYNDni2Diabntx.value * 2 + 1);
-		int num2 = _kHeUdEVYNDni2Diabntx.value;
+		int num = Math.Max(P_1, _layoutMetrics.value * 2 + 1);
+		int num2 = _layoutMetrics.value;
 		int num3 = 0;
-		k1OnlOVYt3JiSMCcv4U3 k1OnlOVYt3JiSMCcv4U4 = new k1OnlOVYt3JiSMCcv4U3();
-		foreach (AiHelper_10 item in TkZ7O3mOur)
+		TabLayoutResult layoutResult = new TabLayoutResult();
+		foreach (AiHelper_10 item in _tabs)
 		{
-			string text = oQE7t3oZKo(item);
-			int num4 = wZO7fDKJMZ(P_0, text);
-			if (num2 > _kHeUdEVYNDni2Diabntx.value && num2 + num4 > num - _kHeUdEVYNDni2Diabntx.value)
+			string text = GetTabDisplayText(item);
+			int num4 = MeasureTabWidth(P_0, text);
+			if (num2 > _layoutMetrics.value && num2 + num4 > num - _layoutMetrics.value)
 			{
 				num3++;
-				num2 = _kHeUdEVYNDni2Diabntx.value;
+				num2 = _layoutMetrics.value;
 			}
-			int num5 = num3 * _kHeUdEVYNDni2Diabntx.RowHeight + (_kHeUdEVYNDni2Diabntx.RowHeight - _kHeUdEVYNDni2Diabntx.value) / 2;
-			Rectangle ybLVYbRtSje = new Rectangle(num2, num5, num4, _kHeUdEVYNDni2Diabntx.value);
-			Rectangle poEVYwtO3x = new Rectangle(ybLVYbRtSje.Right - _kHeUdEVYNDni2Diabntx.value - _kHeUdEVYNDni2Diabntx.value, ybLVYbRtSje.Top + (ybLVYbRtSje.Height - _kHeUdEVYNDni2Diabntx.value) / 2, _kHeUdEVYNDni2Diabntx.value, _kHeUdEVYNDni2Diabntx.value);
-			Rectangle sW3VYSDk01u = Rectangle.FromLTRB(ybLVYbRtSje.Left + _kHeUdEVYNDni2Diabntx.value, ybLVYbRtSje.Top + _kHeUdEVYNDni2Diabntx.value, Math.Max(ybLVYbRtSje.Left + _kHeUdEVYNDni2Diabntx.value, poEVYwtO3x.Left - _kHeUdEVYNDni2Diabntx.value), ybLVYbRtSje.Bottom + _kHeUdEVYNDni2Diabntx.value);
-			k1OnlOVYt3JiSMCcv4U4.Items.Add(new DrhxL2VYZcXZxBQhNUGG
+			int num5 = num3 * _layoutMetrics.RowHeight + (_layoutMetrics.RowHeight - _layoutMetrics.value) / 2;
+			Rectangle bounds = new Rectangle(num2, num5, num4, _layoutMetrics.value);
+			Rectangle closeButtonBounds = new Rectangle(bounds.Right - _layoutMetrics.value - _layoutMetrics.value, bounds.Top + (bounds.Height - _layoutMetrics.value) / 2, _layoutMetrics.value, _layoutMetrics.value);
+			Rectangle textBounds = Rectangle.FromLTRB(bounds.Left + _layoutMetrics.value, bounds.Top + _layoutMetrics.value, Math.Max(bounds.Left + _layoutMetrics.value, closeButtonBounds.Left - _layoutMetrics.value), bounds.Bottom + _layoutMetrics.value);
+			layoutResult.Items.Add(new TabLayoutItem
 			{
 				aiHelper_10 = item,
 				text = text,
-				ybLVYbRtSje = ybLVYbRtSje,
-				rectangle = sW3VYSDk01u,
-				rectangle = poEVYwtO3x
+				bounds = bounds,
+				rectangle = textBounds,
+				rectangle = closeButtonBounds
 			});
-			num2 += num4 + _kHeUdEVYNDni2Diabntx.value;
+			num2 += num4 + _layoutMetrics.value;
 		}
-		k1OnlOVYt3JiSMCcv4U4.RowCount = ((TkZ7O3mOur.Count == 0) ? 1 : (num3 + 1));
-		k1OnlOVYt3JiSMCcv4U4.DesiredHeight = Math.Max(_kHeUdEVYNDni2Diabntx.value, k1OnlOVYt3JiSMCcv4U4.RowCount * _kHeUdEVYNDni2Diabntx.RowHeight);
-		return k1OnlOVYt3JiSMCcv4U4;
+		layoutResult.RowCount = ((_tabs.Count == 0) ? 1 : (num3 + 1));
+		layoutResult.DesiredHeight = Math.Max(_layoutMetrics.value, layoutResult.RowCount * _layoutMetrics.RowHeight);
+		return layoutResult;
 	}
 
-	private int wZO7fDKJMZ(Graphics P_0, string P_1)
+	private int MeasureTabWidth(Graphics P_0, string P_1)
 	{
-		int num = TextRenderer.MeasureText(P_0, P_1 ?? string.Empty, Font).Width + _kHeUdEVYNDni2Diabntx.value * 2 + _kHeUdEVYNDni2Diabntx.value + _kHeUdEVYNDni2Diabntx.value * 2;
+		int num = TextRenderer.MeasureText(P_0, P_1 ?? string.Empty, Font).Width + _layoutMetrics.value * 2 + _layoutMetrics.value + _layoutMetrics.value * 2;
 		Helper_1 officeTab = TableBorderConfig.Current.Config.OfficeTab;
 		officeTab.AdjustHeight();
-		if (officeTab.FuAtZSN641())
+		if (officeTab.IsMaxWidthEnabled())
 		{
-			return Math.Min(num, jTo7oGwydx(officeTab.TabMaxWidth));
+			return Math.Min(num, ScaleInt(officeTab.TabMaxWidth));
 		}
 		return num;
 	}
 
-	private int R9D7MNqcbg(Graphics P_0)
+	private int MeasureTotalWidth(Graphics P_0)
 	{
-		int num = _kHeUdEVYNDni2Diabntx.value * 2;
-		for (int i = 0; i < TkZ7O3mOur.Count; i++)
+		int num = _layoutMetrics.value * 2;
+		for (int i = 0; i < _tabs.Count; i++)
 		{
-			num += wZO7fDKJMZ(P_0, oQE7t3oZKo(TkZ7O3mOur[i]));
-			if (i < TkZ7O3mOur.Count - 1)
+			num += MeasureTabWidth(P_0, GetTabDisplayText(_tabs[i]));
+			if (i < _tabs.Count - 1)
 			{
-				num += _kHeUdEVYNDni2Diabntx.value;
+				num += _layoutMetrics.value;
 			}
 		}
 		return num;
 	}
 
-	private void Doh7bjag9i(Graphics P_0, DrhxL2VYZcXZxBQhNUGG P_1)
+	private void DrawTabItem(Graphics P_0, TabLayoutItem P_1)
 	{
 		bool isActive = P_1.aiHelper_10.IsActive;
 		bool flag = P_1.aiHelper_10.Key == _string;
 		Color color = (isActive ? Color.White : (flag ? Color.FromArgb(248, 250, 253) : Color.FromArgb(235, 239, 245)));
 		Color color2 = (isActive ? Color.FromArgb(183, 194, 210) : Color.FromArgb(211, 218, 229));
 		Color foreColor = (isActive ? Color.FromArgb(30, 32, 36) : Color.FromArgb(82, 88, 98));
-		using (GraphicsPath path = SOF7muKw5d(P_1.ybLVYbRtSje, _kHeUdEVYNDni2Diabntx.CornerRadius))
+		using (GraphicsPath path = CreateTabPath(P_1.bounds, _layoutMetrics.CornerRadius))
 		{
 			using SolidBrush brush = new SolidBrush(color);
 			using Pen pen = new Pen(color2);
@@ -362,68 +362,68 @@ internal sealed class UiHelperService3 : Form
 		}
 		if (isActive)
 		{
-			using (SolidBrush brush2 = new SolidBrush(sPs7lnEAFq(TableBorderConfig.Current.Config.OfficeTab.ActiveAccentColor, Color.FromArgb(43, 116, 242))))
+			using (SolidBrush brush2 = new SolidBrush(ParseColorFromHtml(TableBorderConfig.Current.Config.OfficeTab.ActiveAccentColor, Color.FromArgb(43, 116, 242))))
 			{
-				P_0.FillRectangle(brush2, P_1.ybLVYbRtSje.Left + 2, P_1.ybLVYbRtSje.Top + 1, Math.Max(1, P_1.ybLVYbRtSje.Width - 4), 2);
+				P_0.FillRectangle(brush2, P_1.bounds.Left + 2, P_1.bounds.Top + 1, Math.Max(1, P_1.bounds.Width - 4), 2);
 			}
 			using SolidBrush brush3 = new SolidBrush(Color.White);
-			P_0.FillRectangle(brush3, P_1.ybLVYbRtSje.Left + 1, P_1.ybLVYbRtSje.Bottom - 2, Math.Max(1, P_1.ybLVYbRtSje.Width - 2), 3);
+			P_0.FillRectangle(brush3, P_1.bounds.Left + 1, P_1.bounds.Bottom - 2, Math.Max(1, P_1.bounds.Width - 2), 3);
 		}
 		TextRenderer.DrawText(P_0, P_1.text, Font, P_1.rectangle, foreColor, TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
-		BSR7SPwLy0(P_0, P_1.rectangle, P_1.aiHelper_10.Key == _string, isActive);
+		DrawCloseButton(P_0, P_1.rectangle, P_1.aiHelper_10.Key == _string, isActive);
 	}
 
-	private void BSR7SPwLy0(Graphics P_0, Rectangle P_1, bool P_2, bool P_3)
+	private void DrawCloseButton(Graphics P_0, Rectangle P_1, bool P_2, bool P_3)
 	{
 		if (P_2)
 		{
-			using GraphicsPath path = X387NXy68g(P_1, Math.Max(3, P_1.Width / 2));
+			using GraphicsPath path = CreateRoundedRectanglePath(P_1, Math.Max(3, P_1.Width / 2));
 			using SolidBrush brush = new SolidBrush(Color.FromArgb(229, 88, 88));
 			P_0.FillPath(brush, path);
 		}
-		using Pen pen = new Pen(P_2 ? Color.White : (P_3 ? Color.FromArgb(120, 120, 120) : Color.FromArgb(150, 150, 150)), Math.Max(1f, elV7GLw3rs(1.05f)));
-		int num = Math.Max(3, jTo7oGwydx(3));
+		using Pen pen = new Pen(P_2 ? Color.White : (P_3 ? Color.FromArgb(120, 120, 120) : Color.FromArgb(150, 150, 150)), Math.Max(1f, ScaleFloat(1.05f)));
+		int num = Math.Max(3, ScaleInt(3));
 		P_0.DrawLine(pen, P_1.Left + num, P_1.Top + num, P_1.Right - num - 1, P_1.Bottom - num - 1);
 		P_0.DrawLine(pen, P_1.Right - num - 1, P_1.Top + num, P_1.Left + num, P_1.Bottom - num - 1);
 	}
 
-	private s64GrAVY4oaB7t7vkJ1d t3R7wwREte(Point P_0)
+	private TabHitTestResult HitTest(Point P_0)
 	{
-		DNm7LNT9WI();
+		UpdateLayout();
 		using (Graphics graphics = CreateGraphics())
 		{
-			foreach (DrhxL2VYZcXZxBQhNUGG item in bpQ7Z6Vn1c(graphics, base.Width).Items)
+			foreach (TabLayoutItem item in CalculateLayout(graphics, base.Width).Items)
 			{
-				Rectangle ybLVYbRtSje = item.ybLVYbRtSje;
-				if (ybLVYbRtSje.Contains(P_0))
+				Rectangle bounds = item.bounds;
+				if (bounds.Contains(P_0))
 				{
 					string toolTip = (string.IsNullOrWhiteSpace(item.aiHelper_10.FullName) ? item.aiHelper_10.Name : item.aiHelper_10.FullName);
-					ybLVYbRtSje = item.rectangle;
-					if (ybLVYbRtSje.Contains(P_0))
+					bounds = item.rectangle;
+					if (bounds.Contains(P_0))
 					{
-						return new s64GrAVY4oaB7t7vkJ1d
+						return new TabHitTestResult
 						{
-							yB3JfAVY2lmMnyG9udwr = (YB3JfAVY2lmMnyG9udwr)2,
-							vlwVYYOlrqX = item.aiHelper_10.Key,
+							tabHitZone = (TabHitZone)2,
+							tabKey = item.aiHelper_10.Key,
 							ToolTip = "关闭 " + item.aiHelper_10.Name
 						};
 					}
-					return new s64GrAVY4oaB7t7vkJ1d
+					return new TabHitTestResult
 					{
-						yB3JfAVY2lmMnyG9udwr = (YB3JfAVY2lmMnyG9udwr)1,
-						vlwVYYOlrqX = item.aiHelper_10.Key,
+						tabHitZone = (TabHitZone)1,
+						tabKey = item.aiHelper_10.Key,
 						ToolTip = toolTip
 					};
 				}
 			}
 		}
-		return new s64GrAVY4oaB7t7vkJ1d
+		return new TabHitTestResult
 		{
-			yB3JfAVY2lmMnyG9udwr = YB3JfAVY2lmMnyG9udwr.None
+			tabHitZone = TabHitZone.None
 		};
 	}
 
-	private static string oQE7t3oZKo(AiHelper_10 P_0)
+	private static string GetTabDisplayText(AiHelper_10 P_0)
 	{
 		string text = P_0?.Name ?? string.Empty;
 		if (!string.IsNullOrWhiteSpace(P_0?.FullName))
@@ -432,14 +432,14 @@ internal sealed class UiHelperService3 : Form
 		}
 		Helper_1 officeTab = TableBorderConfig.Current.Config.OfficeTab;
 		officeTab.AdjustHeight();
-		if (officeTab.FuAtZSN641() && text.Length > officeTab.DocumentNamePrefixLength)
+		if (officeTab.IsMaxWidthEnabled() && text.Length > officeTab.DocumentNamePrefixLength)
 		{
 			text = text.Substring(0, officeTab.DocumentNamePrefixLength) + "..";
 		}
 		return ((P_0 != null && !P_0.IsSaved) ? "*" : string.Empty) + text;
 	}
 
-	private void DNm7LNT9WI()
+	private void UpdateLayout()
 	{
 		Helper_1 officeTab = TableBorderConfig.Current.Config.OfficeTab;
 		officeTab.AdjustHeight();
@@ -447,7 +447,7 @@ internal sealed class UiHelperService3 : Form
 		float num = Math.Max(7f, Math.Min(18f, (float)officeTab.FontSize));
 		if (_font == null || !string.Equals(_string, text, StringComparison.Ordinal) || Math.Abs(_float - num) > 0.01f)
 		{
-			Font font = MRy7syHbkg(text, num);
+			Font font = CreateFont(text, num);
 			Font font2 = _font;
 			_font = font;
 			_string = text;
@@ -456,24 +456,24 @@ internal sealed class UiHelperService3 : Form
 			font2?.Dispose();
 		}
 		int num2 = TextRenderer.MeasureText("Mg", Font).Height;
-		int num3 = Math.Max(jTo7oGwydx(20), num2 + jTo7oGwydx(10));
-		_kHeUdEVYNDni2Diabntx = new KHeUdEVYNDni2Diabntx
+		int num3 = Math.Max(ScaleInt(20), num2 + ScaleInt(10));
+		_layoutMetrics = new TabLayoutMetrics
 		{
-			value = Math.Max(jTo7oGwydx(26), officeTab.Height),
+			value = Math.Max(ScaleInt(26), officeTab.Height),
 			value = num3,
-			RowHeight = Math.Max(jTo7oGwydx(26), num3),
-			value = jTo7oGwydx(14),
-			value = jTo7oGwydx(6),
-			value = jTo7oGwydx(2),
-			CornerRadius = jTo7oGwydx(4),
-			value = Math.Min(jTo7oGwydx(12), Math.Max(8, num3 - jTo7oGwydx(6))),
-			value = jTo7oGwydx(5),
-			value = jTo7oGwydx(4),
-			value = jTo7oGwydx(1)
+			RowHeight = Math.Max(ScaleInt(26), num3),
+			value = ScaleInt(14),
+			value = ScaleInt(6),
+			value = ScaleInt(2),
+			CornerRadius = ScaleInt(4),
+			value = Math.Min(ScaleInt(12), Math.Max(8, num3 - ScaleInt(6))),
+			value = ScaleInt(5),
+			value = ScaleInt(4),
+			value = ScaleInt(1)
 		};
 	}
 
-	private static Font MRy7syHbkg(string P_0, float P_1)
+	private static Font CreateFont(string P_0, float P_1)
 	{
 		try
 		{
@@ -485,7 +485,7 @@ internal sealed class UiHelperService3 : Form
 		}
 	}
 
-	private static Color sPs7lnEAFq(string P_0, Color P_1)
+	private static Color ParseColorFromHtml(string P_0, Color P_1)
 	{
 		try
 		{
@@ -501,7 +501,7 @@ internal sealed class UiHelperService3 : Form
 		}
 	}
 
-	private static GraphicsPath X387NXy68g(Rectangle P_0, int P_1)
+	private static GraphicsPath CreateRoundedRectanglePath(Rectangle P_0, int P_1)
 	{
 		GraphicsPath graphicsPath = new GraphicsPath();
 		if (P_0.Width <= 0 || P_0.Height <= 0)
@@ -527,7 +527,7 @@ internal sealed class UiHelperService3 : Form
 		return graphicsPath;
 	}
 
-	private static GraphicsPath SOF7muKw5d(Rectangle P_0, int P_1)
+	private static GraphicsPath CreateTabPath(Rectangle P_0, int P_1)
 	{
 		GraphicsPath graphicsPath = new GraphicsPath();
 		if (P_0.Width <= 0 || P_0.Height <= 0)
@@ -550,17 +550,17 @@ internal sealed class UiHelperService3 : Form
 		return graphicsPath;
 	}
 
-	private int jTo7oGwydx(int P_0)
+	private int ScaleInt(int P_0)
 	{
 		return Math.Max(1, (int)Math.Round((float)P_0 * ScaleRatio));
 	}
 
-	private float elV7GLw3rs(float P_0)
+	private float ScaleFloat(float P_0)
 	{
 		return Math.Max(0.5f, P_0 * ScaleRatio);
 	}
 
-	private static int Y6R7CQ87kJ(int P_0, int P_1, int P_2)
+	private static int Clamp(int P_0, int P_1, int P_2)
 	{
 		if (P_0 < P_1)
 		{

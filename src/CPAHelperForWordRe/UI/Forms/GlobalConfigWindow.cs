@@ -25,7 +25,7 @@ public sealed class GlobalConfigWindow : Window, IComponentConnector
 		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		qVQGscCNQi = new NumberFormatConfig(new JsonFileDialogHelper());
-		qVQGscCNQi.iVQon5Xo9R(base.Close);
+		qVQGscCNQi.add_CloseRequested(base.Close);
 		base.DataContext = qVQGscCNQi;
 		base.PreviewKeyDown += OrgGL6BKje;
 		base.Loaded += GHPdJlwoQG;

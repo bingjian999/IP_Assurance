@@ -62,7 +62,7 @@ internal sealed class VbaValidationService : IToolProvider
 	[Description("验证 Word VBA 代码片段是否合法，检查是否包含无参数 Sub 入口。run_vba_snippet 前必须先调用此工具；VBA 是专用 Word 工具覆盖不了时的高风险兜底。")]
 	private AiHelper_5 ValidateVbaSnippet([Description("完整的 Word VBA 代码字符串，必须包含一个无参数 Sub ... End Sub 入口过程。")] string vbaCode)
 	{
-		string text = _wpsVbaCompatService.R1tJz1VIhA(vbaCode);
+		string text = _wpsVbaCompatService.ValidateVbaCode(vbaCode);
 		if (text.StartsWith("验证通过", StringComparison.Ordinal))
 		{
 			return AiHelper_5.CreateSuccess("VBA snippet is valid.", new
@@ -93,7 +93,7 @@ internal sealed class VbaValidationService : IToolProvider
 	{
 		try
 		{
-			string text = _wpsVbaCompatService.R1tJz1VIhA(vbaCode);
+			string text = _wpsVbaCompatService.ValidateVbaCode(vbaCode);
 			if (!text.StartsWith("验证通过", StringComparison.Ordinal) && !text.StartsWith("验证警告", StringComparison.Ordinal))
 			{
 				return AiHelper_5.CreateError("VBA snippet is invalid.", "invalid_vba", new
@@ -101,7 +101,7 @@ internal sealed class VbaValidationService : IToolProvider
 					details = text
 				});
 			}
-			string details = _wpsVbaCompatService.zer3R7UqTK(vbaCode);
+			string details = _wpsVbaCompatService.ExecuteVbaCode(vbaCode);
 			return AiHelper_5.CreateSuccess("VBA snippet executed.", new
 			{
 				executed = true,

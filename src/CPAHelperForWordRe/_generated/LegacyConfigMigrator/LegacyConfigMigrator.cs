@@ -86,14 +86,14 @@ internal static class LegacyConfigMigrator
 		{
 			throw new InvalidOperationException("旧版配置中没有可导入的表格/段落配置或预设。");
 		}
-		ConfigMigrationResult yjZ4lmw7an9JOgXHIuS = new ConfigMigrationResult
+		ConfigMigrationResult migrationResult = new ConfigMigrationResult
 		{
 			SourceConfigPath = P_0.SourceConfigPath,
 			ParagraphConfigCount = P_0.ParagraphConfigCount,
 			TableConfigCount = P_0.TableConfigCount,
 			OtherConfigCount = P_0.OtherConfigCount
 		};
-		yjZ4lmw7an9JOgXHIuS.BackupPath = k5Www6bih8();
+		migrationResult.BackupPath = k5Www6bih8();
 		if (P_0.ConfigValues.Count > 0)
 		{
 			Dictionary<string, object> dictionary = TableBorderConfig.Current.GetAllLegacy();
@@ -103,10 +103,10 @@ internal static class LegacyConfigMigrator
 			}
 			TableBorderConfig.Current.SetAllLegacy(dictionary);
 		}
-		usdwt8HvqO(P_0.ParagraphPresetFiles, true, yjZ4lmw7an9JOgXHIuS);
-		usdwt8HvqO(P_0.TablePresetFiles, false, yjZ4lmw7an9JOgXHIuS);
+		usdwt8HvqO(P_0.ParagraphPresetFiles, true, migrationResult);
+		usdwt8HvqO(P_0.TablePresetFiles, false, migrationResult);
 		AiConfigBootstrap.LogInfo("[ConfigMigration] Imported legacy Word table/paragraph config from: " + P_0.SourceConfigPath);
-		return yjZ4lmw7an9JOgXHIuS;
+		return migrationResult;
 	}
 
 	private static IEnumerable<string> NMGw2sXSI3()

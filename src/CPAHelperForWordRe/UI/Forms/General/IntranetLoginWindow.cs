@@ -77,7 +77,7 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 		qwP7aYKtCt( true, "登录", Brushes.DodgerBlue);
 		try
 		{
-			Helper_17 uJ41Qj6vhvynNA1tocZ = await IntranetAiConfigService.Instance.JrZ6E71S29(txtUsername.Text, txtPassword.Password, chkAutoLogin.IsChecked == true).ConfigureAwait(continueOnCapturedContext: true);
+			Helper_17 uJ41Qj6vhvynNA1tocZ = await IntranetAiConfigService.Instance.LoginAsync(txtUsername.Text, txtPassword.Password, chkAutoLogin.IsChecked == true).ConfigureAwait(continueOnCapturedContext: true);
 			if (uJ41Qj6vhvynNA1tocZ.Succeeded)
 			{
 				base.DialogResult = true;

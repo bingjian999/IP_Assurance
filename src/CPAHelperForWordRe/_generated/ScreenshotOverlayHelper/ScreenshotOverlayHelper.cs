@@ -353,7 +353,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 					break;
 				}
 			}
-			ScreenshotCaptureHelper2.d2kP0Du2a(_intPtr);
+			ScreenshotCaptureHelper2.CaptureWindow(_intPtr);
 		}
 		catch
 		{

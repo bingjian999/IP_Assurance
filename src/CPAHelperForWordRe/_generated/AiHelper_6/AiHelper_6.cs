@@ -29,7 +29,7 @@ internal static class AiHelper_6
 
 	public static void uJJLaq5Qdq()
 	{
-		if (AiSseStreamService4.pS8Leo78tt())
+		if (AiSseStreamService4.isAutoUpdateEnabled())
 		{
 			VKALqeAadh();
 		}
@@ -41,8 +41,8 @@ internal static class AiHelper_6
 		try
 		{
 			_G_c__DisplayClass1_0 CS_8_locals_3 = new _G_c__DisplayClass1_0();
-			HttpHelper_1 rei3DhLlLQm1bCVIXFi = await AiSseStreamService4.PJYL5bLAxq( true);
-			if (rei3DhLlLQm1bCVIXFi == null || !AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), rei3DhLlLQm1bCVIXFi.VersionText))
+			HttpHelper_1 rei3DhLlLQm1bCVIXFi = await AiSseStreamService4.fetchUpdateInfo( true);
+			if (rei3DhLlLQm1bCVIXFi == null || !AiSseStreamService4.isNewerVersion(AiSseStreamService4.GetAssemblyVersion(), rei3DhLlLQm1bCVIXFi.VersionText))
 			{
 				return;
 			}

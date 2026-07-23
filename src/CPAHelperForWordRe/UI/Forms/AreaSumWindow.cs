@@ -136,7 +136,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	private bool HlxCmTEkPL(string P_0, Match P_1)
 	{
-		UiHelper_4 w9DpQgSBDhHwuwkYtki = new UiHelper_4
+		UiHelper_4 separatorConfig = new UiHelper_4
 		{
 			ExcludeYear = (chkYear.IsChecked == true),
 			ExcludeMonth = (chkMonth.IsChecked == true),
@@ -146,7 +146,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			ExcludePercent = (chkPercent.IsChecked == true),
 			ExcludeDateFormat = false
 		};
-		return UiHelper_5.bcbSJ1pxpn(P_0, P_1, w9DpQgSBDhHwuwkYtki, null);
+		return UiHelper_5.bcbSJ1pxpn(P_0, P_1, separatorConfig, null);
 	}
 
 	private void HNSCoD1ugn()

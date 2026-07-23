@@ -65,7 +65,7 @@ internal sealed class WordAgentRuntimeGuard : IHostContext
 			{
 				return _aiTargetBinder.DocumentName;
 			}
-			return _wordTableToolService4.MdXJlVhPku("host_context_project_path", (Application app) => app.ActiveDocument?.FullName);
+			return _wordTableToolService4.runOperation("host_context_project_path", (Application app) => app.ActiveDocument?.FullName);
 		}
 		catch
 		{
@@ -100,7 +100,7 @@ internal sealed class WordAgentRuntimeGuard : IHostContext
 		WordWindowInfo windowInfo;
 		try
 		{
-			windowInfo = _wordTableToolService4.MdXJlVhPku("host_context_ensure_ready", delegate(Application app)
+			windowInfo = _wordTableToolService4.runOperation("host_context_ensure_ready", delegate(Application app)
 			{
 				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))

@@ -11,9 +11,9 @@ namespace HotkeyHookService;
 
 internal static class HotkeyHookService
 {
-	private sealed class Yr12XUFhdtS3B7K8cNg : NativeWindow, IDisposable
+	private sealed class HotkeyMessageWindow : NativeWindow, IDisposable
 	{
-		public Yr12XUFhdtS3B7K8cNg()
+		public HotkeyMessageWindow()
 		{
 			SseStreamInitializer.InitializeRuntime();
 			CreateHandle(new CreateParams
@@ -26,7 +26,7 @@ internal static class HotkeyHookService
 		{
 			if (P_0.Msg == 786)
 			{
-				w4CVS1Yepv(P_0.WParam.ToInt32());
+				InvokeHotkeyCallback(P_0.WParam.ToInt32());
 			}
 			base.WndProc(ref P_0);
 		}
@@ -37,59 +37,59 @@ internal static class HotkeyHookService
 		}
 	}
 
-	private static readonly Dictionary<string, int> b0YVwcUdpZ;
+	private static readonly Dictionary<string, int> _hotkeyNameToId;
 
-	private static readonly Dictionary<int, Action> e87VtAmKrn;
+	private static readonly Dictionary<int, Action> _hotkeyIdToCallback;
 
-	private static Yr12XUFhdtS3B7K8cNg zMRVL5C0BL;
+	private static HotkeyMessageWindow _messageWindow;
 
-	private static int wsHVswknag;
+	private static int _nextHotkeyId;
 
-	public static bool LflVUiaoHY(string P_0, HotkeyAction P_1, Keys P_2, Action P_3)
+	public static bool RegisterHotkey(string P_0, HotkeyAction P_1, Keys P_2, Action P_3)
 	{
 		if (string.IsNullOrWhiteSpace(P_0) || P_3 == null)
 		{
 			return false;
 		}
-		soIVb8dM0t();
-		uQ7VKeL8py(P_0);
-		int num = ++wsHVswknag;
-		if (!ScreenshotCaptureHelper2.mIozr8woi(zMRVL5C0BL.Handle, num, (uint)P_1, (uint)P_2))
+		EnsureMessageWindow();
+		UnregisterHotkey(P_0);
+		int num = ++_nextHotkeyId;
+		if (!ScreenshotCaptureHelper2.RegisterHotKey(_messageWindow.Handle, num, (uint)P_1, (uint)P_2))
 		{
 			return false;
 		}
-		b0YVwcUdpZ[P_0] = num;
-		e87VtAmKrn[num] = P_3;
+		_hotkeyNameToId[P_0] = num;
+		_hotkeyIdToCallback[num] = P_3;
 		return true;
 	}
 
-	public static void uQ7VKeL8py(string P_0)
+	public static void UnregisterHotkey(string P_0)
 	{
-		if (!string.IsNullOrWhiteSpace(P_0) && zMRVL5C0BL != null && b0YVwcUdpZ.TryGetValue(P_0, out var value))
+		if (!string.IsNullOrWhiteSpace(P_0) && _messageWindow != null && _hotkeyNameToId.TryGetValue(P_0, out var value))
 		{
-			ScreenshotCaptureHelper2.TAqVRPUvsq(zMRVL5C0BL.Handle, value);
-			b0YVwcUdpZ.Remove(P_0);
-			e87VtAmKrn.Remove(value);
+			ScreenshotCaptureHelper2.UnregisterHotKey(_messageWindow.Handle, value);
+			_hotkeyNameToId.Remove(P_0);
+			_hotkeyIdToCallback.Remove(value);
 		}
 	}
 
-	public static void qr8VE3D2J6()
+	public static void UnregisterAllHotkeys()
 	{
-		if (zMRVL5C0BL == null)
+		if (_messageWindow == null)
 		{
 			return;
 		}
-		foreach (int key in e87VtAmKrn.Keys)
+		foreach (int key in _hotkeyIdToCallback.Keys)
 		{
-			ScreenshotCaptureHelper2.TAqVRPUvsq(zMRVL5C0BL.Handle, key);
+			ScreenshotCaptureHelper2.UnregisterHotKey(_messageWindow.Handle, key);
 		}
-		b0YVwcUdpZ.Clear();
-		e87VtAmKrn.Clear();
-		zMRVL5C0BL.Dispose();
-		zMRVL5C0BL = null;
+		_hotkeyNameToId.Clear();
+		_hotkeyIdToCallback.Clear();
+		_messageWindow.Dispose();
+		_messageWindow = null;
 	}
 
-	public static bool dHCV2a6XOA(string P_0, out Keys P_1)
+	public static bool TryParseKey(string P_0, out Keys P_1)
 	{
 		P_1 = Keys.None;
 		if (string.IsNullOrWhiteSpace(P_0))
@@ -343,7 +343,7 @@ internal static class HotkeyHookService
 		if (Enum.TryParse<Keys>(text, ignoreCase: true, out var result2))
 		{
 			P_1 = result2;
-			return hpIVjxJmGM(P_1);
+			return IsRealKey(P_1);
 		}
 		return false;
 	}
@@ -355,19 +355,19 @@ internal static class HotkeyHookService
 		{
 			return false;
 		}
-		HotkeyAction sMvGfVVI8pN4lQroEEl = HotkeyAction.None;
+		HotkeyAction accumulatedModifiers = HotkeyAction.None;
 		string text = null;
 		string[] array = P_0.Replace("＋", "+").Split(new char[1] { '+' }, StringSplitOptions.RemoveEmptyEntries);
 		foreach (string text2 in array)
 		{
-			string text3 = QJPVMTwXDd(text2);
+			string text3 = NormalizeKeyToken(text2);
 			if (string.IsNullOrWhiteSpace(text3))
 			{
 				continue;
 			}
-			if (Q4aVfJuxv0(text3, out var sMvGfVVI8pN4lQroEEl2))
+			if (TryParseModifier(text3, out var parsedModifier))
 			{
-				sMvGfVVI8pN4lQroEEl |= sMvGfVVI8pN4lQroEEl2;
+				accumulatedModifiers |= parsedModifier;
 				continue;
 			}
 			if (string.Equals(text3, "FN", StringComparison.OrdinalIgnoreCase))
@@ -384,27 +384,27 @@ internal static class HotkeyHookService
 		{
 			return false;
 		}
-		if (!dHCV2a6XOA(text, out var key))
+		if (!TryParseKey(text, out var key))
 		{
 			return false;
 		}
-		if (sMvGfVVI8pN4lQroEEl == HotkeyAction.None)
+		if (accumulatedModifiers == HotkeyAction.None)
 		{
-			sMvGfVVI8pN4lQroEEl = P_1;
+			accumulatedModifiers = P_1;
 		}
-		if (sMvGfVVI8pN4lQroEEl == HotkeyAction.None)
+		if (accumulatedModifiers == HotkeyAction.None)
 		{
 			return false;
 		}
 		P_2 = new UiHelperService2
 		{
-			Modifiers = sMvGfVVI8pN4lQroEEl,
+			Modifiers = accumulatedModifiers,
 			Key = key
 		};
 		return true;
 	}
 
-	public static bool hpIVjxJmGM(Keys P_0)
+	public static bool IsRealKey(Keys P_0)
 	{
 		P_0 &= Keys.KeyCode;
 		switch (P_0)
@@ -428,7 +428,7 @@ internal static class HotkeyHookService
 		}
 	}
 
-	public static string KgeVYgBu4k(UiHelperService2 P_0)
+	public static string formatHotkeyString(UiHelperService2 P_0)
 	{
 		List<string> list = new List<string>();
 		if ((P_0.Modifiers & (HotkeyAction)2u) == (HotkeyAction)2u)
@@ -447,11 +447,11 @@ internal static class HotkeyHookService
 		{
 			list.Add("Win");
 		}
-		list.Add(Eo5VZsOR4p(P_0.Key));
+		list.Add(keyToDisplayString(P_0.Key));
 		return string.Join("+", list);
 	}
 
-	public static string Eo5VZsOR4p(Keys P_0)
+	public static string keyToDisplayString(Keys P_0)
 	{
 		P_0 &= Keys.KeyCode;
 		if (P_0 >= Keys.A && P_0 <= Keys.Z)
@@ -491,7 +491,7 @@ internal static class HotkeyHookService
 		};
 	}
 
-	private static bool Q4aVfJuxv0(string P_0, out HotkeyAction P_1)
+	private static bool TryParseModifier(string P_0, out HotkeyAction P_1)
 	{
 		P_1 = HotkeyAction.None;
 		if (P_0 != null)
@@ -579,24 +579,24 @@ internal static class HotkeyHookService
 		return false;
 	}
 
-	private static string QJPVMTwXDd(string P_0)
+	private static string NormalizeKeyToken(string P_0)
 	{
 		return (P_0 ?? string.Empty).Trim().ToUpperInvariant().Replace(" ", string.Empty)
 			.Replace("-", string.Empty)
 			.Replace("_", string.Empty);
 	}
 
-	private static void soIVb8dM0t()
+	private static void EnsureMessageWindow()
 	{
-		if (zMRVL5C0BL == null)
+		if (_messageWindow == null)
 		{
-			zMRVL5C0BL = new Yr12XUFhdtS3B7K8cNg();
+			_messageWindow = new HotkeyMessageWindow();
 		}
 	}
 
-	private static void w4CVS1Yepv(int P_0)
+	private static void InvokeHotkeyCallback(int P_0)
 	{
-		if (!e87VtAmKrn.TryGetValue(P_0, out var value))
+		if (!_hotkeyIdToCallback.TryGetValue(P_0, out var value))
 		{
 			return;
 		}
@@ -612,8 +612,8 @@ internal static class HotkeyHookService
 	static HotkeyHookService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		b0YVwcUdpZ = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-		e87VtAmKrn = new Dictionary<int, Action>();
-		wsHVswknag = 23040;
+		_hotkeyNameToId = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+		_hotkeyIdToCallback = new Dictionary<int, Action>();
+		_nextHotkeyId = 23040;
 	}
 }

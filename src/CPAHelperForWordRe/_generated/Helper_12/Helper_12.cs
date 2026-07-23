@@ -1,6 +1,6 @@
 ﻿namespace Helper_12;
 
-internal interface HDS8hJGbnCWyNGfO01j
+internal interface DialogService
 {
 	string hveVL8NJXjM(string P_0, string P_1, string P_2);
 

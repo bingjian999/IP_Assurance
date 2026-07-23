@@ -40,10 +40,10 @@ internal static class TableComWriteService
 		private readonly List<TableBinding> NBvVTkSJVNH;
 
 		[CompilerGenerated]
-		private readonly List<WordTableInfo> rGSVTxcr5gk;
+		private readonly List<WordTableInfo> tableInfo;
 
 		[CompilerGenerated]
-		private readonly Dictionary<string, BookmarkInfo> ht6VTdTvcbE;
+		private readonly Dictionary<string, BookmarkInfo> bookmark3;
 
 		[CompilerGenerated]
 		private readonly Dictionary<string, BookmarkInfo> zHDVTzrHiUp;
@@ -65,7 +65,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return rGSVTxcr5gk;
+				return tableInfo;
 			}
 		}
 
@@ -74,7 +74,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return ht6VTdTvcbE;
+				return bookmark3;
 			}
 		}
 
@@ -105,8 +105,8 @@ internal static class TableComWriteService
 		{
 			SseStreamInitializer.InitializeRuntime();
 			NBvVTkSJVNH = new List<TableBinding>();
-			rGSVTxcr5gk = new List<WordTableInfo>();
-			ht6VTdTvcbE = new Dictionary<string, BookmarkInfo>(StringComparer.OrdinalIgnoreCase);
+			tableInfo = new List<WordTableInfo>();
+			bookmark3 = new Dictionary<string, BookmarkInfo>(StringComparer.OrdinalIgnoreCase);
 			zHDVTzrHiUp = new Dictionary<string, BookmarkInfo>(StringComparer.OrdinalIgnoreCase);
 		}
 	}
@@ -317,23 +317,23 @@ internal static class TableComWriteService
 	private sealed class TableStructureContext
 	{
 		[CompilerGenerated]
-		private readonly List<WordTableStructure> D64Vgr6Kt5m;
+		private readonly List<WordTableStructure> _tables;
 
 		[CompilerGenerated]
-		private readonly List<TableBinding> da5VgJ3KuYp;
+		private readonly List<TableBinding> binding1;
 
 		[CompilerGenerated]
-		private readonly Dictionary<string, TableBookmarkInfo> UYMVg3OytKl;
+		private readonly Dictionary<string, TableBookmarkInfo> bookmark2;
 
 		[CompilerGenerated]
-		private readonly Dictionary<string, TableBookmarkInfo> DluVgUiUhn5;
+		private readonly Dictionary<string, TableBookmarkInfo> bookmark1;
 
 		public List<WordTableStructure> Tables
 		{
 			[CompilerGenerated]
 			get
 			{
-				return D64Vgr6Kt5m;
+				return _tables;
 			}
 		}
 
@@ -342,7 +342,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return da5VgJ3KuYp;
+				return binding1;
 			}
 		}
 
@@ -351,7 +351,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return UYMVg3OytKl;
+				return bookmark2;
 			}
 		}
 
@@ -360,17 +360,17 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return DluVgUiUhn5;
+				return bookmark1;
 			}
 		}
 
 		public TableStructureContext()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			D64Vgr6Kt5m = new List<WordTableStructure>();
-			da5VgJ3KuYp = new List<TableBinding>();
-			UYMVg3OytKl = new Dictionary<string, TableBookmarkInfo>(StringComparer.OrdinalIgnoreCase);
-			DluVgUiUhn5 = new Dictionary<string, TableBookmarkInfo>(StringComparer.OrdinalIgnoreCase);
+			_tables = new List<WordTableStructure>();
+			binding1 = new List<TableBinding>();
+			bookmark2 = new Dictionary<string, TableBookmarkInfo>(StringComparer.OrdinalIgnoreCase);
+			bookmark1 = new Dictionary<string, TableBookmarkInfo>(StringComparer.OrdinalIgnoreCase);
 		}
 	}
 
@@ -769,7 +769,7 @@ internal static class TableComWriteService
 		private bool WHdVgFWIkNw;
 
 		[CompilerGenerated]
-		private int RyxVghQUuA6;
+		private int count5;
 
 		[CompilerGenerated]
 		private int _startRow;
@@ -847,12 +847,12 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return RyxVghQUuA6;
+				return count5;
 			}
 			[CompilerGenerated]
 			set
 			{
-				RyxVghQUuA6 = value;
+				count5 = value;
 			}
 		}
 
@@ -2531,7 +2531,7 @@ internal static class TableComWriteService
 		private string _workbookPath;
 
 		[CompilerGenerated]
-		private int gseVIowSpV0;
+		private int count6;
 
 		[CompilerGenerated]
 		private int _bound;
@@ -2634,12 +2634,12 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return gseVIowSpV0;
+				return count6;
 			}
 			[CompilerGenerated]
 			set
 			{
-				gseVIowSpV0 = value;
+				count6 = value;
 			}
 		}
 
@@ -2741,7 +2741,7 @@ internal static class TableComWriteService
 		private string _excelFullPath;
 
 		[CompilerGenerated]
-		private string rESVIXDoWa2;
+		private string text1;
 
 		[CompilerGenerated]
 		private string BVfVIFphOvb;
@@ -2762,7 +2762,7 @@ internal static class TableComWriteService
 		private int? _headerRowCount;
 
 		[CompilerGenerated]
-		private bool NlHVIvGMVS9;
+		private bool flag2;
 
 		[CompilerGenerated]
 		private int? LnZVIWptMdU;
@@ -2833,12 +2833,12 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return rESVIXDoWa2;
+				return text1;
 			}
 			[CompilerGenerated]
 			set
 			{
-				rESVIXDoWa2 = value;
+				text1 = value;
 			}
 		}
 
@@ -2931,12 +2931,12 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return NlHVIvGMVS9;
+				return flag2;
 			}
 			[CompilerGenerated]
 			set
 			{
-				NlHVIvGMVS9 = value;
+				flag2 = value;
 			}
 		}
 
@@ -3159,13 +3159,13 @@ internal static class TableComWriteService
 		private bool _hasVerticalMerge;
 
 		[CompilerGenerated]
-		private XElement VlMViZAIw09;
+		private XElement _tableElement;
 
 		[CompilerGenerated]
-		private readonly List<XElement> Mp3VifkhCcG;
+		private readonly List<XElement> _sourceKind1;
 
 		[CompilerGenerated]
-		private readonly List<ExcelCellData> X0lViMkLYS7;
+		private readonly List<ExcelCellData> _sourceKind3;
 
 		[CompilerGenerated]
 		private readonly List<ExcelMergeInfo> JZgVibIBcPj;
@@ -3277,12 +3277,12 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return VlMViZAIw09;
+				return _tableElement;
 			}
 			[CompilerGenerated]
 			set
 			{
-				VlMViZAIw09 = value;
+				_tableElement = value;
 			}
 		}
 
@@ -3291,7 +3291,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return Mp3VifkhCcG;
+				return _sourceKind1;
 			}
 		}
 
@@ -3300,7 +3300,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return X0lViMkLYS7;
+				return _sourceKind3;
 			}
 		}
 
@@ -3382,15 +3382,15 @@ internal static class TableComWriteService
 		public ExcelTableStructure()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			Mp3VifkhCcG = new List<XElement>();
-			X0lViMkLYS7 = new List<ExcelCellData>();
+			_sourceKind1 = new List<XElement>();
+			_sourceKind3 = new List<ExcelCellData>();
 			JZgVibIBcPj = new List<ExcelMergeInfo>();
 			CellMap = new Dictionary<string, ExcelCellData>(StringComparer.Ordinal);
 			MergedCellMap = new Dictionary<string, ExcelCellData>(StringComparer.Ordinal);
 		}
 
 		[CompilerGenerated]
-		private bool afiVi3pN3df(ExcelCellData P_0)
+		private bool IsHeaderCell(ExcelCellData P_0)
 		{
 			return P_0.RowIndex <= HeaderRowCount;
 		}
@@ -3512,7 +3512,7 @@ internal static class TableComWriteService
 		private readonly int UAyViCmEheo;
 
 		[CompilerGenerated]
-		private readonly int FmQVipFyFr8;
+		private readonly int _startRow;
 
 		[CompilerGenerated]
 		private readonly int cAYViOZiELi;
@@ -3534,7 +3534,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return FmQVipFyFr8;
+				return _startRow;
 			}
 		}
 
@@ -3560,7 +3560,7 @@ internal static class TableComWriteService
 		{
 			SseStreamInitializer.InitializeRuntime();
 			UAyViCmEheo = P_0;
-			FmQVipFyFr8 = P_1;
+			_startRow = P_1;
 			cAYViOZiELi = P_2;
 			olIVinoHIen = P_3;
 		}
@@ -3575,7 +3575,7 @@ internal static class TableComWriteService
 		private int _columnCount;
 
 		[CompilerGenerated]
-		private readonly HashSet<string> LmHVie6o6HY;
+		private readonly HashSet<string> _rowCount;
 
 		public int RowCount
 		{
@@ -3610,14 +3610,14 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return LmHVie6o6HY;
+				return _rowCount;
 			}
 		}
 
 		public GridDimensionInfo()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			LmHVie6o6HY = new HashSet<string>(StringComparer.Ordinal);
+			_rowCount = new HashSet<string>(StringComparer.Ordinal);
 		}
 	}
 
@@ -3703,7 +3703,7 @@ internal static class TableComWriteService
 		private XElement _tableProperties;
 
 		[CompilerGenerated]
-		private readonly List<int> rbqViAVOS2Y;
+		private readonly List<int> _tableProperties;
 
 		[CompilerGenerated]
 		private readonly List<int> fljVivYZvof;
@@ -3712,7 +3712,7 @@ internal static class TableComWriteService
 		private int _tableWidthDxa;
 
 		[CompilerGenerated]
-		private readonly Dictionary<int, XElement> tXQVi05QrpB;
+		private readonly Dictionary<int, XElement> dict7;
 
 		[CompilerGenerated]
 		private readonly Dictionary<string, CellXmlProperties> FXfVikHogIW;
@@ -3739,7 +3739,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return rbqViAVOS2Y;
+				return _tableProperties;
 			}
 		}
 
@@ -3771,7 +3771,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return tXQVi05QrpB;
+				return dict7;
 			}
 		}
 
@@ -3801,9 +3801,9 @@ internal static class TableComWriteService
 		public TableXmlProperties()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			rbqViAVOS2Y = new List<int>();
+			_tableProperties = new List<int>();
 			fljVivYZvof = new List<int>();
-			tXQVi05QrpB = new Dictionary<int, XElement>();
+			dict7 = new Dictionary<int, XElement>();
 			FXfVikHogIW = new Dictionary<string, CellXmlProperties>(StringComparer.Ordinal);
 		}
 	}
@@ -4190,7 +4190,7 @@ internal static class TableComWriteService
 	private sealed class FastStructureCache
 	{
 		[CompilerGenerated]
-		private readonly Dictionary<int, ExcelTableStructure> q6yVHYhaDYZ;
+		private readonly Dictionary<int, ExcelTableStructure> dict6;
 
 		[CompilerGenerated]
 		private TableStructureSnapshot _snapshot;
@@ -4206,7 +4206,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return q6yVHYhaDYZ;
+				return dict6;
 			}
 		}
 
@@ -4255,28 +4255,28 @@ internal static class TableComWriteService
 		public FastStructureCache()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			q6yVHYhaDYZ = new Dictionary<int, ExcelTableStructure>();
+			dict6 = new Dictionary<int, ExcelTableStructure>();
 		}
 	}
 
 	private sealed class TableStructureSnapshot
 	{
 		[CompilerGenerated]
-		private readonly Dictionary<int, ExcelTableStructure> T9bVHS0Sv4y;
+		private readonly Dictionary<int, ExcelTableStructure> dict4;
 
 		public Dictionary<int, ExcelTableStructure> StructuresByTableIndex
 		{
 			[CompilerGenerated]
 			get
 			{
-				return T9bVHS0Sv4y;
+				return dict4;
 			}
 		}
 
 		public TableStructureSnapshot()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			T9bVHS0Sv4y = new Dictionary<int, ExcelTableStructure>();
+			dict4 = new Dictionary<int, ExcelTableStructure>();
 		}
 	}
 
@@ -4469,13 +4469,13 @@ internal static class TableComWriteService
 	private sealed class TableStyleInfo
 	{
 		[CompilerGenerated]
-		private readonly Dictionary<int, float> ScPVH7Y30wo;
+		private readonly Dictionary<int, float> dict3;
 
 		[CompilerGenerated]
-		private readonly Dictionary<int, float> caHVH5uIJLS;
+		private readonly Dictionary<int, float> dict5;
 
 		[CompilerGenerated]
-		private readonly Dictionary<string, CellFormat> G1MVHckDL7s;
+		private readonly Dictionary<string, CellFormat> dict2;
 
 		[CompilerGenerated]
 		private CellFormat _defaultCell;
@@ -4488,7 +4488,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return ScPVH7Y30wo;
+				return dict3;
 			}
 		}
 
@@ -4497,7 +4497,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return caHVH5uIJLS;
+				return dict5;
 			}
 		}
 
@@ -4506,7 +4506,7 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return G1MVHckDL7s;
+				return dict2;
 			}
 		}
 
@@ -4541,9 +4541,9 @@ internal static class TableComWriteService
 		public TableStyleInfo()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			ScPVH7Y30wo = new Dictionary<int, float>();
-			caHVH5uIJLS = new Dictionary<int, float>();
-			G1MVHckDL7s = new Dictionary<string, CellFormat>(StringComparer.Ordinal);
+			dict3 = new Dictionary<int, float>();
+			dict5 = new Dictionary<int, float>();
+			dict2 = new Dictionary<string, CellFormat>(StringComparer.Ordinal);
 		}
 	}
 
@@ -4568,7 +4568,7 @@ internal static class TableComWriteService
 		private float? _firstLineIndent;
 
 		[CompilerGenerated]
-		private int? lxXVHvZrFf6;
+		private int? _outlineLevel;
 
 		public int? Bold
 		{
@@ -4659,12 +4659,12 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return lxXVHvZrFf6;
+				return _outlineLevel;
 			}
 			[CompilerGenerated]
 			set
 			{
-				lxXVHvZrFf6 = value;
+				_outlineLevel = value;
 			}
 		}
 
@@ -4965,7 +4965,7 @@ internal static class TableComWriteService
 		private int _columnSpan;
 
 		[CompilerGenerated]
-		private XElement xFXVQJVijB8;
+		private XElement _rowIndex;
 
 		[CompilerGenerated]
 		private string _text;
@@ -5017,12 +5017,12 @@ internal static class TableComWriteService
 			[CompilerGenerated]
 			get
 			{
-				return xFXVQJVijB8;
+				return _rowIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				xFXVQJVijB8 = value;
+				_rowIndex = value;
 			}
 		}
 
@@ -5270,7 +5270,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool t6AVJYdMvEq(WordTableStructure table)
+		internal bool IsColumnBeyond3(WordTableStructure table)
 		{
 			if (value <= table.End)
 			{
@@ -5290,7 +5290,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool b2HVJMv2Z8M(XElement element)
+		internal bool IsColumnBeyond2(XElement element)
 		{
 			return string.Equals((string)element.Attribute(XmlPackageNamespace + "name"), tJcVJbRSSXT, StringComparison.OrdinalIgnoreCase);
 		}
@@ -5306,7 +5306,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool RHZVJS5oCg1(int column)
+		internal bool IsColumnGreaterThan(int column)
 		{
 			return column > value;
 		}
@@ -5324,7 +5324,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool aP3VJt72VnE(WordTableInfo table)
+		internal bool IsTableInRange2(WordTableInfo table)
 		{
 			if (value <= table.End)
 			{
@@ -5364,7 +5364,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool yvRVJmf85aH(CellMergeInfo merge)
+		internal bool IsMergeInRange2(CellMergeInfo merge)
 		{
 			if (merge.StartRow <= RcXVJoFgptR)
 			{
@@ -5386,7 +5386,7 @@ internal static class TableComWriteService
 
 		internal void pWOVJGjVNsH(AiHelper_12 config)
 		{
-			config.BkGt8QpMWu();
+			config.EnsureConfigLoaded();
 			config.ExcelSync.SyncHeaders = flag;
 		}
 	}
@@ -5401,7 +5401,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool fLmVJplaRm8(ExcelMergeInfo merge)
+		internal bool IsMergeAfterRow(ExcelMergeInfo merge)
 		{
 			return merge.EndRow > value;
 		}
@@ -5417,7 +5417,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int D9CVJnLE54y(SortKeyItem left, SortKeyItem right)
+		internal int GetValue3(SortKeyItem left, SortKeyItem right)
 		{
 			int num = CompareWithPinnedLast(left.Key, right.Key, flag);
 			if (num != 0)
@@ -5438,7 +5438,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool Tr3VJ5gRVPJ(TableBinding item)
+		internal bool ContainsText2(TableBinding item)
 		{
 			if (item != null)
 			{
@@ -5453,14 +5453,14 @@ internal static class TableComWriteService
 	{
 		public string text;
 
-		public Func<XElement, bool> H2MVJXbaMhx;
+		public Func<XElement, bool> actionFunc3;
 
 		public _G_c__DisplayClass367_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool UnXVJemppK8(XElement element)
+		internal bool ContainsText3(XElement element)
 		{
 			return string.Equals(GetAttributeValue(element, "name"), text, StringComparison.OrdinalIgnoreCase);
 		}
@@ -5471,23 +5471,23 @@ internal static class TableComWriteService
 	{
 		public string text;
 
-		public HashSet<string> fajVJqrNih6;
+		public HashSet<string> cellIds;
 
-		public Func<XElement, bool> fnWVJPna669;
+		public Func<XElement, bool> actionFunc7;
 
 		public _G_c__DisplayClass369_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool RgSVJFs3V3P(XElement element)
+		internal bool ContainsText1(XElement element)
 		{
 			return string.Equals(GetAttributeValue(element, "name"), text, StringComparison.OrdinalIgnoreCase);
 		}
 
 		internal bool zdZVJhFqNCn(XElement element)
 		{
-			return fajVJqrNih6.Contains(GetAttributeValue(element, "id"));
+			return cellIds.Contains(GetAttributeValue(element, "id"));
 		}
 	}
 
@@ -5496,14 +5496,14 @@ internal static class TableComWriteService
 	{
 		public int value;
 
-		public Func<ComplexCellPlan, bool> L6ZVJWCX1vo;
+		public Func<ComplexCellPlan, bool> actionFunc4;
 
 		public _G_c__DisplayClass385_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool n9sVJADJ46L(ComplexCellPlan cell)
+		internal bool GetName11(ComplexCellPlan cell)
 		{
 			if (cell.RowIndex == value)
 			{
@@ -5516,16 +5516,16 @@ internal static class TableComWriteService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass420_0
 	{
-		public HashSet<string> dB6VJk3CwNq;
+		public HashSet<string> elementNames;
 
 		public _G_c__DisplayClass420_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool MTyVJ0pKkP1(XElement element)
+		internal bool GetName10(XElement element)
 		{
-			return dB6VJk3CwNq.Contains(element.Name.LocalName);
+			return elementNames.Contains(element.Name.LocalName);
 		}
 	}
 
@@ -5536,18 +5536,18 @@ internal static class TableComWriteService
 
 		public int value;
 
-		public Func<ExcelCellData, bool> MWJV3Blvaed;
+		public Func<ExcelCellData, bool> actionFunc6;
 
-		public Func<ExcelCellData, bool> r5mV39XmT0a;
+		public Func<ExcelCellData, bool> actionFunc8;
 
-		public Func<ExcelCellData, bool> M12V36Iisko;
+		public Func<ExcelCellData, bool> actionFunc5;
 
 		public _G_c__DisplayClass453_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool oELVJxoA5bj(ExcelCellData item)
+		internal bool IsCellInColumn(ExcelCellData item)
 		{
 			if (item.ColumnIndex == MC7V3RVTZCT && item.ColumnSpan == 1)
 			{
@@ -5565,7 +5565,7 @@ internal static class TableComWriteService
 			return false;
 		}
 
-		internal bool Hx1VJzxyWuY(ExcelCellData item)
+		internal bool GetText10(ExcelCellData item)
 		{
 			if (item.ColumnIndex <= MC7V3RVTZCT)
 			{
@@ -5587,7 +5587,7 @@ internal static class TableComWriteService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool MVOV3uacGy0(HeadingInfo item)
+		internal bool GetText11(HeadingInfo item)
 		{
 			if (item.Level == headingInfo.Level)
 			{
@@ -5600,143 +5600,143 @@ internal static class TableComWriteService
 	[CompilerGenerated]
 	private static class _G_o__253
 	{
-		public static CallSite<Func<CallSite, object, string, object>> AE3V3gQhTxU;
+		public static CallSite<Func<CallSite, object, string, object>> toStringCallSite_Tc9;
 
-		public static CallSite<Func<CallSite, object, string, object>> lwuV38B4Nvi;
+		public static CallSite<Func<CallSite, object, string, object>> toStringCallSite_Tc18;
 
-		public static CallSite<Action<CallSite, object, string, string>> mDrV3IqOYxV;
+		public static CallSite<Action<CallSite, object, string, string>> addCallSite;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__265
 	{
-		public static CallSite<Func<CallSite, object, string, object>> KQuV3iDqVMj;
+		public static CallSite<Func<CallSite, object, string, object>> toStringCallSite_Tc12;
 
-		public static CallSite<Action<CallSite, object>> e8bV3HZiQrj;
+		public static CallSite<Action<CallSite, object>> deleteCallSite_Tc3;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__284
 	{
-		public static CallSite<Func<CallSite, object, object>> YvfV3QlcxJf;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc18;
 
-		public static CallSite<Func<CallSite, Type, object, object>> UCNV31Pb74x;
+		public static CallSite<Func<CallSite, Type, object, object>> toBooleanCallSite_Tc2;
 
-		public static CallSite<Func<CallSite, object, bool>> bemV3r5TenW;
+		public static CallSite<Func<CallSite, object, bool>> toObjectCallSite_Tc19;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__305
 	{
-		public static CallSite<Action<CallSite, object, int>> XYtV3Jv43Eg;
+		public static CallSite<Action<CallSite, object, int>> insertRowsBelowCallSite_Tc1;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__306
 	{
-		public static CallSite<Func<CallSite, object, object>> Vn1V33Abwgt;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc15;
 
-		public static CallSite<Action<CallSite, object>> k5gV3UxbUuQ;
+		public static CallSite<Action<CallSite, object>> deleteCallSite_Tc5;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__307
 	{
-		public static CallSite<Action<CallSite, object>> wRpV3K4SOng;
+		public static CallSite<Action<CallSite, object>> insertColumnsRightCallSite_Tc2;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__308
 	{
-		public static CallSite<Func<CallSite, object, object>> sWFV3ER3513;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc23;
 
-		public static CallSite<Action<CallSite, object, WdDeleteCells>> NWCV32bQxvq;
+		public static CallSite<Action<CallSite, object, WdDeleteCells>> deleteCallSite_Tc2;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__35
 	{
-		public static CallSite<Func<CallSite, object, object>> Xo2V34OQ6P8;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc16;
 
-		public static CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> fKNV3j1miL4;
+		public static CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> addressCallSite;
 
-		public static CallSite<Func<CallSite, Type, object, object>> ohtV3YLchUf;
+		public static CallSite<Func<CallSite, Type, object, object>> toStringCallSite_Tc19;
 
-		public static CallSite<Func<CallSite, object, string>> Y4kV3ZmGkyO;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite_Tc15;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__36
 	{
-		public static CallSite<Func<CallSite, object, object>> tF7V3fbqbn5;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc24;
 
-		public static CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> MfQV3MfYPGD;
+		public static CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> toObjectCallSite_Tc14;
 
-		public static CallSite<Func<CallSite, Type, object, object>> BulV3bRhcZV;
+		public static CallSite<Func<CallSite, Type, object, object>> toStringCallSite_Tc10;
 
-		public static CallSite<Func<CallSite, object, string>> XOjV3SO4Hxw;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite_Tc14;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__445
 	{
-		public static CallSite<Func<CallSite, object, object>> qL8V3wdqRV5;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc22;
 
-		public static CallSite<Action<CallSite, object, WdDeleteCells>> kRrV3tgr2JK;
+		public static CallSite<Action<CallSite, object, WdDeleteCells>> deleteCallSite_Tc6;
 
-		public static CallSite<Func<CallSite, object, object>> eAwV3LJR6wq;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc20;
 
-		public static CallSite<Action<CallSite, object>> fMfV3sP1x3v;
+		public static CallSite<Action<CallSite, object>> deleteCallSite_Tc4;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__446
 	{
-		public static CallSite<Action<CallSite, object, int>> o5MV3lPDLpc;
+		public static CallSite<Action<CallSite, object, int>> insertRowsBelowCallSite_Tc2;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__450
 	{
-		public static CallSite<Action<CallSite, object>> lIVV3NMc5Cy;
+		public static CallSite<Action<CallSite, object>> insertColumnsRightCallSite_Tc1;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__451
 	{
-		public static CallSite<Func<CallSite, object, object>> Dm8V3mFkEeS;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc11;
 
-		public static CallSite<Action<CallSite, object, WdDeleteCells>> CDtV3oFEtL9;
+		public static CallSite<Action<CallSite, object, WdDeleteCells>> deleteCallSite_Tc1;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__63
 	{
-		public static CallSite<Func<CallSite, object, object>> HebV3GQxQZh;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc12;
 
-		public static CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> J87V3CYAcGt;
+		public static CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> toObjectCallSite_Tc13;
 
-		public static CallSite<Func<CallSite, Type, object, object>> gLeV3pVXp7g;
+		public static CallSite<Func<CallSite, Type, object, object>> toStringCallSite_Tc17;
 
-		public static CallSite<Func<CallSite, object, string>> GbbV3Oi0VHB;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite_Tc11;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__72
 	{
-		public static CallSite<Func<CallSite, Type, object, object>> eZFV3nFS8V0;
+		public static CallSite<Func<CallSite, Type, object, object>> toStringCallSite_Tc16;
 
-		public static CallSite<Func<CallSite, object, string>> QASV37IV3Gf;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite_Tc13;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__75
 	{
-		public static CallSite<Func<CallSite, Type, object, object>> DZWV350tRRF;
+		public static CallSite<Func<CallSite, Type, object, object>> toBooleanCallSite_Tc1;
 
-		public static CallSite<Func<CallSite, object, object>> Y1FV3cAlCaZ;
+		public static CallSite<Func<CallSite, object, object>> toObjectCallSite_Tc17;
 
-		public static CallSite<Func<CallSite, bool, object, object>> CBYV3epEYGN;
+		public static CallSite<Func<CallSite, bool, object, object>> toObjectCallSite_Tc10;
 
 		public static CallSite<Func<CallSite, object, bool>> DynamicIsTruthyCallSite;
 	}
@@ -5756,11 +5756,11 @@ internal static class TableComWriteService
 		Document activeDocument = App.ActiveDocument;
 		List<TableBinding> list = GetBindingsFromDocument(activeDocument);
 		HashSet<string> hashSet = GetBookmarkNameSet(activeDocument);
-		HashSet<string> hashSet2 = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+		HashSet<string> hashSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 		List<TableBindingStatus> list2 = new List<TableBindingStatus>();
 		foreach (TableBinding item in list)
 		{
-			if (item != null && IsValidBookmarkId(item.Id) && hashSet2.Add(item.Id))
+			if (item != null && IsValidBookmarkId(item.Id) && hashSet.Add(item.Id))
 			{
 				list2.Add(CreateBindingStatus(activeDocument, item, hashSet));
 			}
@@ -5797,12 +5797,12 @@ internal static class TableComWriteService
 	internal static SyncResult GetSyncAllTablesResult()
 	{
 		Document activeDocument = App.ActiveDocument;
-		TableBindingContext hQTWWrVT0PVIWsF0tJ8N = LoadTableBindingContext(activeDocument);
-		if (!string.IsNullOrWhiteSpace(hQTWWrVT0PVIWsF0tJ8N.LoadError))
+		TableBindingContext bindingContext = LoadTableBindingContext(activeDocument);
+		if (!string.IsNullOrWhiteSpace(bindingContext.LoadError))
 		{
-			return CreateSyncResult("刷新表格信息失败：" + hQTWWrVT0PVIWsF0tJ8N.LoadError, hQTWWrVT0PVIWsF0tJ8N.LoadError);
+			return CreateSyncResult("刷新表格信息失败：" + bindingContext.LoadError, bindingContext.LoadError);
 		}
-		List<TableBinding> obj = ((hQTWWrVT0PVIWsF0tJ8N.Bindings.Count > 0) ? hQTWWrVT0PVIWsF0tJ8N.Bindings : GetBindingsFromDocument(activeDocument));
+		List<TableBinding> obj = ((bindingContext.Bindings.Count > 0) ? bindingContext.Bindings : GetBindingsFromDocument(activeDocument));
 		int num = 0;
 		int num2 = 0;
 		HashSet<string> hashSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -5812,7 +5812,7 @@ internal static class TableComWriteService
 			{
 				string text = GetBookmarkIdFromBinding(item);
 				bool flag;
-				WordTableInfo xJSRGPVgVcylOerTScS = FindTableByBookmark(hQTWWrVT0PVIWsF0tJ8N, text, out flag);
+				WordTableInfo xJSRGPVgVcylOerTScS = FindTableByBookmark(bindingContext, text, out flag);
 				if (xJSRGPVgVcylOerTScS == null || !flag)
 				{
 					num2++;
@@ -5910,7 +5910,7 @@ internal static class TableComWriteService
 			WordTableLabel = GetTableLabelFromBinding(P_1),
 			TableTitle = (P_1.WordTableTitle ?? string.Empty),
 			DisplayTitle = FormatDisplayTitle(P_1.WordDisplayTitle, P_1.WordTableTitle, P_1.WordHeadingPath, P_1.WordTableIndex.GetValueOrDefault()),
-			HeadingPath = kCUKAKEs1V(P_1.WordHeadingPath),
+			HeadingPath = CleanHeadingPath(P_1.WordHeadingPath),
 			HeadingPathText = GetHeadingPathText(P_1.WordHeadingPath),
 			ExcelFullPath = (P_1.ExcelFullPath ?? string.Empty),
 			ResolvedExcelPath = text2,
@@ -5935,40 +5935,40 @@ internal static class TableComWriteService
 			SortDescending = (P_1.SortDescending ?? true),
 			SortPinOtherLast = HasBindingColumnMappings(P_1),
 			WordColumnCount = P_1.WordTableColumns.GetValueOrDefault(),
-			ColumnMappings = MmX2oHGa2J(P_1, P_1.WordTableColumns.GetValueOrDefault())
+			ColumnMappings = BuildColumnMappings(P_1, P_1.WordTableColumns.GetValueOrDefault())
 		};
 	}
 
 	private static TableBindingContext LoadTableBindingContext(Document P_0)
 	{
-		TableBindingContext hQTWWrVT0PVIWsF0tJ8N = new TableBindingContext();
+		TableBindingContext bindingContext = new TableBindingContext();
 		try
 		{
 			string text = Convert.ToString(P_0.Content.WordOpenXML);
 			if (string.IsNullOrWhiteSpace(text))
 			{
-				hQTWWrVT0PVIWsF0tJ8N.LoadError = SanitizeConfigKey("WordOpenXML为空");
-				return hQTWWrVT0PVIWsF0tJ8N;
+				bindingContext.LoadError = SanitizeConfigKey("WordOpenXML为空");
+				return bindingContext;
 			}
 			XDocument xDocument = XDocument.Parse(text);
 			XDocument xDocument2 = CloneDocumentXml(xDocument, "/word/settings.xml");
 			XDocument xDocument3 = CloneDocumentXml(xDocument, "/word/document.xml");
 			XDocument xDocument4 = CloneDocumentXml(xDocument, "/word/styles.xml");
-			hQTWWrVT0PVIWsF0tJ8N.Bindings.AddRange(ParseBindingsFromXml(xDocument2));
+			bindingContext.Bindings.AddRange(ParseBindingsFromXml(xDocument2));
 			if (xDocument3 != null)
 			{
-				ParseTablesFromXml(xDocument3, hQTWWrVT0PVIWsF0tJ8N, ujI2gLC96r(xDocument4));
+				ParseTablesFromXml(xDocument3, bindingContext, BuildStyleOutlineMap(xDocument4));
 			}
 			else
 			{
-				hQTWWrVT0PVIWsF0tJ8N.LoadError = SanitizeConfigKey("word/document.xml缺失");
+				bindingContext.LoadError = SanitizeConfigKey("word/document.xml缺失");
 			}
 		}
 		catch (Exception ex)
 		{
-			hQTWWrVT0PVIWsF0tJ8N.LoadError = SanitizeConfigKey(ex.Message);
+			bindingContext.LoadError = SanitizeConfigKey(ex.Message);
 		}
-		return hQTWWrVT0PVIWsF0tJ8N;
+		return bindingContext;
 	}
 
 	private static List<TableBinding> GetBindingsFromDocument(Document P_0)
@@ -6038,7 +6038,7 @@ internal static class TableComWriteService
 			WordTableLabel = ((xJSRGPVgVcylOerTScS != null) ? string.Format("第 {0} 表", xJSRGPVgVcylOerTScS.Index) : GetTableLabelFromBinding(P_1)),
 			TableTitle = (xJSRGPVgVcylOerTScS?.TableTitle ?? P_1.WordTableTitle ?? string.Empty),
 			DisplayTitle = ((xJSRGPVgVcylOerTScS != null) ? FormatDisplayTitle(xJSRGPVgVcylOerTScS.DisplayTitle, xJSRGPVgVcylOerTScS.TableTitle, xJSRGPVgVcylOerTScS.HeadingPath, xJSRGPVgVcylOerTScS.Index) : FormatDisplayTitle(P_1.WordDisplayTitle, P_1.WordTableTitle, P_1.WordHeadingPath, P_1.WordTableIndex.GetValueOrDefault())),
-			HeadingPath = ((xJSRGPVgVcylOerTScS != null) ? kCUKAKEs1V(xJSRGPVgVcylOerTScS.HeadingPath) : kCUKAKEs1V(P_1.WordHeadingPath)),
+			HeadingPath = ((xJSRGPVgVcylOerTScS != null) ? CleanHeadingPath(xJSRGPVgVcylOerTScS.HeadingPath) : CleanHeadingPath(P_1.WordHeadingPath)),
 			HeadingPathText = ((xJSRGPVgVcylOerTScS != null) ? GetHeadingPathText(xJSRGPVgVcylOerTScS.HeadingPath) : GetHeadingPathText(P_1.WordHeadingPath)),
 			ExcelFullPath = (P_1.ExcelFullPath ?? string.Empty),
 			ResolvedExcelPath = text3,
@@ -6063,7 +6063,7 @@ internal static class TableComWriteService
 			SortDescending = (P_1.SortDescending ?? true),
 			SortPinOtherLast = HasBindingColumnMappings(P_1),
 			WordColumnCount = (xJSRGPVgVcylOerTScS?.ColumnCount ?? P_1.WordTableColumns.GetValueOrDefault()),
-			ColumnMappings = MmX2oHGa2J(P_1, xJSRGPVgVcylOerTScS?.ColumnCount ?? P_1.WordTableColumns.GetValueOrDefault())
+			ColumnMappings = BuildColumnMappings(P_1, xJSRGPVgVcylOerTScS?.ColumnCount ?? P_1.WordTableColumns.GetValueOrDefault())
 		};
 	}
 
@@ -6076,7 +6076,7 @@ internal static class TableComWriteService
 			P_0.WordTableColumns = ((P_1.ColumnCount > 0) ? new int?(P_1.ColumnCount) : ((int?)null));
 			P_0.WordTableTitle = P_1.TableTitle ?? string.Empty;
 			P_0.WordDisplayTitle = P_1.DisplayTitle ?? string.Empty;
-			P_0.WordHeadingPath = kCUKAKEs1V(P_1.HeadingPath);
+			P_0.WordHeadingPath = CleanHeadingPath(P_1.HeadingPath);
 			P_0.WordSnapshotUpdatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 		}
 	}
@@ -6302,7 +6302,7 @@ internal static class TableComWriteService
 		return string.Format("第 {0} 表", P_3);
 	}
 
-	private static List<HeadingPathItem> kCUKAKEs1V(IEnumerable<HeadingPathItem> P_0)
+	private static List<HeadingPathItem> CleanHeadingPath(IEnumerable<HeadingPathItem> P_0)
 	{
 		List<HeadingPathItem> list = new List<HeadingPathItem>();
 		if (P_0 == null)
@@ -6325,7 +6325,7 @@ internal static class TableComWriteService
 
 	private static string GetHeadingPathText(IEnumerable<HeadingPathItem> P_0)
 	{
-		List<string> list = (from item in kCUKAKEs1V(P_0)
+		List<string> list = (from item in CleanHeadingPath(P_0)
 			select item.Text into text
 			where !string.IsNullOrWhiteSpace(text)
 			select text).ToList();
@@ -6466,20 +6466,20 @@ internal static class TableComWriteService
 		}
 		try
 		{
-			if (_G_o__35.ohtV3YLchUf == null)
+			if (_G_o__35.toStringCallSite_Tc19 == null)
 			{
-				_G_o__35.ohtV3YLchUf = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__35.toStringCallSite_Tc19 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 				}));
 			}
-			Func<CallSite, Type, object, object> target = _G_o__35.ohtV3YLchUf.Target;
-			CallSite<Func<CallSite, Type, object, object>> ohtV3YLchUf = _G_o__35.ohtV3YLchUf;
+			Func<CallSite, Type, object, object> target = _G_o__35.toStringCallSite_Tc19.Target;
+			CallSite<Func<CallSite, Type, object, object>> toStringCallSite_Tc19 = _G_o__35.toStringCallSite_Tc19;
 			Type typeFromHandle = typeof(Convert);
-			if (_G_o__35.fKNV3j1miL4 == null)
+			if (_G_o__35.addressCallSite == null)
 			{
-				_G_o__35.fKNV3j1miL4 = CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>>.Create(Binder.GetIndex(CSharpBinderFlags.None, typeof(TableComWriteService), new CSharpArgumentInfo[5]
+				_G_o__35.addressCallSite = CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>>.Create(Binder.GetIndex(CSharpBinderFlags.None, typeof(TableComWriteService), new CSharpArgumentInfo[5]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant | CSharpArgumentInfoFlags.NamedArgument, "RowAbsolute"),
@@ -6488,13 +6488,13 @@ internal static class TableComWriteService
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant | CSharpArgumentInfoFlags.NamedArgument, "External")
 				}));
 			}
-			Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object> target2 = _G_o__35.fKNV3j1miL4.Target;
-			CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> fKNV3j1miL = _G_o__35.fKNV3j1miL4;
-			if (_G_o__35.Xo2V34OQ6P8 == null)
+			Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object> target2 = _G_o__35.addressCallSite.Target;
+			CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> addressCallSiteLocal = _G_o__35.addressCallSite;
+			if (_G_o__35.toObjectCallSite_Tc16 == null)
 			{
-				_G_o__35.Xo2V34OQ6P8 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.ResultIndexed, "Address", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__35.toObjectCallSite_Tc16 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.ResultIndexed, "Address", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			return (dynamic)(target(ohtV3YLchUf, typeFromHandle, target2(fKNV3j1miL, _G_o__35.Xo2V34OQ6P8.Target(_G_o__35.Xo2V34OQ6P8, P_0), arg3: true, arg4: true, XlReferenceStyle.xlA1, arg6: true)) ?? string.Empty);
+			return (dynamic)(target(toStringCallSite_Tc19, typeFromHandle, target2(addressCallSiteLocal, _G_o__35.toObjectCallSite_Tc16.Target(_G_o__35.toObjectCallSite_Tc16, P_0), arg3: true, arg4: true, XlReferenceStyle.xlA1, arg6: true)) ?? string.Empty);
 		}
 		catch
 		{
@@ -6511,20 +6511,20 @@ internal static class TableComWriteService
 		try
 		{
 			object arg = P_0.Cells[P_1, P_2] as Microsoft.Office.Interop.Excel.Range;
-			if (_G_o__36.BulV3bRhcZV == null)
+			if (_G_o__36.toStringCallSite_Tc10 == null)
 			{
-				_G_o__36.BulV3bRhcZV = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__36.toStringCallSite_Tc10 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 				}));
 			}
-			Func<CallSite, Type, object, object> target = _G_o__36.BulV3bRhcZV.Target;
-			CallSite<Func<CallSite, Type, object, object>> bulV3bRhcZV = _G_o__36.BulV3bRhcZV;
+			Func<CallSite, Type, object, object> target = _G_o__36.toStringCallSite_Tc10.Target;
+			CallSite<Func<CallSite, Type, object, object>> bulV3bRhcZV = _G_o__36.toStringCallSite_Tc10;
 			Type typeFromHandle = typeof(Convert);
-			if (_G_o__36.MfQV3MfYPGD == null)
+			if (_G_o__36.toObjectCallSite_Tc14 == null)
 			{
-				_G_o__36.MfQV3MfYPGD = CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>>.Create(Binder.GetIndex(CSharpBinderFlags.None, typeof(TableComWriteService), new CSharpArgumentInfo[5]
+				_G_o__36.toObjectCallSite_Tc14 = CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>>.Create(Binder.GetIndex(CSharpBinderFlags.None, typeof(TableComWriteService), new CSharpArgumentInfo[5]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant | CSharpArgumentInfoFlags.NamedArgument, "RowAbsolute"),
@@ -6533,13 +6533,13 @@ internal static class TableComWriteService
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant | CSharpArgumentInfoFlags.NamedArgument, "External")
 				}));
 			}
-			Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object> target2 = _G_o__36.MfQV3MfYPGD.Target;
-			CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> mfQV3MfYPGD = _G_o__36.MfQV3MfYPGD;
-			if (_G_o__36.tF7V3fbqbn5 == null)
+			Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object> target2 = _G_o__36.toObjectCallSite_Tc14.Target;
+			CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> mfQV3MfYPGD = _G_o__36.toObjectCallSite_Tc14;
+			if (_G_o__36.toObjectCallSite_Tc24 == null)
 			{
-				_G_o__36.tF7V3fbqbn5 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.ResultIndexed, "Address", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__36.toObjectCallSite_Tc24 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.ResultIndexed, "Address", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			return (dynamic)(target(bulV3bRhcZV, typeFromHandle, target2(mfQV3MfYPGD, _G_o__36.tF7V3fbqbn5.Target(_G_o__36.tF7V3fbqbn5, arg), arg3: true, arg4: true, XlReferenceStyle.xlA1, arg6: true)) ?? string.Format("R{0}C{1}", P_1, P_2));
+			return (dynamic)(target(bulV3bRhcZV, typeFromHandle, target2(mfQV3MfYPGD, _G_o__36.toObjectCallSite_Tc24.Target(_G_o__36.toObjectCallSite_Tc24, arg), arg3: true, arg4: true, XlReferenceStyle.xlA1, arg6: true)) ?? string.Format("R{0}C{1}", P_1, P_2));
 		}
 		catch
 		{
@@ -6837,7 +6837,7 @@ internal static class TableComWriteService
 				return false;
 			}
 			P_1 = wUkEKEgopc(excelNamedRange, P_3, P_4);
-			IList<ExcelMergeInfo> list = IZLE49IrRK(worksheet, excelNamedRange.Start.Row, excelNamedRange.Start.Column, excelNamedRange.End.Row, excelNamedRange.End.Column);
+			IList<ExcelMergeInfo> list = GetExcelMergedCells(worksheet, excelNamedRange.Start.Row, excelNamedRange.Start.Column, excelNamedRange.End.Row, excelNamedRange.End.Column);
 			P_2 = BuildExcelStructureFromGrid(P_3, P_4, list);
 			P_2.SheetName = worksheet.Name;
 			return true;
@@ -6923,7 +6923,7 @@ internal static class TableComWriteService
 		return text;
 	}
 
-	private static IList<ExcelMergeInfo> IZLE49IrRK(ExcelWorksheet P_0, int P_1, int P_2, int P_3, int P_4)
+	private static IList<ExcelMergeInfo> GetExcelMergedCells(ExcelWorksheet P_0, int P_1, int P_2, int P_3, int P_4)
 	{
 		List<ExcelMergeInfo> list = new List<ExcelMergeInfo>();
 		if (P_0?.MergedCells == null)
@@ -6932,12 +6932,12 @@ internal static class TableComWriteService
 		}
 		foreach (string mergedCell in P_0.MergedCells)
 		{
-			if (TryParseCellRange(mergedCell, out var i9ibglViyP7HjICCRftU))
+			if (TryParseCellRange(mergedCell, out var cellRange))
 			{
-				int num = Math.Max(P_1, i9ibglViyP7HjICCRftU.StartRow);
-				int num2 = Math.Max(P_2, i9ibglViyP7HjICCRftU.StartColumn);
-				int num3 = Math.Min(P_3, i9ibglViyP7HjICCRftU.EndRow);
-				int num4 = Math.Min(P_4, i9ibglViyP7HjICCRftU.EndColumn);
+				int num = Math.Max(P_1, cellRange.StartRow);
+				int num2 = Math.Max(P_2, cellRange.StartColumn);
+				int num3 = Math.Min(P_3, cellRange.EndRow);
+				int num4 = Math.Min(P_4, cellRange.EndColumn);
 				if (num <= num3 && num2 <= num4)
 				{
 					list.Add(new ExcelMergeInfo(num - P_1 + 1, num2 - P_2 + 1, num3 - P_1 + 1, num4 - P_2 + 1));
@@ -6981,7 +6981,7 @@ internal static class TableComWriteService
 				P_2 = true;
 				return false;
 			}
-			Microsoft.Office.Interop.Excel.Range range = AoVEmLfQf7(workbook, P_0.Binding.ExcelName);
+			Microsoft.Office.Interop.Excel.Range range = GetNamedRangeRefersTo(workbook, P_0.Binding.ExcelName);
 			if (range == null)
 			{
 				P_1 = "未找到 Excel 名称区域：" + P_0.ExcelName;
@@ -7068,7 +7068,7 @@ internal static class TableComWriteService
 		}
 		try
 		{
-			ScreenshotCaptureHelper2.d2kP0Du2a(intPtr);
+			ScreenshotCaptureHelper2.CaptureWindow(intPtr);
 		}
 		catch
 		{
@@ -7164,20 +7164,20 @@ internal static class TableComWriteService
 			{
 			}
 		}
-		if (_G_o__63.gLeV3pVXp7g == null)
+		if (_G_o__63.toStringCallSite_Tc17 == null)
 		{
-			_G_o__63.gLeV3pVXp7g = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+			_G_o__63.toStringCallSite_Tc17 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 			{
 				CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 				CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 			}));
 		}
-		Func<CallSite, Type, object, object> target = _G_o__63.gLeV3pVXp7g.Target;
-		CallSite<Func<CallSite, Type, object, object>> gLeV3pVXp7g = _G_o__63.gLeV3pVXp7g;
+		Func<CallSite, Type, object, object> target = _G_o__63.toStringCallSite_Tc17.Target;
+		CallSite<Func<CallSite, Type, object, object>> toStringCallSite_Tc17 = _G_o__63.toStringCallSite_Tc17;
 		Type typeFromHandle = typeof(Convert);
-		if (_G_o__63.J87V3CYAcGt == null)
+		if (_G_o__63.toObjectCallSite_Tc13 == null)
 		{
-			_G_o__63.J87V3CYAcGt = CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>>.Create(Binder.GetIndex(CSharpBinderFlags.None, typeof(TableComWriteService), new CSharpArgumentInfo[5]
+			_G_o__63.toObjectCallSite_Tc13 = CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>>.Create(Binder.GetIndex(CSharpBinderFlags.None, typeof(TableComWriteService), new CSharpArgumentInfo[5]
 			{
 				CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 				CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant | CSharpArgumentInfoFlags.NamedArgument, "RowAbsolute"),
@@ -7186,13 +7186,13 @@ internal static class TableComWriteService
 				CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant | CSharpArgumentInfoFlags.NamedArgument, "External")
 			}));
 		}
-		Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object> target2 = _G_o__63.J87V3CYAcGt.Target;
-		CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> j87V3CYAcGt = _G_o__63.J87V3CYAcGt;
-		if (_G_o__63.HebV3GQxQZh == null)
+		Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object> target2 = _G_o__63.toObjectCallSite_Tc13.Target;
+		CallSite<Func<CallSite, object, bool, bool, XlReferenceStyle, bool, object>> j87V3CYAcGt = _G_o__63.toObjectCallSite_Tc13;
+		if (_G_o__63.toObjectCallSite_Tc12 == null)
 		{
-			_G_o__63.HebV3GQxQZh = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.ResultIndexed, "Address", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+			_G_o__63.toObjectCallSite_Tc12 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.ResultIndexed, "Address", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 		}
-		string text = (dynamic)target(gLeV3pVXp7g, typeFromHandle, target2(j87V3CYAcGt, _G_o__63.HebV3GQxQZh.Target(_G_o__63.HebV3GQxQZh, P_3), arg3: true, arg4: true, XlReferenceStyle.xlA1, arg6: false));
+		string text = (dynamic)target(toStringCallSite_Tc17, typeFromHandle, target2(j87V3CYAcGt, _G_o__63.toObjectCallSite_Tc12.Target(_G_o__63.toObjectCallSite_Tc12, P_3), arg3: true, arg4: true, XlReferenceStyle.xlA1, arg6: false));
 		string refersTo = "=" + GetFileExtension(P_2) + "!" + text;
 		Name name2 = P_0.Names.Add(P_1, refersTo, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 		try
@@ -7327,7 +7327,7 @@ internal static class TableComWriteService
 		return null;
 	}
 
-	private static Microsoft.Office.Interop.Excel.Range AoVEmLfQf7(Workbook P_0, string P_1)
+	private static Microsoft.Office.Interop.Excel.Range GetNamedRangeRefersTo(Workbook P_0, string P_1)
 	{
 		try
 		{
@@ -7371,7 +7371,7 @@ internal static class TableComWriteService
 		{
 			return false;
 		}
-		P_3 = AoVEmLfQf7(P_2, P_1.ExcelName);
+		P_3 = GetNamedRangeRefersTo(P_2, P_1.ExcelName);
 		if (P_3 == null)
 		{
 			P_8 = "已打开的 Excel 工作簿中未找到名称区域：" + P_1.ExcelName;
@@ -7381,7 +7381,7 @@ internal static class TableComWriteService
 		{
 			P_6 = P_3.Rows.Count;
 			P_7 = P_3.Columns.Count;
-			P_4 = CbnE5nPlkx(P_3, P_6, P_7);
+			P_4 = BuildCellAddressGrid(P_3, P_6, P_7);
 			P_5 = ParseExcelRangeToStructure(P_3);
 			return true;
 		}
@@ -7432,15 +7432,15 @@ internal static class TableComWriteService
 			{
 				return string.Empty;
 			}
-			if (_G_o__72.eZFV3nFS8V0 == null)
+			if (_G_o__72.toStringCallSite_Tc16 == null)
 			{
-				_G_o__72.eZFV3nFS8V0 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__72.toStringCallSite_Tc16 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 				}));
 			}
-			string text = (dynamic)(_G_o__72.eZFV3nFS8V0.Target(_G_o__72.eZFV3nFS8V0, typeof(Convert), range.Text) ?? string.Empty);
+			string text = (dynamic)(_G_o__72.toStringCallSite_Tc16.Target(_G_o__72.toStringCallSite_Tc16, typeof(Convert), range.Text) ?? string.Empty);
 			if (!IsExcelFileExtension(text))
 			{
 				return text;
@@ -7508,15 +7508,15 @@ internal static class TableComWriteService
 					{
 						continue;
 					}
-					if (_G_o__75.DZWV350tRRF == null)
+					if (_G_o__75.toBooleanCallSite_Tc1 == null)
 					{
-						_G_o__75.DZWV350tRRF = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToBoolean", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+						_G_o__75.toBooleanCallSite_Tc1 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToBoolean", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 						{
 							CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 							CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 						}));
 					}
-					if (flag | !(dynamic)_G_o__75.DZWV350tRRF.Target(_G_o__75.DZWV350tRRF, typeof(Convert), range.MergeCells))
+					if (flag | !(dynamic)_G_o__75.toBooleanCallSite_Tc1.Target(_G_o__75.toBooleanCallSite_Tc1, typeof(Convert), range.MergeCells))
 					{
 						continue;
 					}
@@ -7566,12 +7566,12 @@ internal static class TableComWriteService
 				}
 			}
 		}
-		ExcelTableStructure aiS98lViTM5QHeakGIJC = BuildExcelStructureFromGrid(count, count2, list);
-		aiS98lViTM5QHeakGIJC.SourceKind = (TableSourceKind)1;
-		return aiS98lViTM5QHeakGIJC;
+		ExcelTableStructure excelStructure = BuildExcelStructureFromGrid(count, count2, list);
+		excelStructure.SourceKind = (TableSourceKind)1;
+		return excelStructure;
 	}
 
-	private static string[,] CbnE5nPlkx(Microsoft.Office.Interop.Excel.Range P_0, int P_1, int P_2)
+	private static string[,] BuildCellAddressGrid(Microsoft.Office.Interop.Excel.Range P_0, int P_1, int P_2)
 	{
 		string[,] array = new string[P_1 + 1, P_2 + 1];
 		for (int i = 1; i <= P_1; i++)
@@ -7586,7 +7586,7 @@ internal static class TableComWriteService
 
 	private static ExcelTableStructure BuildExcelStructureFromGrid(int P_0, int P_1, IList<ExcelMergeInfo> P_2)
 	{
-		ExcelTableStructure aiS98lViTM5QHeakGIJC = new ExcelTableStructure
+		ExcelTableStructure excelStructure = new ExcelTableStructure
 		{
 			SourceKind = (TableSourceKind)1,
 			RowCount = P_0,
@@ -7596,7 +7596,7 @@ internal static class TableComWriteService
 		HashSet<string> hashSet = new HashSet<string>(StringComparer.Ordinal);
 		foreach (ExcelMergeInfo item in P_2)
 		{
-			aiS98lViTM5QHeakGIJC.Merges.Add(item);
+			excelStructure.Merges.Add(item);
 			for (int num = item.StartRow; num <= item.EndRow; num++)
 			{
 				for (int num2 = item.StartColumn; num2 <= item.EndColumn; num2++)
@@ -7624,14 +7624,14 @@ internal static class TableComWriteService
 					num5 = value.EndRow - value.StartRow + 1;
 					num6 = value.EndColumn - value.StartColumn + 1;
 				}
-				ExcelCellData oy5QGFVitTDJtPXLAlDX = new ExcelCellData
+				ExcelCellData cellData = new ExcelCellData
 				{
 					RowIndex = num3,
 					ColumnIndex = num4,
 					RowSpan = num5,
 					ColumnSpan = num6
 				};
-				aiS98lViTM5QHeakGIJC.AddCell(oy5QGFVitTDJtPXLAlDX);
+				excelStructure.AddCell(cellData);
 				if (num5 <= 1 && num6 <= 1)
 				{
 					continue;
@@ -7642,14 +7642,14 @@ internal static class TableComWriteService
 					{
 						if (num7 != num3 || num8 != num4)
 						{
-							aiS98lViTM5QHeakGIJC.SetMergedCell(num7, num8, oy5QGFVitTDJtPXLAlDX);
+							excelStructure.SetMergedCell(num7, num8, cellData);
 						}
 					}
 				}
 			}
 		}
-		aiS98lViTM5QHeakGIJC.HeaderRowCount = GetMaxColumnCount(aiS98lViTM5QHeakGIJC);
-		return aiS98lViTM5QHeakGIJC;
+		excelStructure.HeaderRowCount = GetMaxColumnCount(excelStructure);
+		return excelStructure;
 	}
 
 	private static bool TryParseCellRange(string P_0, out CellRange P_1)
@@ -7720,7 +7720,7 @@ internal static class TableComWriteService
 					Message = "已取消导出。"
 				};
 			}
-			if (!TryLoadTableStructureContext(activeDocument, out var m0SOd7Vg1rwx8MJTk20P, out var text))
+			if (!TryLoadTableStructureContext(activeDocument, out var structureContext, out var text))
 			{
 				string message2 = SanitizeConfigKey(text) + " 无法执行快速导出。";
 				return new SyncResult
@@ -7731,7 +7731,7 @@ internal static class TableComWriteService
 					TechnicalDetail = text
 				};
 			}
-			if (m0SOd7Vg1rwx8MJTk20P.Tables.Count == 0)
+			if (structureContext.Tables.Count == 0)
 			{
 				return new SyncResult
 				{
@@ -7740,7 +7740,7 @@ internal static class TableComWriteService
 				};
 			}
 			string text2 = GetDocumentSavePath(activeDocument);
-			List<TableSyncContext> list = UHKEaTfMB3(activeDocument, m0SOd7Vg1rwx8MJTk20P, text2);
+			List<TableSyncContext> list = Sync1(activeDocument, structureContext, text2);
 			if (list.Count == 0)
 			{
 				return new SyncResult
@@ -7770,11 +7770,11 @@ internal static class TableComWriteService
 			int num = GetTableStartRow(activeDocument, list);
 			int num2 = list.Count - num;
 			P_0?.Invoke(4, 4, "导出完成。");
-			string message3 = BuildRangeAddress(m0SOd7Vg1rwx8MJTk20P.Tables.Count, list.Count, num, num2, text2);
+			string message3 = BuildRangeAddress(structureContext.Tables.Count, list.Count, num, num2, text2);
 			return new SyncResult
 			{
 				Success = (num2 == 0),
-				Total = m0SOd7Vg1rwx8MJTk20P.Tables.Count,
+				Total = structureContext.Tables.Count,
 				Bound = num,
 				Failed = num2,
 				WorkbookPath = text2,
@@ -7829,7 +7829,7 @@ internal static class TableComWriteService
 		return text2;
 	}
 
-	private static List<TableSyncContext> UHKEaTfMB3(Document P_0, TableStructureContext P_1, string P_2)
+	private static List<TableSyncContext> Sync1(Document P_0, TableStructureContext P_1, string P_2)
 	{
 		Dictionary<int, TableBinding> dictionary = BuildBindingIndexMap(P_1);
 		List<TableSyncContext> list = new List<TableSyncContext>();
@@ -7865,12 +7865,12 @@ internal static class TableComWriteService
 					WordHeadingPath = gAvEPIWeLu(item.HeadingPath),
 					WordSnapshotUpdatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
 				};
-				List<HeadingInfo> list3 = qlYEq7ZWU4(list2, item.HeadingPath);
+				List<HeadingInfo> list3 = GetHeadingDiff(list2, item.HeadingPath);
 				bool flag = ShouldAddHeadingRow(item, list3);
 				int titleRow = (flag ? (num + list3.Count) : 0);
 				int num2 = num + list3.Count + (flag ? 1 : 0);
 				int num3 = num2 + item.RowCount - 1;
-				TableSyncContext dWBZR9Vg5xWV5Z0HyOMb = new TableSyncContext
+				TableSyncContext syncContext = new TableSyncContext
 				{
 					Table = item,
 					BindingId = text,
@@ -7880,8 +7880,8 @@ internal static class TableComWriteService
 					StartRow = num2,
 					EndRow = num3
 				};
-				dWBZR9Vg5xWV5Z0HyOMb.HeadingRows.AddRange(list3);
-				list.Add(dWBZR9Vg5xWV5Z0HyOMb);
+				syncContext.HeadingRows.AddRange(list3);
+				list.Add(syncContext);
 				num = num3 + 3;
 				list2 = item.HeadingPath.Select((HeadingInfo item) => item.Clone()).ToList();
 			}
@@ -7890,7 +7890,7 @@ internal static class TableComWriteService
 		return list;
 	}
 
-	private static List<HeadingInfo> qlYEq7ZWU4(IList<HeadingInfo> P_0, IList<HeadingInfo> P_1)
+	private static List<HeadingInfo> GetHeadingDiff(IList<HeadingInfo> P_0, IList<HeadingInfo> P_1)
 	{
 		List<HeadingInfo> list = new List<HeadingInfo>();
 		if (P_1 == null || P_1.Count == 0)
@@ -8135,7 +8135,7 @@ internal static class TableComWriteService
 			{
 				P_1.Bindings.AddRange(GetBindingsFromDocument(P_0));
 			}
-			ParseTablesFromStructureXml(xDocument3, P_1, ujI2gLC96r(xDocument4));
+			ParseTablesFromStructureXml(xDocument3, P_1, BuildStyleOutlineMap(xDocument4));
 			return true;
 		}
 		catch (Exception ex)
@@ -8225,7 +8225,7 @@ internal static class TableComWriteService
 		{
 			return;
 		}
-		int? num = zk228rqYmx(P_0, P_1);
+		int? num = GetValue5(P_0, P_1);
 		if (num.HasValue)
 		{
 			int num2 = Math.Max(1, Math.Min(9, num.Value));
@@ -8241,7 +8241,7 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static Dictionary<string, StyleInfo> ujI2gLC96r(XDocument P_0)
+	private static Dictionary<string, StyleInfo> BuildStyleOutlineMap(XDocument P_0)
 	{
 		Dictionary<string, StyleInfo> dictionary = new Dictionary<string, StyleInfo>(StringComparer.OrdinalIgnoreCase);
 		if (P_0?.Root == null)
@@ -8259,7 +8259,7 @@ internal static class TableComWriteService
 					{
 						StyleId = text,
 						BasedOnStyleId = GetAttributeValue(item.Element(WordNamespace + "basedOn"), "val"),
-						OutlineLevel = lgA2iKbqjH(item.Element(WordNamespace + "pPr"))
+						OutlineLevel = ParseOutlineLevel(item.Element(WordNamespace + "pPr"))
 					};
 				}
 			}
@@ -8267,10 +8267,10 @@ internal static class TableComWriteService
 		return dictionary;
 	}
 
-	private static int? zk228rqYmx(XElement P_0, IDictionary<string, StyleInfo> P_1)
+	private static int? GetValue5(XElement P_0, IDictionary<string, StyleInfo> P_1)
 	{
 		XElement xElement = P_0?.Element(WordNamespace + "pPr");
-		int? num = lgA2iKbqjH(xElement);
+		int? num = ParseOutlineLevel(xElement);
 		if (num.HasValue)
 		{
 			return num.Value;
@@ -8295,7 +8295,7 @@ internal static class TableComWriteService
 		return ResolveStyleInheritance(value.BasedOnStyleId, P_1, P_2);
 	}
 
-	private static int? lgA2iKbqjH(XElement P_0)
+	private static int? ParseOutlineLevel(XElement P_0)
 	{
 		if (!int.TryParse(GetAttributeValue(P_0?.Element(WordNamespace + "outlineLvl"), "val"), NumberStyles.Integer, CultureInfo.InvariantCulture, out var result))
 		{
@@ -8522,17 +8522,17 @@ internal static class TableComWriteService
 			P_0.Cells[titleRow, 1].Value = GetTableTitleForExcel(P_1);
 			ApplyCellStyle(excelRange);
 			P_0.Row(titleRow).Height = 18.0;
-			ExcelRange excelRange2 = P_0.Cells[titleRow, 1];
+			ExcelRange range11 = P_0.Cells[titleRow, 1];
 			string text = GetTableCommentForExcel(P_1);
-			if (excelRange2.Comment == null)
+			if (range11.Comment == null)
 			{
-				excelRange2.AddComment(text, "IP_Assurance");
+				range11.AddComment(text, "IP_Assurance");
 			}
 			else
 			{
-				excelRange2.Comment.Text = text;
+				range11.Comment.Text = text;
 			}
-			excelRange2.Comment.Visible = false;
+			range11.Comment.Visible = false;
 		}
 	}
 
@@ -8549,24 +8549,24 @@ internal static class TableComWriteService
 			P_0.Cells[num, 1].Value = CleanTitleText(headingRow.Text);
 			ApplyCellStyle(excelRange);
 			P_0.Row(num).Height = 18.0;
-			ExcelRange excelRange2 = P_0.Cells[num, 1];
+			ExcelRange range11 = P_0.Cells[num, 1];
 			string text = "大纲级别:" + Math.Max(1, Math.Min(9, headingRow.Level));
-			if (excelRange2.Comment == null)
+			if (range11.Comment == null)
 			{
-				excelRange2.AddComment(text, "IP_Assurance");
+				range11.AddComment(text, "IP_Assurance");
 			}
 			else
 			{
-				excelRange2.Comment.Text = text;
+				range11.Comment.Text = text;
 			}
-			excelRange2.Comment.Visible = false;
+			range11.Comment.Visible = false;
 			num++;
 		}
 	}
 
 	private static void WriteDataRowsToExcel(ExcelWorksheet P_0, TableSyncContext P_1)
 	{
-		Dictionary<string, TableCellData> dictionary = oIY2SyDKoh(P_1.Table);
+		Dictionary<string, TableCellData> dictionary = BuildCellDataMap(P_1.Table);
 		int startRow = P_1.StartRow;
 		int endRow = P_1.EndRow;
 		int columnCount = P_1.Table.ColumnCount;
@@ -8627,7 +8627,7 @@ internal static class TableComWriteService
 		P_0.Style.WrapText = true;
 	}
 
-	private static Dictionary<string, TableCellData> oIY2SyDKoh(WordTableStructure P_0)
+	private static Dictionary<string, TableCellData> BuildCellDataMap(WordTableStructure P_0)
 	{
 		Dictionary<string, TableCellData> dictionary = new Dictionary<string, TableCellData>(StringComparer.Ordinal);
 		foreach (TableCellData cell in P_0.Cells)
@@ -8716,7 +8716,7 @@ internal static class TableComWriteService
 		return ((string)P_0.Attribute(WordNamespace + P_1)) ?? ((string)P_0.Attribute(P_1)) ?? string.Empty;
 	}
 
-	private static List<ColumnMapping> MmX2oHGa2J(TableBinding P_0, int P_1)
+	private static List<ColumnMapping> BuildColumnMappings(TableBinding P_0, int P_1)
 	{
 		int num = Math.Max(0, P_1);
 		if (num == 0 && P_0?.ColumnMappings != null)
@@ -8740,7 +8740,7 @@ internal static class TableComWriteService
 		return list;
 	}
 
-	private static List<int> N8p2Gx7C9A(IEnumerable<int> P_0)
+	private static List<int> FilterPositiveInts(IEnumerable<int> P_0)
 	{
 		if (P_0 == null)
 		{
@@ -8790,7 +8790,7 @@ internal static class TableComWriteService
 				return false;
 			}
 		}
-		P_1 = X1y2pQDGVY(P_1, P_2, list);
+		P_1 = RemapGridColumns(P_1, P_2, list);
 		if (P_2 != null)
 		{
 			P_2 = FilterExcelStructureByRows(P_2, list);
@@ -8799,7 +8799,7 @@ internal static class TableComWriteService
 		return true;
 	}
 
-	private static string[,] X1y2pQDGVY(string[,] P_0, ExcelTableStructure P_1, IList<int> P_2)
+	private static string[,] RemapGridColumns(string[,] P_0, ExcelTableStructure P_1, IList<int> P_2)
 	{
 		int num = P_0.GetLength(0) - 1;
 		string[,] array = new string[num + 1, P_2.Count + 1];
@@ -8810,10 +8810,10 @@ internal static class TableComWriteService
 				int num2 = P_2[j - 1];
 				int num3 = i;
 				int num4 = num2;
-				if (P_1 != null && P_1.TryGetMergedCell(i, num2, out var oy5QGFVitTDJtPXLAlDX))
+				if (P_1 != null && P_1.TryGetMergedCell(i, num2, out var cellData))
 				{
-					num3 = oy5QGFVitTDJtPXLAlDX.RowIndex;
-					num4 = oy5QGFVitTDJtPXLAlDX.ColumnIndex;
+					num3 = cellData.RowIndex;
+					num4 = cellData.ColumnIndex;
 				}
 				array[i, j] = GetCellValueFromGrid(P_0, num3, num4);
 			}
@@ -8823,7 +8823,7 @@ internal static class TableComWriteService
 
 	private static ExcelTableStructure FilterExcelStructureByRows(ExcelTableStructure P_0, IList<int> P_1)
 	{
-		ExcelTableStructure aiS98lViTM5QHeakGIJC = new ExcelTableStructure
+		ExcelTableStructure excelStructure = new ExcelTableStructure
 		{
 			SourceKind = P_0.SourceKind,
 			TableIndex = P_0.TableIndex,
@@ -8854,7 +8854,7 @@ internal static class TableComWriteService
 			}
 			int num4 = list.Min();
 			int num5 = list.Max();
-			ExcelCellData oy5QGFVitTDJtPXLAlDX = new ExcelCellData
+			ExcelCellData cellData = new ExcelCellData
 			{
 				RowIndex = item.RowIndex,
 				ColumnIndex = num4,
@@ -8863,20 +8863,20 @@ internal static class TableComWriteService
 				Text = item.Text,
 				Element = item.Element
 			};
-			aiS98lViTM5QHeakGIJC.AddCell(oy5QGFVitTDJtPXLAlDX);
-			for (int num6 = oy5QGFVitTDJtPXLAlDX.RowIndex; num6 < oy5QGFVitTDJtPXLAlDX.RowIndex + oy5QGFVitTDJtPXLAlDX.RowSpan; num6++)
+			excelStructure.AddCell(cellData);
+			for (int num6 = cellData.RowIndex; num6 < cellData.RowIndex + cellData.RowSpan; num6++)
 			{
-				for (int num7 = oy5QGFVitTDJtPXLAlDX.ColumnIndex; num7 < oy5QGFVitTDJtPXLAlDX.ColumnIndex + oy5QGFVitTDJtPXLAlDX.ColumnSpan; num7++)
+				for (int num7 = cellData.ColumnIndex; num7 < cellData.ColumnIndex + cellData.ColumnSpan; num7++)
 				{
-					if (num6 != oy5QGFVitTDJtPXLAlDX.RowIndex || num7 != oy5QGFVitTDJtPXLAlDX.ColumnIndex)
+					if (num6 != cellData.RowIndex || num7 != cellData.ColumnIndex)
 					{
-						aiS98lViTM5QHeakGIJC.SetMergedCell(num6, num7, oy5QGFVitTDJtPXLAlDX);
+						excelStructure.SetMergedCell(num6, num7, cellData);
 					}
 				}
 			}
 		}
-		aiS98lViTM5QHeakGIJC.RebuildMerges();
-		return aiS98lViTM5QHeakGIJC;
+		excelStructure.RebuildMerges();
+		return excelStructure;
 	}
 
 	private static int GetMaxColumnCount(ExcelTableStructure P_0)
@@ -9040,7 +9040,7 @@ internal static class TableComWriteService
 			SortDescending = (lnEK8VVIccoSQf18k7Ih2?.SortDescending ?? true),
 			SortPinOtherLast = (lnEK8VVIccoSQf18k7Ih2?.SortPinOtherLast ?? true),
 			ColumnMappings = ((lnEK8VVIccoSQf18k7Ih2?.ColumnMappings == null) ? null : new List<int>(lnEK8VVIccoSQf18k7Ih2.ColumnMappings)),
-			WordTableIsComplex = (lnEK8VVIccoSQf18k7Ih2?.WordTableIsComplex ?? tXyjiOteR1(P_0))
+			WordTableIsComplex = (lnEK8VVIccoSQf18k7Ih2?.WordTableIsComplex ?? IsTableStructureValid(P_0))
 		};
 		if (P_1 != null && !string.Equals(P_1.Id, P_4.Id, StringComparison.OrdinalIgnoreCase))
 		{
@@ -9086,14 +9086,14 @@ internal static class TableComWriteService
 			{
 				return false;
 			}
-			if (!PrepareExcelForSync(ExcelInteropService.GetActiveExcelApp(), P_0, out workbook, out range, out var array, out var aiS98lViTM5QHeakGIJC, out var num2, out var num3, out var text))
+			if (!PrepareExcelForSync(ExcelInteropService.GetActiveExcelApp(), P_0, out workbook, out range, out var array, out var excelStructure, out var num2, out var num3, out var text))
 			{
 				if (workbook != null)
 				{
 					P_8 = GetBindingConfigKey(P_0, text);
 					return false;
 				}
-				if (!ReadExcelDataFromBindingWrapper(P_0, out array, out aiS98lViTM5QHeakGIJC, out num2, out num3, out text))
+				if (!ReadExcelDataFromBindingWrapper(P_0, out array, out excelStructure, out num2, out num3, out text))
 				{
 					P_8 = GetBindingConfigKey(P_0, text);
 					return false;
@@ -9115,28 +9115,28 @@ internal static class TableComWriteService
 			headerRowCount.GetValueOrDefault();
 			_ = num4.HasValue;
 			_ = headerRowCount.HasValue;
-			ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC);
-			if (!SyncExcelDataToBinding(P_0, ref array, ref aiS98lViTM5QHeakGIJC, ref num3, out var text3))
+			ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, excelStructure);
+			if (!SyncExcelDataToBinding(P_0, ref array, ref excelStructure, ref num3, out var text3))
 			{
 				P_8 = text3;
 				return false;
 			}
-			array = vtZ4IIjqRi(P_0, aiS98lViTM5QHeakGIJC, array, out P_7);
+			array = SortTableData(P_0, excelStructure, array, out P_7);
 			if (!ReportProgress(P_4, 4, "正在生成同步计划...", ref P_6))
 			{
 				return false;
 			}
-			WritePlan rklhXQVHTTbSmBfT1qNq = BuildWritePlan(aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC, num2, num3, P_3 != null);
+			WritePlan writePlan = BuildWritePlan(aiS98lViTM5QHeakGIJC2, excelStructure, num2, num3, P_3 != null);
 			bool flag2 = false;
 			if (!ReportProgress(P_4, 5, "正在调整或重建 Word 表结构...", ref P_6))
 			{
 				return false;
 			}
-			if (rklhXQVHTTbSmBfT1qNq.RequiresStructureRebuild)
+			if (writePlan.RequiresStructureRebuild)
 			{
-				if (rklhXQVHTTbSmBfT1qNq.ExecutorKind == (ExecutorKind)2)
+				if (writePlan.ExecutorKind == (ExecutorKind)2)
 				{
-					if (!ValidateAndAdjustTable(P_1, aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC, array, out var text4))
+					if (!ValidateAndAdjustTable(P_1, aiS98lViTM5QHeakGIJC2, excelStructure, array, out var text4))
 					{
 						P_8 = "Word 表格结构重建失败：" + (string.IsNullOrWhiteSpace(text4) ? "请检查 Excel 合并区域和 Word 表格后重试。" : text4);
 						return false;
@@ -9145,13 +9145,13 @@ internal static class TableComWriteService
 					int num5 = GetTableIndexInDocument(App.ActiveDocument, P_1);
 					if (num5 <= 0 || !TryGetStructureByTableIndex(App.ActiveDocument, num5, out aiS98lViTM5QHeakGIJC2, out text2))
 					{
-						aiS98lViTM5QHeakGIJC2 = aiS98lViTM5QHeakGIJC;
+						aiS98lViTM5QHeakGIJC2 = excelStructure;
 					}
-					ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC);
+					ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, excelStructure);
 				}
 				else
 				{
-					if (!RebuildTableViaCom(App.ActiveDocument, P_1, aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC, P_0, array, out var table))
+					if (!RebuildTableViaCom(App.ActiveDocument, P_1, aiS98lViTM5QHeakGIJC2, excelStructure, P_0, array, out var table))
 					{
 						P_8 = "Word 表格结构重建失败，请检查 Excel 合并区域和 Word 表格后重试。";
 						return false;
@@ -9164,25 +9164,25 @@ internal static class TableComWriteService
 						P_8 = SanitizeConfigKey(text2);
 						return false;
 					}
-					ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC);
+					ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, excelStructure);
 				}
 			}
 			else
 			{
-				bool flag3 = WriteTableRowViaCom(P_1, rklhXQVHTTbSmBfT1qNq.TargetRows, aiS98lViTM5QHeakGIJC2?.HeaderRowCount ?? 0, aiS98lViTM5QHeakGIJC2, array, num2);
-				if (rklhXQVHTTbSmBfT1qNq.ColumnShapeChanged && !RemoveEmptyRowsWrapper(P_1, rklhXQVHTTbSmBfT1qNq.TargetColumns, aiS98lViTM5QHeakGIJC2))
+				bool flag3 = WriteTableRowViaCom(P_1, writePlan.TargetRows, aiS98lViTM5QHeakGIJC2?.HeaderRowCount ?? 0, aiS98lViTM5QHeakGIJC2, array, num2);
+				if (writePlan.ColumnShapeChanged && !RemoveEmptyRowsWrapper(P_1, writePlan.TargetColumns, aiS98lViTM5QHeakGIJC2))
 				{
 					P_8 = "Word 表格列数调整失败，请检查表格合并结构后重试。";
 					return false;
 				}
-				if ((rklhXQVHTTbSmBfT1qNq.RowShapeChanged && flag3) || rklhXQVHTTbSmBfT1qNq.ColumnShapeChanged)
+				if ((writePlan.RowShapeChanged && flag3) || writePlan.ColumnShapeChanged)
 				{
 					if (!TryBuildExcelStructureForSync(App.ActiveDocument, P_1, P_0, null, out aiS98lViTM5QHeakGIJC2, out yZvr8GVH490gxwLVpGhc2, out text2))
 					{
 						P_8 = SanitizeConfigKey(text2);
 						return false;
 					}
-					ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC);
+					ApplyStructureChangesToBinding(P_0, aiS98lViTM5QHeakGIJC2, excelStructure);
 				}
 			}
 			ApplyBindingToStructure(P_0, aiS98lViTM5QHeakGIJC2);
@@ -9200,14 +9200,14 @@ internal static class TableComWriteService
 			else
 			{
 				ReportProgress(P_4, 6, "正在写入 Word 单元格...", ref P_6, false);
-				SyncOptions e8sFJTVI7MOPAOVPOav = ((rklhXQVHTTbSmBfT1qNq.ColumnShapeChanged && !P_2.SyncHeaders) ? new SyncOptions
+				SyncOptions syncOptions = ((writePlan.ColumnShapeChanged && !P_2.SyncHeaders) ? new SyncOptions
 				{
 					SyncHeaders = true
 				} : P_2);
-				P_5 = (rklhXQVHTTbSmBfT1qNq.UsesComplexComCellPlan ? WriteTableDataViaComDirect(P_1, aiS98lViTM5QHeakGIJC, array, range, e8sFJTVI7MOPAOVPOav) : WriteTableDataViaCom(P_1, aiS98lViTM5QHeakGIJC2, aiS98lViTM5QHeakGIJC, array, range, num2, num3, e8sFJTVI7MOPAOVPOav));
+				P_5 = (writePlan.UsesComplexComCellPlan ? WriteTableDataViaComDirect(P_1, excelStructure, array, range, syncOptions) : WriteTableDataViaCom(P_1, aiS98lViTM5QHeakGIJC2, excelStructure, array, range, num2, num3, syncOptions));
 			}
 			ReportProgress(P_4, 7, "正在应用绑定和合计格式...", ref P_6, false);
-			BatchTableAdjustService.fWKfeWSrQq(P_1);
+			BatchTableAdjustService.SyncTotalSubtotalFormat(P_1);
 			AddTableBookmark(App.ActiveDocument, P_1, P_0);
 			ClearTableBindings(App.ActiveDocument, P_0);
 			ReportProgress(P_4, 8, "同步当前表完成。", ref P_6, false);
@@ -9343,7 +9343,7 @@ internal static class TableComWriteService
 						num++;
 					}
 				}
-				else if (!jZNZATW17b(P_0, num2, j, text, out text2) && !string.IsNullOrWhiteSpace(text))
+				else if (!TrySetCellTextAt(P_0, num2, j, text, out text2) && !string.IsNullOrWhiteSpace(text))
 				{
 					num++;
 				}
@@ -9360,22 +9360,22 @@ internal static class TableComWriteService
 		}
 		List<ExcelCellData> list = P_1.GetHeaderCells().ToList();
 		List<ExcelCellData> list2 = P_2.GetHeaderCells().ToList();
-		Dictionary<string, Cell> dictionary = K1I2xbFSWM(P_0, P_1.HeaderRowCount);
-		List<Cell> list3 = A5V2dC7EkH(P_0, P_1.HeaderRowCount);
+		Dictionary<string, Cell> dictionary = BuildCellDictionaryFromTable2(P_0, P_1.HeaderRowCount);
+		List<Cell> list3 = GetCellsAboveRow(P_0, P_1.HeaderRowCount);
 		bool flag = list3.Count == list.Count;
 		int num = 0;
 		for (int i = 0; i < list2.Count; i++)
 		{
-			ExcelCellData oy5QGFVitTDJtPXLAlDX = list[i];
+			ExcelCellData cellData = list[i];
 			ExcelCellData oy5QGFVitTDJtPXLAlDX2 = list2[i];
 			string text = P_3[oy5QGFVitTDJtPXLAlDX2.RowIndex, oy5QGFVitTDJtPXLAlDX2.ColumnIndex] ?? string.Empty;
-			string key = BuildCellKey(oy5QGFVitTDJtPXLAlDX.RowIndex, oy5QGFVitTDJtPXLAlDX.ColumnIndex);
+			string key = BuildCellKey(cellData.RowIndex, cellData.ColumnIndex);
 			if (!dictionary.TryGetValue(key, out var value))
 			{
 				value = ((flag && i < list3.Count) ? list3[i] : null);
 			}
 			string empty = string.Empty;
-			bool num2 = value != null && QBUZv4wTBj(value, text, out empty);
+			bool num2 = value != null && TrySetCellText(value, text, out empty);
 			if (value == null)
 			{
 				empty = "未找到对应的 Word 表头逻辑单元格";
@@ -9410,9 +9410,9 @@ internal static class TableComWriteService
 		}
 		for (int i = 0; i < list.Count; i++)
 		{
-			ExcelCellData oy5QGFVitTDJtPXLAlDX = list[i];
+			ExcelCellData cellData = list[i];
 			ExcelCellData oy5QGFVitTDJtPXLAlDX2 = list2[i];
-			if (oy5QGFVitTDJtPXLAlDX.RowIndex != oy5QGFVitTDJtPXLAlDX2.RowIndex || oy5QGFVitTDJtPXLAlDX.ColumnIndex != oy5QGFVitTDJtPXLAlDX2.ColumnIndex || oy5QGFVitTDJtPXLAlDX.RowSpan != oy5QGFVitTDJtPXLAlDX2.RowSpan || oy5QGFVitTDJtPXLAlDX.ColumnSpan != oy5QGFVitTDJtPXLAlDX2.ColumnSpan)
+			if (cellData.RowIndex != oy5QGFVitTDJtPXLAlDX2.RowIndex || cellData.ColumnIndex != oy5QGFVitTDJtPXLAlDX2.ColumnIndex || cellData.RowSpan != oy5QGFVitTDJtPXLAlDX2.RowSpan || cellData.ColumnSpan != oy5QGFVitTDJtPXLAlDX2.ColumnSpan)
 			{
 				return false;
 			}
@@ -9420,7 +9420,7 @@ internal static class TableComWriteService
 		return true;
 	}
 
-	private static Dictionary<string, Cell> K1I2xbFSWM(Table P_0, int P_1)
+	private static Dictionary<string, Cell> BuildCellDictionaryFromTable2(Table P_0, int P_1)
 	{
 		Dictionary<string, Cell> dictionary = new Dictionary<string, Cell>(StringComparer.Ordinal);
 		try
@@ -9443,7 +9443,7 @@ internal static class TableComWriteService
 		return dictionary;
 	}
 
-	private static List<Cell> A5V2dC7EkH(Table P_0, int P_1)
+	private static List<Cell> GetCellsAboveRow(Table P_0, int P_1)
 	{
 		List<Cell> list = new List<Cell>();
 		try
@@ -9518,9 +9518,9 @@ internal static class TableComWriteService
 
 	internal static bool GetSyncHeadersSetting()
 	{
-		return TableBorderConfig.Current.mZ2Sn1wU53(delegate(AiHelper_12 config)
+		return TableBorderConfig.Current.ReadConfigValue(delegate(AiHelper_12 config)
 		{
-			config.BkGt8QpMWu();
+			config.EnsureConfigLoaded();
 			return config.ExcelSync.SyncHeaders;
 		});
 	}
@@ -9531,7 +9531,7 @@ internal static class TableComWriteService
 		CS_8_locals_2.flag = P_0;
 		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 config)
 		{
-			config.BkGt8QpMWu();
+			config.EnsureConfigLoaded();
 			config.ExcelSync.SyncHeaders = CS_8_locals_2.flag;
 		});
 	}
@@ -9610,7 +9610,7 @@ internal static class TableComWriteService
 		return P_2;
 	}
 
-	private static string[,] vtZ4IIjqRi(TableBinding P_0, ExcelTableStructure P_1, string[,] P_2, out string P_3)
+	private static string[,] SortTableData(TableBinding P_0, ExcelTableStructure P_1, string[,] P_2, out string P_3)
 	{
 		P_3 = string.Empty;
 		if (P_0 == null || !P_0.SortEnabled || P_1 == null || P_2 == null)
@@ -9644,7 +9644,7 @@ internal static class TableComWriteService
 		{
 			return P_2;
 		}
-		string[,] array = XMA4YPIuqp(P_2);
+		string[,] array = CloneStringGrid(P_2);
 		bool flag = HasBindingSyncSettings(P_0);
 		bool flag2 = HasBindingColumnMappings(P_0);
 		List<SortKeyItem> list = new List<SortKeyItem>();
@@ -9834,7 +9834,7 @@ internal static class TableComWriteService
 		return true;
 	}
 
-	private static string[,] XMA4YPIuqp(string[,] P_0)
+	private static string[,] CloneStringGrid(string[,] P_0)
 	{
 		int length = P_0.GetLength(0);
 		int length2 = P_0.GetLength(1);
@@ -9873,7 +9873,7 @@ internal static class TableComWriteService
 			{
 				gMo5J5VI9LOS3nqRiEJZ2.HasWordTable = true;
 				int num = GetTableIndexInDocument(App.ActiveDocument, table);
-				WKcZPl2wAw(table, out var num2);
+				TryGetTableRowCount(table, out var num2);
 				int num3 = GetTableColumnCount(table);
 				gMo5J5VI9LOS3nqRiEJZ2.WordColumnCount = Math.Max(0, num3);
 				gMo5J5VI9LOS3nqRiEJZ2.WordStatus = "已定位当前 Word 表格";
@@ -9896,25 +9896,25 @@ internal static class TableComWriteService
 					gMo5J5VI9LOS3nqRiEJZ2.SortColumnIndex = lnEK8VVIccoSQf18k7Ih2.SortColumnIndex ?? 2;
 					gMo5J5VI9LOS3nqRiEJZ2.SortDescending = lnEK8VVIccoSQf18k7Ih2.SortDescending ?? true;
 					gMo5J5VI9LOS3nqRiEJZ2.SortPinOtherLast = HasBindingColumnMappings(lnEK8VVIccoSQf18k7Ih2);
-					gMo5J5VI9LOS3nqRiEJZ2.ColumnMappings = MmX2oHGa2J(lnEK8VVIccoSQf18k7Ih2, num3);
+					gMo5J5VI9LOS3nqRiEJZ2.ColumnMappings = BuildColumnMappings(lnEK8VVIccoSQf18k7Ih2, num3);
 					gMo5J5VI9LOS3nqRiEJZ2.Message = "当前 Word 表格已经绑定，可重新绑定、解除绑定或同步。";
 				}
 				else
 				{
-					gMo5J5VI9LOS3nqRiEJZ2.ColumnMappings = MmX2oHGa2J(null, num3);
+					gMo5J5VI9LOS3nqRiEJZ2.ColumnMappings = BuildColumnMappings(null, num3);
 					gMo5J5VI9LOS3nqRiEJZ2.Message = "当前 Word 表格尚未绑定，可选择 Excel 区域后执行绑定。";
 				}
 				if (P_0)
 				{
-					if (TryGetTableStructureFromWord(App.ActiveDocument, table, out var aiS98lViTM5QHeakGIJC, out var _))
+					if (TryGetTableStructureFromWord(App.ActiveDocument, table, out var excelStructure, out var _))
 					{
 						if (lnEK8VVIccoSQf18k7Ih2 != null)
 						{
-							lnEK8VVIccoSQf18k7Ih2.HeaderRowCount = Math.Max(0, aiS98lViTM5QHeakGIJC.HeaderRowCount);
+							lnEK8VVIccoSQf18k7Ih2.HeaderRowCount = Math.Max(0, excelStructure.HeaderRowCount);
 							RemoveTableBookmark(App.ActiveDocument, table, lnEK8VVIccoSQf18k7Ih2);
 						}
-						gMo5J5VI9LOS3nqRiEJZ2.HeaderRowCount = lnEK8VVIccoSQf18k7Ih2?.HeaderRowCount ?? Math.Max(0, aiS98lViTM5QHeakGIJC.HeaderRowCount);
-						gMo5J5VI9LOS3nqRiEJZ2.HeaderSettingText = GetExcelSheetName(lnEK8VVIccoSQf18k7Ih2, aiS98lViTM5QHeakGIJC.HeaderRowCount);
+						gMo5J5VI9LOS3nqRiEJZ2.HeaderRowCount = lnEK8VVIccoSQf18k7Ih2?.HeaderRowCount ?? Math.Max(0, excelStructure.HeaderRowCount);
+						gMo5J5VI9LOS3nqRiEJZ2.HeaderSettingText = GetExcelSheetName(lnEK8VVIccoSQf18k7Ih2, excelStructure.HeaderRowCount);
 					}
 					else
 					{
@@ -10023,8 +10023,8 @@ internal static class TableComWriteService
 			{
 				return CreateSyncResult("Excel 当前选区为空，请重新选择要插入的单元格区域。", null, true);
 			}
-			string[,] array = CbnE5nPlkx(range, count, count2);
-			ExcelTableStructure aiS98lViTM5QHeakGIJC = ParseExcelRangeToStructure(range);
+			string[,] array = BuildCellAddressGrid(range, count, count2);
+			ExcelTableStructure excelStructure = ParseExcelRangeToStructure(range);
 			string text;
 			Table table = CreateWordTable(count, count2, out text);
 			if (table == null)
@@ -10032,9 +10032,9 @@ internal static class TableComWriteService
 				return CreateSyncResult(string.IsNullOrWhiteSpace(text) ? "插入 Word 表格失败，请重新选择 Word 段落后再试。" : text, null, true);
 			}
 			int num = FillTableWithData(table, array, count, count2);
-			ApplyStructureToTable(table, aiS98lViTM5QHeakGIJC);
+			ApplyStructureToTable(table, excelStructure);
 			table.Range.Select();
-			BatchTableAdjustService.w3YfsuDd2C();
+			BatchTableAdjustService.AdjustTableLayout();
 			table.Range.Select();
 			if (!PrepareTableForSync(table, null, false, out var num2, out var _, out var flag, out var text2))
 			{
@@ -10096,7 +10096,7 @@ internal static class TableComWriteService
 		{
 			for (int j = 1; j <= P_3; j++)
 			{
-				if (!jZNZATW17b(P_0, i, j, GetCellValueFromGrid(P_1, i, j), out var _))
+				if (!TrySetCellTextAt(P_0, i, j, GetCellValueFromGrid(P_1, i, j), out var _))
 				{
 					num++;
 				}
@@ -10178,7 +10178,7 @@ internal static class TableComWriteService
 				SortDescending = lnEK8VVIccoSQf18k7Ih2.SortDescending,
 				SortPinOtherLast = lnEK8VVIccoSQf18k7Ih2.SortPinOtherLast,
 				ColumnMappings = null,
-				WordTableIsComplex = tXyjiOteR1(table2)
+				WordTableIsComplex = IsTableStructureValid(table2)
 			};
 			RemoveTableBookmark(activeDocument, table2, lnEK8VVIccoSQf18k7Ih3);
 			try
@@ -10401,7 +10401,7 @@ internal static class TableComWriteService
 			}
 			if (P_6 != null)
 			{
-				P_0.ColumnMappings = N8p2Gx7C9A(P_6);
+				P_0.ColumnMappings = FilterPositiveInts(P_6);
 			}
 		}
 	}
@@ -10547,30 +10547,30 @@ internal static class TableComWriteService
 		dynamic variables = P_0.Variables;
 		try
 		{
-			if (_G_o__253.lwuV38B4Nvi == null)
+			if (_G_o__253.toStringCallSite_Tc18 == null)
 			{
-				_G_o__253.lwuV38B4Nvi = CallSite<Func<CallSite, object, string, object>>.Create(Binder.SetMember(CSharpBinderFlags.None, "Value", typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__253.toStringCallSite_Tc18 = CallSite<Func<CallSite, object, string, object>>.Create(Binder.SetMember(CSharpBinderFlags.None, "Value", typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType, null)
 				}));
 			}
-			_G_o__253.lwuV38B4Nvi.Target(_G_o__253.lwuV38B4Nvi, (object)variables[P_1.Id], text);
+			_G_o__253.toStringCallSite_Tc18.Target(_G_o__253.toStringCallSite_Tc18, (object)variables[P_1.Id], text);
 		}
 		catch
 		{
 			try
 			{
-				if (_G_o__253.mDrV3IqOYxV == null)
+				if (_G_o__253.addCallSite == null)
 				{
-					_G_o__253.mDrV3IqOYxV = CallSite<Action<CallSite, object, string, string>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Add", null, typeof(TableComWriteService), new CSharpArgumentInfo[3]
+					_G_o__253.addCallSite = CallSite<Action<CallSite, object, string, string>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Add", null, typeof(TableComWriteService), new CSharpArgumentInfo[3]
 					{
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType, null),
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType, null)
 					}));
 				}
-				_G_o__253.mDrV3IqOYxV.Target(_G_o__253.mDrV3IqOYxV, (object)variables, P_1.Id, text);
+				_G_o__253.addCallSite.Target(_G_o__253.addCallSite, (object)variables, P_1.Id, text);
 			}
 			catch
 			{
@@ -10587,7 +10587,7 @@ internal static class TableComWriteService
 		try
 		{
 			P_2.WordTableIndex = GetTableIndexInDocument(P_0, P_1);
-			P_2.WordTableRows = ((WKcZPl2wAw(P_1, out var num) && num > 0) ? new int?(num) : ((int?)null));
+			P_2.WordTableRows = ((TryGetTableRowCount(P_1, out var num) && num > 0) ? new int?(num) : ((int?)null));
 			int num2 = GetTableColumnCount(P_1);
 			P_2.WordTableColumns = ((num2 > 0) ? new int?(num2) : ((int?)null));
 			P_2.WordSnapshotUpdatedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -10693,8 +10693,8 @@ internal static class TableComWriteService
 		try
 		{
 			JObject jObject = JObject.Parse(P_1);
-			int? num = V4P4kUZW3K(jObject, "HeaderRowCountOverride");
-			int? num2 = V4P4kUZW3K(jObject, "DetectedHeaderRowCount");
+			int? num = GetJObjectInt(jObject, "HeaderRowCountOverride");
+			int? num2 = GetJObjectInt(jObject, "DetectedHeaderRowCount");
 			int? num3 = num ?? num2;
 			if (num3.HasValue)
 			{
@@ -10706,7 +10706,7 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static int? V4P4kUZW3K(JObject P_0, string P_1)
+	private static int? GetJObjectInt(JObject P_0, string P_1)
 	{
 		if (P_0 == null || string.IsNullOrWhiteSpace(P_1))
 		{
@@ -10802,11 +10802,11 @@ internal static class TableComWriteService
 		try
 		{
 			dynamic variables = P_0.Variables;
-			if (_G_o__265.e8bV3HZiQrj == null)
+			if (_G_o__265.deleteCallSite_Tc3 == null)
 			{
-				_G_o__265.e8bV3HZiQrj = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__265.deleteCallSite_Tc3 = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			_G_o__265.e8bV3HZiQrj.Target(_G_o__265.e8bV3HZiQrj, (object)variables[P_1]);
+			_G_o__265.deleteCallSite_Tc3.Target(_G_o__265.deleteCallSite_Tc3, (object)variables[P_1]);
 			return;
 		}
 		catch
@@ -11012,7 +11012,7 @@ internal static class TableComWriteService
 		P_1 = 0;
 		P_2 = 0;
 		P_3 = string.Empty;
-		if (!WKcZPl2wAw(P_0, out P_1) || P_1 <= 0)
+		if (!TryGetTableRowCount(P_0, out P_1) || P_1 <= 0)
 		{
 			P_3 = "无法读取 Word 表格行数";
 			return false;
@@ -11028,7 +11028,7 @@ internal static class TableComWriteService
 
 	private static ExcelTableStructure BuildExcelStructureFromTable(Table P_0, TableBinding P_1, int P_2, int P_3, int P_4)
 	{
-		ExcelTableStructure aiS98lViTM5QHeakGIJC = new ExcelTableStructure
+		ExcelTableStructure excelStructure = new ExcelTableStructure
 		{
 			SourceKind = (TableSourceKind)0,
 			TableIndex = P_2,
@@ -11041,7 +11041,7 @@ internal static class TableComWriteService
 		{
 			for (int j = 1; j <= P_4; j++)
 			{
-				aiS98lViTM5QHeakGIJC.AddCell(new ExcelCellData
+				excelStructure.AddCell(new ExcelCellData
 				{
 					RowIndex = i,
 					ColumnIndex = j,
@@ -11051,10 +11051,10 @@ internal static class TableComWriteService
 				});
 			}
 		}
-		return aiS98lViTM5QHeakGIJC;
+		return excelStructure;
 	}
 
-	private static bool? tXyjiOteR1(Table P_0)
+	private static bool? IsTableStructureValid(Table P_0)
 	{
 		try
 		{
@@ -11178,22 +11178,22 @@ internal static class TableComWriteService
 	{
 		try
 		{
-			if (_G_o__284.UCNV31Pb74x == null)
+			if (_G_o__284.toBooleanCallSite_Tc2 == null)
 			{
-				_G_o__284.UCNV31Pb74x = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToBoolean", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__284.toBooleanCallSite_Tc2 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToBoolean", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 				}));
 			}
-			Func<CallSite, Type, object, object> target = _G_o__284.UCNV31Pb74x.Target;
-			CallSite<Func<CallSite, Type, object, object>> uCNV31Pb74x = _G_o__284.UCNV31Pb74x;
+			Func<CallSite, Type, object, object> target = _G_o__284.toBooleanCallSite_Tc2.Target;
+			CallSite<Func<CallSite, Type, object, object>> uCNV31Pb74x = _G_o__284.toBooleanCallSite_Tc2;
 			Type typeFromHandle = typeof(Convert);
-			if (_G_o__284.YvfV3QlcxJf == null)
+			if (_G_o__284.toObjectCallSite_Tc18 == null)
 			{
-				_G_o__284.YvfV3QlcxJf = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Uniform", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__284.toObjectCallSite_Tc18 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Uniform", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			return (dynamic)target(uCNV31Pb74x, typeFromHandle, _G_o__284.YvfV3QlcxJf.Target(_G_o__284.YvfV3QlcxJf, P_0));
+			return (dynamic)target(uCNV31Pb74x, typeFromHandle, _G_o__284.toObjectCallSite_Tc18.Target(_G_o__284.toObjectCallSite_Tc18, P_0));
 		}
 		catch
 		{
@@ -11255,7 +11255,7 @@ internal static class TableComWriteService
 
 	private static ExcelTableStructure ParseTableElementToStructure(XElement P_0, int P_1)
 	{
-		ExcelTableStructure aiS98lViTM5QHeakGIJC = new ExcelTableStructure
+		ExcelTableStructure excelStructure = new ExcelTableStructure
 		{
 			SourceKind = (TableSourceKind)0,
 			TableIndex = P_1,
@@ -11266,7 +11266,7 @@ internal static class TableComWriteService
 		foreach (XElement item in P_0.Elements(WordNamespace + "tr"))
 		{
 			num++;
-			aiS98lViTM5QHeakGIJC.RowElements.Add(new XElement(item));
+			excelStructure.RowElements.Add(new XElement(item));
 			int num2 = 1;
 			HashSet<ExcelCellData> hashSet = new HashSet<ExcelCellData>();
 			foreach (XElement item2 in item.Elements(WordNamespace + "tc"))
@@ -11276,7 +11276,7 @@ internal static class TableComWriteService
 				bool flag = text != null;
 				if (flag && !string.Equals(text, "restart", StringComparison.OrdinalIgnoreCase) && dictionary.TryGetValue(num2, out var value))
 				{
-					aiS98lViTM5QHeakGIJC.HasVerticalMerge = true;
+					excelStructure.HasVerticalMerge = true;
 					if (!hashSet.Contains(value))
 					{
 						value.RowSpan++;
@@ -11284,12 +11284,12 @@ internal static class TableComWriteService
 					}
 					for (int i = 0; i < num3; i++)
 					{
-						aiS98lViTM5QHeakGIJC.SetMergedCell(num, num2 + i, value);
+						excelStructure.SetMergedCell(num, num2 + i, value);
 					}
 				}
 				else
 				{
-					ExcelCellData oy5QGFVitTDJtPXLAlDX = new ExcelCellData
+					ExcelCellData cellData = new ExcelCellData
 					{
 						RowIndex = num,
 						ColumnIndex = num2,
@@ -11298,20 +11298,20 @@ internal static class TableComWriteService
 						Text = GetTableCellText(item2),
 						Element = new XElement(item2)
 					};
-					aiS98lViTM5QHeakGIJC.AddCell(oy5QGFVitTDJtPXLAlDX);
+					excelStructure.AddCell(cellData);
 					if (num3 > 1)
 					{
 						for (int j = 1; j < num3; j++)
 						{
-							aiS98lViTM5QHeakGIJC.SetMergedCell(num, num2 + j, oy5QGFVitTDJtPXLAlDX);
+							excelStructure.SetMergedCell(num, num2 + j, cellData);
 						}
 					}
 					if (flag)
 					{
-						aiS98lViTM5QHeakGIJC.HasVerticalMerge = true;
+						excelStructure.HasVerticalMerge = true;
 						for (int k = 0; k < num3; k++)
 						{
-							dictionary[num2 + k] = oy5QGFVitTDJtPXLAlDX;
+							dictionary[num2 + k] = cellData;
 						}
 					}
 					else
@@ -11322,14 +11322,14 @@ internal static class TableComWriteService
 						}
 					}
 				}
-				aiS98lViTM5QHeakGIJC.ColumnCount = Math.Max(aiS98lViTM5QHeakGIJC.ColumnCount, num2 + num3 - 1);
+				excelStructure.ColumnCount = Math.Max(excelStructure.ColumnCount, num2 + num3 - 1);
 				num2 += num3;
 			}
 		}
-		aiS98lViTM5QHeakGIJC.RowCount = num;
-		aiS98lViTM5QHeakGIJC.RebuildMerges();
-		aiS98lViTM5QHeakGIJC.HeaderRowCount = GetMaxColumnCount(aiS98lViTM5QHeakGIJC);
-		return aiS98lViTM5QHeakGIJC;
+		excelStructure.RowCount = num;
+		excelStructure.RebuildMerges();
+		excelStructure.HeaderRowCount = GetMaxColumnCount(excelStructure);
+		return excelStructure;
 	}
 
 	private static string GetTableCellText(XElement P_0)
@@ -11389,7 +11389,7 @@ internal static class TableComWriteService
 		return true;
 	}
 
-	private static List<ComCellPlan> X6BjfBQhU6(ExcelTableStructure P_0, string[,] P_1)
+	private static List<ComCellPlan> BuildComCellPlans(ExcelTableStructure P_0, string[,] P_1)
 	{
 		List<ComCellPlan> list = new List<ComCellPlan>();
 		if (P_0 == null)
@@ -11402,11 +11402,11 @@ internal static class TableComWriteService
 			for (int j = 1; j <= P_0.ColumnCount; j++)
 			{
 				ExcelCellData oy5QGFVitTDJtPXLAlDX2;
-				if (P_0.TryGetCell(i, j, out var oy5QGFVitTDJtPXLAlDX))
+				if (P_0.TryGetCell(i, j, out var cellData))
 				{
 					num++;
-					int num2 = Math.Max(1, oy5QGFVitTDJtPXLAlDX.RowSpan);
-					int num3 = Math.Max(1, oy5QGFVitTDJtPXLAlDX.ColumnSpan);
+					int num2 = Math.Max(1, cellData.RowSpan);
+					int num3 = Math.Max(1, cellData.ColumnSpan);
 					list.Add(new ComCellPlan
 					{
 						RowIndex = i,
@@ -11467,7 +11467,7 @@ internal static class TableComWriteService
 				return false;
 			}
 			ApplyTableBorders(P_0, znUiB7VHnihVw3KU0MHk2);
-			List<ComCellPlan> list = X6BjfBQhU6(P_2, P_3);
+			List<ComCellPlan> list = BuildComCellPlans(P_2, P_3);
 			int num = GetEffectiveColumnCount(P_2, P_2.HeaderRowCount);
 			if (!WriteCellsViaCom(P_0, list, znUiB7VHnihVw3KU0MHk2, num, out P_4))
 			{
@@ -11540,7 +11540,7 @@ internal static class TableComWriteService
 		}
 		try
 		{
-			if (WKcZPl2wAw(P_0, out var num2))
+			if (TryGetTableRowCount(P_0, out var num2))
 			{
 				for (int j = 1; j <= num2; j++)
 				{
@@ -11561,12 +11561,12 @@ internal static class TableComWriteService
 		catch
 		{
 		}
-		Dictionary<string, ComCellPlan> dictionary = X6BjfBQhU6(P_1, null).ToDictionary((ComCellPlan dmw4ImVHwkHOAyaZBm6p2) => BuildCellKey(dmw4ImVHwkHOAyaZBm6p2.RowIndex, dmw4ImVHwkHOAyaZBm6p2.ColumnIndex), (ComCellPlan result) => result, StringComparer.Ordinal);
+		Dictionary<string, ComCellPlan> dictionary = BuildComCellPlans(P_1, null).ToDictionary((ComCellPlan dmw4ImVHwkHOAyaZBm6p2) => BuildCellKey(dmw4ImVHwkHOAyaZBm6p2.RowIndex, dmw4ImVHwkHOAyaZBm6p2.ColumnIndex), (ComCellPlan result) => result, StringComparer.Ordinal);
 		if (P_1 != null)
 		{
-			foreach (ExcelCellData item in from oy5QGFVitTDJtPXLAlDX in P_1.Cells
-				orderby oy5QGFVitTDJtPXLAlDX.RowIndex, oy5QGFVitTDJtPXLAlDX.ColumnIndex
-				select oy5QGFVitTDJtPXLAlDX)
+			foreach (ExcelCellData item in from cellData in P_1.Cells
+				orderby cellData.RowIndex, cellData.ColumnIndex
+				select cellData)
 			{
 				ComCellPlan value;
 				int num3 = (dictionary.TryGetValue(BuildCellKey(item.RowIndex, item.ColumnIndex), out value) ? value.WordColumnIndex : item.ColumnIndex);
@@ -11574,13 +11574,13 @@ internal static class TableComWriteService
 				{
 					continue;
 				}
-				CellFormat qSr7VOVHXWdXGmuwDp5W = GetCellFormat(cell);
-				if (qSr7VOVHXWdXGmuwDp5W != null)
+				CellFormat cellFormat = GetCellFormat(cell);
+				if (cellFormat != null)
 				{
-					znUiB7VHnihVw3KU0MHk2.Cells[BuildCellKey(item.RowIndex, item.ColumnIndex)] = qSr7VOVHXWdXGmuwDp5W;
+					znUiB7VHnihVw3KU0MHk2.Cells[BuildCellKey(item.RowIndex, item.ColumnIndex)] = cellFormat;
 					if (znUiB7VHnihVw3KU0MHk2.DefaultCell == null)
 					{
-						znUiB7VHnihVw3KU0MHk2.DefaultCell = qSr7VOVHXWdXGmuwDp5W;
+						znUiB7VHnihVw3KU0MHk2.DefaultCell = cellFormat;
 					}
 				}
 			}
@@ -11620,57 +11620,57 @@ internal static class TableComWriteService
 		{
 			return null;
 		}
-		CellFormat qSr7VOVHXWdXGmuwDp5W = new CellFormat();
+		CellFormat cellFormat = new CellFormat();
 		try
 		{
-			qSr7VOVHXWdXGmuwDp5W.Bold = P_0.Range.Font.Bold;
+			cellFormat.Bold = P_0.Range.Font.Bold;
 		}
 		catch
 		{
 		}
 		try
 		{
-			qSr7VOVHXWdXGmuwDp5W.Italic = P_0.Range.Font.Italic;
+			cellFormat.Italic = P_0.Range.Font.Italic;
 		}
 		catch
 		{
 		}
 		try
 		{
-			qSr7VOVHXWdXGmuwDp5W.Underline = (int)P_0.Range.Font.Underline;
+			cellFormat.Underline = (int)P_0.Range.Font.Underline;
 		}
 		catch
 		{
 		}
 		try
 		{
-			qSr7VOVHXWdXGmuwDp5W.ParagraphAlignment = (int)P_0.Range.ParagraphFormat.Alignment;
+			cellFormat.ParagraphAlignment = (int)P_0.Range.ParagraphFormat.Alignment;
 		}
 		catch
 		{
 		}
 		try
 		{
-			qSr7VOVHXWdXGmuwDp5W.LeftIndent = P_0.Range.ParagraphFormat.LeftIndent;
+			cellFormat.LeftIndent = P_0.Range.ParagraphFormat.LeftIndent;
 		}
 		catch
 		{
 		}
 		try
 		{
-			qSr7VOVHXWdXGmuwDp5W.FirstLineIndent = P_0.Range.ParagraphFormat.FirstLineIndent;
+			cellFormat.FirstLineIndent = P_0.Range.ParagraphFormat.FirstLineIndent;
 		}
 		catch
 		{
 		}
 		try
 		{
-			qSr7VOVHXWdXGmuwDp5W.VerticalAlignment = (int)P_0.VerticalAlignment;
+			cellFormat.VerticalAlignment = (int)P_0.VerticalAlignment;
 		}
 		catch
 		{
 		}
-		return qSr7VOVHXWdXGmuwDp5W;
+		return cellFormat;
 	}
 
 	private static bool ValidateTableStructure(Table P_0, ExcelTableStructure P_1)
@@ -11679,15 +11679,15 @@ internal static class TableComWriteService
 		{
 			return true;
 		}
-		List<ExcelCellData> list = (from oy5QGFVitTDJtPXLAlDX in P_1.Cells
-			where Math.Max(1, oy5QGFVitTDJtPXLAlDX.RowSpan) > 1 || Math.Max(1, oy5QGFVitTDJtPXLAlDX.ColumnSpan) > 1
-			orderby oy5QGFVitTDJtPXLAlDX.RowIndex descending, oy5QGFVitTDJtPXLAlDX.ColumnIndex descending
-			select oy5QGFVitTDJtPXLAlDX).ToList();
+		List<ExcelCellData> list = (from cellData in P_1.Cells
+			where Math.Max(1, cellData.RowSpan) > 1 || Math.Max(1, cellData.ColumnSpan) > 1
+			orderby cellData.RowIndex descending, cellData.ColumnIndex descending
+			select cellData).ToList();
 		if (list.Count == 0)
 		{
 			return true;
 		}
-		Dictionary<string, ComCellPlan> dictionary = X6BjfBQhU6(P_1, null).ToDictionary((ComCellPlan dmw4ImVHwkHOAyaZBm6p2) => BuildCellKey(dmw4ImVHwkHOAyaZBm6p2.RowIndex, dmw4ImVHwkHOAyaZBm6p2.ColumnIndex), (ComCellPlan result) => result, StringComparer.Ordinal);
+		Dictionary<string, ComCellPlan> dictionary = BuildComCellPlans(P_1, null).ToDictionary((ComCellPlan dmw4ImVHwkHOAyaZBm6p2) => BuildCellKey(dmw4ImVHwkHOAyaZBm6p2.RowIndex, dmw4ImVHwkHOAyaZBm6p2.ColumnIndex), (ComCellPlan result) => result, StringComparer.Ordinal);
 		foreach (ExcelCellData item in list)
 		{
 			ComCellPlan value;
@@ -11722,7 +11722,7 @@ internal static class TableComWriteService
 		P_2 = Math.Max(1, P_2);
 		try
 		{
-			if (!WKcZPl2wAw(P_0, out var i) || i <= 0)
+			if (!TryGetTableRowCount(P_0, out var i) || i <= 0)
 			{
 				return false;
 			}
@@ -11787,15 +11787,15 @@ internal static class TableComWriteService
 			}
 			cell.Select();
 			object selection = App.Selection;
-			if (_G_o__305.XYtV3Jv43Eg == null)
+			if (_G_o__305.insertRowsBelowCallSite_Tc1 == null)
 			{
-				_G_o__305.XYtV3Jv43Eg = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__305.insertRowsBelowCallSite_Tc1 = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant, null)
 				}));
 			}
-			_G_o__305.XYtV3Jv43Eg.Target(_G_o__305.XYtV3Jv43Eg, selection, 1);
+			_G_o__305.insertRowsBelowCallSite_Tc1.Target(_G_o__305.insertRowsBelowCallSite_Tc1, selection, 1);
 			return true;
 		}
 		catch
@@ -11814,17 +11814,17 @@ internal static class TableComWriteService
 			}
 			cell.Select();
 			object selection = App.Selection;
-			if (_G_o__306.k5gV3UxbUuQ == null)
+			if (_G_o__306.deleteCallSite_Tc5 == null)
 			{
-				_G_o__306.k5gV3UxbUuQ = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__306.deleteCallSite_Tc5 = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			Action<CallSite, object> target = _G_o__306.k5gV3UxbUuQ.Target;
-			CallSite<Action<CallSite, object>> k5gV3UxbUuQ = _G_o__306.k5gV3UxbUuQ;
-			if (_G_o__306.Vn1V33Abwgt == null)
+			Action<CallSite, object> target = _G_o__306.deleteCallSite_Tc5.Target;
+			CallSite<Action<CallSite, object>> deleteCallSite_Tc5 = _G_o__306.deleteCallSite_Tc5;
+			if (_G_o__306.toObjectCallSite_Tc15 == null)
 			{
-				_G_o__306.Vn1V33Abwgt = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Rows", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__306.toObjectCallSite_Tc15 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Rows", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			target(k5gV3UxbUuQ, _G_o__306.Vn1V33Abwgt.Target(_G_o__306.Vn1V33Abwgt, selection));
+			target(deleteCallSite_Tc5, _G_o__306.toObjectCallSite_Tc15.Target(_G_o__306.toObjectCallSite_Tc15, selection));
 			return true;
 		}
 		catch
@@ -11843,11 +11843,11 @@ internal static class TableComWriteService
 			}
 			cell.Select();
 			object selection = App.Selection;
-			if (_G_o__307.wRpV3K4SOng == null)
+			if (_G_o__307.insertColumnsRightCallSite_Tc2 == null)
 			{
-				_G_o__307.wRpV3K4SOng = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertColumnsRight", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__307.insertColumnsRightCallSite_Tc2 = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertColumnsRight", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			_G_o__307.wRpV3K4SOng.Target(_G_o__307.wRpV3K4SOng, selection);
+			_G_o__307.insertColumnsRightCallSite_Tc2.Target(_G_o__307.insertColumnsRightCallSite_Tc2, selection);
 			return true;
 		}
 		catch
@@ -11866,21 +11866,21 @@ internal static class TableComWriteService
 			}
 			cell.Select();
 			object selection = App.Selection;
-			if (_G_o__308.NWCV32bQxvq == null)
+			if (_G_o__308.deleteCallSite_Tc2 == null)
 			{
-				_G_o__308.NWCV32bQxvq = CallSite<Action<CallSite, object, WdDeleteCells>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__308.deleteCallSite_Tc2 = CallSite<Action<CallSite, object, WdDeleteCells>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant, null)
 				}));
 			}
-			Action<CallSite, object, WdDeleteCells> target = _G_o__308.NWCV32bQxvq.Target;
-			CallSite<Action<CallSite, object, WdDeleteCells>> nWCV32bQxvq = _G_o__308.NWCV32bQxvq;
-			if (_G_o__308.sWFV3ER3513 == null)
+			Action<CallSite, object, WdDeleteCells> target = _G_o__308.deleteCallSite_Tc2.Target;
+			CallSite<Action<CallSite, object, WdDeleteCells>> nWCV32bQxvq = _G_o__308.deleteCallSite_Tc2;
+			if (_G_o__308.toObjectCallSite_Tc23 == null)
 			{
-				_G_o__308.sWFV3ER3513 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Cells", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__308.toObjectCallSite_Tc23 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Cells", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			target(nWCV32bQxvq, _G_o__308.sWFV3ER3513.Target(_G_o__308.sWFV3ER3513, selection), WdDeleteCells.wdDeleteCellsEntireColumn);
+			target(nWCV32bQxvq, _G_o__308.toObjectCallSite_Tc23.Target(_G_o__308.toObjectCallSite_Tc23, selection), WdDeleteCells.wdDeleteCellsEntireColumn);
 			return true;
 		}
 		catch
@@ -11937,7 +11937,7 @@ internal static class TableComWriteService
 		try
 		{
 			int num2 = GetTableColumnCount(P_0);
-			WKcZPl2wAw(P_0, out var val);
+			TryGetTableRowCount(P_0, out var val);
 			ApplyCellBordersToRange(P_0, P_1, Math.Max(1, val), num2);
 		}
 		catch
@@ -12115,10 +12115,10 @@ internal static class TableComWriteService
 					}
 				}
 			}
-			CellFormat qSr7VOVHXWdXGmuwDp5W = GetCellFormatByPosition(P_2, item.RowIndex, item.ColumnIndex, P_3);
+			CellFormat cellFormat = GetCellFormatByPosition(P_2, item.RowIndex, item.ColumnIndex, P_3);
 			string arg;
-			bool num7 = QBUZv4wTBj(cell, item.Text, out arg);
-			ApplyCellFormat(cell, qSr7VOVHXWdXGmuwDp5W);
+			bool num7 = TrySetCellText(cell, item.Text, out arg);
+			ApplyCellFormat(cell, cellFormat);
 			if (!num7 && !string.IsNullOrWhiteSpace(item.Text))
 			{
 				P_4 = string.Format(CultureInfo.InvariantCulture, "写入 Word 单元格 R{0}C{1} 失败：{2}", item.RowIndex, num, arg);
@@ -12131,7 +12131,7 @@ internal static class TableComWriteService
 	private static int WriteTableDataViaComDirect(Table P_0, ExcelTableStructure P_1, string[,] P_2, Microsoft.Office.Interop.Excel.Range P_3, SyncOptions P_4)
 	{
 		P_4 = P_4 ?? GetDefaultSyncOptions();
-		List<ComCellPlan> source = X6BjfBQhU6(P_1, P_2);
+		List<ComCellPlan> source = BuildComCellPlans(P_1, P_2);
 		int num = 0;
 		foreach (ComCellPlan item in from dmw4ImVHwkHOAyaZBm6p2 in source
 			orderby dmw4ImVHwkHOAyaZBm6p2.RowIndex, dmw4ImVHwkHOAyaZBm6p2.ColumnIndex
@@ -12141,7 +12141,7 @@ internal static class TableComWriteService
 			{
 				string empty = string.Empty;
 				Cell cell;
-				bool num2 = TryGetCellAtPosition(P_0, item.RowIndex, item.WordColumnIndex, out cell) && QBUZv4wTBj(cell, item.Text, out empty);
+				bool num2 = TryGetCellAtPosition(P_0, item.RowIndex, item.WordColumnIndex, out cell) && TrySetCellText(cell, item.Text, out empty);
 				if (cell == null)
 				{
 					empty = string.Format(CultureInfo.InvariantCulture, "未找到 Word COM 单元格 R{0}C{1}", item.RowIndex, item.WordColumnIndex);
@@ -12328,16 +12328,16 @@ internal static class TableComWriteService
 
 	private static SyncResult SyncAllTablesViaXml(ProgressCallback P_0, SyncOptions P_1)
 	{
-		SyncResult b8Id9rVIwgTW2spgYNvs = new SyncResult();
+		SyncResult syncResult = new SyncResult();
 		bool screenUpdating = true;
 		try
 		{
 			if (!ShouldCancelSync(P_0, "正在启动批量同步..."))
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
 			Document document = App?.ActiveDocument;
 			if (document == null)
@@ -12358,82 +12358,82 @@ internal static class TableComWriteService
 			{
 				return CreateSyncResult("批量 XML 同步仅支持已保存的 .docx/.docm 文档，请先保存当前 Word 文档后再试。", null, true);
 			}
-			int num = (b8Id9rVIwgTW2spgYNvs.Total = document.Tables.Count);
+			int num = (syncResult.Total = document.Tables.Count);
 			if (num == 0)
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "当前文档没有表格。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = true;
+				syncResult.Message = "当前文档没有表格。";
+				return syncResult;
 			}
 			if (!ShouldCancelSync(P_0, "正在扫描 Word 表格绑定..."))
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
 			bool flag;
-			List<TableBindingPair> list = DKkjqxGPT4(document, P_0, out flag);
+			List<TableBindingPair> list = ScanTableBindings(document, P_0, out flag);
 			if (flag)
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
-			b8Id9rVIwgTW2spgYNvs.Bound = list.Count;
+			syncResult.Bound = list.Count;
 			if (list.Count == 0)
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "当前文档没有已绑定的 Excel 同步表。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = true;
+				syncResult.Message = "当前文档没有已绑定的 Excel 同步表。";
+				return syncResult;
 			}
 			if (!ShouldCancelSync(P_0, "正在检查 Excel 源文件状态..."))
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
 			if (HasAnySyncPairs(list) && !LoggerInitializer.ShowConfirm("批量同步将直接读取已保存的 Excel 文件，不读取当前打开但尚未保存的修改。\r\n\r\n如果 Excel 中有未保存内容，请先保存后再继续。是否继续同步？", "同步全部表"))
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
 			int num2 = list.Count + 3;
 			if (!ShouldCancelSync(P_0, "正在读取 Word 文档 XML 结构..."))
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
 			if (!TryGetTableStructureSnapshotWithProgress(document, P_0, out var nmRqISVHbXuCPOhoghlw2, out var text2, out var flag2))
 			{
 				if (flag2)
 				{
-					b8Id9rVIwgTW2spgYNvs.Success = false;
-					b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-					b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-					return b8Id9rVIwgTW2spgYNvs;
+					syncResult.Success = false;
+					syncResult.Cancelled = true;
+					syncResult.Message = "用户取消了同步。";
+					return syncResult;
 				}
 				return CreateSyncResult("无法读取当前 Word 文档结构，请先保存文档后重试。" + (string.IsNullOrWhiteSpace(text2) ? string.Empty : ("\n" + text2)), null, true);
 			}
 			string text3;
 			bool flag3;
-			List<SyncPlanContext> list2 = D04jvtW1Ge(list, nmRqISVHbXuCPOhoghlw2, P_0, num2, P_1, out text3, out flag3);
+			List<SyncPlanContext> list2 = Read1(list, nmRqISVHbXuCPOhoghlw2, P_0, num2, P_1, out text3, out flag3);
 			if (flag3)
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
 			if (!string.IsNullOrWhiteSpace(text3))
 			{
-				b8Id9rVIwgTW2spgYNvs.Failed = 1;
+				syncResult.Failed = 1;
 				return CreateSyncResult(text3, null, true);
 			}
 			List<XmlRebuildResult> list3 = new List<XmlRebuildResult>();
@@ -12442,40 +12442,40 @@ internal static class TableComWriteService
 				SyncPlanContext nVooAoVHW4Yl15VG0vUp2 = list2[i];
 				if (P_0 != null && !P_0(i + 1, list2.Count, string.Format("正在生成第 {0} 表的 Word XML...", nVooAoVHW4Yl15VG0vUp2.TableIndex)))
 				{
-					b8Id9rVIwgTW2spgYNvs.Success = false;
-					b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-					b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-					return b8Id9rVIwgTW2spgYNvs;
+					syncResult.Success = false;
+					syncResult.Cancelled = true;
+					syncResult.Message = "用户取消了同步。";
+					return syncResult;
 				}
 				list3.Add(BuildXmlRebuildPlan(nVooAoVHW4Yl15VG0vUp2, P_1));
 			}
 			if (P_0 != null && !P_0(list.Count + 1, num2, "正在保存并关闭 Word/WPS 文档..."))
 			{
-				b8Id9rVIwgTW2spgYNvs.Success = false;
-				b8Id9rVIwgTW2spgYNvs.Cancelled = true;
-				b8Id9rVIwgTW2spgYNvs.Message = "用户取消了同步。";
-				return b8Id9rVIwgTW2spgYNvs;
+				syncResult.Success = false;
+				syncResult.Cancelled = true;
+				syncResult.Message = "用户取消了同步。";
+				return syncResult;
 			}
 			document.Save();
-			DocumentReopenResult esxm3HVQTF7Pqmux4Tv = ReopenDocumentWithRebuiltTables(document, text, list3, P_0, list.Count, num2);
-			if (!esxm3HVQTF7Pqmux4Tv.Success)
+			DocumentReopenResult reopenResult = ReopenDocumentWithRebuiltTables(document, text, list3, P_0, list.Count, num2);
+			if (!reopenResult.Success)
 			{
-				b8Id9rVIwgTW2spgYNvs.Failed = list.Count;
-				return CreateSyncResult(string.IsNullOrWhiteSpace(esxm3HVQTF7Pqmux4Tv.Error) ? "同步全部表失败，已尝试恢复原 Word 文档。" : esxm3HVQTF7Pqmux4Tv.Error, null, true);
+				syncResult.Failed = list.Count;
+				return CreateSyncResult(string.IsNullOrWhiteSpace(reopenResult.Error) ? "同步全部表失败，已尝试恢复原 Word 文档。" : reopenResult.Error, null, true);
 			}
 			P_0?.Invoke(num2, num2, "同步全部表完成。");
-			b8Id9rVIwgTW2spgYNvs.Success = true;
-			b8Id9rVIwgTW2spgYNvs.Synced = list3.Count;
-			b8Id9rVIwgTW2spgYNvs.Bound = list3.Count;
-			b8Id9rVIwgTW2spgYNvs.Total = num;
-			b8Id9rVIwgTW2spgYNvs.Message = string.Format("同步完成：{0} / {1} 个表格。", b8Id9rVIwgTW2spgYNvs.Synced, b8Id9rVIwgTW2spgYNvs.Bound);
+			syncResult.Success = true;
+			syncResult.Synced = list3.Count;
+			syncResult.Bound = list3.Count;
+			syncResult.Total = num;
+			syncResult.Message = string.Format("同步完成：{0} / {1} 个表格。", syncResult.Synced, syncResult.Bound);
 			int num3 = list2.Count((SyncPlanContext item) => !string.IsNullOrWhiteSpace(item.SortSkippedReason));
 			if (num3 > 0)
 			{
-				b8Id9rVIwgTW2spgYNvs.Message = string.Format("{0} 已有 {1} 个表跳过排序。", b8Id9rVIwgTW2spgYNvs.Message, num3);
+				syncResult.Message = string.Format("{0} 已有 {1} 个表跳过排序。", syncResult.Message, num3);
 			}
-			DeleteTempFile(esxm3HVQTF7Pqmux4Tv.BackupPath);
-			return b8Id9rVIwgTW2spgYNvs;
+			DeleteTempFile(reopenResult.BackupPath);
+			return syncResult;
 		}
 		catch (Exception ex)
 		{
@@ -12497,7 +12497,7 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static List<TableBindingPair> DKkjqxGPT4(Document P_0, ProgressCallback P_1, out bool P_2)
+	private static List<TableBindingPair> ScanTableBindings(Document P_0, ProgressCallback P_1, out bool P_2)
 	{
 		P_2 = false;
 		List<TableBindingPair> list = new List<TableBindingPair>();
@@ -12566,50 +12566,50 @@ internal static class TableComWriteService
 		return false;
 	}
 
-	private static List<SyncPlanContext> D04jvtW1Ge(IList<TableBindingPair> P_0, TableStructureSnapshot P_1, ProgressCallback P_2, int P_3, SyncOptions P_4, out string P_5, out bool P_6)
+	private static List<SyncPlanContext> Read1(IList<TableBindingPair> P_0, TableStructureSnapshot P_1, ProgressCallback P_2, int P_3, SyncOptions P_4, out string P_5, out bool P_6)
 	{
 		P_5 = null;
 		P_6 = false;
 		List<SyncPlanContext> list = new List<SyncPlanContext>();
 		for (int i = 0; i < P_0.Count; i++)
 		{
-			TableBindingPair qINTSlVHUxnmaU5SDrE = P_0[i];
-			if (P_2 != null && !P_2(i + 1, P_3, string.Format("正在准备第 {0} 表的 XML 同步计划...", qINTSlVHUxnmaU5SDrE.TableIndex)))
+			TableBindingPair bindingPair = P_0[i];
+			if (P_2 != null && !P_2(i + 1, P_3, string.Format("正在准备第 {0} 表的 XML 同步计划...", bindingPair.TableIndex)))
 			{
 				P_6 = true;
 				return list;
 			}
-			if (!P_1.StructuresByTableIndex.TryGetValue(qINTSlVHUxnmaU5SDrE.TableIndex, out var value))
+			if (!P_1.StructuresByTableIndex.TryGetValue(bindingPair.TableIndex, out var value))
 			{
-				P_5 = string.Format("无法读取第 {0} 表的 Word XML 结构。", qINTSlVHUxnmaU5SDrE.TableIndex);
+				P_5 = string.Format("无法读取第 {0} 表的 Word XML 结构。", bindingPair.TableIndex);
 				return list;
 			}
 			string[,] array = null;
-			ExcelTableStructure aiS98lViTM5QHeakGIJC = null;
+			ExcelTableStructure excelStructure = null;
 			int num = 0;
 			int num2 = 0;
 			string text = null;
-			if (!ReadExcelDataFromBindingWrapper(qINTSlVHUxnmaU5SDrE.Binding, out array, out aiS98lViTM5QHeakGIJC, out num, out num2, out text) || array == null || aiS98lViTM5QHeakGIJC == null)
+			if (!ReadExcelDataFromBindingWrapper(bindingPair.Binding, out array, out excelStructure, out num, out num2, out text) || array == null || excelStructure == null)
 			{
-				P_5 = string.Format("第 {0} 表读取 Excel 名称区域失败：", qINTSlVHUxnmaU5SDrE.TableIndex) + (string.IsNullOrWhiteSpace(text) ? "未找到有效数据源。" : text);
+				P_5 = string.Format("第 {0} 表读取 Excel 名称区域失败：", bindingPair.TableIndex) + (string.IsNullOrWhiteSpace(text) ? "未找到有效数据源。" : text);
 				return list;
 			}
-			GetExcelDataStartRow(qINTSlVHUxnmaU5SDrE.Binding, value.HeaderRowCount);
-			ApplyStructureChangesToBinding(qINTSlVHUxnmaU5SDrE.Binding, value, aiS98lViTM5QHeakGIJC);
-			if (!SyncExcelDataToBinding(qINTSlVHUxnmaU5SDrE.Binding, ref array, ref aiS98lViTM5QHeakGIJC, ref num2, out var text2))
+			GetExcelDataStartRow(bindingPair.Binding, value.HeaderRowCount);
+			ApplyStructureChangesToBinding(bindingPair.Binding, value, excelStructure);
+			if (!SyncExcelDataToBinding(bindingPair.Binding, ref array, ref excelStructure, ref num2, out var text2))
 			{
-				P_5 = string.Format("第 {0} 表列映射无效：", qINTSlVHUxnmaU5SDrE.TableIndex) + text2;
+				P_5 = string.Format("第 {0} 表列映射无效：", bindingPair.TableIndex) + text2;
 				return list;
 			}
-			array = vtZ4IIjqRi(qINTSlVHUxnmaU5SDrE.Binding, aiS98lViTM5QHeakGIJC, array, out var sortSkippedReason);
-			ApplyBindingToStructure(qINTSlVHUxnmaU5SDrE.Binding, aiS98lViTM5QHeakGIJC);
-			WritePlan plan = BuildWritePlan(value, aiS98lViTM5QHeakGIJC, num, num2, true);
+			array = SortTableData(bindingPair.Binding, excelStructure, array, out var sortSkippedReason);
+			ApplyBindingToStructure(bindingPair.Binding, excelStructure);
+			WritePlan plan = BuildWritePlan(value, excelStructure, num, num2, true);
 			list.Add(new SyncPlanContext
 			{
-				TableIndex = qINTSlVHUxnmaU5SDrE.TableIndex,
-				Binding = qINTSlVHUxnmaU5SDrE.Binding,
+				TableIndex = bindingPair.TableIndex,
+				Binding = bindingPair.Binding,
 				WordStructure = value,
-				ExcelStructure = aiS98lViTM5QHeakGIJC,
+				ExcelStructure = excelStructure,
 				Values = array,
 				Plan = plan,
 				SortSkippedReason = sortSkippedReason
@@ -12654,7 +12654,7 @@ internal static class TableComWriteService
 		}
 		XElement xElement = new XElement(P_0.TableElement);
 		List<XElement> list = xElement.Elements(WordNamespace + "tr").ToList();
-		Dictionary<string, int> dictionary = JkDjxlt7Ur(P_0);
+		Dictionary<string, int> dictionary = BuildCellIndexMap(P_0);
 		int num = ((P_1.HeaderRowCount > 0) ? P_1.HeaderRowCount : P_0.HeaderRowCount);
 		bool flag = P_3?.SyncHeaders ?? true;
 		foreach (ExcelCellData item in from cell in P_1.Cells
@@ -12678,7 +12678,7 @@ internal static class TableComWriteService
 		return xElement;
 	}
 
-	private static Dictionary<string, int> JkDjxlt7Ur(ExcelTableStructure P_0)
+	private static Dictionary<string, int> BuildCellIndexMap(ExcelTableStructure P_0)
 	{
 		Dictionary<string, int> dictionary = new Dictionary<string, int>(StringComparer.Ordinal);
 		foreach (IGrouping<int, ExcelCellData> item in from cell in P_0.Cells
@@ -12707,7 +12707,7 @@ internal static class TableComWriteService
 			{
 				return;
 			}
-			Dictionary<int, bool> dictionary = DBkYBh7o0C(list);
+			Dictionary<int, bool> dictionary = BuildHeaderColumnMap(list);
 			bool flag = GetConfigBoolValue("表格_合计小计处理_下划线包含文字", GetConfigBoolValue("表格_合计处理_下划线包含合计", false));
 			bool flag2 = GetConfigBoolValue("表格_合计小计处理_加粗包含文字", GetConfigBoolValue("表格_合计处理_加粗包含合计", false));
 			foreach (IGrouping<int, MergedCellInfo> item in from cell in list
@@ -12787,7 +12787,7 @@ internal static class TableComWriteService
 		return result;
 	}
 
-	private static Dictionary<int, bool> DBkYBh7o0C(IEnumerable<MergedCellInfo> P_0)
+	private static Dictionary<int, bool> BuildHeaderColumnMap(IEnumerable<MergedCellInfo> P_0)
 	{
 		Dictionary<int, bool> dictionary = new Dictionary<int, bool>();
 		foreach (MergedCellInfo item in P_0.Where((MergedCellInfo cell) => cell.RowIndex == 1))
@@ -13078,7 +13078,7 @@ internal static class TableComWriteService
 		{
 			return;
 		}
-		CellXmlProperties kbehgPVidmo9omiYhmha = ParseCellXmlProperties(P_0);
+		CellXmlProperties cellProps = ParseCellXmlProperties(P_0);
 		XElement xElement = GetTableCellPropertiesElement(P_0);
 		XElement xElement2 = xElement?.Ancestors(WordNamespace + "p").FirstOrDefault() ?? P_0.Elements(WordNamespace + "p").FirstOrDefault();
 		foreach (XElement item in (from element in P_0.Descendants()
@@ -13097,22 +13097,22 @@ internal static class TableComWriteService
 			xElement = new XElement(WordNamespace + ": ");
 			xElement2.Add(xElement);
 		}
-		ApplyCellProperties(xElement, kbehgPVidmo9omiYhmha);
+		ApplyCellProperties(xElement, cellProps);
 		ApplyBordersToCell(xElement, P_1 ?? string.Empty);
 	}
 
 	private static DocumentReopenResult ReopenDocumentWithRebuiltTables(Document P_0, string P_1, IList<XmlRebuildResult> P_2, ProgressCallback P_3, int P_4, int P_5)
 	{
-		DocumentReopenResult esxm3HVQTF7Pqmux4Tv = new DocumentReopenResult();
-		string text = (esxm3HVQTF7Pqmux4Tv.BackupPath = EscapeXmlName(P_1));
+		DocumentReopenResult reopenResult = new DocumentReopenResult();
+		string text = (reopenResult.BackupPath = EscapeXmlName(P_1));
 		Document document = null;
 		try
 		{
 			if (!TryReopenDocument(P_3, P_4 + 1, P_5, out document, out var error))
 			{
-				esxm3HVQTF7Pqmux4Tv.Success = false;
-				esxm3HVQTF7Pqmux4Tv.Error = error;
-				return esxm3HVQTF7Pqmux4Tv;
+				reopenResult.Success = false;
+				reopenResult.Error = error;
+				return reopenResult;
 			}
 			P_3?.Invoke(P_4 + 1, P_5, "正在保存并关闭 Word/WPS 文档...");
 			CloseDocument(P_0);
@@ -13120,17 +13120,17 @@ internal static class TableComWriteService
 			if (!ValidateAndRebuildTables(P_1, P_2, out var text3))
 			{
 				WriteStringToFile(text, P_1);
-				esxm3HVQTF7Pqmux4Tv.Success = false;
-				esxm3HVQTF7Pqmux4Tv.Error = "同步全部表失败，已恢复原 Word 文档。" + (string.IsNullOrWhiteSpace(text3) ? string.Empty : ("\n" + text3));
-				esxm3HVQTF7Pqmux4Tv.ReopenedDocument = OpenDocument(P_1);
-				CopyDocumentContent(document, esxm3HVQTF7Pqmux4Tv.ReopenedDocument);
-				return esxm3HVQTF7Pqmux4Tv;
+				reopenResult.Success = false;
+				reopenResult.Error = "同步全部表失败，已恢复原 Word 文档。" + (string.IsNullOrWhiteSpace(text3) ? string.Empty : ("\n" + text3));
+				reopenResult.ReopenedDocument = OpenDocument(P_1);
+				CopyDocumentContent(document, reopenResult.ReopenedDocument);
+				return reopenResult;
 			}
 			P_3?.Invoke(P_4 + 3, P_5, "正在重新打开 Word 文档...");
-			esxm3HVQTF7Pqmux4Tv.ReopenedDocument = OpenDocument(P_1);
-			CopyDocumentContent(document, esxm3HVQTF7Pqmux4Tv.ReopenedDocument);
-			esxm3HVQTF7Pqmux4Tv.Success = true;
-			return esxm3HVQTF7Pqmux4Tv;
+			reopenResult.ReopenedDocument = OpenDocument(P_1);
+			CopyDocumentContent(document, reopenResult.ReopenedDocument);
+			reopenResult.Success = true;
+			return reopenResult;
 		}
 		catch (Exception ex)
 		{
@@ -13138,17 +13138,17 @@ internal static class TableComWriteService
 			WriteStringToFile(text, P_1);
 			try
 			{
-				esxm3HVQTF7Pqmux4Tv.ReopenedDocument = OpenDocument(P_1);
+				reopenResult.ReopenedDocument = OpenDocument(P_1);
 			}
 			catch (Exception ex2)
 			{
 				AiConfigBootstrap.LogError("恢复后重新打开 Word 文档失败", ex2);
 			}
-			esxm3HVQTF7Pqmux4Tv.Success = false;
-			CopyDocumentContent(document, esxm3HVQTF7Pqmux4Tv.ReopenedDocument);
-			string text4 = ((document != null && esxm3HVQTF7Pqmux4Tv.ReopenedDocument == null) ? "\\nWPS 临时保活文档已保留，请手动重新打开原文档检查。" : string.Empty);
-			esxm3HVQTF7Pqmux4Tv.Error = "同步全部表失败，已尝试恢复原 Word 文档。\\n" + ex.Message + text4;
-			return esxm3HVQTF7Pqmux4Tv;
+			reopenResult.Success = false;
+			CopyDocumentContent(document, reopenResult.ReopenedDocument);
+			string text4 = ((document != null && reopenResult.ReopenedDocument == null) ? "\\nWPS 临时保活文档已保留，请手动重新打开原文档检查。" : string.Empty);
+			reopenResult.Error = "同步全部表失败，已尝试恢复原 Word 文档。\\n" + ex.Message + text4;
+			return reopenResult;
 		}
 	}
 
@@ -13256,8 +13256,8 @@ internal static class TableComWriteService
 				HashSet<string> hashSet = new HashSet<string>(from update in P_1
 					where update.Binding != null && !string.IsNullOrWhiteSpace(update.Binding.Id)
 					select update.Binding.Id, StringComparer.OrdinalIgnoreCase);
-				HashSet<int> hashSet2 = new HashSet<int>(P_1.Select((XmlRebuildResult update) => update.TableIndex));
-				List<TableBinding> list2 = NeNYbSMjrx(xDocument2, xDocument, hashSet2, hashSet);
+				HashSet<int> hashSet = new HashSet<int>(P_1.Select((XmlRebuildResult update) => update.TableIndex));
+				List<TableBinding> list2 = NeNYbSMjrx(xDocument2, xDocument, hashSet, hashSet);
 				foreach (XmlRebuildResult item2 in P_1)
 				{
 					if (item2.Binding != null)
@@ -13326,10 +13326,10 @@ internal static class TableComWriteService
 		}
 		try
 		{
-			TableBindingContext hQTWWrVT0PVIWsF0tJ8N = new TableBindingContext();
-			hQTWWrVT0PVIWsF0tJ8N.Bindings.AddRange(ParseBindingsFromXml(P_0));
-			LoadTablesFromDocumentXml(P_1, hQTWWrVT0PVIWsF0tJ8N);
-			foreach (TableBinding binding in hQTWWrVT0PVIWsF0tJ8N.Bindings)
+			TableBindingContext bindingContext = new TableBindingContext();
+			bindingContext.Bindings.AddRange(ParseBindingsFromXml(P_0));
+			LoadTablesFromDocumentXml(P_1, bindingContext);
+			foreach (TableBinding binding in bindingContext.Bindings)
 			{
 				if (binding == null || string.IsNullOrWhiteSpace(binding.Id))
 				{
@@ -13341,7 +13341,7 @@ internal static class TableComWriteService
 					continue;
 				}
 				bool flag;
-				WordTableInfo xJSRGPVgVcylOerTScS = FindTableByBookmark(hQTWWrVT0PVIWsF0tJ8N, GetBookmarkIdFromBinding(binding), out flag);
+				WordTableInfo xJSRGPVgVcylOerTScS = FindTableByBookmark(bindingContext, GetBookmarkIdFromBinding(binding), out flag);
 				if (xJSRGPVgVcylOerTScS != null && P_2.Contains(xJSRGPVgVcylOerTScS.Index))
 				{
 					list.Add(binding);
@@ -13410,7 +13410,7 @@ internal static class TableComWriteService
 		{
 			return;
 		}
-		CS_8_locals_5.fajVJqrNih6 = new HashSet<string>(from element in list
+		CS_8_locals_5.cellIds = new HashSet<string>(from element in list
 			select GetAttributeValue(element, "无法定位 Word 单元格 R{0}C{1}") into id
 			where !string.IsNullOrWhiteSpace(id)
 			select id, StringComparer.OrdinalIgnoreCase);
@@ -13419,7 +13419,7 @@ internal static class TableComWriteService
 			item.Remove();
 		}
 		foreach (XElement item2 in (from element in P_0.Descendants(WordNamespace + "无法定位 Word 合并终点 R{0}C{1}")
-			where CS_8_locals_5.fajVJqrNih6.Contains(GetAttributeValue(element, "合并 Word 单元格 R{0}C{1}:R{2}C{3} 失败：{4}"))
+			where CS_8_locals_5.cellIds.Contains(GetAttributeValue(element, "合并 Word 单元格 R{0}C{1}:R{2}C{3} 失败：{4}"))
 			select element).ToList())
 		{
 			item2.Remove();
@@ -13588,13 +13588,13 @@ internal static class TableComWriteService
 		{
 			TableXmlProperties eyp1xWViqgWeojjBvqRB2 = BuildTableXmlProperties(P_2);
 			XElement xElement = BuildTableXmlCore(P_3, P_5, eyp1xWViqgWeojjBvqRB2);
-			TableRebuildResult r44pEdVHBgshIbvxDB9Z = RebuildTableFromXml(P_0, P_1, xElement, P_4);
-			P_6 = r44pEdVHBgshIbvxDB9Z.Table;
-			if (!r44pEdVHBgshIbvxDB9Z.Success)
+			TableRebuildResult rebuildResult = RebuildTableFromXml(P_0, P_1, xElement, P_4);
+			P_6 = rebuildResult.Table;
+			if (!rebuildResult.Success)
 			{
-				AiConfigBootstrap.LogWarn("[ExcelSync] Rebuild Word table from Excel structure with XML failed: " + (r44pEdVHBgshIbvxDB9Z.Error ?? string.Empty));
+				AiConfigBootstrap.LogWarn("[ExcelSync] Rebuild Word table from Excel structure with XML failed: " + (rebuildResult.Error ?? string.Empty));
 			}
-			return r44pEdVHBgshIbvxDB9Z.Success && P_6 != null;
+			return rebuildResult.Success && P_6 != null;
 		}
 		catch (Exception ex)
 		{
@@ -13651,13 +13651,13 @@ internal static class TableComWriteService
 		{
 			foreach (ExcelCellData cell in P_0.Cells)
 			{
-				CellXmlProperties kbehgPVidmo9omiYhmha = ParseCellXmlProperties(cell.Element);
-				if (kbehgPVidmo9omiYhmha != null)
+				CellXmlProperties cellProps = ParseCellXmlProperties(cell.Element);
+				if (cellProps != null)
 				{
-					eyp1xWViqgWeojjBvqRB2.Cells[BuildCellKey(cell.RowIndex, cell.ColumnIndex)] = kbehgPVidmo9omiYhmha;
+					eyp1xWViqgWeojjBvqRB2.Cells[BuildCellKey(cell.RowIndex, cell.ColumnIndex)] = cellProps;
 					if (eyp1xWViqgWeojjBvqRB2.DefaultCell == null)
 					{
-						eyp1xWViqgWeojjBvqRB2.DefaultCell = kbehgPVidmo9omiYhmha;
+						eyp1xWViqgWeojjBvqRB2.DefaultCell = cellProps;
 					}
 				}
 			}
@@ -13720,7 +13720,7 @@ internal static class TableComWriteService
 		XElement xElement = new XElement(WordNamespace + "tbl", new XAttribute(XNamespace.Xmlns + "w", WordNamespace.NamespaceName));
 		xElement.Add(CreateTableElement(P_2));
 		xElement.Add(CreateTableGridElement(P_0.ColumnCount, P_2));
-		List<ComplexCellPlan> source = oCUYy6YNGV(P_0, P_1);
+		List<ComplexCellPlan> source = BuildComplexCellPlans(P_0, P_1);
 		using IEnumerator<int> enumerator = (from row in source.Select((ComplexCellPlan cell) => cell.RowIndex).Distinct()
 			orderby row
 			select row).GetEnumerator();
@@ -13749,7 +13749,7 @@ internal static class TableComWriteService
 		return xElement;
 	}
 
-	private static List<ComplexCellPlan> oCUYy6YNGV(ExcelTableStructure P_0, string[,] P_1)
+	private static List<ComplexCellPlan> BuildComplexCellPlans(ExcelTableStructure P_0, string[,] P_1)
 	{
 		List<ComplexCellPlan> list = new List<ComplexCellPlan>();
 		Dictionary<string, ComplexCellPlan> dictionary = new Dictionary<string, ComplexCellPlan>(StringComparer.Ordinal);
@@ -13761,10 +13761,10 @@ internal static class TableComWriteService
 			{
 				num++;
 				ExcelCellData oy5QGFVitTDJtPXLAlDX2;
-				if (P_0.TryGetCell(i, j, out var oy5QGFVitTDJtPXLAlDX))
+				if (P_0.TryGetCell(i, j, out var cellData))
 				{
 					num2++;
-					ComplexCellPlan gXgiPqVQUtaVmMjU90MQ = new ComplexCellPlan
+					ComplexCellPlan cellPlan = new ComplexCellPlan
 					{
 						Sequence = num,
 						RowIndex = i,
@@ -13772,16 +13772,16 @@ internal static class TableComWriteService
 						WordColumnIndex = num2,
 						MergeStartRowIndex = i,
 						MergeStartWordColumnIndex = num2,
-						RowSpan = Math.Max(1, oy5QGFVitTDJtPXLAlDX.RowSpan),
-						ColumnSpan = Math.Max(1, oy5QGFVitTDJtPXLAlDX.ColumnSpan),
+						RowSpan = Math.Max(1, cellData.RowSpan),
+						ColumnSpan = Math.Max(1, cellData.ColumnSpan),
 						Text = GetCellValueFromGrid(P_1, i, j),
-						IsMergeStart = (oy5QGFVitTDJtPXLAlDX.RowSpan > 1 || oy5QGFVitTDJtPXLAlDX.ColumnSpan > 1),
+						IsMergeStart = (cellData.RowSpan > 1 || cellData.ColumnSpan > 1),
 						XmlShowCell = true
 					};
-					list.Add(gXgiPqVQUtaVmMjU90MQ);
-					if (gXgiPqVQUtaVmMjU90MQ.IsMergeStart)
+					list.Add(cellPlan);
+					if (cellPlan.IsMergeStart)
 					{
-						dictionary[BuildCellKey(i, j)] = gXgiPqVQUtaVmMjU90MQ;
+						dictionary[BuildCellKey(i, j)] = cellPlan;
 					}
 				}
 				else if (P_0.TryGetMergedCell(i, j, out oy5QGFVitTDJtPXLAlDX2))
@@ -13831,11 +13831,11 @@ internal static class TableComWriteService
 
 	private static TableRebuildResult RebuildTableFromXml(Document P_0, Table P_1, XElement P_2, TableBinding P_3)
 	{
-		TableRebuildResult r44pEdVHBgshIbvxDB9Z = new TableRebuildResult();
+		TableRebuildResult rebuildResult = new TableRebuildResult();
 		if (P_0 == null || P_1 == null || P_2 == null || P_3 == null)
 		{
-			r44pEdVHBgshIbvxDB9Z.Error = "替换参数不完整";
-			return r44pEdVHBgshIbvxDB9Z;
+			rebuildResult.Error = "替换参数不完整";
+			return rebuildResult;
 		}
 		string text = string.Empty;
 		bool flag = false;
@@ -13845,14 +13845,14 @@ internal static class TableComWriteService
 			int num2 = GetTableBodyRowCount(P_2);
 			if (num <= 0)
 			{
-				r44pEdVHBgshIbvxDB9Z.Error = "无法确定绑定表在当前文档中的序号";
-				return r44pEdVHBgshIbvxDB9Z;
+				rebuildResult.Error = "无法确定绑定表在当前文档中的序号";
+				return rebuildResult;
 			}
 			text = Convert.ToString(P_0.FullName);
 			if (string.IsNullOrWhiteSpace(text) || string.IsNullOrWhiteSpace(Convert.ToString(P_0.Path)))
 			{
-				r44pEdVHBgshIbvxDB9Z.Error = "当前 Word 文档尚未保存，复杂表结构重建需要先保存文档。";
-				return r44pEdVHBgshIbvxDB9Z;
+				rebuildResult.Error = "当前 Word 文档尚未保存，复杂表结构重建需要先保存文档。";
+				return rebuildResult;
 			}
 			P_0.Save();
 			CloseDocument(P_0);
@@ -13860,8 +13860,8 @@ internal static class TableComWriteService
 			if (!TryValidateTableCell(text, num, P_2, num2, out var error))
 			{
 				OpenDocument(text);
-				r44pEdVHBgshIbvxDB9Z.Error = error;
-				return r44pEdVHBgshIbvxDB9Z;
+				rebuildResult.Error = error;
+				return rebuildResult;
 			}
 			Document document = OpenDocument(text);
 			Table table = null;
@@ -13871,19 +13871,19 @@ internal static class TableComWriteService
 			}
 			if (table == null)
 			{
-				r44pEdVHBgshIbvxDB9Z.Error = "包级替换后未找到新表格";
-				return r44pEdVHBgshIbvxDB9Z;
+				rebuildResult.Error = "包级替换后未找到新表格";
+				return rebuildResult;
 			}
 			RemoveTableBookmark(document, table, P_3);
 			document.Save();
-			r44pEdVHBgshIbvxDB9Z.Success = true;
-			r44pEdVHBgshIbvxDB9Z.Table = table;
-			return r44pEdVHBgshIbvxDB9Z;
+			rebuildResult.Success = true;
+			rebuildResult.Table = table;
+			return rebuildResult;
 		}
 		catch (Exception ex)
 		{
 			AiConfigBootstrap.LogError("[ExcelSync] Replace Word table with XML failed", ex);
-			r44pEdVHBgshIbvxDB9Z.Error = ex.Message;
+			rebuildResult.Error = ex.Message;
 			if (flag && !string.IsNullOrWhiteSpace(text))
 			{
 				try
@@ -13894,7 +13894,7 @@ internal static class TableComWriteService
 				{
 				}
 			}
-			return r44pEdVHBgshIbvxDB9Z;
+			return rebuildResult;
 		}
 	}
 
@@ -14126,17 +14126,17 @@ internal static class TableComWriteService
 
 	private static XElement CreateComplexCellElement(ComplexCellPlan P_0, int P_1, TableXmlProperties P_2)
 	{
-		CellXmlProperties kbehgPVidmo9omiYhmha = GetDefaultCellFormat(P_2, P_0.RowIndex, P_0.ColumnIndex);
-		XElement xElement = CreateComplexCellWithProperties(kbehgPVidmo9omiYhmha, P_2, P_0, P_1);
-		XElement xElement2 = CreateCellWithText(kbehgPVidmo9omiYhmha, P_0.Text);
+		CellXmlProperties cellProps = GetDefaultCellFormat(P_2, P_0.RowIndex, P_0.ColumnIndex);
+		XElement xElement = CreateComplexCellWithProperties(cellProps, P_2, P_0, P_1);
+		XElement xElement2 = CreateCellWithText(cellProps, P_0.Text);
 		return new XElement(WordNamespace + "tc", xElement, xElement2);
 	}
 
 	private static XElement CreateCellElement(ExcelCellData P_0, string P_1, TableXmlProperties P_2, bool P_3, bool P_4)
 	{
-		CellXmlProperties kbehgPVidmo9omiYhmha = GetDefaultCellFormat(P_2, P_0.RowIndex, P_0.ColumnIndex);
-		XElement xElement = CreateCellWithProperties(kbehgPVidmo9omiYhmha, P_2, P_0, P_3, P_4);
-		XElement xElement2 = CreateCellWithText(kbehgPVidmo9omiYhmha, P_1);
+		CellXmlProperties cellProps = GetDefaultCellFormat(P_2, P_0.RowIndex, P_0.ColumnIndex);
+		XElement xElement = CreateCellWithProperties(cellProps, P_2, P_0, P_3, P_4);
+		XElement xElement2 = CreateCellWithText(cellProps, P_1);
 		return new XElement(WordNamespace + "tc", xElement, xElement2);
 	}
 
@@ -14281,7 +14281,7 @@ internal static class TableComWriteService
 
 	private static string GetDefaultBorderXml()
 	{
-		double num = AiHelper_20.NgZw6CkHuw(BuildBorderElement("表格_段落格式_字号", "9"), 9.0);
+		double num = AiHelper_20.GetConfigFontSize(BuildBorderElement("表格_段落格式_字号", "9"), 9.0);
 		return Math.Max(1, (int)Math.Round(num * 2.0, MidpointRounding.AwayFromZero)).ToString(CultureInfo.InvariantCulture);
 	}
 
@@ -14438,9 +14438,9 @@ internal static class TableComWriteService
 		_G_c__DisplayClass420_0 CS_8_locals_2 = new _G_c__DisplayClass420_0();
 		if (P_0 != null && localNames != null && localNames.Length != 0)
 		{
-			CS_8_locals_2.dB6VJk3CwNq = new HashSet<string>(localNames, StringComparer.Ordinal);
+			CS_8_locals_2.elementNames = new HashSet<string>(localNames, StringComparer.Ordinal);
 			(from element in P_0.Elements()
-				where CS_8_locals_2.dB6VJk3CwNq.Contains(element.Name.LocalName)
+				where CS_8_locals_2.elementNames.Contains(element.Name.LocalName)
 				select element).Remove();
 		}
 	}
@@ -14657,7 +14657,7 @@ internal static class TableComWriteService
 		P_1 = Math.Max(1, P_1);
 		P_2 = Math.Max(0, P_2);
 		int num = GetEffectiveColumnCount(P_3, P_2);
-		if (WKcZPl2wAw(P_0, out var num2) && ValidateAndWriteRow(P_0, num2, P_1, P_2, P_3, num))
+		if (TryGetTableRowCount(P_0, out var num2) && ValidateAndWriteRow(P_0, num2, P_1, P_2, P_3, num))
 		{
 			return true;
 		}
@@ -15042,35 +15042,35 @@ internal static class TableComWriteService
 			object selection = App.Selection;
 			try
 			{
-				if (_G_o__445.kRrV3tgr2JK == null)
+				if (_G_o__445.deleteCallSite_Tc6 == null)
 				{
-					_G_o__445.kRrV3tgr2JK = CallSite<Action<CallSite, object, WdDeleteCells>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+					_G_o__445.deleteCallSite_Tc6 = CallSite<Action<CallSite, object, WdDeleteCells>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 					{
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant, null)
 					}));
 				}
-				Action<CallSite, object, WdDeleteCells> target = _G_o__445.kRrV3tgr2JK.Target;
-				CallSite<Action<CallSite, object, WdDeleteCells>> kRrV3tgr2JK = _G_o__445.kRrV3tgr2JK;
-				if (_G_o__445.qL8V3wdqRV5 == null)
+				Action<CallSite, object, WdDeleteCells> target = _G_o__445.deleteCallSite_Tc6.Target;
+				CallSite<Action<CallSite, object, WdDeleteCells>> deleteCallSite_Tc6 = _G_o__445.deleteCallSite_Tc6;
+				if (_G_o__445.toObjectCallSite_Tc22 == null)
 				{
-					_G_o__445.qL8V3wdqRV5 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Cells", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__445.toObjectCallSite_Tc22 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Cells", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				target(kRrV3tgr2JK, _G_o__445.qL8V3wdqRV5.Target(_G_o__445.qL8V3wdqRV5, selection), WdDeleteCells.wdDeleteCellsEntireRow);
+				target(deleteCallSite_Tc6, _G_o__445.toObjectCallSite_Tc22.Target(_G_o__445.toObjectCallSite_Tc22, selection), WdDeleteCells.wdDeleteCellsEntireRow);
 			}
 			catch
 			{
-				if (_G_o__445.fMfV3sP1x3v == null)
+				if (_G_o__445.deleteCallSite_Tc4 == null)
 				{
-					_G_o__445.fMfV3sP1x3v = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__445.deleteCallSite_Tc4 = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				Action<CallSite, object> target2 = _G_o__445.fMfV3sP1x3v.Target;
-				CallSite<Action<CallSite, object>> fMfV3sP1x3v = _G_o__445.fMfV3sP1x3v;
-				if (_G_o__445.eAwV3LJR6wq == null)
+				Action<CallSite, object> target2 = _G_o__445.deleteCallSite_Tc4.Target;
+				CallSite<Action<CallSite, object>> deleteCallSite_Tc4 = _G_o__445.deleteCallSite_Tc4;
+				if (_G_o__445.toObjectCallSite_Tc20 == null)
 				{
-					_G_o__445.eAwV3LJR6wq = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Rows", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__445.toObjectCallSite_Tc20 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Rows", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				target2(fMfV3sP1x3v, _G_o__445.eAwV3LJR6wq.Target(_G_o__445.eAwV3LJR6wq, selection));
+				target2(deleteCallSite_Tc4, _G_o__445.toObjectCallSite_Tc20.Target(_G_o__445.toObjectCallSite_Tc20, selection));
 			}
 			return true;
 		}
@@ -15090,15 +15090,15 @@ internal static class TableComWriteService
 			}
 			cell.Select();
 			object selection = App.Selection;
-			if (_G_o__446.o5MV3lPDLpc == null)
+			if (_G_o__446.insertRowsBelowCallSite_Tc2 == null)
 			{
-				_G_o__446.o5MV3lPDLpc = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__446.insertRowsBelowCallSite_Tc2 = CallSite<Action<CallSite, object, int>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertRowsBelow", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant, null)
 				}));
 			}
-			_G_o__446.o5MV3lPDLpc.Target(_G_o__446.o5MV3lPDLpc, selection, 1);
+			_G_o__446.insertRowsBelowCallSite_Tc2.Target(_G_o__446.insertRowsBelowCallSite_Tc2, selection, 1);
 			return true;
 		}
 		catch
@@ -15180,7 +15180,7 @@ internal static class TableComWriteService
 			}
 			while (P_1 > P_2 && P_1 > 1)
 			{
-				if (!V9SZhHh4rI(P_0, P_1, P_3))
+				if (!TryDeleteTableColumn(P_0, P_1, P_3))
 				{
 					return false;
 				}
@@ -15208,17 +15208,17 @@ internal static class TableComWriteService
 	{
 		try
 		{
-			if (!SFiZanMx3O(P_0, P_1, P_2, out var cell))
+			if (!TryFindCellInTable(P_0, P_1, P_2, out var cell))
 			{
 				return false;
 			}
 			cell.Select();
 			object selection = App.Selection;
-			if (_G_o__450.lIVV3NMc5Cy == null)
+			if (_G_o__450.insertColumnsRightCallSite_Tc1 == null)
 			{
-				_G_o__450.lIVV3NMc5Cy = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertColumnsRight", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__450.insertColumnsRightCallSite_Tc1 = CallSite<Action<CallSite, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "InsertColumnsRight", null, typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			_G_o__450.lIVV3NMc5Cy.Target(_G_o__450.lIVV3NMc5Cy, selection);
+			_G_o__450.insertColumnsRightCallSite_Tc1.Target(_G_o__450.insertColumnsRightCallSite_Tc1, selection);
 			return true;
 		}
 		catch
@@ -15227,31 +15227,31 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static bool V9SZhHh4rI(Table P_0, int P_1, ExcelTableStructure P_2)
+	private static bool TryDeleteTableColumn(Table P_0, int P_1, ExcelTableStructure P_2)
 	{
 		try
 		{
-			if (!SFiZanMx3O(P_0, P_1, P_2, out var cell))
+			if (!TryFindCellInTable(P_0, P_1, P_2, out var cell))
 			{
 				return false;
 			}
 			cell.Select();
 			object selection = App.Selection;
-			if (_G_o__451.CDtV3oFEtL9 == null)
+			if (_G_o__451.deleteCallSite_Tc1 == null)
 			{
-				_G_o__451.CDtV3oFEtL9 = CallSite<Action<CallSite, object, WdDeleteCells>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
+				_G_o__451.deleteCallSite_Tc1 = CallSite<Action<CallSite, object, WdDeleteCells>>.Create(Binder.InvokeMember(CSharpBinderFlags.ResultDiscarded, "Delete", null, typeof(TableComWriteService), new CSharpArgumentInfo[2]
 				{
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null),
 					CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.Constant, null)
 				}));
 			}
-			Action<CallSite, object, WdDeleteCells> target = _G_o__451.CDtV3oFEtL9.Target;
-			CallSite<Action<CallSite, object, WdDeleteCells>> cDtV3oFEtL = _G_o__451.CDtV3oFEtL9;
-			if (_G_o__451.Dm8V3mFkEeS == null)
+			Action<CallSite, object, WdDeleteCells> target = _G_o__451.deleteCallSite_Tc1.Target;
+			CallSite<Action<CallSite, object, WdDeleteCells>> deleteCallSite = _G_o__451.deleteCallSite_Tc1;
+			if (_G_o__451.toObjectCallSite_Tc11 == null)
 			{
-				_G_o__451.Dm8V3mFkEeS = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Cells", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+				_G_o__451.toObjectCallSite_Tc11 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Cells", typeof(TableComWriteService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 			}
-			target(cDtV3oFEtL, _G_o__451.Dm8V3mFkEeS.Target(_G_o__451.Dm8V3mFkEeS, selection), WdDeleteCells.wdDeleteCellsEntireColumn);
+			target(deleteCallSite, _G_o__451.toObjectCallSite_Tc11.Target(_G_o__451.toObjectCallSite_Tc11, selection), WdDeleteCells.wdDeleteCellsEntireColumn);
 			return true;
 		}
 		catch
@@ -15260,7 +15260,7 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static bool SFiZanMx3O(Table P_0, int P_1, ExcelTableStructure P_2, out Cell P_3)
+	private static bool TryFindCellInTable(Table P_0, int P_1, ExcelTableStructure P_2, out Cell P_3)
 	{
 		P_3 = null;
 		if (P_1 <= 0)
@@ -15269,7 +15269,7 @@ internal static class TableComWriteService
 		}
 		if (P_2 != null)
 		{
-			foreach (ExcelCellData item in jmvZqd4mpd(P_2, P_1))
+			foreach (ExcelCellData item in GetCellsByColumn(P_2, P_1))
 			{
 				try
 				{
@@ -15284,7 +15284,7 @@ internal static class TableComWriteService
 		int num = P_2?.RowCount ?? 0;
 		if (num <= 0)
 		{
-			WKcZPl2wAw(P_0, out num);
+			TryGetTableRowCount(P_0, out num);
 		}
 		for (int i = 1; i <= num; i++)
 		{
@@ -15300,7 +15300,7 @@ internal static class TableComWriteService
 		return false;
 	}
 
-	private static IEnumerable<ExcelCellData> jmvZqd4mpd(ExcelTableStructure P_0, int P_1)
+	private static IEnumerable<ExcelCellData> GetCellsByColumn(ExcelTableStructure P_0, int P_1)
 	{
 		_G_c__DisplayClass453_0 CS_8_locals_7 = new _G_c__DisplayClass453_0();
 		CS_8_locals_7.MC7V3RVTZCT = P_1;
@@ -15342,7 +15342,7 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static bool WKcZPl2wAw(Table P_0, out int P_1)
+	private static bool TryGetTableRowCount(Table P_0, out int P_1)
 	{
 		P_1 = 0;
 		try
@@ -15356,12 +15356,12 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static bool jZNZATW17b(Table P_0, int P_1, int P_2, string P_3, out string P_4)
+	private static bool TrySetCellTextAt(Table P_0, int P_1, int P_2, string P_3, out string P_4)
 	{
 		P_4 = string.Empty;
 		try
 		{
-			return QBUZv4wTBj(P_0.Cell(P_1, P_2), P_3, out P_4);
+			return TrySetCellText(P_0.Cell(P_1, P_2), P_3, out P_4);
 		}
 		catch (Exception ex)
 		{
@@ -15370,7 +15370,7 @@ internal static class TableComWriteService
 		}
 	}
 
-	private static bool QBUZv4wTBj(Cell P_0, string P_1, out string P_2)
+	private static bool TrySetCellText(Cell P_0, string P_1, out string P_2)
 	{
 		P_2 = string.Empty;
 		try

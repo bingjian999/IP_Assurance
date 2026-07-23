@@ -14,7 +14,7 @@ internal sealed class AiSseStreamService5 : IAgentConfigProvider, IAgentAuthenti
 	public AgentConfig GetActiveConfig()
 	{
 		ProviderConfig assistant = FileDownloadHelper.Current.Ai.Assistant;
-		AgentConfig agentConfig = IntranetAiConfigService.Instance.SyM6HN9NPf(assistant.Runtime);
+		AgentConfig agentConfig = IntranetAiConfigService.Instance.GetAgentConfig(assistant.Runtime);
 		agentConfig.Summary = (assistant.Summary ?? new AiHelper_9()).uMGLMZ4rvG();
 		agentConfig.Harness = new AgentHarnessOptions
 		{
@@ -33,7 +33,7 @@ internal sealed class AiSseStreamService5 : IAgentConfigProvider, IAgentAuthenti
 
 	public bool TryRecoverFromUnauthorized(string P_0)
 	{
-		return IntranetAiConfigService.Instance.CLv6Kfj0Mw(P_0);
+		return IntranetAiConfigService.Instance.ReAuthenticate(P_0);
 	}
 
 	public AiSseStreamService5()

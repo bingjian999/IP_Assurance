@@ -24,19 +24,19 @@ internal static class AiAssistantService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool k4wVbkhEuvP(string name)
+		internal bool MatchesResourceName(string name)
 		{
 			return name.EndsWith(text, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 
-	private static readonly Dictionary<string, string> d69FfDi4LM;
+	private static readonly Dictionary<string, string> _iconPathMap;
 
-	private static readonly Lazy<string[]> SV1FMjfGfH;
+	private static readonly Lazy<string[]> _manifestResourceNames;
 
-	private static readonly Dictionary<string, string> BbmFbp3fVM;
+	private static readonly Dictionary<string, string> _officeImageIdMap;
 
-	public static void fxBFHYusB4(object P_0)
+	public static void ApplyRibbonIcons(object P_0)
 	{
 		if (P_0 == null)
 		{
@@ -48,19 +48,19 @@ internal static class AiAssistantService
 		foreach (FieldInfo fieldInfo in fields)
 		{
 			object value = fieldInfo.GetValue(P_0);
-			if (value != null && nLjFQFh4Xx(value))
+			if (value != null && HasImageProperty(value))
 			{
-				string text = IhtFrb1C8L(value, "Name");
+				string text = GetStringProperty(value, "Name");
 				if (string.IsNullOrWhiteSpace(text))
 				{
 					text = fieldInfo.Name;
 				}
-				if (yNWFJL4VZB(value, text))
+				if (TryApplyPngIcon(value, text))
 				{
 					num++;
 					continue;
 				}
-				l75F2C0ERo(value, EmCFE6WmEH(text));
+				ApplyOfficeImageIdFallback(value, GetFallbackOfficeImageId(text));
 				num2++;
 			}
 		}
@@ -70,17 +70,17 @@ internal static class AiAssistantService
 		}
 	}
 
-	private static bool nLjFQFh4Xx(object P_0)
+	private static bool HasImageProperty(object P_0)
 	{
 		Type type = P_0.GetType();
-		if (!V6QF1FBcWI(type, "Image", typeof(Image)))
+		if (!HasProperty(type, "Image", typeof(Image)))
 		{
-			return V6QF1FBcWI(type, "OfficeImageId", typeof(string));
+			return HasProperty(type, "OfficeImageId", typeof(string));
 		}
 		return true;
 	}
 
-	private static bool V6QF1FBcWI(Type P_0, string P_1, Type P_2)
+	private static bool HasProperty(Type P_0, string P_1, Type P_2)
 	{
 		PropertyInfo property = P_0.GetProperty(P_1);
 		if (property != null && property.CanWrite)
@@ -90,45 +90,45 @@ internal static class AiAssistantService
 		return false;
 	}
 
-	private static string IhtFrb1C8L(object P_0, string P_1)
+	private static string GetStringProperty(object P_0, string P_1)
 	{
 		return P_0.GetType().GetProperty(P_1)?.GetValue(P_0) as string;
 	}
 
-	private static bool yNWFJL4VZB(object P_0, string P_1)
+	private static bool TryApplyPngIcon(object P_0, string P_1)
 	{
-		Image image = YJEF3B0exu(P_1);
+		Image image = LoadIconImage(P_1);
 		if (image == null)
 		{
 			return false;
 		}
-		wccFYaly0r(P_0);
-		jfUFjaIgoI(P_0, image);
-		DACFZXVOvc(P_0, true);
+		ClearOfficeImageId(P_0);
+		SetImageProperty(P_0, image);
+		SetShowImage(P_0, true);
 		return true;
 	}
 
-	private static Image YJEF3B0exu(string P_0)
+	private static Image LoadIconImage(string P_0)
 	{
-		if (!d69FfDi4LM.TryGetValue(P_0, out var value) || string.IsNullOrWhiteSpace(value))
+		if (!_iconPathMap.TryGetValue(P_0, out var value) || string.IsNullOrWhiteSpace(value))
 		{
 			return null;
 		}
-		Image image = mvFFUAPkpP(value);
+		Image image = LoadIconFromResource(value);
 		if (image != null)
 		{
 			return image;
 		}
-		return gjbFKwdfIx(value);
+		return LoadIconFromFile(value);
 	}
 
-	private static Image mvFFUAPkpP(string P_0)
+	private static Image LoadIconFromResource(string P_0)
 	{
 		try
 		{
 			_G_c__DisplayClass10_0 CS_8_locals_2 = new _G_c__DisplayClass10_0();
 			CS_8_locals_2.text = P_0.Replace('\\', '.').Replace('/', '.');
-			string text = SV1FMjfGfH.Value.FirstOrDefault((string name) => name.EndsWith(CS_8_locals_2.text, StringComparison.OrdinalIgnoreCase));
+			string text = _manifestResourceNames.Value.FirstOrDefault((string name) => name.EndsWith(CS_8_locals_2.text, StringComparison.OrdinalIgnoreCase));
 			if (string.IsNullOrWhiteSpace(text))
 			{
 				return null;
@@ -147,7 +147,7 @@ internal static class AiAssistantService
 		}
 	}
 
-	private static Image gjbFKwdfIx(string P_0)
+	private static Image LoadIconFromFile(string P_0)
 	{
 		try
 		{
@@ -170,32 +170,32 @@ internal static class AiAssistantService
 		}
 	}
 
-	private static string EmCFE6WmEH(string P_0)
+	private static string GetFallbackOfficeImageId(string P_0)
 	{
-		if (BbmFbp3fVM.TryGetValue(P_0, out var value) && !string.IsNullOrWhiteSpace(value))
+		if (_officeImageIdMap.TryGetValue(P_0, out var value) && !string.IsNullOrWhiteSpace(value))
 		{
 			return value;
 		}
 		return "FileSaveAs";
 	}
 
-	private static void l75F2C0ERo(object P_0, string P_1)
+	private static void ApplyOfficeImageIdFallback(object P_0, string P_1)
 	{
-		MXUF43ki3E(P_0);
+		ClearImage(P_0);
 		PropertyInfo property = P_0.GetType().GetProperty("OfficeImageId");
 		if (property != null && property.CanWrite && property.PropertyType == typeof(string))
 		{
 			property.SetValue(P_0, P_1, null);
 		}
-		DACFZXVOvc(P_0, true);
+		SetShowImage(P_0, true);
 	}
 
-	private static void MXUF43ki3E(object P_0)
+	private static void ClearImage(object P_0)
 	{
-		jfUFjaIgoI(P_0, null);
+		SetImageProperty(P_0, null);
 	}
 
-	private static void jfUFjaIgoI(object P_0, Image P_1)
+	private static void SetImageProperty(object P_0, Image P_1)
 	{
 		PropertyInfo property = P_0.GetType().GetProperty("Image");
 		if (property != null && property.CanWrite && typeof(Image).IsAssignableFrom(property.PropertyType))
@@ -204,7 +204,7 @@ internal static class AiAssistantService
 		}
 	}
 
-	private static void wccFYaly0r(object P_0)
+	private static void ClearOfficeImageId(object P_0)
 	{
 		PropertyInfo property = P_0.GetType().GetProperty("OfficeImageId");
 		if (property != null && property.CanWrite && property.PropertyType == typeof(string))
@@ -213,7 +213,7 @@ internal static class AiAssistantService
 		}
 	}
 
-	private static void DACFZXVOvc(object P_0, bool P_1)
+	private static void SetShowImage(object P_0, bool P_1)
 	{
 		PropertyInfo property = P_0.GetType().GetProperty("ShowImage");
 		if (property != null && property.CanWrite && property.PropertyType == typeof(bool))
@@ -225,7 +225,7 @@ internal static class AiAssistantService
 	static AiAssistantService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		d69FfDi4LM = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+		_iconPathMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
 		{
 			{
 				"SBAI助手",
@@ -596,8 +596,8 @@ internal static class AiAssistantService
 				"Assets\\\\RibbonIcons\\\\Misc\\\\word_global_settings.png"
 			}
 		};
-		SV1FMjfGfH = new Lazy<string[]>(() => Assembly.GetExecutingAssembly().GetManifestResourceNames());
-		BbmFbp3fVM = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+		_manifestResourceNames = new Lazy<string[]>(() => Assembly.GetExecutingAssembly().GetManifestResourceNames());
+		_officeImageIdMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
 		{
 			{
 				"SBAI助手",

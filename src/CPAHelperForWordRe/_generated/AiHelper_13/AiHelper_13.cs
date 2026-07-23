@@ -25,9 +25,9 @@ internal static class AiHelper_13
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass30_0
 	{
-		public Rectangle zKmVTMLMmqG;
+		public Rectangle _parentBounds;
 
-		public long zMMVTbLXwD5;
+		public long _maxArea;
 
 		public Helper_5 helper_5;
 
@@ -36,42 +36,42 @@ internal static class AiHelper_13
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool BDrVTfvvg4V(IntPtr child, IntPtr _)
+		internal bool EvaluateChildWindow(IntPtr child, IntPtr _)
 		{
 			try
 			{
-				if (!ScreenshotCaptureHelper2.USD0wZPHF(child))
+				if (!ScreenshotCaptureHelper2.IsWindowVisible(child))
 				{
 					return true;
 				}
-				if (!ScreenshotCaptureHelper2.DcLA6kaCn(child, out var g776GxFFqI1ndqZk2gX))
+				if (!ScreenshotCaptureHelper2.GetWindowRect(child, out var windowRect))
 				{
 					return true;
 				}
-				Rectangle rectangle = Rectangle.FromLTRB(g776GxFFqI1ndqZk2gX.Left, g776GxFFqI1ndqZk2gX.Top, g776GxFFqI1ndqZk2gX.Right, g776GxFFqI1ndqZk2gX.Bottom);
-				if (rectangle.Width < zKmVTMLMmqG.Width / 3 || rectangle.Height < zKmVTMLMmqG.Height / 4)
+				Rectangle rectangle = Rectangle.FromLTRB(windowRect.Left, windowRect.Top, windowRect.Right, windowRect.Bottom);
+				if (rectangle.Width < _parentBounds.Width / 3 || rectangle.Height < _parentBounds.Height / 4)
 				{
 					return true;
 				}
-				if (rectangle.Top < zKmVTMLMmqG.Top + 80 || rectangle.Bottom > zKmVTMLMmqG.Bottom + 8)
+				if (rectangle.Top < _parentBounds.Top + 80 || rectangle.Bottom > _parentBounds.Bottom + 8)
 				{
 					return true;
 				}
-				string text = y9KUMnj5eV(child);
+				string text = GetWindowClassName(child);
 				if (!text.StartsWith("_Ww", StringComparison.OrdinalIgnoreCase))
 				{
 					return true;
 				}
-				if (!aOLUZ9Md4Z(child, out var fR3VTS5Zdu))
+				if (!TryGetWindowInfo(child, out var windowInfo))
 				{
 					return true;
 				}
 				long num = (long)rectangle.Width * (long)rectangle.Height;
 				num = ((!text.StartsWith("_WwG", StringComparison.OrdinalIgnoreCase)) ? (num * 4) : (num * 10));
-				if (num > zMMVTbLXwD5)
+				if (num > _maxArea)
 				{
-					zMMVTbLXwD5 = num;
-					helper_5 = fR3VTS5Zdu;
+					_maxArea = num;
+					helper_5 = windowInfo;
 				}
 			}
 			catch
@@ -81,110 +81,110 @@ internal static class AiHelper_13
 		}
 	}
 
-	private static readonly Timer fjWUni4xwA;
+	private static readonly Timer _refreshTimer;
 
-	private static bool fRAU7eu5Ui;
+	private static bool _eventsHooked;
 
-	private static bool FwQU5E6mY2;
+	private static bool _isActive;
 
 	private static UiHelperService3 ConfigLoader;
 
-	private static string NdIUeZlnm4;
+	private static string _lastDocumentSignature;
 
-	private static Rectangle fnoUyv1bhu;
+	private static Rectangle _lastOverlayBounds;
 
-	private static IntPtr WX1UXkkRIZ;
+	private static IntPtr _lastOwnerHwnd;
 
-	private static IntPtr VtBUFW0YVW;
+	private static IntPtr _trackedHwnd;
 
-	private static IntPtr iL8UhoLpQ1;
+	private static IntPtr _lastInnerHwnd;
 
-	private static Rectangle ULDUaIQyxK;
+	private static Rectangle _lastClientBounds;
 
 	private static Microsoft.Office.Interop.Word.Application App => WordTableToolService.WordApp;
 
-	public static bool IsActive => FwQU5E6mY2;
+	public static bool IsActive => _isActive;
 
-	public static void EnuUgD338d()
+	public static void Enable()
 	{
 		if (App != null)
 		{
-			FwQU5E6mY2 = true;
-			S4iUrDh2aV();
-			Oh4U3Zi9ay();
-			JSMUHT53aW();
-			oYhUKFtht4();
-			fjWUni4xwA.Start();
+			_isActive = true;
+			HookEvents();
+			EnsureConfigLoader();
+			RefreshTabs();
+			UpdateOverlay();
+			_refreshTimer.Start();
 			TableBorderConfig.Instance.UpdateConfig(delegate(AiHelper_12 c)
 			{
 				c.OfficeTab.Enabled = true;
 			});
-			atxUOg3h4C();
+			UpdateRibbonState();
 		}
 	}
 
-	public static void J4IU837YfN()
+	public static void Disable()
 	{
-		FwQU5E6mY2 = false;
-		fjWUni4xwA.Stop();
+		_isActive = false;
+		_refreshTimer.Stop();
 		ConfigLoader?.LoadConfig();
-		aBgUjMZb6b();
+		ClearOverlayState();
 		TableBorderConfig.Instance.UpdateConfig(delegate(AiHelper_12 c)
 		{
 			c.OfficeTab.Enabled = false;
 		});
-		atxUOg3h4C();
+		UpdateRibbonState();
 	}
 
-	public static void prXUI8btQK()
+	public static void Toggle()
 	{
 		if (IsActive)
 		{
-			J4IU837YfN();
+			Disable();
 		}
 		else
 		{
-			EnuUgD338d();
+			Enable();
 		}
 	}
 
-	public static void PSkUiNYvdJ()
+	public static void Shutdown()
 	{
-		FwQU5E6mY2 = false;
-		fjWUni4xwA.Stop();
-		iQKUJu2YEc();
-		aBgUjMZb6b();
+		_isActive = false;
+		_refreshTimer.Stop();
+		UnhookEvents();
+		ClearOverlayState();
 		if (ConfigLoader != null)
 		{
 			ConfigLoader.Close();
 		}
 		ConfigLoader = null;
-		fnoUyv1bhu = Rectangle.Empty;
-		WX1UXkkRIZ = IntPtr.Zero;
-		VtBUFW0YVW = IntPtr.Zero;
-		iL8UhoLpQ1 = IntPtr.Zero;
-		ULDUaIQyxK = Rectangle.Empty;
+		_lastOverlayBounds = Rectangle.Empty;
+		_lastOwnerHwnd = IntPtr.Zero;
+		_trackedHwnd = IntPtr.Zero;
+		_lastInnerHwnd = IntPtr.Zero;
+		_lastClientBounds = Rectangle.Empty;
 	}
 
-	public static void JSMUHT53aW()
+	public static void RefreshTabs()
 	{
 		if (ConfigLoader != null && !ConfigLoader.IsDisposed)
 		{
-			ConfigLoader.WNa744ZxJ3(wa8ULVjivm());
+			ConfigLoader.SetTabs(BuildTabList());
 		}
 	}
 
-	internal static void fgqUQKfffo(string P_0)
+	internal static void ActivateTab(string P_0)
 	{
 		try
 		{
-			Document document = fJFUsCKWg0(P_0);
+			Document document = FindDocumentByKey(P_0);
 			if (document != null)
 			{
 				document.Activate();
-				EWXUS7nnLg();
-				JSMUHT53aW();
-				oYhUKFtht4();
+				CaptureActiveWindow();
+				RefreshTabs();
+				UpdateOverlay();
 			}
 		}
 		catch (Exception ex)
@@ -193,11 +193,11 @@ internal static class AiHelper_13
 		}
 	}
 
-	internal static void hMTU1YUAHc(string P_0)
+	internal static void CloseTab(string P_0)
 	{
 		try
 		{
-			Document document = fJFUsCKWg0(P_0);
+			Document document = FindDocumentByKey(P_0);
 			if (document != null)
 			{
 				object SaveChanges = WdSaveOptions.wdPromptToSaveChanges;
@@ -214,48 +214,48 @@ internal static class AiHelper_13
 		{
 			WordTableToolService.SyncContext?.Post(delegate
 			{
-				if (FwQU5E6mY2)
+				if (_isActive)
 				{
-					JSMUHT53aW();
-					oYhUKFtht4();
+					RefreshTabs();
+					UpdateOverlay();
 				}
 			}, null);
 		}
 	}
 
-	private static void S4iUrDh2aV()
+	private static void HookEvents()
 	{
-		if (!fRAU7eu5Ui && App != null)
+		if (!_eventsHooked && App != null)
 		{
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentChange").AddEventHandler(App, new ApplicationEvents4_DocumentChangeEventHandler(NiiUoZnXPr));
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").AddEventHandler(App, new ApplicationEvents4_DocumentOpenEventHandler(jLeUG2FWg3));
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "NewDocument").AddEventHandler(App, new ApplicationEvents4_NewDocumentEventHandler(lZRUCIiDVA));
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentBeforeClose").AddEventHandler(App, new ApplicationEvents4_DocumentBeforeCloseEventHandler(y61UpFn2tI));
-			fjWUni4xwA.Tick += a3lUUeMMTx;
-			fRAU7eu5Ui = true;
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentChange").AddEventHandler(App, new ApplicationEvents4_DocumentChangeEventHandler(OnDocumentChange));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").AddEventHandler(App, new ApplicationEvents4_DocumentOpenEventHandler(OnDocumentOpen));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "NewDocument").AddEventHandler(App, new ApplicationEvents4_NewDocumentEventHandler(OnNewDocument));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentBeforeClose").AddEventHandler(App, new ApplicationEvents4_DocumentBeforeCloseEventHandler(OnDocumentBeforeClose));
+			_refreshTimer.Tick += OnTimerTick;
+			_eventsHooked = true;
 		}
 	}
 
-	private static void iQKUJu2YEc()
+	private static void UnhookEvents()
 	{
-		if (fRAU7eu5Ui && App != null)
+		if (_eventsHooked && App != null)
 		{
 			try
 			{
-				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentChange").RemoveEventHandler(App, new ApplicationEvents4_DocumentChangeEventHandler(NiiUoZnXPr));
-				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").RemoveEventHandler(App, new ApplicationEvents4_DocumentOpenEventHandler(jLeUG2FWg3));
-				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "NewDocument").RemoveEventHandler(App, new ApplicationEvents4_NewDocumentEventHandler(lZRUCIiDVA));
-				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentBeforeClose").RemoveEventHandler(App, new ApplicationEvents4_DocumentBeforeCloseEventHandler(y61UpFn2tI));
+				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentChange").RemoveEventHandler(App, new ApplicationEvents4_DocumentChangeEventHandler(OnDocumentChange));
+				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").RemoveEventHandler(App, new ApplicationEvents4_DocumentOpenEventHandler(OnDocumentOpen));
+				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "NewDocument").RemoveEventHandler(App, new ApplicationEvents4_NewDocumentEventHandler(OnNewDocument));
+				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentBeforeClose").RemoveEventHandler(App, new ApplicationEvents4_DocumentBeforeCloseEventHandler(OnDocumentBeforeClose));
 			}
 			catch
 			{
 			}
-			fjWUni4xwA.Tick -= a3lUUeMMTx;
-			fRAU7eu5Ui = false;
+			_refreshTimer.Tick -= OnTimerTick;
+			_eventsHooked = false;
 		}
 	}
 
-	private static void Oh4U3Zi9ay()
+	private static void EnsureConfigLoader()
 	{
 		if (ConfigLoader == null || ConfigLoader.IsDisposed)
 		{
@@ -267,148 +267,148 @@ internal static class AiHelper_13
 		}
 	}
 
-	private static void a3lUUeMMTx(object P_0, EventArgs P_1)
+	private static void OnTimerTick(object P_0, EventArgs P_1)
 	{
-		if (!FwQU5E6mY2 || ConfigLoader == null || ConfigLoader.IsDisposed)
+		if (!_isActive || ConfigLoader == null || ConfigLoader.IsDisposed)
 		{
 			return;
 		}
 		try
 		{
-			if (TableBorderConfig.Current.Config.OfficeTab.AutoHideOnDeactivate && !zTdUwGdqmA())
+			if (TableBorderConfig.Current.Config.OfficeTab.AutoHideOnDeactivate && !IsAppActive())
 			{
 				ConfigLoader.LoadConfig();
-				aBgUjMZb6b();
+				ClearOverlayState();
 				return;
 			}
-			string text = mrdUtgmTLg();
-			if (text != NdIUeZlnm4)
+			string text = GetDocumentSignature();
+			if (text != _lastDocumentSignature)
 			{
-				NdIUeZlnm4 = text;
-				JSMUHT53aW();
+				_lastDocumentSignature = text;
+				RefreshTabs();
 			}
-			oYhUKFtht4();
+			UpdateOverlay();
 		}
 		catch
 		{
 		}
 	}
 
-	private static bool oYhUKFtht4()
+	private static bool UpdateOverlay()
 	{
 		if (ConfigLoader == null || ConfigLoader.IsDisposed || App == null)
 		{
 			return false;
 		}
-		IntPtr intPtr = cgkUbBGhw1();
+		IntPtr intPtr = GetActiveWindowHwnd();
 		if (intPtr == IntPtr.Zero)
 		{
 			ConfigLoader.LoadConfig();
-			aBgUjMZb6b();
+			ClearOverlayState();
 			return false;
 		}
-		if (!X5JUYxFvGK(intPtr, out var n9oC7GUxmq3PwnPT976))
+		if (!FindBestChildWindow(intPtr, out var windowInfo))
 		{
 			ConfigLoader.LoadConfig();
-			aBgUjMZb6b();
+			ClearOverlayState();
 			return false;
 		}
-		int num = ConfigLoader.o1Y7jLQCiS(n9oC7GUxmq3PwnPT976.vBSKBPTg82.Width);
-		if (!S71UEc0wa2(n9oC7GUxmq3PwnPT976, num, out var rectangle))
+		int num = ConfigLoader.GetDesiredHeight(windowInfo.vBSKBPTg82.Width);
+		if (!TryComputeOverlayRect(windowInfo, num, out var rectangle))
 		{
 			ConfigLoader.LoadConfig();
-			aBgUjMZb6b();
+			ClearOverlayState();
 			return false;
 		}
 		if (rectangle.Width <= 80 || rectangle.Height <= 12)
 		{
 			ConfigLoader.LoadConfig();
-			aBgUjMZb6b();
+			ClearOverlayState();
 			return false;
 		}
-		if (WX1UXkkRIZ != intPtr)
+		if (_lastOwnerHwnd != intPtr)
 		{
 			try
 			{
-				ScreenshotCaptureHelper2.r8rV8AwJBn(ConfigLoader.Handle, -8, intPtr);
+				ScreenshotCaptureHelper2.SetWindowLongCompat(ConfigLoader.Handle, -8, intPtr);
 			}
 			catch
 			{
 			}
-			WX1UXkkRIZ = intPtr;
+			_lastOwnerHwnd = intPtr;
 		}
-		if (fnoUyv1bhu != rectangle)
+		if (_lastOverlayBounds != rectangle)
 		{
-			ScreenshotCaptureHelper2.qVGVVA8Epe(ConfigLoader.Handle, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
-			fnoUyv1bhu = rectangle;
+			ScreenshotCaptureHelper2.SetWindowPos(ConfigLoader.Handle, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
+			_lastOverlayBounds = rectangle;
 		}
-		ConfigLoader.lr57EfRfpj();
+		ConfigLoader.ShowOverlay();
 		return true;
 	}
 
-	private static bool S71UEc0wa2(Helper_5 P_0, int P_1, out Rectangle P_2)
+	private static bool TryComputeOverlayRect(Helper_5 P_0, int P_1, out Rectangle P_2)
 	{
 		P_2 = Rectangle.Empty;
 		if (P_0.intPtr == IntPtr.Zero || P_0.intPtr == IntPtr.Zero)
 		{
 			return false;
 		}
-		if (VtBUFW0YVW != IntPtr.Zero && VtBUFW0YVW != P_0.intPtr)
+		if (_trackedHwnd != IntPtr.Zero && _trackedHwnd != P_0.intPtr)
 		{
-			aBgUjMZb6b();
+			ClearOverlayState();
 		}
-		if (VtBUFW0YVW == IntPtr.Zero)
+		if (_trackedHwnd == IntPtr.Zero)
 		{
-			VtBUFW0YVW = P_0.intPtr;
-			iL8UhoLpQ1 = P_0.intPtr;
-			ULDUaIQyxK = P_0.vBSKBPTg82;
+			_trackedHwnd = P_0.intPtr;
+			_lastInnerHwnd = P_0.intPtr;
+			_lastClientBounds = P_0.vBSKBPTg82;
 		}
-		if (iL8UhoLpQ1 != P_0.intPtr)
+		if (_lastInnerHwnd != P_0.intPtr)
 		{
-			aBgUjMZb6b();
-			VtBUFW0YVW = P_0.intPtr;
-			iL8UhoLpQ1 = P_0.intPtr;
-			ULDUaIQyxK = P_0.vBSKBPTg82;
+			ClearOverlayState();
+			_trackedHwnd = P_0.intPtr;
+			_lastInnerHwnd = P_0.intPtr;
+			_lastClientBounds = P_0.vBSKBPTg82;
 		}
-		D2OU2UZetx(P_0, P_1);
-		if (!z3nUfQnt6I(iL8UhoLpQ1, out var point))
+		SyncClientBounds(P_0, P_1);
+		if (!TryGetClientOrigin(_lastInnerHwnd, out var point))
 		{
 			return false;
 		}
-		Rectangle uLDUaIQyxK = ULDUaIQyxK;
+		Rectangle uLDUaIQyxK = _lastClientBounds;
 		int num = uLDUaIQyxK.Height - P_1;
 		if (num < 120)
 		{
 			return false;
 		}
 		Rectangle rectangle = new Rectangle(uLDUaIQyxK.Left, uLDUaIQyxK.Top + P_1, uLDUaIQyxK.Width, num);
-		ScreenshotCaptureHelper2.qVGVVA8Epe(P_0.intPtr, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
+		ScreenshotCaptureHelper2.SetWindowPos(P_0.intPtr, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
 		P_2 = new Rectangle(point.X + uLDUaIQyxK.Left, point.Y + uLDUaIQyxK.Top, uLDUaIQyxK.Width, P_1);
 		return true;
 	}
 
-	private static void D2OU2UZetx(Helper_5 P_0, int P_1)
+	private static void SyncClientBounds(Helper_5 P_0, int P_1)
 	{
-		if (VtBUFW0YVW != P_0.intPtr || ULDUaIQyxK == Rectangle.Empty)
+		if (_trackedHwnd != P_0.intPtr || _lastClientBounds == Rectangle.Empty)
 		{
 			return;
 		}
-		Rectangle uLDUaIQyxK = ULDUaIQyxK;
+		Rectangle uLDUaIQyxK = _lastClientBounds;
 		Rectangle rectangle = new Rectangle(uLDUaIQyxK.Left, uLDUaIQyxK.Top + P_1, uLDUaIQyxK.Width, Math.Max(1, uLDUaIQyxK.Height - P_1));
-		if (!LqrU4OIMjJ(P_0.vBSKBPTg82, rectangle))
+		if (!RectApproxEquals(P_0.vBSKBPTg82, rectangle))
 		{
 			if (Math.Abs(P_0.vBSKBPTg82.Top - rectangle.Top) <= 4)
 			{
-				ULDUaIQyxK = new Rectangle(P_0.vBSKBPTg82.Left, P_0.vBSKBPTg82.Top - P_1, P_0.vBSKBPTg82.Width, P_0.vBSKBPTg82.Height + P_1);
+				_lastClientBounds = new Rectangle(P_0.vBSKBPTg82.Left, P_0.vBSKBPTg82.Top - P_1, P_0.vBSKBPTg82.Width, P_0.vBSKBPTg82.Height + P_1);
 			}
 			else
 			{
-				ULDUaIQyxK = P_0.vBSKBPTg82;
+				_lastClientBounds = P_0.vBSKBPTg82;
 			}
 		}
 	}
 
-	private static bool LqrU4OIMjJ(Rectangle P_0, Rectangle P_1)
+	private static bool RectApproxEquals(Rectangle P_0, Rectangle P_1)
 	{
 		if (Math.Abs(P_0.Left - P_1.Left) <= 4 && Math.Abs(P_0.Top - P_1.Top) <= 4 && Math.Abs(P_0.Width - P_1.Width) <= 8)
 		{
@@ -417,75 +417,75 @@ internal static class AiHelper_13
 		return false;
 	}
 
-	private static void aBgUjMZb6b()
+	private static void ClearOverlayState()
 	{
-		if (VtBUFW0YVW == IntPtr.Zero)
+		if (_trackedHwnd == IntPtr.Zero)
 		{
 			return;
 		}
 		try
 		{
-			if (ScreenshotCaptureHelper2.GAekICEQL(VtBUFW0YVW) && ULDUaIQyxK != Rectangle.Empty)
+			if (ScreenshotCaptureHelper2.IsWindow(_trackedHwnd) && _lastClientBounds != Rectangle.Empty)
 			{
-				ScreenshotCaptureHelper2.qVGVVA8Epe(VtBUFW0YVW, IntPtr.Zero, ULDUaIQyxK.Left, ULDUaIQyxK.Top, ULDUaIQyxK.Width, ULDUaIQyxK.Height, 80);
+				ScreenshotCaptureHelper2.SetWindowPos(_trackedHwnd, IntPtr.Zero, _lastClientBounds.Left, _lastClientBounds.Top, _lastClientBounds.Width, _lastClientBounds.Height, 80);
 			}
 		}
 		catch
 		{
 		}
-		VtBUFW0YVW = IntPtr.Zero;
-		iL8UhoLpQ1 = IntPtr.Zero;
-		ULDUaIQyxK = Rectangle.Empty;
-		fnoUyv1bhu = Rectangle.Empty;
+		_trackedHwnd = IntPtr.Zero;
+		_lastInnerHwnd = IntPtr.Zero;
+		_lastClientBounds = Rectangle.Empty;
+		_lastOverlayBounds = Rectangle.Empty;
 	}
 
-	private static bool X5JUYxFvGK(IntPtr P_0, out Helper_5 P_1)
+	private static bool FindBestChildWindow(IntPtr P_0, out Helper_5 P_1)
 	{
 		_G_c__DisplayClass30_0 CS_8_locals_12 = new _G_c__DisplayClass30_0();
 		P_1 = default(Helper_5);
-		if (!ScreenshotCaptureHelper2.DcLA6kaCn(P_0, out var g776GxFFqI1ndqZk2gX))
+		if (!ScreenshotCaptureHelper2.GetWindowRect(P_0, out var windowRect))
 		{
 			return false;
 		}
-		CS_8_locals_12.zKmVTMLMmqG = Rectangle.FromLTRB(g776GxFFqI1ndqZk2gX.Left, g776GxFFqI1ndqZk2gX.Top, g776GxFFqI1ndqZk2gX.Right, g776GxFFqI1ndqZk2gX.Bottom);
+		CS_8_locals_12._parentBounds = Rectangle.FromLTRB(windowRect.Left, windowRect.Top, windowRect.Right, windowRect.Bottom);
 		CS_8_locals_12.helper_5 = default(Helper_5);
-		CS_8_locals_12.zMMVTbLXwD5 = 0L;
-		ScreenshotCaptureHelper2.sUYV6arCCC(P_0, delegate(IntPtr child, IntPtr _)
+		CS_8_locals_12._maxArea = 0L;
+		ScreenshotCaptureHelper2.EnumChildWindows(P_0, delegate(IntPtr child, IntPtr _)
 		{
 			try
 			{
-				if (!ScreenshotCaptureHelper2.USD0wZPHF(child))
+				if (!ScreenshotCaptureHelper2.IsWindowVisible(child))
 				{
 					return true;
 				}
-				if (!ScreenshotCaptureHelper2.DcLA6kaCn(child, out var g776GxFFqI1ndqZk2gX2))
+				if (!ScreenshotCaptureHelper2.GetWindowRect(child, out var windowRect2))
 				{
 					return true;
 				}
-				Rectangle rectangle = Rectangle.FromLTRB(g776GxFFqI1ndqZk2gX2.Left, g776GxFFqI1ndqZk2gX2.Top, g776GxFFqI1ndqZk2gX2.Right, g776GxFFqI1ndqZk2gX2.Bottom);
-				if (rectangle.Width < CS_8_locals_12.zKmVTMLMmqG.Width / 3 || rectangle.Height < CS_8_locals_12.zKmVTMLMmqG.Height / 4)
+				Rectangle rectangle = Rectangle.FromLTRB(windowRect2.Left, windowRect2.Top, windowRect2.Right, windowRect2.Bottom);
+				if (rectangle.Width < CS_8_locals_12._parentBounds.Width / 3 || rectangle.Height < CS_8_locals_12._parentBounds.Height / 4)
 				{
 					return true;
 				}
-				if (rectangle.Top < CS_8_locals_12.zKmVTMLMmqG.Top + 80 || rectangle.Bottom > CS_8_locals_12.zKmVTMLMmqG.Bottom + 8)
+				if (rectangle.Top < CS_8_locals_12._parentBounds.Top + 80 || rectangle.Bottom > CS_8_locals_12._parentBounds.Bottom + 8)
 				{
 					return true;
 				}
-				string text = y9KUMnj5eV(child);
+				string text = GetWindowClassName(child);
 				if (!text.StartsWith("[OfficeTab] Activate document failed: ", StringComparison.OrdinalIgnoreCase))
 				{
 					return true;
 				}
-				if (!aOLUZ9Md4Z(child, out var fR3VTS5Zdu))
+				if (!TryGetWindowInfo(child, out var windowInfo))
 				{
 					return true;
 				}
 				long num = (long)rectangle.Width * (long)rectangle.Height;
 				num = ((!text.StartsWith("[OfficeTab] Close document failed: ", StringComparison.OrdinalIgnoreCase)) ? (num * 4) : (num * 10));
-				if (num > CS_8_locals_12.zMMVTbLXwD5)
+				if (num > CS_8_locals_12._maxArea)
 				{
-					CS_8_locals_12.zMMVTbLXwD5 = num;
-					CS_8_locals_12.helper_5 = fR3VTS5Zdu;
+					CS_8_locals_12._maxArea = num;
+					CS_8_locals_12.helper_5 = windowInfo;
 				}
 			}
 			catch
@@ -501,60 +501,60 @@ internal static class AiHelper_13
 		return true;
 	}
 
-	private static bool aOLUZ9Md4Z(IntPtr P_0, out Helper_5 P_1)
+	private static bool TryGetWindowInfo(IntPtr P_0, out Helper_5 P_1)
 	{
 		P_1 = default(Helper_5);
-		IntPtr intPtr = ScreenshotCaptureHelper2.OyTxvptUZ(P_0);
+		IntPtr intPtr = ScreenshotCaptureHelper2.GetParent(P_0);
 		if (intPtr == IntPtr.Zero)
 		{
 			return false;
 		}
-		if (!ScreenshotCaptureHelper2.DcLA6kaCn(P_0, out var g776GxFFqI1ndqZk2gX))
+		if (!ScreenshotCaptureHelper2.GetWindowRect(P_0, out var windowRect))
 		{
 			return false;
 		}
-		if (!z3nUfQnt6I(intPtr, out var point))
+		if (!TryGetClientOrigin(intPtr, out var point))
 		{
 			return false;
 		}
-		Rectangle sl2KVgL5Cf = Rectangle.FromLTRB(g776GxFFqI1ndqZk2gX.Left, g776GxFFqI1ndqZk2gX.Top, g776GxFFqI1ndqZk2gX.Right, g776GxFFqI1ndqZk2gX.Bottom);
+		Rectangle rect = Rectangle.FromLTRB(windowRect.Left, windowRect.Top, windowRect.Right, windowRect.Bottom);
 		P_1 = new Helper_5
 		{
 			intPtr = P_0,
 			intPtr = intPtr,
-			rectangle = sl2KVgL5Cf,
-			vBSKBPTg82 = new Rectangle(sl2KVgL5Cf.Left - point.X, sl2KVgL5Cf.Top - point.Y, sl2KVgL5Cf.Width, sl2KVgL5Cf.Height)
+			rectangle = rect,
+			vBSKBPTg82 = new Rectangle(rect.Left - point.X, rect.Top - point.Y, rect.Width, rect.Height)
 		};
 		return true;
 	}
 
-	private static bool z3nUfQnt6I(IntPtr P_0, out Point P_1)
+	private static bool TryGetClientOrigin(IntPtr P_0, out Point P_1)
 	{
 		P_1 = Point.Empty;
-		ScreenshotCaptureHelper2.SYRyATFyE10hKbRqs5x sYRyATFyE10hKbRqs5x = new ScreenshotCaptureHelper2.SYRyATFyE10hKbRqs5x
+		ScreenshotCaptureHelper2.SYRyATFyE10hKbRqs5x point = new ScreenshotCaptureHelper2.SYRyATFyE10hKbRqs5x
 		{
 			X = 0,
-			oURFXOAIJr = 0
+			Y = 0
 		};
-		if (!ScreenshotCaptureHelper2.NZHWMtPPQ(P_0, ref sYRyATFyE10hKbRqs5x))
+		if (!ScreenshotCaptureHelper2.ClientToScreen(P_0, ref point))
 		{
 			return false;
 		}
-		P_1 = new Point(sYRyATFyE10hKbRqs5x.X, sYRyATFyE10hKbRqs5x.oURFXOAIJr);
+		P_1 = new Point(point.X, point.Y);
 		return true;
 	}
 
-	private static string y9KUMnj5eV(IntPtr P_0)
+	private static string GetWindowClassName(IntPtr P_0)
 	{
 		StringBuilder stringBuilder = new StringBuilder(128);
-		if (ScreenshotCaptureHelper2.RajVuvo2tr(P_0, stringBuilder, stringBuilder.Capacity) <= 0)
+		if (ScreenshotCaptureHelper2.GetClassName(P_0, stringBuilder, stringBuilder.Capacity) <= 0)
 		{
 			return string.Empty;
 		}
 		return stringBuilder.ToString();
 	}
 
-	private static IntPtr cgkUbBGhw1()
+	private static IntPtr GetActiveWindowHwnd()
 	{
 		try
 		{
@@ -569,14 +569,14 @@ internal static class AiHelper_13
 		return IntPtr.Zero;
 	}
 
-	private static void EWXUS7nnLg()
+	private static void CaptureActiveWindow()
 	{
 		try
 		{
-			IntPtr intPtr = cgkUbBGhw1();
+			IntPtr intPtr = GetActiveWindowHwnd();
 			if (!(intPtr == IntPtr.Zero))
 			{
-				ScreenshotCaptureHelper2.d2kP0Du2a(intPtr);
+				ScreenshotCaptureHelper2.CaptureWindow(intPtr);
 			}
 		}
 		catch
@@ -584,12 +584,12 @@ internal static class AiHelper_13
 		}
 	}
 
-	private static bool zTdUwGdqmA()
+	private static bool IsAppActive()
 	{
 		try
 		{
-			IntPtr intPtr = cgkUbBGhw1();
-			IntPtr intPtr2 = ScreenshotCaptureHelper2.cH4VBSeFlb();
+			IntPtr intPtr = GetActiveWindowHwnd();
+			IntPtr intPtr2 = ScreenshotCaptureHelper2.GetForegroundWindow();
 			if (intPtr == IntPtr.Zero || intPtr2 == IntPtr.Zero)
 			{
 				return false;
@@ -600,8 +600,8 @@ internal static class AiHelper_13
 				IntPtr? obj = ConfigLoader?.Handle;
 				if (!(value == obj))
 				{
-					ScreenshotCaptureHelper2.Kl5V9YsO3Z(intPtr, out var num);
-					ScreenshotCaptureHelper2.Kl5V9YsO3Z(intPtr2, out var num2);
+					ScreenshotCaptureHelper2.GetWindowThreadProcessId(intPtr, out var num);
+					ScreenshotCaptureHelper2.GetWindowThreadProcessId(intPtr2, out var num2);
 					return num != 0 && num == num2;
 				}
 			}
@@ -613,7 +613,7 @@ internal static class AiHelper_13
 		}
 	}
 
-	private static string mrdUtgmTLg()
+	private static string GetDocumentSignature()
 	{
 		try
 		{
@@ -621,8 +621,8 @@ internal static class AiHelper_13
 			{
 				return string.Empty;
 			}
-			string text = GnPUltXIIH(App.ActiveDocument);
-			return App.Documents.Count + "|" + text + "|" + cgkUbBGhw1();
+			string text = GetDocumentKey(App.ActiveDocument);
+			return App.Documents.Count + "|" + text + "|" + GetActiveWindowHwnd();
 		}
 		catch
 		{
@@ -630,7 +630,7 @@ internal static class AiHelper_13
 		}
 	}
 
-	private static List<AiHelper_10> wa8ULVjivm()
+	private static List<AiHelper_10> BuildTabList()
 	{
 		List<AiHelper_10> list = new List<AiHelper_10>();
 		try
@@ -639,19 +639,19 @@ internal static class AiHelper_13
 			{
 				return list;
 			}
-			string b = GnPUltXIIH(App.ActiveDocument);
+			string b = GetDocumentKey(App.ActiveDocument);
 			foreach (Document document in App.Documents)
 			{
 				try
 				{
-					string text = GnPUltXIIH(document);
+					string text = GetDocumentKey(document);
 					list.Add(new AiHelper_10
 					{
 						Key = text,
 						Name = document.Name,
-						FullName = epYUNGAqt4(document),
+						FullName = GetDocumentFullName(document),
 						IsActive = string.Equals(text, b, StringComparison.OrdinalIgnoreCase),
-						IsSaved = JnAUmk5gOX(document)
+						IsSaved = IsDocumentSaved(document)
 					});
 				}
 				catch
@@ -665,7 +665,7 @@ internal static class AiHelper_13
 		return list;
 	}
 
-	private static Document fJFUsCKWg0(string P_0)
+	private static Document FindDocumentByKey(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0) || App?.Documents == null)
 		{
@@ -675,7 +675,7 @@ internal static class AiHelper_13
 		{
 			try
 			{
-				if (string.Equals(GnPUltXIIH(document), P_0, StringComparison.OrdinalIgnoreCase))
+				if (string.Equals(GetDocumentKey(document), P_0, StringComparison.OrdinalIgnoreCase))
 				{
 					return document;
 				}
@@ -687,13 +687,13 @@ internal static class AiHelper_13
 		return null;
 	}
 
-	private static string GnPUltXIIH(Document P_0)
+	private static string GetDocumentKey(Document P_0)
 	{
 		if (P_0 == null)
 		{
 			return string.Empty;
 		}
-		string text = epYUNGAqt4(P_0);
+		string text = GetDocumentFullName(P_0);
 		if (!string.IsNullOrWhiteSpace(text))
 		{
 			return text;
@@ -701,7 +701,7 @@ internal static class AiHelper_13
 		return P_0.Name;
 	}
 
-	private static string epYUNGAqt4(Document P_0)
+	private static string GetDocumentFullName(Document P_0)
 	{
 		try
 		{
@@ -713,7 +713,7 @@ internal static class AiHelper_13
 		}
 	}
 
-	private static bool JnAUmk5gOX(Document P_0)
+	private static bool IsDocumentSaved(Document P_0)
 	{
 		try
 		{
@@ -725,50 +725,50 @@ internal static class AiHelper_13
 		}
 	}
 
-	private static void NiiUoZnXPr()
+	private static void OnDocumentChange()
 	{
-		if (FwQU5E6mY2)
+		if (_isActive)
 		{
-			JSMUHT53aW();
-			oYhUKFtht4();
+			RefreshTabs();
+			UpdateOverlay();
 		}
 	}
 
-	private static void jLeUG2FWg3(Document P_0)
+	private static void OnDocumentOpen(Document P_0)
 	{
-		if (FwQU5E6mY2)
+		if (_isActive)
 		{
-			JSMUHT53aW();
-			oYhUKFtht4();
+			RefreshTabs();
+			UpdateOverlay();
 		}
 	}
 
-	private static void lZRUCIiDVA(Document P_0)
+	private static void OnNewDocument(Document P_0)
 	{
-		if (FwQU5E6mY2)
+		if (_isActive)
 		{
-			JSMUHT53aW();
-			oYhUKFtht4();
+			RefreshTabs();
+			UpdateOverlay();
 		}
 	}
 
-	private static void y61UpFn2tI(Document P_0, ref bool P_1)
+	private static void OnDocumentBeforeClose(Document P_0, ref bool P_1)
 	{
-		if (!FwQU5E6mY2)
+		if (!_isActive)
 		{
 			return;
 		}
 		WordTableToolService.SyncContext?.Post(delegate
 		{
-			if (FwQU5E6mY2)
+			if (_isActive)
 			{
-				JSMUHT53aW();
-				oYhUKFtht4();
+				RefreshTabs();
+				UpdateOverlay();
 			}
 		}, null);
 	}
 
-	private static void atxUOg3h4C()
+	private static void UpdateRibbonState()
 	{
 		try
 		{
@@ -782,15 +782,15 @@ internal static class AiHelper_13
 	static AiHelper_13()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		fjWUni4xwA = new Timer
+		_refreshTimer = new Timer
 		{
 			Interval = 220
 		};
-		NdIUeZlnm4 = string.Empty;
-		fnoUyv1bhu = Rectangle.Empty;
-		WX1UXkkRIZ = IntPtr.Zero;
-		VtBUFW0YVW = IntPtr.Zero;
-		iL8UhoLpQ1 = IntPtr.Zero;
-		ULDUaIQyxK = Rectangle.Empty;
+		_lastDocumentSignature = string.Empty;
+		_lastOverlayBounds = Rectangle.Empty;
+		_lastOwnerHwnd = IntPtr.Zero;
+		_trackedHwnd = IntPtr.Zero;
+		_lastInnerHwnd = IntPtr.Zero;
+		_lastClientBounds = Rectangle.Empty;
 	}
 }

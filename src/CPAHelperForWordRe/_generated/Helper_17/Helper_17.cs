@@ -73,7 +73,7 @@ internal sealed class Helper_17
 		}
 	}
 
-	public static Helper_17 Rvo60brAFr(string P_0)
+	public static Helper_17 CreateSuccessResult(string P_0)
 	{
 		return new Helper_17
 		{
@@ -82,7 +82,7 @@ internal sealed class Helper_17
 		};
 	}
 
-	public static Helper_17 Kr16k5pGs6(string P_0, bool P_1)
+	public static Helper_17 CreateFailureResult(string P_0, bool P_1)
 	{
 		return new Helper_17
 		{

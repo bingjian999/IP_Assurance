@@ -32,7 +32,7 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal TableComWriteService.SyncResult bb0V4MBOfUG()
+		internal TableComWriteService.SyncResult setTableHeader()
 		{
 			return TableComWriteService.SetCurrentTableHeader(value);
 		}
@@ -41,28 +41,28 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass20_0
 	{
-		public Func<TableComWriteService.SyncResult> PEgV4ww3jf2;
+		public Func<TableComWriteService.SyncResult> syncAction;
 
-		public TableComWriteService.SyncResult k0RV4tJnAor;
+		public TableComWriteService.SyncResult syncResult;
 
 		public _G_c__DisplayClass20_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void TpSV4S7gC3R()
+		internal void executeSyncAction()
 		{
-			k0RV4tJnAor = PEgV4ww3jf2();
+			syncResult = syncAction();
 		}
 	}
 
 	private bool _bool;
 
-	private bool awIpKKeenS;
+	private bool _isCancelled;
 
 	private readonly DispatcherTimer _dispatcherTimer;
 
-	private Microsoft.Office.Interop.Word.Application Nhfp2FDw6q;
+	private Microsoft.Office.Interop.Word.Application _wordApp;
 
 	private bool _bool;
 
@@ -102,7 +102,7 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 
 	internal Button btnExportAll;
 
-	private bool cukpjMYtpT;
+	private bool _isInitialized;
 
 	public ExcelBindingWindow()
 	{
@@ -112,7 +112,7 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		{
 			Interval = TimeSpan.FromMilliseconds(150.0)
 		};
-		_dispatcherTimer.Tick += osZpDRKqbe;
+		_dispatcherTimer.Tick += onTimerTick;
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
 			if (P_1.Key == Key.Escape)
@@ -122,71 +122,71 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		};
 		base.Loaded += delegate
 		{
-			Swrp9UUswH();
-			gTvpThPsSr( false);
+			subscribeSelectionChange();
+			refreshBindingStatus( false);
 		};
 		base.Closed += delegate
 		{
-			zjdp6Q2yvl();
+			unsubscribeSelectionChange();
 		};
 	}
 
-	private void fVYCkVE8Hn(object P_0, RoutedEventArgs P_1)
+	private void onRefreshClick(object P_0, RoutedEventArgs P_1)
 	{
-		gTvpThPsSr( true);
+		refreshBindingStatus( true);
 	}
 
-	private void i3PCxqFXcf(object P_0, RoutedEventArgs P_1)
+	private void onBindClick(object P_0, RoutedEventArgs P_1)
 	{
-		JFRpIlKfJO("绑定当前表", () => TableComWriteService.BindCurrentTable( false));
+		executeSyncOperation("绑定当前表", () => TableComWriteService.BindCurrentTable( false));
 	}
 
-	private void UWNCdH6HN4(object P_0, RoutedEventArgs P_1)
+	private void onRebindClick(object P_0, RoutedEventArgs P_1)
 	{
-		JFRpIlKfJO("重新绑定当前表", () => TableComWriteService.BindCurrentTable( true));
+		executeSyncOperation("重新绑定当前表", () => TableComWriteService.BindCurrentTable( true));
 	}
 
-	private void gwlCzZ2gdJ(object P_0, RoutedEventArgs P_1)
+	private void onUnbindClick(object P_0, RoutedEventArgs P_1)
 	{
 		if (MessageBox.Show(this, "确定要解除当前 Word 表格的 Excel 绑定吗？\\n\\n只会清理 Word 文档中的绑定信息，不会删除 Excel 工作簿里的名称区域。", "解除绑定", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			JFRpIlKfJO("解除当前表绑定", TableComWriteService.UnbindCurrentTable);
+			executeSyncOperation("解除当前表绑定", TableComWriteService.UnbindCurrentTable);
 		}
 	}
 
-	private void xIPpRcfn28(object P_0, RoutedEventArgs P_1)
+	private void onExportAllClick(object P_0, RoutedEventArgs P_1)
 	{
-		JFRpIlKfJO("导出全部表并绑定", () => TableComWriteService.SyncAllTables(LaFpiooIwT));
+		executeSyncOperation("导出全部表并绑定", () => TableComWriteService.SyncAllTables(onSyncProgress));
 	}
 
-	private void si1pVLpUQE(object P_0, RoutedEventArgs P_1)
+	private void onSaveHeaderSettingClick(object P_0, RoutedEventArgs P_1)
 	{
 		_G_c__DisplayClass11_0 CS_8_locals_2 = new _G_c__DisplayClass11_0();
-		if (EmZpgI6rSj(out CS_8_locals_2.value))
+		if (tryParseHeaderRows(out CS_8_locals_2.value))
 		{
-			JFRpIlKfJO("保存表头设置", () => TableComWriteService.SetCurrentTableHeader(CS_8_locals_2.value));
+			executeSyncOperation("保存表头设置", () => TableComWriteService.SetCurrentTableHeader(CS_8_locals_2.value));
 		}
 	}
 
-	private void veipBw5P5u(object P_0, RoutedEventArgs P_1)
+	private void onCloseClick(object P_0, RoutedEventArgs P_1)
 	{
 		Close();
 	}
 
-	private void Swrp9UUswH()
+	private void subscribeSelectionChange()
 	{
 		if (_bool)
 		{
 			return;
 		}
-		Nhfp2FDw6q = WordTableToolService.WordApp;
-		if (Nhfp2FDw6q == null)
+		_wordApp = WordTableToolService.WordApp;
+		if (_wordApp == null)
 		{
 			return;
 		}
 		try
 		{
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").AddEventHandler(Nhfp2FDw6q, new ApplicationEvents4_WindowSelectionChangeEventHandler(tdlpuVBwkE));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").AddEventHandler(_wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(onSelectionChange));
 			_bool = true;
 		}
 		catch
@@ -194,23 +194,23 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		}
 	}
 
-	private void zjdp6Q2yvl()
+	private void unsubscribeSelectionChange()
 	{
-		if (_bool && Nhfp2FDw6q != null)
+		if (_bool && _wordApp != null)
 		{
 			try
 			{
-				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").RemoveEventHandler(Nhfp2FDw6q, new ApplicationEvents4_WindowSelectionChangeEventHandler(tdlpuVBwkE));
+				new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").RemoveEventHandler(_wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(onSelectionChange));
 			}
 			catch
 			{
 			}
 			_bool = false;
-			Nhfp2FDw6q = null;
+			_wordApp = null;
 		}
 	}
 
-	private void tdlpuVBwkE(Selection P_0)
+	private void onSelectionChange(Selection P_0)
 	{
 		if (_bool || !base.IsVisible)
 		{
@@ -229,16 +229,16 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		}
 	}
 
-	private void osZpDRKqbe(object P_0, EventArgs P_1)
+	private void onTimerTick(object P_0, EventArgs P_1)
 	{
 		_dispatcherTimer.Stop();
 		if (!_bool && base.IsVisible)
 		{
-			gTvpThPsSr( false);
+			refreshBindingStatus( false);
 		}
 	}
 
-	private void gTvpThPsSr(bool P_0)
+	private void refreshBindingStatus(bool P_0)
 	{
 		TableComWriteService.TableSyncStatus TableSyncStatus = TableComWriteService.GetTableSyncStatus(P_0);
 		txtWordStatus.Text = TableSyncStatus.WordStatus ?? string.Empty;
@@ -246,7 +246,7 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		txtBindingId.Text = (TableSyncStatus.HasBinding ? TableSyncStatus.BindingId : "未绑定");
 		txtHeaderSetting.Text = TableSyncStatus.HeaderSettingText ?? string.Empty;
 		txtHeaderRows.Text = (TableSyncStatus.HeaderRowCount.HasValue ? TableSyncStatus.HeaderRowCount.Value.ToString() : string.Empty);
-		XIDp8jhm7h();
+		updateHeaderRowsEnabled();
 		txtExcelStatus.Text = TableSyncStatus.ExcelStatus ?? string.Empty;
 		txtExcelWorkbook.Text = TableSyncStatus.ExcelWorkbook ?? string.Empty;
 		txtExcelSheet.Text = TableSyncStatus.ExcelSheet ?? string.Empty;
@@ -259,7 +259,7 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		btnSaveHeaderSetting.IsEnabled = !_bool && TableSyncStatus.HasWordTable && TableSyncStatus.HasBinding;
 	}
 
-	private bool EmZpgI6rSj(out int P_0)
+	private bool tryParseHeaderRows(out int P_0)
 	{
 		P_0 = 0;
 		if (!int.TryParse((txtHeaderRows.Text ?? string.Empty).Trim(), out var result) || result < 0)
@@ -273,44 +273,44 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		return true;
 	}
 
-	private void XIDp8jhm7h()
+	private void updateHeaderRowsEnabled()
 	{
 		txtHeaderRows.IsEnabled = !_bool;
 	}
 
-	private void JFRpIlKfJO(string P_0, Func<TableComWriteService.SyncResult> P_1)
+	private void executeSyncOperation(string P_0, Func<TableComWriteService.SyncResult> P_1)
 	{
 		_G_c__DisplayClass20_0 CS_8_locals_8 = new _G_c__DisplayClass20_0();
-		CS_8_locals_8.PEgV4ww3jf2 = P_1;
-		if (_bool || CS_8_locals_8.PEgV4ww3jf2 == null)
+		CS_8_locals_8.syncAction = P_1;
+		if (_bool || CS_8_locals_8.syncAction == null)
 		{
 			return;
 		}
-		fTPpHNZh29( true);
-		awIpKKeenS = false;
+		setBusyState( true);
+		_isCancelled = false;
 		barProgress.Value = 0.0;
 		txtStatus.Text = "正在处理...";
 		try
 		{
-			CS_8_locals_8.k0RV4tJnAor = null;
+			CS_8_locals_8.syncResult = null;
 			AiHelper_7.RunCommandWithUndo(delegate
 			{
-				CS_8_locals_8.k0RV4tJnAor = CS_8_locals_8.PEgV4ww3jf2();
+				CS_8_locals_8.syncResult = CS_8_locals_8.syncAction();
 			}, P_0);
-			if (CS_8_locals_8.k0RV4tJnAor != null)
+			if (CS_8_locals_8.syncResult != null)
 			{
-				txtStatus.Text = CS_8_locals_8.k0RV4tJnAor.Message ?? string.Empty;
-				ExcelSyncRibbonHelper.ShowSyncResult(CS_8_locals_8.k0RV4tJnAor, "Excel同步");
+				txtStatus.Text = CS_8_locals_8.syncResult.Message ?? string.Empty;
+				ExcelSyncRibbonHelper.ShowSyncResult(CS_8_locals_8.syncResult, "Excel同步");
 			}
 		}
 		finally
 		{
-			fTPpHNZh29( false);
-			gTvpThPsSr( false);
+			setBusyState( false);
+			refreshBindingStatus( false);
 		}
 	}
 
-	private bool LaFpiooIwT(int P_0, int P_1, string P_2)
+	private bool onSyncProgress(int P_0, int P_1, string P_2)
 	{
 		int num = ((P_1 <= 0) ? 100 : ((int)Math.Round((double)P_0 * 100.0 / (double)P_1)));
 		if (num < 0)
@@ -332,14 +332,14 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		catch
 		{
 		}
-		if (!awIpKKeenS)
+		if (!_isCancelled)
 		{
 			return base.IsVisible;
 		}
 		return false;
 	}
 
-	private void fTPpHNZh29(bool P_0)
+	private void setBusyState(bool P_0)
 	{
 		_bool = P_0;
 		base.Cursor = (P_0 ? Cursors.Wait : null);
@@ -349,16 +349,16 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 		btnUnbind.IsEnabled = !P_0;
 		btnSaveHeaderSetting.IsEnabled = !P_0;
 		btnExportAll.IsEnabled = !P_0;
-		XIDp8jhm7h();
+		updateHeaderRowsEnabled();
 	}
 
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	[DebuggerNonUserCode]
 	public void InitializeComponent()
 	{
-		if (!cukpjMYtpT)
+		if (!_isInitialized)
 		{
-			cukpjMYtpT = true;
+			_isInitialized = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/excelbindingwindow.xaml", UriKind.Relative);
 			System.Windows.Application.LoadComponent(this, resourceLocator);
 		}
@@ -409,39 +409,39 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 			break;
 		case 13:
 			btnRefresh = (Button)target;
-			btnRefresh.Click += fVYCkVE8Hn;
+			btnRefresh.Click += onRefreshClick;
 			break;
 		case 14:
 			btnBind = (Button)target;
-			btnBind.Click += i3PCxqFXcf;
+			btnBind.Click += onBindClick;
 			break;
 		case 15:
 			btnRebind = (Button)target;
-			btnRebind.Click += UWNCdH6HN4;
+			btnRebind.Click += onRebindClick;
 			break;
 		case 16:
 			btnUnbind = (Button)target;
-			btnUnbind.Click += gwlCzZ2gdJ;
+			btnUnbind.Click += onUnbindClick;
 			break;
 		case 17:
 			btnSaveHeaderSetting = (Button)target;
-			btnSaveHeaderSetting.Click += si1pVLpUQE;
+			btnSaveHeaderSetting.Click += onSaveHeaderSettingClick;
 			break;
 		case 18:
 			btnExportAll = (Button)target;
-			btnExportAll.Click += xIPpRcfn28;
+			btnExportAll.Click += onExportAllClick;
 			break;
 		case 19:
-			((Button)target).Click += veipBw5P5u;
+			((Button)target).Click += onCloseClick;
 			break;
 		default:
-			cukpjMYtpT = true;
+			_isInitialized = true;
 			break;
 		}
 	}
 
 	[CompilerGenerated]
-	private void SbGpQqqqem(object P_0, KeyEventArgs P_1)
+	private void onPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{
@@ -450,26 +450,26 @@ public sealed class ExcelBindingWindow : System.Windows.Window, IComponentConnec
 	}
 
 	[CompilerGenerated]
-	private void Ibip12QX8x(object P_0, RoutedEventArgs P_1)
+	private void onWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
-		Swrp9UUswH();
-		gTvpThPsSr( false);
+		subscribeSelectionChange();
+		refreshBindingStatus( false);
 	}
 
 	[CompilerGenerated]
-	private void t0tprWd9mi(object P_0, EventArgs P_1)
+	private void onWindowClosed(object P_0, EventArgs P_1)
 	{
-		zjdp6Q2yvl();
+		unsubscribeSelectionChange();
 	}
 
 	[CompilerGenerated]
-	private TableComWriteService.SyncResult JbkpJcGTeY()
+	private TableComWriteService.SyncResult syncAllTables()
 	{
-		return TableComWriteService.SyncAllTables(LaFpiooIwT);
+		return TableComWriteService.SyncAllTables(onSyncProgress);
 	}
 
 	[CompilerGenerated]
-	private void eGep3YQwFj()
+	private void restartTimer()
 	{
 		_dispatcherTimer.Stop();
 		_dispatcherTimer.Start();

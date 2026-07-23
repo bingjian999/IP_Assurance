@@ -22,11 +22,11 @@ internal static class ExcelDataSyncService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass41_0
 	{
-		public TableComWriteService.SyncResult OQKVbeL2HSs;
+		public TableComWriteService.SyncResult syncResult;
 
 		public ProgressWindow progressWindow;
 
-		public TableComWriteService.ProgressCallback K2ZVbXqAMC3;
+		public TableComWriteService.ProgressCallback progressCallback;
 
 		public Action action;
 
@@ -35,45 +35,45 @@ internal static class ExcelDataSyncService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void kDJVb74DwvM()
+		internal void ExecuteSyncWithUndo()
 		{
-			wMSXdLtYmv(delegate
+			ExecuteWithUndoRecord(delegate
 			{
-				OQKVbeL2HSs = TableComWriteService.SyncCurrentTable((int current, int total, string message) => GQlFRxrmSC(progressWindow, current, total, message));
+				syncResult = TableComWriteService.SyncCurrentTable((int current, int total, string message) => UpdateProgress(progressWindow, current, total, message));
 			}, "数据同步");
 		}
 
-		internal void oNjVb53J1er()
+		internal void ExecuteSyncDirect()
 		{
-			OQKVbeL2HSs = TableComWriteService.SyncCurrentTable((int current, int total, string message) => GQlFRxrmSC(progressWindow, current, total, message));
+			syncResult = TableComWriteService.SyncCurrentTable((int current, int total, string message) => UpdateProgress(progressWindow, current, total, message));
 		}
 
-		internal bool zybVbcaYAMP(int current, int total, string message)
+		internal bool ReportProgress(int current, int total, string message)
 		{
-			return GQlFRxrmSC(progressWindow, current, total, message);
+			return UpdateProgress(progressWindow, current, total, message);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass42_0
 	{
-		public TableComWriteService.SyncResult BLYVba1rP6j;
+		public TableComWriteService.SyncResult syncResult;
 
 		public _G_c__DisplayClass42_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void AGgVbhfKb0g()
+		internal void GetCurrentSyncStatus()
 		{
 			try
 			{
-				BLYVba1rP6j = TableComWriteService.GetCurrentTableSyncStatus();
+				syncResult = TableComWriteService.GetCurrentTableSyncStatus();
 			}
 			catch (Exception ex)
 			{
 				AiConfigBootstrap.LogError("[ExcelSync] Context menu locate crashed", ex);
-				BLYVba1rP6j = new TableComWriteService.SyncResult
+				syncResult = new TableComWriteService.SyncResult
 				{
 					Success = false,
 					Message = "定位数据失败：" + ex.Message
@@ -85,163 +85,163 @@ internal static class ExcelDataSyncService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass52_0
 	{
-		public ProgressWindow hcTVbPSNMJ4;
+		public ProgressWindow progressWindow;
 
 		public _G_c__DisplayClass52_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void aoLVbqcNxWq()
+		internal void CloseWindowIfVisible()
 		{
-			if (hcTVbPSNMJ4.IsVisible)
+			if (progressWindow.IsVisible)
 			{
-				hcTVbPSNMJ4.Close();
+				progressWindow.Close();
 			}
 		}
 	}
 
-	private static readonly string[] swAFBWjhJe;
+	private static readonly string[] allCommandBarNames;
 
-	private static readonly string[] qLtF9CsScg;
+	private static readonly string[] wpsCommandBarNames;
 
-	private static readonly object B8rF6wKW4L;
+	private static readonly object commandLock;
 
-	private static readonly List<CommandBarButton> Ns7FunudE5;
+	private static readonly List<CommandBarButton> registeredButtons;
 
-	private static IRibbonUI WsgFDokEbP;
+	private static IRibbonUI ribbonUI;
 
-	private static bool WvWFTkrxt9;
+	private static bool isCommandExecuting;
 
-	private static DateTime ugWFgug1Fj;
+	private static DateTime lastCommandUtc;
 
 	[CompilerGenerated]
-	private static bool SwjF85yccl;
+	private static bool _isLoaded;
 
 	public static bool IsLoaded
 	{
 		[CompilerGenerated]
 		get
 		{
-			return SwjF85yccl;
+			return _isLoaded;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			SwjF85yccl = value;
+			_isLoaded = value;
 		}
 	}
 
-	public static string hlWXMtJ6TA()
+	public static string GetExcelSyncStatus()
 	{
 		if (IsLoaded)
 		{
-			YG5XwaPP7m();
+			UnloadContextMenu();
 			return "已卸载右键菜单。";
 		}
-		return nQjXbycZ23();
+		return LoadContextMenu();
 	}
 
-	public static string nQjXbycZ23()
+	public static string LoadContextMenu()
 	{
-		VvXX7RqLnd();
+		RemoveAllCustomButtons();
 		if (WordTableToolService.IsWps)
 		{
-			string result = bmJXClxTxp();
+			string result = LoadWpsContextMenu();
 			if (IsLoaded)
 			{
-				LCjXG6voSH( true);
+				SetAutoLoadSetting( true);
 			}
-			CtJXNX8dgh();
+			InvalidateRibbon();
 			return result;
 		}
 		IsLoaded = true;
-		LCjXG6voSH( true);
-		CtJXNX8dgh();
+		SetAutoLoadSetting( true);
+		InvalidateRibbon();
 		return "已加载右键菜单。";
 	}
 
-	public static void K5NXSH2mgl()
+	public static void AutoLoadContextMenu()
 	{
-		VvXX7RqLnd();
-		IsLoaded = TOlXmIuJyF();
+		RemoveAllCustomButtons();
+		IsLoaded = GetAutoLoadSetting();
 		if (IsLoaded && WordTableToolService.IsWps)
 		{
-			string text = bmJXClxTxp();
+			string text = LoadWpsContextMenu();
 			if (!IsLoaded)
 			{
 				AiConfigBootstrap.LogWarn("[ExcelSync] WPS native context menu auto load skipped: " + text);
 			}
-			CtJXNX8dgh();
+			InvalidateRibbon();
 		}
 		else
 		{
-			CtJXNX8dgh();
+			InvalidateRibbon();
 			_ = IsLoaded;
 		}
 	}
 
-	public static void YG5XwaPP7m()
+	public static void UnloadContextMenu()
 	{
 		IsLoaded = false;
-		Ns7FunudE5.Clear();
-		VvXX7RqLnd();
-		LCjXG6voSH( false);
-		CtJXNX8dgh();
+		registeredButtons.Clear();
+		RemoveAllCustomButtons();
+		SetAutoLoadSetting( false);
+		InvalidateRibbon();
 	}
 
-	public static void MXSXtSr5ZG()
+	public static void ResetContextMenu()
 	{
 		IsLoaded = false;
-		Ns7FunudE5.Clear();
-		VvXX7RqLnd();
-		CtJXNX8dgh();
+		registeredButtons.Clear();
+		RemoveAllCustomButtons();
+		InvalidateRibbon();
 	}
 
-	internal static bool tE8XLlC6V1()
+	internal static bool IsContextMenuUsable()
 	{
 		if (!WordTableToolService.IsWps && IsLoaded)
 		{
-			return F2EXoDU3KJ();
+			return IsSelectionInTable();
 		}
 		return false;
 	}
 
-	internal static void vpbXsP8YgS(IRibbonUI P_0)
+	internal static void SetRibbonUI(IRibbonUI P_0)
 	{
 		if (P_0 != null)
 		{
-			WsgFDokEbP = P_0;
+			ribbonUI = P_0;
 		}
 	}
 
-	internal static void T25Xl7T74U(string P_0)
+	internal static void HandleContextMenuCallback(string P_0)
 	{
 		if (IsLoaded)
 		{
 			if (!string.IsNullOrWhiteSpace(P_0) && P_0.IndexOf("Locate", StringComparison.OrdinalIgnoreCase) >= 0)
 			{
-				qLOXPSqh3g();
+				LocateData();
 			}
 			else
 			{
-				mnnXqR7AH1();
+				SyncData();
 			}
 		}
 	}
 
-	private static void CtJXNX8dgh()
+	private static void InvalidateRibbon()
 	{
 		try
 		{
-			WsgFDokEbP?.Invalidate();
+			ribbonUI?.Invalidate();
 		}
 		catch
 		{
 		}
 	}
 
-	private static bool TOlXmIuJyF()
+	private static bool GetAutoLoadSetting()
 	{
 		try
 		{
@@ -261,7 +261,7 @@ internal static class ExcelDataSyncService
 		return false;
 	}
 
-	private static bool F2EXoDU3KJ()
+	private static bool IsSelectionInTable()
 	{
 		try
 		{
@@ -274,7 +274,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static void LCjXG6voSH(bool P_0)
+	private static void SetAutoLoadSetting(bool P_0)
 	{
 		try
 		{
@@ -285,7 +285,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static string bmJXClxTxp()
+	private static string LoadWpsContextMenu()
 	{
 		Application wordApp = WordTableToolService.WordApp;
 		if (wordApp == null)
@@ -304,12 +304,12 @@ internal static class ExcelDataSyncService
 		{
 			return "无法获取 WPS CommandBars，右键菜单未加载。";
 		}
-		bool flag = gJhXFr9Vpr(wordApp);
-		Ns7FunudE5.Clear();
+		bool flag = IsNormalTemplateSaved(wordApp);
+		registeredButtons.Clear();
 		IsLoaded = false;
 		int num = 0;
 		int num2 = 0;
-		string[] array = qLtF9CsScg;
+		string[] array = wpsCommandBarNames;
 		foreach (string index in array)
 		{
 			CommandBar commandBar = null;
@@ -322,17 +322,17 @@ internal static class ExcelDataSyncService
 			}
 			if (commandBar != null)
 			{
-				DUEX5Nc0TM(commandBar, true, 0);
-				CommandBarButton commandBarButton = thlXpInueV(commandBar, "同步数据", "CPAHelper.ExcelSync.SyncData", true, YPCXOcUbRB);
-				CommandBarButton commandBarButton2 = thlXpInueV(commandBar, "定位数据", "CPAHelper.ExcelSync.LocateData", false, EloXnD5Gla);
+				RemoveMatchingControlsFromBar(commandBar, true, 0);
+				CommandBarButton commandBarButton = CreateCommandBarButton(commandBar, "同步数据", "CPAHelper.ExcelSync.SyncData", true, OnSyncDataClick);
+				CommandBarButton commandBarButton2 = CreateCommandBarButton(commandBar, "定位数据", "CPAHelper.ExcelSync.LocateData", false, OnLocateDataClick);
 				if (commandBarButton != null)
 				{
-					Ns7FunudE5.Add(commandBarButton);
+					registeredButtons.Add(commandBarButton);
 					num2++;
 				}
 				if (commandBarButton2 != null)
 				{
-					Ns7FunudE5.Add(commandBarButton2);
+					registeredButtons.Add(commandBarButton2);
 					num2++;
 				}
 				if (commandBarButton != null && commandBarButton2 != null)
@@ -341,17 +341,17 @@ internal static class ExcelDataSyncService
 				}
 			}
 		}
-		tr6Xh0jnAc(wordApp, flag);
+		RestoreNormalTemplateSaved(wordApp, flag);
 		IsLoaded = num > 0;
 		if (IsLoaded)
 		{
 			return "已加载右键菜单。";
 		}
-		Ns7FunudE5.Clear();
+		registeredButtons.Clear();
 		return "加载右键菜单失败：没有找到可挂载的 WPS 表格右键菜单。";
 	}
 
-	private static CommandBarButton thlXpInueV(CommandBar P_0, string P_1, string P_2, bool P_3, _CommandBarButtonEvents_ClickEventHandler P_4)
+	private static CommandBarButton CreateCommandBarButton(CommandBar P_0, string P_1, string P_2, bool P_3, _CommandBarButtonEvents_ClickEventHandler P_4)
 	{
 		try
 		{
@@ -374,24 +374,24 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static void YPCXOcUbRB(CommandBarButton P_0, ref bool P_1)
+	private static void OnSyncDataClick(CommandBarButton P_0, ref bool P_1)
 	{
 		P_1 = true;
-		mnnXqR7AH1();
+		SyncData();
 	}
 
-	private static void EloXnD5Gla(CommandBarButton P_0, ref bool P_1)
+	private static void OnLocateDataClick(CommandBarButton P_0, ref bool P_1)
 	{
 		P_1 = true;
-		qLOXPSqh3g();
+		LocateData();
 	}
 
-	private static void VvXX7RqLnd()
+	private static void RemoveAllCustomButtons()
 	{
 		try
 		{
 			Application wordApp = WordTableToolService.WordApp;
-			bool flag = gJhXFr9Vpr(wordApp);
+			bool flag = IsNormalTemplateSaved(wordApp);
 			CommandBars commandBars = null;
 			try
 			{
@@ -405,7 +405,7 @@ internal static class ExcelDataSyncService
 				return;
 			}
 			int num = 0;
-			string[] array = swAFBWjhJe;
+			string[] array = allCommandBarNames;
 			foreach (string index in array)
 			{
 				CommandBar commandBar = null;
@@ -418,7 +418,7 @@ internal static class ExcelDataSyncService
 				}
 				if (commandBar != null)
 				{
-					num += DUEX5Nc0TM(commandBar, true, 0);
+					num += RemoveMatchingControlsFromBar(commandBar, true, 0);
 				}
 			}
 			for (int num2 = commandBars.Count; num2 >= 1; num2--)
@@ -433,12 +433,12 @@ internal static class ExcelDataSyncService
 				}
 				if (commandBar2 != null)
 				{
-					num += DUEX5Nc0TM(commandBar2, false, 0);
+					num += RemoveMatchingControlsFromBar(commandBar2, false, 0);
 				}
 			}
 			if (num > 0)
 			{
-				tr6Xh0jnAc(wordApp, flag);
+				RestoreNormalTemplateSaved(wordApp, flag);
 			}
 		}
 		catch (Exception)
@@ -446,7 +446,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static int DUEX5Nc0TM(CommandBar P_0, bool P_1, int P_2)
+	private static int RemoveMatchingControlsFromBar(CommandBar P_0, bool P_1, int P_2)
 	{
 		if (P_0 == null || P_2 > 8)
 		{
@@ -496,14 +496,14 @@ internal static class ExcelDataSyncService
 				string text2 = string.Empty;
 				try
 				{
-					text2 = P1TXXBYRoN(commandBarControl.Caption);
+					text2 = NormalizeCaption(commandBarControl.Caption);
 				}
 				catch
 				{
 				}
-				if (OxcXydn466(text, text2, P_1))
+				if (ShouldRemoveControl(text, text2, P_1))
 				{
-					if (bKNXeMPExi(commandBarControl))
+					if (TryDeleteControl(commandBarControl))
 					{
 						num++;
 					}
@@ -520,7 +520,7 @@ internal static class ExcelDataSyncService
 					}
 					if (commandBarControls2 != null)
 					{
-						num += i6UXcDTry8(commandBarControls2, P_1, P_2 + 1);
+						num += RemoveMatchingControlsFromPopup(commandBarControls2, P_1, P_2 + 1);
 					}
 				}
 			}
@@ -528,7 +528,7 @@ internal static class ExcelDataSyncService
 		return num;
 	}
 
-	private static int i6UXcDTry8(CommandBarControls P_0, bool P_1, int P_2)
+	private static int RemoveMatchingControlsFromPopup(CommandBarControls P_0, bool P_1, int P_2)
 	{
 		if (P_0 == null || P_2 > 8)
 		{
@@ -566,14 +566,14 @@ internal static class ExcelDataSyncService
 				string text2 = string.Empty;
 				try
 				{
-					text2 = P1TXXBYRoN(commandBarControl.Caption);
+					text2 = NormalizeCaption(commandBarControl.Caption);
 				}
 				catch
 				{
 				}
-				if (OxcXydn466(text, text2, P_1))
+				if (ShouldRemoveControl(text, text2, P_1))
 				{
-					if (bKNXeMPExi(commandBarControl))
+					if (TryDeleteControl(commandBarControl))
 					{
 						num++;
 					}
@@ -590,7 +590,7 @@ internal static class ExcelDataSyncService
 					}
 					if (commandBarControls != null)
 					{
-						num += i6UXcDTry8(commandBarControls, P_1, P_2 + 1);
+						num += RemoveMatchingControlsFromPopup(commandBarControls, P_1, P_2 + 1);
 					}
 				}
 			}
@@ -598,7 +598,7 @@ internal static class ExcelDataSyncService
 		return num;
 	}
 
-	private static bool bKNXeMPExi(CommandBarControl P_0)
+	private static bool TryDeleteControl(CommandBarControl P_0)
 	{
 		if (P_0 == null)
 		{
@@ -623,9 +623,9 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static bool OxcXydn466(string P_0, string P_1, bool P_2)
+	private static bool ShouldRemoveControl(string P_0, string P_1, bool P_2)
 	{
-		if (HJeXatF5ua(P_0))
+		if (IsOurCustomButton(P_0))
 		{
 			return true;
 		}
@@ -640,7 +640,7 @@ internal static class ExcelDataSyncService
 		return true;
 	}
 
-	private static string P1TXXBYRoN(string P_0)
+	private static string NormalizeCaption(string P_0)
 	{
 		if (!string.IsNullOrWhiteSpace(P_0))
 		{
@@ -649,7 +649,7 @@ internal static class ExcelDataSyncService
 		return string.Empty;
 	}
 
-	private static bool gJhXFr9Vpr(Application P_0)
+	private static bool IsNormalTemplateSaved(Application P_0)
 	{
 		try
 		{
@@ -661,7 +661,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static void tr6Xh0jnAc(Application P_0, bool P_1)
+	private static void RestoreNormalTemplateSaved(Application P_0, bool P_1)
 	{
 		if (!P_1)
 		{
@@ -680,7 +680,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static bool HJeXatF5ua(string P_0)
+	private static bool IsOurCustomButton(string P_0)
 	{
 		if (!string.Equals(P_0, "CPAHelper.ExcelSync.SyncData", StringComparison.OrdinalIgnoreCase))
 		{
@@ -689,27 +689,27 @@ internal static class ExcelDataSyncService
 		return true;
 	}
 
-	private static void mnnXqR7AH1()
+	private static void SyncData()
 	{
-		TKkXkjis2w("同步数据", delegate
+		ExecuteWithThrottle("同步数据", delegate
 		{
 			_G_c__DisplayClass41_0 CS_8_locals_17 = new _G_c__DisplayClass41_0();
-			CS_8_locals_17.progressWindow = a9VXzcJTG2("已卸载右键菜单。", "已加载右键菜单。");
-			CS_8_locals_17.OQKVbeL2HSs = null;
+			CS_8_locals_17.progressWindow = CreateProgressWindow("已卸载右键菜单。", "已加载右键菜单。");
+			CS_8_locals_17.syncResult = null;
 			try
 			{
-				HCDXxBpknD(delegate
+				SuppressAlertsAndExecute(delegate
 				{
-					wMSXdLtYmv(delegate
+					ExecuteWithUndoRecord(delegate
 					{
-						CS_8_locals_17.OQKVbeL2HSs = TableComWriteService.SyncCurrentTable((int current, int total, string message) => GQlFRxrmSC(CS_8_locals_17.progressWindow, current, total, message));
+						CS_8_locals_17.syncResult = TableComWriteService.SyncCurrentTable((int current, int total, string message) => UpdateProgress(CS_8_locals_17.progressWindow, current, total, message));
 					}, "[ExcelSync] WPS native context menu auto load skipped: ");
 				});
 			}
 			catch (Exception ex)
 			{
 				AiConfigBootstrap.LogError("Locate", ex);
-				CS_8_locals_17.OQKVbeL2HSs = new TableComWriteService.SyncResult
+				CS_8_locals_17.syncResult = new TableComWriteService.SyncResult
 				{
 					Success = false,
 					Message = "Excel同步_右键菜单_自动加载" + ex.Message
@@ -717,74 +717,74 @@ internal static class ExcelDataSyncService
 			}
 			finally
 			{
-				wZJFVG9n37(CS_8_locals_17.progressWindow);
+				CloseProgressWindow(CS_8_locals_17.progressWindow);
 			}
-			if (CS_8_locals_17.OQKVbeL2HSs != null)
+			if (CS_8_locals_17.syncResult != null)
 			{
-				if (CS_8_locals_17.OQKVbeL2HSs.Success)
+				if (CS_8_locals_17.syncResult.Success)
 				{
-					AiConfigBootstrap.LogInfo("false" + CS_8_locals_17.OQKVbeL2HSs.Message);
-					UiHelperService.ShowToastInfo(string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message) ? "Excel同步_右键菜单_自动加载" : CS_8_locals_17.OQKVbeL2HSs.Message, "false");
+					AiConfigBootstrap.LogInfo("false" + CS_8_locals_17.syncResult.Message);
+					UiHelperService.ShowToastInfo(string.IsNullOrWhiteSpace(CS_8_locals_17.syncResult.Message) ? "Excel同步_右键菜单_自动加载" : CS_8_locals_17.syncResult.Message, "false");
 				}
-				else if (CS_8_locals_17.OQKVbeL2HSs.Cancelled)
+				else if (CS_8_locals_17.syncResult.Cancelled)
 				{
-					UiHelperService.ShowToastWarning(string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message) ? "true" : CS_8_locals_17.OQKVbeL2HSs.Message, "无法获取 WPS 应用对象，右键菜单未加载。");
+					UiHelperService.ShowToastWarning(string.IsNullOrWhiteSpace(CS_8_locals_17.syncResult.Message) ? "true" : CS_8_locals_17.syncResult.Message, "无法获取 WPS 应用对象，右键菜单未加载。");
 				}
-				else if (!string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message))
+				else if (!string.IsNullOrWhiteSpace(CS_8_locals_17.syncResult.Message))
 				{
-					AiConfigBootstrap.LogWarn("无法获取 WPS CommandBars，右键菜单未加载。" + CS_8_locals_17.OQKVbeL2HSs.Message);
-					UiHelperService.ShowToastError(CS_8_locals_17.OQKVbeL2HSs.Message, "同步数据");
+					AiConfigBootstrap.LogWarn("无法获取 WPS CommandBars，右键菜单未加载。" + CS_8_locals_17.syncResult.Message);
+					UiHelperService.ShowToastError(CS_8_locals_17.syncResult.Message, "同步数据");
 				}
 			}
 		});
 	}
 
-	private static void qLOXPSqh3g()
+	private static void LocateData()
 	{
-		TKkXkjis2w("定位数据", delegate
+		ExecuteWithThrottle("定位数据", delegate
 		{
 			_G_c__DisplayClass42_0 CS_8_locals_11 = new _G_c__DisplayClass42_0();
-			CS_8_locals_11.BLYVba1rP6j = null;
-			GxjXAL3yeg(CYGXW3bHvB());
-			HCDXxBpknD(delegate
+			CS_8_locals_11.syncResult = null;
+			SetStatusBar(GetLocatingStatusMessage());
+			SuppressAlertsAndExecute(delegate
 			{
 				try
 				{
-					CS_8_locals_11.BLYVba1rP6j = TableComWriteService.GetCurrentTableSyncStatus();
+					CS_8_locals_11.syncResult = TableComWriteService.GetCurrentTableSyncStatus();
 				}
 				catch (Exception ex)
 				{
 					AiConfigBootstrap.LogError("CPAHelper.ExcelSync.SyncData", ex);
-					CS_8_locals_11.BLYVba1rP6j = new TableComWriteService.SyncResult
+					CS_8_locals_11.syncResult = new TableComWriteService.SyncResult
 					{
 						Success = false,
 						Message = "定位数据" + ex.Message
 					};
 				}
 			});
-			if (CS_8_locals_11.BLYVba1rP6j == null)
+			if (CS_8_locals_11.syncResult == null)
 			{
-				ygcXvh8pOP();
+				ClearStatusBar();
 			}
-			else if (CS_8_locals_11.BLYVba1rP6j.Success)
+			else if (CS_8_locals_11.syncResult.Success)
 			{
-				ygcXvh8pOP();
-				UiHelperService.ShowToastInfo(string.IsNullOrWhiteSpace(CS_8_locals_11.BLYVba1rP6j.Message) ? "CPAHelper.ExcelSync.LocateData" : CS_8_locals_11.BLYVba1rP6j.Message, "已加载右键菜单。");
+				ClearStatusBar();
+				UiHelperService.ShowToastInfo(string.IsNullOrWhiteSpace(CS_8_locals_11.syncResult.Message) ? "CPAHelper.ExcelSync.LocateData" : CS_8_locals_11.syncResult.Message, "已加载右键菜单。");
 			}
-			else if (!string.IsNullOrWhiteSpace(CS_8_locals_11.BLYVba1rP6j.Message))
+			else if (!string.IsNullOrWhiteSpace(CS_8_locals_11.syncResult.Message))
 			{
-				GxjXAL3yeg(CS_8_locals_11.BLYVba1rP6j.Message);
-				AiConfigBootstrap.LogWarn("加载右键菜单失败：没有找到可挂载的 WPS 表格右键菜单。" + CS_8_locals_11.BLYVba1rP6j.Message);
-				UiHelperService.ShowToastWarning(CS_8_locals_11.BLYVba1rP6j.Message, "同步数据");
+				SetStatusBar(CS_8_locals_11.syncResult.Message);
+				AiConfigBootstrap.LogWarn("加载右键菜单失败：没有找到可挂载的 WPS 表格右键菜单。" + CS_8_locals_11.syncResult.Message);
+				UiHelperService.ShowToastWarning(CS_8_locals_11.syncResult.Message, "同步数据");
 			}
 			else
 			{
-				ygcXvh8pOP();
+				ClearStatusBar();
 			}
 		});
 	}
 
-	private static void GxjXAL3yeg(string P_0)
+	private static void SetStatusBar(string P_0)
 	{
 		try
 		{
@@ -799,7 +799,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static void ygcXvh8pOP()
+	private static void ClearStatusBar()
 	{
 		try
 		{
@@ -811,13 +811,13 @@ internal static class ExcelDataSyncService
 		}
 		catch
 		{
-			GxjXAL3yeg(string.Empty);
+			SetStatusBar(string.Empty);
 		}
 	}
 
-	private static string CYGXW3bHvB()
+	private static string GetLocatingStatusMessage()
 	{
-		string text = lwdX09nj1e();
+		string text = GetBoundWorkbookName();
 		if (!string.IsNullOrWhiteSpace(text))
 		{
 			return "正在打开 " + text + " 工作簿并定位源区域...";
@@ -825,7 +825,7 @@ internal static class ExcelDataSyncService
 		return "正在打开 Excel 工作簿并定位源区域...";
 	}
 
-	private static string lwdX09nj1e()
+	private static string GetBoundWorkbookName()
 	{
 		try
 		{
@@ -850,21 +850,21 @@ internal static class ExcelDataSyncService
 		return string.Empty;
 	}
 
-	private static void TKkXkjis2w(string P_0, Action P_1)
+	private static void ExecuteWithThrottle(string P_0, Action P_1)
 	{
 		if (P_1 == null)
 		{
 			return;
 		}
 		P_0 = (string.IsNullOrWhiteSpace(P_0) ? "右键菜单命令" : P_0);
-		lock (B8rF6wKW4L)
+		lock (commandLock)
 		{
 			DateTime utcNow = DateTime.UtcNow;
-			if (WvWFTkrxt9 || utcNow - ugWFgug1Fj < TimeSpan.FromMilliseconds(800.0))
+			if (isCommandExecuting || utcNow - lastCommandUtc < TimeSpan.FromMilliseconds(800.0))
 			{
 				return;
 			}
-			WvWFTkrxt9 = true;
+			isCommandExecuting = true;
 		}
 		try
 		{
@@ -872,15 +872,15 @@ internal static class ExcelDataSyncService
 		}
 		finally
 		{
-			lock (B8rF6wKW4L)
+			lock (commandLock)
 			{
-				ugWFgug1Fj = DateTime.UtcNow;
-				WvWFTkrxt9 = false;
+				lastCommandUtc = DateTime.UtcNow;
+				isCommandExecuting = false;
 			}
 		}
 	}
 
-	private static void HCDXxBpknD(Action P_0)
+	private static void SuppressAlertsAndExecute(Action P_0)
 	{
 		Application wordApp = WordTableToolService.WordApp;
 		bool? flag = null;
@@ -936,7 +936,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static void wMSXdLtYmv(Action P_0, string P_1)
+	private static void ExecuteWithUndoRecord(Action P_0, string P_1)
 	{
 		if (P_0 == null)
 		{
@@ -978,7 +978,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static ProgressWindow a9VXzcJTG2(string P_0, string P_1)
+	private static ProgressWindow CreateProgressWindow(string P_0, string P_1)
 	{
 		try
 		{
@@ -994,7 +994,7 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static bool GQlFRxrmSC(ProgressWindow P_0, int P_1, int P_2, string P_3)
+	private static bool UpdateProgress(ProgressWindow P_0, int P_1, int P_2, string P_3)
 	{
 		if (P_0 == null)
 		{
@@ -1019,29 +1019,29 @@ internal static class ExcelDataSyncService
 		}
 	}
 
-	private static void wZJFVG9n37(ProgressWindow P_0)
+	private static void CloseProgressWindow(ProgressWindow P_0)
 	{
 		_G_c__DisplayClass52_0 CS_8_locals_8 = new _G_c__DisplayClass52_0();
-		CS_8_locals_8.hcTVbPSNMJ4 = P_0;
-		if (CS_8_locals_8.hcTVbPSNMJ4 == null)
+		CS_8_locals_8.progressWindow = P_0;
+		if (CS_8_locals_8.progressWindow == null)
 		{
 			return;
 		}
 		try
 		{
-			if (CS_8_locals_8.hcTVbPSNMJ4.Dispatcher.CheckAccess())
+			if (CS_8_locals_8.progressWindow.Dispatcher.CheckAccess())
 			{
-				if (CS_8_locals_8.hcTVbPSNMJ4.IsVisible)
+				if (CS_8_locals_8.progressWindow.IsVisible)
 				{
-					CS_8_locals_8.hcTVbPSNMJ4.Close();
+					CS_8_locals_8.progressWindow.Close();
 				}
 				return;
 			}
-			CS_8_locals_8.hcTVbPSNMJ4.Dispatcher.Invoke(delegate
+			CS_8_locals_8.progressWindow.Dispatcher.Invoke(delegate
 			{
-				if (CS_8_locals_8.hcTVbPSNMJ4.IsVisible)
+				if (CS_8_locals_8.progressWindow.IsVisible)
 				{
-					CS_8_locals_8.hcTVbPSNMJ4.Close();
+					CS_8_locals_8.progressWindow.Close();
 				}
 			});
 		}
@@ -1053,7 +1053,7 @@ internal static class ExcelDataSyncService
 	static ExcelDataSyncService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		swAFBWjhJe = new string[8]
+		allCommandBarNames = new string[8]
 		{
 			"Text",
 			"Table Text",
@@ -1064,7 +1064,7 @@ internal static class ExcelDataSyncService
 			"Table Row Popup Menu",
 			"Table Column Popup Menu"
 		};
-		qLtF9CsScg = new string[6]
+		wpsCommandBarNames = new string[6]
 		{
 			"Table Text",
 			"Table Cells",
@@ -1073,8 +1073,8 @@ internal static class ExcelDataSyncService
 			"Table Row Popup Menu",
 			"Table Column Popup Menu"
 		};
-		B8rF6wKW4L = new object();
-		Ns7FunudE5 = new List<CommandBarButton>();
-		ugWFgug1Fj = DateTime.MinValue;
+		commandLock = new object();
+		registeredButtons = new List<CommandBarButton>();
+		lastCommandUtc = DateTime.MinValue;
 	}
 }

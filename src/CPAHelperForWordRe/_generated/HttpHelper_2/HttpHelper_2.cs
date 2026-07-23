@@ -6,7 +6,7 @@ namespace HttpHelper_2;
 
 internal static class HttpHelper_2
 {
-	public static void BNmLxKn8Mc()
+	public static void initializeHttpClient()
 	{
 		try
 		{

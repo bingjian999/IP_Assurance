@@ -155,7 +155,7 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 
 	private ckEnEPJapYGYC9Kvom5 GOEJh7vQUv<ckEnEPJapYGYC9Kvom5>(Func<Application, ckEnEPJapYGYC9Kvom5> P_0)
 	{
-		return _wordTableToolService4.MdXJlVhPku("host_action_word_selection", P_0);
+		return _wordTableToolService4.runOperation("host_action_word_selection", P_0);
 	}
 
 	private static string q9DJqvf9jN(string P_0)

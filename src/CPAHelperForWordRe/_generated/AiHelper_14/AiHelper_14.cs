@@ -16,7 +16,7 @@ internal static class AiHelper_14
 
 	private static long iByJer1iZW;
 
-	public static RSPKsxJn4mY9UNSKay8 no9JOmnkBj<RSPKsxJn4mY9UNSKay8>(string P_0, Func<RSPKsxJn4mY9UNSKay8> P_1)
+	public static RSPKsxJn4mY9UNSKay8 RunWithTelemetry<RSPKsxJn4mY9UNSKay8>(string P_0, Func<RSPKsxJn4mY9UNSKay8> P_1)
 	{
 		if (P_1 == null)
 		{

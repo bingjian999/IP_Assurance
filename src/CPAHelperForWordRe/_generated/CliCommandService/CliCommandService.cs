@@ -18,7 +18,7 @@ namespace CliCommandService;
 
 internal sealed class CliCommandService : IToolProvider
 {
-	private sealed class peDdSyhbcuP9ypMdOqG
+	private sealed class CliExecutionResult
 	{
 		[CompilerGenerated]
 		private int? _exitCode;
@@ -27,7 +27,7 @@ internal sealed class CliCommandService : IToolProvider
 		private bool _timedOut;
 
 		[CompilerGenerated]
-		private string gaFhtZlfcl;
+		private string _stdout;
 
 		[CompilerGenerated]
 		private string _stderr;
@@ -65,12 +65,12 @@ internal sealed class CliCommandService : IToolProvider
 			[CompilerGenerated]
 			get
 			{
-				return gaFhtZlfcl;
+				return _stdout;
 			}
 			[CompilerGenerated]
 			set
 			{
-				gaFhtZlfcl = value;
+				_stdout = value;
 			}
 		}
 
@@ -88,7 +88,7 @@ internal sealed class CliCommandService : IToolProvider
 			}
 		}
 
-		public peDdSyhbcuP9ypMdOqG()
+		public CliExecutionResult()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
@@ -97,9 +97,9 @@ internal sealed class CliCommandService : IToolProvider
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_0
 	{
-		public int MxxhlOwAEk;
+		public int _timeoutSeconds;
 
-		public string tuAhNGVMve;
+		public string _encodedCommand;
 
 		public string text;
 
@@ -108,31 +108,31 @@ internal sealed class CliCommandService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal peDdSyhbcuP9ypMdOqG aq7hsMdx5p()
+		internal CliExecutionResult RunPowerShellClosure()
 		{
-			return fju9MgoMBK(Anl9Ssa2lw(), "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + tuAhNGVMve, text, ebt9Z4TRlv(MxxhlOwAEk));
+			return RunProcess(GetPowerShellPath(), "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + _encodedCommand, text, ClampTimeout(_timeoutSeconds));
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass11_0
 	{
-		public string IvihGyHUks;
+		public string _arguments;
 
 		public int value;
 
-		public string OZohpSLKEr;
+		public string _exePath;
 
-		public string xaghOgYyIZ;
+		public string _workingDirectory;
 
 		public _G_c__DisplayClass11_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal peDdSyhbcuP9ypMdOqG sFLhokwAUy()
+		internal CliExecutionResult RunExeClosure()
 		{
-			return fju9MgoMBK(OZohpSLKEr, IvihGyHUks ?? string.Empty, xaghOgYyIZ, ebt9Z4TRlv(value));
+			return RunProcess(_exePath, _arguments ?? string.Empty, _workingDirectory, ClampTimeout(value));
 		}
 	}
 
@@ -148,14 +148,14 @@ internal sealed class CliCommandService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void oWShnDR48h(object _, DataReceivedEventArgs args)
+		internal void OnOutputDataReceived(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(stringBuilder, args.Data);
+			AppendOutputCapped(stringBuilder, args.Data);
 		}
 
-		internal void cxlh7wwFYQ(object _, DataReceivedEventArgs args)
+		internal void OnErrorDataReceived(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(stringBuilder, args.Data);
+			AppendOutputCapped(stringBuilder, args.Data);
 		}
 	}
 
@@ -174,8 +174,8 @@ internal sealed class CliCommandService : IToolProvider
 		BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
 		return new List<AITool>
 		{
-			Tcw92PFFCn("RunCliCommand", "run_cli_command", bindingFlags),
-			Tcw92PFFCn("RunExeCommand", "run_exe_command", bindingFlags)
+			CreateAIFunction("RunCliCommand", "run_cli_command", bindingFlags),
+			CreateAIFunction("RunExeCommand", "run_exe_command", bindingFlags)
 		};
 	}
 
@@ -197,7 +197,7 @@ internal sealed class CliCommandService : IToolProvider
 		return list;
 	}
 
-	private AITool Tcw92PFFCn(string P_0, string P_1, BindingFlags P_2)
+	private AITool CreateAIFunction(string P_0, string P_1, BindingFlags P_2)
 	{
 		return AIFunctionFactory.Create(GetType().GetMethod(P_0, P_2), this, new AIFunctionFactoryOptions
 		{
@@ -209,21 +209,21 @@ internal sealed class CliCommandService : IToolProvider
 	private async Task<AiHelper_5> RunCliCommand([Description("要执行的非交互式 PowerShell 命令文本。")] string command, [Description("工作目录，可为空；相对路径基于当前 Word 文档所在目录。")] string cwd = "", [Description("超时时间，秒。默认30，最大120。")] int timeoutSeconds = 30)
 	{
 		_G_c__DisplayClass10_0 CS_8_locals_8 = new _G_c__DisplayClass10_0();
-		CS_8_locals_8.MxxhlOwAEk = timeoutSeconds;
+		CS_8_locals_8._timeoutSeconds = timeoutSeconds;
 		if (string.IsNullOrWhiteSpace(command))
 		{
 			return AiHelper_5.CreateError("CLI", "RunCliCommand");
 		}
-		if (AMR9fi0nye(command))
+		if (IsDangerousCommand(command))
 		{
 			return AiHelper_5.CreateError("run_cli_command", "RunExeCommand");
 		}
 		try
 		{
-			CS_8_locals_8.text = sAl94Dv122(cwd);
-			CS_8_locals_8.tuAhNGVMve = Convert.ToBase64String(Encoding.Unicode.GetBytes(command));
-			peDdSyhbcuP9ypMdOqG peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => fju9MgoMBK(Anl9Ssa2lw(), "run_exe_command" + CS_8_locals_8.tuAhNGVMve, CS_8_locals_8.text, ebt9Z4TRlv(CS_8_locals_8.MxxhlOwAEk))).ConfigureAwait(continueOnCapturedContext: false);
-			KOn9w5WDpJ("run_cli_command", command, CS_8_locals_8.text, peDdSyhbcuP9ypMdOqG2);
+			CS_8_locals_8.text = ResolveWorkingDirectory(cwd);
+			CS_8_locals_8._encodedCommand = Convert.ToBase64String(Encoding.Unicode.GetBytes(command));
+			CliExecutionResult peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => RunProcess(GetPowerShellPath(), "run_exe_command" + CS_8_locals_8._encodedCommand, CS_8_locals_8.text, ClampTimeout(CS_8_locals_8._timeoutSeconds))).ConfigureAwait(continueOnCapturedContext: false);
+			LogCliExecution("run_cli_command", command, CS_8_locals_8.text, peDdSyhbcuP9ypMdOqG2);
 			return AiHelper_5.CreateSuccess("cli", new
 			{
 				command = command,
@@ -244,7 +244,7 @@ internal sealed class CliCommandService : IToolProvider
 	private async Task<AiHelper_5> RunExeCommand([Description("可执行文件路径或 PATH 中的程序名。")] string exePath, [Description("原样传给 exe 的参数字符串；不会经过 shell 解析。")] string arguments = "", [Description("工作目录，可为空；相对路径基于当前 Word 文档所在目录。")] string cwd = "", [Description("超时时间，秒。默认30，最大120。")] int timeoutSeconds = 30)
 	{
 		_G_c__DisplayClass11_0 CS_8_locals_15 = new _G_c__DisplayClass11_0();
-		CS_8_locals_15.IvihGyHUks = arguments;
+		CS_8_locals_15._arguments = arguments;
 		CS_8_locals_15.value = timeoutSeconds;
 		if (string.IsNullOrWhiteSpace(exePath))
 		{
@@ -252,15 +252,15 @@ internal sealed class CliCommandService : IToolProvider
 		}
 		try
 		{
-			CS_8_locals_15.xaghOgYyIZ = sAl94Dv122(cwd);
-			CS_8_locals_15.OZohpSLKEr = hku9jRL7Cj(exePath, CS_8_locals_15.xaghOgYyIZ);
-			peDdSyhbcuP9ypMdOqG peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => fju9MgoMBK(CS_8_locals_15.OZohpSLKEr, CS_8_locals_15.IvihGyHUks ?? string.Empty, CS_8_locals_15.xaghOgYyIZ, ebt9Z4TRlv(CS_8_locals_15.value))).ConfigureAwait(continueOnCapturedContext: false);
-			KOn9w5WDpJ("cli", CS_8_locals_15.OZohpSLKEr + "risk.filesystem" + (CS_8_locals_15.IvihGyHUks ?? string.Empty), CS_8_locals_15.xaghOgYyIZ, peDdSyhbcuP9ypMdOqG2);
+			CS_8_locals_15._workingDirectory = ResolveWorkingDirectory(cwd);
+			CS_8_locals_15._exePath = ResolveExePath(exePath, CS_8_locals_15._workingDirectory);
+			CliExecutionResult peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => RunProcess(CS_8_locals_15._exePath, CS_8_locals_15._arguments ?? string.Empty, CS_8_locals_15._workingDirectory, ClampTimeout(CS_8_locals_15.value))).ConfigureAwait(continueOnCapturedContext: false);
+			LogCliExecution("cli", CS_8_locals_15._exePath + "risk.filesystem" + (CS_8_locals_15._arguments ?? string.Empty), CS_8_locals_15._workingDirectory, peDdSyhbcuP9ypMdOqG2);
 			return AiHelper_5.CreateSuccess("risk.high", new
 			{
-				exePath = CS_8_locals_15.OZohpSLKEr,
-				arguments = (CS_8_locals_15.IvihGyHUks ?? string.Empty),
-				cwd = CS_8_locals_15.xaghOgYyIZ,
+				exePath = CS_8_locals_15._exePath,
+				arguments = (CS_8_locals_15._arguments ?? string.Empty),
+				cwd = CS_8_locals_15._workingDirectory,
 				exitCode = peDdSyhbcuP9ypMdOqG2.ExitCode,
 				timedOut = peDdSyhbcuP9ypMdOqG2.TimedOut,
 				stdout = peDdSyhbcuP9ypMdOqG2.Stdout,
@@ -273,7 +273,7 @@ internal sealed class CliCommandService : IToolProvider
 		}
 	}
 
-	private string sAl94Dv122(string P_0)
+	private string ResolveWorkingDirectory(string P_0)
 	{
 		string text = null;
 		string projectPath = _iHostContext.GetProjectPath();
@@ -294,10 +294,10 @@ internal sealed class CliCommandService : IToolProvider
 		return path;
 	}
 
-	private static string hku9jRL7Cj(string P_0, string P_1)
+	private static string ResolveExePath(string P_0, string P_1)
 	{
 		string text = (P_0 ?? string.Empty).Trim();
-		if (!ihI9Y9MXOP(text))
+		if (!IsPathRooted(text))
 		{
 			return text;
 		}
@@ -310,7 +310,7 @@ internal sealed class CliCommandService : IToolProvider
 		return path;
 	}
 
-	private static bool ihI9Y9MXOP(string P_0)
+	private static bool IsPathRooted(string P_0)
 	{
 		if (!string.IsNullOrWhiteSpace(P_0))
 		{
@@ -323,7 +323,7 @@ internal sealed class CliCommandService : IToolProvider
 		return false;
 	}
 
-	private static int ebt9Z4TRlv(int P_0)
+	private static int ClampTimeout(int P_0)
 	{
 		if (P_0 > 0)
 		{
@@ -332,7 +332,7 @@ internal sealed class CliCommandService : IToolProvider
 		return 30;
 	}
 
-	private static bool AMR9fi0nye(string P_0)
+	private static bool IsDangerousCommand(string P_0)
 	{
 		string text = " " + (P_0 ?? string.Empty).Replace("\\r", " ").Replace("\n", " ").ToLowerInvariant() + " ";
 		string[] array = new string[10]
@@ -358,7 +358,7 @@ internal sealed class CliCommandService : IToolProvider
 		return false;
 	}
 
-	private static peDdSyhbcuP9ypMdOqG fju9MgoMBK(string P_0, string P_1, string P_2, int P_3)
+	private static CliExecutionResult RunProcess(string P_0, string P_1, string P_2, int P_3)
 	{
 		_G_c__DisplayClass17_0 CS_8_locals_8 = new _G_c__DisplayClass17_0();
 		CS_8_locals_8.stringBuilder = new StringBuilder();
@@ -378,11 +378,11 @@ internal sealed class CliCommandService : IToolProvider
 		};
 		process.OutputDataReceived += delegate(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(CS_8_locals_8.stringBuilder, args.Data);
+			AppendOutputCapped(CS_8_locals_8.stringBuilder, args.Data);
 		};
 		process.ErrorDataReceived += delegate(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(CS_8_locals_8.stringBuilder, args.Data);
+			AppendOutputCapped(CS_8_locals_8.stringBuilder, args.Data);
 		};
 		process.Start();
 		process.BeginOutputReadLine();
@@ -396,7 +396,7 @@ internal sealed class CliCommandService : IToolProvider
 			catch
 			{
 			}
-			return new peDdSyhbcuP9ypMdOqG
+			return new CliExecutionResult
 			{
 				ExitCode = null,
 				TimedOut = true,
@@ -405,7 +405,7 @@ internal sealed class CliCommandService : IToolProvider
 			};
 		}
 		process.WaitForExit();
-		return new peDdSyhbcuP9ypMdOqG
+		return new CliExecutionResult
 		{
 			ExitCode = process.ExitCode,
 			TimedOut = false,
@@ -414,7 +414,7 @@ internal sealed class CliCommandService : IToolProvider
 		};
 	}
 
-	private static void Q4y9bTxUyf(StringBuilder P_0, string P_1)
+	private static void AppendOutputCapped(StringBuilder P_0, string P_1)
 	{
 		if (P_1 != null && P_0.Length < 20000)
 		{
@@ -424,7 +424,7 @@ internal sealed class CliCommandService : IToolProvider
 		}
 	}
 
-	private static string Anl9Ssa2lw()
+	private static string GetPowerShellPath()
 	{
 		string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
 		string text = (string.IsNullOrWhiteSpace(folderPath) ? null : Path.Combine(folderPath, "System32", "WindowsPowerShell", "v1.0", "powershell.exe"));
@@ -435,7 +435,7 @@ internal sealed class CliCommandService : IToolProvider
 		return text;
 	}
 
-	private static void KOn9w5WDpJ(string P_0, string P_1, string P_2, peDdSyhbcuP9ypMdOqG P_3)
+	private static void LogCliExecution(string P_0, string P_1, string P_2, CliExecutionResult P_3)
 	{
 		try
 		{

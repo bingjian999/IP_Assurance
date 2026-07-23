@@ -51,7 +51,7 @@ internal sealed class TableBorderConfig
 		}
 	}
 
-	public wSx55RS7lsLReJ1W8jr mZ2Sn1wU53<wSx55RS7lsLReJ1W8jr>(Func<AiHelper_12, wSx55RS7lsLReJ1W8jr> P_0)
+	public wSx55RS7lsLReJ1W8jr ReadConfigValue<wSx55RS7lsLReJ1W8jr>(Func<AiHelper_12, wSx55RS7lsLReJ1W8jr> P_0)
 	{
 		lock (_configLock)
 		{
@@ -68,7 +68,7 @@ internal sealed class TableBorderConfig
 		lock (_configLock)
 		{
 			P_0(_configData);
-			_configData.BkGt8QpMWu();
+			_configData.EnsureConfigLoaded();
 			if (P_1)
 			{
 				PersistConfig();
@@ -178,7 +178,7 @@ internal sealed class TableBorderConfig
 			if (!string.IsNullOrEmpty(_configPath) && File.Exists(_configPath))
 			{
 				AiHelper_12 nKy3wjtTwmsradOXPDy = JsonConvert.DeserializeObject<AiHelper_12>(File.ReadAllText(_configPath, Encoding.UTF8)) ?? new AiHelper_12();
-				nKy3wjtTwmsradOXPDy.BkGt8QpMWu();
+				nKy3wjtTwmsradOXPDy.EnsureConfigLoaded();
 				bool flag = ValidateConfig(nKy3wjtTwmsradOXPDy);
 				lock (_configLock)
 				{
@@ -202,7 +202,7 @@ internal sealed class TableBorderConfig
 		{
 			lock (_configLock)
 			{
-				_configData.BkGt8QpMWu();
+				_configData.EnsureConfigLoaded();
 				string contents = JsonConvert.SerializeObject(_configData, Formatting.Indented);
 				File.WriteAllText(_configPath, contents, Encoding.UTF8);
 			}
@@ -216,7 +216,7 @@ internal sealed class TableBorderConfig
 	private static AiHelper_12 bm6SAF0HvB()
 	{
 		AiHelper_12 nKy3wjtTwmsradOXPDy = new AiHelper_12();
-		nKy3wjtTwmsradOXPDy.BkGt8QpMWu();
+		nKy3wjtTwmsradOXPDy.EnsureConfigLoaded();
 		try
 		{
 			string legacyConfigFilePath = AiSseStreamService.LegacyConfigFilePath;

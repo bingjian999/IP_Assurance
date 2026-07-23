@@ -216,28 +216,28 @@ internal static class DocumentLifecycleGuard
 		{
 			throw new InvalidOperationException("Word 应用尚未初始化。");
 		}
-		if (!P_1.c38uOkT1SI(P_0, out var message))
+		if (!P_1.TryActivate(P_0, out var message))
 		{
 			throw new InvalidOperationException(message);
 		}
-		Document document = P_1.iHlupRS7Nk(P_0);
+		Document document = P_1.ResolveDocument(P_0);
 		if (document == null)
 		{
-			throw new InvalidOperationException(P_1.FUHunlB6Z7());
+			throw new InvalidOperationException(P_1.BuildUnavailableMessage());
 		}
 		WordWindowInfo windowInfo = BuildWindowInfo(P_0, document, P_1.WindowKey, P_1.WindowHwnd);
 		if (!windowInfo.HasDocument)
 		{
-			throw new InvalidOperationException(P_1.FUHunlB6Z7());
+			throw new InvalidOperationException(P_1.BuildUnavailableMessage());
 		}
-		P_1.ML7uGGyNIv(document);
+		P_1.BindDocument(document);
 		return windowInfo;
 	}
 
 	public static void ValidatePaneTarget(Application P_0)
 	{
 		WordWindowInfo current = Current;
-		if (current == null || !current.HasPaneTarget || AiTargetBinder.hYCuNwB2K0(current).c38uOkT1SI(P_0, out var message))
+		if (current == null || !current.HasPaneTarget || AiTargetBinder.FromWordWindowInfo(current).TryActivate(P_0, out var message))
 		{
 			return;
 		}
@@ -255,7 +255,7 @@ internal static class DocumentLifecycleGuard
 		WordWindowInfo current = Current;
 		if (string.IsNullOrWhiteSpace(text) && current != null && current.HasPaneTarget)
 		{
-			Document document = AiTargetBinder.hYCuNwB2K0(current).iHlupRS7Nk(P_0);
+			Document document = AiTargetBinder.FromWordWindowInfo(current).ResolveDocument(P_0);
 			if (document != null)
 			{
 				return document;

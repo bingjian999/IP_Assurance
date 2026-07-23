@@ -118,13 +118,13 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 	public bool GetExcelSyncContextMenuVisible(IRibbonControl control)
 	{
-		return ExcelDataSyncService.tE8XLlC6V1();
+		return ExcelDataSyncService.IsContextMenuUsable();
 	}
 
 	public void OnCompositeRibbonLoaded(IRibbonUI ribbonUi)
 	{
 		hgIXHQ6ueX(ribbonUi);
-		ExcelDataSyncService.vpbXsP8YgS(ribbonUi);
+		ExcelDataSyncService.SetRibbonUI(ribbonUi);
 		C0ZX6OAUiX(ribbonUi);
 	}
 
@@ -146,7 +146,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 	public void OnExcelSyncContextMenuAction(IRibbonControl control)
 	{
-		ExcelDataSyncService.T25Xl7T74U(control?.Id);
+		ExcelDataSyncService.HandleContextMenuCallback(control?.Id);
 	}
 
 	public IPictureDisp GetExcelSyncContextMenuImage(IRibbonControl control)
@@ -519,7 +519,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 			if (P_0[i] is IRibbonUI ribbonUI)
 			{
 				hgIXHQ6ueX(ribbonUI);
-				ExcelDataSyncService.vpbXsP8YgS(ribbonUI);
+				ExcelDataSyncService.SetRibbonUI(ribbonUI);
 				break;
 			}
 		}

@@ -32,16 +32,16 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 		public HttpHelper_1 httpHelper_1;
 
-		public bool SPMVYHHvWZj;
+		public bool isUpdateAvailable;
 
-		public string UJeVYQhHWDY;
+		public string normalizedDescription;
 
 		public _G_c__DisplayClass5_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void OyMVYTEtbNt()
+		internal void resetCheckUpdateUI()
 		{
 			updateWindow.btnCheck.IsEnabled = false;
 			updateWindow.lblRemoteVersion.Text = "正在获取...";
@@ -52,19 +52,19 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			updateWindow.lblProgress.Visibility = Visibility.Collapsed;
 		}
 
-		internal void ruiVYgKkGZ0()
+		internal void showFetchFailedUI()
 		{
 			updateWindow.lblRemoteVersion.Text = "获取失败";
 			updateWindow.txtDescription.Text = "无法连接更新服务器，请检查网络后重试。";
 			updateWindow.btnCheck.IsEnabled = true;
 		}
 
-		internal void GiJVY8EBqPv()
+		internal void showVersionInfo()
 		{
 			updateWindow.lblRemoteVersion.Text = httpHelper_1.VersionText ?? "未知";
 			updateWindow.lblRemoteDate.Text = httpHelper_1.ReleaseDate ?? string.Empty;
-			updateWindow.txtDescription.Text = (SPMVYHHvWZj ? ("当前已是最新版本。" + Environment.NewLine + Environment.NewLine + UJeVYQhHWDY) : ("发现新版本！" + Environment.NewLine + Environment.NewLine + UJeVYQhHWDY));
-			updateWindow.btnDownload.IsEnabled = SPMVYHHvWZj && !string.IsNullOrWhiteSpace(httpHelper_1.DownloadUrl);
+			updateWindow.txtDescription.Text = (isUpdateAvailable ? ("当前已是最新版本。" + Environment.NewLine + Environment.NewLine + normalizedDescription) : ("发现新版本！" + Environment.NewLine + Environment.NewLine + normalizedDescription));
+			updateWindow.btnDownload.IsEnabled = isUpdateAvailable && !string.IsNullOrWhiteSpace(httpHelper_1.DownloadUrl);
 			updateWindow.btnCheck.IsEnabled = true;
 		}
 	}
@@ -81,7 +81,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void grbVY1pDLQ2()
+		internal void showDownloadFailed()
 		{
 			MessageBox.Show(updateWindow, "下载失败：" + exception.Message, "检查更新", MessageBoxButton.OK, MessageBoxImage.Hand);
 		}
@@ -90,29 +90,29 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass9_0
 	{
-		public int? LgfVYUvkI8j;
+		public int? progressPercent;
 
-		public UpdateWindow aswVYKYTrHV;
+		public UpdateWindow updateWindow;
 
-		public string KxYVYEvaSjj;
+		public string progressText;
 
 		public _G_c__DisplayClass9_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void MBKVY3YkeNX()
+		internal void updateProgressBar()
 		{
-			if (LgfVYUvkI8j.HasValue)
+			if (progressPercent.HasValue)
 			{
-				aswVYKYTrHV.progressBar.IsIndeterminate = false;
-				aswVYKYTrHV.progressBar.Value = Math.Max(0, Math.Min(100, LgfVYUvkI8j.Value));
+				updateWindow.progressBar.IsIndeterminate = false;
+				updateWindow.progressBar.Value = Math.Max(0, Math.Min(100, progressPercent.Value));
 			}
 			else
 			{
-				aswVYKYTrHV.progressBar.IsIndeterminate = true;
+				updateWindow.progressBar.IsIndeterminate = true;
 			}
-			aswVYKYTrHV.lblProgress.Text = KxYVYEvaSjj;
+			updateWindow.lblProgress.Text = progressText;
 		}
 	}
 
@@ -153,25 +153,25 @@ public sealed class UpdateWindow : Window, IComponentConnector
 				Close();
 			}
 		};
-		base.Loaded += jvrn0yOKXs;
+		base.Loaded += onWindowLoaded;
 	}
 
-	private void jvrn0yOKXs(object P_0, RoutedEventArgs P_1)
+	private void onWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
 		lblCurrentVersion.Text = AiSseStreamService4.GetAssemblyVersion();
 		lblRemoteVersion.Text = "正在获取...";
 		lblRemoteDate.Text = "";
 		txtDescription.Text = "";
-		chkAutoUpdate.IsChecked = AiSseStreamService4.pS8Leo78tt();
+		chkAutoUpdate.IsChecked = AiSseStreamService4.isAutoUpdateEnabled();
 		btnDownload.IsEnabled = false;
-		hnYnkOQoh2();
+		checkForUpdates();
 	}
 
-	private async void hnYnkOQoh2()
+	private async void checkForUpdates()
 	{
 		_G_c__DisplayClass5_0 CS_8_locals_30 = new _G_c__DisplayClass5_0();
 		CS_8_locals_30.updateWindow = this;
-		rhf7BnFSKl(delegate
+		invokeOnUiThread(delegate
 		{
 			CS_8_locals_30.updateWindow.btnCheck.IsEnabled = false;
 			CS_8_locals_30.updateWindow.lblRemoteVersion.Text = "正在获取...";
@@ -181,11 +181,11 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			CS_8_locals_30.updateWindow.progressBar.Visibility = Visibility.Collapsed;
 			CS_8_locals_30.updateWindow.lblProgress.Visibility = Visibility.Collapsed;
 		});
-		CS_8_locals_30.httpHelper_1 = await AiSseStreamService4.PJYL5bLAxq();
+		CS_8_locals_30.httpHelper_1 = await AiSseStreamService4.fetchUpdateInfo();
 		_httpHelper_1 = CS_8_locals_30.httpHelper_1;
 		if (CS_8_locals_30.httpHelper_1 == null)
 		{
-			rhf7BnFSKl(delegate
+			invokeOnUiThread(delegate
 			{
 				CS_8_locals_30.updateWindow.lblRemoteVersion.Text = "正在下载中，确定要取消吗？";
 				CS_8_locals_30.updateWindow.txtDescription.Text = "检查更新";
@@ -193,47 +193,47 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			});
 			return;
 		}
-		CS_8_locals_30.UJeVYQhHWDY = MGO7uTfOsY(CS_8_locals_30.httpHelper_1.Description);
-		CS_8_locals_30.SPMVYHHvWZj = AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), CS_8_locals_30.httpHelper_1.VersionText);
-		rhf7BnFSKl(delegate
+		CS_8_locals_30.normalizedDescription = normalizeDescriptionText(CS_8_locals_30.httpHelper_1.Description);
+		CS_8_locals_30.isUpdateAvailable = AiSseStreamService4.isNewerVersion(AiSseStreamService4.GetAssemblyVersion(), CS_8_locals_30.httpHelper_1.VersionText);
+		invokeOnUiThread(delegate
 		{
 			CS_8_locals_30.updateWindow.lblRemoteVersion.Text = CS_8_locals_30.httpHelper_1.VersionText ?? ".exe";
 			CS_8_locals_30.updateWindow.lblRemoteDate.Text = CS_8_locals_30.httpHelper_1.ReleaseDate ?? string.Empty;
-			CS_8_locals_30.updateWindow.txtDescription.Text = (CS_8_locals_30.SPMVYHHvWZj ? (".msi" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.UJeVYQhHWDY) : (".zip" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.UJeVYQhHWDY));
-			CS_8_locals_30.updateWindow.btnDownload.IsEnabled = CS_8_locals_30.SPMVYHHvWZj && !string.IsNullOrWhiteSpace(CS_8_locals_30.httpHelper_1.DownloadUrl);
+			CS_8_locals_30.updateWindow.txtDescription.Text = (CS_8_locals_30.isUpdateAvailable ? (".msi" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.normalizedDescription) : (".zip" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.normalizedDescription));
+			CS_8_locals_30.updateWindow.btnDownload.IsEnabled = CS_8_locals_30.isUpdateAvailable && !string.IsNullOrWhiteSpace(CS_8_locals_30.httpHelper_1.DownloadUrl);
 			CS_8_locals_30.updateWindow.btnCheck.IsEnabled = true;
 		});
 	}
 
-	private void eL2nxb8BFW(object P_0, RoutedEventArgs P_1)
+	private void onBtnCheckClick(object P_0, RoutedEventArgs P_1)
 	{
 		if (!_bool)
 		{
-			hnYnkOQoh2();
+			checkForUpdates();
 		}
 	}
 
-	private async void e5Vnd8VSTM(object P_0, RoutedEventArgs P_1)
+	private async void onBtnDownloadClick(object P_0, RoutedEventArgs P_1)
 	{
 		string text = _httpHelper_1?.DownloadUrl;
 		if (string.IsNullOrWhiteSpace(text))
 		{
 			text = " B";
 		}
-		if (ITV79sAVxO(text))
+		if (isExecutableExtension(text))
 		{
-			await Lk8nz8vy6g(text);
+			await downloadFileAsync(text);
 		}
 		else
 		{
-			Asl7DMBu0n(text);
+			openInShell(text);
 		}
 	}
 
-	private async Task Lk8nz8vy6g(string P_0)
+	private async Task downloadFileAsync(string P_0)
 	{
 		_bool = true;
-		rhf7BnFSKl(delegate
+		invokeOnUiThread(delegate
 		{
 			btnDownload.IsEnabled = false;
 			btnCheck.IsEnabled = false;
@@ -247,7 +247,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		_cancellationTokenSource = new CancellationTokenSource();
 		CancellationToken token = _cancellationTokenSource.Token;
 		string tempDir = AiSseStreamService.GetTempPath(" KB");
-		string path = YDq7gFVLhY(P_0, null);
+		string path = extractFileName(P_0, null);
 		string tempPath = Path.Combine(tempDir, path);
 		try
 		{
@@ -255,7 +255,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			{
 				throw new InvalidOperationException("F1");
 			}
-			HttpHelper_2.BNmLxKn8Mc();
+			HttpHelper_2.initializeHttpClient();
 			HttpClientHandler handler = new HttpClientHandler
 			{
 				AllowAutoRedirect = true
@@ -278,7 +278,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 						{
 							throw new InvalidOperationException(" MB");
 						}
-						path = YDq7gFVLhY(P_0, response);
+						path = extractFileName(P_0, response);
 						tempPath = Path.Combine(tempDir, path);
 						string extension = Path.GetExtension(tempPath);
 						if (!string.Equals(extension, "<br />", StringComparison.OrdinalIgnoreCase) && !string.Equals(extension, "<br/>", StringComparison.OrdinalIgnoreCase) && !string.Equals(extension, "<br>", StringComparison.OrdinalIgnoreCase))
@@ -308,12 +308,12 @@ public sealed class UpdateWindow : Window, IComponentConnector
 								if (num2 != lastPercent)
 								{
 									lastPercent = num2;
-									djs7R66JV1(num2, PWH76kexHZ(bytesRead) + "\n" + PWH76kexHZ(total.Value));
+									reportDownloadProgress(num2, formatFileSize(bytesRead) + "\n" + formatFileSize(total.Value));
 								}
 							}
 							else
 							{
-								djs7R66JV1(null, "\\\\n" + PWH76kexHZ(bytesRead));
+								reportDownloadProgress(null, "\\\\n" + formatFileSize(bytesRead));
 							}
 						}
 					}
@@ -331,25 +331,25 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			{
 				((IDisposable)handler)?.Dispose();
 			}
-			djs7R66JV1(100, "\n");
+			reportDownloadProgress(100, "\n");
 			if (!File.Exists(tempPath) || new FileInfo(tempPath).Length == 0L)
 			{
 				FileDownloadHelper2.DeleteFileIfExists(tempPath);
-				rhf7BnFSKl(delegate
+				invokeOnUiThread(delegate
 				{
 					MessageBox.Show(this, "\\\\r", "\n", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				});
 			}
 			else
 			{
-				djs7R66JV1(100, "\r\n");
-				Glf7T2J9g2(tempPath);
+				reportDownloadProgress(100, "\r\n");
+				revealInExplorer(tempPath);
 			}
 		}
 		catch (OperationCanceledException)
 		{
 			FileDownloadHelper2.DeleteFileIfExists(tempPath);
-			rhf7BnFSKl(delegate
+			invokeOnUiThread(delegate
 			{
 				lblProgress.Text = "\n";
 			});
@@ -358,11 +358,11 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		{
 			_G_c__DisplayClass8_0 CS_8_locals_5 = new _G_c__DisplayClass8_0();
 			CS_8_locals_5.updateWindow = this;
-			Exception h0VVYrHuupw = ex2;
-			CS_8_locals_5.exception = h0VVYrHuupw;
+			Exception caughtException = ex2;
+			CS_8_locals_5.exception = caughtException;
 			FileDownloadHelper2.DeleteFileIfExists(tempPath);
 			AiConfigBootstrap.LogError("explorer.exe", CS_8_locals_5.exception);
-			rhf7BnFSKl(delegate
+			invokeOnUiThread(delegate
 			{
 				MessageBox.Show(CS_8_locals_5.updateWindow, "/select,\"" + CS_8_locals_5.exception.Message, "\"", MessageBoxButton.OK, MessageBoxImage.Hand);
 			});
@@ -370,38 +370,38 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		finally
 		{
 			_bool = false;
-			rhf7BnFSKl(delegate
+			invokeOnUiThread(delegate
 			{
 				btnCheck.IsEnabled = true;
-				btnDownload.IsEnabled = _httpHelper_1 != null && !string.IsNullOrWhiteSpace(_httpHelper_1.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), _httpHelper_1.VersionText);
+				btnDownload.IsEnabled = _httpHelper_1 != null && !string.IsNullOrWhiteSpace(_httpHelper_1.DownloadUrl) && AiSseStreamService4.isNewerVersion(AiSseStreamService4.GetAssemblyVersion(), _httpHelper_1.VersionText);
 			});
 		}
 	}
 
-	private void djs7R66JV1(int? P_0, string P_1)
+	private void reportDownloadProgress(int? P_0, string P_1)
 	{
 		_G_c__DisplayClass9_0 CS_8_locals_10 = new _G_c__DisplayClass9_0();
-		CS_8_locals_10.LgfVYUvkI8j = P_0;
-		CS_8_locals_10.aswVYKYTrHV = this;
-		CS_8_locals_10.KxYVYEvaSjj = P_1;
-		rhf7BnFSKl(delegate
+		CS_8_locals_10.progressPercent = P_0;
+		CS_8_locals_10.updateWindow = this;
+		CS_8_locals_10.progressText = P_1;
+		invokeOnUiThread(delegate
 		{
-			if (CS_8_locals_10.LgfVYUvkI8j.HasValue)
+			if (CS_8_locals_10.progressPercent.HasValue)
 			{
-				CS_8_locals_10.aswVYKYTrHV.progressBar.IsIndeterminate = false;
-				CS_8_locals_10.aswVYKYTrHV.progressBar.Value = Math.Max(0, Math.Min(100, CS_8_locals_10.LgfVYUvkI8j.Value));
+				CS_8_locals_10.updateWindow.progressBar.IsIndeterminate = false;
+				CS_8_locals_10.updateWindow.progressBar.Value = Math.Max(0, Math.Min(100, CS_8_locals_10.progressPercent.Value));
 			}
 			else
 			{
-				CS_8_locals_10.aswVYKYTrHV.progressBar.IsIndeterminate = true;
+				CS_8_locals_10.updateWindow.progressBar.IsIndeterminate = true;
 			}
-			CS_8_locals_10.aswVYKYTrHV.lblProgress.Text = CS_8_locals_10.KxYVYEvaSjj;
+			CS_8_locals_10.updateWindow.lblProgress.Text = CS_8_locals_10.progressText;
 		});
 	}
 
-	private void wEu7VM60YP(object P_0, RoutedEventArgs P_1)
+	private void onAutoUpdateChecked(object P_0, RoutedEventArgs P_1)
 	{
-		AiSseStreamService4.KkHLyG7lhV(chkAutoUpdate.IsChecked == true);
+		AiSseStreamService4.setAutoUpdateEnabled(chkAutoUpdate.IsChecked == true);
 	}
 
 	protected override void OnClosing(CancelEventArgs e)
@@ -418,7 +418,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		base.OnClosing(e);
 	}
 
-	private void rhf7BnFSKl(Action P_0)
+	private void invokeOnUiThread(Action P_0)
 	{
 		if (P_0 != null)
 		{
@@ -433,7 +433,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		}
 	}
 
-	private static bool ITV79sAVxO(string P_0)
+	private static bool isExecutableExtension(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -452,7 +452,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		return true;
 	}
 
-	private static string PWH76kexHZ(long P_0)
+	private static string formatFileSize(long P_0)
 	{
 		if (P_0 < 1024)
 		{
@@ -465,7 +465,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		return ((double)P_0 / 1048576.0).ToString("F1") + " MB";
 	}
 
-	private static string MGO7uTfOsY(string P_0)
+	private static string normalizeDescriptionText(string P_0)
 	{
 		string[] array = (P_0 ?? string.Empty).Replace("<br />", Environment.NewLine).Replace("<br/>", Environment.NewLine).Replace("<br>", Environment.NewLine)
 			.Replace("\\\\r\\\\n", "\n")
@@ -481,7 +481,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		return string.Join(Environment.NewLine, array).Trim();
 	}
 
-	private static void Asl7DMBu0n(string P_0)
+	private static void openInShell(string P_0)
 	{
 		Process.Start(new ProcessStartInfo
 		{
@@ -490,7 +490,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		});
 	}
 
-	private static void Glf7T2J9g2(string P_0)
+	private static void revealInExplorer(string P_0)
 	{
 		string fullPath = Path.GetFullPath(P_0);
 		Process.Start(new ProcessStartInfo
@@ -501,7 +501,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		});
 	}
 
-	private static string YDq7gFVLhY(string P_0, HttpResponseMessage P_1)
+	private static string extractFileName(string P_0, HttpResponseMessage P_1)
 	{
 		string text = null;
 		object obj;
@@ -604,16 +604,16 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			break;
 		case 7:
 			btnCheck = (Button)target;
-			btnCheck.Click += eL2nxb8BFW;
+			btnCheck.Click += onBtnCheckClick;
 			break;
 		case 8:
 			btnDownload = (Button)target;
-			btnDownload.Click += e5Vnd8VSTM;
+			btnDownload.Click += onBtnDownloadClick;
 			break;
 		case 9:
 			chkAutoUpdate = (CheckBox)target;
-			chkAutoUpdate.Checked += wEu7VM60YP;
-			chkAutoUpdate.Unchecked += wEu7VM60YP;
+			chkAutoUpdate.Checked += onAutoUpdateChecked;
+			chkAutoUpdate.Unchecked += onAutoUpdateChecked;
 			break;
 		default:
 			_bool = true;
@@ -622,7 +622,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void J9S78dIwYv(object P_0, KeyEventArgs P_1)
+	private void onPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape && !_bool)
 		{
@@ -631,7 +631,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void a7M7In6iaH()
+	private void beginDownloadUI()
 	{
 		btnDownload.IsEnabled = false;
 		btnCheck.IsEnabled = false;
@@ -643,21 +643,21 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void MCH7iPe82e()
+	private void showEmptyFileError()
 	{
 		MessageBox.Show(this, "下载的文件为空，请重试。", "下载失败", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 	}
 
 	[CompilerGenerated]
-	private void T5j7HVbehU()
+	private void showDownloadCancelled()
 	{
 		lblProgress.Text = "下载已取消";
 	}
 
 	[CompilerGenerated]
-	private void URg7Qvog35()
+	private void restoreButtonStates()
 	{
 		btnCheck.IsEnabled = true;
-		btnDownload.IsEnabled = _httpHelper_1 != null && !string.IsNullOrWhiteSpace(_httpHelper_1.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), _httpHelper_1.VersionText);
+		btnDownload.IsEnabled = _httpHelper_1 != null && !string.IsNullOrWhiteSpace(_httpHelper_1.DownloadUrl) && AiSseStreamService4.isNewerVersion(AiSseStreamService4.GetAssemblyVersion(), _httpHelper_1.VersionText);
 	}
 }

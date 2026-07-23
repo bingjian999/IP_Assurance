@@ -20,39 +20,39 @@ namespace LegacyConfigMigrator2;
 
 internal sealed class LegacyConfigMigrator2 : Helper_2
 {
-	private static readonly string[] WTalydwU2G;
+	private static readonly string[] _noSpacingLevels;
 
-	private static readonly string[] u2KlXNUBeC;
+	private static readonly string[] _fontSizeValidationLevels;
 
-	private readonly ConfigHelper_1 WvflFuaXMm;
+	private readonly ConfigHelper_1 _presetStore;
 
-	private readonly HDS8hJGbnCWyNGfO01j _hDS8hJGbnCWyNGfO01j;
+	private readonly DialogService _dialogs;
 
-	private readonly Dictionary<string, string> Oppla8MvS7;
+	private readonly Dictionary<string, string> _currentSettings;
 
 	private bool _bool;
 
 	private string _selectedPreset;
 
-	private string eOilAwjRjm;
+	private string _selectedLevel;
 
 	private string _chineseFont;
 
-	private string HlBlWECXrD;
+	private string _westernFont;
 
 	private string _fontSize;
 
-	private bool gSElkxPsNa;
+	private bool _bold;
 
-	private string hgRlxflIIl;
+	private string _alignment;
 
 	private string _lineSpacingRule;
 
-	private string NaWlznssvC;
+	private string _lineSpacing;
 
 	private string _spacingUnit;
 
-	private string koYNVIJhgU;
+	private string _spaceBefore;
 
 	private string _spaceAfter;
 
@@ -66,11 +66,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private string _indentValue;
 
-	private bool UwNNgEHlFd;
+	private bool _supportsFont;
 
 	private bool _supportsSpacing;
 
-	private bool TEMNIEYRSA;
+	private bool _supportsAlignment;
 
 	private bool _supportsIndent;
 
@@ -83,34 +83,31 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	private Action _action;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<string> ea6Nrhmeu1;
+	private readonly ObservableCollection<string> _presetNames;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<string> fLLNJFnKRD;
+	private readonly ObservableCollection<string> _levels;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<string> Ya5N3623YN;
+	private readonly ObservableCollection<string> _fonts;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<string> MWkNUbk5wX;
+	private readonly ObservableCollection<string> _fontSizes;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<Helper_14> BAjNKUBXWP;
+	private readonly ObservableCollection<Helper_14> _spacingUnits;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<Helper_14> vkQNEWgDDK;
+	private readonly ObservableCollection<Helper_14> _alignments;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<Helper_14> FjVN29oUiv;
+	private readonly ObservableCollection<Helper_14> _indentUnits;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<Helper_14> KcxN4MUHF3;
+	private readonly ObservableCollection<Helper_14> _specialIndents;
 
 	[CompilerGenerated]
-	private readonly ObservableCollection<Helper_14> eLRNjIvbe0;
-
-	[CompilerGenerated]
-	private readonly ICommand _iCommand;
+	private readonly ObservableCollection<Helper_14> _lineSpacingRules;
 
 	[CompilerGenerated]
 	private readonly ICommand _iCommand;
@@ -122,20 +119,23 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand jhONbXOfRa;
+	private readonly ICommand _iCommand;
+
+	[CompilerGenerated]
+	private readonly ICommand _saveCommand;
 
 	[CompilerGenerated]
 	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand yPwNwXtvLW;
+	private readonly ICommand _closeCommand;
 
 	public ObservableCollection<string> PresetNames
 	{
 		[CompilerGenerated]
 		get
 		{
-			return ea6Nrhmeu1;
+			return _presetNames;
 		}
 	}
 
@@ -144,7 +144,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return fLLNJFnKRD;
+			return _levels;
 		}
 	}
 
@@ -153,7 +153,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return Ya5N3623YN;
+			return _fonts;
 		}
 	}
 
@@ -162,7 +162,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return MWkNUbk5wX;
+			return _fontSizes;
 		}
 	}
 
@@ -171,7 +171,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return BAjNKUBXWP;
+			return _spacingUnits;
 		}
 	}
 
@@ -180,7 +180,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return vkQNEWgDDK;
+			return _alignments;
 		}
 	}
 
@@ -189,7 +189,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return FjVN29oUiv;
+			return _indentUnits;
 		}
 	}
 
@@ -198,7 +198,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return KcxN4MUHF3;
+			return _specialIndents;
 		}
 	}
 
@@ -207,7 +207,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return eLRNjIvbe0;
+			return _lineSpacingRules;
 		}
 	}
 
@@ -252,7 +252,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return jhONbXOfRa;
+			return _saveCommand;
 		}
 	}
 
@@ -270,7 +270,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return yPwNwXtvLW;
+			return _closeCommand;
 		}
 	}
 
@@ -284,7 +284,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		{
 			if (!_bool && !string.Equals(_selectedPreset, value, StringComparison.Ordinal))
 			{
-				YMDlQr1r9A(value);
+				SwitchPreset(value);
 			}
 		}
 	}
@@ -293,20 +293,20 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return eOilAwjRjm;
+			return _selectedLevel;
 		}
 		set
 		{
-			if (!_bool && !string.IsNullOrWhiteSpace(value) && !string.Equals(eOilAwjRjm, value, StringComparison.Ordinal))
+			if (!_bool && !string.IsNullOrWhiteSpace(value) && !string.Equals(_selectedLevel, value, StringComparison.Ordinal))
 			{
-				if (!FdUlJ0WwMF())
+				if (!CollectAndValidateSettings())
 				{
-					fpVsxno8nm("SelectedLevel");
+					RaisePropertyChanged("SelectedLevel");
 					return;
 				}
-				eOilAwjRjm = value;
-				fpVsxno8nm("SelectedLevel");
-				o3XlrGPH47(value);
+				_selectedLevel = value;
+				RaisePropertyChanged("SelectedLevel");
+				ApplyLevelSettings(value);
 			}
 		}
 	}
@@ -327,11 +327,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return HlBlWECXrD;
+			return _westernFont;
 		}
 		set
 		{
-			MrCsWWMvwp(ref HlBlWECXrD, value, "WesternFont");
+			MrCsWWMvwp(ref _westernFont, value, "WesternFont");
 		}
 	}
 
@@ -351,11 +351,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return gSElkxPsNa;
+			return _bold;
 		}
 		set
 		{
-			MrCsWWMvwp(ref gSElkxPsNa, value, "Bold");
+			MrCsWWMvwp(ref _bold, value, "Bold");
 		}
 	}
 
@@ -363,11 +363,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return hgRlxflIIl;
+			return _alignment;
 		}
 		set
 		{
-			MrCsWWMvwp(ref hgRlxflIIl, value, "Alignment");
+			MrCsWWMvwp(ref _alignment, value, "Alignment");
 		}
 	}
 
@@ -381,8 +381,8 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		{
 			if (MrCsWWMvwp(ref _lineSpacingRule, value, "LineSpacingRule"))
 			{
-				fpVsxno8nm("LineSpacingLabel");
-				fpVsxno8nm("IsLineSpacingValueEnabled");
+				RaisePropertyChanged("LineSpacingLabel");
+				RaisePropertyChanged("IsLineSpacingValueEnabled");
 			}
 		}
 	}
@@ -391,11 +391,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return NaWlznssvC;
+			return _lineSpacing;
 		}
 		set
 		{
-			MrCsWWMvwp(ref NaWlznssvC, value, "LineSpacing");
+			MrCsWWMvwp(ref _lineSpacing, value, "LineSpacing");
 		}
 	}
 
@@ -415,11 +415,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return koYNVIJhgU;
+			return _spaceBefore;
 		}
 		set
 		{
-			MrCsWWMvwp(ref koYNVIJhgU, value, "SpaceBefore");
+			MrCsWWMvwp(ref _spaceBefore, value, "SpaceBefore");
 		}
 	}
 
@@ -499,11 +499,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return UwNNgEHlFd;
+			return _supportsFont;
 		}
 		private set
 		{
-			MrCsWWMvwp(ref UwNNgEHlFd, value, "SelectedLevel");
+			MrCsWWMvwp(ref _supportsFont, value, "SelectedLevel");
 		}
 	}
 
@@ -523,11 +523,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return TEMNIEYRSA;
+			return _supportsAlignment;
 		}
 		private set
 		{
-			MrCsWWMvwp(ref TEMNIEYRSA, value, "ChineseFont");
+			MrCsWWMvwp(ref _supportsAlignment, value, "ChineseFont");
 		}
 	}
 
@@ -583,15 +583,15 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		}
 	}
 
-	public LegacyConfigMigrator2(HDS8hJGbnCWyNGfO01j P_0)
+	public LegacyConfigMigrator2(DialogService P_0)
 	{
 		SseStreamInitializer.InitializeRuntime();
-		WvflFuaXMm = new ConfigHelper_1("段落预设");
-		Oppla8MvS7 = new Dictionary<string, string>();
-		eOilAwjRjm = "一级";
-		ea6Nrhmeu1 = new ObservableCollection<string>();
-		_hDS8hJGbnCWyNGfO01j = P_0 ?? throw new ArgumentNullException("dialogs");
-		fLLNJFnKRD = new ObservableCollection<string>(new string[9]
+		_presetStore = new ConfigHelper_1("段落预设");
+		_currentSettings = new Dictionary<string, string>();
+		_selectedLevel = "一级";
+		_presetNames = new ObservableCollection<string>();
+		_dialogs = P_0 ?? throw new ArgumentNullException("dialogs");
+		_levels = new ObservableCollection<string>(new string[9]
 		{
 			"一级",
 			"二级",
@@ -603,7 +603,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			"表后注释",
 			"表后间距"
 		});
-		Ya5N3623YN = new ObservableCollection<string>(new string[9]
+		_fonts = new ObservableCollection<string>(new string[9]
 		{
 			"宋体",
 			"黑体",
@@ -615,34 +615,34 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			"Times New Roman",
 			"Calibri"
 		});
-		MWkNUbk5wX = new ObservableCollection<string>(from item in AiHelper_20.csfwB6TYGU()
+		_fontSizes = new ObservableCollection<string>(from item in AiHelper_20.csfwB6TYGU()
 			select item.Item2);
-		BAjNKUBXWP = LchlgaLZpb(("行", "行"), ("磅", "磅"));
-		vkQNEWgDDK = LchlgaLZpb(("左对齐", "0"), ("居中", "1"), ("右对齐", "2"), ("两端对齐", "3"));
-		FjVN29oUiv = LchlgaLZpb(("字符", "字符"), ("厘米", "厘米"));
-		KcxN4MUHF3 = LchlgaLZpb(("首行", "首行"), ("悬挂", "悬挂"), ("无", "无"));
-		eLRNjIvbe0 = LchlgaLZpb(("单倍行距", "0"), ("1.5倍行距", "1"), ("双倍行距", "2"), ("最小值", "3"), ("固定值", "4"), ("多倍行距", "5"));
-		_iCommand = new DelegateCommand(DDClUp83O8);
-		_iCommand = new DelegateCommand(DG8lKsffse);
-		_iCommand = new DelegateCommand(DOklEaplEE);
-		_iCommand = new DelegateCommand(KcQl2YSaFW);
-		jhONbXOfRa = new DelegateCommand(CO7l40Llb1);
+		_spacingUnits = BuildOptionList(("行", "行"), ("磅", "磅"));
+		_alignments = BuildOptionList(("左对齐", "0"), ("居中", "1"), ("右对齐", "2"), ("两端对齐", "3"));
+		_indentUnits = BuildOptionList(("字符", "字符"), ("厘米", "厘米"));
+		_specialIndents = BuildOptionList(("首行", "首行"), ("悬挂", "悬挂"), ("无", "无"));
+		_lineSpacingRules = BuildOptionList(("单倍行距", "0"), ("1.5倍行距", "1"), ("双倍行距", "2"), ("最小值", "3"), ("固定值", "4"), ("多倍行距", "5"));
+		_iCommand = new DelegateCommand(ExecuteNewPreset);
+		_iCommand = new DelegateCommand(ExecuteDeletePreset);
+		_iCommand = new DelegateCommand(ExecuteImportPreset);
+		_iCommand = new DelegateCommand(ExecuteExportPreset);
+		_saveCommand = new DelegateCommand(ExecuteSave);
 		_iCommand = new DelegateCommand((Action)delegate
 		{
 			_action?.Invoke();
 		}, (Func<bool>)null);
-		yPwNwXtvLW = new DelegateCommand((Action)delegate
+		_closeCommand = new DelegateCommand((Action)delegate
 		{
 			_action?.Invoke();
 		}, (Func<bool>)null);
-		oajl8u2dic();
-		LLvlHP8Kki();
-		o3XlrGPH47(eOilAwjRjm);
+		LoadInitialPreset();
+		RefreshPresetNames();
+		ApplyLevelSettings(_selectedLevel);
 	}
 
 	[SpecialName]
 	[CompilerGenerated]
-	public void Y0ZlOZZU1c(Action P_0)
+	public void add_OpenTableRequested(Action P_0)
 	{
 		Action action = _action;
 		Action action2;
@@ -657,7 +657,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	[SpecialName]
 	[CompilerGenerated]
-	public void pCWlnoa66Y(Action P_0)
+	public void remove_OpenTableRequested(Action P_0)
 	{
 		Action action = _action;
 		Action action2;
@@ -672,7 +672,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	[SpecialName]
 	[CompilerGenerated]
-	public void hQml5xuThg(Action P_0)
+	public void add_Closed(Action P_0)
 	{
 		Action action = _action;
 		Action action2;
@@ -687,7 +687,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	[SpecialName]
 	[CompilerGenerated]
-	public void lAilcTmhe9(Action P_0)
+	public void remove_Closed(Action P_0)
 	{
 		Action action = _action;
 		Action action2;
@@ -700,18 +700,18 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		while ((object)action != action2);
 	}
 
-	private static ObservableCollection<Helper_14> LchlgaLZpb(params (string, string)[] values)
+	private static ObservableCollection<Helper_14> BuildOptionList(params (string, string)[] values)
 	{
 		return new ObservableCollection<Helper_14>(values.Select(((string Text, string Value) value) => new Helper_14(value.Text, value.Value)));
 	}
 
-	private void oajl8u2dic()
+	private void LoadInitialPreset()
 	{
-		string text = (_selectedPreset = Lw2lI1nRg0());
-		v2ol10XIvm(WvflFuaXMm.COQStnlspT(text));
+		string text = (_selectedPreset = GetInitialPresetName());
+		LoadSettingsFromDict(_presetStore.COQStnlspT(text));
 	}
 
-	private string Lw2lI1nRg0()
+	private string GetInitialPresetName()
 	{
 		string[] array = new string[2]
 		{
@@ -720,160 +720,160 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		};
 		foreach (string text in array)
 		{
-			if (!string.IsNullOrWhiteSpace(text) && WvflFuaXMm.haGSSyJWCc(text.Trim()))
+			if (!string.IsNullOrWhiteSpace(text) && _presetStore.haGSSyJWCc(text.Trim()))
 			{
 				return text.Trim();
 			}
 		}
-		string text2 = WvflFuaXMm.ExsSbMHeGd().FirstOrDefault();
+		string text2 = _presetStore.ExsSbMHeGd().FirstOrDefault();
 		if (!string.IsNullOrWhiteSpace(text2))
 		{
 			return text2;
 		}
-		WvflFuaXMm.D73SsBjrqd("默认方案", OyHli9l87R());
+		_presetStore.D73SsBjrqd("默认方案", BuildDefaultSettings());
 		return "默认方案";
 	}
 
-	private static Dictionary<string, string> OyHli9l87R()
+	private static Dictionary<string, string> BuildDefaultSettings()
 	{
 		return (from pair in TableBorderConfig.Current.GetAllLegacy()
 			where pair.Key.StartsWith("Bold", StringComparison.Ordinal)
 			select pair).ToDictionary((KeyValuePair<string, object> pair) => pair.Key, (KeyValuePair<string, object> pair) => pair.Value?.ToString() ?? string.Empty);
 	}
 
-	private void LLvlHP8Kki()
+	private void RefreshPresetNames()
 	{
 		_bool = true;
 		PresetNames.Clear();
-		foreach (string item in WvflFuaXMm.ExsSbMHeGd())
+		foreach (string item in _presetStore.ExsSbMHeGd())
 		{
 			PresetNames.Add(item);
 		}
-		fpVsxno8nm("SelectedPreset");
+		RaisePropertyChanged("SelectedPreset");
 		_bool = false;
 	}
 
-	private void YMDlQr1r9A(string P_0)
+	private void SwitchPreset(string P_0)
 	{
 		try
 		{
-			if (!FdUlJ0WwMF() || string.IsNullOrWhiteSpace(P_0) || !WvflFuaXMm.haGSSyJWCc(P_0))
+			if (!CollectAndValidateSettings() || string.IsNullOrWhiteSpace(P_0) || !_presetStore.haGSSyJWCc(P_0))
 			{
-				fpVsxno8nm("SelectedPreset");
+				RaisePropertyChanged("SelectedPreset");
 				return;
 			}
 			_selectedPreset = P_0;
-			fpVsxno8nm("SelectedPreset");
-			v2ol10XIvm(WvflFuaXMm.COQStnlspT(P_0));
-			o3XlrGPH47(eOilAwjRjm);
+			RaisePropertyChanged("SelectedPreset");
+			LoadSettingsFromDict(_presetStore.COQStnlspT(P_0));
+			ApplyLevelSettings(_selectedLevel);
 		}
 		catch (Exception ex)
 		{
-			_hDS8hJGbnCWyNGfO01j.LogDebugMessage("切换方案失败：" + ex.Message, "IP_Assurance");
+			_dialogs.LogDebugMessage("切换方案失败：" + ex.Message, "IP_Assurance");
 		}
 	}
 
-	private void v2ol10XIvm(IDictionary<string, string> P_0)
+	private void LoadSettingsFromDict(IDictionary<string, string> P_0)
 	{
-		Oppla8MvS7.Clear();
+		_currentSettings.Clear();
 		if (P_0 == null)
 		{
 			return;
 		}
 		foreach (KeyValuePair<string, string> item in P_0.Where((KeyValuePair<string, string> pair) => pair.Key.StartsWith("Alignment", StringComparison.Ordinal)))
 		{
-			Oppla8MvS7[item.Key] = item.Value ?? string.Empty;
+			_currentSettings[item.Key] = item.Value ?? string.Empty;
 		}
 	}
 
-	private void o3XlrGPH47(string P_0)
+	private void ApplyLevelSettings(string P_0)
 	{
 		_bool = true;
-		string text = "段落_" + VK2lYxW8hh(P_0) + "_";
-		ChineseFont = svdljUF8xO(text + "中文字体", "宋体");
-		WesternFont = svdljUF8xO(text + "西文字体", "宋体");
-		FontSize = AiHelper_20.v8Ewuw33fP(svdljUF8xO(text + "字号", "10.5"));
-		SupportsFont = KKjlfeBgUQ(P_0);
-		SupportsSpacing = GbLlMPH31Q(P_0);
-		SupportsAlignment = KwclbHqdR0(P_0);
-		SupportsIndent = fAZlSWhoWG(P_0);
-		SupportsBold = NxnlwVCtRR(P_0);
+		string text = "段落_" + GetLevelConfigKey(P_0) + "_";
+		ChineseFont = GetSettingOrDefault(text + "中文字体", "宋体");
+		WesternFont = GetSettingOrDefault(text + "西文字体", "宋体");
+		FontSize = AiHelper_20.v8Ewuw33fP(GetSettingOrDefault(text + "字号", "10.5"));
+		SupportsFont = SupportsFontForLevel(P_0);
+		SupportsSpacing = SupportsSpacingForLevel(P_0);
+		SupportsAlignment = SupportsAlignmentForLevel(P_0);
+		SupportsIndent = SupportsIndentForLevel(P_0);
+		SupportsBold = SupportsBoldForLevel(P_0);
 		if (SupportsBold)
 		{
-			Bold = svdljUF8xO(text + "加粗", "0") == "1";
+			Bold = GetSettingOrDefault(text + "加粗", "0") == "1";
 		}
 		if (SupportsAlignment)
 		{
-			Alignment = svdljUF8xO(text + "对齐方式", UXQltdTXpf(P_0));
+			Alignment = GetSettingOrDefault(text + "对齐方式", GetDefaultAlignment(P_0));
 		}
 		if (SupportsSpacing)
 		{
-			LineSpacingRule = svdljUF8xO(text + "行距样式", A2LlL92nc0(P_0));
-			LineSpacing = svdljUF8xO(text + "行距值", "18");
-			SpacingUnit = svdljUF8xO(text + "段前距单位", GSMlsH68k7(P_0));
-			SpaceBefore = svdljUF8xO(text + "段前距", "0");
-			SpaceAfter = svdljUF8xO(text + "段后距", eeellWEmNO(P_0));
+			LineSpacingRule = GetSettingOrDefault(text + "行距样式", GetDefaultLineSpacingRule(P_0));
+			LineSpacing = GetSettingOrDefault(text + "行距值", "18");
+			SpacingUnit = GetSettingOrDefault(text + "段前距单位", GetDefaultSpacingUnit(P_0));
+			SpaceBefore = GetSettingOrDefault(text + "段前距", "0");
+			SpaceAfter = GetSettingOrDefault(text + "段后距", GetDefaultSpaceAfter(P_0));
 		}
 		if (SupportsIndent)
 		{
-			IndentUnit = svdljUF8xO(text + "缩进单位", VaRlN5sFbq(P_0));
-			LeftIndent = svdljUF8xO(text + "左缩进", "0");
-			RightIndent = svdljUF8xO(text + "右缩进", "0");
-			SpecialIndent = svdljUF8xO(text + "特殊缩进", hOElmclKUd(P_0));
-			IndentValue = svdljUF8xO(text + "缩进值", WPtlokdZkh(P_0));
+			IndentUnit = GetSettingOrDefault(text + "缩进单位", GetDefaultIndentUnit(P_0));
+			LeftIndent = GetSettingOrDefault(text + "左缩进", "0");
+			RightIndent = GetSettingOrDefault(text + "右缩进", "0");
+			SpecialIndent = GetSettingOrDefault(text + "特殊缩进", GetDefaultSpecialIndent(P_0));
+			IndentValue = GetSettingOrDefault(text + "缩进值", GetDefaultIndentValue(P_0));
 		}
 		_bool = false;
 	}
 
-	private bool FdUlJ0WwMF()
+	private bool CollectAndValidateSettings()
 	{
-		string text = "段落_" + VK2lYxW8hh(eOilAwjRjm) + "_";
-		if (KKjlfeBgUQ(eOilAwjRjm))
+		string text = "段落_" + GetLevelConfigKey(_selectedLevel) + "_";
+		if (SupportsFontForLevel(_selectedLevel))
 		{
 			if (!AiHelper_20.WmHw9yYx65(FontSize, out var value))
 			{
-				_hDS8hJGbnCWyNGfO01j.LogMessage("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
+				_dialogs.LogMessage("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
 				return false;
 			}
-			Oppla8MvS7[text + "中文字体"] = ChineseFont ?? string.Empty;
-			Oppla8MvS7[text + "西文字体"] = WesternFont ?? string.Empty;
-			Oppla8MvS7[text + "字号"] = value;
+			_currentSettings[text + "中文字体"] = ChineseFont ?? string.Empty;
+			_currentSettings[text + "西文字体"] = WesternFont ?? string.Empty;
+			_currentSettings[text + "字号"] = value;
 		}
-		if (NxnlwVCtRR(eOilAwjRjm))
+		if (SupportsBoldForLevel(_selectedLevel))
 		{
-			Oppla8MvS7[text + "加粗"] = (Bold ? "0" : "1");
+			_currentSettings[text + "加粗"] = (Bold ? "0" : "1");
 		}
-		if (KwclbHqdR0(eOilAwjRjm))
+		if (SupportsAlignmentForLevel(_selectedLevel))
 		{
-			Oppla8MvS7[text + "对齐方式"] = Alignment ?? string.Empty;
+			_currentSettings[text + "对齐方式"] = Alignment ?? string.Empty;
 		}
-		if (GbLlMPH31Q(eOilAwjRjm))
+		if (SupportsSpacingForLevel(_selectedLevel))
 		{
-			Oppla8MvS7[text + "行距样式"] = LineSpacingRule ?? string.Empty;
-			Oppla8MvS7[text + "行距值"] = LineSpacing ?? string.Empty;
-			Oppla8MvS7[text + "段前距单位"] = SpacingUnit ?? string.Empty;
-			Oppla8MvS7[text + "段前距"] = SpaceBefore ?? string.Empty;
-			Oppla8MvS7[text + "段后距"] = SpaceAfter ?? string.Empty;
+			_currentSettings[text + "行距样式"] = LineSpacingRule ?? string.Empty;
+			_currentSettings[text + "行距值"] = LineSpacing ?? string.Empty;
+			_currentSettings[text + "段前距单位"] = SpacingUnit ?? string.Empty;
+			_currentSettings[text + "段前距"] = SpaceBefore ?? string.Empty;
+			_currentSettings[text + "段后距"] = SpaceAfter ?? string.Empty;
 		}
-		if (fAZlSWhoWG(eOilAwjRjm))
+		if (SupportsIndentForLevel(_selectedLevel))
 		{
-			Oppla8MvS7[text + "缩进单位"] = IndentUnit ?? string.Empty;
-			Oppla8MvS7[text + "左缩进"] = LeftIndent ?? string.Empty;
-			Oppla8MvS7[text + "右缩进"] = RightIndent ?? string.Empty;
-			Oppla8MvS7[text + "特殊缩进"] = SpecialIndent ?? string.Empty;
-			Oppla8MvS7[text + "缩进值"] = IndentValue ?? string.Empty;
+			_currentSettings[text + "缩进单位"] = IndentUnit ?? string.Empty;
+			_currentSettings[text + "左缩进"] = LeftIndent ?? string.Empty;
+			_currentSettings[text + "右缩进"] = RightIndent ?? string.Empty;
+			_currentSettings[text + "特殊缩进"] = SpecialIndent ?? string.Empty;
+			_currentSettings[text + "缩进值"] = IndentValue ?? string.Empty;
 		}
 		return true;
 	}
 
-	private bool P5wl3AebG9(out Dictionary<string, string> P_0)
+	private bool BuildExportSettings(out Dictionary<string, string> P_0)
 	{
 		P_0 = null;
-		if (!FdUlJ0WwMF())
+		if (!CollectAndValidateSettings())
 		{
 			return false;
 		}
-		Dictionary<string, string> dictionary = new Dictionary<string, string>(Oppla8MvS7);
+		Dictionary<string, string> dictionary = new Dictionary<string, string>(_currentSettings);
 		string[] array = dictionary.Keys.Where((string key) => key.StartsWith("字号填写有误：", StringComparison.Ordinal) && key.EndsWith(" = ", StringComparison.Ordinal)).ToArray();
 		foreach (string text in array)
 		{
@@ -881,9 +881,9 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			{
 				dictionary[text] = value;
 			}
-			else if (u2KlXNUBeC.Contains(u7HlGeIYYe(text)))
+			else if (_fontSizeValidationLevels.Contains(ExtractLevelFromKey(text)))
 			{
-				_hDS8hJGbnCWyNGfO01j.LogMessage("。请选择 Word 字号或输入数字磅值。" + text + "IP_Assurance" + dictionary[text] + "LineSpacingRule", "LineSpacingLabel");
+				_dialogs.LogMessage("。请选择 Word 字号或输入数字磅值。" + text + "IP_Assurance" + dictionary[text] + "LineSpacingRule", "LineSpacingLabel");
 				return false;
 			}
 		}
@@ -891,9 +891,9 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		return true;
 	}
 
-	private void DDClUp83O8()
+	private void ExecuteNewPreset()
 	{
-		string text = _hDS8hJGbnCWyNGfO01j.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的段落方案");
+		string text = _dialogs.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的段落方案");
 		if (!string.IsNullOrWhiteSpace(text))
 		{
 			string text2 = text.Trim();
@@ -903,62 +903,62 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 				text2 = text2.Replace(oldChar, '_');
 			}
 			Dictionary<string, string> dictionary;
-			if (WvflFuaXMm.haGSSyJWCc(text2))
+			if (_presetStore.haGSSyJWCc(text2))
 			{
-				_hDS8hJGbnCWyNGfO01j.LogMessage("同名方案已存在。", "IP_Assurance");
+				_dialogs.LogMessage("同名方案已存在。", "IP_Assurance");
 			}
-			else if (P5wl3AebG9(out dictionary))
+			else if (BuildExportSettings(out dictionary))
 			{
-				WvflFuaXMm.D73SsBjrqd(text2, dictionary);
+				_presetStore.D73SsBjrqd(text2, dictionary);
 				_selectedPreset = text2;
-				LLvlHP8Kki();
-				_hDS8hJGbnCWyNGfO01j.LogWarning("段落方案已创建。", "IP_Assurance");
+				RefreshPresetNames();
+				_dialogs.LogWarning("段落方案已创建。", "IP_Assurance");
 			}
 		}
 	}
 
-	private void DG8lKsffse()
+	private void ExecuteDeletePreset()
 	{
-		WvflFuaXMm.Delete(_selectedPreset);
-		oajl8u2dic();
-		LLvlHP8Kki();
-		o3XlrGPH47(eOilAwjRjm);
+		_presetStore.Delete(_selectedPreset);
+		LoadInitialPreset();
+		RefreshPresetNames();
+		ApplyLevelSettings(_selectedLevel);
 	}
 
-	private void DOklEaplEE()
+	private void ExecuteImportPreset()
 	{
-		string text = _hDS8hJGbnCWyNGfO01j.BxkVLIlDE06("导入段落配置方案");
+		string text = _dialogs.BxkVLIlDE06("导入段落配置方案");
 		if (text != null)
 		{
-			Dictionary<string, string> dictionary = WvflFuaXMm.Pb7SLGhc8Y(text);
+			Dictionary<string, string> dictionary = _presetStore.Pb7SLGhc8Y(text);
 			if (!dictionary.Keys.Any((string key) => key.StartsWith("所选文件不包含段落配置数据。", StringComparison.Ordinal)))
 			{
-				_hDS8hJGbnCWyNGfO01j.LogMessage("IP_Assurance", "IsLineSpacingValueEnabled");
+				_dialogs.LogMessage("IP_Assurance", "IsLineSpacingValueEnabled");
 				return;
 			}
-			string text2 = WvflFuaXMm.Ky0SN0Vqdg(Path.GetFileNameWithoutExtension(text));
-			WvflFuaXMm.D73SsBjrqd(text2, dictionary);
+			string text2 = _presetStore.Ky0SN0Vqdg(Path.GetFileNameWithoutExtension(text));
+			_presetStore.D73SsBjrqd(text2, dictionary);
 			_selectedPreset = text2;
-			v2ol10XIvm(dictionary);
-			LLvlHP8Kki();
-			o3XlrGPH47(eOilAwjRjm);
+			LoadSettingsFromDict(dictionary);
+			RefreshPresetNames();
+			ApplyLevelSettings(_selectedLevel);
 		}
 	}
 
-	private void KcQl2YSaFW()
+	private void ExecuteExportPreset()
 	{
-		string text = _hDS8hJGbnCWyNGfO01j.SA6VLiTt8Ir("导出段落配置方案", _selectedPreset + ".json");
-		if (text != null && P5wl3AebG9(out var dictionary))
+		string text = _dialogs.SA6VLiTt8Ir("导出段落配置方案", _selectedPreset + ".json");
+		if (text != null && BuildExportSettings(out var dictionary))
 		{
 			ConfigHelper_1.lRlSlvdQT7(text, dictionary);
 		}
 	}
 
-	private void CO7l40Llb1()
+	private void ExecuteSave()
 	{
 		try
 		{
-			if (!P5wl3AebG9(out var dictionary))
+			if (!BuildExportSettings(out var dictionary))
 			{
 				return;
 			}
@@ -970,34 +970,34 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			dictionary2["段落配置_方案名"] = _selectedPreset;
 			dictionary2.Remove("段落配置_当前方案");
 			TableBorderConfig.Current.SetAllLegacy(dictionary2);
-			WvflFuaXMm.D73SsBjrqd(_selectedPreset, dictionary);
-			_hDS8hJGbnCWyNGfO01j.LogWarning("段落配置已保存。", "IP_Assurance");
+			_presetStore.D73SsBjrqd(_selectedPreset, dictionary);
+			_dialogs.LogWarning("段落配置已保存。", "IP_Assurance");
 		}
 		catch (Exception ex)
 		{
-			_hDS8hJGbnCWyNGfO01j.LogDebugMessage("保存段落配置失败：" + ex.Message, "IP_Assurance");
+			_dialogs.LogDebugMessage("保存段落配置失败：" + ex.Message, "IP_Assurance");
 		}
 	}
 
-	private string svdljUF8xO(string P_0, string P_1)
+	private string GetSettingOrDefault(string P_0, string P_1)
 	{
-		if (!Oppla8MvS7.TryGetValue(P_0, out var value) || string.IsNullOrEmpty(value))
+		if (!_currentSettings.TryGetValue(P_0, out var value) || string.IsNullOrEmpty(value))
 		{
 			return P_1;
 		}
 		return value;
 	}
 
-	private static string VK2lYxW8hh(string P_0)
+	private static string GetLevelConfigKey(string P_0)
 	{
-		if (!Fy8lZLJNrB(P_0))
+		if (!IsTableEndParagraphLevel(P_0))
 		{
 			return P_0;
 		}
 		return "表后段落";
 	}
 
-	private static bool Fy8lZLJNrB(string P_0)
+	private static bool IsTableEndParagraphLevel(string P_0)
 	{
 		if (!(P_0 == "表后间距"))
 		{
@@ -1006,53 +1006,53 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		return true;
 	}
 
-	private static bool KKjlfeBgUQ(string P_0)
+	private static bool SupportsFontForLevel(string P_0)
 	{
-		return !Fy8lZLJNrB(P_0);
+		return !IsTableEndParagraphLevel(P_0);
 	}
 
-	private static bool GbLlMPH31Q(string P_0)
+	private static bool SupportsSpacingForLevel(string P_0)
 	{
-		return !WTalydwU2G.Contains(P_0);
+		return !_noSpacingLevels.Contains(P_0);
 	}
 
-	private static bool KwclbHqdR0(string P_0)
+	private static bool SupportsAlignmentForLevel(string P_0)
 	{
-		if (GbLlMPH31Q(P_0))
+		if (SupportsSpacingForLevel(P_0))
 		{
-			return !Fy8lZLJNrB(P_0);
+			return !IsTableEndParagraphLevel(P_0);
 		}
 		return false;
 	}
 
-	private static bool fAZlSWhoWG(string P_0)
+	private static bool SupportsIndentForLevel(string P_0)
 	{
-		if (!WTalydwU2G.Contains(P_0))
+		if (!_noSpacingLevels.Contains(P_0))
 		{
-			return !Fy8lZLJNrB(P_0);
+			return !IsTableEndParagraphLevel(P_0);
 		}
 		return false;
 	}
 
-	private static bool NxnlwVCtRR(string P_0)
+	private static bool SupportsBoldForLevel(string P_0)
 	{
-		if (fAZlSWhoWG(P_0))
+		if (SupportsIndentForLevel(P_0))
 		{
 			return P_0 != "表后注释";
 		}
 		return false;
 	}
 
-	private static string UXQltdTXpf(string P_0)
+	private static string GetDefaultAlignment(string P_0)
 	{
-		if (!(P_0 == "表后注释") && !Fy8lZLJNrB(P_0))
+		if (!(P_0 == "表后注释") && !IsTableEndParagraphLevel(P_0))
 		{
 			return "0";
 		}
 		return "3";
 	}
 
-	private static string A2LlL92nc0(string P_0)
+	private static string GetDefaultLineSpacingRule(string P_0)
 	{
 		if (!(P_0 == "表后注释"))
 		{
@@ -1061,34 +1061,34 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		return "0";
 	}
 
-	private static string GSMlsH68k7(string P_0)
+	private static string GetDefaultSpacingUnit(string P_0)
 	{
-		if (!Fy8lZLJNrB(P_0))
+		if (!IsTableEndParagraphLevel(P_0))
 		{
 			return "行";
 		}
 		return "磅";
 	}
 
-	private static string eeellWEmNO(string P_0)
+	private static string GetDefaultSpaceAfter(string P_0)
 	{
-		if (!Fy8lZLJNrB(P_0))
+		if (!IsTableEndParagraphLevel(P_0))
 		{
 			return "0";
 		}
 		return "2.5";
 	}
 
-	private static string VaRlN5sFbq(string P_0)
+	private static string GetDefaultIndentUnit(string P_0)
 	{
-		if (!Fy8lZLJNrB(P_0))
+		if (!IsTableEndParagraphLevel(P_0))
 		{
 			return "字符";
 		}
 		return "厘米";
 	}
 
-	private static string hOElmclKUd(string P_0)
+	private static string GetDefaultSpecialIndent(string P_0)
 	{
 		if (!(P_0 == "表后注释"))
 		{
@@ -1097,11 +1097,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		return "无";
 	}
 
-	private static string WPtlokdZkh(string P_0)
+	private static string GetDefaultIndentValue(string P_0)
 	{
 		if (!(P_0 == "表后注释"))
 		{
-			if (!Fy8lZLJNrB(P_0))
+			if (!IsTableEndParagraphLevel(P_0))
 			{
 				return "2";
 			}
@@ -1110,7 +1110,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		return "0";
 	}
 
-	private static string u7HlGeIYYe(string P_0)
+	private static string ExtractLevelFromKey(string P_0)
 	{
 		if (P_0.Length <= 6)
 		{
@@ -1122,8 +1122,8 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	static LegacyConfigMigrator2()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		WTalydwU2G = new string[1] { "表前单位" };
-		u2KlXNUBeC = new string[8]
+		_noSpacingLevels = new string[1] { "表前单位" };
+		_fontSizeValidationLevels = new string[8]
 		{
 			"一级",
 			"二级",
@@ -1137,13 +1137,13 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	}
 
 	[CompilerGenerated]
-	private void Jc8lCFys9L()
+	private void RaiseOpenTableRequested()
 	{
 		_action?.Invoke();
 	}
 
 	[CompilerGenerated]
-	private void PIrlpCy7ZM()
+	private void RaiseClosed()
 	{
 		_action?.Invoke();
 	}

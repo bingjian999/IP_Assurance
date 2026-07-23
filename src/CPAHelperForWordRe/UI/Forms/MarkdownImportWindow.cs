@@ -31,7 +31,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 
 		internal void W8PV4Vx80ng()
 		{
-			flag = MarkdownImportService.XiHb8xdPLA(markdownImportWindow.txtMarkdown.Text, markdownImportWindow.chkApplyHeadingNumbering.IsChecked == true);
+			flag = MarkdownImportService.ImportMarkdown(markdownImportWindow.txtMarkdown.Text, markdownImportWindow.chkApplyHeadingNumbering.IsChecked == true);
 		}
 	}
 
@@ -84,7 +84,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		obj.flag = false;
 		AiHelper_7.RunCommandWithUndo(delegate
 		{
-			obj.flag = MarkdownImportService.XiHb8xdPLA(obj.markdownImportWindow.txtMarkdown.Text, obj.markdownImportWindow.chkApplyHeadingNumbering.IsChecked == true);
+			obj.flag = MarkdownImportService.ImportMarkdown(obj.markdownImportWindow.txtMarkdown.Text, obj.markdownImportWindow.chkApplyHeadingNumbering.IsChecked == true);
 		}, "Markdown 导入");
 		if (obj.flag)
 		{

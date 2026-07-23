@@ -9,7 +9,7 @@ namespace ParagraphFormatConfig;
 
 internal sealed class ParagraphFormatConfig
 {
-	public static readonly HashSet<string> CsBHPhLn0y;
+	public static readonly HashSet<string> supportedFields;
 
 	[CompilerGenerated]
 	private string _fontName;
@@ -317,7 +317,7 @@ internal sealed class ParagraphFormatConfig
 		}
 	}
 
-	public object WK3Hqw863W()
+	public object getRequestedChangeCount()
 	{
 		Dictionary<string, object> result = new Dictionary<string, object>();
 		Helper_15.Add(result, "fontName", FontName);
@@ -349,7 +349,7 @@ internal sealed class ParagraphFormatConfig
 	static ParagraphFormatConfig()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		CsBHPhLn0y = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+		supportedFields = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
 		{
 			"fontName",
 			"eastAsianFontName",

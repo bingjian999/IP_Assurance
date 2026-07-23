@@ -35,7 +35,7 @@ internal sealed class AiHelper_19
 		}
 		try
 		{
-			return _wordTableToolService4.MdXJlVhPku("instruction_context", delegate(Application app)
+			return _wordTableToolService4.runOperation("instruction_context", delegate(Application app)
 			{
 				AgentInstructionContext agentInstructionContext = new AgentInstructionContext();
 				Document activeDocument = app.ActiveDocument;

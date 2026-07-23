@@ -202,7 +202,7 @@ internal sealed class Helper_1
 		}
 	}
 
-	public bool FuAtZSN641()
+	public bool IsMaxWidthEnabled()
 	{
 		return string.Equals(DocumentNameDisplayMode, "Prefix", StringComparison.OrdinalIgnoreCase);
 	}

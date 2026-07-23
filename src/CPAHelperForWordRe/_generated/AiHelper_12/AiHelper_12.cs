@@ -113,7 +113,7 @@ internal sealed class AiHelper_12
 		}
 	}
 
-	public void BkGt8QpMWu()
+	public void EnsureConfigLoaded()
 	{
 		if (System == null)
 		{

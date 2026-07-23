@@ -256,7 +256,7 @@ internal sealed class IntranetAuthState
 		}
 	}
 
-	public IntranetAuthState TZk6pi7Ssm()
+	public IntranetAuthState Clone()
 	{
 		return (IntranetAuthState)MemberwiseClone();
 	}

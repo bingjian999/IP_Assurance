@@ -43,11 +43,11 @@ internal static class AiSseStreamService4
 		return version.ToString();
 	}
 
-	public static async Task<HttpHelper_1> PJYL5bLAxq(bool P_0 = false)
+	public static async Task<HttpHelper_1> fetchUpdateInfo(bool P_0 = false)
 	{
 		try
 		{
-			HttpHelper_2.BNmLxKn8Mc();
+			HttpHelper_2.initializeHttpClient();
 			HttpClient client = new HttpClient
 			{
 				Timeout = TimeSpan.FromSeconds(8.0)
@@ -68,7 +68,7 @@ internal static class AiSseStreamService4
 		}
 	}
 
-	public static bool DodLcdpfxo(string P_0, string P_1)
+	public static bool isNewerVersion(string P_0, string P_1)
 	{
 		if (string.IsNullOrWhiteSpace(P_1))
 		{
@@ -85,7 +85,7 @@ internal static class AiSseStreamService4
 		return result2 > result;
 	}
 
-	public static bool pS8Leo78tt()
+	public static bool isAutoUpdateEnabled()
 	{
 		TableBorderConfig current = TableBorderConfig.Current;
 		if (current == null)
@@ -95,7 +95,7 @@ internal static class AiSseStreamService4
 		return current.Config?.System?.AutoUpdate == true;
 	}
 
-	public static void KkHLyG7lhV(bool P_0)
+	public static void setAutoUpdateEnabled(bool P_0)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_2 = new _G_c__DisplayClass6_0();
 		CS_8_locals_2.flag = P_0;

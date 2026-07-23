@@ -40,18 +40,18 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void iICV2xcGsJ8(Helper_22 cfg)
+		internal void ApplyConfigCallback(Helper_22 cfg)
 		{
 			cfg.Assistant.WebUrl = string.Empty;
-			cfg.Assistant.Providers = gWlGzv3R5r(aIAssistantConfigWindow.fisCDWUc56);
+			cfg.Assistant.Providers = CloneProviders(aIAssistantConfigWindow._providers);
 			cfg.Assistant.ActiveProviderIndex = value;
 			cfg.Assistant.Runtime.FVULVTGET5(aiProviderConfig.OsCL8QJeMd());
 			cfg.Assistant.Summary = cfg.Assistant.Summary ?? new AiHelper_9();
-			aIAssistantConfigWindow.krdG0kvqar(cfg.Assistant.Summary);
+			aIAssistantConfigWindow.SaveSummarySettings(cfg.Assistant.Summary);
 		}
 	}
 
-	private List<AiProviderConfig> fisCDWUc56;
+	private List<AiProviderConfig> _providers;
 
 	private int _int;
 
@@ -102,34 +102,34 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	public AIAssistantConfigWindow()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		fisCDWUc56 = new List<AiProviderConfig>();
+		_providers = new List<AiProviderConfig>();
 		_int = -1;
 		InitializeComponent();
-		I7cGyHnOsl();
-		iTPGXIyvt5();
+		LoadConfig();
+		UpdateManagedHint();
 	}
 
-	private void vkoGnmG7ZQ(object P_0, RoutedEventArgs P_1)
+	private void OnSaveClick(object P_0, RoutedEventArgs P_1)
 	{
 		_G_c__DisplayClass4_0 CS_8_locals_9 = new _G_c__DisplayClass4_0();
 		CS_8_locals_9.aIAssistantConfigWindow = this;
 		try
 		{
-			vTyGqN5uS6();
-			WHIGPZyFCO();
-			CS_8_locals_9.value = RI6GALeVx5(_int);
-			CS_8_locals_9.aiProviderConfig = fisCDWUc56[CS_8_locals_9.value];
-			FileDownloadHelper.Instance.lpfwdhmiR3(delegate(Helper_22 cfg)
+			SyncCurrentProfileFromUi();
+			EnsureDefaultProviders();
+			CS_8_locals_9.value = ValidateProviderIndex(_int);
+			CS_8_locals_9.aiProviderConfig = _providers[CS_8_locals_9.value];
+			FileDownloadHelper.Instance.UpdateConfig(delegate(Helper_22 cfg)
 			{
 				cfg.Assistant.WebUrl = string.Empty;
-				cfg.Assistant.Providers = gWlGzv3R5r(CS_8_locals_9.aIAssistantConfigWindow.fisCDWUc56);
+				cfg.Assistant.Providers = CloneProviders(CS_8_locals_9.aIAssistantConfigWindow._providers);
 				cfg.Assistant.ActiveProviderIndex = CS_8_locals_9.value;
 				cfg.Assistant.Runtime.FVULVTGET5(CS_8_locals_9.aiProviderConfig.OsCL8QJeMd());
 				cfg.Assistant.Summary = cfg.Assistant.Summary ?? new AiHelper_9();
-				CS_8_locals_9.aIAssistantConfigWindow.krdG0kvqar(cfg.Assistant.Summary);
+				CS_8_locals_9.aIAssistantConfigWindow.SaveSummarySettings(cfg.Assistant.Summary);
 			});
-			bool flag = IntranetAiConfigService.Instance.xeF6QqxCkO();
-			if (!flag && !sicGvmbu2d(CS_8_locals_9.aiProviderConfig))
+			bool flag = IntranetAiConfigService.Instance.IsManagedModeActive();
+			if (!flag && !HasApiKeyAndModel(CS_8_locals_9.aiProviderConfig))
 			{
 				LoggerInitializer.ShowWarning("AI 配置已保存，但当前方案缺少 API Key 或模型名称。", "AI 配置");
 			}
@@ -149,12 +149,12 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		}
 	}
 
-	private void BrJG7X3GCO(object P_0, RoutedEventArgs P_1)
+	private void OnCancelClick(object P_0, RoutedEventArgs P_1)
 	{
 		Close();
 	}
 
-	private void kw2G5xe9uv(object P_0, RoutedEventArgs P_1)
+	private void OnOpenFolderClick(object P_0, RoutedEventArgs P_1)
 	{
 		AiSseStreamService.EnsureDirectory(FileDownloadHelper.SharedConfigDir);
 		Process.Start(new ProcessStartInfo("explorer.exe", FileDownloadHelper.SharedConfigDir)
@@ -163,84 +163,84 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		});
 	}
 
-	private void v8TGcXBvWr(object P_0, RoutedEventArgs P_1)
+	private void OnHelpClick(object P_0, RoutedEventArgs P_1)
 	{
 		AiHelper_3.BWIBRayGaa();
 	}
 
-	private async void aVsGe74PNw(object P_0, RoutedEventArgs P_1)
+	private async void OnTestConnectionClick(object P_0, RoutedEventArgs P_1)
 	{
-		vTyGqN5uS6();
-		await wJfC6L7KBN(btnTestAssistantConnection, "AI 配置已保存，但当前方案缺少 API Key 或模型名称。", () => AiConfigManager.Xq56uj14fX("AI 配置", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text), "AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
+		SyncCurrentProfileFromUi();
+		await RunWithButtonStateAsync(btnTestAssistantConnection, "AI 配置已保存，但当前方案缺少 API Key 或模型名称。", () => AiConfigManager.Xq56uj14fX("AI 配置", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text), "AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
 	}
 
-	private void I7cGyHnOsl()
+	private void LoadConfig()
 	{
 		Helper_22 ai = FileDownloadHelper.Current.Ai;
-		yOUGFVIpfx(ai.Assistant);
-		qGyGW877wr(ai.Assistant?.Summary);
+		LoadProviderConfig(ai.Assistant);
+		LoadSummarySettings(ai.Assistant?.Summary);
 	}
 
-	private void iTPGXIyvt5()
+	private void UpdateManagedHint()
 	{
-		string text = IntranetAiConfigService.Instance.ltA63dMPIj();
+		string text = IntranetAiConfigService.Instance.GetEnvironmentDescription();
 		bool flag = !string.IsNullOrWhiteSpace(text);
 		borderManagedHint.Visibility = ((!flag) ? Visibility.Collapsed : Visibility.Visible);
 		txtManagedHint.Text = (flag ? text : string.Empty);
 	}
 
-	private void yOUGFVIpfx(ProviderConfig P_0)
+	private void LoadProviderConfig(ProviderConfig P_0)
 	{
-		fisCDWUc56 = gWlGzv3R5r(P_0?.Providers);
-		WHIGPZyFCO();
-		_int = RI6GALeVx5(P_0?.ActiveProviderIndex ?? 0);
-		l0GGa5opIs();
-		PQlGhSBn1g(_int);
+		_providers = CloneProviders(P_0?.Providers);
+		EnsureDefaultProviders();
+		_int = ValidateProviderIndex(P_0?.ActiveProviderIndex ?? 0);
+		RefreshProfileCombo();
+		DisplayProvider(_int);
 	}
 
-	private void PQlGhSBn1g(int P_0)
+	private void DisplayProvider(int P_0)
 	{
-		if (P_0 >= 0 && P_0 < fisCDWUc56.Count)
+		if (P_0 >= 0 && P_0 < _providers.Count)
 		{
 			_bool = true;
-			AiProviderConfig tjgkXoLTQE08rAvKTCC = fisCDWUc56[P_0];
-			txtAssistantProfileName.Text = tjgkXoLTQE08rAvKTCC.Name;
-			txtAssistantApiKey.Password = tjgkXoLTQE08rAvKTCC.ApiKey ?? string.Empty;
-			txtAssistantBaseUrl.Text = tjgkXoLTQE08rAvKTCC.BaseUrl ?? string.Empty;
-			txtAssistantModel.Text = tjgkXoLTQE08rAvKTCC.Model ?? string.Empty;
+			AiProviderConfig provider = _providers[P_0];
+			txtAssistantProfileName.Text = provider.Name;
+			txtAssistantApiKey.Password = provider.ApiKey ?? string.Empty;
+			txtAssistantBaseUrl.Text = provider.BaseUrl ?? string.Empty;
+			txtAssistantModel.Text = provider.Model ?? string.Empty;
 			_bool = false;
-			BhjGdXY5M7();
+			UpdateEndpointHint();
 		}
 	}
 
-	private void l0GGa5opIs()
+	private void RefreshProfileCombo()
 	{
 		_bool = true;
 		cboAssistantProfile.Items.Clear();
-		foreach (AiProviderConfig item in fisCDWUc56)
+		foreach (AiProviderConfig item in _providers)
 		{
 			cboAssistantProfile.Items.Add(item.Name);
 		}
-		if (fisCDWUc56.Count > 0)
+		if (_providers.Count > 0)
 		{
-			cboAssistantProfile.SelectedIndex = RI6GALeVx5(_int);
+			cboAssistantProfile.SelectedIndex = ValidateProviderIndex(_int);
 		}
 		_bool = false;
 	}
 
-	private void vTyGqN5uS6()
+	private void SyncCurrentProfileFromUi()
 	{
-		if (_int < 0 || _int >= fisCDWUc56.Count)
+		if (_int < 0 || _int >= _providers.Count)
 		{
 			return;
 		}
 		int selectedIndex = cboAssistantProfile.SelectedIndex;
-		AiProviderConfig tjgkXoLTQE08rAvKTCC = fisCDWUc56[_int];
-		tjgkXoLTQE08rAvKTCC.Name = AiProviderConfig.wFmLiEaskI(txtAssistantProfileName.Text, "配置" + (_int + 1));
-		tjgkXoLTQE08rAvKTCC.Provider = "openai";
-		tjgkXoLTQE08rAvKTCC.ApiKey = txtAssistantApiKey.Password.Trim();
-		tjgkXoLTQE08rAvKTCC.BaseUrl = txtAssistantBaseUrl.Text.Trim();
-		tjgkXoLTQE08rAvKTCC.Model = txtAssistantModel.Text.Trim();
+		AiProviderConfig provider = _providers[_int];
+		provider.Name = AiProviderConfig.wFmLiEaskI(txtAssistantProfileName.Text, "配置" + (_int + 1));
+		provider.Provider = "openai";
+		provider.ApiKey = txtAssistantApiKey.Password.Trim();
+		provider.BaseUrl = txtAssistantBaseUrl.Text.Trim();
+		provider.Model = txtAssistantModel.Text.Trim();
 		if (_int >= cboAssistantProfile.Items.Count)
 		{
 			return;
@@ -249,7 +249,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		try
 		{
 			cboAssistantProfile.Items.RemoveAt(_int);
-			cboAssistantProfile.Items.Insert(_int, tjgkXoLTQE08rAvKTCC.Name);
+			cboAssistantProfile.Items.Insert(_int, provider.Name);
 			if (selectedIndex >= 0 && selectedIndex < cboAssistantProfile.Items.Count)
 			{
 				cboAssistantProfile.SelectedIndex = selectedIndex;
@@ -261,33 +261,33 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		}
 	}
 
-	private void WHIGPZyFCO()
+	private void EnsureDefaultProviders()
 	{
-		if (fisCDWUc56 == null)
+		if (_providers == null)
 		{
-			fisCDWUc56 = new List<AiProviderConfig>();
+			_providers = new List<AiProviderConfig>();
 		}
-		if (fisCDWUc56.Count != 0)
+		if (_providers.Count != 0)
 		{
 			return;
 		}
 		foreach (AiProviderConfig item in AiProviderConfig.dV6LHfPZVP())
 		{
-			fisCDWUc56.Add(xyrCRRI7mn(item));
+			_providers.Add(CloneProvider(item));
 		}
 	}
 
-	private int RI6GALeVx5(int P_0)
+	private int ValidateProviderIndex(int P_0)
 	{
-		WHIGPZyFCO();
-		if (P_0 >= 0 && P_0 < fisCDWUc56.Count)
+		EnsureDefaultProviders();
+		if (P_0 >= 0 && P_0 < _providers.Count)
 		{
 			return P_0;
 		}
 		return 0;
 	}
 
-	private static bool sicGvmbu2d(AiProviderConfig P_0)
+	private static bool HasApiKeyAndModel(AiProviderConfig P_0)
 	{
 		if (P_0 != null && !string.IsNullOrWhiteSpace(P_0.ApiKey))
 		{
@@ -296,7 +296,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		return false;
 	}
 
-	private void qGyGW877wr(AiHelper_9 P_0)
+	private void LoadSummarySettings(AiHelper_9 P_0)
 	{
 		P_0 = P_0 ?? new AiHelper_9();
 		P_0.qBDLf9An1g();
@@ -308,21 +308,21 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		txtSummaryTimeoutSeconds.Text = P_0.TimeoutSeconds.ToString();
 	}
 
-	private void krdG0kvqar(AiHelper_9 P_0)
+	private void SaveSummarySettings(AiHelper_9 P_0)
 	{
 		if (P_0 != null)
 		{
-			P_0.ContextWindowTokens = F2CGkRZLX6(txtSummaryContextWindowTokens.Text, 200000);
-			P_0.TriggerRatio = ksFGxkx7d7(txtSummaryTriggerRatio.Text, 0.7);
-			P_0.TargetRatio = ksFGxkx7d7(txtSummaryTargetRatio.Text, 0.45);
-			P_0.HardLimitRatio = ksFGxkx7d7(txtSummaryHardLimitRatio.Text, 0.9);
-			P_0.RecentMessageCount = F2CGkRZLX6(txtSummaryRecentMessageCount.Text, 12);
-			P_0.TimeoutSeconds = F2CGkRZLX6(txtSummaryTimeoutSeconds.Text, 30);
+			P_0.ContextWindowTokens = ParseIntOrDefault(txtSummaryContextWindowTokens.Text, 200000);
+			P_0.TriggerRatio = ParseRatioOrDefault(txtSummaryTriggerRatio.Text, 0.7);
+			P_0.TargetRatio = ParseRatioOrDefault(txtSummaryTargetRatio.Text, 0.45);
+			P_0.HardLimitRatio = ParseRatioOrDefault(txtSummaryHardLimitRatio.Text, 0.9);
+			P_0.RecentMessageCount = ParseIntOrDefault(txtSummaryRecentMessageCount.Text, 12);
+			P_0.TimeoutSeconds = ParseIntOrDefault(txtSummaryTimeoutSeconds.Text, 30);
 			P_0.qBDLf9An1g();
 		}
 	}
 
-	private static int F2CGkRZLX6(string P_0, int P_1)
+	private static int ParseIntOrDefault(string P_0, int P_1)
 	{
 		if (!int.TryParse((P_0 ?? string.Empty).Trim(), out var result) || result <= 0)
 		{
@@ -331,7 +331,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		return result;
 	}
 
-	private static double ksFGxkx7d7(string P_0, double P_1)
+	private static double ParseRatioOrDefault(string P_0, double P_1)
 	{
 		if (!double.TryParse((P_0 ?? string.Empty).Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out var result) || !(result > 0.0) || !(result < 1.0))
 		{
@@ -340,13 +340,13 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		return result;
 	}
 
-	private void BhjGdXY5M7()
+	private void UpdateEndpointHint()
 	{
 		string text = txtAssistantBaseUrl.Text.Trim().TrimEnd('/');
 		lblAssistantEndpointHint.Text = (string.IsNullOrWhiteSpace(text) ? "完整请求地址：" : ("/chat/completions" + text + "完整请求地址：.../chat/completions"));
 	}
 
-	private static List<AiProviderConfig> gWlGzv3R5r(List<AiProviderConfig> P_0)
+	private static List<AiProviderConfig> CloneProviders(List<AiProviderConfig> P_0)
 	{
 		List<AiProviderConfig> list = new List<AiProviderConfig>();
 		if (P_0 == null)
@@ -355,12 +355,12 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		}
 		foreach (AiProviderConfig item in P_0)
 		{
-			list.Add(xyrCRRI7mn(item));
+			list.Add(CloneProvider(item));
 		}
 		return list;
 	}
 
-	private static AiProviderConfig xyrCRRI7mn(AiProviderConfig P_0)
+	private static AiProviderConfig CloneProvider(AiProviderConfig P_0)
 	{
 		if (P_0 == null)
 		{
@@ -376,45 +376,45 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		};
 	}
 
-	private void M4gCVhpaRX(object P_0, SelectionChangedEventArgs P_1)
+	private void OnProfileSelectionChanged(object P_0, SelectionChangedEventArgs P_1)
 	{
 		if (!_bool)
 		{
 			int selectedIndex = cboAssistantProfile.SelectedIndex;
-			if (selectedIndex >= 0 && selectedIndex < fisCDWUc56.Count)
+			if (selectedIndex >= 0 && selectedIndex < _providers.Count)
 			{
-				vTyGqN5uS6();
+				SyncCurrentProfileFromUi();
 				_int = selectedIndex;
-				PQlGhSBn1g(_int);
+				DisplayProvider(_int);
 			}
 		}
 	}
 
-	private void O0sCBTHQZU(object P_0, RoutedEventArgs P_1)
+	private void OnNewProfileClick(object P_0, RoutedEventArgs P_1)
 	{
-		vTyGqN5uS6();
-		WHIGPZyFCO();
-		fisCDWUc56.Add(new AiProviderConfig
+		SyncCurrentProfileFromUi();
+		EnsureDefaultProviders();
+		_providers.Add(new AiProviderConfig
 		{
-			Name = "新配置" + (fisCDWUc56.Count + 1),
+			Name = "新配置" + (_providers.Count + 1),
 			Provider = "openai"
 		});
-		_int = fisCDWUc56.Count - 1;
-		l0GGa5opIs();
-		PQlGhSBn1g(_int);
+		_int = _providers.Count - 1;
+		RefreshProfileCombo();
+		DisplayProvider(_int);
 		txtAssistantProfileName.Focus();
 		txtAssistantProfileName.SelectAll();
 	}
 
-	private void RpuC9JBvcA(object P_0, TextChangedEventArgs P_1)
+	private void OnBaseUrlTextChanged(object P_0, TextChangedEventArgs P_1)
 	{
 		if (!_bool)
 		{
-			BhjGdXY5M7();
+			UpdateEndpointHint();
 		}
 	}
 
-	private async Task wJfC6L7KBN(Button P_0, string P_1, Func<Task> P_2, string P_3, string P_4)
+	private async Task RunWithButtonStateAsync(Button P_0, string P_1, Func<Task> P_2, string P_3, string P_4)
 	{
 		object originalText = P_0.Content;
 		P_0.IsEnabled = false;
@@ -462,11 +462,11 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			break;
 		case 3:
 			cboAssistantProfile = (ComboBox)target;
-			cboAssistantProfile.SelectionChanged += M4gCVhpaRX;
+			cboAssistantProfile.SelectionChanged += OnProfileSelectionChanged;
 			break;
 		case 4:
 			btnNewAssistantProfile = (Button)target;
-			btnNewAssistantProfile.Click += O0sCBTHQZU;
+			btnNewAssistantProfile.Click += OnNewProfileClick;
 			break;
 		case 5:
 			txtAssistantProfileName = (TextBox)target;
@@ -476,7 +476,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			break;
 		case 7:
 			txtAssistantBaseUrl = (TextBox)target;
-			txtAssistantBaseUrl.TextChanged += RpuC9JBvcA;
+			txtAssistantBaseUrl.TextChanged += OnBaseUrlTextChanged;
 			break;
 		case 8:
 			txtAssistantModel = (TextBox)target;
@@ -486,7 +486,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			break;
 		case 10:
 			btnTestAssistantConnection = (Button)target;
-			btnTestAssistantConnection.Click += aVsGe74PNw;
+			btnTestAssistantConnection.Click += OnTestConnectionClick;
 			break;
 		case 11:
 			txtSummaryContextWindowTokens = (TextBox)target;
@@ -508,19 +508,19 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			break;
 		case 17:
 			btnOpenFolder = (Button)target;
-			btnOpenFolder.Click += kw2G5xe9uv;
+			btnOpenFolder.Click += OnOpenFolderClick;
 			break;
 		case 18:
 			btnHelp = (Button)target;
-			btnHelp.Click += v8TGcXBvWr;
+			btnHelp.Click += OnHelpClick;
 			break;
 		case 19:
 			btnSave = (Button)target;
-			btnSave.Click += vkoGnmG7ZQ;
+			btnSave.Click += OnSaveClick;
 			break;
 		case 20:
 			btnCancel = (Button)target;
-			btnCancel.Click += BrJG7X3GCO;
+			btnCancel.Click += OnCancelClick;
 			break;
 		default:
 			_bool = true;
@@ -529,7 +529,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private Task lFtCuZnbgF()
+	private Task TestConnectionAsync()
 	{
 		return AiConfigManager.Xq56uj14fX("openai", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text);
 	}

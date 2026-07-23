@@ -114,16 +114,16 @@ internal static class ScreenshotService
 		HotkeyHookService2 desktopPin = TableBorderConfig.Current.Config.DesktopPin;
 		if (!desktopPin.Enabled)
 		{
-			HotkeyHookService.uQ7VKeL8py("DesktopPin");
+			HotkeyHookService.UnregisterHotkey("DesktopPin");
 			return true;
 		}
-		if (!HotkeyHookService.TryRegisterHotkeyHook(desktopPin.Hotkey, (HotkeyAction)1u, out var fLLBq1VHNF5GNnjaJrS2))
+		if (!HotkeyHookService.TryRegisterHotkeyHook(desktopPin.Hotkey, (HotkeyAction)1u, out var hotkeyHook))
 		{
-			HotkeyHookService.uQ7VKeL8py("DesktopPin");
+			HotkeyHookService.UnregisterHotkey("DesktopPin");
 			P_0 = "钉桌面热键无效，请录制或输入 Alt/Ctrl/Shift/Win + 一个按键，例如 Alt+F1、Ctrl+Shift+Q。Fn 不是 Windows 可注册的修饰键。";
 			return false;
 		}
-		if (!HotkeyHookService.LflVUiaoHY("DesktopPin", fLLBq1VHNF5GNnjaJrS2.Modifiers, fLLBq1VHNF5GNnjaJrS2.Key, SqNBgKb64d))
+		if (!HotkeyHookService.RegisterHotkey("DesktopPin", hotkeyHook.Modifiers, hotkeyHook.Key, SqNBgKb64d))
 		{
 			P_0 = "钉桌面热键注册失败，可能已被系统、Word 或其他程序占用。";
 			return false;
@@ -133,7 +133,7 @@ internal static class ScreenshotService
 
 	public static void jTmBQtWvhT()
 	{
-		HotkeyHookService.uQ7VKeL8py("DesktopPin");
+		HotkeyHookService.UnregisterHotkey("DesktopPin");
 		bpaBiR3K57();
 	}
 

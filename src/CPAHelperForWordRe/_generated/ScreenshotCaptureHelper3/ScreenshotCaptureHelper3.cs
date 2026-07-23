@@ -27,7 +27,7 @@ internal sealed class ScreenshotCaptureHelper3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass14_0
 	{
-		public Form xOadtJIvHV;
+		public Form renderForm;
 
 		public Helper_16 helper_16;
 
@@ -37,7 +37,7 @@ internal sealed class ScreenshotCaptureHelper3
 
 		public string text;
 
-		public ImageAssetInfo umNdmxJMDT;
+		public ImageAssetInfo resultAsset;
 
 		public string text;
 
@@ -48,7 +48,7 @@ internal sealed class ScreenshotCaptureHelper3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void w03dw18Z2c()
+		internal void RenderHtmlToPngCore()
 		{
 			try
 			{
@@ -60,7 +60,7 @@ internal sealed class ScreenshotCaptureHelper3
 					CS_8_locals_42.webView = new WebView2();
 					try
 					{
-						xOadtJIvHV = CS_8_locals_42.form;
+						renderForm = CS_8_locals_42.form;
 						CS_8_locals_42.form.FormBorderStyle = FormBorderStyle.None;
 						CS_8_locals_42.form.StartPosition = FormStartPosition.Manual;
 						CS_8_locals_42.form.Location = new Point(-32000, -32000);
@@ -77,8 +77,8 @@ internal sealed class ScreenshotCaptureHelper3
 						{
 							try
 							{
-								await usK1uGbyeh(CS_8_locals_42.webView, CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
-								pqB1TXqQGQ(CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight);
+								await NavigateAndCaptureAsync(CS_8_locals_42.webView, CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
+								ResizePngToExactSize(CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight);
 								FileInfo fileInfo = new FileInfo(CS_8_locals_42._G_c__DisplayClass14_0.text);
 								if (!fileInfo.Exists || fileInfo.Length == 0L)
 								{
@@ -96,7 +96,7 @@ internal sealed class ScreenshotCaptureHelper3
 									throw new InvalidOperationException(string.Format("IP_Assurance HTML Visual Renderer", CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight, width, height));
 								}
 								File.WriteAllText(CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.text, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-								CS_8_locals_42._G_c__DisplayClass14_0.umNdmxJMDT = new ImageAssetInfo
+								CS_8_locals_42._G_c__DisplayClass14_0.resultAsset = new ImageAssetInfo
 								{
 									PngPath = CS_8_locals_42._G_c__DisplayClass14_0.text,
 									SourcePath = CS_8_locals_42._G_c__DisplayClass14_0.text,
@@ -139,7 +139,7 @@ internal sealed class ScreenshotCaptureHelper3
 			}
 			finally
 			{
-				xOadtJIvHV = null;
+				renderForm = null;
 			}
 		}
 	}
@@ -158,12 +158,12 @@ internal sealed class ScreenshotCaptureHelper3
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal async void ry4dCGg4Z6(object sender, EventArgs args)
+		internal async void OnFormShown(object sender, EventArgs args)
 		{
 			try
 			{
-				await usK1uGbyeh(webView, _G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
-				pqB1TXqQGQ(_G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight);
+				await NavigateAndCaptureAsync(webView, _G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
+				ResizePngToExactSize(_G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight);
 				FileInfo fileInfo = new FileInfo(_G_c__DisplayClass14_0.text);
 				if (!fileInfo.Exists || fileInfo.Length == 0L)
 				{
@@ -181,7 +181,7 @@ internal sealed class ScreenshotCaptureHelper3
 					throw new InvalidOperationException(string.Format("Rendered PNG size mismatch. Expected {0}x{1}, actual {2}x{3}.", _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight, width, height));
 				}
 				File.WriteAllText(_G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.text, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-				_G_c__DisplayClass14_0.umNdmxJMDT = new ImageAssetInfo
+				_G_c__DisplayClass14_0.resultAsset = new ImageAssetInfo
 				{
 					PngPath = _G_c__DisplayClass14_0.text,
 					SourcePath = _G_c__DisplayClass14_0.text,
@@ -207,63 +207,63 @@ internal sealed class ScreenshotCaptureHelper3
 	{
 		public CoreWebView2 coreWebView2;
 
-		public EventHandler<CoreWebView2NavigationCompletedEventArgs> zBZdc5AXK9;
+		public EventHandler<CoreWebView2NavigationCompletedEventArgs> navigationCompletedHandler;
 
-		public TaskCompletionSource<CoreWebView2NavigationCompletedEventArgs> XuOde93ZeH;
+		public TaskCompletionSource<CoreWebView2NavigationCompletedEventArgs> navigationCompletionSource;
 
 		public _G_c__DisplayClass15_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void LOXd74s6Kf(object sender, CoreWebView2NavigationCompletedEventArgs args)
+		internal void OnNavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs args)
 		{
-			coreWebView2.NavigationCompleted -= zBZdc5AXK9;
-			XuOde93ZeH.TrySetResult(args);
+			coreWebView2.NavigationCompleted -= navigationCompletedHandler;
+			navigationCompletionSource.TrySetResult(args);
 		}
 	}
 
-	private static readonly SemaphoreSlim DjW1H937bG;
+	private static readonly SemaphoreSlim _renderSemaphore;
 
-	private static readonly Regex MBr1QWZKDB;
+	private static readonly Regex _forbiddenTagRegex;
 
-	private static readonly Regex NCJ11K8E2o;
+	private static readonly Regex _eventHandlerRegex;
 
-	private static readonly Regex Awv1rBgWBN;
+	private static readonly Regex _urlSchemeRegex;
 
-	private static readonly Regex pya1JouFCr;
+	private static readonly Regex _srcHrefRegex;
 
-	private static readonly Regex jvb13lCcaS;
+	private static readonly Regex _cssUrlRegex;
 
-	private static readonly Regex ulT1Ux7OkM;
+	private static readonly Regex _colorFormatRegex;
 
 	public ImageAssetInfo RenderHtmlToPng(Helper_16 P_0)
 	{
-		eBW1ghIdqq(P_0);
-		DjW1H937bG.Wait();
+		ValidateRenderRequest(P_0);
+		_renderSemaphore.Wait();
 		try
 		{
-			return H6916YM8wK(P_0);
+			return RenderHtmlToPngInternal(P_0);
 		}
 		finally
 		{
-			DjW1H937bG.Release();
+			_renderSemaphore.Release();
 		}
 	}
 
-	private static ImageAssetInfo H6916YM8wK(Helper_16 P_0)
+	private static ImageAssetInfo RenderHtmlToPngInternal(Helper_16 P_0)
 	{
 		_G_c__DisplayClass14_0 CS_8_locals_47 = new _G_c__DisplayClass14_0();
 		CS_8_locals_47.helper_16 = P_0;
-		CS_8_locals_47.text = ofk1IFrjhT(CS_8_locals_47.helper_16.HtmlFragment);
-		CS_8_locals_47.text = UNc18HvUui(CS_8_locals_47.helper_16);
+		CS_8_locals_47.text = ComputeSha256Hash(CS_8_locals_47.helper_16.HtmlFragment);
+		CS_8_locals_47.text = BuildFullHtmlDocument(CS_8_locals_47.helper_16);
 		string path = AiSseStreamService.GetTempPath("AI", "HtmlVisuals");
 		string path2 = AiSseStreamService.GetUserDataPath("Agent", "html-visuals");
 		CS_8_locals_47.text = Path.Combine(path, "html-visual-" + Guid.NewGuid().ToString("N") + ".png");
 		CS_8_locals_47.text = Path.Combine(path2, CS_8_locals_47.text + ".html");
 		CS_8_locals_47.exception = null;
-		CS_8_locals_47.umNdmxJMDT = null;
-		CS_8_locals_47.xOadtJIvHV = null;
+		CS_8_locals_47.resultAsset = null;
+		CS_8_locals_47.renderForm = null;
 		Thread thread = new Thread((ThreadStart)delegate
 		{
 			try
@@ -276,7 +276,7 @@ internal sealed class ScreenshotCaptureHelper3
 					CS_8_locals_69.webView = new WebView2();
 					try
 					{
-						CS_8_locals_47.xOadtJIvHV = CS_8_locals_69.form;
+						CS_8_locals_47.renderForm = CS_8_locals_69.form;
 						CS_8_locals_69.form.FormBorderStyle = FormBorderStyle.None;
 						CS_8_locals_69.form.StartPosition = FormStartPosition.Manual;
 						CS_8_locals_69.form.Location = new Point(-32000, -32000);
@@ -293,8 +293,8 @@ internal sealed class ScreenshotCaptureHelper3
 						{
 							try
 							{
-								await usK1uGbyeh(CS_8_locals_69.webView, CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
-								pqB1TXqQGQ(CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight);
+								await NavigateAndCaptureAsync(CS_8_locals_69.webView, CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
+								ResizePngToExactSize(CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight);
 								FileInfo fileInfo = new FileInfo(CS_8_locals_69._G_c__DisplayClass14_0.text);
 								if (!fileInfo.Exists || fileInfo.Length == 0L)
 								{
@@ -312,7 +312,7 @@ internal sealed class ScreenshotCaptureHelper3
 									throw new InvalidOperationException(string.Format("AI", CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight, width, height));
 								}
 								File.WriteAllText(CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.text, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-								CS_8_locals_69._G_c__DisplayClass14_0.umNdmxJMDT = new ImageAssetInfo
+								CS_8_locals_69._G_c__DisplayClass14_0.resultAsset = new ImageAssetInfo
 								{
 									PngPath = CS_8_locals_69._G_c__DisplayClass14_0.text,
 									SourcePath = CS_8_locals_69._G_c__DisplayClass14_0.text,
@@ -322,9 +322,9 @@ internal sealed class ScreenshotCaptureHelper3
 									PngBytes = fileInfo.Length
 								};
 							}
-							catch (Exception mSCdGE1K6J2)
+							catch (Exception renderException)
 							{
-								CS_8_locals_69._G_c__DisplayClass14_0.exception = mSCdGE1K6J2;
+								CS_8_locals_69._G_c__DisplayClass14_0.exception = renderException;
 							}
 							finally
 							{
@@ -355,7 +355,7 @@ internal sealed class ScreenshotCaptureHelper3
 			}
 			finally
 			{
-				CS_8_locals_47.xOadtJIvHV = null;
+				CS_8_locals_47.renderForm = null;
 			}
 		});
 		thread.IsBackground = true;
@@ -366,7 +366,7 @@ internal sealed class ScreenshotCaptureHelper3
 		{
 			try
 			{
-				Form form = CS_8_locals_47.xOadtJIvHV;
+				Form form = CS_8_locals_47.renderForm;
 				if (form != null && form.IsHandleCreated && !form.IsDisposed)
 				{
 					form.BeginInvoke(new Action(form.Close));
@@ -384,15 +384,15 @@ internal sealed class ScreenshotCaptureHelper3
 			DeleteTempPng(CS_8_locals_47.text);
 			throw new InvalidOperationException("html-visuals" + CS_8_locals_47.exception.Message, CS_8_locals_47.exception);
 		}
-		if (CS_8_locals_47.umNdmxJMDT == null)
+		if (CS_8_locals_47.resultAsset == null)
 		{
 			DeleteTempPng(CS_8_locals_47.text);
 			throw new InvalidOperationException("html-visual-");
 		}
-		return CS_8_locals_47.umNdmxJMDT;
+		return CS_8_locals_47.resultAsset;
 	}
 
-	private static async Task usK1uGbyeh(WebView2 P_0, string P_1, string P_2, int P_3, int P_4)
+	private static async Task NavigateAndCaptureAsync(WebView2 P_0, string P_1, string P_2, int P_3, int P_4)
 	{
 		_G_c__DisplayClass15_0 CS_8_locals_21 = new _G_c__DisplayClass15_0();
 		await P_0.EnsureCoreWebView2Async();
@@ -411,28 +411,28 @@ internal sealed class ScreenshotCaptureHelper3
 				args.Cancel = true;
 			}
 		};
-		CS_8_locals_21.XuOde93ZeH = new TaskCompletionSource<CoreWebView2NavigationCompletedEventArgs>();
-		CS_8_locals_21.zBZdc5AXK9 = null;
-		CS_8_locals_21.zBZdc5AXK9 = delegate(object sender, CoreWebView2NavigationCompletedEventArgs args)
+		CS_8_locals_21.navigationCompletionSource = new TaskCompletionSource<CoreWebView2NavigationCompletedEventArgs>();
+		CS_8_locals_21.navigationCompletedHandler = null;
+		CS_8_locals_21.navigationCompletedHandler = delegate(object sender, CoreWebView2NavigationCompletedEventArgs args)
 		{
-			CS_8_locals_21.coreWebView2.NavigationCompleted -= CS_8_locals_21.zBZdc5AXK9;
-			CS_8_locals_21.XuOde93ZeH.TrySetResult(args);
+			CS_8_locals_21.coreWebView2.NavigationCompleted -= CS_8_locals_21.navigationCompletedHandler;
+			CS_8_locals_21.navigationCompletionSource.TrySetResult(args);
 		};
-		CS_8_locals_21.coreWebView2.NavigationCompleted += CS_8_locals_21.zBZdc5AXK9;
+		CS_8_locals_21.coreWebView2.NavigationCompleted += CS_8_locals_21.navigationCompletedHandler;
 		CS_8_locals_21.coreWebView2.NavigateToString(P_1);
-		CoreWebView2NavigationCompletedEventArgs e = await CS_8_locals_21.XuOde93ZeH.Task.ConfigureAwait(continueOnCapturedContext: true);
+		CoreWebView2NavigationCompletedEventArgs e = await CS_8_locals_21.navigationCompletionSource.Task.ConfigureAwait(continueOnCapturedContext: true);
 		if (!e.IsSuccess)
 		{
 			throw new InvalidOperationException(".html" + e.WebErrorStatus);
 		}
 		await Task.Delay(350).ConfigureAwait(continueOnCapturedContext: true);
-		await V9S1Drrpqv(P_0, CS_8_locals_21.coreWebView2, P_3, P_4).ConfigureAwait(continueOnCapturedContext: true);
+		await EnsureRenderSizeAsync(P_0, CS_8_locals_21.coreWebView2, P_3, P_4).ConfigureAwait(continueOnCapturedContext: true);
 		using FileStream stream = new FileStream(P_2, FileMode.Create, FileAccess.Write, FileShare.Read);
 		await CS_8_locals_21.coreWebView2.CapturePreviewAsync(CoreWebView2CapturePreviewImageFormat.Png, stream).ConfigureAwait(continueOnCapturedContext: true);
 		await stream.FlushAsync().ConfigureAwait(continueOnCapturedContext: true);
 	}
 
-	private static async Task V9S1Drrpqv(WebView2 P_0, CoreWebView2 P_1, int P_2, int P_3)
+	private static async Task EnsureRenderSizeAsync(WebView2 P_0, CoreWebView2 P_1, int P_2, int P_3)
 	{
 		JObject jObject = JObject.Parse(await P_1.ExecuteScriptAsync("CPAHelper.HtmlVisualRenderer").ConfigureAwait(continueOnCapturedContext: true));
 		int num = jObject.Value<int>("HTML visual rendering timed out after 30 seconds.");
@@ -462,7 +462,7 @@ internal sealed class ScreenshotCaptureHelper3
 		}
 	}
 
-	private static void pqB1TXqQGQ(string P_0, int P_1, int P_2)
+	private static void ResizePngToExactSize(string P_0, int P_1, int P_2)
 	{
 		string text = P_0 + ".resized.png";
 		try
@@ -495,7 +495,7 @@ internal sealed class ScreenshotCaptureHelper3
 		}
 	}
 
-	private static void eBW1ghIdqq(Helper_16 P_0)
+	private static void ValidateRenderRequest(Helper_16 P_0)
 	{
 		if (P_0 == null)
 		{
@@ -518,24 +518,24 @@ internal sealed class ScreenshotCaptureHelper3
 			throw new ArgumentException(string.Format("height must be between {0} and {1} pixels.", 120, 1080), "PixelHeight");
 		}
 		string input = (string.IsNullOrWhiteSpace(P_0.BackgroundColor) ? "#ffffff" : P_0.BackgroundColor.Trim());
-		if (!ulT1Ux7OkM.IsMatch(input))
+		if (!_colorFormatRegex.IsMatch(input))
 		{
 			throw new ArgumentException("backgroundColor must be #RGB, #RRGGBB, or transparent.", "BackgroundColor");
 		}
 		string htmlFragment = P_0.HtmlFragment;
-		if (MBr1QWZKDB.IsMatch(htmlFragment))
+		if (_forbiddenTagRegex.IsMatch(htmlFragment))
 		{
 			throw new ArgumentException("HTML contains a forbidden active or embedding tag.", "HtmlFragment");
 		}
-		if (NCJ11K8E2o.IsMatch(htmlFragment))
+		if (_eventHandlerRegex.IsMatch(htmlFragment))
 		{
 			throw new ArgumentException("HTML event handler attributes such as onclick are not allowed.", "HtmlFragment");
 		}
-		if (Awv1rBgWBN.IsMatch(htmlFragment) || Regex.IsMatch(htmlFragment, "@import\\\\b", RegexOptions.IgnoreCase))
+		if (_urlSchemeRegex.IsMatch(htmlFragment) || Regex.IsMatch(htmlFragment, "@import\\\\b", RegexOptions.IgnoreCase))
 		{
 			throw new ArgumentException("External URLs, active URL schemes, and CSS @import are not allowed.", "HtmlFragment");
 		}
-		foreach (Match item in pya1JouFCr.Matches(htmlFragment))
+		foreach (Match item in _srcHrefRegex.Matches(htmlFragment))
 		{
 			string text = item.Groups["value"].Value.Trim();
 			if (!text.StartsWith("data:", StringComparison.OrdinalIgnoreCase) && !text.StartsWith("#", StringComparison.Ordinal))
@@ -543,7 +543,7 @@ internal sealed class ScreenshotCaptureHelper3
 				throw new ArgumentException("src/href resources must use data: URLs or local SVG fragment references.", "HtmlFragment");
 			}
 		}
-		foreach (Match item2 in jvb13lCcaS.Matches(htmlFragment))
+		foreach (Match item2 in _cssUrlRegex.Matches(htmlFragment))
 		{
 			if (!item2.Groups["value"].Value.Trim().Trim('\'', '"').StartsWith("data:", StringComparison.OrdinalIgnoreCase))
 			{
@@ -552,13 +552,13 @@ internal sealed class ScreenshotCaptureHelper3
 		}
 	}
 
-	private static string UNc18HvUui(Helper_16 P_0)
+	private static string BuildFullHtmlDocument(Helper_16 P_0)
 	{
 		string text = (string.IsNullOrWhiteSpace(P_0.BackgroundColor) ? "#ffffff" : P_0.BackgroundColor.Trim());
 		return "<!doctype html><html><head><meta charset=\"utf-8\"><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; img-src data:; style-src 'unsafe-inline'; font-src data:; script-src 'none'; connect-src 'none'; object-src 'none'; frame-src 'none';\"><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:" + text + ";}*,*::before,*::after{box-sizing:border-box;animation:none!important;transition:none!important;}#cpa-html-visual{width:100%;height:100%;overflow:hidden;}</style></head><body><div id=\"cpa-html-visual\">" + P_0.HtmlFragment + "</div></body></html>";
 	}
 
-	private static string ofk1IFrjhT(string P_0)
+	private static string ComputeSha256Hash(string P_0)
 	{
 		using SHA256 sHA = SHA256.Create();
 		byte[] array = sHA.ComputeHash(Encoding.UTF8.GetBytes(P_0 ?? string.Empty));
@@ -597,12 +597,12 @@ internal sealed class ScreenshotCaptureHelper3
 	static ScreenshotCaptureHelper3()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		DjW1H937bG = new SemaphoreSlim(1, 1);
-		MBr1QWZKDB = new Regex("<\\\\s*(script|iframe|frame|frameset|object|embed|link|base|meta)\\\\b", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
-		NCJ11K8E2o = new Regex("\\\\bon[a-z0-9_-]+\\\\s*=", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
-		Awv1rBgWBN = new Regex("\\\\b(https?|file|ftp|javascript|vbscript)\\\\s*:", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
-		pya1JouFCr = new Regex("\\\\b(?:src|href|xlink:href)\\\\s*=\\\\s*(['\"])(?<value>.*?)\\\\1", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.CultureInvariant);
-		jvb13lCcaS = new Regex("url\\\\s*\\\\(\\\\s*(['\"]?)(?<value>.*?)\\\\1\\\\s*\\\\)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
-		ulT1Ux7OkM = new Regex("^(#[0-9a-f]{3}|#[0-9a-f]{6}|transparent)$", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+		_renderSemaphore = new SemaphoreSlim(1, 1);
+		_forbiddenTagRegex = new Regex("<\\\\s*(script|iframe|frame|frameset|object|embed|link|base|meta)\\\\b", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+		_eventHandlerRegex = new Regex("\\\\bon[a-z0-9_-]+\\\\s*=", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+		_urlSchemeRegex = new Regex("\\\\b(https?|file|ftp|javascript|vbscript)\\\\s*:", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+		_srcHrefRegex = new Regex("\\\\b(?:src|href|xlink:href)\\\\s*=\\\\s*(['\"])(?<value>.*?)\\\\1", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.CultureInvariant);
+		_cssUrlRegex = new Regex("url\\\\s*\\\\(\\\\s*(['\"]?)(?<value>.*?)\\\\1\\\\s*\\\\)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+		_colorFormatRegex = new Regex("^(#[0-9a-f]{3}|#[0-9a-f]{6}|transparent)$", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
 	}
 }

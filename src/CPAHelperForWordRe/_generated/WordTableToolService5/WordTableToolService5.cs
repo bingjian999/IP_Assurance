@@ -108,7 +108,7 @@ internal static class WordTableToolService5
 		{
 			SetupWindowOwner(P_0);
 			fYx5r0teaL(P_0);
-			AiHelper_4.b5KVmv3Pp9(P_0);
+			AiHelper_4.RegisterWindow(P_0);
 			ElementHost.EnableModelessKeyboardInterop(P_0);
 			P_0.Show();
 			LaD5UjoUA2(P_0);

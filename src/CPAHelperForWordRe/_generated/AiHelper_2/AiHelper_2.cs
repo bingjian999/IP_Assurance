@@ -133,7 +133,7 @@ internal sealed class AiHelper_2
 		_wordTableToolService4 = new WordTableToolService4(P_0);
 	}
 
-	public AiHelper_5 Uwp128MQKQ(string P_0, string P_1, int P_2, int P_3, double P_4, double P_5, string P_6, string P_7)
+	public AiHelper_5 InsertHtmlVisual(string P_0, string P_1, int P_2, int P_3, double P_4, double P_5, string P_6, string P_7)
 	{
 		_G_c__DisplayClass2_0 CS_8_locals_25 = new _G_c__DisplayClass2_0();
 		CS_8_locals_25.fardXZwHxs = P_1;
@@ -154,7 +154,7 @@ internal sealed class AiHelper_2
 			{
 				throw new ArgumentException("HTML visual display size must be greater than zero.");
 			}
-			return _wordTableToolService4.MdXJlVhPku("create_html_visual", delegate(Application app)
+			return _wordTableToolService4.runOperation("create_html_visual", delegate(Application app)
 			{
 				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))

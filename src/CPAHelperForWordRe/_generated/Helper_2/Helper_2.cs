@@ -49,11 +49,11 @@ internal abstract class Helper_2 : INotifyPropertyChanged
 			return false;
 		}
 		P_0 = HJKZHkskGawWJ3YGAge;
-		fpVsxno8nm(propertyName);
+		RaisePropertyChanged(propertyName);
 		return true;
 	}
 
-	protected void fpVsxno8nm([CallerMemberName] string propertyName = null)
+	protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
 	{
 		this.m_PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}

@@ -27,7 +27,7 @@ namespace AiAssistantHost;
 
 internal sealed class AiAssistantHost : UserControl
 {
-	private static readonly JavaScriptSerializer tSS3hxNHc0;
+	private static readonly JavaScriptSerializer _javaScriptSerializer;
 
 	private WebView2 _webView2;
 
@@ -80,11 +80,11 @@ internal sealed class AiAssistantHost : UserControl
 	public AiAssistantHost()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		O0p3l4nwwc();
-		AiHelper_17.fWnUBnsIYw(HwR37nWbFR);
+		InitializeComponent();
+		AiHelper_17.fWnUBnsIYw(OnArtifactPublished);
 	}
 
-	private void O0p3l4nwwc()
+	private void InitializeComponent()
 	{
 		SuspendLayout();
 		_webView2 = new WebView2
@@ -101,7 +101,7 @@ internal sealed class AiAssistantHost : UserControl
 		ResumeLayout(performLayout: false);
 	}
 
-	public async Task nb43Nxg93w()
+	public async Task InitializeAsync()
 	{
 		if (_bool || _bool)
 		{
@@ -110,7 +110,7 @@ internal sealed class AiAssistantHost : UserControl
 		_bool = true;
 		try
 		{
-			if (!Mj53mPmCxk())
+			if (!IsWebView2Available())
 			{
 				if (LoggerInitializer.ShowConfirm("WebView2", "AgentTaskPane"))
 				{
@@ -121,13 +121,13 @@ internal sealed class AiAssistantHost : UserControl
 				}
 				return;
 			}
-			_desktopAiBridgeServer = AiAssistantHost2.mJIBvnaH0F(Target);
+			_desktopAiBridgeServer = AiAssistantHost2.CreatePaneBridge(Target);
 			if (_desktopAiBridgeServer != null)
 			{
 				await _webView2.EnsureCoreWebView2Async();
-				PyX3CRqaXs();
-				await _webView2.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(SOB3GPkoQ3());
-				string text = Xvl3oTT4CU();
+				AttachWebViewEvents();
+				await _webView2.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(BuildBootstrapScript());
+				string text = GetFrontendAssetsDir();
 				if (text == null)
 				{
 					throw new FileNotFoundException("index.html" + AiSseStreamService.FrontendAssetsDir);
@@ -141,7 +141,7 @@ internal sealed class AiAssistantHost : UserControl
 				{
 				}
 				_webView2.CoreWebView2.Navigate("https://app.local/index.html");
-				wFK356xxfX();
+				AttachWordEvents();
 				_bool = true;
 			}
 		}
@@ -157,7 +157,7 @@ internal sealed class AiAssistantHost : UserControl
 		}
 	}
 
-	private static bool Mj53mPmCxk()
+	private static bool IsWebView2Available()
 	{
 		try
 		{
@@ -169,7 +169,7 @@ internal sealed class AiAssistantHost : UserControl
 		}
 	}
 
-	private static string Xvl3oTT4CU()
+	private static string GetFrontendAssetsDir()
 	{
 		string frontendAssetsDir = AiSseStreamService.FrontendAssetsDir;
 		if (!File.Exists(Path.Combine(frontendAssetsDir, "index.html")))
@@ -179,7 +179,7 @@ internal sealed class AiAssistantHost : UserControl
 		return frontendAssetsDir;
 	}
 
-	private string SOB3GPkoQ3()
+	private string BuildBootstrapScript()
 	{
 		bool isIntranetEnvironment = IntranetAiConfigService.Instance.GetConfig().IsIntranetEnvironment;
 		var obj = new
@@ -209,22 +209,22 @@ internal sealed class AiAssistantHost : UserControl
 			runtimeStatusEnabled = true,
 			runtimeStatusPollIntervalMs = 0
 		};
-		string text = tSS3hxNHc0.Serialize(obj);
+		string text = _javaScriptSerializer.Serialize(obj);
 		return string.Format("window.__BRIDGE_PORT__ = {0}; ", _desktopAiBridgeServer.Port) + "window.__IS_LIGHT__ = true; window.__HOST_CONTEXT__ = " + text + ";window.__CPA_POST_ERROR__ = function (payload) {  try { if (window.chrome && window.chrome.webview && window.chrome.webview.postMessage) window.chrome.webview.postMessage(payload); } catch (_) { }};window.addEventListener('error', function (event) {  try { window.__CPA_POST_ERROR__('[agent-ui-error] ' + (event.message || 'unknown') + ' ' + (event.filename || '') + ':' + (event.lineno || 0)); } catch (_) { }});window.addEventListener('unhandledrejection', function (event) {  try { var r = event && event.reason; window.__CPA_POST_ERROR__('[agent-ui-rejection] ' + (typeof r === 'string' ? r : ((r && (r.stack || r.message)) || 'unknown'))); } catch (_) { }});(function(){function a(){if(!document.body)return;var b=document.getElementById('cpa-return-home');if(b)return;b=document.createElement('button');b.id='cpa-return-home';b.textContent='返回主界面';b.style.cssText='position:fixed;top:6px;right:8px;z-index:99999;background:rgba(255,255,255,0.92);border:1px solid #ccc;border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;color:#444;box-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:20px;transition:all .15s;white-space:nowrap';b.onmouseenter=function(){b.style.background='#e8e8e8';b.style.borderColor='#999'};b.onmouseleave=function(){b.style.background='rgba(255,255,255,0.92)';b.style.borderColor='#ccc'};b.onclick=function(){window.location.reload()};document.body.appendChild(b)}function init(){a();var m=new MutationObserver(function(){a()});m.observe(document.body,{childList:true,subtree:true})}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}})();";
 	}
 
-	private void PyX3CRqaXs()
+	private void AttachWebViewEvents()
 	{
 		if (!_bool && _webView2?.CoreWebView2 != null)
 		{
-			_webView2.CoreWebView2.WebMessageReceived += VGG3pk7osX;
-			_webView2.CoreWebView2.ProcessFailed += lMB3OQ8Rl8;
-			_webView2.CoreWebView2.NavigationCompleted += ixs3nlkvjU;
+			_webView2.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
+			_webView2.CoreWebView2.ProcessFailed += OnProcessFailed;
+			_webView2.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
 			_bool = true;
 		}
 	}
 
-	private void VGG3pk7osX(object P_0, CoreWebView2WebMessageReceivedEventArgs P_1)
+	private void OnWebMessageReceived(object P_0, CoreWebView2WebMessageReceivedEventArgs P_1)
 	{
 		try
 		{
@@ -240,16 +240,16 @@ internal sealed class AiAssistantHost : UserControl
 		}
 	}
 
-	private void lMB3OQ8Rl8(object P_0, CoreWebView2ProcessFailedEventArgs P_1)
+	private void OnProcessFailed(object P_0, CoreWebView2ProcessFailedEventArgs P_1)
 	{
 		AiConfigBootstrap.LogError(string.Format("[AgentUI] WebView process failed. Kind={0}; Reason={1}", P_1.ProcessFailedKind, P_1.Reason));
 	}
 
-	private void ixs3nlkvjU(object P_0, CoreWebView2NavigationCompletedEventArgs P_1)
+	private void OnNavigationCompleted(object P_0, CoreWebView2NavigationCompletedEventArgs P_1)
 	{
 		if (P_1.IsSuccess)
 		{
-			eY03XNcEyA();
+			PushCurrentHostStatus();
 		}
 		else
 		{
@@ -257,7 +257,7 @@ internal sealed class AiAssistantHost : UserControl
 		}
 	}
 
-	private void HwR37nWbFR(AiTargetBinder P_0, AgentArtifact P_1)
+	private void OnArtifactPublished(AiTargetBinder P_0, AgentArtifact P_1)
 	{
 		if (P_1 == null || _webView2?.CoreWebView2 == null || (P_0 != null && !string.Equals(P_0.WindowKey, WindowKey, StringComparison.OrdinalIgnoreCase)))
 		{
@@ -265,7 +265,7 @@ internal sealed class AiAssistantHost : UserControl
 		}
 		try
 		{
-			string text = tSS3hxNHc0.Serialize(new
+			string text = _javaScriptSerializer.Serialize(new
 			{
 				artifactType = P_1.Type,
 				title = P_1.Title,
@@ -279,39 +279,39 @@ internal sealed class AiAssistantHost : UserControl
 		}
 	}
 
-	private void wFK356xxfX()
+	private void AttachWordEvents()
 	{
 		Microsoft.Office.Interop.Word.Application wordApp = WordTableToolService.WordApp;
 		if (!_bool && wordApp != null)
 		{
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowActivate").AddEventHandler(wordApp, new ApplicationEvents4_WindowActivateEventHandler(tEu3ebUT5B));
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").AddEventHandler(wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(Ink3y7HBFV));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowActivate").AddEventHandler(wordApp, new ApplicationEvents4_WindowActivateEventHandler(OnWindowActivate));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").AddEventHandler(wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(OnSelectionChange));
 			_bool = true;
 		}
 	}
 
-	private void wBw3cW9FKn()
+	private void DetachWordEvents()
 	{
 		Microsoft.Office.Interop.Word.Application wordApp = WordTableToolService.WordApp;
 		if (_bool && wordApp != null)
 		{
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowActivate").RemoveEventHandler(wordApp, new ApplicationEvents4_WindowActivateEventHandler(tEu3ebUT5B));
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").RemoveEventHandler(wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(Ink3y7HBFV));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowActivate").RemoveEventHandler(wordApp, new ApplicationEvents4_WindowActivateEventHandler(OnWindowActivate));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").RemoveEventHandler(wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(OnSelectionChange));
 			_bool = false;
 		}
 	}
 
-	private void tEu3ebUT5B(Document P_0, Window P_1)
+	private void OnWindowActivate(Document P_0, Window P_1)
 	{
-		eY03XNcEyA();
+		PushCurrentHostStatus();
 	}
 
-	private void Ink3y7HBFV(Selection P_0)
+	private void OnSelectionChange(Selection P_0)
 	{
-		eY03XNcEyA();
+		PushCurrentHostStatus();
 	}
 
-	private void eY03XNcEyA()
+	private void PushCurrentHostStatus()
 	{
 		if (_webView2?.CoreWebView2 == null)
 		{
@@ -319,11 +319,11 @@ internal sealed class AiAssistantHost : UserControl
 		}
 		try
 		{
-			string text = CdZ3FO2FEj(Target);
+			string text = GetCurrentDocumentDisplayText(Target);
 			if (!string.IsNullOrWhiteSpace(text) && !(text == _string))
 			{
 				_string = text;
-				string text2 = tSS3hxNHc0.Serialize(new
+				string text2 = _javaScriptSerializer.Serialize(new
 				{
 					items = new[]
 					{
@@ -344,12 +344,12 @@ internal sealed class AiAssistantHost : UserControl
 		}
 	}
 
-	private static string CdZ3FO2FEj(AiTargetBinder P_0)
+	private static string GetCurrentDocumentDisplayText(AiTargetBinder P_0)
 	{
 		try
 		{
 			Microsoft.Office.Interop.Word.Application wordApp = WordTableToolService.WordApp;
-			Document document = ((P_0 != null) ? P_0.iHlupRS7Nk(wordApp) : wordApp?.ActiveDocument);
+			Document document = ((P_0 != null) ? P_0.ResolveDocument(wordApp) : wordApp?.ActiveDocument);
 			if (document == null)
 			{
 				return null;
@@ -380,14 +380,14 @@ internal sealed class AiAssistantHost : UserControl
 	{
 		if (P_0)
 		{
-			AiHelper_17.vIPU93N8BE(HwR37nWbFR);
-			AiAssistantHost2.Kf7BW0nRZX(WindowKey);
-			wBw3cW9FKn();
+			AiHelper_17.vIPU93N8BE(OnArtifactPublished);
+			AiAssistantHost2.ClosePaneBridge(WindowKey);
+			DetachWordEvents();
 			if (_webView2?.CoreWebView2 != null && _bool)
 			{
-				_webView2.CoreWebView2.WebMessageReceived -= VGG3pk7osX;
-				_webView2.CoreWebView2.ProcessFailed -= lMB3OQ8Rl8;
-				_webView2.CoreWebView2.NavigationCompleted -= ixs3nlkvjU;
+				_webView2.CoreWebView2.WebMessageReceived -= OnWebMessageReceived;
+				_webView2.CoreWebView2.ProcessFailed -= OnProcessFailed;
+				_webView2.CoreWebView2.NavigationCompleted -= OnNavigationCompleted;
 				_bool = false;
 			}
 			_webView2?.Dispose();
@@ -398,6 +398,6 @@ internal sealed class AiAssistantHost : UserControl
 	static AiAssistantHost()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		tSS3hxNHc0 = new JavaScriptSerializer();
+		_javaScriptSerializer = new JavaScriptSerializer();
 	}
 }

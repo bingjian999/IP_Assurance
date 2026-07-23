@@ -17,7 +17,7 @@ namespace AiConfigBootstrap2;
 
 internal sealed class AiConfigBootstrap2
 {
-	private sealed class onEqFoV6VqxGOBHbQtJW : Exception
+	private sealed class SpreadsheetOperationException : Exception
 	{
 		[CompilerGenerated]
 		private readonly string _string;
@@ -43,7 +43,7 @@ internal sealed class AiConfigBootstrap2
 			}
 		}
 
-		public onEqFoV6VqxGOBHbQtJW(string P_0, string P_1, object P_2 = null) : base(P_0)
+		public SpreadsheetOperationException(string P_0, string P_1, object P_2 = null) : base(P_0)
 		{
 			SseStreamInitializer.InitializeRuntime();
 			_string = P_1;
@@ -51,28 +51,28 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private sealed class XFNayjV66fonCSKcSbOJ : IDisposable
+	private sealed class ComObjectTracker : IDisposable
 	{
-		private readonly List<object> EYPV6gY5voB;
+		private readonly List<object> _comObjects;
 
-		public Dy6bBfV6DuSuayxpQdkX eKvV6uFJpGF<Dy6bBfV6DuSuayxpQdkX>(Dy6bBfV6DuSuayxpQdkX avPcJCV6TkJuYPNVrrLv) where Dy6bBfV6DuSuayxpQdkX : class
+		public T TrackComObject<T>(T comObject) where T : class
 		{
-			if (avPcJCV6TkJuYPNVrrLv != null && Marshal.IsComObject(avPcJCV6TkJuYPNVrrLv))
+			if (comObject != null && Marshal.IsComObject(comObject))
 			{
-				EYPV6gY5voB.Add(avPcJCV6TkJuYPNVrrLv);
+				_comObjects.Add(comObject);
 			}
-			return avPcJCV6TkJuYPNVrrLv;
+			return comObject;
 		}
 
 		public void Dispose()
 		{
-			for (int num = EYPV6gY5voB.Count - 1; num >= 0; num--)
+			for (int num = _comObjects.Count - 1; num >= 0; num--)
 			{
 				try
 				{
-					if (EYPV6gY5voB[num] != null && Marshal.IsComObject(EYPV6gY5voB[num]))
+					if (_comObjects[num] != null && Marshal.IsComObject(_comObjects[num]))
 					{
-						Marshal.ReleaseComObject(EYPV6gY5voB[num]);
+						Marshal.ReleaseComObject(_comObjects[num]);
 					}
 				}
 				catch
@@ -81,10 +81,10 @@ internal sealed class AiConfigBootstrap2
 			}
 		}
 
-		public XFNayjV66fonCSKcSbOJ()
+		public ComObjectTracker()
 		{
 			SseStreamInitializer.InitializeRuntime();
-			EYPV6gY5voB = new List<object>();
+			_comObjects = new List<object>();
 		}
 	}
 
@@ -95,7 +95,7 @@ internal sealed class AiConfigBootstrap2
 
 		public string text;
 
-		public Func<Application, XFNayjV66fonCSKcSbOJ, AiHelper_5> ALPV6KJXDoZ;
+		public Func<Application, ComObjectTracker, AiHelper_5> excelOperationFunc;
 
 		public Exception exception;
 
@@ -104,23 +104,23 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void QrkV6J1ibaQ()
+		internal void GetHostName()
 		{
 			Application application = null;
-			XFNayjV66fonCSKcSbOJ xFNayjV66fonCSKcSbOJ = new XFNayjV66fonCSKcSbOJ();
+			ComObjectTracker xFNayjV66fonCSKcSbOJ = new ComObjectTracker();
 			try
 			{
 				application = ExcelInteropService.GetActiveExcelApp();
 				if (application == null)
 				{
-					aiHelper_5 = AiHelper_5.CreateError("未检测到已打开的 " + i0rJZwDpdH() + "。请先打开对应的表格应用和工作簿。", "spreadsheet_not_running", new
+					aiHelper_5 = AiHelper_5.CreateError("未检测到已打开的 " + GetSpreadsheetHostName() + "。请先打开对应的表格应用和工作簿。", "spreadsheet_not_running", new
 					{
-						host = i0rJZwDpdH()
+						host = GetSpreadsheetHostName()
 					});
 					return;
 				}
 				AiConfigBootstrap.LogInfo("[AI Tool][Excel] Begin: " + text);
-				aiHelper_5 = ALPV6KJXDoZ(application, xFNayjV66fonCSKcSbOJ);
+				aiHelper_5 = excelOperationFunc(application, xFNayjV66fonCSKcSbOJ);
 				AiConfigBootstrap.LogInfo("[AI Tool][Excel] End: " + text + "; Success=" + (aiHelper_5 != null && aiHelper_5.success));
 			}
 			catch (COMException ex)
@@ -128,7 +128,7 @@ internal sealed class AiConfigBootstrap2
 				AiConfigBootstrap.LogError("[AI Tool][Excel] " + text + " failed", ex);
 				aiHelper_5 = AiHelper_5.CreateExceptionError(text + " failed", "spreadsheet_com_error", ex);
 			}
-			catch (onEqFoV6VqxGOBHbQtJW onEqFoV6VqxGOBHbQtJW2)
+			catch (SpreadsheetOperationException onEqFoV6VqxGOBHbQtJW2)
 			{
 				AiConfigBootstrap.LogWarn("[AI Tool][Excel] " + text + " failed: " + onEqFoV6VqxGOBHbQtJW2.Message);
 				aiHelper_5 = AiHelper_5.CreateError(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
@@ -160,19 +160,19 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Workbooks workbooks;
 
-		public Func<int> AFfV6YsKxMA;
+		public Func<int> countFunc;
 
 		public _G_c__DisplayClass11_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int TB7V62gMQ0q()
+		internal int GetWorkbooksCount2()
 		{
 			return workbooks.Count;
 		}
 
-		internal int wLaV64PhZcw()
+		internal int GetCount7()
 		{
 			return workbooks.Count;
 		}
@@ -183,14 +183,14 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Sheets sheets;
 
-		public Func<int> z12V6MPx6rV;
+		public Func<int> countFuncSheets3;
 
 		public _G_c__DisplayClass12_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int w5lV6Z8wKMI()
+		internal int GetCount6()
 		{
 			return sheets.Count;
 		}
@@ -199,7 +199,7 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass16_0
 	{
-		public Microsoft.Office.Interop.Excel.Range agZV6tbacUb;
+		public Microsoft.Office.Interop.Excel.Range rangeField8;
 
 		public Workbook workbook;
 
@@ -208,17 +208,17 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int dOWV6bgMLm6()
+		internal int GetRangeRowCount4()
 		{
-			return agZV6tbacUb.Rows.Count;
+			return rangeField8.Rows.Count;
 		}
 
-		internal int uu5V6St1mIO()
+		internal int GetRangeColumnCount4()
 		{
-			return agZV6tbacUb.Columns.Count;
+			return rangeField8.Columns.Count;
 		}
 
-		internal string ztIV6wpXj70()
+		internal string GetWorkbookFullName4()
 		{
 			return workbook.FullName;
 		}
@@ -227,39 +227,39 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass16_1
 	{
-		public Microsoft.Office.Interop.Excel.Range fP3V6lZeaH2;
+		public Microsoft.Office.Interop.Excel.Range rangeField9;
 
 		public _G_c__DisplayClass16_1()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool yN5V6sp6LoY()
+		internal bool IsRangeHidden()
 		{
-			return (dynamic)fP3V6lZeaH2.Hidden;
+			return (dynamic)rangeField9.Hidden;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass16_2
 	{
-		public Microsoft.Office.Interop.Excel.Range pNlV6CBr7t1;
+		public Microsoft.Office.Interop.Excel.Range rangeField10;
 
 		public _G_c__DisplayClass16_2()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string SImV6N7QuKb()
+		internal string GetRangeFormulaAsString()
 		{
 			dynamic val;
-			if (!(((dynamic)pNlV6CBr7t1.Formula == null) ? true : false))
+			if (!(((dynamic)rangeField10.Formula == null) ? true : false))
 			{
-				if (_G_o__16.KEgVDU5cs3b == null)
+				if (_G_o__16.toStringCallSite4 == null)
 				{
-					_G_o__16.KEgVDU5cs3b = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__16.toStringCallSite4 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				val = _G_o__16.KEgVDU5cs3b.Target(_G_o__16.KEgVDU5cs3b, pNlV6CBr7t1.Formula);
+				val = _G_o__16.toStringCallSite4.Target(_G_o__16.toStringCallSite4, rangeField10.Formula);
 			}
 			else
 			{
@@ -268,16 +268,16 @@ internal sealed class AiConfigBootstrap2
 			return val;
 		}
 
-		internal string TbjV6mlM2t6()
+		internal string GetNumberFormatAsString()
 		{
 			dynamic val;
-			if (!(((dynamic)pNlV6CBr7t1.NumberFormat == null) ? true : false))
+			if (!(((dynamic)rangeField10.NumberFormat == null) ? true : false))
 			{
-				if (_G_o__16.yglVD4Gxfsw == null)
+				if (_G_o__16.toStringCallSite8 == null)
 				{
-					_G_o__16.yglVD4Gxfsw = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__16.toStringCallSite8 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				val = _G_o__16.yglVD4Gxfsw.Target(_G_o__16.yglVD4Gxfsw, pNlV6CBr7t1.NumberFormat);
+				val = _G_o__16.toStringCallSite8.Target(_G_o__16.toStringCallSite8, rangeField10.NumberFormat);
 			}
 			else
 			{
@@ -286,21 +286,21 @@ internal sealed class AiConfigBootstrap2
 			return val;
 		}
 
-		internal bool T5RV6oWCHTi()
+		internal bool GetFontBold()
 		{
-			return (dynamic)pNlV6CBr7t1.Font.Bold;
+			return (dynamic)rangeField10.Font.Bold;
 		}
 
-		internal string QHLV6GlcpyH()
+		internal string GetInteriorColor()
 		{
 			dynamic val;
-			if (!(((dynamic)pNlV6CBr7t1.Interior.Color == null) ? true : false))
+			if (!(((dynamic)rangeField10.Interior.Color == null) ? true : false))
 			{
 				if (_G_o__16.uZHVDMnQAFH == null)
 				{
 					_G_o__16.uZHVDMnQAFH = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				val = _G_o__16.uZHVDMnQAFH.Target(_G_o__16.uZHVDMnQAFH, pNlV6CBr7t1.Interior.Color);
+				val = _G_o__16.uZHVDMnQAFH.Target(_G_o__16.uZHVDMnQAFH, rangeField10.Interior.Color);
 			}
 			else
 			{
@@ -313,47 +313,47 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass18_0
 	{
-		public Microsoft.Office.Interop.Excel.Range UxyV6nWori1;
+		public Microsoft.Office.Interop.Excel.Range rangeField6;
 
 		public _G_c__DisplayClass18_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int L2tV6pPcMua()
+		internal int GetRangeRowCount()
 		{
-			return UxyV6nWori1.Rows.Count;
+			return rangeField6.Rows.Count;
 		}
 
-		internal int gP7V6OucRW5()
+		internal int GetRangeColumnCount3()
 		{
-			return UxyV6nWori1.Columns.Count;
+			return rangeField6.Columns.Count;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass19_0
 	{
-		public Microsoft.Office.Interop.Excel.Range IrtV6e49vaj;
+		public Microsoft.Office.Interop.Excel.Range rangeField2;
 
 		public _G_c__DisplayClass19_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal object ANqV675qvYQ()
+		internal object GetRangeValue2()
 		{
-			return IrtV6e49vaj.Value2;
+			return rangeField2.Value2;
 		}
 
-		internal int pwoV65uf3pI()
+		internal int GetRangeRow3()
 		{
-			return IrtV6e49vaj.Row;
+			return rangeField2.Row;
 		}
 
-		internal int L7TV6c20uCT()
+		internal int GetRangeColumn2()
 		{
-			return IrtV6e49vaj.Column;
+			return rangeField2.Column;
 		}
 	}
 
@@ -362,59 +362,59 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Workbook workbook;
 
-		public Microsoft.Office.Interop.Excel.Range Uy3V6aJaiSk;
+		public Microsoft.Office.Interop.Excel.Range rangeField7;
 
 		public _G_c__DisplayClass1_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string bhDV6yBhVoC()
+		internal string GetWorkbookFullName2()
 		{
 			return workbook.FullName;
 		}
 
-		internal int TcEV6XrljnS()
+		internal int GetRangeRowCount2()
 		{
-			return Uy3V6aJaiSk.Rows.Count;
+			return rangeField7.Rows.Count;
 		}
 
-		internal int Y0XV6FGK0cS()
+		internal int GetRangeColumnCount()
 		{
-			return Uy3V6aJaiSk.Columns.Count;
+			return rangeField7.Columns.Count;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass20_0
 	{
-		public Microsoft.Office.Interop.Excel.Range JifV6vA3iT1;
+		public Microsoft.Office.Interop.Excel.Range rangeField3;
 
 		public _G_c__DisplayClass20_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int uh9V6qsXOtu()
+		internal int GetRangeRow5()
 		{
-			return JifV6vA3iT1.Row;
+			return rangeField3.Row;
 		}
 
-		internal int TLfV6P8WkO1()
+		internal int GetRangeColumn3()
 		{
-			return JifV6vA3iT1.Column;
+			return rangeField3.Column;
 		}
 
-		internal string BPXV6AyyAPd()
+		internal string GetRangeFormula()
 		{
 			dynamic val;
-			if (!(((dynamic)JifV6vA3iT1.Formula == null) ? true : false))
+			if (!(((dynamic)rangeField3.Formula == null) ? true : false))
 			{
-				if (_G_o__20.a3AVDlVXcmE == null)
+				if (_G_o__20.toStringCallSite6 == null)
 				{
-					_G_o__20.a3AVDlVXcmE = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__20.toStringCallSite6 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				val = _G_o__20.a3AVDlVXcmE.Target(_G_o__20.a3AVDlVXcmE, JifV6vA3iT1.Formula);
+				val = _G_o__20.toStringCallSite6.Target(_G_o__20.toStringCallSite6, rangeField3.Formula);
 			}
 			else
 			{
@@ -427,21 +427,21 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass21_0
 	{
-		public Microsoft.Office.Interop.Excel.Range K2lV6kSYl1J;
+		public Microsoft.Office.Interop.Excel.Range rangeField4;
 
 		public _G_c__DisplayClass21_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int suMV6W9q4wR()
+		internal int GetRangeRow4()
 		{
-			return K2lV6kSYl1J.Row;
+			return rangeField4.Row;
 		}
 
-		internal int ER1V60axrbA()
+		internal int GetRangeColumn()
 		{
-			return K2lV6kSYl1J.Column;
+			return rangeField4.Column;
 		}
 	}
 
@@ -450,14 +450,14 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Names names;
 
-		public Func<int> OABV6zVyGRF;
+		public Func<int> countFuncNames;
 
 		public _G_c__DisplayClass23_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int GU4V6xZclog()
+		internal int GetNamesCount()
 		{
 			return names.Count;
 		}
@@ -468,7 +468,7 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Sheets nuvVuVXaUZa;
 
-		public Func<int> L6XVuBlg5HQ;
+		public Func<int> countFuncSheets;
 
 		public _G_c__DisplayClass23_1()
 		{
@@ -486,14 +486,14 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Names names;
 
-		public Func<int> z2xVuuhK3AW;
+		public Func<int> countFuncNames2;
 
 		public _G_c__DisplayClass23_2()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int rBMVu9rwCSr()
+		internal int GetNamesCount3()
 		{
 			return names.Count;
 		}
@@ -525,12 +525,12 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string Wx9Vug0DerK()
+		internal string GetWorkbookName()
 		{
 			return workbook.Name;
 		}
 
-		internal string DDtVu8HY9gn()
+		internal string GetWorkbookFullName()
 		{
 			return workbook.FullName;
 		}
@@ -539,23 +539,23 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass29_0
 	{
-		public Microsoft.Office.Interop.Excel.Range QPxVuHFBKg9;
+		public Microsoft.Office.Interop.Excel.Range rangeField5;
 
 		public _G_c__DisplayClass29_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string i8HVuiGv6MV()
+		internal string GetRangeText()
 		{
 			dynamic val;
-			if (!(((dynamic)QPxVuHFBKg9.Text == null) ? true : false))
+			if (!(((dynamic)rangeField5.Text == null) ? true : false))
 			{
-				if (_G_o__29.LRuVDC0PlSQ == null)
+				if (_G_o__29.toStringCallSite5 == null)
 				{
-					_G_o__29.LRuVDC0PlSQ = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__29.toStringCallSite5 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToString", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				val = _G_o__29.LRuVDC0PlSQ.Target(_G_o__29.LRuVDC0PlSQ, QPxVuHFBKg9.Text);
+				val = _G_o__29.toStringCallSite5.Target(_G_o__29.toStringCallSite5, rangeField5.Text);
 			}
 			else
 			{
@@ -568,23 +568,23 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass2_0
 	{
-		public Workbook zmaVurdydP4;
+		public Workbook _workbook;
 
 		public Workbooks workbooks;
 
-		public Func<int> ns3Vu30RDmQ;
+		public Func<int> countFuncSheets2;
 
 		public _G_c__DisplayClass2_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string U1PVuQP0nq2()
+		internal string GetNameLocal2()
 		{
-			return zmaVurdydP4.Name;
+			return _workbook.Name;
 		}
 
-		internal int HkZVu1BQPDg()
+		internal int GetWorkbooksCount()
 		{
 			return workbooks.Count;
 		}
@@ -600,7 +600,7 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string OyUVuUFgW3Z()
+		internal string GetNameLocal()
 		{
 			return HitVuYWWWDt.Name;
 		}
@@ -610,17 +610,17 @@ internal sealed class AiConfigBootstrap2
 			return HitVuYWWWDt.FullName;
 		}
 
-		internal string Li2VuE8xk40()
+		internal string GetPathFromWorkbook()
 		{
 			return HitVuYWWWDt.Path;
 		}
 
-		internal bool UFmVu22lSY9()
+		internal bool IsReadOnly()
 		{
 			return HitVuYWWWDt.ReadOnly;
 		}
 
-		internal bool XgCVu47Mk6C()
+		internal bool IsWorkbookSaved()
 		{
 			return HitVuYWWWDt.Saved;
 		}
@@ -657,15 +657,15 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 TWDVuMtXBUI(Application app, XFNayjV66fonCSKcSbOJ scope)
+		internal AiHelper_5 TWDVuMtXBUI(Application app, ComObjectTracker scope)
 		{
 			_G_c__DisplayClass3_1 CS_8_locals_7 = new _G_c__DisplayClass3_1();
 			CS_8_locals_7.workbook = yFgJROsdyk(app, scope, text);
-			CS_8_locals_7.vhoVutjxFsc = scope.eKvV6uFJpGF(CS_8_locals_7.workbook.Worksheets);
+			CS_8_locals_7.vhoVutjxFsc = scope.TrackComObject(CS_8_locals_7.workbook.Worksheets);
 			List<object> list = new List<object>();
-			for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_7.vhoVutjxFsc.Count); i++)
+			for (int i = 1; i <= TryEvaluateInt(() => CS_8_locals_7.vhoVutjxFsc.Count); i++)
 			{
-				Worksheet worksheet = scope.eKvV6uFJpGF((Worksheet)(dynamic)CS_8_locals_7.vhoVutjxFsc[i]);
+				Worksheet worksheet = scope.TrackComObject((Worksheet)(dynamic)CS_8_locals_7.vhoVutjxFsc[i]);
 				list.Add(new
 				{
 					index = i,
@@ -689,19 +689,19 @@ internal sealed class AiConfigBootstrap2
 
 		public Workbook workbook;
 
-		public Func<int> AndVusk9e6t;
+		public Func<int> countFuncWorkbooks2;
 
 		public _G_c__DisplayClass3_1()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int fK4VuSSq2sG()
+		internal int GetNamesCount2()
 		{
 			return vhoVutjxFsc.Count;
 		}
 
-		internal string jAbVuwGU5F4()
+		internal string GetWorkbookFullName3()
 		{
 			return workbook.FullName;
 		}
@@ -729,12 +729,12 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 N1CVulNfYof(Application app, XFNayjV66fonCSKcSbOJ scope)
+		internal AiHelper_5 PreviewUsedRange(Application app, ComObjectTracker scope)
 		{
 			Workbook workbook = yFgJROsdyk(app, scope, text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, hoIVumAoPTa);
-			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
-			return AiHelper_5.CreateSuccess("Spreadsheet sheet preview prepared.", w5bJ6d8hYp(workbook, worksheet, range, "UsedRange", value, zqpVuGBMiia, value, false, flag, ECVVuOlhpGG, scope));
+			Microsoft.Office.Interop.Excel.Range range = scope.TrackComObject(worksheet.UsedRange);
+			return AiHelper_5.CreateSuccess("Spreadsheet sheet preview prepared.", GetRangeValuesWithBounds(workbook, worksheet, range, "UsedRange", value, zqpVuGBMiia, value, false, flag, ECVVuOlhpGG, scope));
 		}
 	}
 
@@ -764,11 +764,11 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 mT5Vunm0jMn(Application app, XFNayjV66fonCSKcSbOJ scope)
+		internal AiHelper_5 GetRangeValues(Application app, ComObjectTracker scope)
 		{
 			Workbook workbook = yFgJROsdyk(app, scope, text);
-			qqRJBchH8m(app, workbook, scope, text, text, out var worksheet, out var range, out var text);
-			return AiHelper_5.CreateSuccess("Spreadsheet range preview prepared.", w5bJ6d8hYp(workbook, worksheet, range, text, tfHVueraXKO, value, value, aPbVuFFmHHA, flag, cCPVuaUQwRs, scope));
+			GetRangeByAddress2(app, workbook, scope, text, text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess("Spreadsheet range preview prepared.", GetRangeValuesWithBounds(workbook, worksheet, range, text, tfHVueraXKO, value, value, aPbVuFFmHHA, flag, cCPVuaUQwRs, scope));
 		}
 	}
 
@@ -781,22 +781,22 @@ internal sealed class AiConfigBootstrap2
 
 		public string text;
 
-		public bool tANVuWCfBa3;
+		public bool trackRevisionsFlag;
 
 		public _G_c__DisplayClass6_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 wdcVuq4QmYP(Application app, XFNayjV66fonCSKcSbOJ scope)
+		internal AiHelper_5 PreviewUsedRange3(Application app, ComObjectTracker scope)
 		{
 			if (string.IsNullOrWhiteSpace(text))
 			{
 				return AiHelper_5.CreateError("address must not be empty.", "invalid_arguments");
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, HTsVuAiAaQk);
-			qqRJBchH8m(app, workbook, scope, text, text, out var worksheet, out var range, out var text);
-			return AiHelper_5.CreateSuccess(tANVuWCfBa3 ? "Range values and formulas retrieved." : "Visible range values and formulas retrieved.", ybqJuWfEtN(workbook, worksheet, range, text, tANVuWCfBa3, true, false, scope));
+			GetRangeByAddress2(app, workbook, scope, text, text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess(trackRevisionsFlag ? "Range values and formulas retrieved." : "Visible range values and formulas retrieved.", ybqJuWfEtN(workbook, worksheet, range, text, trackRevisionsFlag, true, false, scope));
 		}
 	}
 
@@ -816,7 +816,7 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 VJJVu0Tur8G(Application app, XFNayjV66fonCSKcSbOJ scope)
+		internal AiHelper_5 PreviewUsedRange2(Application app, ComObjectTracker scope)
 		{
 			if (string.IsNullOrEmpty(iuWVukLgGoV))
 			{
@@ -824,14 +824,14 @@ internal sealed class AiConfigBootstrap2
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, usJVudwJBJr);
-			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
+			Microsoft.Office.Interop.Excel.Range range = scope.TrackComObject(worksheet.UsedRange);
 			List<object> list = new List<object>();
 			string text;
-			bool flag = h8CJTM4gse(worksheet, range, iuWVukLgGoV, flag, scope, list, out text);
+			bool flag = FindRowIndices2(worksheet, range, iuWVukLgGoV, flag, scope, list, out text);
 			string searchMethod = "excel_range_find";
 			if (!flag)
 			{
-				list = UtOJgG2Q1H(worksheet, range, iuWVukLgGoV, flag, scope);
+				list = ScanRangeValues(worksheet, range, iuWVukLgGoV, flag, scope);
 				searchMethod = "value2_array_scan";
 			}
 			return AiHelper_5.CreateSuccess("Spreadsheet cell find completed.", new
@@ -865,7 +865,7 @@ internal sealed class AiConfigBootstrap2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 CLTVDRfTkNP(Application app, XFNayjV66fonCSKcSbOJ scope)
+		internal AiHelper_5 CLTVDRfTkNP(Application app, ComObjectTracker scope)
 		{
 			_G_c__DisplayClass9_1 CS_8_locals_15 = new _G_c__DisplayClass9_1();
 			if (!string.Equals(string.IsNullOrWhiteSpace(ELRVDVADLlW) ? "get" : ELRVDVADLlW.Trim().ToLowerInvariant(), "get", StringComparison.Ordinal))
@@ -880,7 +880,7 @@ internal sealed class AiConfigBootstrap2
 				return AiHelper_5.CreateError("name must not be empty.", "invalid_arguments");
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, text);
-			CS_8_locals_15.name = FLbJHX5Yf0(workbook, scope, kWOVDBeqpDL, text);
+			CS_8_locals_15.name = FindNamedRange(workbook, scope, kWOVDBeqpDL, text);
 			if (CS_8_locals_15.name == null)
 			{
 				return AiHelper_5.CreateError("未找到指定名称区域。", "not_found", new
@@ -890,10 +890,10 @@ internal sealed class AiConfigBootstrap2
 					nameScope = text
 				});
 			}
-			CS_8_locals_15.I0WVDIhUTqI = null;
+			CS_8_locals_15.rangeField = null;
 			try
 			{
-				CS_8_locals_15.I0WVDIhUTqI = scope.eKvV6uFJpGF(CS_8_locals_15.name.RefersToRange);
+				CS_8_locals_15.rangeField = scope.TrackComObject(CS_8_locals_15.name.RefersToRange);
 			}
 			catch
 			{
@@ -904,10 +904,10 @@ internal sealed class AiConfigBootstrap2
 				name = CS_8_locals_15.name.Name,
 				nameScope = (string.IsNullOrWhiteSpace(text) ? "workbook_or_worksheet" : text),
 				refersTo = hjGJjwaZBM(() => (dynamic)CS_8_locals_15.name.RefersTo),
-				worksheet = ((CS_8_locals_15.I0WVDIhUTqI == null) ? null : hjGJjwaZBM(() => CS_8_locals_15.I0WVDIhUTqI.Worksheet.Name)),
-				address = ((CS_8_locals_15.I0WVDIhUTqI == null) ? null : tqdJKIVpyV(CS_8_locals_15.I0WVDIhUTqI)),
-				rows = ((CS_8_locals_15.I0WVDIhUTqI != null) ? pCPJ2o3f45(() => CS_8_locals_15.I0WVDIhUTqI.Rows.Count) : 0),
-				columns = ((CS_8_locals_15.I0WVDIhUTqI != null) ? pCPJ2o3f45(() => CS_8_locals_15.I0WVDIhUTqI.Columns.Count) : 0)
+				worksheet = ((CS_8_locals_15.rangeField == null) ? null : hjGJjwaZBM(() => CS_8_locals_15.rangeField.Worksheet.Name)),
+				address = ((CS_8_locals_15.rangeField == null) ? null : tqdJKIVpyV(CS_8_locals_15.rangeField)),
+				rows = ((CS_8_locals_15.rangeField != null) ? TryEvaluateInt(() => CS_8_locals_15.rangeField.Rows.Count) : 0),
+				columns = ((CS_8_locals_15.rangeField != null) ? TryEvaluateInt(() => CS_8_locals_15.rangeField.Columns.Count) : 0)
 			});
 		}
 	}
@@ -917,60 +917,60 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Name name;
 
-		public Microsoft.Office.Interop.Excel.Range I0WVDIhUTqI;
+		public Microsoft.Office.Interop.Excel.Range rangeField;
 
 		public _G_c__DisplayClass9_1()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string U77VDuR5bqs()
+		internal string GetRefersTo()
 		{
 			return (dynamic)name.RefersTo;
 		}
 
-		internal string pSlVDDIlX8P()
+		internal string GetNameLocal3()
 		{
-			return I0WVDIhUTqI.Worksheet.Name;
+			return rangeField.Worksheet.Name;
 		}
 
-		internal int aoEVDT7gUtL()
+		internal int GetRangeRowCount3()
 		{
-			return I0WVDIhUTqI.Rows.Count;
+			return rangeField.Rows.Count;
 		}
 
-		internal int fZfVDgh83Co()
+		internal int GetRangeColumnCount2()
 		{
-			return I0WVDIhUTqI.Columns.Count;
+			return rangeField.Columns.Count;
 		}
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__16
 	{
-		public static CallSite<Func<CallSite, object, Microsoft.Office.Interop.Excel.Range>> dVuVDQARv7G;
+		public static CallSite<Func<CallSite, object, Microsoft.Office.Interop.Excel.Range>> toRangeCallSite1;
 
-		public static CallSite<Func<CallSite, object, bool>> taZVD1sV05l;
+		public static CallSite<Func<CallSite, object, bool>> toObjectCallSite7;
 
-		public static CallSite<Func<CallSite, object, Microsoft.Office.Interop.Excel.Range>> w5RVDr8YTTN;
+		public static CallSite<Func<CallSite, object, Microsoft.Office.Interop.Excel.Range>> toRangeCallSite2;
 
 		public static CallSite<Func<CallSite, object, object, object>> YPpVDJlGjdi;
 
-		public static CallSite<Func<CallSite, object, bool>> qo8VD3PAjJB;
+		public static CallSite<Func<CallSite, object, bool>> toObjectCallSite6;
 
-		public static CallSite<Func<CallSite, object, object>> KEgVDU5cs3b;
+		public static CallSite<Func<CallSite, object, object>> toStringCallSite4;
 
-		public static CallSite<Func<CallSite, object, string>> J6XVDKpOnkx;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite2;
 
-		public static CallSite<Func<CallSite, object, object, object>> WEcVDE1MFUf;
+		public static CallSite<Func<CallSite, object, object, object>> toObjectCallSite3;
 
-		public static CallSite<Func<CallSite, object, bool>> vVHVD2eZGRN;
+		public static CallSite<Func<CallSite, object, bool>> toObjectCallSite8;
 
-		public static CallSite<Func<CallSite, object, object>> yglVD4Gxfsw;
+		public static CallSite<Func<CallSite, object, object>> toStringCallSite8;
 
-		public static CallSite<Func<CallSite, object, string>> JvGVDjysrV0;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite3;
 
-		public static CallSite<Func<CallSite, object, bool>> F08VDYngDwS;
+		public static CallSite<Func<CallSite, object, bool>> toObjectCallSite1;
 
 		public static CallSite<Func<CallSite, object, object, object>> EclVDZaZqNp;
 
@@ -978,74 +978,74 @@ internal sealed class AiConfigBootstrap2
 
 		public static CallSite<Func<CallSite, object, object>> uZHVDMnQAFH;
 
-		public static CallSite<Func<CallSite, object, string>> AjeVDblBN5S;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite1;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__20
 	{
-		public static CallSite<Func<CallSite, object, object, object>> zmBVDLh7uRn;
+		public static CallSite<Func<CallSite, object, object, object>> toObjectCallSite9;
 
-		public static CallSite<Func<CallSite, object, bool>> cyfVDs3vBxt;
+		public static CallSite<Func<CallSite, object, bool>> toObjectCallSite4;
 
-		public static CallSite<Func<CallSite, object, object>> a3AVDlVXcmE;
+		public static CallSite<Func<CallSite, object, object>> toStringCallSite6;
 
-		public static CallSite<Func<CallSite, object, string>> gGJVDNdg0mJ;
+		public static CallSite<Func<CallSite, object, string>> toStringCallSite7;
 	}
 
 	[CompilerGenerated]
 	private static class _G_o__29
 	{
-		public static CallSite<Func<CallSite, object, object, object>> h24VDomgeZo;
+		public static CallSite<Func<CallSite, object, object, object>> toObjectCallSite5;
 
-		public static CallSite<Func<CallSite, object, bool>> IJ3VDGwBYUT;
+		public static CallSite<Func<CallSite, object, bool>> toObjectCallSite2;
 
-		public static CallSite<Func<CallSite, object, object>> LRuVDC0PlSQ;
+		public static CallSite<Func<CallSite, object, object>> toStringCallSite5;
 
 		public static CallSite<Func<CallSite, object, string>> yWmVDpjviMN;
 	}
 
-	public AiHelper_5 H1trPxTugZ()
+	public AiHelper_5 GetCurrentExcelContext()
 	{
-		return oaarzjrmjs("get_current_excel_context", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("get_current_excel_context", delegate(Application app, ComObjectTracker scope)
 		{
 			_G_c__DisplayClass1_0 CS_8_locals_10 = new _G_c__DisplayClass1_0();
 			CS_8_locals_10.workbook = yFgJROsdyk(app, scope, string.Empty);
-			Worksheet worksheet = scope.eKvV6uFJpGF(app.ActiveSheet as Worksheet);
-			CS_8_locals_10.Uy3V6aJaiSk = scope.eKvV6uFJpGF(app.Selection as Microsoft.Office.Interop.Excel.Range);
-			if (worksheet == null && CS_8_locals_10.Uy3V6aJaiSk != null)
+			Worksheet worksheet = scope.TrackComObject(app.ActiveSheet as Worksheet);
+			CS_8_locals_10.rangeField7 = scope.TrackComObject(app.Selection as Microsoft.Office.Interop.Excel.Range);
+			if (worksheet == null && CS_8_locals_10.rangeField7 != null)
 			{
-				worksheet = scope.eKvV6uFJpGF(CS_8_locals_10.Uy3V6aJaiSk.Worksheet);
+				worksheet = scope.TrackComObject(CS_8_locals_10.rangeField7.Worksheet);
 			}
 			return (worksheet == null) ? AiHelper_5.CreateError("get_current_excel_context", "list_open_excel_workbooks") : AiHelper_5.CreateSuccess("get_excel_sheet_list", new
 			{
-				host = i0rJZwDpdH(),
+				host = GetSpreadsheetHostName(),
 				workbook = CS_8_locals_10.workbook.Name,
 				workbookFullName = hjGJjwaZBM(() => CS_8_locals_10.workbook.FullName),
 				worksheet = worksheet.Name,
-				selection = ((CS_8_locals_10.Uy3V6aJaiSk == null) ? null : new
+				selection = ((CS_8_locals_10.rangeField7 == null) ? null : new
 				{
-					address = tqdJKIVpyV(CS_8_locals_10.Uy3V6aJaiSk),
-					rows = pCPJ2o3f45(() => CS_8_locals_10.Uy3V6aJaiSk.Rows.Count),
-					columns = pCPJ2o3f45(() => CS_8_locals_10.Uy3V6aJaiSk.Columns.Count)
+					address = tqdJKIVpyV(CS_8_locals_10.rangeField7),
+					rows = TryEvaluateInt(() => CS_8_locals_10.rangeField7.Rows.Count),
+					columns = TryEvaluateInt(() => CS_8_locals_10.rangeField7.Columns.Count)
 				})
 			});
 		});
 	}
 
-	public AiHelper_5 dE6rAOoIGx()
+	public AiHelper_5 ListOpenExcelWorkbooks()
 	{
-		return oaarzjrmjs("list_open_excel_workbooks", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("list_open_excel_workbooks", delegate(Application app, ComObjectTracker scope)
 		{
 			_G_c__DisplayClass2_0 CS_8_locals_8 = new _G_c__DisplayClass2_0();
-			CS_8_locals_8.workbooks = scope.eKvV6uFJpGF(app.Workbooks);
-			CS_8_locals_8.zmaVurdydP4 = scope.eKvV6uFJpGF(app.ActiveWorkbook);
-			string text = ((CS_8_locals_8.zmaVurdydP4 == null) ? null : hjGJjwaZBM(() => CS_8_locals_8.zmaVurdydP4.Name));
+			CS_8_locals_8.workbooks = scope.TrackComObject(app.Workbooks);
+			CS_8_locals_8._workbook = scope.TrackComObject(app.ActiveWorkbook);
+			string text = ((CS_8_locals_8._workbook == null) ? null : hjGJjwaZBM(() => CS_8_locals_8._workbook.Name));
 			List<object> list = new List<object>();
-			for (int num = 1; num <= pCPJ2o3f45(() => CS_8_locals_8.workbooks.Count); num++)
+			for (int num = 1; num <= TryEvaluateInt(() => CS_8_locals_8.workbooks.Count); num++)
 			{
 				_G_c__DisplayClass2_1 CS_8_locals_14 = new _G_c__DisplayClass2_1();
-				CS_8_locals_14.HitVuYWWWDt = scope.eKvV6uFJpGF(CS_8_locals_8.workbooks[num]);
+				CS_8_locals_14.HitVuYWWWDt = scope.TrackComObject(CS_8_locals_8.workbooks[num]);
 				string text2 = hjGJjwaZBM(() => CS_8_locals_14.HitVuYWWWDt.Name);
 				string fullName = hjGJjwaZBM(() => CS_8_locals_14.HitVuYWWWDt.FullName);
 				list.Add(new
@@ -1055,14 +1055,14 @@ internal sealed class AiConfigBootstrap2
 					fullName = fullName,
 					path = hjGJjwaZBM(() => CS_8_locals_14.HitVuYWWWDt.Path),
 					isActive = string.Equals(text2, text, StringComparison.OrdinalIgnoreCase),
-					readOnly = IVrJ4G8MCE(() => CS_8_locals_14.HitVuYWWWDt.ReadOnly),
-					saved = IVrJ4G8MCE(() => CS_8_locals_14.HitVuYWWWDt.Saved),
-					sheetCount = pCPJ2o3f45(() => CS_8_locals_14.HitVuYWWWDt.Worksheets.Count)
+					readOnly = TryEvaluateBool(() => CS_8_locals_14.HitVuYWWWDt.ReadOnly),
+					saved = TryEvaluateBool(() => CS_8_locals_14.HitVuYWWWDt.Saved),
+					sheetCount = TryEvaluateInt(() => CS_8_locals_14.HitVuYWWWDt.Worksheets.Count)
 				});
 			}
 			return AiHelper_5.CreateSuccess("preview_excel_sheet", new
 			{
-				host = i0rJZwDpdH(),
+				host = GetSpreadsheetHostName(),
 				count = list.Count,
 				activeWorkbook = text,
 				workbooks = list
@@ -1070,19 +1070,19 @@ internal sealed class AiConfigBootstrap2
 		});
 	}
 
-	public AiHelper_5 vgirvnM1Fs(string P_0)
+	public AiHelper_5 GetExcelSheetList(string P_0)
 	{
 		_G_c__DisplayClass3_0 CS_8_locals_4 = new _G_c__DisplayClass3_0();
 		CS_8_locals_4.text = P_0;
-		return oaarzjrmjs("get_excel_sheet_list", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("get_excel_sheet_list", delegate(Application app, ComObjectTracker scope)
 		{
 			_G_c__DisplayClass3_1 CS_8_locals_10 = new _G_c__DisplayClass3_1();
 			CS_8_locals_10.workbook = yFgJROsdyk(app, scope, CS_8_locals_4.text);
-			CS_8_locals_10.vhoVutjxFsc = scope.eKvV6uFJpGF(CS_8_locals_10.workbook.Worksheets);
+			CS_8_locals_10.vhoVutjxFsc = scope.TrackComObject(CS_8_locals_10.workbook.Worksheets);
 			List<object> list = new List<object>();
-			for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_10.vhoVutjxFsc.Count); i++)
+			for (int i = 1; i <= TryEvaluateInt(() => CS_8_locals_10.vhoVutjxFsc.Count); i++)
 			{
-				Worksheet worksheet = scope.eKvV6uFJpGF((Worksheet)(dynamic)CS_8_locals_10.vhoVutjxFsc[i]);
+				Worksheet worksheet = scope.TrackComObject((Worksheet)(dynamic)CS_8_locals_10.vhoVutjxFsc[i]);
 				list.Add(new
 				{
 					index = i,
@@ -1109,16 +1109,16 @@ internal sealed class AiConfigBootstrap2
 		CS_8_locals_14.value = P_4;
 		CS_8_locals_14.flag = P_5;
 		CS_8_locals_14.ECVVuOlhpGG = P_6;
-		return oaarzjrmjs("preview_excel_sheet", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("preview_excel_sheet", delegate(Application app, ComObjectTracker scope)
 		{
 			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_14.text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, CS_8_locals_14.hoIVumAoPTa);
-			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
-			return AiHelper_5.CreateSuccess("get_excel_range_values_and_formulas", w5bJ6d8hYp(workbook, worksheet, range, "get_current_selection_values_and_formulas", CS_8_locals_14.value, CS_8_locals_14.zqpVuGBMiia, CS_8_locals_14.value, false, CS_8_locals_14.flag, CS_8_locals_14.ECVVuOlhpGG, scope));
+			Microsoft.Office.Interop.Excel.Range range = scope.TrackComObject(worksheet.UsedRange);
+			return AiHelper_5.CreateSuccess("get_excel_range_values_and_formulas", GetRangeValuesWithBounds(workbook, worksheet, range, "get_current_selection_values_and_formulas", CS_8_locals_14.value, CS_8_locals_14.zqpVuGBMiia, CS_8_locals_14.value, false, CS_8_locals_14.flag, CS_8_locals_14.ECVVuOlhpGG, scope));
 		});
 	}
 
-	public AiHelper_5 kDNr0R99Bs(string P_0, string P_1, string P_2, int P_3, int P_4, int P_5, bool P_6, bool P_7, bool P_8)
+	public AiHelper_5 PreviewExcelRange(string P_0, string P_1, string P_2, int P_3, int P_4, int P_5, bool P_6, bool P_7, bool P_8)
 	{
 		_G_c__DisplayClass5_0 CS_8_locals_18 = new _G_c__DisplayClass5_0();
 		CS_8_locals_18.text = P_2;
@@ -1130,44 +1130,44 @@ internal sealed class AiConfigBootstrap2
 		CS_8_locals_18.aPbVuFFmHHA = P_6;
 		CS_8_locals_18.flag = P_7;
 		CS_8_locals_18.cCPVuaUQwRs = P_8;
-		return oaarzjrmjs("preview_excel_range", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("preview_excel_range", delegate(Application app, ComObjectTracker scope)
 		{
 			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_18.text);
-			qqRJBchH8m(app, workbook, scope, CS_8_locals_18.text, CS_8_locals_18.text, out var worksheet, out var range, out var text);
-			return AiHelper_5.CreateSuccess("find_excel_cells", w5bJ6d8hYp(workbook, worksheet, range, text, CS_8_locals_18.tfHVueraXKO, CS_8_locals_18.value, CS_8_locals_18.value, CS_8_locals_18.aPbVuFFmHHA, CS_8_locals_18.flag, CS_8_locals_18.cCPVuaUQwRs, scope));
+			GetRangeByAddress2(app, workbook, scope, CS_8_locals_18.text, CS_8_locals_18.text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess("find_excel_cells", GetRangeValuesWithBounds(workbook, worksheet, range, text, CS_8_locals_18.tfHVueraXKO, CS_8_locals_18.value, CS_8_locals_18.value, CS_8_locals_18.aPbVuFFmHHA, CS_8_locals_18.flag, CS_8_locals_18.cCPVuaUQwRs, scope));
 		});
 	}
 
-	public AiHelper_5 XY6rk05nUf(string P_0, string P_1, string P_2, bool P_3)
+	public AiHelper_5 GetExcelRangeValuesAndFormulas(string P_0, string P_1, string P_2, bool P_3)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_10 = new _G_c__DisplayClass6_0();
 		CS_8_locals_10.text = P_1;
 		CS_8_locals_10.HTsVuAiAaQk = P_2;
 		CS_8_locals_10.text = P_0;
-		CS_8_locals_10.tANVuWCfBa3 = P_3;
-		return oaarzjrmjs("get_excel_range_values_and_formulas", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		CS_8_locals_10.trackRevisionsFlag = P_3;
+		return oaarzjrmjs("get_excel_range_values_and_formulas", delegate(Application app, ComObjectTracker scope)
 		{
 			if (string.IsNullOrWhiteSpace(CS_8_locals_10.text))
 			{
 				return AiHelper_5.CreateError("manage_excel_named_range", " failed");
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_10.HTsVuAiAaQk);
-			qqRJBchH8m(app, workbook, scope, CS_8_locals_10.text, CS_8_locals_10.text, out var worksheet, out var range, out var text);
-			return AiHelper_5.CreateSuccess(CS_8_locals_10.tANVuWCfBa3 ? "spreadsheet_error" : "Unknown spreadsheet error.", ybqJuWfEtN(workbook, worksheet, range, text, CS_8_locals_10.tANVuWCfBa3, true, false, scope));
+			GetRangeByAddress2(app, workbook, scope, CS_8_locals_10.text, CS_8_locals_10.text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess(CS_8_locals_10.trackRevisionsFlag ? "spreadsheet_error" : "Unknown spreadsheet error.", ybqJuWfEtN(workbook, worksheet, range, text, CS_8_locals_10.trackRevisionsFlag, true, false, scope));
 		});
 	}
 
 	public AiHelper_5 GetCurrentSelectionValuesAndFormulas()
 	{
-		return oaarzjrmjs("get_current_selection_values_and_formulas", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("get_current_selection_values_and_formulas", delegate(Application app, ComObjectTracker scope)
 		{
 			Workbook workbook = yFgJROsdyk(app, scope, string.Empty);
-			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(app.Selection as Microsoft.Office.Interop.Excel.Range);
+			Microsoft.Office.Interop.Excel.Range range = scope.TrackComObject(app.Selection as Microsoft.Office.Interop.Excel.Range);
 			if (range == null)
 			{
 				return AiHelper_5.CreateError("当前没有打开的工作簿。", "no_workbook");
 			}
-			Worksheet worksheet = scope.eKvV6uFJpGF(range.Worksheet);
+			Worksheet worksheet = scope.TrackComObject(range.Worksheet);
 			return AiHelper_5.CreateSuccess("当前没有活动工作簿。", ybqJuWfEtN(workbook, worksheet, range, tqdJKIVpyV(range), false, true, false, scope));
 		});
 	}
@@ -1179,7 +1179,7 @@ internal sealed class AiConfigBootstrap2
 		CS_8_locals_13.text = P_3;
 		CS_8_locals_13.usJVudwJBJr = P_0;
 		CS_8_locals_13.flag = P_2;
-		return oaarzjrmjs("find_excel_cells", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("find_excel_cells", delegate(Application app, ComObjectTracker scope)
 		{
 			if (string.IsNullOrEmpty(CS_8_locals_13.iuWVukLgGoV))
 			{
@@ -1187,14 +1187,14 @@ internal sealed class AiConfigBootstrap2
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_13.text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, CS_8_locals_13.usJVudwJBJr);
-			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
+			Microsoft.Office.Interop.Excel.Range range = scope.TrackComObject(worksheet.UsedRange);
 			List<object> list = new List<object>();
 			string text;
-			bool flag = h8CJTM4gse(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope, list, out text);
+			bool flag = FindRowIndices2(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope, list, out text);
 			string searchMethod = "workbook_not_found";
 			if (!flag)
 			{
-				list = UtOJgG2Q1H(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope);
+				list = ScanRangeValues(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope);
 				searchMethod = "当前没有打开的工作簿。";
 			}
 			return AiHelper_5.CreateSuccess("no_workbook", new
@@ -1219,7 +1219,7 @@ internal sealed class AiConfigBootstrap2
 		CS_8_locals_22.kWOVDBeqpDL = P_1;
 		CS_8_locals_22.text = P_2;
 		CS_8_locals_22.text = P_3;
-		return oaarzjrmjs("manage_excel_named_range", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
+		return oaarzjrmjs("manage_excel_named_range", delegate(Application app, ComObjectTracker scope)
 		{
 			_G_c__DisplayClass9_1 CS_8_locals_31 = new _G_c__DisplayClass9_1();
 			if (!string.Equals(string.IsNullOrWhiteSpace(CS_8_locals_22.ELRVDVADLlW) ? "未找到指定工作表。" : CS_8_locals_22.ELRVDVADLlW.Trim().ToLowerInvariant(), "worksheet_not_found", StringComparison.Ordinal))
@@ -1234,7 +1234,7 @@ internal sealed class AiConfigBootstrap2
 				return AiHelper_5.CreateError("!UsedRange", "当前 Excel/WPS 表格选区不是可读取区域。");
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_22.text);
-			CS_8_locals_31.name = FLbJHX5Yf0(workbook, scope, CS_8_locals_22.kWOVDBeqpDL, CS_8_locals_22.text);
+			CS_8_locals_31.name = FindNamedRange(workbook, scope, CS_8_locals_22.kWOVDBeqpDL, CS_8_locals_22.text);
 			if (CS_8_locals_31.name == null)
 			{
 				return AiHelper_5.CreateError("empty_selection", "!", new
@@ -1244,10 +1244,10 @@ internal sealed class AiConfigBootstrap2
 					nameScope = CS_8_locals_22.text
 				});
 			}
-			CS_8_locals_31.I0WVDIhUTqI = null;
+			CS_8_locals_31.rangeField = null;
 			try
 			{
-				CS_8_locals_31.I0WVDIhUTqI = scope.eKvV6uFJpGF(CS_8_locals_31.name.RefersToRange);
+				CS_8_locals_31.rangeField = scope.TrackComObject(CS_8_locals_31.name.RefersToRange);
 			}
 			catch
 			{
@@ -1258,39 +1258,39 @@ internal sealed class AiConfigBootstrap2
 				name = CS_8_locals_31.name.Name,
 				nameScope = (string.IsNullOrWhiteSpace(CS_8_locals_22.text) ? "no_worksheet" : CS_8_locals_22.text),
 				refersTo = hjGJjwaZBM(() => (dynamic)CS_8_locals_31.name.RefersTo),
-				worksheet = ((CS_8_locals_31.I0WVDIhUTqI == null) ? null : hjGJjwaZBM(() => CS_8_locals_31.I0WVDIhUTqI.Worksheet.Name)),
-				address = ((CS_8_locals_31.I0WVDIhUTqI == null) ? null : tqdJKIVpyV(CS_8_locals_31.I0WVDIhUTqI)),
-				rows = ((CS_8_locals_31.I0WVDIhUTqI != null) ? pCPJ2o3f45(() => CS_8_locals_31.I0WVDIhUTqI.Rows.Count) : 0),
-				columns = ((CS_8_locals_31.I0WVDIhUTqI != null) ? pCPJ2o3f45(() => CS_8_locals_31.I0WVDIhUTqI.Columns.Count) : 0)
+				worksheet = ((CS_8_locals_31.rangeField == null) ? null : hjGJjwaZBM(() => CS_8_locals_31.rangeField.Worksheet.Name)),
+				address = ((CS_8_locals_31.rangeField == null) ? null : tqdJKIVpyV(CS_8_locals_31.rangeField)),
+				rows = ((CS_8_locals_31.rangeField != null) ? TryEvaluateInt(() => CS_8_locals_31.rangeField.Rows.Count) : 0),
+				columns = ((CS_8_locals_31.rangeField != null) ? TryEvaluateInt(() => CS_8_locals_31.rangeField.Columns.Count) : 0)
 			});
 		});
 	}
 
-	private static AiHelper_5 oaarzjrmjs(string P_0, Func<Application, XFNayjV66fonCSKcSbOJ, AiHelper_5> P_1)
+	private static AiHelper_5 oaarzjrmjs(string P_0, Func<Application, ComObjectTracker, AiHelper_5> P_1)
 	{
 		_G_c__DisplayClass10_0 CS_8_locals_22 = new _G_c__DisplayClass10_0();
 		CS_8_locals_22.text = P_0;
-		CS_8_locals_22.ALPV6KJXDoZ = P_1;
+		CS_8_locals_22.excelOperationFunc = P_1;
 		CS_8_locals_22.aiHelper_5 = null;
 		CS_8_locals_22.exception = null;
 		Thread thread = new Thread((ThreadStart)delegate
 		{
 			Application application = null;
-			XFNayjV66fonCSKcSbOJ xFNayjV66fonCSKcSbOJ = new XFNayjV66fonCSKcSbOJ();
+			ComObjectTracker xFNayjV66fonCSKcSbOJ = new ComObjectTracker();
 			try
 			{
 				application = ExcelInteropService.GetActiveExcelApp();
 				if (application == null)
 				{
-					CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateError(" failed" + i0rJZwDpdH() + "spreadsheet_error", "Unknown spreadsheet error.", new
+					CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateError(" failed" + GetSpreadsheetHostName() + "spreadsheet_error", "Unknown spreadsheet error.", new
 					{
-						host = i0rJZwDpdH()
+						host = GetSpreadsheetHostName()
 					});
 				}
 				else
 				{
 					AiConfigBootstrap.LogInfo("address must not be empty." + CS_8_locals_22.text);
-					CS_8_locals_22.aiHelper_5 = CS_8_locals_22.ALPV6KJXDoZ(application, xFNayjV66fonCSKcSbOJ);
+					CS_8_locals_22.aiHelper_5 = CS_8_locals_22.excelOperationFunc(application, xFNayjV66fonCSKcSbOJ);
 					AiConfigBootstrap.LogInfo("invalid_arguments" + CS_8_locals_22.text + "区域地址无效：" + (CS_8_locals_22.aiHelper_5 != null && CS_8_locals_22.aiHelper_5.success));
 				}
 			}
@@ -1299,7 +1299,7 @@ internal sealed class AiConfigBootstrap2
 				AiConfigBootstrap.LogError("invalid_arguments" + CS_8_locals_22.text + ": ", ex);
 				CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateExceptionError(CS_8_locals_22.text + ":", "yyyy-MM-dd HH:mm:ss", ex);
 			}
-			catch (onEqFoV6VqxGOBHbQtJW onEqFoV6VqxGOBHbQtJW2)
+			catch (SpreadsheetOperationException onEqFoV6VqxGOBHbQtJW2)
 			{
 				AiConfigBootstrap.LogWarn("workbook_or_worksheet" + CS_8_locals_22.text + "workbook" + onEqFoV6VqxGOBHbQtJW2.Message);
 				CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateError(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
@@ -1334,113 +1334,113 @@ internal sealed class AiConfigBootstrap2
 		return AiHelper_5.CreateExceptionError(CS_8_locals_22.text + "workbook_or_worksheet", "'", CS_8_locals_22.exception ?? new InvalidOperationException("'"));
 	}
 
-	private static Workbook yFgJROsdyk(Application P_0, XFNayjV66fonCSKcSbOJ P_1, string P_2)
+	private static Workbook yFgJROsdyk(Application P_0, ComObjectTracker P_1, string P_2)
 	{
 		_G_c__DisplayClass11_0 CS_8_locals_4 = new _G_c__DisplayClass11_0();
-		CS_8_locals_4.workbooks = P_1.eKvV6uFJpGF(P_0.Workbooks);
-		if (pCPJ2o3f45(() => CS_8_locals_4.workbooks.Count) <= 0)
+		CS_8_locals_4.workbooks = P_1.TrackComObject(P_0.Workbooks);
+		if (TryEvaluateInt(() => CS_8_locals_4.workbooks.Count) <= 0)
 		{
-			throw new onEqFoV6VqxGOBHbQtJW("当前没有打开的工作簿。", "no_workbook");
+			throw new SpreadsheetOperationException("当前没有打开的工作簿。", "no_workbook");
 		}
 		if (string.IsNullOrWhiteSpace(P_2))
 		{
-			return P_1.eKvV6uFJpGF(P_0.ActiveWorkbook) ?? throw new onEqFoV6VqxGOBHbQtJW("当前没有活动工作簿。", "no_workbook");
+			return P_1.TrackComObject(P_0.ActiveWorkbook) ?? throw new SpreadsheetOperationException("当前没有活动工作簿。", "no_workbook");
 		}
-		for (int num = 1; num <= pCPJ2o3f45(() => CS_8_locals_4.workbooks.Count); num++)
+		for (int num = 1; num <= TryEvaluateInt(() => CS_8_locals_4.workbooks.Count); num++)
 		{
-			Workbook workbook = P_1.eKvV6uFJpGF(CS_8_locals_4.workbooks[num]);
+			Workbook workbook = P_1.TrackComObject(CS_8_locals_4.workbooks[num]);
 			if (skJJrNGIkj(workbook, P_2))
 			{
 				return workbook;
 			}
 		}
-		throw new onEqFoV6VqxGOBHbQtJW("未找到指定工作簿。", "workbook_not_found", new
+		throw new SpreadsheetOperationException("未找到指定工作簿。", "workbook_not_found", new
 		{
 			workbookName = P_2
 		});
 	}
 
-	private static Worksheet nhKJVrFKUP(Application P_0, Workbook P_1, XFNayjV66fonCSKcSbOJ P_2, string P_3)
+	private static Worksheet nhKJVrFKUP(Application P_0, Workbook P_1, ComObjectTracker P_2, string P_3)
 	{
 		_G_c__DisplayClass12_0 CS_8_locals_3 = new _G_c__DisplayClass12_0();
 		if (P_1 == null)
 		{
-			throw new onEqFoV6VqxGOBHbQtJW("当前没有打开的工作簿。", "no_workbook");
+			throw new SpreadsheetOperationException("当前没有打开的工作簿。", "no_workbook");
 		}
 		if (string.IsNullOrWhiteSpace(P_3))
 		{
-			Worksheet worksheet = P_2.eKvV6uFJpGF(P_0.ActiveSheet as Worksheet);
-			if (worksheet != null && u1VJJFd45C(worksheet, P_1))
+			Worksheet worksheet = P_2.TrackComObject(P_0.ActiveSheet as Worksheet);
+			if (worksheet != null && GetWorkbookFullName5(worksheet, P_1))
 			{
 				return worksheet;
 			}
-			return P_2.eKvV6uFJpGF((Worksheet)(dynamic)P_1.Worksheets[1]);
+			return P_2.TrackComObject((Worksheet)(dynamic)P_1.Worksheets[1]);
 		}
-		CS_8_locals_3.sheets = P_2.eKvV6uFJpGF(P_1.Worksheets);
-		for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_3.sheets.Count); i++)
+		CS_8_locals_3.sheets = P_2.TrackComObject(P_1.Worksheets);
+		for (int i = 1; i <= TryEvaluateInt(() => CS_8_locals_3.sheets.Count); i++)
 		{
-			Worksheet worksheet2 = P_2.eKvV6uFJpGF((Worksheet)(dynamic)CS_8_locals_3.sheets[i]);
+			Worksheet worksheet2 = P_2.TrackComObject((Worksheet)(dynamic)CS_8_locals_3.sheets[i]);
 			if (string.Equals(worksheet2.Name, P_3, StringComparison.OrdinalIgnoreCase))
 			{
 				return worksheet2;
 			}
 		}
-		throw new onEqFoV6VqxGOBHbQtJW("未找到指定工作表。", "worksheet_not_found", new
+		throw new SpreadsheetOperationException("未找到指定工作表。", "worksheet_not_found", new
 		{
 			workbook = P_1.Name,
 			sheetName = P_3
 		});
 	}
 
-	private static void qqRJBchH8m(Application P_0, Workbook P_1, XFNayjV66fonCSKcSbOJ P_2, string P_3, string P_4, out Worksheet P_5, out Microsoft.Office.Interop.Excel.Range P_6, out string P_7)
+	private static void GetRangeByAddress2(Application P_0, Workbook P_1, ComObjectTracker P_2, string P_3, string P_4, out Worksheet P_5, out Microsoft.Office.Interop.Excel.Range P_6, out string P_7)
 	{
-		if (Ld5J1HvxtL(P_4, out var text, out var text2))
+		if (GetFullName2(P_4, out var text, out var text2))
 		{
 			P_5 = nhKJVrFKUP(P_0, P_1, P_2, text);
-			P_6 = IQ0J9JwFS4(P_5, P_2, text2);
+			P_6 = GetRangeByAddress(P_5, P_2, text2);
 			P_7 = P_5.Name + "!" + text2;
 			return;
 		}
 		if (!string.IsNullOrWhiteSpace(P_4))
 		{
 			P_5 = nhKJVrFKUP(P_0, P_1, P_2, P_3);
-			P_6 = IQ0J9JwFS4(P_5, P_2, P_4);
+			P_6 = GetRangeByAddress(P_5, P_2, P_4);
 			P_7 = P_5.Name + "!" + P_4;
 			return;
 		}
 		if (!string.IsNullOrWhiteSpace(P_3))
 		{
 			P_5 = nhKJVrFKUP(P_0, P_1, P_2, P_3);
-			P_6 = P_2.eKvV6uFJpGF(P_5.UsedRange);
+			P_6 = P_2.TrackComObject(P_5.UsedRange);
 			P_7 = P_5.Name + "!UsedRange";
 			return;
 		}
-		P_6 = P_2.eKvV6uFJpGF(P_0.Selection as Microsoft.Office.Interop.Excel.Range);
+		P_6 = P_2.TrackComObject(P_0.Selection as Microsoft.Office.Interop.Excel.Range);
 		if (P_6 == null)
 		{
-			throw new onEqFoV6VqxGOBHbQtJW("当前 Excel/WPS 表格选区不是可读取区域。", "empty_selection");
+			throw new SpreadsheetOperationException("当前 Excel/WPS 表格选区不是可读取区域。", "empty_selection");
 		}
-		P_5 = P_2.eKvV6uFJpGF(P_6.Worksheet);
+		P_5 = P_2.TrackComObject(P_6.Worksheet);
 		P_7 = P_5.Name + "!" + tqdJKIVpyV(P_6);
 	}
 
-	private static Microsoft.Office.Interop.Excel.Range IQ0J9JwFS4(Worksheet P_0, XFNayjV66fonCSKcSbOJ P_1, string P_2)
+	private static Microsoft.Office.Interop.Excel.Range GetRangeByAddress(Worksheet P_0, ComObjectTracker P_1, string P_2)
 	{
 		if (P_0 == null)
 		{
-			throw new onEqFoV6VqxGOBHbQtJW("当前没有活动工作表。", "no_worksheet");
+			throw new SpreadsheetOperationException("当前没有活动工作表。", "no_worksheet");
 		}
 		if (string.IsNullOrWhiteSpace(P_2))
 		{
-			throw new onEqFoV6VqxGOBHbQtJW("address must not be empty.", "invalid_arguments");
+			throw new SpreadsheetOperationException("address must not be empty.", "invalid_arguments");
 		}
 		try
 		{
-			return P_1.eKvV6uFJpGF(((_Worksheet)P_0).get_Range((object)P_2, Type.Missing));
+			return P_1.TrackComObject(((_Worksheet)P_0).get_Range((object)P_2, Type.Missing));
 		}
 		catch (Exception ex)
 		{
-			throw new onEqFoV6VqxGOBHbQtJW("区域地址无效：" + P_2, "invalid_arguments", new
+			throw new SpreadsheetOperationException("区域地址无效：" + P_2, "invalid_arguments", new
 			{
 				address = P_2,
 				exception = ex.GetType().Name
@@ -1448,21 +1448,21 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private static object w5bJ6d8hYp(Workbook P_0, Worksheet P_1, Microsoft.Office.Interop.Excel.Range P_2, string P_3, int P_4, int P_5, int P_6, bool P_7, bool P_8, bool P_9, XFNayjV66fonCSKcSbOJ P_10)
+	private static object GetRangeValuesWithBounds(Workbook P_0, Worksheet P_1, Microsoft.Office.Interop.Excel.Range P_2, string P_3, int P_4, int P_5, int P_6, bool P_7, bool P_8, bool P_9, ComObjectTracker P_10)
 	{
 		return ybqJuWfEtN(P_0, P_1, P_2, P_3, P_7, P_8, P_9, P_10, P_4, P_5, P_6);
 	}
 
-	private static object ybqJuWfEtN(Workbook P_0, Worksheet P_1, Microsoft.Office.Interop.Excel.Range P_2, string P_3, bool P_4, bool P_5, bool P_6, XFNayjV66fonCSKcSbOJ P_7, int P_8 = 0, int P_9 = 0, int P_10 = 0)
+	private static object ybqJuWfEtN(Workbook P_0, Worksheet P_1, Microsoft.Office.Interop.Excel.Range P_2, string P_3, bool P_4, bool P_5, bool P_6, ComObjectTracker P_7, int P_8 = 0, int P_9 = 0, int P_10 = 0)
 	{
 		_G_c__DisplayClass16_0 CS_8_locals_19 = new _G_c__DisplayClass16_0();
-		CS_8_locals_19.agZV6tbacUb = P_2;
+		CS_8_locals_19.rangeField8 = P_2;
 		CS_8_locals_19.workbook = P_0;
-		int num = pCPJ2o3f45(() => CS_8_locals_19.agZV6tbacUb.Rows.Count);
-		int num2 = pCPJ2o3f45(() => CS_8_locals_19.agZV6tbacUb.Columns.Count);
+		int num = TryEvaluateInt(() => CS_8_locals_19.rangeField8.Rows.Count);
+		int num2 = TryEvaluateInt(() => CS_8_locals_19.rangeField8.Columns.Count);
 		int num3 = ((P_10 > 0) ? Math.Min(num2, Math.Max(1, P_10)) : num2);
 		List<object> list = new List<object>();
-		List<int> list2 = UnfJDvu7GV(num, P_8, P_9);
+		List<int> list2 = FindRowIndices(num, P_8, P_9);
 		if (list2.Count == 0)
 		{
 			for (int num4 = 1; num4 <= num; num4++)
@@ -1475,8 +1475,8 @@ internal sealed class AiConfigBootstrap2
 			if (P_4)
 			{
 				_G_c__DisplayClass16_1 obj = new _G_c__DisplayClass16_1();
-				obj.fP3V6lZeaH2 = P_7.eKvV6uFJpGF((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_19.agZV6tbacUb.Rows[item, Type.Missing]);
-				if (IVrJ4G8MCE(() => (dynamic)obj.fP3V6lZeaH2.Hidden))
+				obj.rangeField9 = P_7.TrackComObject((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_19.rangeField8.Rows[item, Type.Missing]);
+				if (TryEvaluateBool(() => (dynamic)obj.rangeField9.Hidden))
 				{
 					continue;
 				}
@@ -1487,20 +1487,20 @@ internal sealed class AiConfigBootstrap2
 			for (int num5 = 1; num5 <= num3; num5++)
 			{
 				_G_c__DisplayClass16_2 CS_8_locals_18 = new _G_c__DisplayClass16_2();
-				CS_8_locals_18.pNlV6CBr7t1 = P_7.eKvV6uFJpGF((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_19.agZV6tbacUb.Cells[item, num5]);
-				list3.Add(rNBJ3SlLVd(CS_8_locals_18.pNlV6CBr7t1));
+				CS_8_locals_18.rangeField10 = P_7.TrackComObject((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_19.rangeField8.Cells[item, num5]);
+				list3.Add(GetRangeValue(CS_8_locals_18.rangeField10));
 				if (P_5)
 				{
 					list4.Add(hjGJjwaZBM(delegate
 					{
 						dynamic val;
-						if (!(((dynamic)CS_8_locals_18.pNlV6CBr7t1.Formula == null) ? true : false))
+						if (!(((dynamic)CS_8_locals_18.rangeField10.Formula == null) ? true : false))
 						{
-							if (_G_o__16.KEgVDU5cs3b == null)
+							if (_G_o__16.toStringCallSite4 == null)
 							{
-								_G_o__16.KEgVDU5cs3b = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "''", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+								_G_o__16.toStringCallSite4 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "''", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 							}
-							val = _G_o__16.KEgVDU5cs3b.Target(_G_o__16.KEgVDU5cs3b, CS_8_locals_18.pNlV6CBr7t1.Formula);
+							val = _G_o__16.toStringCallSite4.Target(_G_o__16.toStringCallSite4, CS_8_locals_18.rangeField10.Formula);
 						}
 						else
 						{
@@ -1518,13 +1518,13 @@ internal sealed class AiConfigBootstrap2
 					numberFormat = hjGJjwaZBM(delegate
 					{
 						dynamic val;
-						if (!(((dynamic)CS_8_locals_18.pNlV6CBr7t1.NumberFormat == null) ? true : false))
+						if (!(((dynamic)CS_8_locals_18.rangeField10.NumberFormat == null) ? true : false))
 						{
-							if (_G_o__16.yglVD4Gxfsw == null)
+							if (_G_o__16.toStringCallSite8 == null)
 							{
-								_G_o__16.yglVD4Gxfsw = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "'", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+								_G_o__16.toStringCallSite8 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "'", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 							}
-							val = _G_o__16.yglVD4Gxfsw.Target(_G_o__16.yglVD4Gxfsw, CS_8_locals_18.pNlV6CBr7t1.NumberFormat);
+							val = _G_o__16.toStringCallSite8.Target(_G_o__16.toStringCallSite8, CS_8_locals_18.rangeField10.NumberFormat);
 						}
 						else
 						{
@@ -1532,17 +1532,17 @@ internal sealed class AiConfigBootstrap2
 						}
 						return val;
 					}),
-					bold = IVrJ4G8MCE(() => (dynamic)CS_8_locals_18.pNlV6CBr7t1.Font.Bold),
+					bold = TryEvaluateBool(() => (dynamic)CS_8_locals_18.rangeField10.Font.Bold),
 					interiorColor = hjGJjwaZBM(delegate
 					{
 						dynamic val;
-						if (!(((dynamic)CS_8_locals_18.pNlV6CBr7t1.Interior.Color == null) ? true : false))
+						if (!(((dynamic)CS_8_locals_18.rangeField10.Interior.Color == null) ? true : false))
 						{
 							if (_G_o__16.uZHVDMnQAFH == null)
 							{
 								_G_o__16.uZHVDMnQAFH = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "yyyy-MM-dd HH:mm:ss", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 							}
-							val = _G_o__16.uZHVDMnQAFH.Target(_G_o__16.uZHVDMnQAFH, CS_8_locals_18.pNlV6CBr7t1.Interior.Color);
+							val = _G_o__16.uZHVDMnQAFH.Target(_G_o__16.uZHVDMnQAFH, CS_8_locals_18.rangeField10.Interior.Color);
 						}
 						else
 						{
@@ -1566,7 +1566,7 @@ internal sealed class AiConfigBootstrap2
 			workbookFullName = hjGJjwaZBM(() => CS_8_locals_19.workbook.FullName),
 			worksheet = P_1.Name,
 			requestedAddress = P_3,
-			address = tqdJKIVpyV(CS_8_locals_19.agZV6tbacUb),
+			address = tqdJKIVpyV(CS_8_locals_19.rangeField8),
 			rows = num,
 			columns = num2,
 			returnedRows = list.Count,
@@ -1579,7 +1579,7 @@ internal sealed class AiConfigBootstrap2
 		};
 	}
 
-	private static List<int> UnfJDvu7GV(int P_0, int P_1, int P_2)
+	private static List<int> FindRowIndices(int P_0, int P_1, int P_2)
 	{
 		List<int> list = new List<int>();
 		if (P_1 <= 0 && P_2 <= 0)
@@ -1599,38 +1599,38 @@ internal sealed class AiConfigBootstrap2
 		return list;
 	}
 
-	private static bool h8CJTM4gse(Worksheet P_0, Microsoft.Office.Interop.Excel.Range P_1, string P_2, bool P_3, XFNayjV66fonCSKcSbOJ P_4, List<object> P_5, out string P_6)
+	private static bool FindRowIndices2(Worksheet P_0, Microsoft.Office.Interop.Excel.Range P_1, string P_2, bool P_3, ComObjectTracker P_4, List<object> P_5, out string P_6)
 	{
 		_G_c__DisplayClass18_0 CS_8_locals_6 = new _G_c__DisplayClass18_0();
-		CS_8_locals_6.UxyV6nWori1 = P_1;
+		CS_8_locals_6.rangeField6 = P_1;
 		P_6 = null;
 		try
 		{
-			int num = pCPJ2o3f45(() => CS_8_locals_6.UxyV6nWori1.Rows.Count);
-			int num2 = pCPJ2o3f45(() => CS_8_locals_6.UxyV6nWori1.Columns.Count);
+			int num = TryEvaluateInt(() => CS_8_locals_6.rangeField6.Rows.Count);
+			int num2 = TryEvaluateInt(() => CS_8_locals_6.rangeField6.Columns.Count);
 			if (num <= 0 || num2 <= 0)
 			{
 				return true;
 			}
-			Microsoft.Office.Interop.Excel.Range after = P_4.eKvV6uFJpGF((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_6.UxyV6nWori1.Cells[num, num2]);
-			Microsoft.Office.Interop.Excel.Range range = P_4.eKvV6uFJpGF(CS_8_locals_6.UxyV6nWori1.Find(P_2, after, XlFindLookIn.xlValues, XlLookAt.xlPart, XlSearchOrder.xlByRows, XlSearchDirection.xlNext, P_3, Type.Missing, Type.Missing));
+			Microsoft.Office.Interop.Excel.Range after = P_4.TrackComObject((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_6.rangeField6.Cells[num, num2]);
+			Microsoft.Office.Interop.Excel.Range range = P_4.TrackComObject(CS_8_locals_6.rangeField6.Find(P_2, after, XlFindLookIn.xlValues, XlLookAt.xlPart, XlSearchOrder.xlByRows, XlSearchDirection.xlNext, P_3, Type.Missing, Type.Missing));
 			if (range == null)
 			{
 				return true;
 			}
-			string b = kn3JIaDIXo(range);
+			string b = GetRangeRow2(range);
 			HashSet<string> hashSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 			Microsoft.Office.Interop.Excel.Range range2 = range;
 			while (range2 != null && P_5.Count < 50)
 			{
-				string text = kn3JIaDIXo(range2);
+				string text = GetRangeRow2(range2);
 				if (string.IsNullOrEmpty(text) || !hashSet.Add(text))
 				{
 					break;
 				}
-				P_5.Add(LOhJ8PRsj6(P_0, range2));
-				Microsoft.Office.Interop.Excel.Range range3 = P_4.eKvV6uFJpGF(CS_8_locals_6.UxyV6nWori1.FindNext(range2));
-				if (range3 == null || string.Equals(kn3JIaDIXo(range3), b, StringComparison.OrdinalIgnoreCase))
+				P_5.Add(GetRangeRow(P_0, range2));
+				Microsoft.Office.Interop.Excel.Range range3 = P_4.TrackComObject(CS_8_locals_6.rangeField6.FindNext(range2));
+				if (range3 == null || string.Equals(GetRangeRow2(range3), b, StringComparison.OrdinalIgnoreCase))
 				{
 					break;
 				}
@@ -1645,15 +1645,15 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private static List<object> UtOJgG2Q1H(Worksheet P_0, Microsoft.Office.Interop.Excel.Range P_1, string P_2, bool P_3, XFNayjV66fonCSKcSbOJ P_4)
+	private static List<object> ScanRangeValues(Worksheet P_0, Microsoft.Office.Interop.Excel.Range P_1, string P_2, bool P_3, ComObjectTracker P_4)
 	{
 		_G_c__DisplayClass19_0 CS_8_locals_5 = new _G_c__DisplayClass19_0();
-		CS_8_locals_5.IrtV6e49vaj = P_1;
+		CS_8_locals_5.rangeField2 = P_1;
 		List<object> list = new List<object>();
 		StringComparison comparisonType = (P_3 ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase);
-		object obj = lEYJYSoNMC(() => CS_8_locals_5.IrtV6e49vaj.Value2);
-		int num = LgrJEVbBNo(() => CS_8_locals_5.IrtV6e49vaj.Row);
-		int num2 = LgrJEVbBNo(() => CS_8_locals_5.IrtV6e49vaj.Column);
+		object obj = lEYJYSoNMC(() => CS_8_locals_5.rangeField2.Value2);
+		int num = LgrJEVbBNo(() => CS_8_locals_5.rangeField2.Row);
+		int num2 = LgrJEVbBNo(() => CS_8_locals_5.rangeField2.Column);
 		if (obj is object[,] array)
 		{
 			int lowerBound = array.GetLowerBound(0);
@@ -1676,8 +1676,8 @@ internal sealed class AiConfigBootstrap2
 					{
 						int num5 = num + (num3 - lowerBound);
 						int num6 = num2 + (num4 - lowerBound2);
-						Microsoft.Office.Interop.Excel.Range range = P_4.eKvV6uFJpGF((Microsoft.Office.Interop.Excel.Range)(dynamic)P_0.Cells[num5, num6]);
-						list.Add(LOhJ8PRsj6(P_0, range));
+						Microsoft.Office.Interop.Excel.Range range = P_4.TrackComObject((Microsoft.Office.Interop.Excel.Range)(dynamic)P_0.Cells[num5, num6]);
+						list.Add(GetRangeRow(P_0, range));
 					}
 				}
 			}
@@ -1685,34 +1685,34 @@ internal sealed class AiConfigBootstrap2
 		}
 		if (DjOJiRNjpT(obj).IndexOf(P_2, comparisonType) >= 0)
 		{
-			Microsoft.Office.Interop.Excel.Range range2 = P_4.eKvV6uFJpGF((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_5.IrtV6e49vaj.Cells[1, 1]);
-			list.Add(LOhJ8PRsj6(P_0, range2));
+			Microsoft.Office.Interop.Excel.Range range2 = P_4.TrackComObject((Microsoft.Office.Interop.Excel.Range)(dynamic)CS_8_locals_5.rangeField2.Cells[1, 1]);
+			list.Add(GetRangeRow(P_0, range2));
 		}
 		return list;
 	}
 
-	private static object LOhJ8PRsj6(Worksheet P_0, Microsoft.Office.Interop.Excel.Range P_1)
+	private static object GetRangeRow(Worksheet P_0, Microsoft.Office.Interop.Excel.Range P_1)
 	{
 		_G_c__DisplayClass20_0 CS_8_locals_8 = new _G_c__DisplayClass20_0();
-		CS_8_locals_8.JifV6vA3iT1 = P_1;
+		CS_8_locals_8.rangeField3 = P_1;
 		return new
 		{
 			sheetName = P_0.Name,
-			address = tqdJKIVpyV(CS_8_locals_8.JifV6vA3iT1),
-			row = LgrJEVbBNo(() => CS_8_locals_8.JifV6vA3iT1.Row),
-			column = LgrJEVbBNo(() => CS_8_locals_8.JifV6vA3iT1.Column),
-			value = rNBJ3SlLVd(CS_8_locals_8.JifV6vA3iT1),
-			text = mjyJUctF2A(CS_8_locals_8.JifV6vA3iT1),
+			address = tqdJKIVpyV(CS_8_locals_8.rangeField3),
+			row = LgrJEVbBNo(() => CS_8_locals_8.rangeField3.Row),
+			column = LgrJEVbBNo(() => CS_8_locals_8.rangeField3.Column),
+			value = GetRangeValue(CS_8_locals_8.rangeField3),
+			text = GetRangeAddress(CS_8_locals_8.rangeField3),
 			formula = hjGJjwaZBM(delegate
 			{
 				dynamic val;
-				if (!(((dynamic)CS_8_locals_8.JifV6vA3iT1.Formula == null) ? true : false))
+				if (!(((dynamic)CS_8_locals_8.rangeField3.Formula == null) ? true : false))
 				{
-					if (_G_o__20.a3AVDlVXcmE == null)
+					if (_G_o__20.toStringCallSite6 == null)
 					{
-						_G_o__20.a3AVDlVXcmE = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "Excel", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+						_G_o__20.toStringCallSite6 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "Excel", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 					}
-					val = _G_o__20.a3AVDlVXcmE.Target(_G_o__20.a3AVDlVXcmE, CS_8_locals_8.JifV6vA3iT1.Formula);
+					val = _G_o__20.toStringCallSite6.Target(_G_o__20.toStringCallSite6, CS_8_locals_8.rangeField3.Formula);
 				}
 				else
 				{
@@ -1723,11 +1723,11 @@ internal sealed class AiConfigBootstrap2
 		};
 	}
 
-	private static string kn3JIaDIXo(Microsoft.Office.Interop.Excel.Range P_0)
+	private static string GetRangeRow2(Microsoft.Office.Interop.Excel.Range P_0)
 	{
 		_G_c__DisplayClass21_0 CS_8_locals_3 = new _G_c__DisplayClass21_0();
-		CS_8_locals_3.K2lV6kSYl1J = P_0;
-		return LgrJEVbBNo(() => CS_8_locals_3.K2lV6kSYl1J.Row).ToString(CultureInfo.InvariantCulture) + ":" + LgrJEVbBNo(() => CS_8_locals_3.K2lV6kSYl1J.Column).ToString(CultureInfo.InvariantCulture);
+		CS_8_locals_3.rangeField4 = P_0;
+		return LgrJEVbBNo(() => CS_8_locals_3.rangeField4.Row).ToString(CultureInfo.InvariantCulture) + ":" + LgrJEVbBNo(() => CS_8_locals_3.rangeField4.Column).ToString(CultureInfo.InvariantCulture);
 	}
 
 	private static string DjOJiRNjpT(object P_0)
@@ -1743,16 +1743,16 @@ internal sealed class AiConfigBootstrap2
 		return Convert.ToString(P_0, CultureInfo.InvariantCulture) ?? string.Empty;
 	}
 
-	private static Name FLbJHX5Yf0(Workbook P_0, XFNayjV66fonCSKcSbOJ P_1, string P_2, string P_3)
+	private static Name FindNamedRange(Workbook P_0, ComObjectTracker P_1, string P_2, string P_3)
 	{
 		string text = (string.IsNullOrWhiteSpace(P_3) ? "workbook_or_worksheet" : P_3.Trim().ToLowerInvariant());
 		if (text == "workbook" || text == "workbook_or_worksheet")
 		{
 			_G_c__DisplayClass23_0 CS_8_locals_9 = new _G_c__DisplayClass23_0();
-			CS_8_locals_9.names = P_1.eKvV6uFJpGF(P_0.Names);
-			for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_9.names.Count); i++)
+			CS_8_locals_9.names = P_1.TrackComObject(P_0.Names);
+			for (int i = 1; i <= TryEvaluateInt(() => CS_8_locals_9.names.Count); i++)
 			{
-				Name name = P_1.eKvV6uFJpGF(CS_8_locals_9.names.Item(i, Type.Missing, Type.Missing));
+				Name name = P_1.TrackComObject(CS_8_locals_9.names.Item(i, Type.Missing, Type.Missing));
 				if (ObsJQvCckC(name, P_2))
 				{
 					return name;
@@ -1762,15 +1762,15 @@ internal sealed class AiConfigBootstrap2
 		if (text == "worksheet" || text == "workbook_or_worksheet")
 		{
 			_G_c__DisplayClass23_1 CS_8_locals_10 = new _G_c__DisplayClass23_1();
-			CS_8_locals_10.nuvVuVXaUZa = P_1.eKvV6uFJpGF(P_0.Worksheets);
-			for (int num = 1; num <= pCPJ2o3f45(() => CS_8_locals_10.nuvVuVXaUZa.Count); num++)
+			CS_8_locals_10.nuvVuVXaUZa = P_1.TrackComObject(P_0.Worksheets);
+			for (int num = 1; num <= TryEvaluateInt(() => CS_8_locals_10.nuvVuVXaUZa.Count); num++)
 			{
 				_G_c__DisplayClass23_2 CS_8_locals_11 = new _G_c__DisplayClass23_2();
-				Worksheet worksheet = P_1.eKvV6uFJpGF((Worksheet)(dynamic)CS_8_locals_10.nuvVuVXaUZa[num]);
-				CS_8_locals_11.names = P_1.eKvV6uFJpGF(worksheet.Names);
-				for (int num2 = 1; num2 <= pCPJ2o3f45(() => CS_8_locals_11.names.Count); num2++)
+				Worksheet worksheet = P_1.TrackComObject((Worksheet)(dynamic)CS_8_locals_10.nuvVuVXaUZa[num]);
+				CS_8_locals_11.names = P_1.TrackComObject(worksheet.Names);
+				for (int num2 = 1; num2 <= TryEvaluateInt(() => CS_8_locals_11.names.Count); num2++)
 				{
-					Name name2 = P_1.eKvV6uFJpGF(CS_8_locals_11.names.Item(num2, Type.Missing, Type.Missing));
+					Name name2 = P_1.TrackComObject(CS_8_locals_11.names.Item(num2, Type.Missing, Type.Missing));
 					if (ObsJQvCckC(name2, P_2))
 					{
 						return name2;
@@ -1799,7 +1799,7 @@ internal sealed class AiConfigBootstrap2
 		return true;
 	}
 
-	private static bool Ld5J1HvxtL(string P_0, out string P_1, out string P_2)
+	private static bool GetFullName2(string P_0, out string P_1, out string P_2)
 	{
 		P_1 = string.Empty;
 		P_2 = string.Empty;
@@ -1841,7 +1841,7 @@ internal sealed class AiConfigBootstrap2
 		return true;
 	}
 
-	private static bool u1VJJFd45C(Worksheet P_0, Workbook P_1)
+	private static bool GetWorkbookFullName5(Worksheet P_0, Workbook P_1)
 	{
 		try
 		{
@@ -1853,7 +1853,7 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private static object rNBJ3SlLVd(Microsoft.Office.Interop.Excel.Range P_0)
+	private static object GetRangeValue(Microsoft.Office.Interop.Excel.Range P_0)
 	{
 		try
 		{
@@ -1870,20 +1870,20 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private static string mjyJUctF2A(Microsoft.Office.Interop.Excel.Range P_0)
+	private static string GetRangeAddress(Microsoft.Office.Interop.Excel.Range P_0)
 	{
 		_G_c__DisplayClass29_0 CS_8_locals_4 = new _G_c__DisplayClass29_0();
-		CS_8_locals_4.QPxVuHFBKg9 = P_0;
+		CS_8_locals_4.rangeField5 = P_0;
 		string text = hjGJjwaZBM(delegate
 		{
 			dynamic val;
-			if (!(((dynamic)CS_8_locals_4.QPxVuHFBKg9.Text == null) ? true : false))
+			if (!(((dynamic)CS_8_locals_4.rangeField5.Text == null) ? true : false))
 			{
-				if (_G_o__29.LRuVDC0PlSQ == null)
+				if (_G_o__29.toStringCallSite5 == null)
 				{
-					_G_o__29.LRuVDC0PlSQ = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "WPS 表格", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__29.toStringCallSite5 = CallSite<Func<CallSite, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "WPS 表格", null, typeof(AiConfigBootstrap2), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				val = _G_o__29.LRuVDC0PlSQ.Target(_G_o__29.LRuVDC0PlSQ, CS_8_locals_4.QPxVuHFBKg9.Text);
+				val = _G_o__29.toStringCallSite5.Target(_G_o__29.toStringCallSite5, CS_8_locals_4.rangeField5.Text);
 			}
 			else
 			{
@@ -1895,7 +1895,7 @@ internal sealed class AiConfigBootstrap2
 		{
 			return text;
 		}
-		object obj = rNBJ3SlLVd(CS_8_locals_4.QPxVuHFBKg9);
+		object obj = GetRangeValue(CS_8_locals_4.rangeField5);
 		if (obj != null)
 		{
 			return Convert.ToString(obj, CultureInfo.InvariantCulture);
@@ -1922,7 +1922,7 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private static int pCPJ2o3f45(Func<int> P_0)
+	private static int TryEvaluateInt(Func<int> P_0)
 	{
 		try
 		{
@@ -1934,7 +1934,7 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private static bool IVrJ4G8MCE(Func<bool> P_0)
+	private static bool TryEvaluateBool(Func<bool> P_0)
 	{
 		try
 		{
@@ -1970,7 +1970,7 @@ internal sealed class AiConfigBootstrap2
 		}
 	}
 
-	private static string i0rJZwDpdH()
+	private static string GetSpreadsheetHostName()
 	{
 		if (!WordTableToolService.IsWps)
 		{

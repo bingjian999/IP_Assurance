@@ -20,22 +20,22 @@ internal static class PageSplitService
 
 	private static TableBorderConfig Cfg => TableBorderConfig.Current;
 
-	public static void r35fVUVyl3()
+	public static void ApplyNotesPageSetup()
 	{
-		CO7f6S6Mxg("附注页");
+		ApplyPageSetup("附注页");
 	}
 
-	public static void uqUfBw6cB5()
+	public static void ApplyBodyPageSetup()
 	{
-		CO7f6S6Mxg("正文页");
+		ApplyPageSetup("正文页");
 	}
 
-	public static void pIHf9JibWB()
+	public static void ApplyCoverPageSetup()
 	{
-		CO7f6S6Mxg("封面页");
+		ApplyPageSetup("封面页");
 	}
 
-	private static void CO7f6S6Mxg(string P_0)
+	private static void ApplyPageSetup(string P_0)
 	{
 		Cfg.SaveToFile();
 		PageSetup pageSetup = App.ActiveDocument.PageSetup;
@@ -48,7 +48,7 @@ internal static class PageSplitService
 		pageSetup.FooterDistance = App.CentimetersToPoints((float)Cfg.GetDouble("页面_" + P_0 + "_页脚", 1.75));
 	}
 
-	public static void q6BfuLcjaG()
+	public static void ToggleOrientationWithBreak()
 	{
 		Selection selection = App.Selection;
 		object Type = WdBreakType.wdSectionBreakNextPage;
@@ -66,7 +66,7 @@ internal static class PageSplitService
 		pageSetup.Orientation = ((pageSetup.Orientation == WdOrientation.wdOrientPortrait) ? WdOrientation.wdOrientLandscape : WdOrientation.wdOrientPortrait);
 	}
 
-	public static void a1VfDCrrNS()
+	public static void InsertPageNumbers()
 	{
 		App.ScreenUpdating = false;
 		try
@@ -74,7 +74,7 @@ internal static class PageSplitService
 			Cfg.SaveToFile();
 			Document activeDocument = App.ActiveDocument;
 			int num = PageNumberStartWindow.dXHnSRT5B2(Cfg.GetInt("页面_页码_起始值", 1));
-			WwJfTF0CF3(activeDocument, num);
+			SetStartingPageNumber(activeDocument, num);
 			HeaderFooter headerFooter = activeDocument.Sections[1].Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary];
 			PageNumbers pageNumbers = headerFooter.PageNumbers;
 			object PageNumberAlignment = WdPageNumberAlignment.wdAlignPageNumberCenter;
@@ -101,7 +101,7 @@ internal static class PageSplitService
 		}
 	}
 
-	private static void WwJfTF0CF3(Document P_0, int P_1)
+	private static void SetStartingPageNumber(Document P_0, int P_1)
 	{
 		if (P_0 == null)
 		{
@@ -131,7 +131,7 @@ internal static class PageSplitService
 		}
 	}
 
-	public static void ykFfgO7l4C()
+	public static void BatchConvertToPdf()
 	{
 		using OpenFileDialog openFileDialog = new OpenFileDialog
 		{
@@ -154,7 +154,7 @@ internal static class PageSplitService
 			foreach (string obj in fileNames)
 			{
 				num++;
-				cK9f89ck81(obj);
+				ConvertToPdf(obj);
 				App.StatusBar = string.Format("已转换{0}/{1}", num, num2);
 			}
 		}
@@ -173,7 +173,7 @@ internal static class PageSplitService
 		}
 	}
 
-	public static void cK9f89ck81(string P_0)
+	public static void ConvertToPdf(string P_0)
 	{
 		Documents documents = App.Documents;
 		object FileName = P_0;
@@ -208,7 +208,7 @@ internal static class PageSplitService
 		}
 	}
 
-	public static void DglfI2k05r(string P_0, string P_1)
+	public static void ConvertToPdfAs(string P_0, string P_1)
 	{
 		Documents documents = App.Documents;
 		object FileName = P_0;
@@ -242,7 +242,7 @@ internal static class PageSplitService
 		}
 	}
 
-	public static void Y5Tfix9LLg()
+	public static void MergeDocuments()
 	{
 		using OpenFileDialog openFileDialog = new OpenFileDialog
 		{
@@ -305,12 +305,12 @@ internal static class PageSplitService
 		}
 	}
 
-	public static void TpofHWy9aJ()
+	public static void SplitByPages()
 	{
-		kB3fQeM4Kl();
+		SplitDocumentByPages();
 	}
 
-	public static void kB3fQeM4Kl()
+	public static void SplitDocumentByPages()
 	{
 		Document activeDocument = App.ActiveDocument;
 		if (string.IsNullOrEmpty(activeDocument.Path))
@@ -333,7 +333,7 @@ internal static class PageSplitService
 			LoggerInitializer.ShowInfo("当前文档没有可拆分的页面。", "IP_Assurance");
 			return;
 		}
-		int num2 = LUVfb1Q91y(num);
+		int num2 = ShowSplitPagesDialog(num);
 		if (num2 <= 0)
 		{
 			return;
@@ -347,8 +347,8 @@ internal static class PageSplitService
 		try
 		{
 			App.ScreenUpdating = false;
-			progressWindow = DkefYd6IAp();
-			if (!Ip0ffGT6jx(progressWindow, 0, string.Format("准备按页拆分，共 {0} 页，预计生成 {1} 个文档", num, num3)))
+			progressWindow = CreateProgressWindow();
+			if (!SetProgressStatus(progressWindow, 0, string.Format("准备按页拆分，共 {0} 页，预计生成 {1} 个文档", num, num3)))
 			{
 				flag = true;
 			}
@@ -358,12 +358,12 @@ internal static class PageSplitService
 				int num7 = Math.Min(num4 + num2 - 1, num);
 				string text = string.Format("正在按页拆分：第 {0} - {1} 页 / 共 {2} 页", num4, num7, num);
 				App.StatusBar = text;
-				if (!Ip0ffGT6jx(progressWindow, (num3 <= 0) ? 100 : ((int)Math.Round((double)num5 * 100.0 / (double)num3)), text))
+				if (!SetProgressStatus(progressWindow, (num3 <= 0) ? 100 : ((int)Math.Round((double)num5 * 100.0 / (double)num3)), text))
 				{
 					flag = true;
 					break;
 				}
-				string text2 = L2efJ9DkxU(fullName, num6);
+				string text2 = BuildIndexedFilePath(fullName, num6);
 				if (File.Exists(text2))
 				{
 					File.Delete(text2);
@@ -390,7 +390,7 @@ internal static class PageSplitService
 					object NoEncodingDialog = Type.Missing;
 					object XMLTransform = Type.Missing;
 					document = documents.Open(ref IncludeFootnotesAndEndnotes, ref ConfirmConversions, ref ReadOnly, ref AddToRecentFiles, ref PasswordDocument, ref PasswordTemplate, ref Revert, ref WritePasswordDocument, ref WritePasswordTemplate, ref Format, ref Encoding, ref Visible, ref OpenAndRepair, ref DocumentDirection, ref NoEncodingDialog, ref XMLTransform);
-					UvgfKJerOK(document, num4, num7, num);
+					KeepPageRange(document, num4, num7, num);
 					try
 					{
 						document.UpdateStylesOnOpen = false;
@@ -413,7 +413,7 @@ internal static class PageSplitService
 				}
 				num5++;
 				num4 = num7 + 1;
-				if (!IFPfZT0w76(progressWindow, num5, num3))
+				if (!UpdateProgress(progressWindow, num5, num3))
 				{
 					flag = true;
 					break;
@@ -423,7 +423,7 @@ internal static class PageSplitService
 		}
 		finally
 		{
-			RtKfMFEACg(progressWindow);
+			CloseProgressWindow(progressWindow);
 			App.ScreenUpdating = true;
 			App.StatusBar = string.Empty;
 			try
@@ -444,7 +444,7 @@ internal static class PageSplitService
 		}
 	}
 
-	public static void Wq4f1QfrnV()
+	public static void SplitByPageRanges()
 	{
 		Document activeDocument = App.ActiveDocument;
 		if (string.IsNullOrEmpty(activeDocument.Path))
@@ -467,7 +467,7 @@ internal static class PageSplitService
 			LoggerInitializer.ShowInfo("当前文档没有可拆分的页面。", "IP_Assurance");
 			return;
 		}
-		IReadOnlyList<PageRange> readOnlyList = imKfSm7rVB(num);
+		IReadOnlyList<PageRange> readOnlyList = ShowPageRangesDialog(num);
 		if (readOnlyList == null || readOnlyList.Count == 0)
 		{
 			return;
@@ -480,23 +480,23 @@ internal static class PageSplitService
 		try
 		{
 			App.ScreenUpdating = false;
-			progressWindow = DkefYd6IAp();
-			if (!Ip0ffGT6jx(progressWindow, 0, string.Format("准备按指定页拆分，共 {0} 个页段", count)))
+			progressWindow = CreateProgressWindow();
+			if (!SetProgressStatus(progressWindow, 0, string.Format("准备按指定页拆分，共 {0} 个页段", count)))
 			{
 				flag = true;
 			}
 			int num3 = 0;
 			while (!flag && num3 < readOnlyList.Count)
 			{
-				PageRange rsQuUTnPQGmBy8VcAkC = readOnlyList[num3];
-				string text = string.Format("正在按指定页拆分：第 {0} 页 / {1} / {2}", rsQuUTnPQGmBy8VcAkC.DisplayText, num3 + 1, count);
+				PageRange pageRange = readOnlyList[num3];
+				string text = string.Format("正在按指定页拆分：第 {0} 页 / {1} / {2}", pageRange.DisplayText, num3 + 1, count);
 				App.StatusBar = text;
-				if (!Ip0ffGT6jx(progressWindow, (count <= 0) ? 100 : ((int)Math.Round((double)num2 * 100.0 / (double)count)), text))
+				if (!SetProgressStatus(progressWindow, (count <= 0) ? 100 : ((int)Math.Round((double)num2 * 100.0 / (double)count)), text))
 				{
 					flag = true;
 					break;
 				}
-				string text2 = BiIf3e4mrZ(fullName, rsQuUTnPQGmBy8VcAkC);
+				string text2 = BuildPageRangeFilePath(fullName, pageRange);
 				File.Copy(fullName, text2);
 				Document document = null;
 				try
@@ -519,7 +519,7 @@ internal static class PageSplitService
 					object NoEncodingDialog = Type.Missing;
 					object XMLTransform = Type.Missing;
 					document = documents.Open(ref IncludeFootnotesAndEndnotes, ref ConfirmConversions, ref ReadOnly, ref AddToRecentFiles, ref PasswordDocument, ref PasswordTemplate, ref Revert, ref WritePasswordDocument, ref WritePasswordTemplate, ref Format, ref Encoding, ref Visible, ref OpenAndRepair, ref DocumentDirection, ref NoEncodingDialog, ref XMLTransform);
-					UvgfKJerOK(document, rsQuUTnPQGmBy8VcAkC.StartPage, rsQuUTnPQGmBy8VcAkC.EndPage, num);
+					KeepPageRange(document, pageRange.StartPage, pageRange.EndPage, num);
 					try
 					{
 						document.UpdateStylesOnOpen = false;
@@ -541,7 +541,7 @@ internal static class PageSplitService
 					}
 				}
 				num2++;
-				if (!IFPfZT0w76(progressWindow, num2, count))
+				if (!UpdateProgress(progressWindow, num2, count))
 				{
 					flag = true;
 					break;
@@ -551,7 +551,7 @@ internal static class PageSplitService
 		}
 		finally
 		{
-			RtKfMFEACg(progressWindow);
+			CloseProgressWindow(progressWindow);
 			App.ScreenUpdating = true;
 			App.StatusBar = string.Empty;
 			try
@@ -572,7 +572,7 @@ internal static class PageSplitService
 		}
 	}
 
-	public static void vFrfrDlytO()
+	public static void SplitBySections()
 	{
 		Document activeDocument = App.ActiveDocument;
 		if (string.IsNullOrEmpty(activeDocument.Path))
@@ -601,8 +601,8 @@ internal static class PageSplitService
 		try
 		{
 			App.ScreenUpdating = false;
-			progressWindow = DkefYd6IAp();
-			if (!Ip0ffGT6jx(progressWindow, 0, string.Format("准备按分节符拆分，共 {0} 个分节", count)))
+			progressWindow = CreateProgressWindow();
+			if (!SetProgressStatus(progressWindow, 0, string.Format("准备按分节符拆分，共 {0} 个分节", count)))
 			{
 				flag = true;
 			}
@@ -611,12 +611,12 @@ internal static class PageSplitService
 			{
 				string text = string.Format("正在按分节符拆分：{0} / {1}", num2, count);
 				App.StatusBar = text;
-				if (!Ip0ffGT6jx(progressWindow, (count <= 0) ? 100 : ((int)Math.Round((double)(num2 - 1) * 100.0 / (double)count)), text))
+				if (!SetProgressStatus(progressWindow, (count <= 0) ? 100 : ((int)Math.Round((double)(num2 - 1) * 100.0 / (double)count)), text))
 				{
 					flag = true;
 					break;
 				}
-				string text2 = L2efJ9DkxU(fullName, num2);
+				string text2 = BuildIndexedFilePath(fullName, num2);
 				if (File.Exists(text2))
 				{
 					File.Delete(text2);
@@ -643,7 +643,7 @@ internal static class PageSplitService
 					object NoEncodingDialog = Type.Missing;
 					object XMLTransform = Type.Missing;
 					document = documents.Open(ref FileName, ref ConfirmConversions, ref ReadOnly, ref AddToRecentFiles, ref PasswordDocument, ref PasswordTemplate, ref Revert, ref WritePasswordDocument, ref WritePasswordTemplate, ref Format, ref Encoding, ref Visible, ref OpenAndRepair, ref DocumentDirection, ref NoEncodingDialog, ref XMLTransform);
-					EMafEonbO8(document, activeDocument, num2);
+					KeepSection(document, activeDocument, num2);
 					try
 					{
 						document.UpdateStylesOnOpen = false;
@@ -665,7 +665,7 @@ internal static class PageSplitService
 					}
 				}
 				num++;
-				if (!IFPfZT0w76(progressWindow, num, count))
+				if (!UpdateProgress(progressWindow, num, count))
 				{
 					flag = true;
 					break;
@@ -675,7 +675,7 @@ internal static class PageSplitService
 		}
 		finally
 		{
-			RtKfMFEACg(progressWindow);
+			CloseProgressWindow(progressWindow);
 			App.ScreenUpdating = true;
 			App.StatusBar = string.Empty;
 			try
@@ -696,7 +696,7 @@ internal static class PageSplitService
 		}
 	}
 
-	private static string L2efJ9DkxU(string P_0, int P_1)
+	private static string BuildIndexedFilePath(string P_0, int P_1)
 	{
 		string directoryName = Path.GetDirectoryName(P_0);
 		string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(P_0);
@@ -708,7 +708,7 @@ internal static class PageSplitService
 		return Path.Combine(directoryName, string.Format("{0}_{1}{2}", fileNameWithoutExtension, P_1, text));
 	}
 
-	private static string BiIf3e4mrZ(string P_0, PageRange P_1)
+	private static string BuildPageRangeFilePath(string P_0, PageRange P_1)
 	{
 		string directoryName = Path.GetDirectoryName(P_0);
 		string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(P_0);
@@ -717,10 +717,10 @@ internal static class PageSplitService
 		{
 			text = ".docx";
 		}
-		return HRtfUPMcCt(Path.Combine(directoryName, fileNameWithoutExtension + "_指定页_" + P_1.DisplayText + text));
+		return GetUniqueFilePath(Path.Combine(directoryName, fileNameWithoutExtension + "_指定页_" + P_1.DisplayText + text));
 	}
 
-	private static string HRtfUPMcCt(string P_0)
+	private static string GetUniqueFilePath(string P_0)
 	{
 		if (!File.Exists(P_0))
 		{
@@ -747,7 +747,7 @@ internal static class PageSplitService
 		return text2;
 	}
 
-	private static void UvgfKJerOK(Document P_0, int P_1, int P_2, int P_3)
+	private static void KeepPageRange(Document P_0, int P_1, int P_2, int P_3)
 	{
 		object Start = Type.Missing;
 		object End = Type.Missing;
@@ -801,10 +801,10 @@ internal static class PageSplitService
 			Start = Type.Missing;
 			range2.Delete(ref End, ref Start);
 		}
-		IDYfwqQp60(P_0);
+		RemoveTrailingEmptyParagraph(P_0);
 	}
 
-	private static void EMafEonbO8(Document P_0, Document P_1, int P_2)
+	private static void KeepSection(Document P_0, Document P_1, int P_2)
 	{
 		int count = P_0.Sections.Count;
 		object Start = Type.Missing;
@@ -838,12 +838,12 @@ internal static class PageSplitService
 		{
 			Section section = P_1.Sections[P_2];
 			Section section2 = P_0.Sections[1];
-			jclf2V0rIq(section, section2);
-			pywf4j9iKC(section, section2);
+			CopyPageSetup(section, section2);
+			CopyHeadersAndFooters(section, section2);
 		}
 	}
 
-	private static void jclf2V0rIq(Section P_0, Section P_1)
+	private static void CopyPageSetup(Section P_0, Section P_1)
 	{
 		try
 		{
@@ -854,17 +854,17 @@ internal static class PageSplitService
 		}
 	}
 
-	private static void pywf4j9iKC(Section P_0, Section P_1)
+	private static void CopyHeadersAndFooters(Section P_0, Section P_1)
 	{
-		vHGfjF4i2Y(P_0.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary], P_1.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary]);
-		vHGfjF4i2Y(P_0.Headers[WdHeaderFooterIndex.wdHeaderFooterFirstPage], P_1.Headers[WdHeaderFooterIndex.wdHeaderFooterFirstPage]);
-		vHGfjF4i2Y(P_0.Headers[WdHeaderFooterIndex.wdHeaderFooterEvenPages], P_1.Headers[WdHeaderFooterIndex.wdHeaderFooterEvenPages]);
-		vHGfjF4i2Y(P_0.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary], P_1.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary]);
-		vHGfjF4i2Y(P_0.Footers[WdHeaderFooterIndex.wdHeaderFooterFirstPage], P_1.Footers[WdHeaderFooterIndex.wdHeaderFooterFirstPage]);
-		vHGfjF4i2Y(P_0.Footers[WdHeaderFooterIndex.wdHeaderFooterEvenPages], P_1.Footers[WdHeaderFooterIndex.wdHeaderFooterEvenPages]);
+		CopyHeaderFooter(P_0.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary], P_1.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary]);
+		CopyHeaderFooter(P_0.Headers[WdHeaderFooterIndex.wdHeaderFooterFirstPage], P_1.Headers[WdHeaderFooterIndex.wdHeaderFooterFirstPage]);
+		CopyHeaderFooter(P_0.Headers[WdHeaderFooterIndex.wdHeaderFooterEvenPages], P_1.Headers[WdHeaderFooterIndex.wdHeaderFooterEvenPages]);
+		CopyHeaderFooter(P_0.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary], P_1.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary]);
+		CopyHeaderFooter(P_0.Footers[WdHeaderFooterIndex.wdHeaderFooterFirstPage], P_1.Footers[WdHeaderFooterIndex.wdHeaderFooterFirstPage]);
+		CopyHeaderFooter(P_0.Footers[WdHeaderFooterIndex.wdHeaderFooterEvenPages], P_1.Footers[WdHeaderFooterIndex.wdHeaderFooterEvenPages]);
 	}
 
-	private static void vHGfjF4i2Y(HeaderFooter P_0, HeaderFooter P_1)
+	private static void CopyHeaderFooter(HeaderFooter P_0, HeaderFooter P_1)
 	{
 		try
 		{
@@ -882,7 +882,7 @@ internal static class PageSplitService
 		}
 	}
 
-	private static ProgressWindow DkefYd6IAp()
+	private static ProgressWindow CreateProgressWindow()
 	{
 		try
 		{
@@ -896,7 +896,7 @@ internal static class PageSplitService
 		}
 	}
 
-	private static bool IFPfZT0w76(ProgressWindow P_0, int P_1, int P_2)
+	private static bool UpdateProgress(ProgressWindow P_0, int P_1, int P_2)
 	{
 		if (P_0 == null)
 		{
@@ -920,7 +920,7 @@ internal static class PageSplitService
 		return P_0.IsVisible;
 	}
 
-	private static bool Ip0ffGT6jx(ProgressWindow P_0, int P_1, string P_2)
+	private static bool SetProgressStatus(ProgressWindow P_0, int P_1, string P_2)
 	{
 		if (P_0 == null)
 		{
@@ -943,7 +943,7 @@ internal static class PageSplitService
 		return P_0.IsVisible;
 	}
 
-	private static void RtKfMFEACg(ProgressWindow P_0)
+	private static void CloseProgressWindow(ProgressWindow P_0)
 	{
 		if (P_0 == null)
 		{
@@ -958,7 +958,7 @@ internal static class PageSplitService
 		}
 	}
 
-	private static int LUVfb1Q91y(int P_0)
+	private static int ShowSplitPagesDialog(int P_0)
 	{
 		try
 		{
@@ -972,7 +972,7 @@ internal static class PageSplitService
 		}
 	}
 
-	private static IReadOnlyList<PageRange> imKfSm7rVB(int P_0)
+	private static IReadOnlyList<PageRange> ShowPageRangesDialog(int P_0)
 	{
 		try
 		{
@@ -986,7 +986,7 @@ internal static class PageSplitService
 		}
 	}
 
-	private static void IDYfwqQp60(Document P_0)
+	private static void RemoveTrailingEmptyParagraph(Document P_0)
 	{
 		try
 		{

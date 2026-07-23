@@ -109,31 +109,31 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 			{
 				result2 = result;
 			}
-			PageRange rsQuUTnPQGmBy8VcAkC = new PageRange(result, result2);
+			PageRange pageRange = new PageRange(result, result2);
 			if (result < 1 || result2 < 1)
 			{
-				P_3 = "页码必须从 1 开始：" + rsQuUTnPQGmBy8VcAkC.DisplayText;
+				P_3 = "页码必须从 1 开始：" + pageRange.DisplayText;
 				return false;
 			}
 			if (result > result2)
 			{
-				P_3 = "页段起始页不能大于结束页：" + rsQuUTnPQGmBy8VcAkC.DisplayText;
+				P_3 = "页段起始页不能大于结束页：" + pageRange.DisplayText;
 				return false;
 			}
 			if (result2 > num)
 			{
-				P_3 = string.Format("页码不能超过当前文档总页数 {0}：{1}", num, rsQuUTnPQGmBy8VcAkC.DisplayText);
+				P_3 = string.Format("页码不能超过当前文档总页数 {0}：{1}", num, pageRange.DisplayText);
 				return false;
 			}
 			for (int j = result; j <= result2; j++)
 			{
 				if (!hashSet.Add(j))
 				{
-					P_3 = "页码范围与前面的输入重复或重叠：" + rsQuUTnPQGmBy8VcAkC.DisplayText;
+					P_3 = "页码范围与前面的输入重复或重叠：" + pageRange.DisplayText;
 					return false;
 				}
 			}
-			P_2.Add(rsQuUTnPQGmBy8VcAkC);
+			P_2.Add(pageRange);
 		}
 		if (P_2.Count == 0)
 		{

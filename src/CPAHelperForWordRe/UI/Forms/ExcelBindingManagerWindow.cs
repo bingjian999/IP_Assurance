@@ -26,7 +26,7 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 	{
 		public bool flag;
 
-		public TableComWriteService.TableBindingStatus oYRV4oOY0tY;
+		public TableComWriteService.TableBindingStatus wordBindingStatus;
 
 		public string text;
 
@@ -37,9 +37,9 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void qI6V4NtifAT()
+		internal void validateBindingForSync()
 		{
-			flag = TableComWriteService.ValidateBindingForSyncInternal(oYRV4oOY0tY, out text, out flag);
+			flag = TableComWriteService.ValidateBindingForSyncInternal(wordBindingStatus, out text, out flag);
 		}
 	}
 
@@ -48,7 +48,7 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 	{
 		public bool flag;
 
-		public TableComWriteService.TableBindingStatus yrWV4nJqaqJ;
+		public TableComWriteService.TableBindingStatus excelBindingStatus;
 
 		public string text;
 
@@ -59,9 +59,9 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void YUrV4pI9No4()
+		internal void validateBindingSync()
 		{
-			flag = TableComWriteService.ValidateBindingSyncInternal(yrWV4nJqaqJ, out text, out flag);
+			flag = TableComWriteService.ValidateBindingSyncInternal(excelBindingStatus, out text, out flag);
 		}
 	}
 
@@ -77,9 +77,9 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void MVUV4cIfW7X()
+		internal void loadBindingsInternal()
 		{
-			excelBindingManagerWindow.VOYpZMCNNR(text);
+			excelBindingManagerWindow.loadBindingsIntoCollection(text);
 		}
 	}
 
@@ -93,13 +93,13 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool V1kV4XcaKbK(TableComWriteService.TableBindingStatus item)
+		internal bool matchesBindingId(TableComWriteService.TableBindingStatus item)
 		{
 			return string.Equals(item.BindingId, text, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 
-	private readonly ObservableCollection<TableComWriteService.TableBindingStatus> CcRpOWdY5y;
+	private readonly ObservableCollection<TableComWriteService.TableBindingStatus> _bindingList;
 
 	private bool _bool;
 
@@ -122,9 +122,9 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 	public ExcelBindingManagerWindow()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		CcRpOWdY5y = new ObservableCollection<TableComWriteService.TableBindingStatus>();
+		_bindingList = new ObservableCollection<TableComWriteService.TableBindingStatus>();
 		InitializeComponent();
-		gridBindings.ItemsSource = CcRpOWdY5y;
+		gridBindings.ItemsSource = _bindingList;
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
 			if (P_1.Key == Key.Escape)
@@ -137,12 +137,12 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 			txtSummary.Text = "正在读取当前文档绑定...";
 			base.Dispatcher.BeginInvoke((Action)delegate
 			{
-				KgdpYSCcQH(null);
+				refreshBindingList(null);
 			}, DispatcherPriority.ApplicationIdle);
 		};
 	}
 
-	private void KgdpYSCcQH(string P_0)
+	private void refreshBindingList(string P_0)
 	{
 		_G_c__DisplayClass5_0 CS_8_locals_4 = new _G_c__DisplayClass5_0();
 		CS_8_locals_4.excelBindingManagerWindow = this;
@@ -151,26 +151,26 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 		barLoading.Visibility = Visibility.Visible;
 		gridBindings.IsEnabled = false;
 		txtSummary.Text = "正在读取当前文档绑定...";
-		O3mpMsnbFJ();
+		updateButtonStates();
 		base.Dispatcher.BeginInvoke((Action)delegate
 		{
-			CS_8_locals_4.excelBindingManagerWindow.VOYpZMCNNR(CS_8_locals_4.text);
+			CS_8_locals_4.excelBindingManagerWindow.loadBindingsIntoCollection(CS_8_locals_4.text);
 		}, DispatcherPriority.Background);
 	}
 
-	private void VOYpZMCNNR(string P_0)
+	private void loadBindingsIntoCollection(string P_0)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_3 = new _G_c__DisplayClass6_0();
 		CS_8_locals_3.text = P_0;
 		try
 		{
-			CcRpOWdY5y.Clear();
+			_bindingList.Clear();
 			foreach (TableComWriteService.TableBindingStatus item in TableComWriteService.GetAllTableBindings())
 			{
-				CcRpOWdY5y.Add(item);
+				_bindingList.Add(item);
 			}
-			TableComWriteService.TableBindingStatus TableBindingStatus = ((!string.IsNullOrWhiteSpace(CS_8_locals_3.text)) ? CcRpOWdY5y.FirstOrDefault((TableComWriteService.TableBindingStatus item) => string.Equals(item.BindingId, CS_8_locals_3.text, StringComparison.OrdinalIgnoreCase)) : null);
-			gridBindings.SelectedItem = TableBindingStatus ?? CcRpOWdY5y.FirstOrDefault();
+			TableComWriteService.TableBindingStatus TableBindingStatus = ((!string.IsNullOrWhiteSpace(CS_8_locals_3.text)) ? _bindingList.FirstOrDefault((TableComWriteService.TableBindingStatus item) => string.Equals(item.BindingId, CS_8_locals_3.text, StringComparison.OrdinalIgnoreCase)) : null);
+			gridBindings.SelectedItem = TableBindingStatus ?? _bindingList.FirstOrDefault();
 		}
 		catch (Exception ex)
 		{
@@ -182,19 +182,19 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 			gridBindings.IsEnabled = true;
 			barLoading.Visibility = Visibility.Collapsed;
 			_bool = false;
-			QJIpf4tWaW();
-			O3mpMsnbFJ();
+			updateSummaryText();
+			updateButtonStates();
 		}
 	}
 
-	private void QJIpf4tWaW()
+	private void updateSummaryText()
 	{
-		int count = CcRpOWdY5y.Count;
-		int num = CcRpOWdY5y.Count((TableComWriteService.TableBindingStatus item) => string.Equals(item.Status, "共 {0} 个绑定，正常 {1} 个，异常 {2} 个。", StringComparison.OrdinalIgnoreCase));
+		int count = _bindingList.Count;
+		int num = _bindingList.Count((TableComWriteService.TableBindingStatus item) => string.Equals(item.Status, "共 {0} 个绑定，正常 {1} 个，异常 {2} 个。", StringComparison.OrdinalIgnoreCase));
 		txtSummary.Text = ((count == 0) ? "当前文档未发现 Excel 绑定关系。" : string.Format("[ExcelSync] Load binding manager failed", count, num, count - num));
 	}
 
-	private void O3mpMsnbFJ()
+	private void updateButtonStates()
 	{
 		TableComWriteService.TableBindingStatus selectedBinding = SelectedBinding;
 		bool flag = selectedBinding != null;
@@ -211,49 +211,49 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 		}
 	}
 
-	private void NTfpbF4Nkc(object P_0, RoutedEventArgs P_1)
+	private void onRefreshClick(object P_0, RoutedEventArgs P_1)
 	{
-		KgdpYSCcQH(null);
+		refreshBindingList(null);
 	}
 
-	private void JEapS9rlB6(object P_0, RoutedEventArgs P_1)
+	private void onJumpWordClick(object P_0, RoutedEventArgs P_1)
 	{
-		VEqplheac3();
+		jumpToWordTable();
 	}
 
-	private void qm5pwqDkMJ(object P_0, RoutedEventArgs P_1)
+	private void onJumpExcelClick(object P_0, RoutedEventArgs P_1)
 	{
-		uYupNZ2SxS();
+		jumpToExcelRange();
 	}
 
-	private void nYQpteU1fx(object P_0, RoutedEventArgs P_1)
+	private void onCloseClick(object P_0, RoutedEventArgs P_1)
 	{
 		Close();
 	}
 
-	private void jLepLYGSdi(object P_0, SelectionChangedEventArgs P_1)
+	private void onSelectionChanged(object P_0, SelectionChangedEventArgs P_1)
 	{
-		O3mpMsnbFJ();
+		updateButtonStates();
 	}
 
-	private void JkupsA0Vx0(object P_0, MouseButtonEventArgs P_1)
+	private void onDoubleClick(object P_0, MouseButtonEventArgs P_1)
 	{
 		if (SelectedBinding != null)
 		{
-			VEqplheac3();
+			jumpToWordTable();
 		}
 	}
 
-	private void VEqplheac3()
+	private void jumpToWordTable()
 	{
 		_G_c__DisplayClass15_0 CS_8_locals_14 = new _G_c__DisplayClass15_0();
-		CS_8_locals_14.oYRV4oOY0tY = SelectedBinding;
+		CS_8_locals_14.wordBindingStatus = SelectedBinding;
 		CS_8_locals_14.flag = false;
 		CS_8_locals_14.text = string.Empty;
 		CS_8_locals_14.flag = false;
-		t2VpoKEvfA(delegate
+		runWithWaitCursor(delegate
 		{
-			CS_8_locals_14.flag = TableComWriteService.ValidateBindingForSyncInternal(CS_8_locals_14.oYRV4oOY0tY, out CS_8_locals_14.text, out CS_8_locals_14.flag);
+			CS_8_locals_14.flag = TableComWriteService.ValidateBindingForSyncInternal(CS_8_locals_14.wordBindingStatus, out CS_8_locals_14.text, out CS_8_locals_14.flag);
 		});
 		if (CS_8_locals_14.flag)
 		{
@@ -263,20 +263,20 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 		}
 		else
 		{
-			P1mpmjD7R9(CS_8_locals_14.text, CS_8_locals_14.flag);
+			showSyncError(CS_8_locals_14.text, CS_8_locals_14.flag);
 		}
 	}
 
-	private void uYupNZ2SxS()
+	private void jumpToExcelRange()
 	{
 		_G_c__DisplayClass16_0 CS_8_locals_14 = new _G_c__DisplayClass16_0();
-		CS_8_locals_14.yrWV4nJqaqJ = SelectedBinding;
+		CS_8_locals_14.excelBindingStatus = SelectedBinding;
 		CS_8_locals_14.flag = false;
 		CS_8_locals_14.text = string.Empty;
 		CS_8_locals_14.flag = false;
-		t2VpoKEvfA(delegate
+		runWithWaitCursor(delegate
 		{
-			CS_8_locals_14.flag = TableComWriteService.ValidateBindingSyncInternal(CS_8_locals_14.yrWV4nJqaqJ, out CS_8_locals_14.text, out CS_8_locals_14.flag);
+			CS_8_locals_14.flag = TableComWriteService.ValidateBindingSyncInternal(CS_8_locals_14.excelBindingStatus, out CS_8_locals_14.text, out CS_8_locals_14.flag);
 		});
 		if (CS_8_locals_14.flag)
 		{
@@ -286,11 +286,11 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 		}
 		else
 		{
-			P1mpmjD7R9(CS_8_locals_14.text, CS_8_locals_14.flag);
+			showSyncError(CS_8_locals_14.text, CS_8_locals_14.flag);
 		}
 	}
 
-	private void P1mpmjD7R9(string P_0, bool P_1)
+	private void showSyncError(string P_0, bool P_1)
 	{
 		P_0 = (string.IsNullOrWhiteSpace(P_0) ? "未能完成定位。" : P_0);
 		txtSummary.Text = P_0;
@@ -302,7 +302,7 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 		}, "Excel同步");
 	}
 
-	private static void t2VpoKEvfA(Action P_0)
+	private static void runWithWaitCursor(Action P_0)
 	{
 		Cursor overrideCursor = Mouse.OverrideCursor;
 		Mouse.OverrideCursor = Cursors.Wait;
@@ -340,26 +340,26 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 			break;
 		case 2:
 			gridBindings = (DataGrid)target;
-			gridBindings.SelectionChanged += jLepLYGSdi;
-			gridBindings.MouseDoubleClick += JkupsA0Vx0;
+			gridBindings.SelectionChanged += onSelectionChanged;
+			gridBindings.MouseDoubleClick += onDoubleClick;
 			break;
 		case 3:
 			txtSummary = (TextBlock)target;
 			break;
 		case 4:
 			btnRefresh = (Button)target;
-			btnRefresh.Click += NTfpbF4Nkc;
+			btnRefresh.Click += onRefreshClick;
 			break;
 		case 5:
 			btnJumpWord = (Button)target;
-			btnJumpWord.Click += JEapS9rlB6;
+			btnJumpWord.Click += onJumpWordClick;
 			break;
 		case 6:
 			btnJumpExcel = (Button)target;
-			btnJumpExcel.Click += qm5pwqDkMJ;
+			btnJumpExcel.Click += onJumpExcelClick;
 			break;
 		case 7:
-			((Button)target).Click += nYQpteU1fx;
+			((Button)target).Click += onCloseClick;
 			break;
 		default:
 			_bool = true;
@@ -368,7 +368,7 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void BBApGSr4ZC(object P_0, KeyEventArgs P_1)
+	private void onPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{
@@ -377,18 +377,18 @@ public sealed class ExcelBindingManagerWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void IJspCPVegF(object P_0, RoutedEventArgs P_1)
+	private void onWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
 		txtSummary.Text = "正在准备读取当前文档绑定...";
 		base.Dispatcher.BeginInvoke((Action)delegate
 		{
-			KgdpYSCcQH(null);
+			refreshBindingList(null);
 		}, DispatcherPriority.ApplicationIdle);
 	}
 
 	[CompilerGenerated]
-	private void aAyppFSsDQ()
+	private void refreshBindings()
 	{
-		KgdpYSCcQH(null);
+		refreshBindingList(null);
 	}
 }

@@ -21,10 +21,10 @@ namespace BatchReplaceService;
 
 internal static class BatchReplaceService
 {
-	private struct R2YhBSV3zlYwiRqrxZHs
+	private struct ParagraphRange
 	{
 		[CompilerGenerated]
-		private readonly int nOyVURBbIRW;
+		private readonly int _start;
 
 		[CompilerGenerated]
 		private readonly int _int;
@@ -34,7 +34,7 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return nOyVURBbIRW;
+				return _start;
 			}
 		}
 
@@ -47,15 +47,15 @@ internal static class BatchReplaceService
 			}
 		}
 
-		public R2YhBSV3zlYwiRqrxZHs(int P_0, int P_1)
+		public ParagraphRange(int P_0, int P_1)
 		{
 			SseStreamInitializer.InitializeRuntime();
-			nOyVURBbIRW = P_0;
+			_start = P_0;
 			_int = P_1;
 		}
 	}
 
-	private sealed class lK59I4VUBQWVJpoki7MO
+	private sealed class CellFormatSnapshot
 	{
 		[CompilerGenerated]
 		private string _nameFarEast;
@@ -79,10 +79,10 @@ internal static class BatchReplaceService
 		private WdUnderline? _underline;
 
 		[CompilerGenerated]
-		private WdParagraphAlignment? OwLVUINNXFp;
+		private WdParagraphAlignment? _paragraphAlignment;
 
 		[CompilerGenerated]
-		private WdCellVerticalAlignment? kSJVUiEkH09;
+		private WdCellVerticalAlignment? _verticalAlignment;
 
 		public string NameFarEast
 		{
@@ -187,12 +187,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return OwLVUINNXFp;
+				return _paragraphAlignment;
 			}
 			[CompilerGenerated]
 			set
 			{
-				OwLVUINNXFp = value;
+				_paragraphAlignment = value;
 			}
 		}
 
@@ -201,16 +201,16 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return kSJVUiEkH09;
+				return _verticalAlignment;
 			}
 			[CompilerGenerated]
 			set
 			{
-				kSJVUiEkH09 = value;
+				_verticalAlignment = value;
 			}
 		}
 
-		public lK59I4VUBQWVJpoki7MO()
+		public CellFormatSnapshot()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
@@ -219,26 +219,26 @@ internal static class BatchReplaceService
 	[CompilerGenerated]
 	private static class _G_o__17
 	{
-		public static CallSite<Func<CallSite, object, object>> Od9VU2HR5gW;
+		public static CallSite<Func<CallSite, object, object>> rowsMemberCallSite;
 
-		public static CallSite<Func<CallSite, object, object>> qehVU4CkmLe;
+		public static CallSite<Func<CallSite, object, object>> countMemberCallSite1;
 
-		public static CallSite<Func<CallSite, Type, object, object>> SLFVUj7dyZt;
+		public static CallSite<Func<CallSite, Type, object, object>> toInt32CallSite1;
 
-		public static CallSite<Func<CallSite, object, int>> X5sVUYorLpq;
+		public static CallSite<Func<CallSite, object, int>> intConvertCallSite1;
 
-		public static CallSite<Func<CallSite, object, object>> HOgVUZShiuk;
+		public static CallSite<Func<CallSite, object, object>> columnsMemberCallSite;
 
-		public static CallSite<Func<CallSite, object, object>> EaiVUfwFhWg;
+		public static CallSite<Func<CallSite, object, object>> countMemberCallSite2;
 
-		public static CallSite<Func<CallSite, Type, object, object>> KfbVUMxDE0h;
+		public static CallSite<Func<CallSite, Type, object, object>> toInt32CallSite2;
 
-		public static CallSite<Func<CallSite, object, int>> v2rVUb6foRt;
+		public static CallSite<Func<CallSite, object, int>> intConvertCallSite2;
 	}
 
-	private static readonly List<R2YhBSV3zlYwiRqrxZHs> HnMb6R7ZKw;
+	private static readonly List<ParagraphRange> savedParagraphRanges;
 
-	private static string Tv0buOiKWt;
+	private static string lastDocumentName;
 
 	private static Microsoft.Office.Interop.Word.Application App => WordTableToolService.WordApp;
 
@@ -257,7 +257,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	public static void q3PMb6fekY()
+	public static void InsertComment()
 	{
 		Selection selection = App.Selection;
 		object Direction = WdCollapseDirection.wdCollapseEnd;
@@ -268,7 +268,7 @@ internal static class BatchReplaceService
 		comments.Add(range, ref Direction);
 	}
 
-	public static void dR8MSOK1CL()
+	public static void DeleteComment()
 	{
 		try
 		{
@@ -280,7 +280,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	public static void vJhMwyuHtR()
+	public static void HighlightAllRevisions()
 	{
 		foreach (Revision revision in App.ActiveDocument.Revisions)
 		{
@@ -288,11 +288,11 @@ internal static class BatchReplaceService
 		}
 	}
 
-	public static void kcGMtYHAg8()
+	public static void PasteTableWithFormat()
 	{
 		try
 		{
-			if (!dGUMmCaDyi(out var num, out var num2))
+			if (!TryGetExcelSelectionDimensions(out var num, out var num2))
 			{
 				LoggerInitializer.ShowError("未获取到 Excel/WPS 复制区域。请先在 Excel 中复制表格，或关闭任务管理器中的残留 Excel 后重试。", "IP_Assurance");
 				return;
@@ -305,11 +305,11 @@ internal static class BatchReplaceService
 			}
 			int num3 = (dynamic)selection.get_Information(WdInformation.wdEndOfRangeColumnNumber);
 			int num4 = (dynamic)selection.get_Information(WdInformation.wdEndOfRangeRowNumber);
-			rmcMGCPGL3(num4, num3, num, num2);
-			List<lK59I4VUBQWVJpoki7MO> list = new List<lK59I4VUBQWVJpoki7MO>();
+			SelectCellRange(num4, num3, num, num2);
+			List<CellFormatSnapshot> list = new List<CellFormatSnapshot>();
 			foreach (Cell cell3 in App.Selection.Cells)
 			{
-				list.Add(T9LMLoTdMc(cell3));
+				list.Add(CaptureCellFormat(cell3));
 			}
 			if (num == 1 && num2 == 1)
 			{
@@ -320,15 +320,15 @@ internal static class BatchReplaceService
 				App.Selection.CopyFormat();
 				App.Selection.PasteAndFormat(WdRecoveryType.wdFormatPlainText);
 				App.Selection.PasteFormat();
-				cNwMlU2l5J(App.Selection.Range);
+				RemoveSpacesInRange(App.Selection.Range);
 			}
-			rmcMGCPGL3(num4, num3, num, num2);
+			SelectCellRange(num4, num3, num, num2);
 			int num5 = 0;
 			foreach (Cell cell4 in App.Selection.Cells)
 			{
 				if (num5 < list.Count)
 				{
-					brRMsIh3Cb(cell4, list[num5]);
+					ApplyCellFormat(cell4, list[num5]);
 				}
 				num5++;
 			}
@@ -339,9 +339,9 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static lK59I4VUBQWVJpoki7MO T9LMLoTdMc(Cell P_0)
+	private static CellFormatSnapshot CaptureCellFormat(Cell P_0)
 	{
-		lK59I4VUBQWVJpoki7MO lK59I4VUBQWVJpoki7MO2 = new lK59I4VUBQWVJpoki7MO();
+		CellFormatSnapshot lK59I4VUBQWVJpoki7MO2 = new CellFormatSnapshot();
 		Font font = P_0.Range.Font;
 		try
 		{
@@ -433,7 +433,7 @@ internal static class BatchReplaceService
 		return lK59I4VUBQWVJpoki7MO2;
 	}
 
-	private static void brRMsIh3Cb(Cell P_0, lK59I4VUBQWVJpoki7MO P_1)
+	private static void ApplyCellFormat(Cell P_0, CellFormatSnapshot P_1)
 	{
 		if (P_0 == null || P_1 == null)
 		{
@@ -532,13 +532,13 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static void cNwMlU2l5J(Range P_0)
+	private static void RemoveSpacesInRange(Range P_0)
 	{
-		mayMNkmhY0(P_0, " ", "");
-		mayMNkmhY0(P_0, "　", "");
+		FindAndReplaceText(P_0, " ", "");
+		FindAndReplaceText(P_0, "　", "");
 	}
 
-	private static void mayMNkmhY0(Range P_0, string P_1, string P_2)
+	private static void FindAndReplaceText(Range P_0, string P_1, string P_2)
 	{
 		Find find = P_0.Duplicate.Find;
 		find.ClearFormatting();
@@ -572,7 +572,7 @@ internal static class BatchReplaceService
 		find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl);
 	}
 
-	private static bool dGUMmCaDyi(out int P_0, out int P_1)
+	private static bool TryGetExcelSelectionDimensions(out int P_0, out int P_1)
 	{
 		P_0 = 0;
 		P_1 = 0;
@@ -582,50 +582,50 @@ internal static class BatchReplaceService
 			if (obj != null)
 			{
 				object arg = obj;
-				if (_G_o__17.SLFVUj7dyZt == null)
+				if (_G_o__17.toInt32CallSite1 == null)
 				{
-					_G_o__17.SLFVUj7dyZt = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToInt32", null, typeof(BatchReplaceService), new CSharpArgumentInfo[2]
+					_G_o__17.toInt32CallSite1 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToInt32", null, typeof(BatchReplaceService), new CSharpArgumentInfo[2]
 					{
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 					}));
 				}
-				Func<CallSite, Type, object, object> target = _G_o__17.SLFVUj7dyZt.Target;
-				CallSite<Func<CallSite, Type, object, object>> sLFVUj7dyZt = _G_o__17.SLFVUj7dyZt;
+				Func<CallSite, Type, object, object> target = _G_o__17.toInt32CallSite1.Target;
+				CallSite<Func<CallSite, Type, object, object>> sLFVUj7dyZt = _G_o__17.toInt32CallSite1;
 				Type typeFromHandle = typeof(Convert);
-				if (_G_o__17.qehVU4CkmLe == null)
+				if (_G_o__17.countMemberCallSite1 == null)
 				{
-					_G_o__17.qehVU4CkmLe = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Count", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__17.countMemberCallSite1 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Count", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				Func<CallSite, object, object> target2 = _G_o__17.qehVU4CkmLe.Target;
-				CallSite<Func<CallSite, object, object>> qehVU4CkmLe = _G_o__17.qehVU4CkmLe;
-				if (_G_o__17.Od9VU2HR5gW == null)
+				Func<CallSite, object, object> target2 = _G_o__17.countMemberCallSite1.Target;
+				CallSite<Func<CallSite, object, object>> countMemberCallSite1 = _G_o__17.countMemberCallSite1;
+				if (_G_o__17.rowsMemberCallSite == null)
 				{
-					_G_o__17.Od9VU2HR5gW = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Rows", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__17.rowsMemberCallSite = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Rows", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				P_0 = (dynamic)target(sLFVUj7dyZt, typeFromHandle, target2(qehVU4CkmLe, _G_o__17.Od9VU2HR5gW.Target(_G_o__17.Od9VU2HR5gW, arg)));
-				if (_G_o__17.KfbVUMxDE0h == null)
+				P_0 = (dynamic)target(sLFVUj7dyZt, typeFromHandle, target2(countMemberCallSite1, _G_o__17.rowsMemberCallSite.Target(_G_o__17.rowsMemberCallSite, arg)));
+				if (_G_o__17.toInt32CallSite2 == null)
 				{
-					_G_o__17.KfbVUMxDE0h = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToInt32", null, typeof(BatchReplaceService), new CSharpArgumentInfo[2]
+					_G_o__17.toInt32CallSite2 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToInt32", null, typeof(BatchReplaceService), new CSharpArgumentInfo[2]
 					{
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.UseCompileTimeType | CSharpArgumentInfoFlags.IsStaticType, null),
 						CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null)
 					}));
 				}
-				Func<CallSite, Type, object, object> target3 = _G_o__17.KfbVUMxDE0h.Target;
-				CallSite<Func<CallSite, Type, object, object>> kfbVUMxDE0h = _G_o__17.KfbVUMxDE0h;
+				Func<CallSite, Type, object, object> target3 = _G_o__17.toInt32CallSite2.Target;
+				CallSite<Func<CallSite, Type, object, object>> kfbVUMxDE0h = _G_o__17.toInt32CallSite2;
 				Type typeFromHandle2 = typeof(Convert);
-				if (_G_o__17.EaiVUfwFhWg == null)
+				if (_G_o__17.countMemberCallSite2 == null)
 				{
-					_G_o__17.EaiVUfwFhWg = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Count", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__17.countMemberCallSite2 = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Count", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				Func<CallSite, object, object> target4 = _G_o__17.EaiVUfwFhWg.Target;
-				CallSite<Func<CallSite, object, object>> eaiVUfwFhWg = _G_o__17.EaiVUfwFhWg;
-				if (_G_o__17.HOgVUZShiuk == null)
+				Func<CallSite, object, object> target4 = _G_o__17.countMemberCallSite2.Target;
+				CallSite<Func<CallSite, object, object>> eaiVUfwFhWg = _G_o__17.countMemberCallSite2;
+				if (_G_o__17.columnsMemberCallSite == null)
 				{
-					_G_o__17.HOgVUZShiuk = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Columns", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
+					_G_o__17.columnsMemberCallSite = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Columns", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				P_1 = (dynamic)target3(kfbVUMxDE0h, typeFromHandle2, target4(eaiVUfwFhWg, _G_o__17.HOgVUZShiuk.Target(_G_o__17.HOgVUZShiuk, arg)));
+				P_1 = (dynamic)target3(kfbVUMxDE0h, typeFromHandle2, target4(eaiVUfwFhWg, _G_o__17.columnsMemberCallSite.Target(_G_o__17.columnsMemberCallSite, arg)));
 				if (P_0 > 0 && P_1 > 0)
 				{
 					return true;
@@ -635,10 +635,10 @@ internal static class BatchReplaceService
 		catch (Exception)
 		{
 		}
-		return YIZMoRKpVb(out P_0, out P_1);
+		return TryGetClipboardTextDimensions(out P_0, out P_1);
 	}
 
-	private static bool YIZMoRKpVb(out int P_0, out int P_1)
+	private static bool TryGetClipboardTextDimensions(out int P_0, out int P_1)
 	{
 		P_0 = 0;
 		P_1 = 0;
@@ -673,7 +673,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static void rmcMGCPGL3(int P_0, int P_1, int P_2, int P_3)
+	private static void SelectCellRange(int P_0, int P_1, int P_2, int P_3)
 	{
 		Selection selection = App.Selection;
 		selection.Tables[1].Cell(P_0, P_1).Select();
@@ -716,7 +716,7 @@ internal static class BatchReplaceService
 				paragraph.Range.Font.NameFarEast = Cfg.GetString("段落_表前单位_中文字体", "宋体");
 				paragraph.Range.Font.NameAscii = Cfg.GetString("段落_表前单位_西文字体", "Times New Roman");
 				paragraph.Range.Font.NameOther = Cfg.GetString("段落_表前单位_西文字体", "Times New Roman");
-				paragraph.Range.Font.Size = LKIMOlo9Fh("段落_表前单位_字号", 10.5);
+				paragraph.Range.Font.Size = GetFloatConfig("段落_表前单位_字号", 10.5);
 				paragraph.Range.Font.Bold = 0;
 			}
 		}
@@ -726,7 +726,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	public static void xgwMpXfu5F()
+	public static void FormatAfterTableNote()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -746,10 +746,10 @@ internal static class BatchReplaceService
 				paragraph.Range.Font.NameFarEast = Cfg.GetString("段落_表后注释_中文字体", "宋体");
 				paragraph.Range.Font.NameAscii = Cfg.GetString("段落_表后注释_西文字体", "Times New Roman");
 				paragraph.Range.Font.NameOther = Cfg.GetString("段落_表后注释_西文字体", "Times New Roman");
-				paragraph.Range.Font.Size = LKIMOlo9Fh("段落_表后注释_字号", 10.5);
+				paragraph.Range.Font.Size = GetFloatConfig("段落_表后注释_字号", 10.5);
 				paragraph.Range.Font.Bold = 0;
-				j8WM7tPosj(paragraphFormat, "表后注释", "无", 0.0, "字符");
-				Q96McYSHJA(paragraphFormat, "表后注释", 3, 0, "行");
+				ApplyIndentation(paragraphFormat, "表后注释", "无", 0.0, "字符");
+				ApplySpacing(paragraphFormat, "表后注释", 3, 0, "行");
 			}
 		}
 		finally
@@ -758,12 +758,12 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static float LKIMOlo9Fh(string P_0, double P_1)
+	private static float GetFloatConfig(string P_0, double P_1)
 	{
-		return (float)AiHelper_20.NgZw6CkHuw(Cfg.GetString(P_0, string.Empty), P_1);
+		return (float)AiHelper_20.GetConfigFontSize(Cfg.GetString(P_0, string.Empty), P_1);
 	}
 
-	private static void S3UMntpQqj(ParagraphFormat P_0)
+	private static void ResetIndentation(ParagraphFormat P_0)
 	{
 		P_0.LeftIndent = 0f;
 		P_0.RightIndent = 0f;
@@ -779,9 +779,9 @@ internal static class BatchReplaceService
 		P_0.CharacterUnitFirstLineIndent = 0f;
 	}
 
-	private static void j8WM7tPosj(ParagraphFormat P_0, string P_1, string P_2, double P_3, string P_4 = "字符")
+	private static void ApplyIndentation(ParagraphFormat P_0, string P_1, string P_2, double P_3, string P_4 = "字符")
 	{
-		S3UMntpQqj(P_0);
+		ResetIndentation(P_0);
 		double num = Cfg.GetDouble("段落_" + P_1 + "_左缩进");
 		double num2 = Cfg.GetDouble("段落_" + P_1 + "_右缩进");
 		string text = (Cfg.GetString("段落_" + P_1 + "_缩进单位", P_4) ?? string.Empty).ToLower();
@@ -821,7 +821,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static void ubNM5IVjYp(ParagraphFormat P_0)
+	private static void ResetSpacing(ParagraphFormat P_0)
 	{
 		P_0.SpaceBeforeAuto = 0;
 		P_0.SpaceAfterAuto = 0;
@@ -837,9 +837,9 @@ internal static class BatchReplaceService
 		P_0.LineUnitAfter = 0f;
 	}
 
-	private static void Q96McYSHJA(ParagraphFormat P_0, string P_1, int P_2, int P_3, string P_4 = "行", double P_5 = 0.0, double P_6 = 0.0, bool P_7 = true)
+	private static void ApplySpacing(ParagraphFormat P_0, string P_1, int P_2, int P_3, string P_4 = "行", double P_5 = 0.0, double P_6 = 0.0, bool P_7 = true)
 	{
-		ubNM5IVjYp(P_0);
+		ResetSpacing(P_0);
 		if (P_7)
 		{
 			P_0.Alignment = (WdParagraphAlignment)Cfg.GetInt("段落_" + P_1 + "_对齐方式", P_2);
@@ -870,17 +870,17 @@ internal static class BatchReplaceService
 		}
 	}
 
-	public static void BBAMen3SA4()
+	public static void FormatSelectionParagraphs()
 	{
-		gJhMybnA3f(App.Selection.Range, true);
+		FormatRangeParagraphs(App.Selection.Range, true);
 	}
 
-	internal static void gJhMybnA3f(Range P_0, bool P_1)
+	internal static void FormatRangeParagraphs(Range P_0, bool P_1)
 	{
-		hn7MXTwgTj(P_0, P_1, null);
+		FormatRangeParagraphsWithCallback(P_0, P_1, null);
 	}
 
-	internal static void hn7MXTwgTj(Range P_0, bool P_1, Func<int, int, string, bool> P_2)
+	internal static void FormatRangeParagraphsWithCallback(Range P_0, bool P_1, Func<int, int, string, bool> P_2)
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -898,7 +898,7 @@ internal static class BatchReplaceService
 			bool flag = P_1 && P_2 == null;
 			if (flag)
 			{
-				progressWindow = KZ1bRCaswy();
+				progressWindow = CreateProgressWindow();
 			}
 			foreach (Paragraph paragraph in P_0.Paragraphs)
 			{
@@ -917,9 +917,9 @@ internal static class BatchReplaceService
 					int outlineLevel = (int)paragraph.OutlineLevel;
 					if (outlineLevel >= 1 && outlineLevel <= 5)
 					{
-						text = TwVMhPQDZD(outlineLevel);
+						text = GetOutlineLevelName(outlineLevel);
 					}
-					if (!iduMFMMQXY(paragraph, text, out var ex2))
+					if (!ApplyParagraphFormat(paragraph, text, out var ex2))
 					{
 						num2++;
 						if (ex == null)
@@ -936,7 +936,7 @@ internal static class BatchReplaceService
 						break;
 					}
 				}
-				else if (flag && !LUqbVxwwvy(progressWindow, num, count))
+				else if (flag && !UpdateProgressWithCancelCheck(progressWindow, num, count))
 				{
 					break;
 				}
@@ -948,12 +948,12 @@ internal static class BatchReplaceService
 		}
 		finally
 		{
-			AVsb9xRHFx(progressWindow);
+			CloseProgressWindow(progressWindow);
 			App.ScreenUpdating = true;
 		}
 	}
 
-	private static bool iduMFMMQXY(Paragraph P_0, string P_1, out Exception P_2)
+	private static bool ApplyParagraphFormat(Paragraph P_0, string P_1, out Exception P_2)
 	{
 		P_2 = null;
 		try
@@ -962,10 +962,10 @@ internal static class BatchReplaceService
 			P_0.Range.Font.NameFarEast = Cfg.GetString("段落_" + P_1 + "_中文字体", "宋体");
 			P_0.Range.Font.NameAscii = Cfg.GetString("段落_" + P_1 + "_西文字体", "Times New Roman");
 			P_0.Range.Font.NameOther = Cfg.GetString("段落_" + P_1 + "_西文字体", "Times New Roman");
-			P_0.Range.Font.Size = LKIMOlo9Fh("段落_" + P_1 + "_字号", 10.5);
+			P_0.Range.Font.Size = GetFloatConfig("段落_" + P_1 + "_字号", 10.5);
 			ParagraphFormat paragraphFormat = P_0.Range.ParagraphFormat;
-			j8WM7tPosj(paragraphFormat, P_1, "无", 0.0, "字符");
-			Q96McYSHJA(paragraphFormat, P_1, 3, 0, "行");
+			ApplyIndentation(paragraphFormat, P_1, "无", 0.0, "字符");
+			ApplySpacing(paragraphFormat, P_1, 3, 0, "行");
 			return true;
 		}
 		catch (Exception ex)
@@ -975,7 +975,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static string TwVMhPQDZD(int P_0)
+	private static string GetOutlineLevelName(int P_0)
 	{
 		return P_0 switch
 		{
@@ -988,7 +988,7 @@ internal static class BatchReplaceService
 		};
 	}
 
-	public static void IlFMa7FUcE()
+	public static void SelectAllAfterTableFirstParagraphs()
 	{
 		Document activeDocument = App.ActiveDocument;
 		ProgressWindow progressWindow = null;
@@ -998,12 +998,12 @@ internal static class BatchReplaceService
 		bool flag2 = false;
 		try
 		{
-			YHNM0Sk6OR();
-			Tv0buOiKWt = BeyMkY7TTX(activeDocument);
+			ClearParagraphCache();
+			lastDocumentName = GetDocumentName(activeDocument);
 			int count = activeDocument.Tables.Count;
 			int num2 = 0;
-			progressWindow = KZ1bRCaswy();
-			AC9bBhOofI(progressWindow, 0, "正在清理上次选择标记...");
+			progressWindow = CreateProgressWindow();
+			SetProgressWithCancelCheck(progressWindow, 0, "正在清理上次选择标记...");
 			flag = true;
 			object EditorID = WdEditorType.wdEditorEveryone;
 			activeDocument.DeleteAllEditableRanges(ref EditorID);
@@ -1024,24 +1024,24 @@ internal static class BatchReplaceService
 					num3 = activeDocument.Tables[i + 1].Range.Start;
 				}
 				int num4 = num3;
-				Paragraph paragraph = c36MxXjenX(activeDocument, table, num4);
+				Paragraph paragraph = FindFirstParagraphAfterTable(activeDocument, table, num4);
 				if (paragraph != null)
 				{
 					flag = true;
 					Editors editors = paragraph.Range.Editors;
 					object End = WdEditorType.wdEditorEveryone;
 					editors.Add(ref End);
-					HnMb6R7ZKw.Add(new R2YhBSV3zlYwiRqrxZHs(paragraph.Range.Start, paragraph.Range.End));
+					savedParagraphRanges.Add(new ParagraphRange(paragraph.Range.Start, paragraph.Range.End));
 					num++;
 				}
-				if (!LUqbVxwwvy(progressWindow, num2, count))
+				if (!UpdateProgressWithCancelCheck(progressWindow, num2, count))
 				{
 					break;
 				}
 			}
 			if (num == 0)
 			{
-				YHNM0Sk6OR();
+				ClearParagraphCache();
 			}
 			if (num > 0)
 			{
@@ -1050,7 +1050,7 @@ internal static class BatchReplaceService
 			}
 			if (flag)
 			{
-				AC9bBhOofI(progressWindow, 100, "正在清理选择标记，耗时可能较长，请耐心等待...");
+				SetProgressWithCancelCheck(progressWindow, 100, "正在清理选择标记，耗时可能较长，请耐心等待...");
 				object End = WdEditorType.wdEditorEveryone;
 				activeDocument.DeleteAllEditableRanges(ref End);
 				flag2 = true;
@@ -1060,7 +1060,7 @@ internal static class BatchReplaceService
 		}
 		finally
 		{
-			AVsb9xRHFx(progressWindow);
+			CloseProgressWindow(progressWindow);
 			if (flag && !flag2)
 			{
 				try
@@ -1077,7 +1077,7 @@ internal static class BatchReplaceService
 		LoggerInitializer.ShowInfo(text, "IP_Assurance");
 	}
 
-	public static void a3lMqZdKO0()
+	public static void ProcessAfterTableSpacing()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -1087,45 +1087,45 @@ internal static class BatchReplaceService
 		try
 		{
 			Document activeDocument = App.ActiveDocument;
-			if (OOQMWQhlVh(activeDocument))
+			if (IsCacheValid(activeDocument))
 			{
-				progressWindow = KZ1bRCaswy();
-				num = NJWMPFP8I4(activeDocument, progressWindow);
-				YHNM0Sk6OR();
+				progressWindow = CreateProgressWindow();
+				num = ProcessSavedRanges(activeDocument, progressWindow);
+				ClearParagraphCache();
 			}
 			else
 			{
-				if (HnMb6R7ZKw.Count > 0)
+				if (savedParagraphRanges.Count > 0)
 				{
-					YHNM0Sk6OR();
+					ClearParagraphCache();
 				}
-				progressWindow = KZ1bRCaswy();
-				num = hQLMABhHAB(progressWindow);
+				progressWindow = CreateProgressWindow();
+				num = ProcessSelectedParagraphs(progressWindow);
 			}
 			text = ((num > 0) ? string.Format("未找到可处理的表后段落，请先执行“全选表后第一段”或手动选中表后段落。", num) : "表后间距处理完成，共处理 {0} 段。");
 		}
 		finally
 		{
-			AVsb9xRHFx(progressWindow);
+			CloseProgressWindow(progressWindow);
 			App.ScreenUpdating = true;
 		}
 		LoggerInitializer.ShowInfo(text, "IP_Assurance");
 	}
 
-	private static int NJWMPFP8I4(Document P_0, ProgressWindow P_1)
+	private static int ProcessSavedRanges(Document P_0, ProgressWindow P_1)
 	{
 		int num = 0;
 		object Start = Type.Missing;
 		object End = Type.Missing;
 		int end = P_0.Range(ref Start, ref End).End;
-		int count = HnMb6R7ZKw.Count;
+		int count = savedParagraphRanges.Count;
 		int num2 = 0;
-		foreach (R2YhBSV3zlYwiRqrxZHs item in HnMb6R7ZKw)
+		foreach (ParagraphRange item in savedParagraphRanges)
 		{
 			num2++;
 			if (item.Start < 0 || item.End <= item.Start || item.End > end)
 			{
-				if (!LUqbVxwwvy(P_1, num2, count))
+				if (!UpdateProgressWithCancelCheck(P_1, num2, count))
 				{
 					break;
 				}
@@ -1136,17 +1136,17 @@ internal static class BatchReplaceService
 			Range range = P_0.Range(ref End, ref Start);
 			if (range.Paragraphs.Count == 0)
 			{
-				if (!LUqbVxwwvy(P_1, num2, count))
+				if (!UpdateProgressWithCancelCheck(P_1, num2, count))
 				{
 					break;
 				}
 				continue;
 			}
-			if (pl6MvbKkEA(range.Paragraphs[1]))
+			if (FormatAfterTableParagraph(range.Paragraphs[1]))
 			{
 				num++;
 			}
-			if (!LUqbVxwwvy(P_1, num2, count))
+			if (!UpdateProgressWithCancelCheck(P_1, num2, count))
 			{
 				break;
 			}
@@ -1154,7 +1154,7 @@ internal static class BatchReplaceService
 		return num;
 	}
 
-	private static int hQLMABhHAB(ProgressWindow P_0)
+	private static int ProcessSelectedParagraphs(ProgressWindow P_0)
 	{
 		int num = 0;
 		Paragraphs paragraphs = App.Selection.Paragraphs;
@@ -1163,11 +1163,11 @@ internal static class BatchReplaceService
 		foreach (Paragraph item in paragraphs)
 		{
 			num2++;
-			if (pl6MvbKkEA(item))
+			if (FormatAfterTableParagraph(item))
 			{
 				num++;
 			}
-			if (!LUqbVxwwvy(P_0, num2, count))
+			if (!UpdateProgressWithCancelCheck(P_0, num2, count))
 			{
 				break;
 			}
@@ -1175,7 +1175,7 @@ internal static class BatchReplaceService
 		return num;
 	}
 
-	private static bool pl6MvbKkEA(Paragraph P_0)
+	private static bool FormatAfterTableParagraph(Paragraph P_0)
 	{
 		bool flag = false;
 		try
@@ -1189,26 +1189,26 @@ internal static class BatchReplaceService
 		{
 			return false;
 		}
-		Q96McYSHJA(P_0.Range.ParagraphFormat, "表后段落", 3, 4, "磅", 0.0, 2.5, false);
+		ApplySpacing(P_0.Range.ParagraphFormat, "表后段落", 3, 4, "磅", 0.0, 2.5, false);
 		return true;
 	}
 
-	private static bool OOQMWQhlVh(Document P_0)
+	private static bool IsCacheValid(Document P_0)
 	{
-		if (HnMb6R7ZKw.Count == 0)
+		if (savedParagraphRanges.Count == 0)
 		{
 			return false;
 		}
-		return string.Equals(Tv0buOiKWt, BeyMkY7TTX(P_0), StringComparison.Ordinal);
+		return string.Equals(lastDocumentName, GetDocumentName(P_0), StringComparison.Ordinal);
 	}
 
-	private static void YHNM0Sk6OR()
+	private static void ClearParagraphCache()
 	{
-		HnMb6R7ZKw.Clear();
-		Tv0buOiKWt = string.Empty;
+		savedParagraphRanges.Clear();
+		lastDocumentName = string.Empty;
 	}
 
-	private static string BeyMkY7TTX(Document P_0)
+	private static string GetDocumentName(Document P_0)
 	{
 		try
 		{
@@ -1227,7 +1227,7 @@ internal static class BatchReplaceService
 		return string.Empty;
 	}
 
-	private static Paragraph c36MxXjenX(Document P_0, Table P_1, int P_2)
+	private static Paragraph FindFirstParagraphAfterTable(Document P_0, Table P_1, int P_2)
 	{
 		int end = P_1.Range.End;
 		if (end >= P_2)
@@ -1257,7 +1257,7 @@ internal static class BatchReplaceService
 		return null;
 	}
 
-	public static void lUNMdtyonR()
+	public static void MergeConsecutiveBlankParagraphs()
 	{
 		try
 		{
@@ -1307,7 +1307,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	public static void JasMzZGiuF()
+	public static void RemoveParagraphMarksInRange()
 	{
 		try
 		{
@@ -1365,7 +1365,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static ProgressWindow KZ1bRCaswy()
+	private static ProgressWindow CreateProgressWindow()
 	{
 		try
 		{
@@ -1379,7 +1379,7 @@ internal static class BatchReplaceService
 		}
 	}
 
-	private static bool LUqbVxwwvy(ProgressWindow P_0, int P_1, int P_2)
+	private static bool UpdateProgressWithCancelCheck(ProgressWindow P_0, int P_1, int P_2)
 	{
 		if (P_0 == null)
 		{
@@ -1403,7 +1403,7 @@ internal static class BatchReplaceService
 		return P_0.IsVisible;
 	}
 
-	private static bool AC9bBhOofI(ProgressWindow P_0, int P_1, string P_2)
+	private static bool SetProgressWithCancelCheck(ProgressWindow P_0, int P_1, string P_2)
 	{
 		if (P_0 == null)
 		{
@@ -1426,7 +1426,7 @@ internal static class BatchReplaceService
 		return P_0.IsVisible;
 	}
 
-	private static void AVsb9xRHFx(ProgressWindow P_0)
+	private static void CloseProgressWindow(ProgressWindow P_0)
 	{
 		if (P_0 == null)
 		{
@@ -1444,7 +1444,7 @@ internal static class BatchReplaceService
 	static BatchReplaceService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		HnMb6R7ZKw = new List<R2YhBSV3zlYwiRqrxZHs>();
-		Tv0buOiKWt = string.Empty;
+		savedParagraphRanges = new List<ParagraphRange>();
+		lastDocumentName = string.Empty;
 	}
 }

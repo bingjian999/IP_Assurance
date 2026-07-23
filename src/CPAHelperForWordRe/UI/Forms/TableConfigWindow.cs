@@ -24,8 +24,8 @@ public sealed class TableConfigWindow : Window, IComponentConnector
 		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		_formatPresetConfig = new FormatPresetConfig(new JsonFileDialogHelper());
-		_formatPresetConfig.BBoNAij429(base.Close);
-		_formatPresetConfig.QdBN0W28SI(hJsC2ywgN3);
+		_formatPresetConfig.add_CloseRequested(base.Close);
+		_formatPresetConfig.add_OpenParagraphRequested(hJsC2ywgN3);
 		base.DataContext = _formatPresetConfig;
 		base.PreviewKeyDown += cgPCEufjgs;
 	}

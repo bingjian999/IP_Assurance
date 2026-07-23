@@ -138,10 +138,10 @@ internal sealed class ProviderConfig
 		}
 		for (int i = 0; i < Providers.Count; i++)
 		{
-			AiProviderConfig tjgkXoLTQE08rAvKTCC = Providers[i] ?? new AiProviderConfig();
-			tjgkXoLTQE08rAvKTCC.Name = AiProviderConfig.wFmLiEaskI(tjgkXoLTQE08rAvKTCC.Name, "配置" + (i + 1));
-			tjgkXoLTQE08rAvKTCC.Provider = AiHelper_8.CVZLBdQFXa(tjgkXoLTQE08rAvKTCC.Provider);
-			Providers[i] = tjgkXoLTQE08rAvKTCC;
+			AiProviderConfig provider = Providers[i] ?? new AiProviderConfig();
+			provider.Name = AiProviderConfig.wFmLiEaskI(provider.Name, "配置" + (i + 1));
+			provider.Provider = AiHelper_8.CVZLBdQFXa(provider.Provider);
+			Providers[i] = provider;
 		}
 		if (Providers.Count == 0)
 		{

@@ -416,7 +416,7 @@ internal class AiSseStreamService3
 	{
 		if (!fipsChecked)
 		{
-			r5xVSpS7YWm();
+			CheckFipsCompliance();
 			fipsChecked = true;
 		}
 		return isFipsEnabled;
@@ -553,7 +553,7 @@ internal class AiSseStreamService3
 		}
 	}
 
-	internal static void r5xVSpS7YWm()
+	internal static void CheckFipsCompliance()
 	{
 		try
 		{
@@ -690,14 +690,14 @@ internal class AiSseStreamService3
 						array = array2;
 						array2 = null;
 						int num11 = array.Length / 8;
-						BinaryReaderWrapper pG2pc9VtDNfcA9tWEu1l2 = new BinaryReaderWrapper(new MemoryStream(array));
+						BinaryReaderWrapper tokenMapReader = new BinaryReaderWrapper(new MemoryStream(array));
 						for (int l = 0; l < num11; l++)
 						{
-							int key = pG2pc9VtDNfcA9tWEu1l2.ReadInt32();
-							int value = pG2pc9VtDNfcA9tWEu1l2.ReadInt32();
+							int key = tokenMapReader.ReadInt32();
+							int value = tokenMapReader.ReadInt32();
 							dictionary.Add(key, value);
 						}
-						pG2pc9VtDNfcA9tWEu1l2.Close();
+						tokenMapReader.Close();
 					}
 					tokenMap = dictionary;
 				}

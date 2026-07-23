@@ -9,7 +9,7 @@ using LoggerInitializer;
 
 namespace JsonFileDialogHelper;
 
-internal sealed class JsonFileDialogHelper : HDS8hJGbnCWyNGfO01j
+internal sealed class JsonFileDialogHelper : DialogService
 {
 	public string hveVL8NJXjM(string P_0, string P_1, string P_2)
 	{

@@ -116,14 +116,14 @@ public class ToolAggregator
 		}
 		if (groups != null)
 		{
-			HashSet<string> hashSet2 = new HashSet<string>(from g in groups
+			HashSet<string> hashSet = new HashSet<string>(from g in groups
 				where !string.IsNullOrWhiteSpace(g)
 				select g.Trim(), StringComparer.OrdinalIgnoreCase);
-			if (hashSet2.Count > 0)
+			if (hashSet.Count > 0)
 			{
 				foreach (ToolCatalogEntry value2 in catalog.Values)
 				{
-					if ((value2.Metadata.Groups ?? Array.Empty<string>()).Any(hashSet2.Contains))
+					if ((value2.Metadata.Groups ?? Array.Empty<string>()).Any(hashSet.Contains))
 					{
 						hashSet.Add(value2.Metadata.Name);
 					}

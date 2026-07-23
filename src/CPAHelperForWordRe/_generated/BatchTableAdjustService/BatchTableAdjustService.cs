@@ -19,7 +19,7 @@ namespace BatchTableAdjustService;
 
 internal static class BatchTableAdjustService
 {
-	private struct soxkFLV3PXnjCVvjIodG
+	private struct TableRange
 	{
 		[CompilerGenerated]
 		private readonly int _int;
@@ -45,7 +45,7 @@ internal static class BatchTableAdjustService
 			}
 		}
 
-		public soxkFLV3PXnjCVvjIodG(int P_0, int P_1)
+		public TableRange(int P_0, int P_1)
 		{
 			SseStreamInitializer.InitializeRuntime();
 			_int = P_0;
@@ -53,15 +53,15 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static readonly List<soxkFLV3PXnjCVvjIodG> gfbMjFCyLI;
+	private static readonly List<TableRange> _tableRanges;
 
-	private static string Ld2MYPqMYJ;
+	private static string _selectedDocumentName;
 
 	private static Application App => WordTableToolService.WordApp;
 
 	private static TableBorderConfig Cfg => TableBorderConfig.Current;
 
-	public static void w3YfsuDd2C()
+	public static void AdjustTableLayout()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -75,7 +75,7 @@ internal static class BatchTableAdjustService
 			}
 			else
 			{
-				tJOfotRwYS(App.Selection.Tables[1]);
+				ApplyTableFormat(App.Selection.Tables[1]);
 			}
 		}
 		finally
@@ -85,7 +85,7 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	public static void HUeflwYrZr()
+	public static void BatchAdjustTables()
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -98,32 +98,32 @@ internal static class BatchTableAdjustService
 			Document activeDocument = App.ActiveDocument;
 			if (App.Selection.Tables.Count > 1)
 			{
-				if (gfbMjFCyLI.Count > 0)
+				if (_tableRanges.Count > 0)
 				{
-					zIhMBFWLgR();
+					ClearSavedTableRanges();
 				}
 				foreach (Table table in App.Selection.Tables)
 				{
 					list.Add(table);
 				}
 			}
-			else if (jrNMVJb8eb(activeDocument))
+			else if (IsSelectionValid(activeDocument))
 			{
-				int count = gfbMjFCyLI.Count;
+				int count = _tableRanges.Count;
 				if (!LoggerInitializer.ShowConfirm(string.Format("将批量调整 {0} 个表格，是否确认？", count), "IP_Assurance"))
 				{
-					zIhMBFWLgR();
-					arEM9085NB();
+					ClearSavedTableRanges();
+					CollapseSelectionToStart();
 					return;
 				}
-				list.AddRange(C4AMRNDLN2(activeDocument));
-				zIhMBFWLgR();
+				list.AddRange(EnumerateTablesByRanges(activeDocument));
+				ClearSavedTableRanges();
 			}
 			else
 			{
-				if (gfbMjFCyLI.Count > 0)
+				if (_tableRanges.Count > 0)
 				{
-					zIhMBFWLgR();
+					ClearSavedTableRanges();
 				}
 				foreach (Table table2 in App.Selection.Tables)
 				{
@@ -136,13 +136,13 @@ internal static class BatchTableAdjustService
 				LoggerInitializer.ShowInfo("请选择一个或多个表格", "IP_Assurance");
 				return;
 			}
-			progressWindow = FGWMKLUgfT();
+			progressWindow = CreateProgressWindow();
 			int num = 0;
 			foreach (Table item in list)
 			{
 				num++;
-				tJOfotRwYS(item);
-				if (!RMuMEjDOZl(progressWindow, num, count2))
+				ApplyTableFormat(item);
+				if (!UpdateProgress(progressWindow, num, count2))
 				{
 					break;
 				}
@@ -150,18 +150,18 @@ internal static class BatchTableAdjustService
 		}
 		finally
 		{
-			APiM2MyCoG(progressWindow);
+			CloseProgressWindow(progressWindow);
 			App.DisplayAlerts = displayAlerts;
 			App.ScreenUpdating = true;
 		}
 	}
 
-	internal static void gojfNdk84l(Range P_0, bool P_1)
+	internal static void AdjustTablesInRange(Range P_0, bool P_1)
 	{
-		EQ9fmGO0V5(P_0, P_1, null);
+		AdjustTablesInRangeWithCallback(P_0, P_1, null);
 	}
 
-	internal static void EQ9fmGO0V5(Range P_0, bool P_1, Func<int, int, string, bool> P_2)
+	internal static void AdjustTablesInRangeWithCallback(Range P_0, bool P_1, Func<int, int, string, bool> P_2)
 	{
 		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
@@ -187,13 +187,13 @@ internal static class BatchTableAdjustService
 			bool flag = P_1 && P_2 == null;
 			if (flag)
 			{
-				progressWindow = FGWMKLUgfT();
+				progressWindow = CreateProgressWindow();
 			}
 			int num = 0;
 			foreach (Table item in list)
 			{
 				num++;
-				tJOfotRwYS(item);
+				ApplyTableFormat(item);
 				string arg = string.Format("正在设置表格格式：{0} / {1}", num, count);
 				if (P_2 != null)
 				{
@@ -202,7 +202,7 @@ internal static class BatchTableAdjustService
 						break;
 					}
 				}
-				else if (flag && !RMuMEjDOZl(progressWindow, num, count))
+				else if (flag && !UpdateProgress(progressWindow, num, count))
 				{
 					break;
 				}
@@ -210,35 +210,35 @@ internal static class BatchTableAdjustService
 		}
 		finally
 		{
-			APiM2MyCoG(progressWindow);
+			CloseProgressWindow(progressWindow);
 			App.DisplayAlerts = displayAlerts;
 			App.ScreenUpdating = true;
 		}
 	}
 
-	private static void tJOfotRwYS(Table P_0)
+	private static void ApplyTableFormat(Table P_0)
 	{
 		try
 		{
-			QIqfGKR4iP(P_0);
-			aamfC9ACiU(P_0);
-			xgpfpoxHX1(P_0);
-			BgLfO8piTN(P_0);
-			KgZfnhfLrg(P_0);
-			FUyf5FLht2(P_0);
-			adofcgNH6g(P_0);
-			YlGfFlkZOo(P_0);
+			ClearShadingAndSetStyle(P_0);
+			SetCellPadding(P_0);
+			SetBorderStyles(P_0);
+			SetFirstColumnRightBorder(P_0);
+			SetRowProperties(P_0);
+			SetFontAndParagraphFormat(P_0);
+			ClassifyAndFormatCells(P_0);
+			FormatHeaderRow(P_0);
 			P_0.Columns.PreferredWidthType = WdPreferredWidthType.wdPreferredWidthAuto;
 			P_0.AutoFitBehavior(WdAutoFitBehavior.wdAutoFitContent);
-			CjXfAMIflY(P_0);
+			ApplyWidthMode(P_0);
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("表格调整失败", ex);
+			LogTableAdjustWarning("表格调整失败", ex);
 		}
 	}
 
-	private static void QIqfGKR4iP(Table P_0)
+	private static void ClearShadingAndSetStyle(Table P_0)
 	{
 		try
 		{
@@ -251,11 +251,11 @@ internal static class BatchTableAdjustService
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("检查表格底色/样式", ex);
+			LogTableAdjustWarning("检查表格底色/样式", ex);
 		}
 	}
 
-	private static void aamfC9ACiU(Table P_0)
+	private static void SetCellPadding(Table P_0)
 	{
 		try
 		{
@@ -276,11 +276,11 @@ internal static class BatchTableAdjustService
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("检查单元格边距配置", ex);
+			LogTableAdjustWarning("检查单元格边距配置", ex);
 		}
 	}
 
-	private static void xgpfpoxHX1(Table P_0)
+	private static void SetBorderStyles(Table P_0)
 	{
 		string[] array = new string[8]
 		{
@@ -312,7 +312,7 @@ internal static class BatchTableAdjustService
 			}
 			catch (Exception ex)
 			{
-				E6DM4XRwUl("检查边框样式配置: " + array[i], ex);
+				LogTableAdjustWarning("检查边框样式配置: " + array[i], ex);
 			}
 		}
 		string[] array3 = new string[6]
@@ -334,13 +334,13 @@ internal static class BatchTableAdjustService
 				}
 				catch (Exception ex2)
 				{
-					E6DM4XRwUl("检查边框粗细配置: " + array3[j], ex2);
+					LogTableAdjustWarning("检查边框粗细配置: " + array3[j], ex2);
 				}
 			}
 		}
 	}
 
-	private static void BgLfO8piTN(Table P_0)
+	private static void SetFirstColumnRightBorder(Table P_0)
 	{
 		int num = Cfg.GetInt("表格_边框样式_首列右边框线");
 		if (num == 0)
@@ -362,17 +362,17 @@ internal static class BatchTableAdjustService
 				}
 				catch (Exception ex)
 				{
-					E6DM4XRwUl("检查首列右边框配置", ex);
+					LogTableAdjustWarning("检查首列右边框配置", ex);
 				}
 			}
 		}
 		catch (Exception ex2)
 		{
-			E6DM4XRwUl("检查首列右边框配置", ex2);
+			LogTableAdjustWarning("检查首列右边框配置", ex2);
 		}
 	}
 
-	private static void KgZfnhfLrg(Table P_0)
+	private static void SetRowProperties(Table P_0)
 	{
 		try
 		{
@@ -384,16 +384,16 @@ internal static class BatchTableAdjustService
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("检查行高配置", ex);
+			LogTableAdjustWarning("检查行高配置", ex);
 		}
 	}
 
-	private static float kXNf7pvAIa(string P_0, double P_1)
+	private static float GetFloatConfig(string P_0, double P_1)
 	{
-		return (float)AiHelper_20.NgZw6CkHuw(Cfg.GetString(P_0, string.Empty), P_1);
+		return (float)AiHelper_20.GetConfigFontSize(Cfg.GetString(P_0, string.Empty), P_1);
 	}
 
-	private static void FUyf5FLht2(Table P_0)
+	private static void SetFontAndParagraphFormat(Table P_0)
 	{
 		try
 		{
@@ -401,13 +401,13 @@ internal static class BatchTableAdjustService
 			font.NameFarEast = Cfg.GetString("表格_段落格式_中文字体", "宋体");
 			font.NameAscii = Cfg.GetString("表格_段落格式_西文字体", "宋体");
 			font.NameOther = Cfg.GetString("表格_段落格式_西文字体", "宋体");
-			font.Size = kXNf7pvAIa("表格_段落格式_字号", 9.0);
+			font.Size = GetFloatConfig("表格_段落格式_字号", 9.0);
 			font.Kerning = 0f;
 			font.DisableCharacterSpaceGrid = true;
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("检查字体配置", ex);
+			LogTableAdjustWarning("检查字体配置", ex);
 		}
 		try
 		{
@@ -448,19 +448,19 @@ internal static class BatchTableAdjustService
 		}
 		catch (Exception ex2)
 		{
-			E6DM4XRwUl("检查段落格式配置", ex2);
+			LogTableAdjustWarning("检查段落格式配置", ex2);
 		}
 	}
 
-	private static void adofcgNH6g(Table P_0)
+	private static void ClassifyAndFormatCells(Table P_0)
 	{
-		HashSet<int> hashSet = QppfyM3vtv(P_0);
-		Dictionary<int, bool> dictionary = F9GfXWWEE2(P_0);
-		bool flag = MNuMUti5Rw("表格_合计小计处理_下划线包含文字", MNuMUti5Rw("表格_合计处理_下划线包含合计", false));
-		bool flag2 = MNuMUti5Rw("表格_合计小计处理_加粗包含文字", MNuMUti5Rw("表格_合计处理_加粗包含合计", false));
+		HashSet<int> hashSet = FindSerialNumberColumns(P_0);
+		Dictionary<int, bool> dictionary = FindTotalColumns(P_0);
+		bool flag = GetInvertedBoolConfig("表格_合计小计处理_下划线包含文字", GetInvertedBoolConfig("表格_合计处理_下划线包含合计", false));
+		bool flag2 = GetInvertedBoolConfig("表格_合计小计处理_加粗包含文字", GetInvertedBoolConfig("表格_合计处理_加粗包含合计", false));
 		foreach (Cell cell in P_0.Range.Cells)
 		{
-			string text = (mdAMi3B5A8(cell) ?? string.Empty).Trim();
+			string text = (GetCellText(cell) ?? string.Empty).Trim();
 			try
 			{
 				if (hashSet.Contains(cell.ColumnIndex))
@@ -477,49 +477,49 @@ internal static class BatchTableAdjustService
 				}
 				if (flag3)
 				{
-					YUSMIRucmV(cell, value);
+					ApplyColumnTotalStyle(cell, value);
 				}
-				bool flag4 = zZIMHh9DeD(text);
-				bool flag5 = o31MQlLcFY(text);
-				bool flag6 = V2hM1nkrH1(text);
-				bool flag7 = Fj0MrAZwtj(text);
+				bool flag4 = IsTotalText(text);
+				bool flag5 = IsSubtotalText(text);
+				bool flag6 = EndsWithTotal(text);
+				bool flag7 = EndsWithSubtotal(text);
 				if (flag4 || flag5)
 				{
-					v29Mu3emRk(cell, "合计");
+					SetCellAlignment(cell, "合计");
 					if (cell.Next != null && cell.Next.RowIndex == cell.RowIndex)
 					{
-						chQMDTeSwW(P_0, cell, flag4);
+						ApplyTotalSubtotalRowFormat(P_0, cell, flag4);
 					}
-					oeOM8MEQCN(cell, flag4, flag, flag2);
-					rs6MTuoGet(P_0, cell.RowIndex, flag4);
+					ApplyTotalCellStyle(cell, flag4, flag, flag2);
+					SetTotalSubtotalRowBorders(P_0, cell.RowIndex, flag4);
 				}
 				else if (flag6 || flag7)
 				{
-					chQMDTeSwW(P_0, cell, flag6);
-					oeOM8MEQCN(cell, flag6, flag, flag2);
-					rs6MTuoGet(P_0, cell.RowIndex, flag6);
+					ApplyTotalSubtotalRowFormat(P_0, cell, flag6);
+					ApplyTotalCellStyle(cell, flag6, flag, flag2);
+					SetTotalSubtotalRowBorders(P_0, cell.RowIndex, flag6);
 				}
 				else if (cell.ColumnIndex == 1)
 				{
-					v29Mu3emRk(cell, "首列");
+					SetCellAlignment(cell, "首列");
 				}
-				else if (nNEM3pILxY(text))
+				else if (IsNumericText(text))
 				{
-					v29Mu3emRk(cell, "数字");
+					SetCellAlignment(cell, "数字");
 				}
 				else
 				{
-					v29Mu3emRk(cell, "文字");
+					SetCellAlignment(cell, "文字");
 				}
 			}
 			catch (Exception ex)
 			{
-				E6DM4XRwUl("检查单元格分类格式", ex);
+				LogTableAdjustWarning("检查单元格分类格式", ex);
 			}
 		}
 	}
 
-	internal static void fWKfeWSrQq(Table P_0)
+	internal static void SyncTotalSubtotalFormat(Table P_0)
 	{
 		if (P_0 == null)
 		{
@@ -527,14 +527,14 @@ internal static class BatchTableAdjustService
 		}
 		try
 		{
-			Dictionary<int, bool> dictionary = F9GfXWWEE2(P_0);
-			bool flag = MNuMUti5Rw("表格_合计小计处理_下划线包含文字", MNuMUti5Rw("表格_合计处理_下划线包含合计", false));
-			bool flag2 = MNuMUti5Rw("表格_合计小计处理_加粗包含文字", MNuMUti5Rw("表格_合计处理_加粗包含合计", false));
+			Dictionary<int, bool> dictionary = FindTotalColumns(P_0);
+			bool flag = GetInvertedBoolConfig("表格_合计小计处理_下划线包含文字", GetInvertedBoolConfig("表格_合计处理_下划线包含合计", false));
+			bool flag2 = GetInvertedBoolConfig("表格_合计小计处理_加粗包含文字", GetInvertedBoolConfig("表格_合计处理_加粗包含合计", false));
 			foreach (Cell cell in P_0.Range.Cells)
 			{
 				try
 				{
-					string text = (mdAMi3B5A8(cell) ?? string.Empty).Trim();
+					string text = (GetCellText(cell) ?? string.Empty).Trim();
 					bool value;
 					bool flag3 = dictionary.TryGetValue(cell.ColumnIndex, out value);
 					if (flag3 && cell.RowIndex == 1)
@@ -543,45 +543,45 @@ internal static class BatchTableAdjustService
 					}
 					if (flag3)
 					{
-						YUSMIRucmV(cell, value);
+						ApplyColumnTotalStyle(cell, value);
 					}
-					bool flag4 = zZIMHh9DeD(text);
-					bool flag5 = o31MQlLcFY(text);
-					bool flag6 = V2hM1nkrH1(text);
-					bool flag7 = Fj0MrAZwtj(text);
+					bool flag4 = IsTotalText(text);
+					bool flag5 = IsSubtotalText(text);
+					bool flag6 = EndsWithTotal(text);
+					bool flag7 = EndsWithSubtotal(text);
 					if (flag4 || flag5)
 					{
-						v29Mu3emRk(cell, "合计");
+						SetCellAlignment(cell, "合计");
 						if (cell.Next != null && cell.Next.RowIndex == cell.RowIndex)
 						{
-							chQMDTeSwW(P_0, cell, flag4);
+							ApplyTotalSubtotalRowFormat(P_0, cell, flag4);
 						}
-						oeOM8MEQCN(cell, flag4, flag, flag2);
-						rs6MTuoGet(P_0, cell.RowIndex, flag4);
+						ApplyTotalCellStyle(cell, flag4, flag, flag2);
+						SetTotalSubtotalRowBorders(P_0, cell.RowIndex, flag4);
 					}
 					else if (flag6 || flag7)
 					{
-						chQMDTeSwW(P_0, cell, flag6);
-						oeOM8MEQCN(cell, flag6, flag, flag2);
-						rs6MTuoGet(P_0, cell.RowIndex, flag6);
+						ApplyTotalSubtotalRowFormat(P_0, cell, flag6);
+						ApplyTotalCellStyle(cell, flag6, flag, flag2);
+						SetTotalSubtotalRowBorders(P_0, cell.RowIndex, flag6);
 					}
 				}
 				catch (Exception ex)
 				{
-					E6DM4XRwUl("同步后合计/小计格式处理", ex);
+					LogTableAdjustWarning("同步后合计/小计格式处理", ex);
 				}
 			}
 		}
 		catch (Exception ex2)
 		{
-			E6DM4XRwUl("同步后应用合计/小计格式", ex2);
+			LogTableAdjustWarning("同步后应用合计/小计格式", ex2);
 		}
 	}
 
-	private static HashSet<int> QppfyM3vtv(Table P_0)
+	private static HashSet<int> FindSerialNumberColumns(Table P_0)
 	{
 		HashSet<int> hashSet = new HashSet<int>();
-		if (!MNuMUti5Rw("表格_段落格式_序号列居中", false))
+		if (!GetInvertedBoolConfig("表格_段落格式_序号列居中", false))
 		{
 			return hashSet;
 		}
@@ -592,7 +592,7 @@ internal static class BatchTableAdjustService
 			{
 				if (cell.RowIndex <= 1)
 				{
-					if (regex.IsMatch(mdAMi3B5A8(cell).Trim()))
+					if (regex.IsMatch(GetCellText(cell).Trim()))
 					{
 						hashSet.Add(cell.ColumnIndex);
 					}
@@ -603,12 +603,12 @@ internal static class BatchTableAdjustService
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("检查序号列识别", ex);
+			LogTableAdjustWarning("检查序号列识别", ex);
 		}
 		return hashSet;
 	}
 
-	private static Dictionary<int, bool> F9GfXWWEE2(Table P_0)
+	private static Dictionary<int, bool> FindTotalColumns(Table P_0)
 	{
 		Dictionary<int, bool> dictionary = new Dictionary<int, bool>();
 		try
@@ -617,9 +617,9 @@ internal static class BatchTableAdjustService
 			{
 				if (cell.RowIndex <= 1)
 				{
-					string text = mdAMi3B5A8(cell).Trim();
-					bool flag = zZIMHh9DeD(text) || V2hM1nkrH1(text);
-					bool flag2 = o31MQlLcFY(text) || Fj0MrAZwtj(text);
+					string text = GetCellText(cell).Trim();
+					bool flag = IsTotalText(text) || EndsWithTotal(text);
+					bool flag2 = IsSubtotalText(text) || EndsWithSubtotal(text);
 					if (flag || flag2)
 					{
 						dictionary[cell.ColumnIndex] = flag;
@@ -631,18 +631,18 @@ internal static class BatchTableAdjustService
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("检查合计列识别", ex);
+			LogTableAdjustWarning("检查合计列识别", ex);
 		}
 		return dictionary;
 	}
 
-	private static void YlGfFlkZOo(Table P_0)
+	private static void FormatHeaderRow(Table P_0)
 	{
 		try
 		{
 			if (P_0.Rows.Count >= 1)
 			{
-				Range range = RNcfhosujD(P_0);
+				Range range = GetHeaderRowRange(P_0);
 				range.Rows.HeadingFormat = -1;
 				range.ParagraphFormat.Alignment = (WdParagraphAlignment)Cfg.GetInt("表格_段落格式_首行水平对齐", 1);
 				range.Cells.VerticalAlignment = (WdCellVerticalAlignment)Cfg.GetInt("表格_段落格式_首行垂直对齐", 1);
@@ -651,16 +651,16 @@ internal static class BatchTableAdjustService
 				range.Borders[WdBorderType.wdBorderBottom].LineWidth = (WdLineWidth)Cfg.GetInt("表格_边框粗细_表头底边框线", 4);
 				range.Shading.ForegroundPatternColor = WdColor.wdColorAutomatic;
 				range.Shading.BackgroundPatternColor = (WdColor)Cfg.GetInt("表格_单元格_底色", -16777216);
-				rJDfaWik9k(P_0);
+				ApplyFirstColumnPriority(P_0);
 			}
 		}
 		catch (Exception ex)
 		{
-			E6DM4XRwUl("检查首行格式配置", ex);
+			LogTableAdjustWarning("检查首行格式配置", ex);
 		}
 	}
 
-	private static Range RNcfhosujD(Table P_0)
+	private static Range GetHeaderRowRange(Table P_0)
 	{
 		try
 		{
@@ -674,7 +674,7 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static void rJDfaWik9k(Table P_0)
+	private static void ApplyFirstColumnPriority(Table P_0)
 	{
 		if (!string.Equals(Cfg.GetString("表格_段落格式_首行首列冲突优先级", "首行"), "首列", StringComparison.Ordinal))
 		{
@@ -686,17 +686,17 @@ internal static class BatchTableAdjustService
 			{
 				if (cell.RowIndex == 1 && cell.ColumnIndex == 1)
 				{
-					v29Mu3emRk(cell, "首列");
+					SetCellAlignment(cell, "首列");
 				}
 			}
 			catch (Exception ex)
 			{
-				E6DM4XRwUl("检查首行首列对齐优先级", ex);
+				LogTableAdjustWarning("检查首行首列对齐优先级", ex);
 			}
 		}
 	}
 
-	public static void FZ4fqGTpEn()
+	public static void AdjustTableWidth()
 	{
 		Cfg.SaveToFile();
 		if (App.Selection.Tables.Count == 0)
@@ -705,11 +705,11 @@ internal static class BatchTableAdjustService
 		}
 		else
 		{
-			sk4fWIWHna(App.Selection.Tables[1]);
+			SetFixedWidth(App.Selection.Tables[1]);
 		}
 	}
 
-	public static void iIXfP7kfKT()
+	public static void AutoFitSelectedTables()
 	{
 		Cfg.SaveToFile();
 		if (App.Selection.Tables.Count == 0)
@@ -718,41 +718,41 @@ internal static class BatchTableAdjustService
 		}
 		foreach (Table table in App.Selection.Tables)
 		{
-			CjXfAMIflY(table);
+			ApplyWidthMode(table);
 		}
 	}
 
-	private static void CjXfAMIflY(Table P_0)
+	private static void ApplyWidthMode(Table P_0)
 	{
-		if (s1hf0aOL84())
+		if (IsCustomWidthMode())
 		{
-			sk4fWIWHna(P_0);
+			SetFixedWidth(P_0);
 		}
 		else
 		{
-			nb3fviisEF(P_0);
+			AutoFitToWindow(P_0);
 		}
 	}
 
-	private static void nb3fviisEF(Table P_0)
+	private static void AutoFitToWindow(Table P_0)
 	{
 		P_0.AutoFitBehavior(WdAutoFitBehavior.wdAutoFitWindow);
 	}
 
-	private static void sk4fWIWHna(Table P_0)
+	private static void SetFixedWidth(Table P_0)
 	{
 		P_0.AutoFitBehavior(WdAutoFitBehavior.wdAutoFitFixed);
 		P_0.PreferredWidthType = WdPreferredWidthType.wdPreferredWidthPoints;
-		P_0.PreferredWidth = GDbfkO0pcD();
+		P_0.PreferredWidth = GetTableWidthInPoints();
 		P_0.Rows.Alignment = WdRowAlignment.wdAlignRowCenter;
 	}
 
-	private static bool s1hf0aOL84()
+	private static bool IsCustomWidthMode()
 	{
 		return string.Equals(Cfg.GetString("表格_宽度模式", "自适应宽度").Trim(), "自定义宽度", StringComparison.Ordinal);
 	}
 
-	private static float GDbfkO0pcD()
+	private static float GetTableWidthInPoints()
 	{
 		double num = Cfg.GetDouble("表格_最大列宽_宽度", 18.5);
 		if (num <= 0.0)
@@ -762,7 +762,7 @@ internal static class BatchTableAdjustService
 		return App.CentimetersToPoints((float)num);
 	}
 
-	public static void HbTfxQrf6q()
+	public static void AlignColumnWidths()
 	{
 		try
 		{
@@ -813,7 +813,7 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	public static void tlpfdNjFFa()
+	public static void SetHeaderRowRepeat()
 	{
 		if (App.Selection.Tables.Count != 0)
 		{
@@ -823,7 +823,7 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	public static void PL3fzV7hld()
+	public static void SelectAllTables()
 	{
 		Document activeDocument = App.ActiveDocument;
 		try
@@ -833,8 +833,8 @@ internal static class BatchTableAdjustService
 				LoggerInitializer.ShowInfo("文档已保护，此时不能选中多个表格！", "IP_Assurance");
 				return;
 			}
-			zIhMBFWLgR();
-			Ld2MYPqMYJ = UqdM6KRahs(activeDocument);
+			ClearSavedTableRanges();
+			_selectedDocumentName = GetDocumentName(activeDocument);
 			object EditorID = WdEditorType.wdEditorEveryone;
 			activeDocument.DeleteAllEditableRanges(ref EditorID);
 			foreach (Table table in activeDocument.Tables)
@@ -842,13 +842,13 @@ internal static class BatchTableAdjustService
 				Editors editors = table.Range.Editors;
 				EditorID = WdEditorType.wdEditorEveryone;
 				editors.Add(ref EditorID);
-				gfbMjFCyLI.Add(new soxkFLV3PXnjCVvjIodG(table.Range.Start, table.Range.End));
+				_tableRanges.Add(new TableRange(table.Range.Start, table.Range.End));
 			}
 			EditorID = WdEditorType.wdEditorEveryone;
 			activeDocument.SelectAllEditableRanges(ref EditorID);
 			EditorID = WdEditorType.wdEditorEveryone;
 			activeDocument.DeleteAllEditableRanges(ref EditorID);
-			LoggerInitializer.ShowInfo(string.Format("已选中 {0} 个表格。", gfbMjFCyLI.Count), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("已选中 {0} 个表格。", _tableRanges.Count), "IP_Assurance");
 		}
 		finally
 		{
@@ -863,12 +863,12 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static IEnumerable<Table> C4AMRNDLN2(Document P_0)
+	private static IEnumerable<Table> EnumerateTablesByRanges(Document P_0)
 	{
 		object Start = Type.Missing;
 		object End = Type.Missing;
 		int documentEnd = P_0.Range(ref Start, ref End).End;
-		foreach (soxkFLV3PXnjCVvjIodG item in gfbMjFCyLI)
+		foreach (TableRange item in _tableRanges)
 		{
 			if (item.Start >= 0 && item.End > item.Start && item.End <= documentEnd)
 			{
@@ -883,22 +883,22 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static bool jrNMVJb8eb(Document P_0)
+	private static bool IsSelectionValid(Document P_0)
 	{
-		if (gfbMjFCyLI.Count == 0)
+		if (_tableRanges.Count == 0)
 		{
 			return false;
 		}
-		return string.Equals(Ld2MYPqMYJ, UqdM6KRahs(P_0), StringComparison.Ordinal);
+		return string.Equals(_selectedDocumentName, GetDocumentName(P_0), StringComparison.Ordinal);
 	}
 
-	private static void zIhMBFWLgR()
+	private static void ClearSavedTableRanges()
 	{
-		gfbMjFCyLI.Clear();
-		Ld2MYPqMYJ = string.Empty;
+		_tableRanges.Clear();
+		_selectedDocumentName = string.Empty;
 	}
 
-	private static void arEM9085NB()
+	private static void CollapseSelectionToStart()
 	{
 		try
 		{
@@ -919,7 +919,7 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static string UqdM6KRahs(Document P_0)
+	private static string GetDocumentName(Document P_0)
 	{
 		try
 		{
@@ -938,13 +938,13 @@ internal static class BatchTableAdjustService
 		return string.Empty;
 	}
 
-	private static void v29Mu3emRk(Cell P_0, string P_1)
+	private static void SetCellAlignment(Cell P_0, string P_1)
 	{
 		P_0.Range.ParagraphFormat.Alignment = (WdParagraphAlignment)Cfg.GetInt("表格_段落格式_" + P_1 + "水平对齐", (!(P_1 == "数字")) ? 1 : 2);
 		P_0.Range.Cells.VerticalAlignment = (WdCellVerticalAlignment)Cfg.GetInt("表格_段落格式_" + P_1 + "垂直对齐", 1);
 	}
 
-	private static void chQMDTeSwW(Table P_0, Cell P_1, bool P_2)
+	private static void ApplyTotalSubtotalRowFormat(Table P_0, Cell P_1, bool P_2)
 	{
 		int underline = Cfg.GetInt(P_2 ? "表格_小计处理_下划线" : "表格_合计处理_下划线", (!P_2) ? 1 : 3);
 		int bold = Cfg.GetInt(P_2 ? "表格_小计处理_加粗" : "表格_合计处理_加粗");
@@ -986,13 +986,13 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static void rs6MTuoGet(Table P_0, int P_1, bool P_2)
+	private static void SetTotalSubtotalRowBorders(Table P_0, int P_1, bool P_2)
 	{
-		cx6MgivxOm(P_0, P_1, P_2, "上边框线", WdBorderType.wdBorderTop);
-		cx6MgivxOm(P_0, P_1, P_2, "下边框线", WdBorderType.wdBorderBottom);
+		SetRowBorder(P_0, P_1, P_2, "上边框线", WdBorderType.wdBorderTop);
+		SetRowBorder(P_0, P_1, P_2, "下边框线", WdBorderType.wdBorderBottom);
 	}
 
-	private static void cx6MgivxOm(Table P_0, int P_1, bool P_2, string P_3, WdBorderType P_4)
+	private static void SetRowBorder(Table P_0, int P_1, bool P_2, string P_3, WdBorderType P_4)
 	{
 		string text = (P_2 ? "小计行" : "合计行") + P_3;
 		int num = Cfg.GetInt("表格_边框样式_" + text);
@@ -1022,12 +1022,12 @@ internal static class BatchTableAdjustService
 			}
 			catch (Exception ex)
 			{
-				E6DM4XRwUl("检查合计/小计行边框配置: " + text, ex);
+				LogTableAdjustWarning("检查合计/小计行边框配置: " + text, ex);
 			}
 		}
 	}
 
-	private static void oeOM8MEQCN(Cell P_0, bool P_1, bool P_2, bool P_3)
+	private static void ApplyTotalCellStyle(Cell P_0, bool P_1, bool P_2, bool P_3)
 	{
 		int num = Cfg.GetInt(P_1 ? "表格_小计处理_下划线" : "表格_合计处理_下划线", (!P_1) ? 1 : 3);
 		int num2 = Cfg.GetInt(P_1 ? "表格_小计处理_加粗" : "表格_合计处理_加粗");
@@ -1035,7 +1035,7 @@ internal static class BatchTableAdjustService
 		P_0.Range.Font.Bold = (P_3 ? num2 : 0);
 	}
 
-	private static void YUSMIRucmV(Cell P_0, bool P_1)
+	private static void ApplyColumnTotalStyle(Cell P_0, bool P_1)
 	{
 		int underline = Cfg.GetInt(P_1 ? "表格_小计处理_下划线" : "表格_合计处理_下划线", (!P_1) ? 1 : 3);
 		int bold = Cfg.GetInt(P_1 ? "表格_小计处理_加粗" : "表格_合计处理_加粗");
@@ -1043,7 +1043,7 @@ internal static class BatchTableAdjustService
 		P_0.Range.Font.Bold = bold;
 	}
 
-	private static string mdAMi3B5A8(Cell P_0)
+	private static string GetCellText(Cell P_0)
 	{
 		try
 		{
@@ -1058,9 +1058,9 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static bool zZIMHh9DeD(string P_0)
+	private static bool IsTotalText(string P_0)
 	{
-		string text = I1WMJtOoaN(P_0);
+		string text = RemoveWhitespace(P_0);
 		if (!(text == "合计"))
 		{
 			return text == "总计";
@@ -1068,14 +1068,14 @@ internal static class BatchTableAdjustService
 		return true;
 	}
 
-	private static bool o31MQlLcFY(string P_0)
+	private static bool IsSubtotalText(string P_0)
 	{
-		return I1WMJtOoaN(P_0) == "小计";
+		return RemoveWhitespace(P_0) == "小计";
 	}
 
-	private static bool V2hM1nkrH1(string P_0)
+	private static bool EndsWithTotal(string P_0)
 	{
-		string text = I1WMJtOoaN(P_0);
+		string text = RemoveWhitespace(P_0);
 		if (text.Length > 2)
 		{
 			return text.EndsWith("合计", StringComparison.Ordinal);
@@ -1083,9 +1083,9 @@ internal static class BatchTableAdjustService
 		return false;
 	}
 
-	private static bool Fj0MrAZwtj(string P_0)
+	private static bool EndsWithSubtotal(string P_0)
 	{
-		string text = I1WMJtOoaN(P_0);
+		string text = RemoveWhitespace(P_0);
 		if (text.Length > 2)
 		{
 			return text.EndsWith("小计", StringComparison.Ordinal);
@@ -1093,12 +1093,12 @@ internal static class BatchTableAdjustService
 		return false;
 	}
 
-	private static string I1WMJtOoaN(string P_0)
+	private static string RemoveWhitespace(string P_0)
 	{
 		return Regex.Replace(P_0 ?? string.Empty, "\\s+", string.Empty);
 	}
 
-	private static bool nNEM3pILxY(string P_0)
+	private static bool IsNumericText(string P_0)
 	{
 		if (P_0 == "-")
 		{
@@ -1119,7 +1119,7 @@ internal static class BatchTableAdjustService
 		return true;
 	}
 
-	private static bool MNuMUti5Rw(string P_0, bool P_1)
+	private static bool GetInvertedBoolConfig(string P_0, bool P_1)
 	{
 		string text = Cfg.GetString(P_0, P_1 ? "0" : "1");
 		if (!(text == "1"))
@@ -1129,7 +1129,7 @@ internal static class BatchTableAdjustService
 		return true;
 	}
 
-	private static ProgressWindow FGWMKLUgfT()
+	private static ProgressWindow CreateProgressWindow()
 	{
 		try
 		{
@@ -1143,7 +1143,7 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static bool RMuMEjDOZl(ProgressWindow P_0, int P_1, int P_2)
+	private static bool UpdateProgress(ProgressWindow P_0, int P_1, int P_2)
 	{
 		if (P_0 == null)
 		{
@@ -1167,7 +1167,7 @@ internal static class BatchTableAdjustService
 		return P_0.IsVisible;
 	}
 
-	private static void APiM2MyCoG(ProgressWindow P_0)
+	private static void CloseProgressWindow(ProgressWindow P_0)
 	{
 		if (P_0 == null)
 		{
@@ -1182,7 +1182,7 @@ internal static class BatchTableAdjustService
 		}
 	}
 
-	private static void E6DM4XRwUl(string P_0, Exception P_1)
+	private static void LogTableAdjustWarning(string P_0, Exception P_1)
 	{
 		AiConfigBootstrap.LogWarn("[Tables] " + P_0 + " | " + P_1.Message);
 	}
@@ -1190,7 +1190,7 @@ internal static class BatchTableAdjustService
 	static BatchTableAdjustService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		gfbMjFCyLI = new List<soxkFLV3PXnjCVvjIodG>();
-		Ld2MYPqMYJ = string.Empty;
+		_tableRanges = new List<TableRange>();
+		_selectedDocumentName = string.Empty;
 	}
 }

@@ -18,7 +18,7 @@ namespace WpsVbaCompatService;
 
 internal sealed class WpsVbaCompatService
 {
-	private sealed class oWlUArVDqaaXQZpBqfXR
+	private sealed class VbaEntryPointInfo
 	{
 		[CompilerGenerated]
 		private string _name;
@@ -54,13 +54,13 @@ internal sealed class WpsVbaCompatService
 			}
 		}
 
-		public oWlUArVDqaaXQZpBqfXR()
+		public VbaEntryPointInfo()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
-	private sealed class RP3HO3VDvRbxmE03MaWl
+	private sealed class DocumentSelectionState
 	{
 		[CompilerGenerated]
 		private string _documentName;
@@ -69,7 +69,7 @@ internal sealed class WpsVbaCompatService
 		private string _documentFullName;
 
 		[CompilerGenerated]
-		private int BHaVDkXuHxH;
+		private int _selectionStart;
 
 		[CompilerGenerated]
 		private int _selectionEnd;
@@ -107,12 +107,12 @@ internal sealed class WpsVbaCompatService
 			[CompilerGenerated]
 			get
 			{
-				return BHaVDkXuHxH;
+				return _selectionStart;
 			}
 			[CompilerGenerated]
 			set
 			{
-				BHaVDkXuHxH = value;
+				_selectionStart = value;
 			}
 		}
 
@@ -130,7 +130,7 @@ internal sealed class WpsVbaCompatService
 			}
 		}
 
-		public RP3HO3VDvRbxmE03MaWl()
+		public DocumentSelectionState()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
@@ -146,12 +146,12 @@ internal sealed class WpsVbaCompatService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string hsFVDdt9S8M()
+		internal string GetDocumentFullName()
 		{
 			return doc.FullName;
 		}
 
-		internal string xBlVDz1T55k()
+		internal string GetDocumentName()
 		{
 			return doc.Name;
 		}
@@ -167,7 +167,7 @@ internal sealed class WpsVbaCompatService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal T t6bVTVe8sHA(Microsoft.Office.Interop.Word.Application app)
+		internal T GuardedExecute(Microsoft.Office.Interop.Word.Application app)
 		{
 			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
@@ -183,14 +183,14 @@ internal sealed class WpsVbaCompatService
 	{
 		public string text;
 
-		public oWlUArVDqaaXQZpBqfXR oWlUArVDqaaXQZpBqfXR;
+		public VbaEntryPointInfo VbaEntryPointInfo;
 
 		public _G_c__DisplayClass6_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string AT2VTB4UV5B(Microsoft.Office.Interop.Word.Application app)
+		internal string ExecuteVbaInternal(Microsoft.Office.Interop.Word.Application app)
 		{
 			if (WordTableToolService.IsWps)
 			{
@@ -199,19 +199,19 @@ internal sealed class WpsVbaCompatService
 			Document document = null;
 			VBProject vBProject = null;
 			VBComponent vBComponent = null;
-			RP3HO3VDvRbxmE03MaWl rP3HO3VDvRbxmE03MaWl = null;
+			DocumentSelectionState rP3HO3VDvRbxmE03MaWl = null;
 			WdAlertLevel displayAlerts = WdAlertLevel.wdAlertsAll;
 			bool flag = false;
 			bool flag2 = false;
 			try
 			{
-				rP3HO3VDvRbxmE03MaWl = R8K36HVqty(app);
+				rP3HO3VDvRbxmE03MaWl = CaptureDocumentState(app);
 				document = DocumentLifecycleGuard.GetActiveDocument(app);
 				if (document == null)
 				{
 					throw new InvalidOperationException("未找到活动 Word 文档，请先打开一个文档再运行代码。");
 				}
-				m3O39L5WZm(app, document);
+				RestoreDocumentSelection(app, document);
 				displayAlerts = app.DisplayAlerts;
 				app.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 				flag2 = true;
@@ -230,7 +230,7 @@ internal sealed class WpsVbaCompatService
 				}
 				try
 				{
-					string macroName = text + "." + oWlUArVDqaaXQZpBqfXR.Name;
+					string macroName = text + "." + VbaEntryPointInfo.Name;
 					object varg = Type.Missing;
 					object varg2 = Type.Missing;
 					object varg3 = Type.Missing;
@@ -267,13 +267,13 @@ internal sealed class WpsVbaCompatService
 				{
 					throw new InvalidOperationException("VBA 代码执行错误：" + ex.Message, ex);
 				}
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
-				return "VBA 代码执行成功。\\n入口过程：" + oWlUArVDqaaXQZpBqfXR.Name + "\\n文档：" + document.Name;
+				return "VBA 代码执行成功。\\n入口过程：" + VbaEntryPointInfo.Name + "\\n文档：" + document.Name;
 			}
 			catch (COMException ex2)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				if (ex2.Message.IndexOf("programmatic access", StringComparison.OrdinalIgnoreCase) >= 0 || ex2.ErrorCode == -2146827284)
 				{
@@ -283,19 +283,19 @@ internal sealed class WpsVbaCompatService
 			}
 			catch (UnauthorizedAccessException innerException)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				throw new InvalidOperationException("权限不足，请启用信任访问 VBA 工程。", innerException);
 			}
 			catch (InvalidOperationException)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				throw;
 			}
 			catch (Exception ex4)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				throw new InvalidOperationException("VBA 执行失败：" + ex4.Message, ex4);
 			}
@@ -321,14 +321,14 @@ internal sealed class WpsVbaCompatService
 					{
 					}
 				}
-				nsM3uRTY4F(app, rP3HO3VDvRbxmE03MaWl);
-				Rx73TfSp8r(vBComponent);
-				Rx73TfSp8r(vBProject);
+				RestoreDocumentState(app, rP3HO3VDvRbxmE03MaWl);
+				ReleaseComObject(vBComponent);
+				ReleaseComObject(vBProject);
 			}
 		}
 	}
 
-	private static readonly Regex nQm3IPMNhu;
+	private static readonly Regex _subPatternRegex;
 
 	private readonly AiTargetBinder _aiTargetBinder;
 
@@ -346,18 +346,18 @@ internal sealed class WpsVbaCompatService
 		_wordTableToolService4 = new WordTableToolService4(P_0);
 	}
 
-	public string R1tJz1VIhA(string P_0)
+	public string ValidateVbaCode(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
 			return "验证失败：VBA 代码不能为空。";
 		}
-		oWlUArVDqaaXQZpBqfXR oWlUArVDqaaXQZpBqfXR2 = yHA3Vrmjt9(P_0);
-		if (oWlUArVDqaaXQZpBqfXR2 == null)
+		VbaEntryPointInfo entryPointInfo = ParseVbaEntryPoint(P_0);
+		if (entryPointInfo == null)
 		{
 			return "验证失败：代码中未找到有效的 Sub 过程。请确保代码包含一个 Sub ... End Sub 入口。";
 		}
-		if (oWlUArVDqaaXQZpBqfXR2.HasParameters)
+		if (entryPointInfo.HasParameters)
 		{
 			return "验证失败：入口 Sub 不能带参数。请使用无参数 Sub，并在代码内部读取 ActiveDocument 或 Selection。";
 		}
@@ -367,12 +367,12 @@ internal sealed class WpsVbaCompatService
 		}
 		if (P_0.IndexOf("Application.ScreenUpdating", StringComparison.OrdinalIgnoreCase) >= 0)
 		{
-			return "验证警告：代码中包含 Application.ScreenUpdating，执行后请确保恢复屏幕刷新。检测到的入口过程名：" + oWlUArVDqaaXQZpBqfXR2.Name;
+			return "验证警告：代码中包含 Application.ScreenUpdating，执行后请确保恢复屏幕刷新。检测到的入口过程名：" + entryPointInfo.Name;
 		}
-		return "验证通过。入口过程名：" + oWlUArVDqaaXQZpBqfXR2.Name;
+		return "验证通过。入口过程名：" + entryPointInfo.Name;
 	}
 
-	public string zer3R7UqTK(string P_0)
+	public string ExecuteVbaCode(string P_0)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_9 = new _G_c__DisplayClass6_0();
 		CS_8_locals_9.text = P_0;
@@ -380,16 +380,16 @@ internal sealed class WpsVbaCompatService
 		{
 			return "执行失败：VBA 代码不能为空。";
 		}
-		CS_8_locals_9.oWlUArVDqaaXQZpBqfXR = yHA3Vrmjt9(CS_8_locals_9.text);
-		if (CS_8_locals_9.oWlUArVDqaaXQZpBqfXR == null)
+		CS_8_locals_9.VbaEntryPointInfo = ParseVbaEntryPoint(CS_8_locals_9.text);
+		if (CS_8_locals_9.VbaEntryPointInfo == null)
 		{
 			return "执行失败：代码中未找到有效的 Sub 过程。请确保代码包含一个 Sub ... End Sub 入口。";
 		}
-		if (CS_8_locals_9.oWlUArVDqaaXQZpBqfXR.HasParameters)
+		if (CS_8_locals_9.VbaEntryPointInfo.HasParameters)
 		{
 			return "执行失败：入口 Sub 不能带参数。";
 		}
-		return rki3gClQ9S("执行Word VBA代码片段", delegate(Microsoft.Office.Interop.Word.Application app)
+		return ExecuteWithGuard("执行Word VBA代码片段", delegate(Microsoft.Office.Interop.Word.Application app)
 		{
 			if (WordTableToolService.IsWps)
 			{
@@ -398,19 +398,19 @@ internal sealed class WpsVbaCompatService
 			Document document = null;
 			VBProject vBProject = null;
 			VBComponent vBComponent = null;
-			RP3HO3VDvRbxmE03MaWl rP3HO3VDvRbxmE03MaWl = null;
+			DocumentSelectionState rP3HO3VDvRbxmE03MaWl = null;
 			WdAlertLevel displayAlerts = WdAlertLevel.wdAlertsAll;
 			bool flag = false;
 			bool flag2 = false;
 			try
 			{
-				rP3HO3VDvRbxmE03MaWl = R8K36HVqty(app);
+				rP3HO3VDvRbxmE03MaWl = CaptureDocumentState(app);
 				document = DocumentLifecycleGuard.GetActiveDocument(app);
 				if (document == null)
 				{
 					throw new InvalidOperationException("验证失败：代码中未找到有效的 Sub 过程。请确保代码包含一个 Sub ... End Sub 入口。");
 				}
-				m3O39L5WZm(app, document);
+				RestoreDocumentSelection(app, document);
 				displayAlerts = app.DisplayAlerts;
 				app.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 				flag2 = true;
@@ -429,7 +429,7 @@ internal sealed class WpsVbaCompatService
 				}
 				try
 				{
-					string macroName = text + "Application.ScreenUpdating" + CS_8_locals_9.oWlUArVDqaaXQZpBqfXR.Name;
+					string macroName = text + "Application.ScreenUpdating" + CS_8_locals_9.VbaEntryPointInfo.Name;
 					object varg = Type.Missing;
 					object varg2 = Type.Missing;
 					object varg3 = Type.Missing;
@@ -466,13 +466,13 @@ internal sealed class WpsVbaCompatService
 				{
 					throw new InvalidOperationException("验证警告：代码中包含 Application.ScreenUpdating，执行后请确保恢复屏幕刷新。检测到的入口过程名：" + ex.Message, ex);
 				}
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
-				return "验证通过。入口过程名：" + CS_8_locals_9.oWlUArVDqaaXQZpBqfXR.Name + "执行失败：VBA 代码不能为空。" + document.Name;
+				return "验证通过。入口过程名：" + CS_8_locals_9.VbaEntryPointInfo.Name + "执行失败：VBA 代码不能为空。" + document.Name;
 			}
 			catch (COMException ex2)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				if (ex2.Message.IndexOf("执行失败：代码中未找到有效的 Sub 过程。请确保代码包含一个 Sub ... End Sub 入口。", StringComparison.OrdinalIgnoreCase) >= 0 || ex2.ErrorCode == -2146827284)
 				{
@@ -482,19 +482,19 @@ internal sealed class WpsVbaCompatService
 			}
 			catch (UnauthorizedAccessException innerException)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				throw new InvalidOperationException("vba_", innerException);
 			}
 			catch (InvalidOperationException)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				throw;
 			}
 			catch (Exception ex4)
 			{
-				RQW3BQ6tRO(vBProject, vBComponent);
+				RemoveVbComponent(vBProject, vBComponent);
 				vBComponent = null;
 				throw new InvalidOperationException("[VbaExecution] " + ex4.Message, ex4);
 			}
@@ -520,28 +520,28 @@ internal sealed class WpsVbaCompatService
 					{
 					}
 				}
-				nsM3uRTY4F(app, rP3HO3VDvRbxmE03MaWl);
-				Rx73TfSp8r(vBComponent);
-				Rx73TfSp8r(vBProject);
+				RestoreDocumentState(app, rP3HO3VDvRbxmE03MaWl);
+				ReleaseComObject(vBComponent);
+				ReleaseComObject(vBProject);
 			}
 		});
 	}
 
-	private static oWlUArVDqaaXQZpBqfXR yHA3Vrmjt9(string P_0)
+	private static VbaEntryPointInfo ParseVbaEntryPoint(string P_0)
 	{
-		Match match = nQm3IPMNhu.Match(P_0 ?? string.Empty);
+		Match match = _subPatternRegex.Match(P_0 ?? string.Empty);
 		if (!match.Success)
 		{
 			return null;
 		}
-		return new oWlUArVDqaaXQZpBqfXR
+		return new VbaEntryPointInfo
 		{
 			Name = match.Groups[2].Value,
 			HasParameters = (match.Groups.Count > 3 && !string.IsNullOrWhiteSpace(match.Groups[3].Value))
 		};
 	}
 
-	private static void RQW3BQ6tRO(VBProject P_0, VBComponent P_1)
+	private static void RemoveVbComponent(VBProject P_0, VBComponent P_1)
 	{
 		try
 		{
@@ -555,7 +555,7 @@ internal sealed class WpsVbaCompatService
 		}
 	}
 
-	private static void m3O39L5WZm(Microsoft.Office.Interop.Word.Application P_0, Document P_1)
+	private static void RestoreDocumentSelection(Microsoft.Office.Interop.Word.Application P_0, Document P_1)
 	{
 		if (P_0 == null || P_1 == null)
 		{
@@ -582,7 +582,7 @@ internal sealed class WpsVbaCompatService
 		}
 	}
 
-	private static RP3HO3VDvRbxmE03MaWl R8K36HVqty(Microsoft.Office.Interop.Word.Application P_0)
+	private static DocumentSelectionState CaptureDocumentState(Microsoft.Office.Interop.Word.Application P_0)
 	{
 		try
 		{
@@ -593,10 +593,10 @@ internal sealed class WpsVbaCompatService
 			{
 				return null;
 			}
-			return new RP3HO3VDvRbxmE03MaWl
+			return new DocumentSelectionState
 			{
-				DocumentFullName = eFq3DxlR5e(() => CS_8_locals_4.doc.FullName),
-				DocumentName = eFq3DxlR5e(() => CS_8_locals_4.doc.Name),
+				DocumentFullName = SafeExecuteString(() => CS_8_locals_4.doc.FullName),
+				DocumentName = SafeExecuteString(() => CS_8_locals_4.doc.Name),
 				SelectionStart = selection.Range.Start,
 				SelectionEnd = selection.Range.End
 			};
@@ -607,7 +607,7 @@ internal sealed class WpsVbaCompatService
 		}
 	}
 
-	private static void nsM3uRTY4F(Microsoft.Office.Interop.Word.Application P_0, RP3HO3VDvRbxmE03MaWl P_1)
+	private static void RestoreDocumentState(Microsoft.Office.Interop.Word.Application P_0, DocumentSelectionState P_1)
 	{
 		if (P_0 == null || P_1 == null)
 		{
@@ -630,7 +630,7 @@ internal sealed class WpsVbaCompatService
 		}
 	}
 
-	private static string eFq3DxlR5e(Func<string> P_0)
+	private static string SafeExecuteString(Func<string> P_0)
 	{
 		try
 		{
@@ -642,7 +642,7 @@ internal sealed class WpsVbaCompatService
 		}
 	}
 
-	private static void Rx73TfSp8r(object P_0)
+	private static void ReleaseComObject(object P_0)
 	{
 		try
 		{
@@ -656,13 +656,13 @@ internal sealed class WpsVbaCompatService
 		}
 	}
 
-	private fdJEaP38mFSOHURh7Yw rki3gClQ9S<fdJEaP38mFSOHURh7Yw>(string P_0, Func<Microsoft.Office.Interop.Word.Application, fdJEaP38mFSOHURh7Yw> P_1)
+	private TResult ExecuteWithGuard<TResult>(string P_0, Func<Microsoft.Office.Interop.Word.Application, TResult> P_1)
 	{
-		_G_c__DisplayClass14_0<fdJEaP38mFSOHURh7Yw> CS_8_locals_2 = new _G_c__DisplayClass14_0<fdJEaP38mFSOHURh7Yw>();
+		_G_c__DisplayClass14_0<TResult> CS_8_locals_2 = new _G_c__DisplayClass14_0<TResult>();
 		CS_8_locals_2.action = P_1;
 		try
 		{
-			return _wordTableToolService4.MdXJlVhPku("失败：" + P_0, delegate(Microsoft.Office.Interop.Word.Application app)
+			return _wordTableToolService4.runOperation("失败：" + P_0, delegate(Microsoft.Office.Interop.Word.Application app)
 			{
 				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))
@@ -682,6 +682,6 @@ internal sealed class WpsVbaCompatService
 	static WpsVbaCompatService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		nQm3IPMNhu = new Regex("^\\s*(?:(Public|Private|Friend|Static)\\s+|\\s+)*Sub\\s+([\\p{L}_][\\p{L}\\p{N}_]*)\\s*(?:\\(([^)]*)\\))?", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
+		_subPatternRegex = new Regex("^\\s*(?:(Public|Private|Friend|Static)\\s+|\\s+)*Sub\\s+([\\p{L}_][\\p{L}\\p{N}_]*)\\s*(?:\\(([^)]*)\\))?", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
 	}
 }

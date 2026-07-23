@@ -271,7 +271,7 @@ public class Ribbon1 : RibbonBase
 		pgscd6mb8l();
 		fwIcxJIPYU();
 		mNaeNSP9JX.Checked = TableBorderConfig.Current.Config.System.DisableAutomaticStyleUpdate;
-		AiAssistantService.fxBFHYusB4(this);
+		AiAssistantService.ApplyRibbonIcons(this);
 	}
 
 	internal static void PMEckKFWry()
@@ -307,15 +307,15 @@ public class Ribbon1 : RibbonBase
 	{
 		AZAeYmLFnX.Click += delegate
 		{
-			AiHelper_7.RunCommand(AiAssistantHost2.aRJB0cfkok, "IP_Assurance");
+			AiHelper_7.RunCommand(AiAssistantHost2.OpenAssistantPane, "IP_Assurance");
 		};
 		ObyeZaW2w9.Click += delegate
 		{
-			AiHelper_7.RunCommand(AiAssistantHost2.SIRBdRBylk, "Template_OpenFolder");
+			AiHelper_7.RunCommand(AiAssistantHost2.ShowConfigWindow, "Template_OpenFolder");
 		};
 		QQkefaO87T.Click += delegate
 		{
-			AiHelper_7.RunCommand(AiAssistantHost2.KAcBz9syTd, "打开目录");
+			AiHelper_7.RunCommand(AiAssistantHost2.InvokeAiHelper3Action, "打开目录");
 		};
 		GH0eMf7VqG.Click += delegate
 		{
@@ -342,7 +342,7 @@ public class Ribbon1 : RibbonBase
 		};
 		U6weLyMaIs.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchReplaceService.BBAMen3SA4, "_");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.FormatSelectionParagraphs, "_");
 		};
 		KR0el1JrZB.Click += delegate
 		{
@@ -357,19 +357,19 @@ public class Ribbon1 : RibbonBase
 		};
 		O2neocYeVm.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchReplaceService.xgwMpXfu5F, "通用");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.FormatAfterTableNote, "通用");
 		};
 		bLLeCoCtqb.Click += delegate
 		{
-			AiHelper_7.RunCommand(BatchReplaceService.IlFMa7FUcE, "grpGeneral");
+			AiHelper_7.RunCommand(BatchReplaceService.SelectAllAfterTableFirstParagraphs, "grpGeneral");
 		};
 		YBwepj7oQk.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchReplaceService.a3lMqZdKO0, "智能助手");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.ProcessAfterTableSpacing, "智能助手");
 		};
 		XuKeOjATgB.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.HUeflwYrZr, "SBAI助手");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.BatchAdjustTables, "SBAI助手");
 		};
 		DpUenM8VkU.Click += delegate
 		{
@@ -380,27 +380,27 @@ public class Ribbon1 : RibbonBase
 		};
 		hjme7a7ldE.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.tlpfdNjFFa, "BtnAI配置");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.SetHeaderRowRepeat, "BtnAI配置");
 		};
 		Xaje5BbwlX.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchReplaceService.kcGMtYHAg8, "帮助");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.PasteTableWithFormat, "帮助");
 		};
 		y00eeSplD5.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.HbTfxQrf6q, "BtnAI帮助");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.AlignColumnWidths, "BtnAI帮助");
 		};
 		XMReyfDAJ6.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.FZ4fqGTpEn, "最大列宽");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.AdjustTableWidth, "最大列宽");
 		};
 		JYyeXQZPep.Click += delegate
 		{
-			AiHelper_7.RunCommand(BatchTableAdjustService.PL3fzV7hld, "全选表格");
+			AiHelper_7.RunCommand(BatchTableAdjustService.SelectAllTables, "全选表格");
 		};
 		DDFeFR1h9o.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.tl1bwFFDD1, "千分位符");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.ApplyThousandsSeparator, "千分位符");
 		};
 		QclehQJ0Qe.Click += delegate
 		{
@@ -411,35 +411,35 @@ public class Ribbon1 : RibbonBase
 		};
 		Y4weqgO6Ip.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.RG3btZhbBZ, "系统截图/录屏");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.ConvertDatesToDotFormat, "系统截图/录屏");
 		};
 		GSseP3ATQx.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.IjpbLTQyda, "Btn开始截图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.ConvertDatesToSlashFormat, "Btn开始截图");
 		};
 		JHKeAsJpU4.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.klPbsBaHvp, "快速全屏截图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.ConvertDatesToDashFormat, "快速全屏截图");
 		};
 		eIievpV7yo.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.U40blaH8Pe, "Btn快速全屏截图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.ConvertDatesToChineseFormat, "Btn快速全屏截图");
 		};
 		lQMeWPEgFZ.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.dSnbbZLY1r, "除以万");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.DivideByTenThousand, "除以万");
 		};
 		jUPe0WVcH5.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.jyWbS77xyK, "Btn关闭所有钉图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.AddWanSuffix, "Btn关闭所有钉图");
 		};
 		O1Nek8dtjg.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.nySbyq4v2j, "配置");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.MultiplyByHundred, "配置");
 		};
 		AfNexqU5xE.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.W2IbekWIMv, "Btn钉图配置");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.AddPercentSign, "Btn钉图配置");
 		};
 		E4NednknFu.Click += delegate
 		{
@@ -450,15 +450,15 @@ public class Ribbon1 : RibbonBase
 		};
 		DDYyRiDwU0.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.OQqb2EBLne, "B全局配置");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.CleanSpacesAndParagraphs, "B全局配置");
 		};
 		F3SyViFQfi.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.n48bEYCJjN, "使用帮助");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.ToggleHighlight, "使用帮助");
 		};
 		gvCy9TVUH2.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.Ws1bXTwZbX, "B说明");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.ConvertFullWidthToHalfWidthPunctuation, "B说明");
 		};
 		批量替换.Click += delegate
 		{
@@ -469,11 +469,11 @@ public class Ribbon1 : RibbonBase
 		};
 		WOoyup6EfT.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchReplaceService.lUNMdtyonR, "grpParagraph");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.MergeConsecutiveBlankParagraphs, "grpParagraph");
 		};
 		GS0yDJ0IHx.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(BatchReplaceService.JasMzZGiuF, "段落调整");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.RemoveParagraphMarksInRange, "段落调整");
 		};
 		QXuyTpqqg5.Click += delegate
 		{
@@ -519,15 +519,15 @@ public class Ribbon1 : RibbonBase
 		};
 		c99y1e88Ah.Click += delegate
 		{
-			AiHelper_7.RunCommand(TableValidationService.vG5KQkPQxL, "b表前单位");
+			AiHelper_7.RunCommand(TableValidationService.ValidateByRow, "b表前单位");
 		};
 		VFKyroq1pl.Click += delegate
 		{
-			AiHelper_7.RunCommand(TableValidationService.aguK1H8YCQ, "表后注释");
+			AiHelper_7.RunCommand(TableValidationService.ValidateByColumn, "表后注释");
 		};
 		oAlyJlhmwW.Click += delegate
 		{
-			AiHelper_7.RunCommand(TableValidationService.pSAKJ3DAt3, "b表后注释");
+			AiHelper_7.RunCommand(TableValidationService.SumSelectedCells, "b表后注释");
 		};
 		FUPyUfkrpN.Click += delegate
 		{
@@ -556,11 +556,11 @@ public class Ribbon1 : RibbonBase
 		};
 		OKDyZCymnC.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(TableValidationService.BFXK3Dv3Bc, "表后间距处理");
+			AiHelper_7.RunCommandWithUndo(TableValidationService.CleanDocument, "表后间距处理");
 		};
 		CtnyfNejNN.Click += delegate
 		{
-			AiHelper_7.RunCommand(TableValidationService.CKSKKAnPKH, "b表后段落处理");
+			AiHelper_7.RunCommand(TableValidationService.ExportCommentsToExcel, "b表后段落处理");
 		};
 		NSUySeG74c.Click += delegate
 		{
@@ -576,19 +576,19 @@ public class Ribbon1 : RibbonBase
 		};
 		Mykys9pFbA.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(PageSplitService.r35fVUVyl3, "B表格调整");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.ApplyNotesPageSetup, "B表格调整");
 		};
 		x1myldNW5p.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(PageSplitService.pIHf9JibWB, "表格配置");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.ApplyCoverPageSetup, "表格配置");
 		};
 		gLjyNtF5wS.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(PageSplitService.uqUfBw6cB5, "B表格配置");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.ApplyBodyPageSetup, "B表格配置");
 		};
 		PJlym1E13O.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(PageSplitService.q6BfuLcjaG, "重复标题");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.ToggleOrientationWithBreak, "重复标题");
 		};
 		lXiyOWFVa5.Click += delegate
 		{
@@ -599,7 +599,7 @@ public class Ribbon1 : RibbonBase
 		};
 		stZyopAEjj.Click += delegate
 		{
-			AiHelper_7.RunCommandWithUndo(PageSplitService.a1VfDCrrNS, "粘贴表格");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.InsertPageNumbers, "粘贴表格");
 		};
 		NCjyGburcY.Click += delegate
 		{
@@ -610,23 +610,23 @@ public class Ribbon1 : RibbonBase
 		};
 		xg0yCgJFpq.Click += delegate
 		{
-			AiHelper_7.RunCommand(PageSplitService.ykFfgO7l4C, "其他调整");
+			AiHelper_7.RunCommand(PageSplitService.BatchConvertToPdf, "其他调整");
 		};
 		h0WyplNuXA.Click += delegate
 		{
-			AiHelper_7.RunCommand(PageSplitService.Y5Tfix9LLg, "M列宽");
+			AiHelper_7.RunCommand(PageSplitService.MergeDocuments, "M列宽");
 		};
 		IeJy52VjG7.Click += delegate
 		{
-			AiHelper_7.RunCommand(PageSplitService.TpofHWy9aJ, "统一列宽");
+			AiHelper_7.RunCommand(PageSplitService.SplitByPages, "统一列宽");
 		};
 		FjOycmk3RK.Click += delegate
 		{
-			AiHelper_7.RunCommand(PageSplitService.Wq4f1QfrnV, "b统一列宽");
+			AiHelper_7.RunCommand(PageSplitService.SplitByPageRanges, "b统一列宽");
 		};
 		sdlyedNyXA.Click += delegate
 		{
-			AiHelper_7.RunCommand(PageSplitService.vFrfrDlytO, "最大列宽");
+			AiHelper_7.RunCommand(PageSplitService.SplitBySections, "最大列宽");
 		};
 		Go4yyvMTqe.Click += delegate
 		{
