@@ -10,9 +10,9 @@ namespace AiConfigManager;
 
 internal static class AiConfigManager
 {
-	public static Task Xq56uj14fX(string P_0, string P_1, string P_2, string P_3)
+	public static Task TestConnection(string P_0, string P_1, string P_2, string P_3)
 	{
-		return IBj6DBKBlO(new AgentConfig
+		return TestConnectionAsync(new AgentConfig
 		{
 			Name = "Agent连接测试",
 			Provider = P_0,
@@ -22,9 +22,9 @@ internal static class AiConfigManager
 		});
 	}
 
-	private static async Task IBj6DBKBlO(AgentConfig P_0)
+	private static async Task TestConnectionAsync(AgentConfig P_0)
 	{
-		nvm6TKdf2E(P_0);
+		ValidateConfig(P_0);
 		IChatClient client = null;
 		IDisposable clientOwner = null;
 		try
@@ -46,7 +46,7 @@ internal static class AiConfigManager
 		}
 	}
 
-	private static void nvm6TKdf2E(AgentConfig P_0)
+	private static void ValidateConfig(AgentConfig P_0)
 	{
 		if (P_0 == null)
 		{

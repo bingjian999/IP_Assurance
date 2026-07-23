@@ -54,7 +54,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 DiMhF6ROL5()
+		internal AiHelper_5 AddCommentAtRangeWrapper()
 		{
 			return wordContextPreviewService.wordService.AddCommentAtRange(MpjhaLqo84, value, text);
 		}
@@ -78,7 +78,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 JQVhAs2JZ2()
+		internal AiHelper_5 AddCommentAtParagraphRangeWrapper()
 		{
 			return qMAhvYQWYZ.wordService.AddCommentAtParagraphRange(value, value, value, text);
 		}
@@ -128,7 +128,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 Cw8a6AZCin()
+		internal AiHelper_5 ReplyCommentWrapper()
 		{
 			return wordContextPreviewService.wordService.ReplyComment(oKBaDhopyK, text, value, text, text);
 		}
@@ -174,7 +174,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 wMRa3I8Ioh()
+		internal AiHelper_5 SetParagraphOutlineLevelWrapper()
 		{
 			return wkkaUnjGT3.wordService.SetParagraphOutlineLevel(value, value, value);
 		}
@@ -208,7 +208,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 QKxa4c2lKu()
+		internal AiHelper_5 InsertTableAtRangeWrapper()
 		{
 			return SXLajQRDl3.wordService.InsertTableAtRange(value, value, value, value, iSgabAXZd9, cZhaSeWbRr, BDKawxvrDO, flag, flag);
 		}
@@ -244,7 +244,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 sgmasGA70A()
+		internal AiHelper_5 InsertTableRowsByModelWrapper()
 		{
 			return wordContextPreviewService.wordService.InsertTableRowsByModel(value, value, value, iZGaGQklFb, text, cHWapViHjw, AhwaOdWUbS, TxPaniFSNw, flag, text);
 		}
@@ -274,7 +274,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 bSRacmT0XZ()
+		internal AiHelper_5 FillTableCellsByModelWrapper()
 		{
 			return aPjaexnfHZ.wordService.FillTableCellsByModel(value, value, FIdaFYJiPG, text, text, xWfaqrOdsQ, flag);
 		}
@@ -298,7 +298,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 GWPaAGq05F()
+		internal AiHelper_5 ApplyParagraphFormatChangeWrapper()
 		{
 			return wordContextPreviewService.wordService.ApplyParagraphFormatChange(value, value, WFHakOwMjy, auTaxcOVp7);
 		}
@@ -322,7 +322,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 W3LadhvYeg()
+		internal AiHelper_5 ApplyTableFormatChangeWrapper()
 		{
 			return NFfazEqpm1.wordService.ApplyTableFormatChange(value, text, text, value);
 		}
@@ -344,7 +344,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 vu7q6LliZF()
+		internal AiHelper_5 ReplaceRangeWithTrackChangesWrapper()
 		{
 			return wordContextPreviewService.wordService.ReplaceRangeWithTrackChanges(value, value, text);
 		}
@@ -362,7 +362,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 vJ1q8Wo8iH()
+		internal AiHelper_5 ReplaceSelectionWithTrackChangesWrapper()
 		{
 			return wordContextPreviewService.wordService.ReplaceSelectionWithTrackChanges(text);
 		}
@@ -770,7 +770,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 	[Description("将 AI 生成的静态 HTML/CSS/SVG 片段渲染为高清 PNG，并作为内嵌图片插入本轮绑定的 Word 文档。适用于封面视觉、信息图、流程图、数据卡片和复杂排版；结果不会随源数据自动刷新。仅允许内联 HTML/CSS/SVG 和 data: 图片，禁止 script、事件处理器、iframe、外部网址和网络资源。")]
 	private AiHelper_5 CreateHtmlVisual([Description("要渲染的 HTML 片段，可包含 <style>、普通 HTML 和内联 SVG；不要包含 html/head/body 外层标签、Markdown 代码围栏、script 或外部资源")] string html, [Description("插入位置：selection（本轮初始选区末端）、range_start、range_end 或 document_end；默认 selection")] string position = "selection", [Description("position 为 range_start/range_end 时使用的真实 Word Range.Start；selection 一般无需传")] int rangeStart = -1, [Description("position 为 range_start/range_end 时使用的真实 Word Range.End；selection 一般无需传")] int rangeEnd = -1, [Description("渲染宽度，单位 CSS 像素，范围 240-1920，默认 960")] int width = 960, [Description("渲染高度，单位 CSS 像素，范围 120-1080，默认 540")] int height = 540, [Description("插入 Word 后的宽度，单位磅；默认 432（约 6 英寸，适合常见页面版心），传 0 时按 96 DPI 从渲染宽度换算")] double displayWidthPoints = 432.0, [Description("插入 Word 后的高度，单位磅；0 表示保持渲染宽高比自动换算")] double displayHeightPoints = 0.0, [Description("画布背景色，仅支持 #RGB、#RRGGBB 或 transparent，默认 #ffffff")] string backgroundColor = "#ffffff", [Description("视觉稿名称，写入图片标题和替代文字")] string visualName = "HTML视觉")
 	{
-		ImageAssetInfo mlrjLBQvC4HsxmNR64C = null;
+		ImageAssetInfo imageAsset = null;
 		try
 		{
 			int num = rangeStart;
@@ -784,7 +784,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 					num2 = current.SelectionEnd;
 				}
 			}
-			mlrjLBQvC4HsxmNR64C = screenshotHelper.RenderHtmlToPng(new Helper_16
+			imageAsset = screenshotHelper.RenderHtmlToPng(new Helper_16
 			{
 				HtmlFragment = html,
 				PixelWidth = width,
@@ -806,7 +806,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 			{
 				num4 = num3 * (double)height / (double)width;
 			}
-			AiHelper_5 insertResult = wordService.InsertHtmlVisual(mlrjLBQvC4HsxmNR64C.PngPath, position, num, num2, num3, num4, visualName, mlrjLBQvC4HsxmNR64C.SourceHash);
+			AiHelper_5 insertResult = wordService.InsertHtmlVisual(imageAsset.PngPath, position, num, num2, num3, num4, visualName, imageAsset.SourceHash);
 			if (!insertResult.success)
 			{
 				return insertResult;
@@ -815,11 +815,11 @@ internal sealed class WordContextPreviewService : IToolProvider
 			{
 				render = new
 				{
-					pixelWidth = mlrjLBQvC4HsxmNR64C.PixelWidth,
-					pixelHeight = mlrjLBQvC4HsxmNR64C.PixelHeight,
-					pngBytes = mlrjLBQvC4HsxmNR64C.PngBytes,
-					sourceHash = mlrjLBQvC4HsxmNR64C.SourceHash,
-					sourceFile = mlrjLBQvC4HsxmNR64C.SourcePath,
+					pixelWidth = imageAsset.PixelWidth,
+					pixelHeight = imageAsset.PixelHeight,
+					pngBytes = imageAsset.PngBytes,
+					sourceHash = imageAsset.SourceHash,
+					sourceFile = imageAsset.SourcePath,
 					scriptsEnabled = false,
 					externalResourcesAllowed = false
 				},
@@ -833,7 +833,7 @@ internal sealed class WordContextPreviewService : IToolProvider
 		}
 		finally
 		{
-			ScreenshotCaptureHelper3.DeleteTempPng(mlrjLBQvC4HsxmNR64C?.PngPath);
+			ScreenshotCaptureHelper3.DeleteTempPng(imageAsset?.PngPath);
 		}
 	}
 

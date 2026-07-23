@@ -5,7 +5,7 @@ namespace AiHelper_3;
 
 internal static class AiHelper_3
 {
-	public static void nSeVd6NXja(string P_0)
+	public static void OpenUrl(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -25,36 +25,36 @@ internal static class AiHelper_3
 
 	public static void YWiVzgIWFQ()
 	{
-		nSeVd6NXja("https://www.cgzcpa.com/");
+		OpenUrl("https://www.cgzcpa.com/");
 	}
 
 	public static void BWIBRayGaa()
 	{
-		nSeVd6NXja("https://www.cgzcpa.com/");
+		OpenUrl("https://www.cgzcpa.com/");
 	}
 
 	public static void kTVBVZcQB1()
 	{
-		nSeVd6NXja("https://www.cgzcpa.com/article/70");
+		OpenUrl("https://www.cgzcpa.com/article/70");
 	}
 
-	public static void EhnBBx56DY()
+	public static void OpenHelpArticle()
 	{
-		nSeVd6NXja("https://www.cgzcpa.com/article/70");
+		OpenUrl("https://www.cgzcpa.com/article/70");
 	}
 
-	public static void T3uB9HfbiT()
+	public static void OpenTutorialArticle()
 	{
-		nSeVd6NXja("https://www.cgzcpa.com/article/71");
+		OpenUrl("https://www.cgzcpa.com/article/71");
 	}
 
-	public static void LrSB63WJSY()
+	public static void OpenAiCourse()
 	{
-		nSeVd6NXja("https://www.cgzcpa.com/ai-course/index.html");
+		OpenUrl("https://www.cgzcpa.com/ai-course/index.html");
 	}
 
-	public static void UuQBu9AoPh()
+	public static void OpenSponsorshipPage()
 	{
-		nSeVd6NXja("https://www.cgzcpa.com/sponsorship");
+		OpenUrl("https://www.cgzcpa.com/sponsorship");
 	}
 }

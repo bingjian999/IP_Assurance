@@ -40,13 +40,13 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 		txtDescription.Text = (string.IsNullOrWhiteSpace(description) ? "当前为内网环境，请登录后继续使用 AI 助手。" : description);
 		if (!string.IsNullOrWhiteSpace(initialStatus))
 		{
-			zhF7qbinaC(initialStatus, Brushes.IndianRed);
+			SetStatus(initialStatus, Brushes.IndianRed);
 		}
-		base.Loaded += CX27XTeWB7;
-		base.PreviewKeyDown += ldx7FsEjpn;
+		base.Loaded += OnWindowLoaded;
+		base.PreviewKeyDown += OnPreviewKeyDown;
 	}
 
-	private void CX27XTeWB7(object P_0, RoutedEventArgs P_1)
+	private void OnWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
 		if (string.IsNullOrWhiteSpace(txtUsername.Text))
 		{
@@ -58,7 +58,7 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 		}
 	}
 
-	private void ldx7FsEjpn(object P_0, KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{
@@ -68,43 +68,43 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 		else if (P_1.Key == Key.Return)
 		{
 			P_1.Handled = true;
-			C3V7h0pX9w(this, new RoutedEventArgs());
+			OnLoginButtonClick(this, new RoutedEventArgs());
 		}
 	}
 
-	private async void C3V7h0pX9w(object P_0, RoutedEventArgs P_1)
+	private async void OnLoginButtonClick(object P_0, RoutedEventArgs P_1)
 	{
-		qwP7aYKtCt( true, "登录", Brushes.DodgerBlue);
+		SetLoginState( true, "登录", Brushes.DodgerBlue);
 		try
 		{
-			Helper_17 uJ41Qj6vhvynNA1tocZ = await IntranetAiConfigService.Instance.LoginAsync(txtUsername.Text, txtPassword.Password, chkAutoLogin.IsChecked == true).ConfigureAwait(continueOnCapturedContext: true);
-			if (uJ41Qj6vhvynNA1tocZ.Succeeded)
+			Helper_17 loginResult = await IntranetAiConfigService.Instance.LoginAsync(txtUsername.Text, txtPassword.Password, chkAutoLogin.IsChecked == true).ConfigureAwait(continueOnCapturedContext: true);
+			if (loginResult.Succeeded)
 			{
 				base.DialogResult = true;
 				Close();
 			}
 			else
 			{
-				qwP7aYKtCt( false, string.IsNullOrWhiteSpace(uJ41Qj6vhvynNA1tocZ.Message) ? "登录中..." : uJ41Qj6vhvynNA1tocZ.Message, Brushes.IndianRed);
+				SetLoginState( false, string.IsNullOrWhiteSpace(loginResult.Message) ? "登录中..." : loginResult.Message, Brushes.IndianRed);
 			}
 		}
 		catch (Exception ex)
 		{
-			qwP7aYKtCt( false, "/CPAHelperForWordRe;component/ui/forms/general/intranetloginwindow.xaml" + ex.Message, Brushes.IndianRed);
+			SetLoginState( false, "/CPAHelperForWordRe;component/ui/forms/general/intranetloginwindow.xaml" + ex.Message, Brushes.IndianRed);
 		}
 	}
 
-	private void qwP7aYKtCt(bool P_0, string P_1, Brush P_2)
+	private void SetLoginState(bool P_0, string P_1, Brush P_2)
 	{
 		btnLogin.IsEnabled = !P_0;
 		txtUsername.IsEnabled = !P_0;
 		txtPassword.IsEnabled = !P_0;
 		chkAutoLogin.IsEnabled = !P_0;
 		btnLogin.Content = (P_0 ? "登录" : "登录中...");
-		zhF7qbinaC(P_1, P_2);
+		SetStatus(P_1, P_2);
 	}
 
-	private void zhF7qbinaC(string P_0, Brush P_1)
+	private void SetStatus(string P_0, Brush P_1)
 	{
 		txtStatus.Text = P_0 ?? string.Empty;
 		txtStatus.Foreground = P_1 ?? Brushes.DimGray;
@@ -144,7 +144,7 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 			break;
 		case 5:
 			btnLogin = (Button)target;
-			btnLogin.Click += C3V7h0pX9w;
+			btnLogin.Click += OnLoginButtonClick;
 			break;
 		case 6:
 			txtStatus = (TextBlock)target;

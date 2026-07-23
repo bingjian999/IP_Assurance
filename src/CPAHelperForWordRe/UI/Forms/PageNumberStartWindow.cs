@@ -26,7 +26,7 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 	{
 		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
-		int num = dXHnSRT5B2(TableBorderConfig.Current.GetInt("页面_页码_起始值", 1));
+		int num = ClampPageNumber(TableBorderConfig.Current.GetInt("页面_页码_起始值", 1));
 		txtStartNumber.Text = num.ToString(CultureInfo.InvariantCulture);
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -40,10 +40,10 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 			txtStartNumber.Focus();
 			txtStartNumber.SelectAll();
 		};
-		DataObject.AddPastingHandler(txtStartNumber, JWNnblH4qS);
+		DataObject.AddPastingHandler(txtStartNumber, OnPaste);
 	}
 
-	private void ijVnZT2eYF(object P_0, RoutedEventArgs P_1)
+	private void OnConfirmButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		if (!int.TryParse(txtStartNumber.Text.Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out var result) || result < 1 || result > 9999)
 		{
@@ -60,25 +60,25 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 		}
 	}
 
-	private void Q5anfVee0d(object P_0, RoutedEventArgs P_1)
+	private void OnCancelButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		Close();
 	}
 
-	private void eHMnMhv8vx(object P_0, TextCompositionEventArgs P_1)
+	private void OnPreviewTextInput(object P_0, TextCompositionEventArgs P_1)
 	{
-		P_1.Handled = !D9AnwkLfbT(P_1.Text);
+		P_1.Handled = !IsAllDigits(P_1.Text);
 	}
 
-	private void JWNnblH4qS(object P_0, DataObjectPastingEventArgs P_1)
+	private void OnPaste(object P_0, DataObjectPastingEventArgs P_1)
 	{
-		if (!D9AnwkLfbT(P_1.DataObject.GetDataPresent(DataFormats.Text) ? (P_1.DataObject.GetData(DataFormats.Text) as string) : null))
+		if (!IsAllDigits(P_1.DataObject.GetDataPresent(DataFormats.Text) ? (P_1.DataObject.GetData(DataFormats.Text) as string) : null))
 		{
 			P_1.CancelCommand();
 		}
 	}
 
-	internal static int dXHnSRT5B2(int P_0)
+	internal static int ClampPageNumber(int P_0)
 	{
 		if (P_0 < 1)
 		{
@@ -91,7 +91,7 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 		return 9999;
 	}
 
-	private static bool D9AnwkLfbT(string P_0)
+	private static bool IsAllDigits(string P_0)
 	{
 		if (!string.IsNullOrEmpty(P_0))
 		{
@@ -121,13 +121,13 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 		{
 		case 1:
 			txtStartNumber = (TextBox)target;
-			txtStartNumber.PreviewTextInput += eHMnMhv8vx;
+			txtStartNumber.PreviewTextInput += OnPreviewTextInput;
 			break;
 		case 2:
-			((Button)target).Click += ijVnZT2eYF;
+			((Button)target).Click += OnConfirmButtonClick;
 			break;
 		case 3:
-			((Button)target).Click += Q5anfVee0d;
+			((Button)target).Click += OnCancelButtonClick;
 			break;
 		default:
 			_bool = true;

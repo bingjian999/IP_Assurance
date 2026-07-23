@@ -9,31 +9,31 @@ namespace UiHelper_5;
 
 internal static class UiHelper_5
 {
-	public static readonly Regex K4hSE7usVJ;
+	public static readonly Regex NumberRegex;
 
-	private static readonly Regex o28S2q7DEq;
+	private static readonly Regex DateFormatRegex;
 
-	public static List<TextRange> teSSr7AnNl(string P_0)
+	public static List<TextRange> FindDateRanges(string P_0)
 	{
 		List<TextRange> list = new List<TextRange>();
 		if (string.IsNullOrEmpty(P_0))
 		{
 			return list;
 		}
-		foreach (Match item in o28S2q7DEq.Matches(P_0))
+		foreach (Match item in DateFormatRegex.Matches(P_0))
 		{
 			list.Add(new TextRange(item.Index, item.Length));
 		}
 		return list;
 	}
 
-	public static bool bcbSJ1pxpn(string P_0, Match P_1, UiHelper_4 P_2, IList<TextRange> P_3)
+	public static bool IsExcludedBySeparatorConfig(string P_0, Match P_1, UiHelper_4 P_2, IList<TextRange> P_3)
 	{
 		if (P_1 == null || P_2 == null)
 		{
 			return false;
 		}
-		if (P_2.ExcludeDateFormat && tnNSKM7Uqc(P_1.Index, P_1.Length, P_3))
+		if (P_2.ExcludeDateFormat && IsWithinDateRange(P_1.Index, P_1.Length, P_3))
 		{
 			return true;
 		}
@@ -68,12 +68,12 @@ internal static class UiHelper_5
 		}
 		if (P_2.IncludeUnitOnly)
 		{
-			return !q4TS36j7cA(P_0, P_1, P_2.UnitText);
+			return !MatchesUnit(P_0, P_1, P_2.UnitText);
 		}
 		return false;
 	}
 
-	public static bool q4TS36j7cA(string P_0, Match P_1, string P_2)
+	public static bool MatchesUnit(string P_0, Match P_1, string P_2)
 	{
 		if (string.IsNullOrEmpty(P_0) || P_1 == null || string.IsNullOrWhiteSpace(P_2))
 		{
@@ -99,7 +99,7 @@ internal static class UiHelper_5
 		return true;
 	}
 
-	private static bool tnNSKM7Uqc(int P_0, int P_1, IList<TextRange> P_2)
+	private static bool IsWithinDateRange(int P_0, int P_1, IList<TextRange> P_2)
 	{
 		if (P_2 == null || P_2.Count == 0)
 		{
@@ -119,7 +119,7 @@ internal static class UiHelper_5
 	static UiHelper_5()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		K4hSE7usVJ = new Regex("(-?\\d{1,3}(,\\d{3})*(,\\d{3}|\\d{0,13})(\\.\\d+)?)", RegexOptions.Compiled);
-		o28S2q7DEq = new Regex("(?<!\\d)\\d{2,4}\\s*[-/.]\\s*\\d{1,2}\\s*[-/.]\\s*\\d{1,2}(?!\\d)", RegexOptions.Compiled);
+		NumberRegex = new Regex("(-?\\d{1,3}(,\\d{3})*(,\\d{3}|\\d{0,13})(\\.\\d+)?)", RegexOptions.Compiled);
+		DateFormatRegex = new Regex("(?<!\\d)\\d{2,4}\\s*[-/.]\\s*\\d{1,2}\\s*[-/.]\\s*\\d{1,2}(?!\\d)", RegexOptions.Compiled);
 	}
 }

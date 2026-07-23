@@ -30,12 +30,12 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal int JjrVDX2DsjM()
+		internal int GetTableCount()
 		{
 			return range.Tables.Count;
 		}
 
-		internal int PmWVDFgx9Kt()
+		internal int GetParagraphCount()
 		{
 			return range.Paragraphs.Count;
 		}
@@ -70,14 +70,14 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 		{
 			throw new InvalidOperationException("未知的宿主动作用：" + P_0);
 		}
-		return Task.FromResult(Qt0JFe6yQV());
+		return Task.FromResult(BuildSelectionContextItem());
 	}
 
-	private HostContextItem Qt0JFe6yQV()
+	private HostContextItem BuildSelectionContextItem()
 	{
 		try
 		{
-			return GOEJh7vQUv(delegate(Application app)
+			return RunWordOperation(delegate(Application app)
 			{
 				_G_c__DisplayClass8_0 CS_8_locals_7 = new _G_c__DisplayClass8_0();
 				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
@@ -100,7 +100,7 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 				int end = CS_8_locals_7.range.End;
 				int num = vufJALQMfa(() => CS_8_locals_7.range.Tables.Count);
 				int num2 = vufJALQMfa(() => CS_8_locals_7.range.Paragraphs.Count);
-				string text2 = q9DJqvf9jN(CS_8_locals_7.range.Text);
+				string text2 = NormalizeSelectionText(CS_8_locals_7.range.Text);
 				if (string.IsNullOrWhiteSpace(text2) && num <= 0 && num2 <= 0)
 				{
 					throw new InvalidOperationException("未知的宿主动作用：");
@@ -133,7 +133,7 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 					{
 						["document"] = document.Name,
 						["documentFullName"] = document.FullName,
-						["page"] = XvEJvBp6mc(CS_8_locals_7.range),
+						["page"] = GetActiveEndPageNumber(CS_8_locals_7.range),
 						["rangeStart"] = start,
 						["rangeEnd"] = end,
 						["preview"] = text3,
@@ -153,19 +153,19 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 		}
 	}
 
-	private ckEnEPJapYGYC9Kvom5 GOEJh7vQUv<ckEnEPJapYGYC9Kvom5>(Func<Application, ckEnEPJapYGYC9Kvom5> P_0)
+	private TResult RunWordOperation<TResult>(Func<Application, TResult> P_0)
 	{
 		return _wordTableToolService4.runOperation("host_action_word_selection", P_0);
 	}
 
-	private static string q9DJqvf9jN(string P_0)
+	private static string NormalizeSelectionText(string P_0)
 	{
 		return (P_0 ?? string.Empty).Replace("\\r", "\\r").Replace('\a', ' ').Trim();
 	}
 
 	private static string BEoJPWtMP7(string P_0, int P_1)
 	{
-		string text = q9DJqvf9jN(P_0).Replace("\\r", " ").Replace("\n", " ");
+		string text = NormalizeSelectionText(P_0).Replace("\\r", " ").Replace("\n", " ");
 		if (string.IsNullOrWhiteSpace(text))
 		{
 			return "表格选区";
@@ -190,7 +190,7 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 		}
 	}
 
-	private static int XvEJvBp6mc(Range P_0)
+	private static int GetActiveEndPageNumber(Range P_0)
 	{
 		try
 		{

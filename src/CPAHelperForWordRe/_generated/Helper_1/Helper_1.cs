@@ -190,7 +190,7 @@ internal sealed class Helper_1
 		{
 			FontSize = 18.0;
 		}
-		ActiveAccentColor = n1qtMYWGjR(ActiveAccentColor, "#2B74F2");
+		ActiveAccentColor = NormalizeHexColor(ActiveAccentColor, "#2B74F2");
 		DocumentNameDisplayMode = hVCtftMMFT(DocumentNameDisplayMode);
 		if (DocumentNamePrefixLength < 1)
 		{
@@ -216,7 +216,7 @@ internal sealed class Helper_1
 		return "Prefix";
 	}
 
-	private static string n1qtMYWGjR(string P_0, string P_1)
+	private static string NormalizeHexColor(string P_0, string P_1)
 	{
 		string text = (P_0 ?? string.Empty).Trim();
 		if (text.Length == 6)

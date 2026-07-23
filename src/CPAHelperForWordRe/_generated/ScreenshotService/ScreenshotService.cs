@@ -38,16 +38,16 @@ internal static class ScreenshotService
 
 	private static readonly List<DesktopPinContextHelper> dfCBKMIQgW;
 
-	public static void SqNBgKb64d()
+	public static void CaptureScreenshot()
 	{
 		List<Window> list = slNBrIHLn5();
-		List<Form> list2 = V8wB3d2E8J();
+		List<Form> list2 = HideOpenForms();
 		try
 		{
-			using ScreenshotOverlayHelper rv5mvGcDycFl26EPlB2 = new ScreenshotOverlayHelper();
-			if (rv5mvGcDycFl26EPlB2.ShowDialog() == DialogResult.OK && rv5mvGcDycFl26EPlB2.CapturedImage != null)
+			using ScreenshotOverlayHelper screenshotOverlay = new ScreenshotOverlayHelper();
+			if (screenshotOverlay.ShowDialog() == DialogResult.OK && screenshotOverlay.CapturedImage != null)
 			{
-				VOtB1a9A6x(rv5mvGcDycFl26EPlB2.CapturedImage, rv5mvGcDycFl26EPlB2.CaptureBounds.Location, 1.0);
+				PinToDesktop(screenshotOverlay.CapturedImage, screenshotOverlay.CaptureBounds.Location, 1.0);
 			}
 		}
 		catch (Exception ex)
@@ -56,12 +56,12 @@ internal static class ScreenshotService
 		}
 		finally
 		{
-			l4sBJI6tVh(list);
+			RestoreWindows(list);
 			rJOBUBdGPp(list2);
 		}
 	}
 
-	public static void lK0B8Dimq2()
+	public static void LaunchSnippingTool()
 	{
 		try
 		{
@@ -79,7 +79,7 @@ internal static class ScreenshotService
 		}
 	}
 
-	public static void V8uBId6JSR()
+	public static void QuickCapture()
 	{
 		try
 		{
@@ -90,7 +90,7 @@ internal static class ScreenshotService
 			int num = (int)Math.Round((double)bitmap.Width * val);
 			int num2 = (int)Math.Round((double)bitmap.Height * val);
 			System.Drawing.Point point = new System.Drawing.Point(screen.Bounds.X + (screen.Bounds.Width - num) / 2, screen.Bounds.Y + (screen.Bounds.Height - num2) / 2);
-			VOtB1a9A6x(bitmap, point, val);
+			PinToDesktop(bitmap, point, val);
 		}
 		catch (Exception ex)
 		{
@@ -98,7 +98,7 @@ internal static class ScreenshotService
 		}
 	}
 
-	public static void bpaBiR3K57()
+	public static void CloseAllDesktopPins()
 	{
 		DesktopPinContextHelper[] array = dfCBKMIQgW.ToArray();
 		for (int i = 0; i < array.Length; i++)
@@ -123,7 +123,7 @@ internal static class ScreenshotService
 			P_0 = "钉桌面热键无效，请录制或输入 Alt/Ctrl/Shift/Win + 一个按键，例如 Alt+F1、Ctrl+Shift+Q。Fn 不是 Windows 可注册的修饰键。";
 			return false;
 		}
-		if (!HotkeyHookService.RegisterHotkey("DesktopPin", hotkeyHook.Modifiers, hotkeyHook.Key, SqNBgKb64d))
+		if (!HotkeyHookService.RegisterHotkey("DesktopPin", hotkeyHook.Modifiers, hotkeyHook.Key, CaptureScreenshot))
 		{
 			P_0 = "钉桌面热键注册失败，可能已被系统、Word 或其他程序占用。";
 			return false;
@@ -134,10 +134,10 @@ internal static class ScreenshotService
 	public static void jTmBQtWvhT()
 	{
 		HotkeyHookService.UnregisterHotkey("DesktopPin");
-		bpaBiR3K57();
+		CloseAllDesktopPins();
 	}
 
-	private static void VOtB1a9A6x(Image P_0, System.Drawing.Point P_1, double P_2)
+	private static void PinToDesktop(Image P_0, System.Drawing.Point P_1, double P_2)
 	{
 		_G_c__DisplayClass8_0 CS_8_locals_5 = new _G_c__DisplayClass8_0();
 		CS_8_locals_5.desktopPinContextHelper = new DesktopPinContextHelper(P_0, P_1, P_2);
@@ -171,7 +171,7 @@ internal static class ScreenshotService
 		return list;
 	}
 
-	private static void l4sBJI6tVh(List<Window> P_0)
+	private static void RestoreWindows(List<Window> P_0)
 	{
 		if (P_0 == null || P_0.Count == 0)
 		{
@@ -186,7 +186,7 @@ internal static class ScreenshotService
 		}
 	}
 
-	private static List<Form> V8wB3d2E8J()
+	private static List<Form> HideOpenForms()
 	{
 		List<Form> list = new List<Form>();
 		foreach (Form openForm in System.Windows.Forms.Application.OpenForms)

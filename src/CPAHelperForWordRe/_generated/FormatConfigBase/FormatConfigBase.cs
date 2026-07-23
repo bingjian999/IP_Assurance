@@ -14,7 +14,7 @@ internal sealed class FormatConfigBase
 	private string _sourceConfigPath;
 
 	[CompilerGenerated]
-	private Dictionary<string, object> twIwN2awoR;
+	private Dictionary<string, object> _configValues;
 
 	[CompilerGenerated]
 	private List<Helper_24> _paragraphPresetFiles;
@@ -41,12 +41,12 @@ internal sealed class FormatConfigBase
 		[CompilerGenerated]
 		get
 		{
-			return twIwN2awoR;
+			return _configValues;
 		}
 		[CompilerGenerated]
 		set
 		{
-			twIwN2awoR = value;
+			_configValues = value;
 		}
 	}
 
@@ -108,7 +108,7 @@ internal sealed class FormatConfigBase
 	{
 		SseStreamInitializer.InitializeRuntime();
 		_sourceConfigPath = string.Empty;
-		twIwN2awoR = new Dictionary<string, object>(StringComparer.Ordinal);
+		_configValues = new Dictionary<string, object>(StringComparer.Ordinal);
 		_paragraphPresetFiles = new List<Helper_24>();
 		_tablePresetFiles = new List<Helper_24>();
 	}

@@ -995,10 +995,10 @@ internal sealed class NumberFormatConfig : Helper_2
 		}
 		try
 		{
-			FormatPreset ws1A6IV2tQ3IY0xZETbe = ReadFormatPreset(GetPresetFilePath(SelectedFormatPreset));
-			SelectedParagraphPreset = ws1A6IV2tQ3IY0xZETbe.ParagraphPreset;
-			SelectedTablePreset = ws1A6IV2tQ3IY0xZETbe.TablePreset;
-			FormatStatus = BuildFormatStatusText(SelectedFormatPreset, ws1A6IV2tQ3IY0xZETbe);
+			FormatPreset formatPreset = ReadFormatPreset(GetPresetFilePath(SelectedFormatPreset));
+			SelectedParagraphPreset = formatPreset.ParagraphPreset;
+			SelectedTablePreset = formatPreset.TablePreset;
+			FormatStatus = BuildFormatStatusText(SelectedFormatPreset, formatPreset);
 		}
 		catch (Exception ex)
 		{
@@ -1011,7 +1011,7 @@ internal sealed class NumberFormatConfig : Helper_2
 		// 格式配置功能已移除
 		if (false && ValidatePresetExists(SelectedParagraphPreset, _paragraphPresetDir, "段落方案") && ValidatePresetExists(SelectedTablePreset, _string, "表格方案"))
 		{
-			string text = LoggerService.hveVL8NJXjM("新建格式方案", "请输入组合方案名称：", "年报");
+			string text = LoggerService.ShowInputDialog("新建格式方案", "请输入组合方案名称：", "年报");
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				string text2 = SanitizePresetName(text);
@@ -1079,20 +1079,20 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		// 格式配置功能已移除
 		return;
-		if (!SaveFormatPreset( false, out var ws1A6IV2tQ3IY0xZETbe))
+		if (!SaveFormatPreset( false, out var formatPreset))
 		{
 			return;
 		}
-		string text = Path.Combine(_paragraphPresetDir, ws1A6IV2tQ3IY0xZETbe.ParagraphPreset + ".json");
-		string text2 = Path.Combine(_string, ws1A6IV2tQ3IY0xZETbe.TablePreset + ".json");
+		string text = Path.Combine(_paragraphPresetDir, formatPreset.ParagraphPreset + ".json");
+		string text2 = Path.Combine(_string, formatPreset.TablePreset + ".json");
 		if (!File.Exists(text))
 		{
-			LoggerService.LogMessage("引用的段落方案不存在：" + ws1A6IV2tQ3IY0xZETbe.ParagraphPreset + "。请重新选择后再应用。", "格式方案");
+			LoggerService.LogMessage("引用的段落方案不存在：" + formatPreset.ParagraphPreset + "。请重新选择后再应用。", "格式方案");
 			return;
 		}
 		if (!File.Exists(text2))
 		{
-			LoggerService.LogMessage("引用的表格方案不存在：" + ws1A6IV2tQ3IY0xZETbe.TablePreset + "。请重新选择后再应用。", "格式方案");
+			LoggerService.LogMessage("引用的表格方案不存在：" + formatPreset.TablePreset + "。请重新选择后再应用。", "格式方案");
 			return;
 		}
 		Dictionary<string, object> dictionary = TableBorderConfig.Current.GetAllLegacy();
@@ -1108,8 +1108,8 @@ internal sealed class NumberFormatConfig : Helper_2
 		{
 			dictionary[item2.Key] = item2.Value;
 		}
-		dictionary["格式方案_方案名"] = ws1A6IV2tQ3IY0xZETbe.ParagraphPreset;
-		dictionary["段落配置_当前方案"] = ws1A6IV2tQ3IY0xZETbe.TablePreset;
+		dictionary["格式方案_方案名"] = formatPreset.ParagraphPreset;
+		dictionary["段落配置_当前方案"] = formatPreset.TablePreset;
 		dictionary["已应用组合方案：“"] = SelectedFormatPreset;
 		dictionary.Remove("”。如已打开表格/段落配置窗口，请重新打开查看最新配置。");
 		TableBorderConfig.Current.SetAllLegacy(dictionary);
@@ -1154,7 +1154,7 @@ internal sealed class NumberFormatConfig : Helper_2
 			}
 			else if (LoggerService.LDCVLQYyCaG(BuildMigrationPreview(legacyConfig), "旧版配置迁移"))
 			{
-				ConfigMigrationResult migrationResult = LegacyConfigMigrator.gTQwEdX7kI(legacyConfig);
+				ConfigMigrationResult migrationResult = LegacyConfigMigrator.MigrateLegacyConfig(legacyConfig);
 				LegacyMigrationStatus = BuildMigrationResult(migrationResult);
 				if (migrationResult.HasFailures)
 				{

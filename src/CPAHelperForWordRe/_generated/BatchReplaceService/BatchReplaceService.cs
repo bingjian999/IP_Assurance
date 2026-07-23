@@ -341,25 +341,25 @@ internal static class BatchReplaceService
 
 	private static CellFormatSnapshot CaptureCellFormat(Cell P_0)
 	{
-		CellFormatSnapshot lK59I4VUBQWVJpoki7MO2 = new CellFormatSnapshot();
+		CellFormatSnapshot snapshot = new CellFormatSnapshot();
 		Font font = P_0.Range.Font;
 		try
 		{
-			lK59I4VUBQWVJpoki7MO2.NameFarEast = font.NameFarEast;
+			snapshot.NameFarEast = font.NameFarEast;
 		}
 		catch
 		{
 		}
 		try
 		{
-			lK59I4VUBQWVJpoki7MO2.NameAscii = font.NameAscii;
+			snapshot.NameAscii = font.NameAscii;
 		}
 		catch
 		{
 		}
 		try
 		{
-			lK59I4VUBQWVJpoki7MO2.NameOther = font.NameOther;
+			snapshot.NameOther = font.NameOther;
 		}
 		catch
 		{
@@ -369,7 +369,7 @@ internal static class BatchReplaceService
 			float size = font.Size;
 			if (size > 0f && size != 9999999f)
 			{
-				lK59I4VUBQWVJpoki7MO2.Size = size;
+				snapshot.Size = size;
 			}
 		}
 		catch
@@ -380,7 +380,7 @@ internal static class BatchReplaceService
 			int bold = font.Bold;
 			if (bold != 9999999)
 			{
-				lK59I4VUBQWVJpoki7MO2.Bold = bold;
+				snapshot.Bold = bold;
 			}
 		}
 		catch
@@ -391,7 +391,7 @@ internal static class BatchReplaceService
 			int italic = font.Italic;
 			if (italic != 9999999)
 			{
-				lK59I4VUBQWVJpoki7MO2.Italic = italic;
+				snapshot.Italic = italic;
 			}
 		}
 		catch
@@ -402,7 +402,7 @@ internal static class BatchReplaceService
 			WdUnderline underline = font.Underline;
 			if (underline != (WdUnderline)9999999)
 			{
-				lK59I4VUBQWVJpoki7MO2.Underline = underline;
+				snapshot.Underline = underline;
 			}
 		}
 		catch
@@ -413,7 +413,7 @@ internal static class BatchReplaceService
 			WdParagraphAlignment alignment = P_0.Range.ParagraphFormat.Alignment;
 			if (alignment != (WdParagraphAlignment)9999999)
 			{
-				lK59I4VUBQWVJpoki7MO2.ParagraphAlignment = alignment;
+				snapshot.ParagraphAlignment = alignment;
 			}
 		}
 		catch
@@ -424,13 +424,13 @@ internal static class BatchReplaceService
 			WdCellVerticalAlignment verticalAlignment = P_0.VerticalAlignment;
 			if (verticalAlignment != (WdCellVerticalAlignment)9999999)
 			{
-				lK59I4VUBQWVJpoki7MO2.VerticalAlignment = verticalAlignment;
+				snapshot.VerticalAlignment = verticalAlignment;
 			}
 		}
 		catch
 		{
 		}
-		return lK59I4VUBQWVJpoki7MO2;
+		return snapshot;
 	}
 
 	private static void ApplyCellFormat(Cell P_0, CellFormatSnapshot P_1)
@@ -591,7 +591,7 @@ internal static class BatchReplaceService
 					}));
 				}
 				Func<CallSite, Type, object, object> target = _G_o__17.toInt32CallSite1.Target;
-				CallSite<Func<CallSite, Type, object, object>> sLFVUj7dyZt = _G_o__17.toInt32CallSite1;
+				CallSite<Func<CallSite, Type, object, object>> rowsToInt32CallSite = _G_o__17.toInt32CallSite1;
 				Type typeFromHandle = typeof(Convert);
 				if (_G_o__17.countMemberCallSite1 == null)
 				{
@@ -603,7 +603,7 @@ internal static class BatchReplaceService
 				{
 					_G_o__17.rowsMemberCallSite = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Rows", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				P_0 = (dynamic)target(sLFVUj7dyZt, typeFromHandle, target2(countMemberCallSite1, _G_o__17.rowsMemberCallSite.Target(_G_o__17.rowsMemberCallSite, arg)));
+				P_0 = (dynamic)target(rowsToInt32CallSite, typeFromHandle, target2(countMemberCallSite1, _G_o__17.rowsMemberCallSite.Target(_G_o__17.rowsMemberCallSite, arg)));
 				if (_G_o__17.toInt32CallSite2 == null)
 				{
 					_G_o__17.toInt32CallSite2 = CallSite<Func<CallSite, Type, object, object>>.Create(Binder.InvokeMember(CSharpBinderFlags.None, "ToInt32", null, typeof(BatchReplaceService), new CSharpArgumentInfo[2]
@@ -613,7 +613,7 @@ internal static class BatchReplaceService
 					}));
 				}
 				Func<CallSite, Type, object, object> target3 = _G_o__17.toInt32CallSite2.Target;
-				CallSite<Func<CallSite, Type, object, object>> kfbVUMxDE0h = _G_o__17.toInt32CallSite2;
+				CallSite<Func<CallSite, Type, object, object>> columnsToInt32CallSite = _G_o__17.toInt32CallSite2;
 				Type typeFromHandle2 = typeof(Convert);
 				if (_G_o__17.countMemberCallSite2 == null)
 				{
@@ -625,7 +625,7 @@ internal static class BatchReplaceService
 				{
 					_G_o__17.columnsMemberCallSite = CallSite<Func<CallSite, object, object>>.Create(Binder.GetMember(CSharpBinderFlags.None, "Columns", typeof(BatchReplaceService), new CSharpArgumentInfo[1] { CSharpArgumentInfo.Create(CSharpArgumentInfoFlags.None, null) }));
 				}
-				P_1 = (dynamic)target3(kfbVUMxDE0h, typeFromHandle2, target4(eaiVUfwFhWg, _G_o__17.columnsMemberCallSite.Target(_G_o__17.columnsMemberCallSite, arg)));
+				P_1 = (dynamic)target3(columnsToInt32CallSite, typeFromHandle2, target4(eaiVUfwFhWg, _G_o__17.columnsMemberCallSite.Target(_G_o__17.columnsMemberCallSite, arg)));
 				if (P_0 > 0 && P_1 > 0)
 				{
 					return true;

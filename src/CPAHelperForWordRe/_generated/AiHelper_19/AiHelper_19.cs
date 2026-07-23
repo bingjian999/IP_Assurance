@@ -26,12 +26,12 @@ internal sealed class AiHelper_19
 		_wordTableToolService4 = P_0 ?? throw new ArgumentNullException("executor");
 	}
 
-	public AgentInstructionContext QhF3fbjxg1()
+	public AgentInstructionContext CreateInstructionContext()
 	{
 		WordWindowInfo current = DocumentLifecycleGuard.Current;
 		if (current != null)
 		{
-			return sIN3MDmcKU(current);
+			return CreateContextFromWindow(current);
 		}
 		try
 		{
@@ -51,7 +51,7 @@ internal sealed class AiHelper_19
 					string key2 = "currentPage";
 					IncludeFootnotesAndEndnotes = Type.Missing;
 					extra2[key2] = activeDocument.ComputeStatistics(WdStatistic.wdStatisticWords, ref IncludeFootnotesAndEndnotes).ToString();
-					oH03bF09Vf(agentInstructionContext.Years, activeDocument.Name);
+					ExtractYears(agentInstructionContext.Years, activeDocument.Name);
 				}
 				Selection selection = app.Selection;
 				if (selection != null)
@@ -60,7 +60,7 @@ internal sealed class AiHelper_19
 					agentInstructionContext.Extra["selectionRangeStart"] = text.Length.ToString();
 					if (!string.IsNullOrWhiteSpace(text))
 					{
-						oH03bF09Vf(agentInstructionContext.Years, text);
+						ExtractYears(agentInstructionContext.Years, text);
 					}
 				}
 				agentInstructionContext.Years.Sort(StringComparer.OrdinalIgnoreCase);
@@ -73,7 +73,7 @@ internal sealed class AiHelper_19
 		}
 	}
 
-	private static AgentInstructionContext sIN3MDmcKU(WordWindowInfo P_0)
+	private static AgentInstructionContext CreateContextFromWindow(WordWindowInfo P_0)
 	{
 		AgentInstructionContext agentInstructionContext = new AgentInstructionContext();
 		if (P_0 == null)
@@ -83,7 +83,7 @@ internal sealed class AiHelper_19
 		if (!string.IsNullOrWhiteSpace(P_0.DocumentName))
 		{
 			agentInstructionContext.Extra["documentName"] = P_0.DocumentName;
-			oH03bF09Vf(agentInstructionContext.Years, P_0.DocumentName);
+			ExtractYears(agentInstructionContext.Years, P_0.DocumentName);
 		}
 		if (!string.IsNullOrWhiteSpace(P_0.DocumentFullName))
 		{
@@ -103,7 +103,7 @@ internal sealed class AiHelper_19
 		return agentInstructionContext;
 	}
 
-	private static void oH03bF09Vf(List<string> P_0, string P_1)
+	private static void ExtractYears(List<string> P_0, string P_1)
 	{
 		if (string.IsNullOrWhiteSpace(P_1))
 		{

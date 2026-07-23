@@ -18,7 +18,7 @@ namespace CPAHelperForWordRe.UI.Forms;
 
 public sealed class SplitPageRangesWindow : Window, IComponentConnector
 {
-	private static readonly Regex VoenFWm86c;
+	private static readonly Regex PageRangeRegex;
 
 	private readonly int _int;
 
@@ -66,7 +66,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 		};
 	}
 
-	internal static bool GNen5M905m(string P_0, int P_1, out List<PageRange> P_2, out string P_3)
+	internal static bool TryParsePageRanges(string P_0, int P_1, out List<PageRange> P_2, out string P_3)
 	{
 		P_2 = new List<PageRange>();
 		P_3 = null;
@@ -85,7 +85,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 			{
 				continue;
 			}
-			Match match = VoenFWm86c.Match(text2);
+			Match match = PageRangeRegex.Match(text2);
 			if (!match.Success)
 			{
 				P_3 = "页码格式不正确：" + text2;
@@ -143,9 +143,9 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 		return true;
 	}
 
-	private void eH0ncnKufX(object P_0, RoutedEventArgs P_1)
+	private void OnConfirmButtonClick(object P_0, RoutedEventArgs P_1)
 	{
-		if (!GNen5M905m(txtRanges.Text, _int, out var pageRanges, out var messageBoxText))
+		if (!TryParsePageRanges(txtRanges.Text, _int, out var pageRanges, out var messageBoxText))
 		{
 			MessageBox.Show(this, messageBoxText, "提示", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 			txtRanges.Focus();
@@ -190,7 +190,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 			txtHint = (TextBlock)target;
 			break;
 		case 3:
-			((Button)target).Click += eH0ncnKufX;
+			((Button)target).Click += OnConfirmButtonClick;
 			break;
 		case 4:
 			((Button)target).Click += crSneQumhk;
@@ -204,11 +204,11 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 	static SplitPageRangesWindow()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		VoenFWm86c = new Regex("^\\\\s*(\\\\d+)\\\\s*(?:[-－—–~～]\\\\s*(\\\\d+)\\\\s*)?$", RegexOptions.Compiled);
+		PageRangeRegex = new Regex("^\\\\s*(\\\\d+)\\\\s*(?:[-－—–~～]\\\\s*(\\\\d+)\\\\s*)?$", RegexOptions.Compiled);
 	}
 
 	[CompilerGenerated]
-	private void RdHnyu59Zw(object P_0, KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{
@@ -217,7 +217,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void VlfnXZep5j(object P_0, RoutedEventArgs P_1)
+	private void OnWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
 		txtRanges.Focus();
 		txtRanges.SelectAll();

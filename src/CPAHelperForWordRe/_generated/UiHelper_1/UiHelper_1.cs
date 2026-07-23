@@ -12,9 +12,9 @@ namespace UiHelper_1;
 [DebuggerNonUserCode]
 internal sealed class UiHelper_1
 {
-	private static ThisAddIn f9fpbjxOh;
+	private static ThisAddIn _thisAddIn;
 
-	private static ApplicationFactory p6fOCIqmS;
+	private static ApplicationFactory _factory;
 
 	private static UiHelper_6 ioZntiWbx;
 
@@ -22,13 +22,13 @@ internal sealed class UiHelper_1
 	{
 		get
 		{
-			return f9fpbjxOh;
+			return _thisAddIn;
 		}
 		set
 		{
-			if (f9fpbjxOh == null)
+			if (_thisAddIn == null)
 			{
-				f9fpbjxOh = value;
+				_thisAddIn = value;
 				return;
 			}
 			throw new NotSupportedException();
@@ -39,13 +39,13 @@ internal sealed class UiHelper_1
 	{
 		get
 		{
-			return p6fOCIqmS;
+			return _factory;
 		}
 		set
 		{
-			if (p6fOCIqmS == null)
+			if (_factory == null)
 			{
-				p6fOCIqmS = value;
+				_factory = value;
 				return;
 			}
 			throw new NotSupportedException();
@@ -58,7 +58,7 @@ internal sealed class UiHelper_1
 		{
 			if (ioZntiWbx == null)
 			{
-				ioZntiWbx = new UiHelper_6(p6fOCIqmS.GetRibbonFactory());
+				ioZntiWbx = new UiHelper_6(_factory.GetRibbonFactory());
 			}
 			return ioZntiWbx;
 		}

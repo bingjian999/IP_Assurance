@@ -121,16 +121,16 @@ internal sealed class ProviderConfig
 		Intranet = Intranet ?? new Helper_23();
 		Summary = Summary ?? new AiHelper_9();
 		Intranet.EnsureDefaults();
-		Summary.qBDLf9An1g();
+		Summary.EnsureDefaults();
 		if (Providers.Count == 0)
 		{
-			if (Runtime.g0DLRYEicD())
+			if (Runtime.IsValid())
 			{
-				Providers.Add(AiProviderConfig.PZwLIR4Stn("当前配置", Runtime));
+				Providers.Add(AiProviderConfig.CreateProviderConfig("当前配置", Runtime));
 			}
-			foreach (AiProviderConfig item in AiProviderConfig.dV6LHfPZVP())
+			foreach (AiProviderConfig item in AiProviderConfig.GetBuiltinProviders())
 			{
-				if (!xXMtPd2I0I(item))
+				if (!IsDuplicateProvider(item))
 				{
 					Providers.Add(item);
 				}
@@ -154,10 +154,10 @@ internal sealed class ProviderConfig
 		{
 			ActiveProviderIndex = 0;
 		}
-		Runtime.FVULVTGET5(Providers[ActiveProviderIndex].OsCL8QJeMd());
+		Runtime.FVULVTGET5(Providers[ActiveProviderIndex].ToRuntimeConfig());
 	}
 
-	private bool xXMtPd2I0I(AiProviderConfig P_0)
+	private bool IsDuplicateProvider(AiProviderConfig P_0)
 	{
 		foreach (AiProviderConfig provider in Providers)
 		{

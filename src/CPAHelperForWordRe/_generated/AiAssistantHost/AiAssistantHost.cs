@@ -380,7 +380,7 @@ internal sealed class AiAssistantHost : UserControl
 	{
 		if (P_0)
 		{
-			AiHelper_17.vIPU93N8BE(OnArtifactPublished);
+			AiHelper_17.remove_ArtifactHandler(OnArtifactPublished);
 			AiAssistantHost2.ClosePaneBridge(WindowKey);
 			DetachWordEvents();
 			if (_webView2?.CoreWebView2 != null && _bool)

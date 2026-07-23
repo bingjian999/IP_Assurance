@@ -2,11 +2,11 @@
 
 internal interface DialogService
 {
-	string hveVL8NJXjM(string P_0, string P_1, string P_2);
+	string ShowInputDialog(string P_0, string P_1, string P_2);
 
 	string BxkVLIlDE06(string P_0);
 
-	string SA6VLiTt8Ir(string P_0, string P_1);
+	string ShowSaveFileDialog(string P_0, string P_1);
 
 	int? KutVLHOhcIC(int? P_0);
 

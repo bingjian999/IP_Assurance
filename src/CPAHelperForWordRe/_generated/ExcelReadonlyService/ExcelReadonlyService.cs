@@ -28,15 +28,15 @@ internal sealed class ExcelReadonlyService : IToolProvider
 		BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
 		return new List<AITool>
 		{
-			FlX9lCO2pe("GetCurrentExcelContext", "get_current_excel_context", bindingFlags),
-			FlX9lCO2pe("ListOpenExcelWorkbooks", "list_open_excel_workbooks", bindingFlags),
-			FlX9lCO2pe("GetExcelSheetList", "get_excel_sheet_list", bindingFlags),
-			FlX9lCO2pe("PreviewExcelSheet", "preview_excel_sheet", bindingFlags),
-			FlX9lCO2pe("PreviewExcelRange", "preview_excel_range", bindingFlags),
-			FlX9lCO2pe("GetExcelRangeValuesAndFormulas", "get_excel_range_values_and_formulas", bindingFlags),
-			FlX9lCO2pe("GetCurrentSelectionValuesAndFormulas", "get_current_selection_values_and_formulas", bindingFlags),
-			FlX9lCO2pe("FindExcelCells", "find_excel_cells", bindingFlags),
-			FlX9lCO2pe("ManageExcelNamedRange", "manage_excel_named_range", bindingFlags)
+			CreateAITool("GetCurrentExcelContext", "get_current_excel_context", bindingFlags),
+			CreateAITool("ListOpenExcelWorkbooks", "list_open_excel_workbooks", bindingFlags),
+			CreateAITool("GetExcelSheetList", "get_excel_sheet_list", bindingFlags),
+			CreateAITool("PreviewExcelSheet", "preview_excel_sheet", bindingFlags),
+			CreateAITool("PreviewExcelRange", "preview_excel_range", bindingFlags),
+			CreateAITool("GetExcelRangeValuesAndFormulas", "get_excel_range_values_and_formulas", bindingFlags),
+			CreateAITool("GetCurrentSelectionValuesAndFormulas", "get_current_selection_values_and_formulas", bindingFlags),
+			CreateAITool("FindExcelCells", "find_excel_cells", bindingFlags),
+			CreateAITool("ManageExcelNamedRange", "manage_excel_named_range", bindingFlags)
 		};
 	}
 
@@ -83,7 +83,7 @@ internal sealed class ExcelReadonlyService : IToolProvider
 		return list;
 	}
 
-	private AITool FlX9lCO2pe(string P_0, string P_1, BindingFlags P_2)
+	private AITool CreateAITool(string P_0, string P_1, BindingFlags P_2)
 	{
 		return AIFunctionFactory.Create(GetType().GetMethod(P_0, P_2), this, new AIFunctionFactoryOptions
 		{
@@ -112,13 +112,13 @@ internal sealed class ExcelReadonlyService : IToolProvider
 	[Description("只读快速预览指定工作表或当前工作表的 UsedRange，以及前几行/后几行内容；用于底稿概览，不修改工作簿。")]
 	private AiHelper_5 PreviewExcelSheet(string sheetName = "", int headRows = 20, int tailRows = 20, int maxColumns = 40, bool includeFormulas = false, bool includeFormats = false, string workbookName = "")
 	{
-		return _aiConfigBootstrap2.dhorWDIpcu(sheetName, workbookName, EYw9NTHISY(headRows, 20), EYw9NTHISY(tailRows, 20), EYw9NTHISY(maxColumns, 40), includeFormulas, includeFormats);
+		return _aiConfigBootstrap2.dhorWDIpcu(sheetName, workbookName, CoalescePositive(headRows, 20), CoalescePositive(tailRows, 20), CoalescePositive(maxColumns, 40), includeFormulas, includeFormats);
 	}
 
 	[Description("只读快速预览当前选区或指定区域的前几行和后几行。sheetName/rangeAddress 为空时默认使用当前 Excel/WPS 表格选区；不修改工作簿。")]
 	private AiHelper_5 PreviewExcelRange(string sheetName = "", string rangeAddress = "", int headRows = 15, int tailRows = 10, int maxColumns = 30, bool visibleOnly = false, bool includeFormulas = true, bool includeFormats = false, string workbookName = "")
 	{
-		return _aiConfigBootstrap2.PreviewExcelRange(sheetName, rangeAddress, workbookName, EYw9NTHISY(headRows, 15), EYw9NTHISY(tailRows, 10), EYw9NTHISY(maxColumns, 30), visibleOnly, includeFormulas, includeFormats);
+		return _aiConfigBootstrap2.PreviewExcelRange(sheetName, rangeAddress, workbookName, CoalescePositive(headRows, 15), CoalescePositive(tailRows, 10), CoalescePositive(maxColumns, 30), visibleOnly, includeFormulas, includeFormats);
 	}
 
 	[Description("只读按工作表名称和单元格区域地址读取 Excel/WPS 表格区域中的值和公式。可选指定工作簿名，未指定时默认使用当前活动工作簿。")]
@@ -145,7 +145,7 @@ internal sealed class ExcelReadonlyService : IToolProvider
 		return _aiConfigBootstrap2.nCmrdMSTjR(action, name, workbookName, nameScope);
 	}
 
-	private static int EYw9NTHISY(int P_0, int P_1)
+	private static int CoalescePositive(int P_0, int P_1)
 	{
 		if (P_0 > 0)
 		{

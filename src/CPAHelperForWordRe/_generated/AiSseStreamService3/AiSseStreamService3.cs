@@ -2785,7 +2785,7 @@ internal class AiSseStreamService3
 			stringOffsets = new List<int>();
 			try
 			{
-				var _stream = currentAssembly.GetManifestResourceStream("JmI6YdVEO5uX77WkHk.lmPHIDBA7YvWtgD3wV");
+				var _stream = currentAssembly.GetManifestResourceStream("StringResourceNamespace.EncryptedStringData");
 				byte[] _pktInit = currentAssembly.GetName().GetPublicKeyToken();
 				string _pktInitStr = _pktInit == null ? "null" : (_pktInit.Length == 0 ? "empty" : BitConverter.ToString(_pktInit));
 				byte[] _pk = currentAssembly.GetName().GetPublicKey();

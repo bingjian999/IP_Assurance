@@ -14,7 +14,7 @@ namespace ScreenshotOverlayHelper;
 
 internal sealed class ScreenshotOverlayHelper : Form
 {
-	private enum BPuOTVVZI70taClJes5e
+	private enum ScreenshotSource
 	{
 
 	}
@@ -77,9 +77,9 @@ internal sealed class ScreenshotOverlayHelper : Form
 	{
 		SseStreamInitializer.InitializeRuntime();
 		_bool = true;
-		yMLcQrPaCU = ScreenshotCaptureHelper.o2DcMOKyEe();
+		yMLcQrPaCU = ScreenshotCaptureHelper.GetVirtualScreenBounds();
 		_bitmap = ScreenshotCaptureHelper.SEvcbGvKps();
-		T0dcgIxXI1();
+		SaveWordWindowState();
 		base.FormBorderStyle = FormBorderStyle.None;
 		base.StartPosition = FormStartPosition.Manual;
 		base.Bounds = yMLcQrPaCU;
@@ -130,7 +130,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 		}
 		_bool = false;
 		QNZcJpxRon = P_0.Location;
-		Rectangle srcRect = h24cHU7RGI();
+		Rectangle srcRect = GetSelectionRectangle();
 		if (srcRect.Width >= 8 && srcRect.Height >= 8)
 		{
 			CaptureBounds = new Rectangle(srcRect.X + yMLcQrPaCU.X, srcRect.Y + yMLcQrPaCU.Y, srcRect.Width, srcRect.Height);
@@ -159,15 +159,15 @@ internal sealed class ScreenshotOverlayHelper : Form
 		}
 		else if (P_0.KeyCode == Keys.F1)
 		{
-			R0Ec81fI6J();
+			HideWordAndRecapture();
 		}
 		else if (P_0.KeyCode == Keys.F2)
 		{
-			QCXcIiOuET((BPuOTVVZI70taClJes5e)1);
+			QCXcIiOuET((ScreenshotSource)1);
 		}
 		else if (P_0.KeyCode == Keys.F3)
 		{
-			QCXcIiOuET((BPuOTVVZI70taClJes5e)2);
+			QCXcIiOuET((ScreenshotSource)2);
 		}
 		else
 		{
@@ -182,7 +182,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 		{
 			P_0.Graphics.FillRectangle(brush, base.ClientRectangle);
 		}
-		Rectangle rectangle = (_bool ? h24cHU7RGI() : Rectangle.Empty);
+		Rectangle rectangle = (_bool ? GetSelectionRectangle() : Rectangle.Empty);
 		if (rectangle.Width > 0 && rectangle.Height > 0)
 		{
 			P_0.Graphics.DrawImage(_bitmap, rectangle, rectangle, GraphicsUnit.Pixel);
@@ -208,7 +208,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 		base.Dispose(P_0);
 	}
 
-	private void T0dcgIxXI1()
+	private void SaveWordWindowState()
 	{
 		Microsoft.Office.Interop.Word.Application wordApp = WordTableToolService.WordApp;
 		if (wordApp == null)
@@ -242,7 +242,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 		}
 	}
 
-	private void R0Ec81fI6J()
+	private void HideWordAndRecapture()
 	{
 		bool topMost = base.TopMost;
 		try
@@ -275,7 +275,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 			}
 			System.Windows.Forms.Application.DoEvents();
 			Thread.Sleep(120);
-			QCXcIiOuET((BPuOTVVZI70taClJes5e)0);
+			QCXcIiOuET((ScreenshotSource)0);
 		}
 		finally
 		{
@@ -288,15 +288,15 @@ internal sealed class ScreenshotOverlayHelper : Form
 		}
 	}
 
-	private void QCXcIiOuET(BPuOTVVZI70taClJes5e P_0)
+	private void QCXcIiOuET(ScreenshotSource P_0)
 	{
 		Bitmap bitmap = null;
 		try
 		{
 			bitmap = P_0 switch
 			{
-				(BPuOTVVZI70taClJes5e)1 => ScreenshotCaptureHelper.ovBcwMo51L(), 
-				(BPuOTVVZI70taClJes5e)2 => ScreenshotCaptureHelper.Rr5cS2CmV7(), 
+				(ScreenshotSource)1 => ScreenshotCaptureHelper.CaptureScreenPerMonitor(), 
+				(ScreenshotSource)2 => ScreenshotCaptureHelper.CaptureFullScreen(), 
 				_ => ScreenshotCaptureHelper.SEvcbGvKps(), 
 			};
 			Bitmap bitmap2 = _bitmap;
@@ -360,7 +360,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 		}
 	}
 
-	private Rectangle h24cHU7RGI()
+	private Rectangle GetSelectionRectangle()
 	{
 		int num = Math.Min(_point.X, QNZcJpxRon.X);
 		int num2 = Math.Min(_point.Y, QNZcJpxRon.Y);

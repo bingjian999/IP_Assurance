@@ -9396,7 +9396,7 @@ internal sealed class BatchReplaceService3
 		{
 			_G_c__DisplayClass132_1 CS_8_locals_11 = new _G_c__DisplayClass132_1();
 			TableCellModel tableCell = P_1[num2];
-			AiHelper_21 csQGCih5R8sKlcw64k = new AiHelper_21
+			AiHelper_21 cellChange = new AiHelper_21
 			{
 				RequestIndex = num2 + 1,
 				LocalTableIndex = tableCell.LocalTableIndex,
@@ -9406,10 +9406,10 @@ internal sealed class BatchReplaceService3
 				ExpectedOldText = tableCell.ExpectedOldText,
 				IsHeader = tableCell.IsHeader
 			};
-			P_2.Add(csQGCih5R8sKlcw64k);
+			P_2.Add(cellChange);
 			if (tableCell.LocalTableIndex < 1 || tableCell.LocalTableIndex > num)
 			{
-				SetCellError(csQGCih5R8sKlcw64k, "local_table_index_out_of_range", "localTableIndex 超出引用选区内表格数量。");
+				SetCellError(cellChange, "local_table_index_out_of_range", "localTableIndex 超出引用选区内表格数量。");
 				continue;
 			}
 			if (!dictionary.TryGetValue(tableCell.LocalTableIndex, out var value))
@@ -9421,7 +9421,7 @@ internal sealed class BatchReplaceService3
 				}
 				catch (Exception ex)
 				{
-					SetCellError(csQGCih5R8sKlcw64k, "table_unavailable", ex.Message);
+					SetCellError(cellChange, "table_unavailable", ex.Message);
 					continue;
 				}
 			}
@@ -9430,8 +9430,8 @@ internal sealed class BatchReplaceService3
 				value2 = YGSggVPnQb(value);
 				dictionary3[tableCell.LocalTableIndex] = value2;
 			}
-			csQGCih5R8sKlcw64k.HeaderRowCount = value2;
-			csQGCih5R8sKlcw64k.IsHeader = tableCell.IsHeader || (value2 > 0 && tableCell.RowIndex <= value2);
+			cellChange.HeaderRowCount = value2;
+			cellChange.IsHeader = tableCell.IsHeader || (value2 > 0 && tableCell.RowIndex <= value2);
 			if (!dictionary2.TryGetValue(tableCell.LocalTableIndex, out var value3))
 			{
 				value3 = BuildCellMap(value);
@@ -9440,21 +9440,21 @@ internal sealed class BatchReplaceService3
 			string key = ProcessString(tableCell.RowIndex, tableCell.ColumnIndex);
 			if (!value3.TryGetValue(key, out CS_8_locals_11.AnchorCell))
 			{
-				SetCellError(csQGCih5R8sKlcw64k, "model_cell_unavailable", "目标坐标不是 Word 真实单元格起点，可能是合并区域内部坐标。请使用 read_word_tables_in_range 返回的 origin/fillableCells 坐标。");
+				SetCellError(cellChange, "model_cell_unavailable", "目标坐标不是 Word 真实单元格起点，可能是合并区域内部坐标。请使用 read_word_tables_in_range 返回的 origin/fillableCells 坐标。");
 				continue;
 			}
-			csQGCih5R8sKlcw64k.Cell = CS_8_locals_11.AnchorCell;
-			csQGCih5R8sKlcw64k.RangeStart = tryGetValueOrDefault(() => CS_8_locals_11.AnchorCell.Range.Start, 0);
-			csQGCih5R8sKlcw64k.RangeEnd = tryGetValueOrDefault(() => CS_8_locals_11.AnchorCell.Range.End, 0);
-			csQGCih5R8sKlcw64k.Page = ComputeIntValue(CS_8_locals_11.AnchorCell.Range);
-			csQGCih5R8sKlcw64k.OldText = NormalizeText(ProcessString(CS_8_locals_11.AnchorCell));
-			if (tableCell.ExpectedOldText != null && !string.Equals(NormalizeText(tableCell.ExpectedOldText), csQGCih5R8sKlcw64k.OldText, StringComparison.Ordinal))
+			cellChange.Cell = CS_8_locals_11.AnchorCell;
+			cellChange.RangeStart = tryGetValueOrDefault(() => CS_8_locals_11.AnchorCell.Range.Start, 0);
+			cellChange.RangeEnd = tryGetValueOrDefault(() => CS_8_locals_11.AnchorCell.Range.End, 0);
+			cellChange.Page = ComputeIntValue(CS_8_locals_11.AnchorCell.Range);
+			cellChange.OldText = NormalizeText(ProcessString(CS_8_locals_11.AnchorCell));
+			if (tableCell.ExpectedOldText != null && !string.Equals(NormalizeText(tableCell.ExpectedOldText), cellChange.OldText, StringComparison.Ordinal))
 			{
-				SetCellError(csQGCih5R8sKlcw64k, "old_text_mismatch", "目标单元格当前旧值与 expectedOldText 不一致。请重新读取表格模型后再写入。");
+				SetCellError(cellChange, "old_text_mismatch", "目标单元格当前旧值与 expectedOldText 不一致。请重新读取表格模型后再写入。");
 			}
 			else
 			{
-				csQGCih5R8sKlcw64k.Writable = true;
+				cellChange.Writable = true;
 			}
 		}
 		return null;

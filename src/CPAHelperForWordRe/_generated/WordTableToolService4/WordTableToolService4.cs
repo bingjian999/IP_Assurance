@@ -25,7 +25,7 @@ internal sealed class WordTableToolService4
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal T WYJVD7yq8Kk()
+		internal T ExecuteWithTelemetry()
 		{
 			return wordTableToolService4.SboJmUGoUJ(action);
 		}
@@ -45,7 +45,7 @@ internal sealed class WordTableToolService4
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal T XJbVD5M1KHp()
+		internal T ExecuteWithContext()
 		{
 			WordWindowInfo current = DocumentLifecycleGuard.Current;
 			bool flag = wordTableToolService4._aiTargetBinder != null || callerSnapshot != null;
@@ -85,9 +85,9 @@ internal sealed class WordTableToolService4
 		_aiTargetBinder = P_0;
 	}
 
-	public Kc8iOkJNoalE6DtK4x6 runOperation<Kc8iOkJNoalE6DtK4x6>(string P_0, Func<Application, Kc8iOkJNoalE6DtK4x6> P_1)
+	public T runOperation<T>(string P_0, Func<Application, T> P_1)
 	{
-		_G_c__DisplayClass2_0<Kc8iOkJNoalE6DtK4x6> CS_8_locals_5 = new _G_c__DisplayClass2_0<Kc8iOkJNoalE6DtK4x6>();
+		_G_c__DisplayClass2_0<T> CS_8_locals_5 = new _G_c__DisplayClass2_0<T>();
 		CS_8_locals_5.wordTableToolService4 = this;
 		CS_8_locals_5.action = P_1;
 		if (CS_8_locals_5.action == null)
@@ -97,9 +97,9 @@ internal sealed class WordTableToolService4
 		return AiHelper_14.RunWithTelemetry(P_0, () => CS_8_locals_5.wordTableToolService4.SboJmUGoUJ(CS_8_locals_5.action));
 	}
 
-	public PSG6ueJotabDtGQ958F SboJmUGoUJ<PSG6ueJotabDtGQ958F>(Func<Application, PSG6ueJotabDtGQ958F> P_0)
+	public T SboJmUGoUJ<T>(Func<Application, T> P_0)
 	{
-		_G_c__DisplayClass3_0<PSG6ueJotabDtGQ958F> obj = new _G_c__DisplayClass3_0<PSG6ueJotabDtGQ958F>();
+		_G_c__DisplayClass3_0<T> obj = new _G_c__DisplayClass3_0<T>();
 		obj.wordTableToolService4 = this;
 		obj.action = P_0;
 		if (obj.action == null)

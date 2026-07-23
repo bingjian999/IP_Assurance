@@ -108,7 +108,7 @@ internal sealed class AiHelper_9
 		}
 	}
 
-	public void qBDLf9An1g()
+	public void EnsureDefaults()
 	{
 		if (ContextWindowTokens <= 0)
 		{
@@ -136,9 +136,9 @@ internal sealed class AiHelper_9
 		}
 	}
 
-	public AgentSummaryOptions uMGLMZ4rvG()
+	public AgentSummaryOptions BuildSummaryOptions()
 	{
-		qBDLf9An1g();
+		EnsureDefaults();
 		return new AgentSummaryOptions
 		{
 			ContextWindowTokens = ContextWindowTokens,

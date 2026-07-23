@@ -15,7 +15,7 @@ internal sealed class AiSseStreamService5 : IAgentConfigProvider, IAgentAuthenti
 	{
 		ProviderConfig assistant = FileDownloadHelper.Current.Ai.Assistant;
 		AgentConfig agentConfig = IntranetAiConfigService.Instance.GetAgentConfig(assistant.Runtime);
-		agentConfig.Summary = (assistant.Summary ?? new AiHelper_9()).uMGLMZ4rvG();
+		agentConfig.Summary = (assistant.Summary ?? new AiHelper_9()).BuildSummaryOptions();
 		agentConfig.Harness = new AgentHarnessOptions
 		{
 			FileAccessEnabled = true,

@@ -40,7 +40,7 @@ internal sealed class AiHelper_2
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal AiHelper_5 w4mdyDK6GA(Application app)
+		internal AiHelper_5 InsertHtmlVisualCore(Application app)
 		{
 			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
@@ -48,7 +48,7 @@ internal sealed class AiHelper_2
 				return WordAgentRuntimeGuard2.CreateNotReadyError(text);
 			}
 			Document document = DocumentLifecycleGuard.GetActiveDocument(app);
-			Range range = no8143nY9C(app, document, fardXZwHxs, value, value);
+			Range range = ResolveTargetRange(app, document, fardXZwHxs, value, value);
 			int start = range.Start;
 			InlineShape inlineShape = null;
 			try
@@ -90,7 +90,7 @@ internal sealed class AiHelper_2
 				return AiHelper_5.CreateSuccess("HTML visual inserted into Word.", new
 				{
 					document = document.Name,
-					position = nmD1YFmls9(fardXZwHxs),
+					position = NormalizePosition(fardXZwHxs),
 					insertionPosition = start,
 					rangeStart = inlineShape.Range.Start,
 					rangeEnd = inlineShape.Range.End,
@@ -162,7 +162,7 @@ internal sealed class AiHelper_2
 					return WordAgentRuntimeGuard2.CreateNotReadyError(text);
 				}
 				Document document = DocumentLifecycleGuard.GetActiveDocument(app);
-				Range range = no8143nY9C(app, document, CS_8_locals_25.fardXZwHxs, CS_8_locals_25.value, CS_8_locals_25.value);
+				Range range = ResolveTargetRange(app, document, CS_8_locals_25.fardXZwHxs, CS_8_locals_25.value, CS_8_locals_25.value);
 				int start = range.Start;
 				InlineShape inlineShape = null;
 				try
@@ -204,7 +204,7 @@ internal sealed class AiHelper_2
 					return AiHelper_5.CreateSuccess("HTML visual PNG file does not exist.", new
 					{
 						document = document.Name,
-						position = nmD1YFmls9(CS_8_locals_25.fardXZwHxs),
+						position = NormalizePosition(CS_8_locals_25.fardXZwHxs),
 						insertionPosition = start,
 						rangeStart = inlineShape.Range.Start,
 						rangeEnd = inlineShape.Range.End,
@@ -240,9 +240,9 @@ internal sealed class AiHelper_2
 		}
 	}
 
-	private static Range no8143nY9C(Application P_0, Document P_1, string P_2, int P_3, int P_4)
+	private static Range ResolveTargetRange(Application P_0, Document P_1, string P_2, int P_3, int P_4)
 	{
-		string text = nmD1YFmls9(P_2);
+		string text = NormalizePosition(P_2);
 		object End;
 		if (text == "document_end")
 		{
@@ -253,7 +253,7 @@ internal sealed class AiHelper_2
 		}
 		if (text == "range_start" || text == "range_end")
 		{
-			MLS1jdScQs(P_1, P_3, P_4);
+			ValidateRangeBounds(P_1, P_3, P_4);
 			int num2 = ((text == "range_start") ? P_3 : P_4);
 			End = num2;
 			object Start = num2;
@@ -261,7 +261,7 @@ internal sealed class AiHelper_2
 		}
 		if (P_3 >= 0 && P_4 >= P_3)
 		{
-			MLS1jdScQs(P_1, P_3, P_4);
+			ValidateRangeBounds(P_1, P_3, P_4);
 			object Start = P_4;
 			End = P_4;
 			return P_1.Range(ref Start, ref End);
@@ -277,7 +277,7 @@ internal sealed class AiHelper_2
 		return duplicate;
 	}
 
-	private static void MLS1jdScQs(Document P_0, int P_1, int P_2)
+	private static void ValidateRangeBounds(Document P_0, int P_1, int P_2)
 	{
 		int start = P_0.Content.Start;
 		int end = P_0.Content.End;
@@ -287,7 +287,7 @@ internal sealed class AiHelper_2
 		}
 	}
 
-	private static string nmD1YFmls9(string P_0)
+	private static string NormalizePosition(string P_0)
 	{
 		string text = (string.IsNullOrWhiteSpace(P_0) ? "selection" : P_0.Trim().ToLowerInvariant());
 		if (text == "selection" || text == "range_start" || text == "range_end" || text == "document_end")

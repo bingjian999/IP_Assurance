@@ -85,7 +85,7 @@ internal sealed class RibbonMenuItem : Helper_2
 		_bool = P_1;
 	}
 
-	public static RibbonMenuItem SObmA0Jxbq(string P_0)
+	public static RibbonMenuItem CreateSection(string P_0)
 	{
 		return new RibbonMenuItem(P_0, true);
 	}

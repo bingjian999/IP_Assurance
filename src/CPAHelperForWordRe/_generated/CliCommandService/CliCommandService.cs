@@ -222,16 +222,16 @@ internal sealed class CliCommandService : IToolProvider
 		{
 			CS_8_locals_8.text = ResolveWorkingDirectory(cwd);
 			CS_8_locals_8._encodedCommand = Convert.ToBase64String(Encoding.Unicode.GetBytes(command));
-			CliExecutionResult peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => RunProcess(GetPowerShellPath(), "run_exe_command" + CS_8_locals_8._encodedCommand, CS_8_locals_8.text, ClampTimeout(CS_8_locals_8._timeoutSeconds))).ConfigureAwait(continueOnCapturedContext: false);
-			LogCliExecution("run_cli_command", command, CS_8_locals_8.text, peDdSyhbcuP9ypMdOqG2);
+			CliExecutionResult cliResult = await Task.Run(() => RunProcess(GetPowerShellPath(), "run_exe_command" + CS_8_locals_8._encodedCommand, CS_8_locals_8.text, ClampTimeout(CS_8_locals_8._timeoutSeconds))).ConfigureAwait(continueOnCapturedContext: false);
+			LogCliExecution("run_cli_command", command, CS_8_locals_8.text, cliResult);
 			return AiHelper_5.CreateSuccess("cli", new
 			{
 				command = command,
 				cwd = CS_8_locals_8.text,
-				exitCode = peDdSyhbcuP9ypMdOqG2.ExitCode,
-				timedOut = peDdSyhbcuP9ypMdOqG2.TimedOut,
-				stdout = peDdSyhbcuP9ypMdOqG2.Stdout,
-				stderr = peDdSyhbcuP9ypMdOqG2.Stderr
+				exitCode = cliResult.ExitCode,
+				timedOut = cliResult.TimedOut,
+				stdout = cliResult.Stdout,
+				stderr = cliResult.Stderr
 			});
 		}
 		catch (Exception ex)
@@ -254,17 +254,17 @@ internal sealed class CliCommandService : IToolProvider
 		{
 			CS_8_locals_15._workingDirectory = ResolveWorkingDirectory(cwd);
 			CS_8_locals_15._exePath = ResolveExePath(exePath, CS_8_locals_15._workingDirectory);
-			CliExecutionResult peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => RunProcess(CS_8_locals_15._exePath, CS_8_locals_15._arguments ?? string.Empty, CS_8_locals_15._workingDirectory, ClampTimeout(CS_8_locals_15.value))).ConfigureAwait(continueOnCapturedContext: false);
-			LogCliExecution("cli", CS_8_locals_15._exePath + "risk.filesystem" + (CS_8_locals_15._arguments ?? string.Empty), CS_8_locals_15._workingDirectory, peDdSyhbcuP9ypMdOqG2);
+			CliExecutionResult cliResult = await Task.Run(() => RunProcess(CS_8_locals_15._exePath, CS_8_locals_15._arguments ?? string.Empty, CS_8_locals_15._workingDirectory, ClampTimeout(CS_8_locals_15.value))).ConfigureAwait(continueOnCapturedContext: false);
+			LogCliExecution("cli", CS_8_locals_15._exePath + "risk.filesystem" + (CS_8_locals_15._arguments ?? string.Empty), CS_8_locals_15._workingDirectory, cliResult);
 			return AiHelper_5.CreateSuccess("risk.high", new
 			{
 				exePath = CS_8_locals_15._exePath,
 				arguments = (CS_8_locals_15._arguments ?? string.Empty),
 				cwd = CS_8_locals_15._workingDirectory,
-				exitCode = peDdSyhbcuP9ypMdOqG2.ExitCode,
-				timedOut = peDdSyhbcuP9ypMdOqG2.TimedOut,
-				stdout = peDdSyhbcuP9ypMdOqG2.Stdout,
-				stderr = peDdSyhbcuP9ypMdOqG2.Stderr
+				exitCode = cliResult.ExitCode,
+				timedOut = cliResult.TimedOut,
+				stdout = cliResult.Stdout,
+				stderr = cliResult.Stderr
 			});
 		}
 		catch (Exception ex)

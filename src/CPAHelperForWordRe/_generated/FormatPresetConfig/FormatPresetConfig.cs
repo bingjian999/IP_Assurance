@@ -787,7 +787,7 @@ internal sealed class FormatPresetConfig : Helper_2
 			"Times New Roman",
 			"Calibri"
 		});
-		_fontSizes = new ObservableCollection<string>(from item in AiHelper_20.csfwB6TYGU()
+		_fontSizes = new ObservableCollection<string>(from item in AiHelper_20.GetFontSizeOptions()
 			select item.Item2);
 		_borderStyles = CreateOptionCollection(("无边框", "0"), ("单实线", "1"), ("点线", "2"), ("短划线", "3"), ("点划线", "4"), ("双点划线", "5"), ("细虚线", "6"), ("双实线", "7"), ("粗-细双线", "9"), ("细-粗双线", "10"));
 		_borderWidths = CreateOptionCollection(("0.25磅", "2"), ("0.5磅", "4"), ("0.75磅", "6"), ("1磅", "8"), ("1.5磅", "12"), ("2.25磅", "18"), ("3磅", "24"), ("4.5磅", "36"), ("6磅", "48"));
@@ -906,7 +906,7 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	private void AddBorderFieldGroup(string P_0, params string[] keys)
 	{
-		BorderFields.Add(RibbonMenuItem.SObmA0Jxbq(P_0));
+		BorderFields.Add(RibbonMenuItem.CreateSection(P_0));
 		foreach (string text in keys)
 		{
 			BorderFields.Add(new RibbonMenuItem(text));
@@ -920,7 +920,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		if (string.IsNullOrWhiteSpace(text2))
 		{
 			text2 = "默认方案";
-			_configHelper_1.D73SsBjrqd(text2, GetDefaultPresetDictionary());
+			_configHelper_1.SavePreset(text2, GetDefaultPresetDictionary());
 		}
 		_selectedPreset = text2;
 		ApplyPresetConfig(_configHelper_1.COQStnlspT(text2));
@@ -958,7 +958,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		MaxColumnWidth = GetConfigValueOrDefault("表格_最大列宽_宽度", "18.5", ref _G_c__DisplayClass207_1);
 		ChineseFont = GetConfigValueOrDefault("表格_段落格式_中文字体", "宋体", ref _G_c__DisplayClass207_1);
 		WesternFont = GetConfigValueOrDefault("表格_段落格式_西文字体", "宋体", ref _G_c__DisplayClass207_1);
-		FontSize = AiHelper_20.v8Ewuw33fP(GetConfigValueOrDefault("表格_段落格式_字号", "9", ref _G_c__DisplayClass207_1));
+		FontSize = AiHelper_20.NormalizeFontSize(GetConfigValueOrDefault("表格_段落格式_字号", "9", ref _G_c__DisplayClass207_1));
 		LineSpacingRule = GetConfigValueOrDefault("表格_段落格式_行距样式", "4", ref _G_c__DisplayClass207_1);
 		LineSpacing = GetConfigValueOrDefault("表格_段落格式_行距值", "18", ref _G_c__DisplayClass207_1);
 		SpacingUnit = GetConfigValueOrDefault("表格_段落格式_段前距单位", "行", ref _G_c__DisplayClass207_1);
@@ -1002,7 +1002,7 @@ internal sealed class FormatPresetConfig : Helper_2
 	private bool TryBuildConfigDictionary(out Dictionary<string, string> P_0)
 	{
 		P_0 = null;
-		if (!AiHelper_20.WmHw9yYx65(FontSize, out var value))
+		if (!AiHelper_20.TryFormatFontSize(FontSize, out var value))
 		{
 			_dialogs.LogMessage("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
 			return false;
@@ -1053,11 +1053,11 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	private void OnNewPreset()
 	{
-		string text = _dialogs.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的方案");
+		string text = _dialogs.ShowInputDialog("新建方案", "请输入新方案名称：", "我的方案");
 		if (!string.IsNullOrWhiteSpace(text) && TryBuildConfigDictionary(out var dictionary))
 		{
-			string text2 = _configHelper_1.Ky0SN0Vqdg(text);
-			_configHelper_1.D73SsBjrqd(text2, dictionary);
+			string text2 = _configHelper_1.CreateUniquePresetName(text);
+			_configHelper_1.SavePreset(text2, dictionary);
 			_selectedPreset = text2;
 			RefreshPresetNames();
 		}
@@ -1075,14 +1075,14 @@ internal sealed class FormatPresetConfig : Helper_2
 		string text = _dialogs.BxkVLIlDE06("导入表格配置方案");
 		if (text != null)
 		{
-			Dictionary<string, string> dictionary = _configHelper_1.Pb7SLGhc8Y(text);
+			Dictionary<string, string> dictionary = _configHelper_1.ImportPresetFromFile(text);
 			if (!dictionary.Keys.Any((string key) => key.StartsWith("所选文件不包含表格配置数据。", StringComparison.Ordinal)))
 			{
 				_dialogs.LogMessage("IP_Assurance", "切换表格方案失败：");
 				return;
 			}
-			string text2 = _configHelper_1.Ky0SN0Vqdg(Path.GetFileNameWithoutExtension(text));
-			_configHelper_1.D73SsBjrqd(text2, dictionary);
+			string text2 = _configHelper_1.CreateUniquePresetName(Path.GetFileNameWithoutExtension(text));
+			_configHelper_1.SavePreset(text2, dictionary);
 			_selectedPreset = text2;
 			ApplyPresetConfig(dictionary);
 			RefreshPresetNames();
@@ -1091,7 +1091,7 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	private void OnExportPreset()
 	{
-		string text = _dialogs.SA6VLiTt8Ir("导出表格配置方案", _selectedPreset + ".json");
+		string text = _dialogs.ShowSaveFileDialog("导出表格配置方案", _selectedPreset + ".json");
 		if (text != null && TryBuildConfigDictionary(out var dictionary))
 		{
 			ConfigHelper_1.lRlSlvdQT7(text, dictionary);
@@ -1126,7 +1126,7 @@ internal sealed class FormatPresetConfig : Helper_2
 			}
 			dictionary2["表格配置_方案名"] = _selectedPreset;
 			TableBorderConfig.Current.SetAllLegacy(dictionary2);
-			_configHelper_1.D73SsBjrqd(_selectedPreset, dictionary);
+			_configHelper_1.SavePreset(_selectedPreset, dictionary);
 			_dialogs.LogWarning("表格配置已保存。", "IP_Assurance");
 		}
 		catch (Exception ex)

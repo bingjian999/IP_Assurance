@@ -484,10 +484,10 @@ internal static class MarkdownImportService
 			int count = list.Count;
 			int num = Math.Max(1, list.Max((List<string> row) => row.Count));
 			Tables tables = _document.Tables;
-			Range aLVVKHQJk1O = _range;
+			Range insertionRange = _range;
 			object DefaultTableBehavior = Type.Missing;
 			object AutoFitBehavior = Type.Missing;
-			Microsoft.Office.Interop.Word.Table table = tables.Add(aLVVKHQJk1O, count, num, ref DefaultTableBehavior, ref AutoFitBehavior);
+			Microsoft.Office.Interop.Word.Table table = tables.Add(insertionRange, count, num, ref DefaultTableBehavior, ref AutoFitBehavior);
 			for (int num2 = 0; num2 < count; num2++)
 			{
 				List<string> list2 = list[num2];
@@ -553,9 +553,9 @@ internal static class MarkdownImportService
 			}
 			else if (P_0 is CodeInline codeInline)
 			{
-				InlineStyle lOUXUXVKZBmgcWu9S7lG = P_1.Clone();
-				lOUXUXVKZBmgcWu9S7lG.Code = true;
-				InsertStyledText(codeInline.Content ?? string.Empty, lOUXUXVKZBmgcWu9S7lG);
+				InlineStyle codeStyle = P_1.Clone();
+				codeStyle.Code = true;
+				InsertStyledText(codeInline.Content ?? string.Empty, codeStyle);
 			}
 			else if (P_0 is LineBreakInline)
 			{
@@ -567,24 +567,24 @@ internal static class MarkdownImportService
 			}
 			else if (P_0 is EmphasisInline emphasisInline)
 			{
-				InlineStyle lOUXUXVKZBmgcWu9S7lG2 = P_1.Clone();
+				InlineStyle emphasisStyle = P_1.Clone();
 				if (emphasisInline.DelimiterChar == '~')
 				{
-					lOUXUXVKZBmgcWu9S7lG2.Strike = true;
+					emphasisStyle.Strike = true;
 				}
 				else if (emphasisInline.DelimiterCount >= 2)
 				{
-					lOUXUXVKZBmgcWu9S7lG2.Bold = true;
+					emphasisStyle.Bold = true;
 				}
 				else
 				{
-					lOUXUXVKZBmgcWu9S7lG2.Italic = true;
+					emphasisStyle.Italic = true;
 				}
-				ProcessInlines(emphasisInline, lOUXUXVKZBmgcWu9S7lG2);
+				ProcessInlines(emphasisInline, emphasisStyle);
 			}
 			else if (P_0 is LinkInline linkInline)
 			{
-				InlineStyle lOUXUXVKZBmgcWu9S7lG3 = P_1.Clone();
+				InlineStyle linkStyle = P_1.Clone();
 				if (linkInline.IsImage)
 				{
 					string text = ExtractInlineText(linkInline);
@@ -592,15 +592,15 @@ internal static class MarkdownImportService
 				}
 				else
 				{
-					lOUXUXVKZBmgcWu9S7lG3.Link = true;
-					ProcessInlines(linkInline, lOUXUXVKZBmgcWu9S7lG3);
+					linkStyle.Link = true;
+					ProcessInlines(linkInline, linkStyle);
 				}
 			}
 			else if (P_0 is AutolinkInline autolinkInline)
 			{
-				InlineStyle lOUXUXVKZBmgcWu9S7lG4 = P_1.Clone();
-				lOUXUXVKZBmgcWu9S7lG4.Link = true;
-				InsertStyledText(autolinkInline.Url ?? string.Empty, lOUXUXVKZBmgcWu9S7lG4);
+				InlineStyle autolinkStyle = P_1.Clone();
+				autolinkStyle.Link = true;
+				InsertStyledText(autolinkInline.Url ?? string.Empty, autolinkStyle);
 			}
 			else if (P_0 is HtmlEntityInline htmlEntityInline)
 			{

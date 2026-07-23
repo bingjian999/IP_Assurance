@@ -14,15 +14,15 @@ internal sealed class AiConfigManager2 : IAgentInstructionBuilder, IAgentRuntime
 
 	public string BuildRuntimeContext(AgentInstructionContext P_0)
 	{
-		string text = MVi3jB7gHS(P_0, "documentName", "无活动文档");
-		string text2 = MVi3jB7gHS(P_0, "documentPath", "无");
-		string text3 = MVi3jB7gHS(P_0, "pageCount", "未知");
-		string text4 = MVi3jB7gHS(P_0, "wordCount", "未知");
-		string text5 = MVi3jB7gHS(P_0, "selectionTextLength", "0");
+		string text = GetExtraOrDefault(P_0, "documentName", "无活动文档");
+		string text2 = GetExtraOrDefault(P_0, "documentPath", "无");
+		string text3 = GetExtraOrDefault(P_0, "pageCount", "未知");
+		string text4 = GetExtraOrDefault(P_0, "wordCount", "未知");
+		string text5 = GetExtraOrDefault(P_0, "selectionTextLength", "0");
 		return "# 当前 Word 运行时上下文\r\n- 文档：'" + text + "'\r\n- 文档路径：'" + text2 + "'\r\n- 页数：" + text3 + "\r\n- 字数：" + text4 + "\r\n- 当前选区字符数：" + text5 + "\r\n- 宿主安装目录：'" + AiSseStreamService.InstallPath + "'";
 	}
 
-	private static string MVi3jB7gHS(AgentInstructionContext P_0, string P_1, string P_2)
+	private static string GetExtraOrDefault(AgentInstructionContext P_0, string P_1, string P_2)
 	{
 		if (P_0?.Extra != null && P_0.Extra.TryGetValue(P_1, out var value) && !string.IsNullOrWhiteSpace(value))
 		{

@@ -164,7 +164,7 @@ internal static class AiConfigBootstrap
 		string text = _logFilePath ?? _tempLogPath;
 		try
 		{
-			JMIsjaV0V3(text, Encoding.UTF8.GetByteCount(P_0 + Environment.NewLine));
+			TrimLogIfNeeded(text, Encoding.UTF8.GetByteCount(P_0 + Environment.NewLine));
 			File.AppendAllText(text, P_0 + Environment.NewLine, Encoding.UTF8);
 		}
 		catch (Exception ex)
@@ -178,7 +178,7 @@ internal static class AiConfigBootstrap
 		}
 	}
 
-	private static void JMIsjaV0V3(string P_0, int P_1)
+	private static void TrimLogIfNeeded(string P_0, int P_1)
 	{
 		try
 		{
@@ -223,7 +223,7 @@ internal static class AiConfigBootstrap
 			{
 				_tempLogPath = Path.Combine(Path.GetTempPath(), "IP_Assurance.log");
 			}
-			JMIsjaV0V3(_tempLogPath, Encoding.UTF8.GetByteCount(P_0 + Environment.NewLine));
+			TrimLogIfNeeded(_tempLogPath, Encoding.UTF8.GetByteCount(P_0 + Environment.NewLine));
 			File.AppendAllText(_tempLogPath, P_0 + Environment.NewLine, Encoding.UTF8);
 		}
 		catch (Exception ex)

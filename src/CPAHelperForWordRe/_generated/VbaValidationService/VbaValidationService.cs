@@ -29,8 +29,8 @@ internal sealed class VbaValidationService : IToolProvider
 		BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
 		return new List<AITool>
 		{
-			z4m9AMMS1P("ValidateVbaSnippet", "validate_vba_snippet", bindingFlags),
-			z4m9AMMS1P("RunVbaSnippet", "run_vba_snippet", bindingFlags)
+			CreateAITool("ValidateVbaSnippet", "validate_vba_snippet", bindingFlags),
+			CreateAITool("RunVbaSnippet", "run_vba_snippet", bindingFlags)
 		};
 	}
 
@@ -51,7 +51,7 @@ internal sealed class VbaValidationService : IToolProvider
 		return list;
 	}
 
-	private AITool z4m9AMMS1P(string P_0, string P_1, BindingFlags P_2)
+	private AITool CreateAITool(string P_0, string P_1, BindingFlags P_2)
 	{
 		return AIFunctionFactory.Create(GetType().GetMethod(P_0, P_2), this, new AIFunctionFactoryOptions
 		{

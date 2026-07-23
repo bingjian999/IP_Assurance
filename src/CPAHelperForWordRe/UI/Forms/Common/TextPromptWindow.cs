@@ -37,7 +37,7 @@ public sealed class TextPromptWindow : Window, IComponentConnector
 		};
 	}
 
-	private void vom54bIIgc(object P_0, RoutedEventArgs P_1)
+	private void OnOkButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		base.DialogResult = true;
 	}
@@ -68,7 +68,7 @@ public sealed class TextPromptWindow : Window, IComponentConnector
 			InputBox = (TextBox)target;
 			break;
 		case 3:
-			((Button)target).Click += vom54bIIgc;
+			((Button)target).Click += OnOkButtonClick;
 			break;
 		default:
 			_bool = true;
@@ -77,7 +77,7 @@ public sealed class TextPromptWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void XFc5jJS1aG(object P_0, EventArgs P_1)
+	private void OnWindowLoaded(object P_0, EventArgs P_1)
 	{
 		InputBox.Focus();
 		InputBox.SelectAll();

@@ -29,7 +29,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void W8PV4Vx80ng()
+		internal void ImportMarkdownCallback()
 		{
 			flag = MarkdownImportService.ImportMarkdown(markdownImportWindow.txtMarkdown.Text, markdownImportWindow.chkApplyHeadingNumbering.IsChecked == true);
 		}
@@ -58,7 +58,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		};
 	}
 
-	private void dguCIrp1m7(object P_0, RoutedEventArgs P_1)
+	private void OnPasteClick(object P_0, RoutedEventArgs P_1)
 	{
 		try
 		{
@@ -77,7 +77,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		}
 	}
 
-	private void sVxCiGSm3i(object P_0, RoutedEventArgs P_1)
+	private void OnImportClick(object P_0, RoutedEventArgs P_1)
 	{
 		_G_c__DisplayClass2_0 obj = new _G_c__DisplayClass2_0();
 		obj.markdownImportWindow = this;
@@ -117,7 +117,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		switch (connectionId)
 		{
 		case 1:
-			((Button)target).Click += dguCIrp1m7;
+			((Button)target).Click += OnPasteClick;
 			break;
 		case 2:
 			txtMarkdown = (TextBox)target;
@@ -126,7 +126,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 			chkApplyHeadingNumbering = (CheckBox)target;
 			break;
 		case 4:
-			((Button)target).Click += sVxCiGSm3i;
+			((Button)target).Click += OnImportClick;
 			break;
 		case 5:
 			((Button)target).Click += OYKCHcQEhT;
@@ -147,7 +147,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void RbvC1UfJQh(object P_0, RoutedEventArgs P_1)
+	private void OnFocusMarkdown(object P_0, RoutedEventArgs P_1)
 	{
 		txtMarkdown.Focus();
 	}

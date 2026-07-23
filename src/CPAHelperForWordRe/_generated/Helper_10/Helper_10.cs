@@ -93,12 +93,12 @@ internal sealed class Helper_10
 		return new Helper_10(P_0, P_1, P_2, P_3, false, false);
 	}
 
-	internal static Helper_10 Wm0BGukN7S(string P_0)
+	internal static Helper_10 CreateNoChangeResult(string P_0)
 	{
 		return new Helper_10(P_0, P_0, true, null, true, false);
 	}
 
-	internal static Helper_10 UdoBCP2Rh6(string P_0)
+	internal static Helper_10 CreateCancelledResult(string P_0)
 	{
 		return new Helper_10(P_0, P_0, true, null, false, true);
 	}

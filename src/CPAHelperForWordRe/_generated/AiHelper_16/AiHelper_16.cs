@@ -7,7 +7,7 @@ namespace AiHelper_16;
 
 internal static class AiHelper_16
 {
-	public static string YEGSCr7bHN(string P_0, int P_1 = 8000)
+	public static string HttpGetString(string P_0, int P_1 = 8000)
 	{
 		try
 		{

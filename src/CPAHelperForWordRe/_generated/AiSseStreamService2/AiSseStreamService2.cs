@@ -6,17 +6,17 @@ namespace AiSseStreamService2;
 
 internal class AiSseStreamService2
 {
-	internal delegate void Lk2xOtVSblTlsxpCTYbe(object o);
+	internal delegate void ModuleInitCallback(object o);
 
-	internal static Module jWYVSMB4Mr2;
+	internal static Module _manifestModule;
 
-	internal static void lZxVLv5NYmU(int typemdt)
+	internal static void InitializeModuleDelegates(int typemdt)
 	{
-		Type type = jWYVSMB4Mr2.ResolveType(33554432 + typemdt);
+		Type type = _manifestModule.ResolveType(33554432 + typemdt);
 		FieldInfo[] fields = type.GetFields();
 		foreach (FieldInfo fieldInfo in fields)
 		{
-			MethodInfo method = (MethodInfo)jWYVSMB4Mr2.ResolveMethod(fieldInfo.MetadataToken + 100663296);
+			MethodInfo method = (MethodInfo)_manifestModule.ResolveMethod(fieldInfo.MetadataToken + 100663296);
 			fieldInfo.SetValue(null, (MulticastDelegate)Delegate.CreateDelegate(type, method));
 		}
 	}
@@ -29,6 +29,6 @@ internal class AiSseStreamService2
 	static AiSseStreamService2()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		jWYVSMB4Mr2 = typeof(AiSseStreamService2).Assembly.ManifestModule;
+		_manifestModule = typeof(AiSseStreamService2).Assembly.ManifestModule;
 	}
 }

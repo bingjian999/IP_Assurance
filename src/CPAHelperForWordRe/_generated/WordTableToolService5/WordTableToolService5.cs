@@ -15,7 +15,7 @@ namespace WordTableToolService5;
 
 internal static class WordTableToolService5
 {
-	private sealed class S0SXuwVZRFoj8tCjb8xt : System.Windows.Forms.IWin32Window
+	private sealed class Win32WindowWrapper : System.Windows.Forms.IWin32Window
 	{
 		[CompilerGenerated]
 		private readonly IntPtr _intPtr;
@@ -29,7 +29,7 @@ internal static class WordTableToolService5
 			}
 		}
 
-		public S0SXuwVZRFoj8tCjb8xt(IntPtr P_0)
+		public Win32WindowWrapper(IntPtr P_0)
 		{
 			SseStreamInitializer.InitializeRuntime();
 			_intPtr = P_0;
@@ -39,19 +39,19 @@ internal static class WordTableToolService5
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_0
 	{
-		public System.Windows.Window clIVZ9Iiydu;
+		public System.Windows.Window _window;
 
 		public _G_c__DisplayClass10_0()
 		{
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void CfrVZBpT5u6()
+		internal void ActivateIfVisible()
 		{
-			if (clIVZ9Iiydu.IsVisible)
+			if (_window.IsVisible)
 			{
-				clIVZ9Iiydu.Activate();
-				xAc5Kb6teT(clIVZ9Iiydu);
+				_window.Activate();
+				FocusWindowContent(_window);
 			}
 		}
 	}
@@ -70,7 +70,7 @@ internal static class WordTableToolService5
 			{
 				return null;
 			}
-			return new S0SXuwVZRFoj8tCjb8xt(intPtr);
+			return new Win32WindowWrapper(intPtr);
 		}
 		catch
 		{
@@ -107,11 +107,11 @@ internal static class WordTableToolService5
 		if (P_0 != null)
 		{
 			SetupWindowOwner(P_0);
-			fYx5r0teaL(P_0);
+			SetupActivationEvents(P_0);
 			AiHelper_4.RegisterWindow(P_0);
 			ElementHost.EnableModelessKeyboardInterop(P_0);
 			P_0.Show();
-			LaD5UjoUA2(P_0);
+			ActivateWindowAsync(P_0);
 		}
 	}
 
@@ -122,7 +122,7 @@ internal static class WordTableToolService5
 			return false;
 		}
 		SetupWindowOwner(P_0);
-		fYx5r0teaL(P_0);
+		SetupActivationEvents(P_0);
 		return P_0.ShowDialog();
 	}
 
@@ -158,51 +158,51 @@ internal static class WordTableToolService5
 		}
 	}
 
-	private static void fYx5r0teaL(System.Windows.Window P_0)
+	private static void SetupActivationEvents(System.Windows.Window P_0)
 	{
 		P_0.ShowActivated = true;
-		P_0.Loaded -= nLg5JOqHYn;
-		P_0.ContentRendered -= c7l53MATht;
-		P_0.Loaded += nLg5JOqHYn;
-		P_0.ContentRendered += c7l53MATht;
+		P_0.Loaded -= OnWindowLoaded;
+		P_0.ContentRendered -= OnContentRendered;
+		P_0.Loaded += OnWindowLoaded;
+		P_0.ContentRendered += OnContentRendered;
 	}
 
-	private static void nLg5JOqHYn(object P_0, RoutedEventArgs P_1)
+	private static void OnWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
 		if (P_0 is System.Windows.Window window)
 		{
-			LaD5UjoUA2(window);
+			ActivateWindowAsync(window);
 		}
 	}
 
-	private static void c7l53MATht(object P_0, EventArgs P_1)
+	private static void OnContentRendered(object P_0, EventArgs P_1)
 	{
 		if (P_0 is System.Windows.Window window)
 		{
-			window.ContentRendered -= c7l53MATht;
-			LaD5UjoUA2(window);
+			window.ContentRendered -= OnContentRendered;
+			ActivateWindowAsync(window);
 		}
 	}
 
-	private static void LaD5UjoUA2(System.Windows.Window P_0)
+	private static void ActivateWindowAsync(System.Windows.Window P_0)
 	{
 		_G_c__DisplayClass10_0 CS_8_locals_6 = new _G_c__DisplayClass10_0();
-		CS_8_locals_6.clIVZ9Iiydu = P_0;
-		if (CS_8_locals_6.clIVZ9Iiydu == null)
+		CS_8_locals_6._window = P_0;
+		if (CS_8_locals_6._window == null)
 		{
 			return;
 		}
-		CS_8_locals_6.clIVZ9Iiydu.Dispatcher.BeginInvoke((Action)delegate
+		CS_8_locals_6._window.Dispatcher.BeginInvoke((Action)delegate
 		{
-			if (CS_8_locals_6.clIVZ9Iiydu.IsVisible)
+			if (CS_8_locals_6._window.IsVisible)
 			{
-				CS_8_locals_6.clIVZ9Iiydu.Activate();
-				xAc5Kb6teT(CS_8_locals_6.clIVZ9Iiydu);
+				CS_8_locals_6._window.Activate();
+				FocusWindowContent(CS_8_locals_6._window);
 			}
 		}, DispatcherPriority.Input);
 	}
 
-	private static void xAc5Kb6teT(System.Windows.Window P_0)
+	private static void FocusWindowContent(System.Windows.Window P_0)
 	{
 		if (P_0.Content is UIElement uIElement)
 		{

@@ -107,7 +107,7 @@ internal sealed class AiConfigBootstrap2
 		internal void GetHostName()
 		{
 			Application application = null;
-			ComObjectTracker xFNayjV66fonCSKcSbOJ = new ComObjectTracker();
+			ComObjectTracker comTracker = new ComObjectTracker();
 			try
 			{
 				application = ExcelInteropService.GetActiveExcelApp();
@@ -120,7 +120,7 @@ internal sealed class AiConfigBootstrap2
 					return;
 				}
 				AiConfigBootstrap.LogInfo("[AI Tool][Excel] Begin: " + text);
-				aiHelper_5 = excelOperationFunc(application, xFNayjV66fonCSKcSbOJ);
+				aiHelper_5 = excelOperationFunc(application, comTracker);
 				AiConfigBootstrap.LogInfo("[AI Tool][Excel] End: " + text + "; Success=" + (aiHelper_5 != null && aiHelper_5.success));
 			}
 			catch (COMException ex)
@@ -128,10 +128,10 @@ internal sealed class AiConfigBootstrap2
 				AiConfigBootstrap.LogError("[AI Tool][Excel] " + text + " failed", ex);
 				aiHelper_5 = AiHelper_5.CreateExceptionError(text + " failed", "spreadsheet_com_error", ex);
 			}
-			catch (SpreadsheetOperationException onEqFoV6VqxGOBHbQtJW2)
+			catch (SpreadsheetOperationException spreadsheetEx)
 			{
-				AiConfigBootstrap.LogWarn("[AI Tool][Excel] " + text + " failed: " + onEqFoV6VqxGOBHbQtJW2.Message);
-				aiHelper_5 = AiHelper_5.CreateError(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
+				AiConfigBootstrap.LogWarn("[AI Tool][Excel] " + text + " failed: " + spreadsheetEx.Message);
+				aiHelper_5 = AiHelper_5.CreateError(spreadsheetEx.Message, spreadsheetEx.Code, spreadsheetEx.DataObject);
 			}
 			catch (Exception ex2)
 			{
@@ -140,7 +140,7 @@ internal sealed class AiConfigBootstrap2
 			}
 			finally
 			{
-				xFNayjV66fonCSKcSbOJ.Dispose();
+				comTracker.Dispose();
 				if (application != null && Marshal.IsComObject(application))
 				{
 					try
@@ -1276,7 +1276,7 @@ internal sealed class AiConfigBootstrap2
 		Thread thread = new Thread((ThreadStart)delegate
 		{
 			Application application = null;
-			ComObjectTracker xFNayjV66fonCSKcSbOJ = new ComObjectTracker();
+			ComObjectTracker comTracker = new ComObjectTracker();
 			try
 			{
 				application = ExcelInteropService.GetActiveExcelApp();
@@ -1290,7 +1290,7 @@ internal sealed class AiConfigBootstrap2
 				else
 				{
 					AiConfigBootstrap.LogInfo("address must not be empty." + CS_8_locals_22.text);
-					CS_8_locals_22.aiHelper_5 = CS_8_locals_22.excelOperationFunc(application, xFNayjV66fonCSKcSbOJ);
+					CS_8_locals_22.aiHelper_5 = CS_8_locals_22.excelOperationFunc(application, comTracker);
 					AiConfigBootstrap.LogInfo("invalid_arguments" + CS_8_locals_22.text + "区域地址无效：" + (CS_8_locals_22.aiHelper_5 != null && CS_8_locals_22.aiHelper_5.success));
 				}
 			}
@@ -1299,10 +1299,10 @@ internal sealed class AiConfigBootstrap2
 				AiConfigBootstrap.LogError("invalid_arguments" + CS_8_locals_22.text + ": ", ex);
 				CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateExceptionError(CS_8_locals_22.text + ":", "yyyy-MM-dd HH:mm:ss", ex);
 			}
-			catch (SpreadsheetOperationException onEqFoV6VqxGOBHbQtJW2)
+			catch (SpreadsheetOperationException spreadsheetEx)
 			{
-				AiConfigBootstrap.LogWarn("workbook_or_worksheet" + CS_8_locals_22.text + "workbook" + onEqFoV6VqxGOBHbQtJW2.Message);
-				CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateError(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
+				AiConfigBootstrap.LogWarn("workbook_or_worksheet" + CS_8_locals_22.text + "workbook" + spreadsheetEx.Message);
+				CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateError(spreadsheetEx.Message, spreadsheetEx.Code, spreadsheetEx.DataObject);
 			}
 			catch (Exception ex2)
 			{
@@ -1311,7 +1311,7 @@ internal sealed class AiConfigBootstrap2
 			}
 			finally
 			{
-				xFNayjV66fonCSKcSbOJ.Dispose();
+				comTracker.Dispose();
 				if (application != null && Marshal.IsComObject(application))
 				{
 					try

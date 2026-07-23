@@ -45,7 +45,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			cfg.Assistant.WebUrl = string.Empty;
 			cfg.Assistant.Providers = CloneProviders(aIAssistantConfigWindow._providers);
 			cfg.Assistant.ActiveProviderIndex = value;
-			cfg.Assistant.Runtime.FVULVTGET5(aiProviderConfig.OsCL8QJeMd());
+			cfg.Assistant.Runtime.FVULVTGET5(aiProviderConfig.ToRuntimeConfig());
 			cfg.Assistant.Summary = cfg.Assistant.Summary ?? new AiHelper_9();
 			aIAssistantConfigWindow.SaveSummarySettings(cfg.Assistant.Summary);
 		}
@@ -124,7 +124,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 				cfg.Assistant.WebUrl = string.Empty;
 				cfg.Assistant.Providers = CloneProviders(CS_8_locals_9.aIAssistantConfigWindow._providers);
 				cfg.Assistant.ActiveProviderIndex = CS_8_locals_9.value;
-				cfg.Assistant.Runtime.FVULVTGET5(CS_8_locals_9.aiProviderConfig.OsCL8QJeMd());
+				cfg.Assistant.Runtime.FVULVTGET5(CS_8_locals_9.aiProviderConfig.ToRuntimeConfig());
 				cfg.Assistant.Summary = cfg.Assistant.Summary ?? new AiHelper_9();
 				CS_8_locals_9.aIAssistantConfigWindow.SaveSummarySettings(cfg.Assistant.Summary);
 			});
@@ -171,7 +171,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	private async void OnTestConnectionClick(object P_0, RoutedEventArgs P_1)
 	{
 		SyncCurrentProfileFromUi();
-		await RunWithButtonStateAsync(btnTestAssistantConnection, "AI 配置已保存，但当前方案缺少 API Key 或模型名称。", () => AiConfigManager.Xq56uj14fX("AI 配置", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text), "AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
+		await RunWithButtonStateAsync(btnTestAssistantConnection, "AI 配置已保存，但当前方案缺少 API Key 或模型名称。", () => AiConfigManager.TestConnection("AI 配置", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text), "AI 配置已保存。内网环境中将优先使用集中下发配置。", "AI 配置");
 	}
 
 	private void LoadConfig()
@@ -271,7 +271,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 		{
 			return;
 		}
-		foreach (AiProviderConfig item in AiProviderConfig.dV6LHfPZVP())
+		foreach (AiProviderConfig item in AiProviderConfig.GetBuiltinProviders())
 		{
 			_providers.Add(CloneProvider(item));
 		}
@@ -299,7 +299,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	private void LoadSummarySettings(AiHelper_9 P_0)
 	{
 		P_0 = P_0 ?? new AiHelper_9();
-		P_0.qBDLf9An1g();
+		P_0.EnsureDefaults();
 		txtSummaryContextWindowTokens.Text = P_0.ContextWindowTokens.ToString();
 		txtSummaryTriggerRatio.Text = P_0.TriggerRatio.ToString("0.##", CultureInfo.InvariantCulture);
 		txtSummaryTargetRatio.Text = P_0.TargetRatio.ToString("0.##", CultureInfo.InvariantCulture);
@@ -318,7 +318,7 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 			P_0.HardLimitRatio = ParseRatioOrDefault(txtSummaryHardLimitRatio.Text, 0.9);
 			P_0.RecentMessageCount = ParseIntOrDefault(txtSummaryRecentMessageCount.Text, 12);
 			P_0.TimeoutSeconds = ParseIntOrDefault(txtSummaryTimeoutSeconds.Text, 30);
-			P_0.qBDLf9An1g();
+			P_0.EnsureDefaults();
 		}
 	}
 
@@ -531,6 +531,6 @@ public class AIAssistantConfigWindow : Window, IComponentConnector
 	[CompilerGenerated]
 	private Task TestConnectionAsync()
 	{
-		return AiConfigManager.Xq56uj14fX("openai", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text);
+		return AiConfigManager.TestConnection("openai", txtAssistantApiKey.Password, txtAssistantBaseUrl.Text, txtAssistantModel.Text);
 	}
 }

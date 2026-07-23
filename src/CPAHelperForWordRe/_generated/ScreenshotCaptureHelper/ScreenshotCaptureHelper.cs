@@ -7,7 +7,7 @@ namespace ScreenshotCaptureHelper;
 
 internal static class ScreenshotCaptureHelper
 {
-	public static Rectangle o2DcMOKyEe()
+	public static Rectangle GetVirtualScreenBounds()
 	{
 		if (Screen.AllScreens.Length == 0)
 		{
@@ -33,46 +33,46 @@ internal static class ScreenshotCaptureHelper
 		Bitmap bitmap = null;
 		try
 		{
-			bitmap = Rr5cS2CmV7();
-			if (!r8ucLBRc5h(bitmap))
+			bitmap = CaptureFullScreen();
+			if (!IsBlankOrInvalidCapture(bitmap))
 			{
 				return bitmap;
 			}
 			bitmap.Dispose();
-			return ovBcwMo51L();
+			return CaptureScreenPerMonitor();
 		}
 		catch
 		{
 			bitmap?.Dispose();
-			return ovBcwMo51L();
+			return CaptureScreenPerMonitor();
 		}
 	}
 
-	public static Bitmap Rr5cS2CmV7()
+	public static Bitmap CaptureFullScreen()
 	{
-		Rectangle rectangle = o2DcMOKyEe();
+		Rectangle rectangle = GetVirtualScreenBounds();
 		Bitmap bitmap = new Bitmap(rectangle.Width, rectangle.Height, PixelFormat.Format32bppArgb);
 		using Graphics graphics = Graphics.FromImage(bitmap);
 		graphics.CopyFromScreen(rectangle.X, rectangle.Y, 0, 0, rectangle.Size, CopyPixelOperation.SourceCopy);
 		return bitmap;
 	}
 
-	public static Bitmap ovBcwMo51L()
+	public static Bitmap CaptureScreenPerMonitor()
 	{
-		Rectangle rectangle = o2DcMOKyEe();
+		Rectangle rectangle = GetVirtualScreenBounds();
 		Bitmap bitmap = new Bitmap(rectangle.Width, rectangle.Height, PixelFormat.Format32bppArgb);
 		using Graphics graphics = Graphics.FromImage(bitmap);
 		graphics.Clear(Color.Black);
 		Screen[] allScreens = Screen.AllScreens;
 		foreach (Screen screen in allScreens)
 		{
-			using Bitmap image = w9tctZct0n(screen.Bounds);
+			using Bitmap image = CaptureScreenRegion(screen.Bounds);
 			graphics.DrawImageUnscaled(image, new Point(screen.Bounds.X - rectangle.X, screen.Bounds.Y - rectangle.Y));
 		}
 		return bitmap;
 	}
 
-	private static Bitmap w9tctZct0n(Rectangle P_0)
+	private static Bitmap CaptureScreenRegion(Rectangle P_0)
 	{
 		Bitmap bitmap = new Bitmap(Math.Max(P_0.Width, 1), Math.Max(P_0.Height, 1), PixelFormat.Format32bppArgb);
 		using Graphics graphics = Graphics.FromImage(bitmap);
@@ -80,7 +80,7 @@ internal static class ScreenshotCaptureHelper
 		return bitmap;
 	}
 
-	private static bool r8ucLBRc5h(Bitmap P_0)
+	private static bool IsBlankOrInvalidCapture(Bitmap P_0)
 	{
 		if (P_0 == null || P_0.Width <= 1 || P_0.Height <= 1)
 		{

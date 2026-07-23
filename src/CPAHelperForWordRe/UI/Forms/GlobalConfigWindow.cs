@@ -27,11 +27,11 @@ public sealed class GlobalConfigWindow : Window, IComponentConnector
 		qVQGscCNQi = new NumberFormatConfig(new JsonFileDialogHelper());
 		qVQGscCNQi.add_CloseRequested(base.Close);
 		base.DataContext = qVQGscCNQi;
-		base.PreviewKeyDown += OrgGL6BKje;
+		base.PreviewKeyDown += OnPreviewKeyDown;
 		base.Loaded += GHPdJlwoQG;
 	}
 
-	private void OrgGL6BKje(object P_0, KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{

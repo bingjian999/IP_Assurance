@@ -1028,9 +1028,9 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			return;
 		}
 		tabAll.IsSelected = true;
-		TableBindingTreeNode wR0uULV4PciwXYvPdaNd = FindNodeByBindingId(_tableNodes, selectedDataSourceBinding.BindingId);
-		rAUOlemBfZ(wR0uULV4PciwXYvPdaNd);
-		if (wR0uULV4PciwXYvPdaNd != null && ValidateSelectedBinding())
+		TableBindingTreeNode bindingNode = FindNodeByBindingId(_tableNodes, selectedDataSourceBinding.BindingId);
+		rAUOlemBfZ(bindingNode);
+		if (bindingNode != null && ValidateSelectedBinding())
 		{
 			Execute7("已定位到 Word 表格。");
 		}
@@ -1110,8 +1110,8 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void Execute2(object P_0, RoutedPropertyChangedEventArgs<object> P_1)
 	{
-		TableBindingTreeNode wR0uULV4PciwXYvPdaNd = P_1.NewValue as TableBindingTreeNode;
-		_tableBindingTreeNode = ((wR0uULV4PciwXYvPdaNd != null && wR0uULV4PciwXYvPdaNd.IsTable) ? wR0uULV4PciwXYvPdaNd : null);
+		TableBindingTreeNode bindingNode = P_1.NewValue as TableBindingTreeNode;
+		_tableBindingTreeNode = ((bindingNode != null && bindingNode.IsTable) ? bindingNode : null);
 		sJTOjaskhb();
 		Delete6();
 		if (!_bool && !_bool && tabAll.IsSelected && SelectedBinding != null && ValidateSelectedBinding())
@@ -1367,8 +1367,8 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			}
 			Execute5();
 			cMdOYLAOjc();
-			TableBindingTreeNode wR0uULV4PciwXYvPdaNd = ((!string.IsNullOrWhiteSpace(P_0)) ? FindNodeByBindingId(_tableNodes, P_0) : null);
-			rAUOlemBfZ(wR0uULV4PciwXYvPdaNd ?? wDeOoeMhoh(_tableNodes));
+			TableBindingTreeNode bindingNode = ((!string.IsNullOrWhiteSpace(P_0)) ? FindNodeByBindingId(_tableNodes, P_0) : null);
+			rAUOlemBfZ(bindingNode ?? wDeOoeMhoh(_tableNodes));
 			if (gridDataSources.SelectedItem == null && workbook2.Count > 0)
 			{
 				gridDataSources.SelectedIndex = 0;
@@ -1624,7 +1624,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private void Execute5()
 	{
 		_tableNodes.Clear();
-		TableBindingTreeNode wR0uULV4PciwXYvPdaNd = null;
+		TableBindingTreeNode bindingNode = null;
 		foreach (TableComWriteService.TableBindingStatus item in binding2.OrderBy((TableComWriteService.TableBindingStatus binding) => (binding.WordTableIndex > 0) ? binding.WordTableIndex : int.MaxValue))
 		{
 			IList<TableComWriteService.HeadingPathItem> list = item.HeadingPath ?? new List<TableComWriteService.HeadingPathItem>();
@@ -1632,18 +1632,18 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			TableBindingTreeNode parent = null;
 			if (list.Count == 0)
 			{
-				if (wR0uULV4PciwXYvPdaNd == null)
+				if (bindingNode == null)
 				{
-					wR0uULV4PciwXYvPdaNd = new TableBindingTreeNode
+					bindingNode = new TableBindingTreeNode
 					{
 						Text = "未归类表格",
 						IsHeading = true,
 						IsExpanded = true
 					};
-					_tableNodes.Add(wR0uULV4PciwXYvPdaNd);
+					_tableNodes.Add(bindingNode);
 				}
-				parent = wR0uULV4PciwXYvPdaNd;
-				children = wR0uULV4PciwXYvPdaNd.Children;
+				parent = bindingNode;
+				children = bindingNode.Children;
 			}
 			else
 			{
@@ -1653,10 +1653,10 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 					_G_c__DisplayClass75_0 CS_8_locals_9 = new _G_c__DisplayClass75_0();
 					CS_8_locals_9.headingItem = enumerator2.Current;
 					CS_8_locals_9.text2 = (string.IsNullOrWhiteSpace(CS_8_locals_9.headingItem.Text) ? "未命名标题" : CS_8_locals_9.headingItem.Text);
-					TableBindingTreeNode wR0uULV4PciwXYvPdaNd2 = children.FirstOrDefault((TableBindingTreeNode existing) => existing.IsHeading && existing.Level == CS_8_locals_9.headingItem.Level && string.Equals(existing.Text, CS_8_locals_9.text2, StringComparison.Ordinal));
-					if (wR0uULV4PciwXYvPdaNd2 == null)
+					TableBindingTreeNode headingNode = children.FirstOrDefault((TableBindingTreeNode existing) => existing.IsHeading && existing.Level == CS_8_locals_9.headingItem.Level && string.Equals(existing.Text, CS_8_locals_9.text2, StringComparison.Ordinal));
+					if (headingNode == null)
 					{
-						wR0uULV4PciwXYvPdaNd2 = new TableBindingTreeNode
+						headingNode = new TableBindingTreeNode
 						{
 							Text = CS_8_locals_9.text2,
 							Level = CS_8_locals_9.headingItem.Level,
@@ -1664,10 +1664,10 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 							IsExpanded = (CS_8_locals_9.headingItem.Level <= 3),
 							Parent = parent
 						};
-						children.Add(wR0uULV4PciwXYvPdaNd2);
+						children.Add(headingNode);
 					}
-					parent = wR0uULV4PciwXYvPdaNd2;
-					children = wR0uULV4PciwXYvPdaNd2.Children;
+					parent = headingNode;
+					children = headingNode.Children;
 				}
 			}
 			bool flag = !string.Equals(item.Status, "正常", StringComparison.OrdinalIgnoreCase);
@@ -1711,9 +1711,9 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private static void ExpandAllParents(TableBindingTreeNode P_0)
 	{
-		for (TableBindingTreeNode wR0uULV4PciwXYvPdaNd = P_0?.Parent; wR0uULV4PciwXYvPdaNd != null; wR0uULV4PciwXYvPdaNd = wR0uULV4PciwXYvPdaNd.Parent)
+		for (TableBindingTreeNode bindingNode = P_0?.Parent; bindingNode != null; bindingNode = bindingNode.Parent)
 		{
-			wR0uULV4PciwXYvPdaNd.IsExpanded = true;
+			bindingNode.IsExpanded = true;
 		}
 	}
 
@@ -1729,10 +1729,10 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			{
 				return item;
 			}
-			TableBindingTreeNode wR0uULV4PciwXYvPdaNd = wDeOoeMhoh(item.Children);
-			if (wR0uULV4PciwXYvPdaNd != null)
+			TableBindingTreeNode bindingNode = wDeOoeMhoh(item.Children);
+			if (bindingNode != null)
 			{
-				return wR0uULV4PciwXYvPdaNd;
+				return bindingNode;
 			}
 		}
 		return null;
@@ -1750,10 +1750,10 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			{
 				return item;
 			}
-			TableBindingTreeNode wR0uULV4PciwXYvPdaNd = FindNodeByBindingId(item.Children, P_1);
-			if (wR0uULV4PciwXYvPdaNd != null)
+			TableBindingTreeNode bindingNode = FindNodeByBindingId(item.Children, P_1);
+			if (bindingNode != null)
 			{
-				return wR0uULV4PciwXYvPdaNd;
+				return bindingNode;
 			}
 		}
 		return null;

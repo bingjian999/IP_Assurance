@@ -25,12 +25,12 @@ public sealed class ParagraphConfigWindow : Window, IComponentConnector
 		InitializeComponent();
 		_legacyConfigMigrator2 = new LegacyConfigMigrator2(new JsonFileDialogHelper());
 		_legacyConfigMigrator2.add_OpenTableRequested(base.Close);
-		_legacyConfigMigrator2.add_Closed(dTqC3t4uPZ);
+		_legacyConfigMigrator2.add_Closed(OnClosedOpenTableConfig);
 		base.DataContext = _legacyConfigMigrator2;
-		base.PreviewKeyDown += vg3CJM4XQx;
+		base.PreviewKeyDown += OnPreviewKeyDown;
 	}
 
-	private void vg3CJM4XQx(object P_0, KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{
@@ -38,7 +38,7 @@ public sealed class ParagraphConfigWindow : Window, IComponentConnector
 		}
 	}
 
-	private void dTqC3t4uPZ()
+	private void OnClosedOpenTableConfig()
 	{
 		WordTableToolService5.ShowWpfWindow(new TableConfigWindow());
 		Close();

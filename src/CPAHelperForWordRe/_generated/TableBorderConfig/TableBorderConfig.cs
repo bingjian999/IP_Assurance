@@ -51,7 +51,7 @@ internal sealed class TableBorderConfig
 		}
 	}
 
-	public wSx55RS7lsLReJ1W8jr ReadConfigValue<wSx55RS7lsLReJ1W8jr>(Func<AiHelper_12, wSx55RS7lsLReJ1W8jr> P_0)
+	public TValue ReadConfigValue<TValue>(Func<AiHelper_12, TValue> P_0)
 	{
 		lock (_configLock)
 		{
@@ -152,7 +152,7 @@ internal sealed class TableBorderConfig
 		return P_1;
 	}
 
-	public void GZ2SaDxkVl()
+	public void Initialize()
 	{
 		try
 		{
@@ -160,7 +160,7 @@ internal sealed class TableBorderConfig
 			_configPath = AiSseStreamService.MainConfigFilePath;
 			if (!File.Exists(_configPath))
 			{
-				_configData = bm6SAF0HvB();
+				_configData = CreateDefaultConfigData();
 				PersistConfig();
 			}
 			SaveToFile();
@@ -177,12 +177,12 @@ internal sealed class TableBorderConfig
 		{
 			if (!string.IsNullOrEmpty(_configPath) && File.Exists(_configPath))
 			{
-				AiHelper_12 nKy3wjtTwmsradOXPDy = JsonConvert.DeserializeObject<AiHelper_12>(File.ReadAllText(_configPath, Encoding.UTF8)) ?? new AiHelper_12();
-				nKy3wjtTwmsradOXPDy.EnsureConfigLoaded();
-				bool flag = ValidateConfig(nKy3wjtTwmsradOXPDy);
+				AiHelper_12 configData = JsonConvert.DeserializeObject<AiHelper_12>(File.ReadAllText(_configPath, Encoding.UTF8)) ?? new AiHelper_12();
+				configData.EnsureConfigLoaded();
+				bool flag = ValidateConfig(configData);
 				lock (_configLock)
 				{
-					_configData = nKy3wjtTwmsradOXPDy;
+					_configData = configData;
 				}
 				if (flag)
 				{
@@ -213,10 +213,10 @@ internal sealed class TableBorderConfig
 		}
 	}
 
-	private static AiHelper_12 bm6SAF0HvB()
+	private static AiHelper_12 CreateDefaultConfigData()
 	{
-		AiHelper_12 nKy3wjtTwmsradOXPDy = new AiHelper_12();
-		nKy3wjtTwmsradOXPDy.EnsureConfigLoaded();
+		AiHelper_12 configData = new AiHelper_12();
+		configData.EnsureConfigLoaded();
 		try
 		{
 			string legacyConfigFilePath = AiSseStreamService.LegacyConfigFilePath;
@@ -225,7 +225,7 @@ internal sealed class TableBorderConfig
 				Dictionary<string, object> dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(File.ReadAllText(legacyConfigFilePath, Encoding.UTF8));
 				if (dictionary != null)
 				{
-					nKy3wjtTwmsradOXPDy.Legacy = dictionary;
+					configData.Legacy = dictionary;
 				}
 			}
 		}
@@ -233,8 +233,8 @@ internal sealed class TableBorderConfig
 		{
 			AiConfigBootstrap.LogWarn("[Config] Legacy config migration skipped: " + ex.Message);
 		}
-		ValidateConfig(nKy3wjtTwmsradOXPDy);
-		return nKy3wjtTwmsradOXPDy;
+		ValidateConfig(configData);
+		return configData;
 	}
 
 	private static bool ValidateConfig(AiHelper_12 P_0)
@@ -248,8 +248,8 @@ internal sealed class TableBorderConfig
 			P_0.Legacy = new Dictionary<string, object>();
 		}
 		bool flag = false;
-		flag |= OutSW34unI(P_0.Legacy);
-		foreach (KeyValuePair<string, object> item in SLGS0RVi41())
+		flag |= MigrateLegacyBorderKeys(P_0.Legacy);
+		foreach (KeyValuePair<string, object> item in LoadEmbeddedDefaults())
 		{
 			if (!P_0.Legacy.ContainsKey(item.Key))
 			{
@@ -260,7 +260,7 @@ internal sealed class TableBorderConfig
 		return flag;
 	}
 
-	private static bool OutSW34unI(Dictionary<string, object> P_0)
+	private static bool MigrateLegacyBorderKeys(Dictionary<string, object> P_0)
 	{
 		bool result = false;
 		if (!P_0.ContainsKey("表格_边框样式_合计行下边框线") && P_0.TryGetValue("表格_边框样式_表尾底边框线", out var value))
@@ -276,7 +276,7 @@ internal sealed class TableBorderConfig
 		return result;
 	}
 
-	private static Dictionary<string, object> SLGS0RVi41()
+	private static Dictionary<string, object> LoadEmbeddedDefaults()
 	{
 		try
 		{

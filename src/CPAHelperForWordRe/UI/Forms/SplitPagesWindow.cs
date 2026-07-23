@@ -61,10 +61,10 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 			txtPages.Focus();
 			txtPages.SelectAll();
 		};
-		DataObject.AddPastingHandler(txtPages, Y9YnouK8d5);
+		DataObject.AddPastingHandler(txtPages, OnPaste);
 	}
 
-	private void s86nlb1Mll(object P_0, RoutedEventArgs P_1)
+	private void OnConfirmButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		if (!int.TryParse(txtPages.Text.Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out var result) || result < 1 || result > _int)
 		{
@@ -80,17 +80,17 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 		}
 	}
 
-	private void eipnN2KJkv(object P_0, RoutedEventArgs P_1)
+	private void OnCancelButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		Close();
 	}
 
-	private void bjEnm5dI2N(object P_0, TextCompositionEventArgs P_1)
+	private void OnPreviewTextInput(object P_0, TextCompositionEventArgs P_1)
 	{
 		P_1.Handled = !mACnGytPYh(P_1.Text);
 	}
 
-	private void Y9YnouK8d5(object P_0, DataObjectPastingEventArgs P_1)
+	private void OnPaste(object P_0, DataObjectPastingEventArgs P_1)
 	{
 		if (!mACnGytPYh(P_1.DataObject.GetDataPresent(DataFormats.Text) ? (P_1.DataObject.GetData(DataFormats.Text) as string) : null))
 		{
@@ -128,16 +128,16 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 		{
 		case 1:
 			txtPages = (TextBox)target;
-			txtPages.PreviewTextInput += bjEnm5dI2N;
+			txtPages.PreviewTextInput += OnPreviewTextInput;
 			break;
 		case 2:
 			txtHint = (TextBlock)target;
 			break;
 		case 3:
-			((Button)target).Click += s86nlb1Mll;
+			((Button)target).Click += OnConfirmButtonClick;
 			break;
 		case 4:
-			((Button)target).Click += eipnN2KJkv;
+			((Button)target).Click += OnCancelButtonClick;
 			break;
 		default:
 			_bool = true;
@@ -155,7 +155,7 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void GSBnpG97by(object P_0, RoutedEventArgs P_1)
+	private void OnWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
 		txtPages.Focus();
 		txtPages.SelectAll();

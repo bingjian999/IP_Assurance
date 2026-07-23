@@ -26,7 +26,7 @@ internal sealed class WordAgentRuntimeGuard : IHostContext
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void pG0VTI0t7Tg(object _)
+		internal void InvokeAction(object _)
 		{
 			action();
 		}

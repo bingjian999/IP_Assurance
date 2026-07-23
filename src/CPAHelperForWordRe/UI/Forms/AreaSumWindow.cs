@@ -70,24 +70,24 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 		};
 	}
 
-	private void Y1eCsXFolI(object P_0, RoutedEventArgs P_1)
+	private void OnRunClick(object P_0, RoutedEventArgs P_1)
 	{
 		if (_bool)
 		{
-			HNSCoD1ugn();
+			CalculateSum();
 		}
 		else
 		{
-			xmiCNJH4KU();
+			ExtractNumbers();
 		}
 	}
 
-	private void SAlCl2SPaf(object P_0, RoutedEventArgs P_1)
+	private void OnCloseClick(object P_0, RoutedEventArgs P_1)
 	{
 		Close();
 	}
 
-	private void xmiCNJH4KU()
+	private void ExtractNumbers()
 	{
 		string text = WordTableToolService.WordApp.Selection.Text ?? string.Empty;
 		bool valueOrDefault = chkUnitOnly.IsChecked == true;
@@ -98,7 +98,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			txtUnit.Focus();
 			return;
 		}
-		MatchCollection matchCollection = UiHelper_5.K4hSE7usVJ.Matches(text);
+		MatchCollection matchCollection = UiHelper_5.NumberRegex.Matches(text);
 		if (matchCollection.Count == 0)
 		{
 			txtStatus.Text = "未找到任何数字。";
@@ -114,7 +114,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 				num2++;
 				continue;
 			}
-			if (valueOrDefault && !UiHelper_5.q4TS36j7cA(text, item, text2))
+			if (valueOrDefault && !UiHelper_5.MatchesUnit(text, item, text2))
 			{
 				num2++;
 				continue;
@@ -146,10 +146,10 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			ExcludePercent = (chkPercent.IsChecked == true),
 			ExcludeDateFormat = false
 		};
-		return UiHelper_5.bcbSJ1pxpn(P_0, P_1, separatorConfig, null);
+		return UiHelper_5.IsExcludedBySeparatorConfig(P_0, P_1, separatorConfig, null);
 	}
 
-	private void HNSCoD1ugn()
+	private void CalculateSum()
 	{
 		string[] array = (from line in (txtNumbers.Text ?? string.Empty).Split(new string[3]
 			{
@@ -191,7 +191,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 		string text3 = string.Join("", list.Select((double n) => (!(n >= 0.0)) ? n.ToString(CultureInfo.CurrentCulture) : ("=" + n.ToString(CultureInfo.CurrentCulture)))).TrimStart('+');
 		txtNumbers.Text = text3 + "有 {0} 行无法识别，已跳过。" + text2;
 		bool flag = KOkCpamuGe(text2);
-		erlCGFVcd8((list2.Count > 0) ? (Ks4CCtulAc(text2, flag) + string.Format("已启用“仅保留带单位数字”，请先填写匹配单位。", list2.Count)) : Ks4CCtulAc(text2, flag).TrimEnd());
+		erlCGFVcd8((list2.Count > 0) ? (FormatSumResultMessage(text2, flag) + string.Format("已启用“仅保留带单位数字”，请先填写匹配单位。", list2.Count)) : FormatSumResultMessage(text2, flag).TrimEnd());
 	}
 
 	private void erlCGFVcd8(string P_0)
@@ -201,7 +201,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 		txtStatus.Text = P_0;
 	}
 
-	private static string Ks4CCtulAc(string P_0, bool P_1)
+	private static string FormatSumResultMessage(string P_0, bool P_1)
 	{
 		if (!P_1)
 		{
@@ -283,10 +283,10 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			break;
 		case 11:
 			btnRun = (System.Windows.Controls.Button)target;
-			btnRun.Click += Y1eCsXFolI;
+			btnRun.Click += OnRunClick;
 			break;
 		case 12:
-			((System.Windows.Controls.Button)target).Click += SAlCl2SPaf;
+			((System.Windows.Controls.Button)target).Click += OnCloseClick;
 			break;
 		default:
 			_bool = true;
@@ -295,7 +295,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void aHaCn2JaJp(object P_0, System.Windows.Input.KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, System.Windows.Input.KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{
@@ -304,13 +304,13 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void JDOC7N4sKu(object P_0, CancelEventArgs P_1)
+	private void OnClosing(object P_0, CancelEventArgs P_1)
 	{
 		tfxCOJejgv();
 	}
 
 	[CompilerGenerated]
-	private void EL5C5rjprK(AiHelper_12 P_0)
+	private void OnUpdateConfig(AiHelper_12 P_0)
 	{
 		P_0.Legacy["选段求和_只提取带单位"] = ((chkUnitOnly.IsChecked == true) ? "0" : "1");
 		P_0.Legacy["选段求和_单位"] = (string.IsNullOrWhiteSpace(txtUnit.Text) ? "元" : txtUnit.Text.Trim());

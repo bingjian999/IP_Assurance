@@ -13,6 +13,6 @@ internal static class UiHelper_3
 
 	public static void VyeBFJCHAY()
 	{
-		AiHelper_6.uJJLaq5Qdq();
+		AiHelper_6.CheckForUpdate();
 	}
 }

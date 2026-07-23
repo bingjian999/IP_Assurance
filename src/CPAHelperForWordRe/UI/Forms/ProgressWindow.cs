@@ -59,7 +59,7 @@ public sealed class ProgressWindow : Window, IComponentConnector
 		}
 	}
 
-	private void flxn4AA95q(object P_0, RoutedEventArgs P_1)
+	private void OnCancelButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		IsCancelRequested = true;
 		Close();
@@ -91,7 +91,7 @@ public sealed class ProgressWindow : Window, IComponentConnector
 			barProgress = (ProgressBar)target;
 			break;
 		case 3:
-			((Button)target).Click += flxn4AA95q;
+			((Button)target).Click += OnCancelButtonClick;
 			break;
 		default:
 			_bool = true;

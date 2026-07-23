@@ -64,7 +64,7 @@ public sealed class ThisAddIn : AddInBase
 
 	private readonly StartupStepRunner ConfigValidator;
 
-	internal CustomTaskPaneCollection D8nlJJriq;
+	internal CustomTaskPaneCollection CustomTaskPanes;
 
 	internal SmartTagCollection tXBNqmaPS;
 
@@ -72,7 +72,7 @@ public sealed class ThisAddIn : AddInBase
 	private object mu1mGcWsS;
 
 	[GeneratedCode("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "18.0.0.0")]
-	internal Microsoft.Office.Interop.Word.Application fM3oNckkd;
+	internal Microsoft.Office.Interop.Word.Application WordApplication;
 
 	private void UdYQeZUJM(object P_0, EventArgs P_1)
 	{
@@ -82,12 +82,12 @@ public sealed class ThisAddIn : AddInBase
 			XvXL2tl66.CdpsaonsgL("刷新并关闭日志", AiConfigBootstrap.ShutdownLogger);
 			ScRJrclkY();
 			HttpHelper_2.initializeHttpClient();
-			WordTableToolService.wTdsm97f8t(fM3oNckkd, SynchronizationContext.Current);
+			WordTableToolService.Initialize(WordApplication, SynchronizationContext.Current);
 			AiSseStreamService.InitializeDirectories();
 			AiSseStreamService.EnsureDirectory(AiSseStreamService.ConfigDir);
 			ConfigValidator.ValidateConfig("加载配置", delegate
 			{
-				TableBorderConfig.Current.GZ2SaDxkVl();
+				TableBorderConfig.Current.Initialize();
 			});
 			ConfigValidator.ValidateConfig("刷新 Ribbon 标题", CompositeRibbonExtensibility.S0ZyWdvYIm);
 			ConfigValidator.ValidateConfig("初始化轻量 AI 入口", AiAssistantHost2.TriggerFileDownload);
@@ -106,7 +106,7 @@ public sealed class ThisAddIn : AddInBase
 				}
 			});
 			ConfigValidator.ValidateConfig("启动自动检查更新", ExcelDataSyncService.AutoLoadContextMenu);
-			ConfigValidator.ValidateConfig("[Startup] IP_Assurance started; Version=", AiHelper_6.uJJLaq5Qdq);
+			ConfigValidator.ValidateConfig("[Startup] IP_Assurance started; Version=", AiHelper_6.CheckForUpdate);
 			ConfigValidator.RunStartup();
 			AiConfigBootstrap.LogInfo("; Host=" + typeof(ThisAddIn).Assembly.GetName().Version?.ToString() + "Word" + (WordTableToolService.IsWps ? "WPS" : ""));
 			Y813TQXXJ();
@@ -116,7 +116,7 @@ public sealed class ThisAddIn : AddInBase
 			XvXL2tl66.CdpsaonsgL("清理系统托盘通知", ExcelDataSyncService.ResetContextMenu);
 			XvXL2tl66.CdpsaonsgL("清理 WPF 键盘钩子", UiHelperService.DisposeNotifyIcon);
 			XvXL2tl66.CdpsaonsgL("DocumentOpen", AiHelper_4.UnregisterAll);
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").AddEventHandler(fM3oNckkd, new ApplicationEvents4_DocumentOpenEventHandler(qZSrdDKvR));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").AddEventHandler(WordApplication, new ApplicationEvents4_DocumentOpenEventHandler(qZSrdDKvR));
 		}
 		catch (Exception ex)
 		{
@@ -128,7 +128,7 @@ public sealed class ThisAddIn : AddInBase
 	{
 		try
 		{
-			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").RemoveEventHandler(fM3oNckkd, new ApplicationEvents4_DocumentOpenEventHandler(qZSrdDKvR));
+			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "DocumentOpen").RemoveEventHandler(WordApplication, new ApplicationEvents4_DocumentOpenEventHandler(qZSrdDKvR));
 			XvXL2tl66.RunShutdown();
 		}
 		catch (Exception ex)
@@ -253,7 +253,7 @@ public sealed class ThisAddIn : AddInBase
 	protected override void Initialize()
 	{
 		base.Initialize();
-		fM3oNckkd = GetHostItem<Microsoft.Office.Interop.Word.Application>(typeof(Microsoft.Office.Interop.Word.Application), "Application");
+		WordApplication = GetHostItem<Microsoft.Office.Interop.Word.Application>(typeof(Microsoft.Office.Interop.Word.Application), "Application");
 		UiHelper_1.ThisAddIn = this;
 		System.Windows.Forms.Application.EnableVisualStyles();
 		N1SEFfDNL();
@@ -333,7 +333,7 @@ public sealed class ThisAddIn : AddInBase
 	private void srofkR91K()
 	{
 		BeginInit();
-		D8nlJJriq.BeginInit();
+		CustomTaskPanes.BeginInit();
 		tXBNqmaPS.BeginInit();
 	}
 
@@ -343,7 +343,7 @@ public sealed class ThisAddIn : AddInBase
 	private void uxSMWgduF()
 	{
 		tXBNqmaPS.EndInit();
-		D8nlJJriq.EndInit();
+		CustomTaskPanes.EndInit();
 		EndInit();
 	}
 
@@ -352,7 +352,7 @@ public sealed class ThisAddIn : AddInBase
 	[DebuggerNonUserCode]
 	private void ViYbWSnJh()
 	{
-		D8nlJJriq = UiHelper_1.Factory.CreateCustomTaskPaneCollection(null, null, "CustomTaskPanes", "CustomTaskPanes", this);
+		CustomTaskPanes = UiHelper_1.Factory.CreateCustomTaskPaneCollection(null, null, "CustomTaskPanes", "CustomTaskPanes", this);
 		tXBNqmaPS = UiHelper_1.Factory.CreateSmartTagCollection(null, null, "VstoSmartTags", "VstoSmartTags", this);
 	}
 
@@ -376,7 +376,7 @@ public sealed class ThisAddIn : AddInBase
 	protected override void OnShutdown()
 	{
 		tXBNqmaPS.Dispose();
-		D8nlJJriq.Dispose();
+		CustomTaskPanes.Dispose();
 		base.OnShutdown();
 	}
 

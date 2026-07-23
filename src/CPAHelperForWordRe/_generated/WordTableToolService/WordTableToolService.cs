@@ -25,7 +25,7 @@ internal static class WordTableToolService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void hXFVEPHB6vT(object _)
+		internal void ExecuteAction(object _)
 		{
 			try
 			{
@@ -39,7 +39,7 @@ internal static class WordTableToolService
 	}
 
 	[CompilerGenerated]
-	private static Microsoft.Office.Interop.Word.Application X9psCMqP7N;
+	private static Microsoft.Office.Interop.Word.Application _wordApp;
 
 	[CompilerGenerated]
 	private static SynchronizationContext SXMspfTYy7;
@@ -48,22 +48,22 @@ internal static class WordTableToolService
 	private static Dispatcher WmtsOSEWxX;
 
 	[CompilerGenerated]
-	private static int PBusnI4MQI;
+	private static int _hostThreadId;
 
 	[CompilerGenerated]
-	private static bool agOs7ClMS9;
+	private static bool _isWps;
 
 	public static Microsoft.Office.Interop.Word.Application WordApp
 	{
 		[CompilerGenerated]
 		get
 		{
-			return X9psCMqP7N;
+			return _wordApp;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			X9psCMqP7N = value;
+			_wordApp = value;
 		}
 	}
 
@@ -100,12 +100,12 @@ internal static class WordTableToolService
 		[CompilerGenerated]
 		get
 		{
-			return PBusnI4MQI;
+			return _hostThreadId;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			PBusnI4MQI = value;
+			_hostThreadId = value;
 		}
 	}
 
@@ -114,16 +114,16 @@ internal static class WordTableToolService
 		[CompilerGenerated]
 		get
 		{
-			return agOs7ClMS9;
+			return _isWps;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			agOs7ClMS9 = value;
+			_isWps = value;
 		}
 	}
 
-	public static void wTdsm97f8t(Microsoft.Office.Interop.Word.Application P_0, SynchronizationContext P_1 = null)
+	public static void Initialize(Microsoft.Office.Interop.Word.Application P_0, SynchronizationContext P_1 = null)
 	{
 		WordApp = P_0 ?? throw new ArgumentNullException("app");
 		SyncContext = P_1 ?? SynchronizationContext.Current;
@@ -139,9 +139,9 @@ internal static class WordTableToolService
 		}
 	}
 
-	public static othpc1sGSo507cq3SG1 xgnsoNTZsI<othpc1sGSo507cq3SG1>(Func<othpc1sGSo507cq3SG1> P_0)
+	public static TResult xgnsoNTZsI<TResult>(Func<TResult> P_0)
 	{
-		_G_c__DisplayClass21_0<othpc1sGSo507cq3SG1> CS_8_locals_12 = new _G_c__DisplayClass21_0<othpc1sGSo507cq3SG1>();
+		_G_c__DisplayClass21_0<TResult> CS_8_locals_12 = new _G_c__DisplayClass21_0<TResult>();
 		CS_8_locals_12.action = P_0;
 		if (CS_8_locals_12.action == null)
 		{
@@ -153,7 +153,7 @@ internal static class WordTableToolService
 		}
 		if (SyncContext != null)
 		{
-			CS_8_locals_12.result = default(othpc1sGSo507cq3SG1);
+			CS_8_locals_12.result = default(TResult);
 			CS_8_locals_12.captured = null;
 			SyncContext.Send(delegate
 			{

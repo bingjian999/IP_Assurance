@@ -42,10 +42,10 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 			txtNewName.Focus();
 			txtNewName.SelectAll();
 		};
-		HN9GNMbyHk();
+		RefreshDocumentState();
 	}
 
-	private void HN9GNMbyHk()
+	private void RefreshDocumentState()
 	{
 		txtCurrentName.Text = DocumentRenameService.getActiveDocumentName() ?? "(当前没有打开的 Word 文档)";
 		txtNewName.Text = DocumentRenameService.getActiveDocumentNameWithoutExtension();
@@ -55,26 +55,26 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 		lblState.Text = (flag ? "仅修改文件主名，后缀保持不变。" : text);
 	}
 
-	private void PwEGm0CK1p(object P_0, RoutedEventArgs P_1)
+	private void OnRenameButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		try
 		{
-			Helper_10 j5TqonBNY02JxhgwfnS2 = DocumentRenameService.renameDocument(txtNewName.Text, gJAGoM4wmO);
-			if (j5TqonBNY02JxhgwfnS2.IsCanceled)
+			Helper_10 renameResult = DocumentRenameService.renameDocument(txtNewName.Text, ConfirmOverwrite);
+			if (renameResult.IsCanceled)
 			{
 				lblState.Text = "已取消重命名。";
 				return;
 			}
-			if (j5TqonBNY02JxhgwfnS2.IsNoChange)
+			if (renameResult.IsNoChange)
 			{
 				lblState.Text = "新文件名与当前文件名一致，无需重命名。";
 				txtNewName.Focus();
 				txtNewName.SelectAll();
 				return;
 			}
-			if (!j5TqonBNY02JxhgwfnS2.OldFileDeleted && !string.IsNullOrWhiteSpace(j5TqonBNY02JxhgwfnS2.OldFileDeleteError))
+			if (!renameResult.OldFileDeleted && !string.IsNullOrWhiteSpace(renameResult.OldFileDeleteError))
 			{
-				MessageBox.Show(this, "重命名成功，新文件已生成。\\n\\n旧文件未能自动删除：\\n" + j5TqonBNY02JxhgwfnS2.OldFileDeleteError, "IP_Assurance", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				MessageBox.Show(this, "重命名成功，新文件已生成。\\n\\n旧文件未能自动删除：\\n" + renameResult.OldFileDeleteError, "IP_Assurance", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 			}
 			else
 			{
@@ -86,13 +86,13 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 		catch (Exception ex)
 		{
 			MessageBox.Show(this, ex.Message, "IP_Assurance", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-			HN9GNMbyHk();
+			RefreshDocumentState();
 			txtNewName.Focus();
 			txtNewName.SelectAll();
 		}
 	}
 
-	private bool gJAGoM4wmO(string P_0)
+	private bool ConfirmOverwrite(string P_0)
 	{
 		return MessageBox.Show(this, P_0, "IP_Assurance", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
 	}
@@ -132,7 +132,7 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 			break;
 		case 4:
 			btnRename = (Button)target;
-			btnRename.Click += PwEGm0CK1p;
+			btnRename.Click += OnRenameButtonClick;
 			break;
 		case 5:
 			((Button)target).Click += nbhGGR3871;
@@ -144,7 +144,7 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void YMKGCxgh9F(object P_0, KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{
@@ -153,7 +153,7 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void eYtGpR8d7r(object P_0, RoutedEventArgs P_1)
+	private void OnWindowLoaded(object P_0, RoutedEventArgs P_1)
 	{
 		txtNewName.Focus();
 		txtNewName.SelectAll();

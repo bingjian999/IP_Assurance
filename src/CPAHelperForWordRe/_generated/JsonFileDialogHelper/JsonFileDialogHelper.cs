@@ -11,7 +11,7 @@ namespace JsonFileDialogHelper;
 
 internal sealed class JsonFileDialogHelper : DialogService
 {
-	public string hveVL8NJXjM(string P_0, string P_1, string P_2)
+	public string ShowInputDialog(string P_0, string P_1, string P_2)
 	{
 		TextPromptWindow textPromptWindow = new TextPromptWindow(P_0, P_1, P_2);
 		if (WordTableToolService5.ShowWpfDialog(textPromptWindow) != true)
@@ -31,7 +31,7 @@ internal sealed class JsonFileDialogHelper : DialogService
 		return (openFileDialog.ShowDialog(WordTableToolService5.GetOwnerWindow()) == DialogResult.OK) ? openFileDialog.FileName : null;
 	}
 
-	public string SA6VLiTt8Ir(string P_0, string P_1)
+	public string ShowSaveFileDialog(string P_0, string P_1)
 	{
 		using SaveFileDialog saveFileDialog = new SaveFileDialog
 		{

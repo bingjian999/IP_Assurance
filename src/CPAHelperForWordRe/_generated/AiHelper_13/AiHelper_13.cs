@@ -531,7 +531,7 @@ internal static class AiHelper_13
 	private static bool TryGetClientOrigin(IntPtr P_0, out Point P_1)
 	{
 		P_1 = Point.Empty;
-		ScreenshotCaptureHelper2.SYRyATFyE10hKbRqs5x point = new ScreenshotCaptureHelper2.SYRyATFyE10hKbRqs5x
+		ScreenshotCaptureHelper2.ScreenPoint point = new ScreenshotCaptureHelper2.ScreenPoint
 		{
 			X = 0,
 			Y = 0
@@ -772,7 +772,7 @@ internal static class AiHelper_13
 	{
 		try
 		{
-			UiHelper_1.Ribbons.Ribbon1.R2xeRcIY7q(IsActive);
+			UiHelper_1.Ribbons.Ribbon1.SetRibbonActiveState(IsActive);
 		}
 		catch
 		{

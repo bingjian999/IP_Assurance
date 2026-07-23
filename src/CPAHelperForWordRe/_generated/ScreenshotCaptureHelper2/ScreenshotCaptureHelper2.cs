@@ -8,7 +8,7 @@ internal static class ScreenshotCaptureHelper2
 {
 	public delegate bool EnumChildProcDelegate(IntPtr hWnd, IntPtr lParam);
 
-	public struct SYRyATFyE10hKbRqs5x
+	public struct ScreenPoint
 	{
 		public int X;
 
@@ -42,7 +42,7 @@ internal static class ScreenshotCaptureHelper2
 	public static extern bool GetClientRect(IntPtr P_0, out windowRect P_1);
 
 	[DllImport("user32.dll", EntryPoint = "ClientToScreen")]
-	public static extern bool ClientToScreen(IntPtr P_0, ref SYRyATFyE10hKbRqs5x P_1);
+	public static extern bool ClientToScreen(IntPtr P_0, ref ScreenPoint P_1);
 
 	[DllImport("user32.dll", EntryPoint = "IsWindowVisible")]
 	public static extern bool IsWindowVisible(IntPtr P_0);

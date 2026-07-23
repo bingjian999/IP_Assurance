@@ -199,13 +199,13 @@ internal sealed class WpsVbaCompatService
 			Document document = null;
 			VBProject vBProject = null;
 			VBComponent vBComponent = null;
-			DocumentSelectionState rP3HO3VDvRbxmE03MaWl = null;
+			DocumentSelectionState documentState = null;
 			WdAlertLevel displayAlerts = WdAlertLevel.wdAlertsAll;
 			bool flag = false;
 			bool flag2 = false;
 			try
 			{
-				rP3HO3VDvRbxmE03MaWl = CaptureDocumentState(app);
+				documentState = CaptureDocumentState(app);
 				document = DocumentLifecycleGuard.GetActiveDocument(app);
 				if (document == null)
 				{
@@ -321,7 +321,7 @@ internal sealed class WpsVbaCompatService
 					{
 					}
 				}
-				RestoreDocumentState(app, rP3HO3VDvRbxmE03MaWl);
+				RestoreDocumentState(app, documentState);
 				ReleaseComObject(vBComponent);
 				ReleaseComObject(vBProject);
 			}
@@ -398,13 +398,13 @@ internal sealed class WpsVbaCompatService
 			Document document = null;
 			VBProject vBProject = null;
 			VBComponent vBComponent = null;
-			DocumentSelectionState rP3HO3VDvRbxmE03MaWl = null;
+			DocumentSelectionState documentState = null;
 			WdAlertLevel displayAlerts = WdAlertLevel.wdAlertsAll;
 			bool flag = false;
 			bool flag2 = false;
 			try
 			{
-				rP3HO3VDvRbxmE03MaWl = CaptureDocumentState(app);
+				documentState = CaptureDocumentState(app);
 				document = DocumentLifecycleGuard.GetActiveDocument(app);
 				if (document == null)
 				{
@@ -520,7 +520,7 @@ internal sealed class WpsVbaCompatService
 					{
 					}
 				}
-				RestoreDocumentState(app, rP3HO3VDvRbxmE03MaWl);
+				RestoreDocumentState(app, documentState);
 				ReleaseComObject(vBComponent);
 				ReleaseComObject(vBProject);
 			}

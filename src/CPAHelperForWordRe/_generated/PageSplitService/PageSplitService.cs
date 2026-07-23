@@ -73,7 +73,7 @@ internal static class PageSplitService
 		{
 			Cfg.SaveToFile();
 			Document activeDocument = App.ActiveDocument;
-			int num = PageNumberStartWindow.dXHnSRT5B2(Cfg.GetInt("页面_页码_起始值", 1));
+			int num = PageNumberStartWindow.ClampPageNumber(Cfg.GetInt("页面_页码_起始值", 1));
 			SetStartingPageNumber(activeDocument, num);
 			HeaderFooter headerFooter = activeDocument.Sections[1].Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary];
 			PageNumbers pageNumbers = headerFooter.PageNumbers;

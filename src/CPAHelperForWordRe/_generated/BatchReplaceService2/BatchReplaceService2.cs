@@ -1781,13 +1781,13 @@ internal sealed class BatchReplaceService2
 						rangeEnd = value
 					});
 				}
-				DocumentOperationResult b4dteqz4khbXu1F8csG = pDGVVLIgVmK.ReadWordRange(value, value);
-				if (b4dteqz4khbXu1F8csG.Error != null)
+				DocumentOperationResult rangeResult = pDGVVLIgVmK.ReadWordRange(value, value);
+				if (rangeResult.Error != null)
 				{
-					return b4dteqz4khbXu1F8csG.Error;
+					return rangeResult.Error;
 				}
 				int num = ClampWithDefault(value, 30000, 30000);
-				return AiHelper_5.CreateSuccess("Word range read.", BuildRangeInfo(b4dteqz4khbXu1F8csG, num, 0));
+				return AiHelper_5.CreateSuccess("Word range read.", BuildRangeInfo(rangeResult, num, 0));
 			}
 			catch (Exception ex)
 			{
@@ -3173,13 +3173,13 @@ internal sealed class BatchReplaceService2
 		{
 			try
 			{
-				DocumentOperationResult b4dteqz4khbXu1F8csG = batchReplaceService2.ReadSelectionRange();
-				if (b4dteqz4khbXu1F8csG.Error != null)
+				DocumentOperationResult rangeResult = batchReplaceService2.ReadSelectionRange();
+				if (rangeResult.Error != null)
 				{
-					return b4dteqz4khbXu1F8csG.Error;
+					return rangeResult.Error;
 				}
 				int num = ClampWithDefault(value, 6000, 30000);
-				return AiHelper_5.CreateSuccess("Word selection preview prepared.", BuildRangeInfo(b4dteqz4khbXu1F8csG, num, null));
+				return AiHelper_5.CreateSuccess("Word selection preview prepared.", BuildRangeInfo(rangeResult, num, null));
 			}
 			catch (Exception ex)
 			{
@@ -3275,13 +3275,13 @@ internal sealed class BatchReplaceService2
 		{
 			try
 			{
-				DocumentOperationResult b4dteqz4khbXu1F8csG = CS_8_locals_4.batchReplaceService2.ReadSelectionRange();
-				if (b4dteqz4khbXu1F8csG.Error != null)
+				DocumentOperationResult rangeResult = CS_8_locals_4.batchReplaceService2.ReadSelectionRange();
+				if (rangeResult.Error != null)
 				{
-					return b4dteqz4khbXu1F8csG.Error;
+					return rangeResult.Error;
 				}
 				int num = ClampWithDefault(CS_8_locals_4.value, 6000, 30000);
-				return AiHelper_5.CreateSuccess("writeTool", BuildRangeInfo(b4dteqz4khbXu1F8csG, num, null));
+				return AiHelper_5.CreateSuccess("writeTool", BuildRangeInfo(rangeResult, num, null));
 			}
 			catch (Exception ex)
 			{
@@ -3309,13 +3309,13 @@ internal sealed class BatchReplaceService2
 						rangeEnd = CS_8_locals_13.value
 					});
 				}
-				DocumentOperationResult b4dteqz4khbXu1F8csG = CS_8_locals_13.pDGVVLIgVmK.ReadWordRange(CS_8_locals_13.value, CS_8_locals_13.value);
-				if (b4dteqz4khbXu1F8csG.Error != null)
+				DocumentOperationResult rangeResult = CS_8_locals_13.pDGVVLIgVmK.ReadWordRange(CS_8_locals_13.value, CS_8_locals_13.value);
+				if (rangeResult.Error != null)
 				{
-					return b4dteqz4khbXu1F8csG.Error;
+					return rangeResult.Error;
 				}
 				int num = ClampWithDefault(CS_8_locals_13.value, 30000, 30000);
-				return AiHelper_5.CreateSuccess("tables", BuildRangeInfo(b4dteqz4khbXu1F8csG, num, 0));
+				return AiHelper_5.CreateSuccess("tables", BuildRangeInfo(rangeResult, num, 0));
 			}
 			catch (Exception ex)
 			{
@@ -3359,8 +3359,8 @@ internal sealed class BatchReplaceService2
 			List<object> list = new List<object>();
 			foreach (TableStructureInfo table in instance3.Tables)
 			{
-				DocumentContextInfo tABVE1VR66mkVrCsbLlX2 = ExtractTableFromRange(instance3, table);
-				if (tABVE1VR66mkVrCsbLlX2 == null)
+				DocumentContextInfo tableContext = ExtractTableFromRange(instance3, table);
+				if (tableContext == null)
 				{
 					list.Add(new
 					{
@@ -3373,7 +3373,7 @@ internal sealed class BatchReplaceService2
 				}
 				else
 				{
-					list.Add(i041zjkxm7(tABVE1VR66mkVrCsbLlX2, table, num, num2));
+					list.Add(i041zjkxm7(tableContext, table, num, num2));
 				}
 			}
 			Dictionary<string, object> dictionary = new Dictionary<string, object>();
@@ -3844,13 +3844,13 @@ internal sealed class BatchReplaceService2
 			{
 				return P_1(searchContextInstance);
 			}
-			DocumentContextSnapshot ibFJ0vzQEvqcMM5hWZb = CaptureDocumentContext();
-			if (ibFJ0vzQEvqcMM5hWZb.Error != null)
+			DocumentContextSnapshot documentSnapshot = CaptureDocumentContext();
+			if (documentSnapshot.Error != null)
 			{
-				return ibFJ0vzQEvqcMM5hWZb.Error;
+				return documentSnapshot.Error;
 			}
-			DocumentSearchContext documentContext = DocumentSearchContext.hhudkjcOIs(ibFJ0vzQEvqcMM5hWZb);
-			DocumentLifecycleGuard.SetCachedProperty(ibFJ0vzQEvqcMM5hWZb.DocumentKey, documentContext);
+			DocumentSearchContext documentContext = DocumentSearchContext.hhudkjcOIs(documentSnapshot);
+			DocumentLifecycleGuard.SetCachedProperty(documentSnapshot.DocumentKey, documentContext);
 			return P_1(documentContext);
 		}
 		catch (Exception ex)
@@ -4323,13 +4323,13 @@ internal sealed class BatchReplaceService2
 			TrackRevisions = false,
 			WordOpenXml = P_1.WordOpenXml
 		});
-		DocumentContextInfo tABVE1VR66mkVrCsbLlX2 = searchContextInstance.Tables.FirstOrDefault();
-		if (tABVE1VR66mkVrCsbLlX2 == null)
+		DocumentContextInfo tableContext = searchContextInstance.Tables.FirstOrDefault();
+		if (tableContext == null)
 		{
 			return null;
 		}
-		tABVE1VR66mkVrCsbLlX2.TableIndex = P_1.LocalTableIndex;
-		return tABVE1VR66mkVrCsbLlX2;
+		tableContext.TableIndex = P_1.LocalTableIndex;
+		return tableContext;
 	}
 
 	private static object i041zjkxm7(DocumentContextInfo P_0, TableStructureInfo P_1, int P_2, int P_3)
@@ -4570,11 +4570,11 @@ internal sealed class BatchReplaceService2
 		HashSet<string> hashSet = new HashSet<string>(StringComparer.Ordinal);
 		for (int i = 1; i <= num; i++)
 		{
-			TableCellData yYk52kVRJmeQHGAAHZBB2 = FindCellAtPosition(P_0, i, P_2);
-			if (yYk52kVRJmeQHGAAHZBB2 != null)
+			TableCellData cell = FindCellAtPosition(P_0, i, P_2);
+			if (cell != null)
 			{
-				string item = BuildCellKey(yYk52kVRJmeQHGAAHZBB2.RowIndex, yYk52kVRJmeQHGAAHZBB2.ColumnIndex);
-				string text = yYk52kVRJmeQHGAAHZBB2.Text ?? string.Empty;
+				string item = BuildCellKey(cell.RowIndex, cell.ColumnIndex);
+				string text = cell.Text ?? string.Empty;
 				if (hashSet.Add(item) && !string.IsNullOrWhiteSpace(text) && !GetCount13(list, text))
 				{
 					list.Add(text);
@@ -4594,11 +4594,11 @@ internal sealed class BatchReplaceService2
 		HashSet<string> hashSet = new HashSet<string>(StringComparer.Ordinal);
 		for (int i = 1; i < P_2; i++)
 		{
-			TableCellData yYk52kVRJmeQHGAAHZBB2 = FindCellAtPosition(P_0, P_1, i);
-			if (yYk52kVRJmeQHGAAHZBB2 != null && yYk52kVRJmeQHGAAHZBB2.RowIndex > P_3)
+			TableCellData cell = FindCellAtPosition(P_0, P_1, i);
+			if (cell != null && cell.RowIndex > P_3)
 			{
-				string item = BuildCellKey(yYk52kVRJmeQHGAAHZBB2.RowIndex, yYk52kVRJmeQHGAAHZBB2.ColumnIndex);
-				string text = yYk52kVRJmeQHGAAHZBB2.Text ?? string.Empty;
+				string item = BuildCellKey(cell.RowIndex, cell.ColumnIndex);
+				string text = cell.Text ?? string.Empty;
 				if (hashSet.Add(item) && !string.IsNullOrWhiteSpace(text) && !GetCount10(text) && !GetCount13(list, text))
 				{
 					list.Add(text);
@@ -4622,11 +4622,11 @@ internal sealed class BatchReplaceService2
 			{
 				break;
 			}
-			TableCellData yYk52kVRJmeQHGAAHZBB2 = FindCellAtPosition(P_0, P_1, i);
-			if (yYk52kVRJmeQHGAAHZBB2 != null && yYk52kVRJmeQHGAAHZBB2.RowIndex > P_3)
+			TableCellData cell = FindCellAtPosition(P_0, P_1, i);
+			if (cell != null && cell.RowIndex > P_3)
 			{
-				string item = BuildCellKey(yYk52kVRJmeQHGAAHZBB2.RowIndex, yYk52kVRJmeQHGAAHZBB2.ColumnIndex);
-				string text = yYk52kVRJmeQHGAAHZBB2.Text ?? string.Empty;
+				string item = BuildCellKey(cell.RowIndex, cell.ColumnIndex);
+				string text = cell.Text ?? string.Empty;
 				if (hashSet.Add(item) && !string.IsNullOrWhiteSpace(text) && !GetCount13(list, text))
 				{
 					list.Add(text);
@@ -5076,19 +5076,19 @@ internal sealed class BatchReplaceService2
 
 	private static void AddTableFromXml(DocumentSearchContext P_0, XElement P_1)
 	{
-		DocumentContextInfo tABVE1VR66mkVrCsbLlX2 = ParseTableFromXml(P_0, P_1, P_0.Tables.Count + 1);
-		P_0.Tables.Add(tABVE1VR66mkVrCsbLlX2);
+		DocumentContextInfo tableContext = ParseTableFromXml(P_0, P_1, P_0.Tables.Count + 1);
+		P_0.Tables.Add(tableContext);
 		P_0.Blocks.Add(new DocumentBlock
 		{
-			TableIndex = tABVE1VR66mkVrCsbLlX2.TableIndex,
-			FirstParagraphIndex = tABVE1VR66mkVrCsbLlX2.FirstParagraphIndex,
-			Table = tABVE1VR66mkVrCsbLlX2
+			TableIndex = tableContext.TableIndex,
+			FirstParagraphIndex = tableContext.FirstParagraphIndex,
+			Table = tableContext
 		});
 	}
 
 	private static DocumentContextInfo ParseTableFromXml(DocumentSearchContext P_0, XElement P_1, int P_2)
 	{
-		DocumentContextInfo tABVE1VR66mkVrCsbLlX2 = new DocumentContextInfo
+		DocumentContextInfo tableContext = new DocumentContextInfo
 		{
 			DocumentName = P_0.DocumentName,
 			DocumentFullName = P_0.DocumentFullName,
@@ -5129,18 +5129,18 @@ internal sealed class BatchReplaceService2
 				{
 					value = new TableCellData
 					{
-						CellIndex = tABVE1VR66mkVrCsbLlX2.Cells.Count + 1,
-						RowIndex = tABVE1VR66mkVrCsbLlX2.Matrix.Count + 1,
+						CellIndex = tableContext.Cells.Count + 1,
+						RowIndex = tableContext.Matrix.Count + 1,
 						ColumnIndex = num,
 						RowSpan = 1,
 						ColumnSpan = num2,
 						Text = text
 					};
-					tABVE1VR66mkVrCsbLlX2.Cells.Add(value);
+					tableContext.Cells.Add(value);
 				}
 				if (num2 > 1 || flag)
 				{
-					tABVE1VR66mkVrCsbLlX2.HasMergedCells = true;
+					tableContext.HasMergedCells = true;
 				}
 				for (int i = 0; i < num2; i++)
 				{
@@ -5156,9 +5156,9 @@ internal sealed class BatchReplaceService2
 				}
 				num += num2;
 			}
-			tABVE1VR66mkVrCsbLlX2.Matrix.Add(list);
+			tableContext.Matrix.Add(list);
 		}
-		tABVE1VR66mkVrCsbLlX2.RawText = CleanCellText(string.Join("\n", tABVE1VR66mkVrCsbLlX2.Matrix.Select((List<string> r) => string.Join("p", r))));
+		tableContext.RawText = CleanCellText(string.Join("\n", tableContext.Matrix.Select((List<string> r) => string.Join("p", r))));
 		foreach (XElement item3 in P_1.Descendants(wordNamespace + "isHeader"))
 		{
 			string text2 = ExtractElementText(item3);
@@ -5171,7 +5171,7 @@ internal sealed class BatchReplaceService2
 				IsHeading = (num3 >= 1 && num3 <= 9)
 			});
 		}
-		return tABVE1VR66mkVrCsbLlX2;
+		return tableContext;
 	}
 
 	private static int ParseColumnSpan(XElement P_0)

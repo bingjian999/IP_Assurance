@@ -74,7 +74,7 @@ internal sealed class AiHelper_8
 		}
 	}
 
-	public bool g0DLRYEicD()
+	public bool IsValid()
 	{
 		if (string.IsNullOrWhiteSpace(ApiKey) && string.IsNullOrWhiteSpace(BaseUrl))
 		{

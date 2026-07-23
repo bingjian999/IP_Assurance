@@ -42,13 +42,13 @@ internal abstract class Helper_2 : INotifyPropertyChanged
 		}
 	}
 
-	protected bool MrCsWWMvwp<peP3OHs0MxE09EASVHh>(ref peP3OHs0MxE09EASVHh P_0, peP3OHs0MxE09EASVHh HJKZHkskGawWJ3YGAge, [CallerMemberName] string propertyName = null)
+	protected bool MrCsWWMvwp<T>(ref T P_0, T value, [CallerMemberName] string propertyName = null)
 	{
-		if (EqualityComparer<peP3OHs0MxE09EASVHh>.Default.Equals(P_0, HJKZHkskGawWJ3YGAge))
+		if (EqualityComparer<T>.Default.Equals(P_0, value))
 		{
 			return false;
 		}
-		P_0 = HJKZHkskGawWJ3YGAge;
+		P_0 = value;
 		RaisePropertyChanged(propertyName);
 		return true;
 	}

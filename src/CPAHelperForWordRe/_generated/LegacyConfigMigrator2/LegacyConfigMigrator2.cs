@@ -615,7 +615,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			"Times New Roman",
 			"Calibri"
 		});
-		_fontSizes = new ObservableCollection<string>(from item in AiHelper_20.csfwB6TYGU()
+		_fontSizes = new ObservableCollection<string>(from item in AiHelper_20.GetFontSizeOptions()
 			select item.Item2);
 		_spacingUnits = BuildOptionList(("行", "行"), ("磅", "磅"));
 		_alignments = BuildOptionList(("左对齐", "0"), ("居中", "1"), ("右对齐", "2"), ("两端对齐", "3"));
@@ -730,7 +730,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		{
 			return text2;
 		}
-		_presetStore.D73SsBjrqd("默认方案", BuildDefaultSettings());
+		_presetStore.SavePreset("默认方案", BuildDefaultSettings());
 		return "默认方案";
 	}
 
@@ -792,7 +792,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		string text = "段落_" + GetLevelConfigKey(P_0) + "_";
 		ChineseFont = GetSettingOrDefault(text + "中文字体", "宋体");
 		WesternFont = GetSettingOrDefault(text + "西文字体", "宋体");
-		FontSize = AiHelper_20.v8Ewuw33fP(GetSettingOrDefault(text + "字号", "10.5"));
+		FontSize = AiHelper_20.NormalizeFontSize(GetSettingOrDefault(text + "字号", "10.5"));
 		SupportsFont = SupportsFontForLevel(P_0);
 		SupportsSpacing = SupportsSpacingForLevel(P_0);
 		SupportsAlignment = SupportsAlignmentForLevel(P_0);
@@ -830,7 +830,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		string text = "段落_" + GetLevelConfigKey(_selectedLevel) + "_";
 		if (SupportsFontForLevel(_selectedLevel))
 		{
-			if (!AiHelper_20.WmHw9yYx65(FontSize, out var value))
+			if (!AiHelper_20.TryFormatFontSize(FontSize, out var value))
 			{
 				_dialogs.LogMessage("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
 				return false;
@@ -877,7 +877,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		string[] array = dictionary.Keys.Where((string key) => key.StartsWith("字号填写有误：", StringComparison.Ordinal) && key.EndsWith(" = ", StringComparison.Ordinal)).ToArray();
 		foreach (string text in array)
 		{
-			if (AiHelper_20.WmHw9yYx65(dictionary[text], out var value))
+			if (AiHelper_20.TryFormatFontSize(dictionary[text], out var value))
 			{
 				dictionary[text] = value;
 			}
@@ -893,7 +893,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private void ExecuteNewPreset()
 	{
-		string text = _dialogs.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的段落方案");
+		string text = _dialogs.ShowInputDialog("新建方案", "请输入新方案名称：", "我的段落方案");
 		if (!string.IsNullOrWhiteSpace(text))
 		{
 			string text2 = text.Trim();
@@ -909,7 +909,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			}
 			else if (BuildExportSettings(out dictionary))
 			{
-				_presetStore.D73SsBjrqd(text2, dictionary);
+				_presetStore.SavePreset(text2, dictionary);
 				_selectedPreset = text2;
 				RefreshPresetNames();
 				_dialogs.LogWarning("段落方案已创建。", "IP_Assurance");
@@ -930,14 +930,14 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		string text = _dialogs.BxkVLIlDE06("导入段落配置方案");
 		if (text != null)
 		{
-			Dictionary<string, string> dictionary = _presetStore.Pb7SLGhc8Y(text);
+			Dictionary<string, string> dictionary = _presetStore.ImportPresetFromFile(text);
 			if (!dictionary.Keys.Any((string key) => key.StartsWith("所选文件不包含段落配置数据。", StringComparison.Ordinal)))
 			{
 				_dialogs.LogMessage("IP_Assurance", "IsLineSpacingValueEnabled");
 				return;
 			}
-			string text2 = _presetStore.Ky0SN0Vqdg(Path.GetFileNameWithoutExtension(text));
-			_presetStore.D73SsBjrqd(text2, dictionary);
+			string text2 = _presetStore.CreateUniquePresetName(Path.GetFileNameWithoutExtension(text));
+			_presetStore.SavePreset(text2, dictionary);
 			_selectedPreset = text2;
 			LoadSettingsFromDict(dictionary);
 			RefreshPresetNames();
@@ -947,7 +947,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private void ExecuteExportPreset()
 	{
-		string text = _dialogs.SA6VLiTt8Ir("导出段落配置方案", _selectedPreset + ".json");
+		string text = _dialogs.ShowSaveFileDialog("导出段落配置方案", _selectedPreset + ".json");
 		if (text != null && BuildExportSettings(out var dictionary))
 		{
 			ConfigHelper_1.lRlSlvdQT7(text, dictionary);
@@ -970,7 +970,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			dictionary2["段落配置_方案名"] = _selectedPreset;
 			dictionary2.Remove("段落配置_当前方案");
 			TableBorderConfig.Current.SetAllLegacy(dictionary2);
-			_presetStore.D73SsBjrqd(_selectedPreset, dictionary);
+			_presetStore.SavePreset(_selectedPreset, dictionary);
 			_dialogs.LogWarning("段落配置已保存。", "IP_Assurance");
 		}
 		catch (Exception ex)

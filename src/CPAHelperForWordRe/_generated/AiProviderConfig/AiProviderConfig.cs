@@ -93,7 +93,7 @@ internal sealed class AiProviderConfig
 		}
 	}
 
-	public AiHelper_8 OsCL8QJeMd()
+	public AiHelper_8 ToRuntimeConfig()
 	{
 		return new AiHelper_8
 		{
@@ -104,7 +104,7 @@ internal sealed class AiProviderConfig
 		};
 	}
 
-	public static AiProviderConfig PZwLIR4Stn(string P_0, AiHelper_8 P_1)
+	public static AiProviderConfig CreateProviderConfig(string P_0, AiHelper_8 P_1)
 	{
 		return new AiProviderConfig
 		{
@@ -126,7 +126,7 @@ internal sealed class AiProviderConfig
 		return P_1;
 	}
 
-	public static List<AiProviderConfig> dV6LHfPZVP()
+	public static List<AiProviderConfig> GetBuiltinProviders()
 	{
 		return new List<AiProviderConfig>
 		{

@@ -26,7 +26,7 @@ internal static class AiSseStreamService4
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void h9VVEpKGc4r(AiHelper_12 c)
+		internal void ApplyAutoUpdateConfig(AiHelper_12 c)
 		{
 			c.System = c.System ?? new Helper_18();
 			c.System.AutoUpdate = flag;
@@ -54,7 +54,7 @@ internal static class AiSseStreamService4
 			};
 			try
 			{
-				return DpNLX6EZ8H(JObject.Parse(await client.GetStringAsync("0.0.0.0")));
+				return ParseReleaseInfo(JObject.Parse(await client.GetStringAsync("0.0.0.0")));
 			}
 			finally
 			{
@@ -106,7 +106,7 @@ internal static class AiSseStreamService4
 		});
 	}
 
-	private static HttpHelper_1 DpNLX6EZ8H(JObject P_0)
+	private static HttpHelper_1 ParseReleaseInfo(JObject P_0)
 	{
 		JToken jToken = P_0?["data"]?["attributes"];
 		if (jToken == null)

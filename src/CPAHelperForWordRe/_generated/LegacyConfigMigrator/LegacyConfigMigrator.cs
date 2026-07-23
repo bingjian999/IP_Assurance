@@ -30,7 +30,7 @@ internal static class LegacyConfigMigrator
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool reYVE2FENQa(string item)
+		internal bool MatchPathIgnoreCase(string item)
 		{
 			return string.Equals(item, text, StringComparison.OrdinalIgnoreCase);
 		}
@@ -38,7 +38,7 @@ internal static class LegacyConfigMigrator
 
 	public static string YGQwUiJSHq()
 	{
-		foreach (string item in NMGw2sXSI3())
+		foreach (string item in GetLegacyConfigPaths())
 		{
 			try
 			{
@@ -76,7 +76,7 @@ internal static class LegacyConfigMigrator
 		};
 	}
 
-	public static ConfigMigrationResult gTQwEdX7kI(FormatConfigBase P_0)
+	public static ConfigMigrationResult MigrateLegacyConfig(FormatConfigBase P_0)
 	{
 		if (P_0 == null)
 		{
@@ -93,7 +93,7 @@ internal static class LegacyConfigMigrator
 			TableConfigCount = P_0.TableConfigCount,
 			OtherConfigCount = P_0.OtherConfigCount
 		};
-		migrationResult.BackupPath = k5Www6bih8();
+		migrationResult.BackupPath = BackupCurrentConfig();
 		if (P_0.ConfigValues.Count > 0)
 		{
 			Dictionary<string, object> dictionary = TableBorderConfig.Current.GetAllLegacy();
@@ -103,24 +103,24 @@ internal static class LegacyConfigMigrator
 			}
 			TableBorderConfig.Current.SetAllLegacy(dictionary);
 		}
-		usdwt8HvqO(P_0.ParagraphPresetFiles, true, migrationResult);
-		usdwt8HvqO(P_0.TablePresetFiles, false, migrationResult);
+		CopyPresetFiles(P_0.ParagraphPresetFiles, true, migrationResult);
+		CopyPresetFiles(P_0.TablePresetFiles, false, migrationResult);
 		AiConfigBootstrap.LogInfo("[ConfigMigration] Imported legacy Word table/paragraph config from: " + P_0.SourceConfigPath);
 		return migrationResult;
 	}
 
-	private static IEnumerable<string> NMGw2sXSI3()
+	private static IEnumerable<string> GetLegacyConfigPaths()
 	{
 		List<string> list = new List<string>();
 		string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 		string folderPath2 = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-		YPFw4guD8A(list, Path.Combine(folderPath, "IP_Assurance_Old", "config", "config.json"));
-		YPFw4guD8A(list, Path.Combine(folderPath, "IP_Assurance", "CPA Helper wd", "config", "config.json"));
-		YPFw4guD8A(list, Path.Combine(folderPath2, "CPAHelperForWordRe", "config", "config.json"));
+		AddUniquePath(list, Path.Combine(folderPath, "IP_Assurance_Old", "config", "config.json"));
+		AddUniquePath(list, Path.Combine(folderPath, "IP_Assurance", "CPA Helper wd", "config", "config.json"));
+		AddUniquePath(list, Path.Combine(folderPath2, "CPAHelperForWordRe", "config", "config.json"));
 		return list;
 	}
 
-	private static void YPFw4guD8A(List<string> P_0, string P_1)
+	private static void AddUniquePath(List<string> P_0, string P_1)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_6 = new _G_c__DisplayClass6_0();
 		CS_8_locals_6.text = P_1;
@@ -155,7 +155,7 @@ internal static class LegacyConfigMigrator
 			{
 				foreach (KeyValuePair<string, object> item in dictionary2)
 				{
-					if (dl7wYepy91(item.Key))
+					if (IsMigratableKey(item.Key))
 					{
 						dictionary[item.Key] = SgVwZyTomx(item.Value);
 					}
@@ -169,16 +169,16 @@ internal static class LegacyConfigMigrator
 		foreach (Match item2 in Regex.Matches(P_0, "\"(?<key>(?:\\\\\\\\.|[^\"])*)\"\\\\s*:\\\\s*(?<value>\"(?:\\\\\\\\.|[^\"])*\"|-?\\\\d+(?:\\\\.\\\\d+)?|true|false|null)", RegexOptions.Multiline))
 		{
 			string text = kfkwfrKoLS(item2.Groups["key"].Value);
-			if (dl7wYepy91(text))
+			if (IsMigratableKey(text))
 			{
-				object value = zrgwMqqy4W(item2.Groups["value"].Value);
+				object value = ParseJsonValue(item2.Groups["value"].Value);
 				dictionary[text] = value;
 			}
 		}
 		return dictionary;
 	}
 
-	private static bool dl7wYepy91(string P_0)
+	private static bool IsMigratableKey(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -216,7 +216,7 @@ internal static class LegacyConfigMigrator
 		}
 	}
 
-	private static object zrgwMqqy4W(string P_0)
+	private static object ParseJsonValue(string P_0)
 	{
 		try
 		{
@@ -270,7 +270,7 @@ internal static class LegacyConfigMigrator
 		return AiSseStreamService.GetUserDataPath("config", P_0);
 	}
 
-	private static string k5Www6bih8()
+	private static string BackupCurrentConfig()
 	{
 		string mainConfigFilePath = AiSseStreamService.MainConfigFilePath;
 		if (!File.Exists(mainConfigFilePath))
@@ -284,7 +284,7 @@ internal static class LegacyConfigMigrator
 		return text2;
 	}
 
-	private static void usdwt8HvqO(IEnumerable<Helper_24> P_0, bool P_1, ConfigMigrationResult P_2)
+	private static void CopyPresetFiles(IEnumerable<Helper_24> P_0, bool P_1, ConfigMigrationResult P_2)
 	{
 		foreach (Helper_24 item in P_0 ?? Enumerable.Empty<Helper_24>())
 		{

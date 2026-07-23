@@ -10,7 +10,7 @@ internal static class OutlineNavigationService
 {
 	private static Application App => WordTableToolService.WordApp;
 
-	public static void P5jKuEliQP()
+	public static void GoToNextTable()
 	{
 		try
 		{
@@ -27,7 +27,7 @@ internal static class OutlineNavigationService
 		}
 	}
 
-	public static void dW1KDnLD9h()
+	public static void GoToNextHighlight()
 	{
 		try
 		{
@@ -94,17 +94,17 @@ internal static class OutlineNavigationService
 		{
 			return false;
 		}
-		if (!UU1KgHk5JU(P_0, P_1.Start, P_1.End, P_3, out var num))
+		if (!FindFirstHighlightedPosition(P_0, P_1.Start, P_1.End, P_3, out var num))
 		{
 			return false;
 		}
 		int num2 = num;
-		while (num2 > P_2 && OMeK8j1IaG(P_0, num2 - 1, num2))
+		while (num2 > P_2 && IsHighlighted(P_0, num2 - 1, num2))
 		{
 			num2--;
 		}
 		int i;
-		for (i = num + 1; i < P_3 && OMeK8j1IaG(P_0, i, i + 1); i++)
+		for (i = num + 1; i < P_3 && IsHighlighted(P_0, i, i + 1); i++)
 		{
 		}
 		if (i <= num2)
@@ -117,13 +117,13 @@ internal static class OutlineNavigationService
 		return true;
 	}
 
-	private static bool UU1KgHk5JU(Document P_0, int P_1, int P_2, int P_3, out int P_4)
+	private static bool FindFirstHighlightedPosition(Document P_0, int P_1, int P_2, int P_3, out int P_4)
 	{
 		P_4 = -1;
 		int num = Math.Min(Math.Max(P_2, P_1 + 1), P_3);
 		for (int i = P_1; i < num; i++)
 		{
-			if (OMeK8j1IaG(P_0, i, i + 1))
+			if (IsHighlighted(P_0, i, i + 1))
 			{
 				P_4 = i;
 				return true;
@@ -132,7 +132,7 @@ internal static class OutlineNavigationService
 		return false;
 	}
 
-	private static bool OMeK8j1IaG(Document P_0, int P_1, int P_2)
+	private static bool IsHighlighted(Document P_0, int P_1, int P_2)
 	{
 		if (P_0 == null || P_2 <= P_1)
 		{
@@ -151,7 +151,7 @@ internal static class OutlineNavigationService
 		}
 	}
 
-	public static void QJhKInF2on()
+	public static void GoToNextHeading()
 	{
 		Selection selection = App.Selection;
 		int end = selection.End;

@@ -40,7 +40,7 @@ internal sealed class HotkeyHookService2
 		}
 	}
 
-	public void IEntCn565B()
+	public void EnsureDefaultHotkey()
 	{
 		if (string.IsNullOrWhiteSpace(Hotkey))
 		{

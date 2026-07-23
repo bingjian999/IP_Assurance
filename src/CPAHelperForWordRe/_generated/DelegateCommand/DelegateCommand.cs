@@ -13,7 +13,7 @@ internal sealed class DelegateCommand : ICommand
 	{
 		public Action DMZVEWkGhgT;
 
-		public Func<bool> GAvVE0JwPK9;
+		public Func<bool> canExecuteFunc;
 
 		public _G_c__DisplayClass2_0()
 		{
@@ -25,13 +25,13 @@ internal sealed class DelegateCommand : ICommand
 			DMZVEWkGhgT();
 		}
 
-		internal bool lE6VEvOvRv6(object _)
+		internal bool CanExecuteWrapper(object _)
 		{
-			return GAvVE0JwPK9();
+			return canExecuteFunc();
 		}
 	}
 
-	private readonly Action<object> LPVlR9wDEn;
+	private readonly Action<object> _executeAction;
 
 	private readonly Predicate<object> jbLlVkNMjF;
 
@@ -51,17 +51,17 @@ internal sealed class DelegateCommand : ICommand
 	{
 		_G_c__DisplayClass2_0 CS_8_locals_5 = new _G_c__DisplayClass2_0();
 		CS_8_locals_5.DMZVEWkGhgT = P_0;
-		CS_8_locals_5.GAvVE0JwPK9 = P_1;
+		CS_8_locals_5.canExecuteFunc = P_1;
 		SseStreamInitializer.InitializeRuntime();
-		LPVlR9wDEn = new Action<object>(CS_8_locals_5.lHHVEAZNUvp);
-		jbLlVkNMjF = (CS_8_locals_5.GAvVE0JwPK9 == null) ? null : new Predicate<object>(CS_8_locals_5.lE6VEvOvRv6);
+		_executeAction = new Action<object>(CS_8_locals_5.lHHVEAZNUvp);
+		jbLlVkNMjF = (CS_8_locals_5.canExecuteFunc == null) ? null : new Predicate<object>(CS_8_locals_5.CanExecuteWrapper);
 		SseStreamInitializer.InitializeRuntime();
 	}
 
 	public DelegateCommand(Action<object> P_0, Predicate<object> P_1 = null)
 	{
 		SseStreamInitializer.InitializeRuntime();
-		LPVlR9wDEn = P_0 ?? throw new ArgumentNullException("execute");
+		_executeAction = P_0 ?? throw new ArgumentNullException("execute");
 		jbLlVkNMjF = P_1;
 	}
 
@@ -76,6 +76,6 @@ internal sealed class DelegateCommand : ICommand
 
 	public void Execute(object P_0)
 	{
-		LPVlR9wDEn(P_0);
+		_executeAction(P_0);
 	}
 }

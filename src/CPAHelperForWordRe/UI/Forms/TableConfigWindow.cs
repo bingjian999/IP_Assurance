@@ -25,7 +25,7 @@ public sealed class TableConfigWindow : Window, IComponentConnector
 		InitializeComponent();
 		_formatPresetConfig = new FormatPresetConfig(new JsonFileDialogHelper());
 		_formatPresetConfig.add_CloseRequested(base.Close);
-		_formatPresetConfig.add_OpenParagraphRequested(hJsC2ywgN3);
+		_formatPresetConfig.add_OpenParagraphRequested(OnOpenParagraphRequested);
 		base.DataContext = _formatPresetConfig;
 		base.PreviewKeyDown += cgPCEufjgs;
 	}
@@ -38,7 +38,7 @@ public sealed class TableConfigWindow : Window, IComponentConnector
 		}
 	}
 
-	private void hJsC2ywgN3()
+	private void OnOpenParagraphRequested()
 	{
 		WordTableToolService5.ShowWpfWindow(new ParagraphConfigWindow());
 		Close();

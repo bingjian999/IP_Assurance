@@ -166,7 +166,7 @@ internal static class DocumentRenameService
 		string text5 = Path.Combine(path, text4 + text3);
 		if (arePathsEqual(text2, text5))
 		{
-			return Helper_10.Wm0BGukN7S(text2);
+			return Helper_10.CreateNoChangeResult(text2);
 		}
 		if (File.Exists(text5))
 		{
@@ -177,7 +177,7 @@ internal static class DocumentRenameService
 			string text6 = "当前文档有尚未保存的修改。继续重命名将保存这些修改，是否继续？";
 			if (!(P_1?.Invoke(text6) ?? LoggerInitializer.ShowConfirm(text6, "IP_Assurance")))
 			{
-				return Helper_10.UdoBCP2Rh6(text2);
+				return Helper_10.CreateCancelledResult(text2);
 			}
 		}
 		saveDocumentAs(CS_8_locals_7.doc, text5);

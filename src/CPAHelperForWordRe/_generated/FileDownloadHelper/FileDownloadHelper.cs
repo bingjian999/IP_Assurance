@@ -17,7 +17,7 @@ namespace FileDownloadHelper;
 
 internal sealed class FileDownloadHelper
 {
-	private sealed class j5N1K5VEmu1I1WqebZZK
+	private sealed class SharedConfigWrapper
 	{
 		[CompilerGenerated]
 		private Helper_22 bupVEohxDif;
@@ -36,22 +36,22 @@ internal sealed class FileDownloadHelper
 			}
 		}
 
-		public j5N1K5VEmu1I1WqebZZK()
+		public SharedConfigWrapper()
 		{
 			SseStreamInitializer.InitializeRuntime();
 			bupVEohxDif = new Helper_22();
 		}
 	}
 
-	private static readonly Lazy<FileDownloadHelper> BTjt6fAYGp;
+	private static readonly Lazy<FileDownloadHelper> _lazyInstance;
 
 	private readonly object KwqtuCnaQw;
 
 	private Helper_22 GjctDgWXbD;
 
-	public static FileDownloadHelper Current => BTjt6fAYGp.Value;
+	public static FileDownloadHelper Current => _lazyInstance.Value;
 
-	public static FileDownloadHelper Instance => BTjt6fAYGp.Value;
+	public static FileDownloadHelper Instance => _lazyInstance.Value;
 
 	public static string SharedConfigDir => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "IP_Assurance", "Agent");
 
@@ -63,17 +63,17 @@ internal sealed class FileDownloadHelper
 		{
 			lock (KwqtuCnaQw)
 			{
-				S4hwzxoxhW();
+				EnsureConfigLoaded();
 				return GjctDgWXbD;
 			}
 		}
 	}
 
-	public void t9vwx1YSVk()
+	public void RefreshConfig()
 	{
 		lock (KwqtuCnaQw)
 		{
-			S4hwzxoxhW();
+			EnsureConfigLoaded();
 		}
 	}
 
@@ -85,31 +85,31 @@ internal sealed class FileDownloadHelper
 		}
 		lock (KwqtuCnaQw)
 		{
-			S4hwzxoxhW();
+			EnsureConfigLoaded();
 			P_0(GjctDgWXbD);
 			GjctDgWXbD.DuXtXcAhKd();
-			Bjmt9SQa8r();
+			SaveSharedConfig();
 		}
 	}
 
-	private void S4hwzxoxhW()
+	private void EnsureConfigLoaded()
 	{
 		Helper_22 gjctDgWXbD2;
 		if (vQOtRdkIHU(out var gjctDgWXbD))
 		{
 			GjctDgWXbD = gjctDgWXbD;
 		}
-		else if (f6UtVMJhV7(AiSseStreamService.MainConfigFilePath, out gjctDgWXbD2))
+		else if (TryLoadHostConfig(AiSseStreamService.MainConfigFilePath, out gjctDgWXbD2))
 		{
 			GjctDgWXbD = gjctDgWXbD2;
-			Bjmt9SQa8r();
+			SaveSharedConfig();
 			AiConfigBootstrap.LogInfo("[AI Config] Migrated host AI config to shared path: " + SharedConfigPath);
 		}
 		else
 		{
 			GjctDgWXbD = new Helper_22();
 			GjctDgWXbD.DuXtXcAhKd();
-			Bjmt9SQa8r();
+			SaveSharedConfig();
 		}
 	}
 
@@ -122,13 +122,13 @@ internal sealed class FileDownloadHelper
 			{
 				return false;
 			}
-			j5N1K5VEmu1I1WqebZZK j5N1K5VEmu1I1WqebZZK2 = JsonConvert.DeserializeObject<j5N1K5VEmu1I1WqebZZK>(File.ReadAllText(SharedConfigPath, Encoding.UTF8));
-			if (j5N1K5VEmu1I1WqebZZK2?.Ai?.Assistant == null)
+			SharedConfigWrapper sharedConfig = JsonConvert.DeserializeObject<SharedConfigWrapper>(File.ReadAllText(SharedConfigPath, Encoding.UTF8));
+			if (sharedConfig?.Ai?.Assistant == null)
 			{
 				return false;
 			}
-			j5N1K5VEmu1I1WqebZZK2.Ai.DuXtXcAhKd();
-			P_0 = j5N1K5VEmu1I1WqebZZK2.Ai;
+			sharedConfig.Ai.DuXtXcAhKd();
+			P_0 = sharedConfig.Ai;
 			return true;
 		}
 		catch (Exception ex)
@@ -138,7 +138,7 @@ internal sealed class FileDownloadHelper
 		}
 	}
 
-	private static bool f6UtVMJhV7(string P_0, out Helper_22 P_1)
+	private static bool TryLoadHostConfig(string P_0, out Helper_22 P_1)
 	{
 		P_1 = null;
 		try
@@ -153,13 +153,13 @@ internal sealed class FileDownloadHelper
 			{
 				return kdKtBeOfPv(jObject, out P_1);
 			}
-			Helper_22 k8SSB2tefS63E9gSxuJ2 = jToken.ToObject<Helper_22>();
-			if (k8SSB2tefS63E9gSxuJ2?.Assistant == null)
+			Helper_22 aiConfig = jToken.ToObject<Helper_22>();
+			if (aiConfig?.Assistant == null)
 			{
 				return false;
 			}
-			k8SSB2tefS63E9gSxuJ2.DuXtXcAhKd();
-			P_1 = k8SSB2tefS63E9gSxuJ2;
+			aiConfig.DuXtXcAhKd();
+			P_1 = aiConfig;
 			return true;
 		}
 		catch (Exception ex)
@@ -178,24 +178,24 @@ internal sealed class FileDownloadHelper
 			{
 				return false;
 			}
-			AiHelper_8 cn1I4Itdi2pbX0gWYAr2 = new AiHelper_8
+			AiHelper_8 aiProviderConfig = new AiHelper_8
 			{
 				Provider = AiHelper_8.CVZLBdQFXa((string?)jObject["AiProvider"]),
 				ApiKey = (((string?)jObject["AiApiKey"]) ?? ""),
 				BaseUrl = (((string?)jObject["AiBaseUrl"]) ?? ""),
 				Model = (((string?)jObject["AiModel"]) ?? "")
 			};
-			if (!cn1I4Itdi2pbX0gWYAr2.g0DLRYEicD())
+			if (!aiProviderConfig.IsValid())
 			{
 				return false;
 			}
-			Helper_22 k8SSB2tefS63E9gSxuJ2 = new Helper_22();
-			k8SSB2tefS63E9gSxuJ2.Assistant.WebUrl = ((string?)jObject["AssistantUrl"]) ?? "";
-			k8SSB2tefS63E9gSxuJ2.Assistant.Runtime.FVULVTGET5(cn1I4Itdi2pbX0gWYAr2);
-			k8SSB2tefS63E9gSxuJ2.Assistant.Providers = new List<AiProviderConfig> { AiProviderConfig.PZwLIR4Stn("当前配置", cn1I4Itdi2pbX0gWYAr2) };
-			k8SSB2tefS63E9gSxuJ2.Assistant.ActiveProviderIndex = 0;
-			k8SSB2tefS63E9gSxuJ2.DuXtXcAhKd();
-			P_1 = k8SSB2tefS63E9gSxuJ2;
+			Helper_22 aiConfig = new Helper_22();
+			aiConfig.Assistant.WebUrl = ((string?)jObject["AssistantUrl"]) ?? "";
+			aiConfig.Assistant.Runtime.FVULVTGET5(aiProviderConfig);
+			aiConfig.Assistant.Providers = new List<AiProviderConfig> { AiProviderConfig.CreateProviderConfig("当前配置", aiProviderConfig) };
+			aiConfig.Assistant.ActiveProviderIndex = 0;
+			aiConfig.DuXtXcAhKd();
+			P_1 = aiConfig;
 			return true;
 		}
 		catch (Exception ex)
@@ -205,11 +205,11 @@ internal sealed class FileDownloadHelper
 		}
 	}
 
-	private void Bjmt9SQa8r()
+	private void SaveSharedConfig()
 	{
 		Directory.CreateDirectory(SharedConfigDir);
 		GjctDgWXbD.DuXtXcAhKd();
-		string contents = JsonConvert.SerializeObject(new j5N1K5VEmu1I1WqebZZK
+		string contents = JsonConvert.SerializeObject(new SharedConfigWrapper
 		{
 			Ai = GjctDgWXbD
 		}, Formatting.Indented);
@@ -226,6 +226,6 @@ internal sealed class FileDownloadHelper
 	static FileDownloadHelper()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		BTjt6fAYGp = new Lazy<FileDownloadHelper>(() => new FileDownloadHelper());
+		_lazyInstance = new Lazy<FileDownloadHelper>(() => new FileDownloadHelper());
 	}
 }

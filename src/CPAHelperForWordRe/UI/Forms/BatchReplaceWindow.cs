@@ -34,7 +34,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal IEnumerable<string> RxXV4iAvo15(string pattern)
+		internal IEnumerable<string> GetFilesByPattern(string pattern)
 		{
 			return Directory.GetFiles(text, pattern, SearchOption.TopDirectoryOnly);
 		}
@@ -101,8 +101,8 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 				{
 					num++;
 					progressWindow.SetProgress((int)Math.Round((double)num * 100.0 / (double)array.Length), string.Format("当前进度：{0} / {1}", num, array.Length));
-					ndYCwK9LP7(progressWindow);
-					LKsCb2eSxj(wordApp, text3, text2, txtReplace.Text ?? string.Empty, chkWildcards.IsChecked == true);
+					PumpDispatcher(progressWindow);
+					ReplaceInDocument(wordApp, text3, text2, txtReplace.Text ?? string.Empty, chkWildcards.IsChecked == true);
 					continue;
 				}
 				break;
@@ -165,7 +165,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 			select path).Distinct(StringComparer.OrdinalIgnoreCase).OrderBy((string path) => path, StringComparer.CurrentCultureIgnoreCase);
 	}
 
-	private static void LKsCb2eSxj(Microsoft.Office.Interop.Word.Application P_0, string P_1, string P_2, string P_3, bool P_4)
+	private static void ReplaceInDocument(Microsoft.Office.Interop.Word.Application P_0, string P_1, string P_2, string P_3, bool P_4)
 	{
 		Document document = null;
 		try
@@ -251,7 +251,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 		find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl);
 	}
 
-	private static void ndYCwK9LP7(ProgressWindow P_0)
+	private static void PumpDispatcher(ProgressWindow P_0)
 	{
 		try
 		{
@@ -317,7 +317,7 @@ public sealed class BatchReplaceWindow : System.Windows.Window, IComponentConnec
 	}
 
 	[CompilerGenerated]
-	private void soiCt9SAog(object P_0, System.Windows.Input.KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, System.Windows.Input.KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{

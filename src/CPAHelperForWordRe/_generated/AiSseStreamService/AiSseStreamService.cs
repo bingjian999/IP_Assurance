@@ -22,7 +22,7 @@ internal static class AiSseStreamService
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool puuVEaZYY9v(string existing)
+		internal bool MatchesPath(string existing)
 		{
 			return string.Equals(existing, WtuVEqLgtlj, StringComparison.OrdinalIgnoreCase);
 		}
@@ -148,21 +148,21 @@ internal static class AiSseStreamService
 		return text;
 	}
 
-	private static string[] xwjsu2yKBi()
+	private static string[] CollectInstallPathCandidates()
 	{
 		List<string> list = new List<string>();
 		Assembly executingAssembly = Assembly.GetExecutingAssembly();
-		BJosD0PII7(list, Path.GetDirectoryName(executingAssembly.Location));
-		BJosD0PII7(list, FlWsTl2BBb(executingAssembly.CodeBase));
-		BJosD0PII7(list, AppDomain.CurrentDomain.BaseDirectory);
-		foreach (string item in Bp7sg7mqcS())
+		AddUniquePath(list, Path.GetDirectoryName(executingAssembly.Location));
+		AddUniquePath(list, GetDirectoryFromCodeBase(executingAssembly.CodeBase));
+		AddUniquePath(list, AppDomain.CurrentDomain.BaseDirectory);
+		foreach (string item in GetRegistryInstallPaths())
 		{
-			BJosD0PII7(list, item);
+			AddUniquePath(list, item);
 		}
 		return list.ToArray();
 	}
 
-	private static void BJosD0PII7(List<string> P_0, string P_1)
+	private static void AddUniquePath(List<string> P_0, string P_1)
 	{
 		_G_c__DisplayClass31_0 CS_8_locals_6 = new _G_c__DisplayClass31_0();
 		CS_8_locals_6.WtuVEqLgtlj = P_1;
@@ -183,7 +183,7 @@ internal static class AiSseStreamService
 		}
 	}
 
-	private static string FlWsTl2BBb(string P_0)
+	private static string GetDirectoryFromCodeBase(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -199,7 +199,7 @@ internal static class AiSseStreamService
 		}
 	}
 
-	private static IEnumerable<string> Bp7sg7mqcS()
+	private static IEnumerable<string> GetRegistryInstallPaths()
 	{
 		using RegistryKey root = Registry.CurrentUser.OpenSubKey("IP_Assurance") ?? Registry.CurrentUser.OpenSubKey("CPAHelperForWordRe");
 		if (root == null)
@@ -213,7 +213,7 @@ internal static class AiSseStreamService
 			string b = subKey?.GetValue("config") as string;
 			if (string.Equals("settings.json", text, StringComparison.OrdinalIgnoreCase) || string.Equals("config.json", b, StringComparison.OrdinalIgnoreCase))
 			{
-				string text2 = N8ps8RcnrU(subKey.GetValue("templates") as string);
+				string text2 = ParseTemplatePath(subKey.GetValue("templates") as string);
 				if (!string.IsNullOrWhiteSpace(text2))
 				{
 					yield return Path.GetDirectoryName(text2);
@@ -222,7 +222,7 @@ internal static class AiSseStreamService
 		}
 	}
 
-	private static string N8ps8RcnrU(string P_0)
+	private static string ParseTemplatePath(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -247,7 +247,7 @@ internal static class AiSseStreamService
 	static AiSseStreamService()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		_installPathCandidates = new Lazy<string[]>(xwjsu2yKBi);
-		_installPath = new Lazy<string>(() => FlWsTl2BBb(Assembly.GetExecutingAssembly().CodeBase) ?? _installPathCandidates.Value.FirstOrDefault((string path) => !string.IsNullOrWhiteSpace(path)) ?? string.Empty);
+		_installPathCandidates = new Lazy<string[]>(CollectInstallPathCandidates);
+		_installPath = new Lazy<string>(() => GetDirectoryFromCodeBase(Assembly.GetExecutingAssembly().CodeBase) ?? _installPathCandidates.Value.FirstOrDefault((string path) => !string.IsNullOrWhiteSpace(path)) ?? string.Empty);
 	}
 }

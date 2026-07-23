@@ -9,32 +9,32 @@ namespace AiHelper_20;
 
 internal static class AiHelper_20
 {
-	private static readonly (string, double)[] lc9wQgDIqS;
+	private static readonly (string, double)[] _chineseFontSizes;
 
-	private static readonly double[] UtWw10nBJG;
+	private static readonly double[] _numericFontSizes;
 
-	private static readonly Dictionary<string, double> zW7wrYN8Yx;
+	private static readonly Dictionary<string, double> _fontSizeLookup;
 
-	public static IEnumerable<(string, string)> csfwB6TYGU()
+	public static IEnumerable<(string, string)> GetFontSizeOptions()
 	{
-		(string Name, double Points)[] array = lc9wQgDIqS;
+		(string Name, double Points)[] array = _chineseFontSizes;
 		for (int i = 0; i < array.Length; i++)
 		{
 			(string, double) tuple = array[i];
-			yield return (tuple.Item1, GlAwT6GVSk(tuple.Item2));
+			yield return (tuple.Item1, FormatFontSize(tuple.Item2));
 		}
-		double[] utWw10nBJG = UtWw10nBJG;
-		foreach (double num in utWw10nBJG)
+		double[] numericFontSizes = _numericFontSizes;
+		foreach (double num in numericFontSizes)
 		{
-			yield return (GlAwT6GVSk(num), GlAwT6GVSk(num));
+			yield return (FormatFontSize(num), FormatFontSize(num));
 		}
 	}
 
-	public static bool WmHw9yYx65(string P_0, out string P_1)
+	public static bool TryFormatFontSize(string P_0, out string P_1)
 	{
 		if (TryParse(P_0, out var points))
 		{
-			P_1 = GlAwT6GVSk(points);
+			P_1 = FormatFontSize(points);
 			return true;
 		}
 		P_1 = string.Empty;
@@ -49,11 +49,11 @@ internal static class AiHelper_20
 		{
 			return false;
 		}
-		if (zW7wrYN8Yx.TryGetValue(text, out points))
+		if (_fontSizeLookup.TryGetValue(text, out points))
 		{
 			return true;
 		}
-		string s = ymvwHJov3n(text);
+		string s = StripFontSizeSuffix(text);
 		if ((double.TryParse(s, NumberStyles.Float, CultureInfo.InvariantCulture, out points) || double.TryParse(s, NumberStyles.Float, CultureInfo.CurrentCulture, out points)) && points >= 0.5 && points <= 1638.0)
 		{
 			return true;
@@ -71,7 +71,7 @@ internal static class AiHelper_20
 		return points;
 	}
 
-	public static string v8Ewuw33fP(string P_0)
+	public static string NormalizeFontSize(string P_0)
 	{
 		if (!TryParse(P_0, out var points))
 		{
@@ -79,14 +79,14 @@ internal static class AiHelper_20
 		}
 		if (!DTcwDDncsI(points, out var result))
 		{
-			return GlAwT6GVSk(points);
+			return FormatFontSize(points);
 		}
 		return result;
 	}
 
 	private static bool DTcwDDncsI(double P_0, out string P_1)
 	{
-		(string, double)[] array = lc9wQgDIqS;
+		(string, double)[] array = _chineseFontSizes;
 		for (int i = 0; i < array.Length; i++)
 		{
 			(string, double) tuple = array[i];
@@ -100,32 +100,32 @@ internal static class AiHelper_20
 		return false;
 	}
 
-	private static string GlAwT6GVSk(double P_0)
+	private static string FormatFontSize(double P_0)
 	{
 		return P_0.ToString("0.###", CultureInfo.InvariantCulture);
 	}
 
-	private static Dictionary<string, double> GCEwgjiP0A()
+	private static Dictionary<string, double> BuildFontSizeLookup()
 	{
 		Dictionary<string, double> dictionary = new Dictionary<string, double>(StringComparer.Ordinal);
-		(string, double)[] array = lc9wQgDIqS;
+		(string, double)[] array = _chineseFontSizes;
 		for (int i = 0; i < array.Length; i++)
 		{
 			(string, double) tuple = array[i];
-			agWw8HEiDr(dictionary, tuple.Item1, tuple.Item2);
-			agWw8HEiDr(dictionary, tuple.Item1 + "字", tuple.Item2);
-			agWw8HEiDr(dictionary, tuple.Item1 + "字号", tuple.Item2);
+			AddFontSizeAlias(dictionary, tuple.Item1, tuple.Item2);
+			AddFontSizeAlias(dictionary, tuple.Item1 + "字", tuple.Item2);
+			AddFontSizeAlias(dictionary, tuple.Item1 + "字号", tuple.Item2);
 			if (tuple.Item1.StartsWith("小", StringComparison.Ordinal) && !tuple.Item1.EndsWith("号", StringComparison.Ordinal))
 			{
-				agWw8HEiDr(dictionary, tuple.Item1 + "号", tuple.Item2);
-				agWw8HEiDr(dictionary, tuple.Item1 + "号字", tuple.Item2);
-				agWw8HEiDr(dictionary, tuple.Item1 + "号字号", tuple.Item2);
+				AddFontSizeAlias(dictionary, tuple.Item1 + "号", tuple.Item2);
+				AddFontSizeAlias(dictionary, tuple.Item1 + "号字", tuple.Item2);
+				AddFontSizeAlias(dictionary, tuple.Item1 + "号字号", tuple.Item2);
 			}
 		}
 		return dictionary;
 	}
 
-	private static void agWw8HEiDr(Dictionary<string, double> P_0, string P_1, double P_2)
+	private static void AddFontSizeAlias(Dictionary<string, double> P_0, string P_1, double P_2)
 	{
 		string key = upKwIEipHe(P_1);
 		if (!P_0.ContainsKey(key))
@@ -142,10 +142,10 @@ internal static class AiHelper_20
 		}
 		return new string((from c in P_0.Trim()
 			where !char.IsWhiteSpace(c)
-			select c).Select(xBVwieTH6H).ToArray());
+			select c).Select(NormalizeFullWidthChar).ToArray());
 	}
 
-	private static char xBVwieTH6H(char P_0)
+	private static char NormalizeFullWidthChar(char P_0)
 	{
 		if (P_0 >= '０' && P_0 <= '９')
 		{
@@ -158,7 +158,7 @@ internal static class AiHelper_20
 		return P_0;
 	}
 
-	private static string ymvwHJov3n(string P_0)
+	private static string StripFontSizeSuffix(string P_0)
 	{
 		string text = P_0;
 		if (text.EndsWith("磅", StringComparison.Ordinal))
@@ -175,7 +175,7 @@ internal static class AiHelper_20
 	static AiHelper_20()
 	{
 		SseStreamInitializer.InitializeRuntime();
-		lc9wQgDIqS = new(string, double)[16]
+		_chineseFontSizes = new(string, double)[16]
 		{
 			("初号", 42.0),
 			("小初", 36.0),
@@ -194,12 +194,12 @@ internal static class AiHelper_20
 			("七号", 5.5),
 			("八号", 5.0)
 		};
-		UtWw10nBJG = new double[21]
+		_numericFontSizes = new double[21]
 		{
 			5.0, 5.5, 6.5, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0, 12.0,
 			14.0, 16.0, 18.0, 20.0, 22.0, 24.0, 26.0, 28.0, 36.0, 48.0,
 			72.0
 		};
-		zW7wrYN8Yx = GCEwgjiP0A();
+		_fontSizeLookup = BuildFontSizeLookup();
 	}
 }

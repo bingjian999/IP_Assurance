@@ -188,7 +188,7 @@ internal static class AiAssistantHost2
 
 	public static void TriggerFileDownload()
 	{
-		FileDownloadHelper.Current.t9vwx1YSVk();
+		FileDownloadHelper.Current.RefreshConfig();
 	}
 
 	public static bool EnsureInitialized()
@@ -207,7 +207,7 @@ internal static class AiAssistantHost2
 			{
 				HttpHelper_2.initializeHttpClient();
 				PrepareAgentRuntimeBase();
-				FileDownloadHelper.Current.t9vwx1YSVk();
+				FileDownloadHelper.Current.RefreshConfig();
 				if (!IntranetAiConfigService.Instance.EnsureAuthenticated())
 				{
 					AiConfigBootstrap.LogInfo("Agent initialization aborted because intranet authentication was not completed.");
@@ -254,7 +254,7 @@ internal static class AiAssistantHost2
 				CS_8_locals_14._runtimeGuard = new WordAgentRuntimeGuard(CS_8_locals_14._targetBinder);
 				HostActionDispatcher hostActionDispatcher = new HostActionDispatcher(CS_8_locals_14._targetBinder);
 				serviceProvider = BuildServiceProvider(CS_8_locals_14._targetBinder, CS_8_locals_14._runtimeGuard, hostActionDispatcher);
-				desktopAiBridgeServer = new DesktopAiBridgeServer(serviceProvider.GetRequiredService<AgentRuntime>(), serviceProvider.GetRequiredService<IAgentConfigProvider>(), serviceProvider.GetRequiredService<IAgentInstructionBuilder>(), instructionContextFactory: serviceProvider.GetRequiredService<AiHelper_19>().QhF3fbjxg1, hostContext: CS_8_locals_14._runtimeGuard, onArtifact: delegate(AgentArtifact artifact)
+				desktopAiBridgeServer = new DesktopAiBridgeServer(serviceProvider.GetRequiredService<AgentRuntime>(), serviceProvider.GetRequiredService<IAgentConfigProvider>(), serviceProvider.GetRequiredService<IAgentInstructionBuilder>(), instructionContextFactory: serviceProvider.GetRequiredService<AiHelper_19>().CreateInstructionContext, hostContext: CS_8_locals_14._runtimeGuard, onArtifact: delegate(AgentArtifact artifact)
 				{
 					_G_c__DisplayClass10_1 CS_8_locals_16 = new _G_c__DisplayClass10_1();
 					CS_8_locals_16._G_c__DisplayClass10_0 = CS_8_locals_14;
@@ -461,7 +461,7 @@ internal static class AiAssistantHost2
 			Target = P_1,
 			WindowKey = P_1?.WindowKey
 		};
-		CustomTaskPane customTaskPane = UiHelper_1.ThisAddIn.D8nlJJriq.Add(control, Helper_21.CurrentTitle, P_0);
+		CustomTaskPane customTaskPane = UiHelper_1.ThisAddIn.CustomTaskPanes.Add(control, Helper_21.CurrentTitle, P_0);
 		customTaskPane.Width = 560;
 		customTaskPane.VisibleChanged += OnPaneVisibleChanged;
 		customTaskPane.Visible = true;
@@ -479,7 +479,7 @@ internal static class AiAssistantHost2
 
 	private static CustomTaskPane FindPaneByKey(string P_0)
 	{
-		CustomTaskPaneCollection customTaskPaneCollection = UiHelper_1.ThisAddIn?.D8nlJJriq;
+		CustomTaskPaneCollection customTaskPaneCollection = UiHelper_1.ThisAddIn?.CustomTaskPanes;
 		if (customTaskPaneCollection == null)
 		{
 			return null;
@@ -501,7 +501,7 @@ internal static class AiAssistantHost2
 		P_1 = null;
 		try
 		{
-			Application application = WordTableToolService.WordApp ?? UiHelper_1.ThisAddIn?.fM3oNckkd;
+			Application application = WordTableToolService.WordApp ?? UiHelper_1.ThisAddIn?.WordApplication;
 			if (application == null || application.Documents == null || application.Documents.Count < 1)
 			{
 				return false;
@@ -567,7 +567,7 @@ internal static class AiAssistantHost2
 			}
 			try
 			{
-				UiHelper_1.ThisAddIn?.D8nlJJriq?.Remove(P_0);
+				UiHelper_1.ThisAddIn?.CustomTaskPanes?.Remove(P_0);
 			}
 			catch (Exception ex)
 			{
@@ -594,7 +594,7 @@ internal static class AiAssistantHost2
 	{
 		try
 		{
-			CustomTaskPaneCollection customTaskPaneCollection = UiHelper_1.ThisAddIn?.D8nlJJriq;
+			CustomTaskPaneCollection customTaskPaneCollection = UiHelper_1.ThisAddIn?.CustomTaskPanes;
 			if (customTaskPaneCollection == null)
 			{
 				return false;
@@ -640,7 +640,7 @@ internal static class AiAssistantHost2
 		services.AddSingleton<IAgentInstructionBuilder, AiConfigManager2>();
 		services.AddSingleton(new WordTableToolService4(CS_8_locals_5._targetBinder));
 		services.AddSingleton<AiHelper_19>();
-		((IServiceCollection)services).AddSingleton((Func<IServiceProvider, Func<AgentInstructionContext>>)((IServiceProvider sp) => sp.GetRequiredService<AiHelper_19>().QhF3fbjxg1));
+		((IServiceCollection)services).AddSingleton((Func<IServiceProvider, Func<AgentInstructionContext>>)((IServiceProvider sp) => sp.GetRequiredService<AiHelper_19>().CreateInstructionContext));
 		((IServiceCollection)services).AddSingleton((IHostContext)P_1);
 		((IServiceCollection)services).AddSingleton((IHostActionProvider)P_2);
 		services.AddSingleton<IArtifactSink, ArtifactSinkRelay>();
@@ -687,7 +687,7 @@ internal static class AiAssistantHost2
 		{
 			try
 			{
-				CustomTaskPaneCollection customTaskPaneCollection = UiHelper_1.ThisAddIn?.D8nlJJriq;
+				CustomTaskPaneCollection customTaskPaneCollection = UiHelper_1.ThisAddIn?.CustomTaskPanes;
 				if (customTaskPaneCollection != null)
 				{
 					for (int num = customTaskPaneCollection.Count - 1; num >= 0; num--)

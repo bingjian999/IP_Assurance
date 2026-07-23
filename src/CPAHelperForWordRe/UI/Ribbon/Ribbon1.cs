@@ -319,19 +319,19 @@ public class Ribbon1 : RibbonBase
 		};
 		GH0eMf7VqG.Click += delegate
 		{
-			AiHelper_7.RunCommand(ScreenshotService.SqNBgKb64d, "TemplateFolder_");
+			AiHelper_7.RunCommand(ScreenshotService.CaptureScreenshot, "TemplateFolder_");
 		};
 		PEcebFj4uu.Click += delegate
 		{
-			AiHelper_7.RunCommand(ScreenshotService.lK0B8Dimq2, "*.*");
+			AiHelper_7.RunCommand(ScreenshotService.LaunchSnippingTool, "*.*");
 		};
 		XtceSdypsH.Click += delegate
 		{
-			AiHelper_7.RunCommand(ScreenshotService.V8uBId6JSR, "~");
+			AiHelper_7.RunCommand(ScreenshotService.QuickCapture, "~");
 		};
 		aRDewydID6.Click += delegate
 		{
-			AiHelper_7.RunCommand(ScreenshotService.bpaBiR3K57, "Template_");
+			AiHelper_7.RunCommand(ScreenshotService.CloseAllDesktopPins, "Template_");
 		};
 		YQletHXVWR.Click += delegate
 		{
@@ -564,15 +564,15 @@ public class Ribbon1 : RibbonBase
 		};
 		NSUySeG74c.Click += delegate
 		{
-			AiHelper_7.RunCommand(OutlineNavigationService.P5jKuEliQP, "表格");
+			AiHelper_7.RunCommand(OutlineNavigationService.GoToNextTable, "表格");
 		};
 		lRiywfx5RI.Click += delegate
 		{
-			AiHelper_7.RunCommand(OutlineNavigationService.dW1KDnLD9h, "grpTable");
+			AiHelper_7.RunCommand(OutlineNavigationService.GoToNextHighlight, "grpTable");
 		};
 		Ttiyto9c3J.Click += delegate
 		{
-			AiHelper_7.RunCommand(OutlineNavigationService.QJhKInF2on, "表格调整");
+			AiHelper_7.RunCommand(OutlineNavigationService.GoToNextHeading, "表格调整");
 		};
 		Mykys9pFbA.Click += delegate
 		{
@@ -642,15 +642,15 @@ public class Ribbon1 : RibbonBase
 		};
 		zPjyasMy9S.Click += delegate
 		{
-			AiHelper_7.RunCommand(AiHelper_3.EhnBBx56DY, "数字");
+			AiHelper_7.RunCommand(AiHelper_3.OpenHelpArticle, "数字");
 		};
 		tWiyqkQmfh.Click += delegate
 		{
-			AiHelper_7.RunCommand(AiHelper_3.LrSB63WJSY, "grpNumber");
+			AiHelper_7.RunCommand(AiHelper_3.OpenAiCourse, "grpNumber");
 		};
 		ueWyPmEhpB.Click += delegate
 		{
-			AiHelper_7.RunCommand(AiHelper_3.T3uB9HfbiT, "千分位符");
+			AiHelper_7.RunCommand(AiHelper_3.OpenTutorialArticle, "千分位符");
 		};
 		检查更新.Click += delegate
 		{
@@ -661,7 +661,7 @@ public class Ribbon1 : RibbonBase
 		};
 		PdeyAnLaqI.Click += delegate
 		{
-			AiHelper_7.RunCommand(AiHelper_3.UuQBu9AoPh, "千分位符配置");
+			AiHelper_7.RunCommand(AiHelper_3.OpenSponsorshipPage, "千分位符配置");
 		};
 		s22yvkIREp.Click += delegate
 		{
@@ -672,14 +672,14 @@ public class Ribbon1 : RibbonBase
 		};
 		mNaeNSP9JX.Click += delegate
 		{
-			TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 nKy3wjtTwmsradOXPDy)
+			TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 configData)
 			{
-				nKy3wjtTwmsradOXPDy.System.DisableAutomaticStyleUpdate = mNaeNSP9JX.Checked;
+				configData.System.DisableAutomaticStyleUpdate = mNaeNSP9JX.Checked;
 			});
 		};
 	}
 
-	internal void R2xeRcIY7q(bool P_0)
+	internal void SetRibbonActiveState(bool P_0)
 	{
 	}
 
@@ -1353,9 +1353,9 @@ public class Ribbon1 : RibbonBase
 	[CompilerGenerated]
 	private void Knwe85eEQJ(object P_0, RibbonControlEventArgs P_1)
 	{
-		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 nKy3wjtTwmsradOXPDy)
+		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 configData)
 		{
-			nKy3wjtTwmsradOXPDy.System.DisableAutomaticStyleUpdate = mNaeNSP9JX.Checked;
+			configData.System.DisableAutomaticStyleUpdate = mNaeNSP9JX.Checked;
 		});
 	}
 

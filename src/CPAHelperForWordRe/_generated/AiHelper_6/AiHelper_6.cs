@@ -21,13 +21,13 @@ internal static class AiHelper_6
 			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void YoHVEcN2Hk8(object _)
+		internal void PostAction(object _)
 		{
 			action();
 		}
 	}
 
-	public static void uJJLaq5Qdq()
+	public static void CheckForUpdate()
 	{
 		if (AiSseStreamService4.isAutoUpdateEnabled())
 		{
@@ -41,8 +41,8 @@ internal static class AiHelper_6
 		try
 		{
 			_G_c__DisplayClass1_0 CS_8_locals_3 = new _G_c__DisplayClass1_0();
-			HttpHelper_1 rei3DhLlLQm1bCVIXFi = await AiSseStreamService4.fetchUpdateInfo( true);
-			if (rei3DhLlLQm1bCVIXFi == null || !AiSseStreamService4.isNewerVersion(AiSseStreamService4.GetAssemblyVersion(), rei3DhLlLQm1bCVIXFi.VersionText))
+			HttpHelper_1 updateInfo = await AiSseStreamService4.fetchUpdateInfo( true);
+			if (updateInfo == null || !AiSseStreamService4.isNewerVersion(AiSseStreamService4.GetAssemblyVersion(), updateInfo.VersionText))
 			{
 				return;
 			}

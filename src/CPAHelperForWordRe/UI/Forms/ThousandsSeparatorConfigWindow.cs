@@ -54,12 +54,12 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 				Close();
 			}
 		};
-		Ig8CaDUwk9(ThousandsSeparatorService.ReadSeparatorConfig(), ThousandsSeparatorService.GetDecimalPlaces());
+		LoadConfigToControls(ThousandsSeparatorService.ReadSeparatorConfig(), ThousandsSeparatorService.GetDecimalPlaces());
 	}
 
-	private void NjaCykTo2J(object P_0, RoutedEventArgs P_1)
+	private void OnSaveButtonClick(object P_0, RoutedEventArgs P_1)
 	{
-		if (vddCqqexkg(out var separatorConfig) && RkwCPY0rTt(out var num))
+		if (vddCqqexkg(out var separatorConfig) && TryGetDecimalPlaces(out var num))
 		{
 			ThousandsSeparatorService.WriteConfigWithOptions(separatorConfig, num);
 			LoggerInitializer.ShowInfo("千分位符配置已保存。", "千分位符配置");
@@ -67,10 +67,10 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		}
 	}
 
-	private void pK3CXMgb92(object P_0, RoutedEventArgs P_1)
+	private void OnResetDefaultButtonClick(object P_0, RoutedEventArgs P_1)
 	{
 		UiHelper_4 separatorConfig = ThousandsSeparatorService.CreateDefaultConfig();
-		Ig8CaDUwk9(separatorConfig, 2);
+		LoadConfigToControls(separatorConfig, 2);
 		ThousandsSeparatorService.WriteConfigWithOptions(separatorConfig, 2);
 		LoggerInitializer.ShowInfo("千分位符配置已恢复默认。", "千分位符配置");
 	}
@@ -80,12 +80,12 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		Close();
 	}
 
-	private void wP5ChqXLEF(object P_0, RoutedEventArgs P_1)
+	private void OnUnitOnlyCheckedChanged(object P_0, RoutedEventArgs P_1)
 	{
-		e6wCA4YH7g();
+		UpdateUnitTextBoxState();
 	}
 
-	private void Ig8CaDUwk9(UiHelper_4 P_0, int P_1)
+	private void LoadConfigToControls(UiHelper_4 P_0, int P_1)
 	{
 		if (P_0 == null)
 		{
@@ -101,7 +101,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		chkDateFormat.IsChecked = P_0.ExcludeDateFormat;
 		chkUnitOnly.IsChecked = P_0.IncludeUnitOnly;
 		txtUnit.Text = gVlCvRBiPn(P_0.UnitText);
-		e6wCA4YH7g();
+		UpdateUnitTextBoxState();
 	}
 
 	private bool vddCqqexkg(out UiHelper_4 P_0)
@@ -129,7 +129,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		return true;
 	}
 
-	private bool RkwCPY0rTt(out int P_0)
+	private bool TryGetDecimalPlaces(out int P_0)
 	{
 		P_0 = 2;
 		if (!int.TryParse((cmbDecimalPlaces.Text ?? string.Empty).Trim(), out var result) || result < 0 || result > 6)
@@ -142,7 +142,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		return true;
 	}
 
-	private void e6wCA4YH7g()
+	private void UpdateUnitTextBoxState()
 	{
 		txtUnit.IsEnabled = chkUnitOnly.IsChecked == true;
 	}
@@ -201,17 +201,17 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 			break;
 		case 9:
 			chkUnitOnly = (CheckBox)target;
-			chkUnitOnly.Checked += wP5ChqXLEF;
-			chkUnitOnly.Unchecked += wP5ChqXLEF;
+			chkUnitOnly.Checked += OnUnitOnlyCheckedChanged;
+			chkUnitOnly.Unchecked += OnUnitOnlyCheckedChanged;
 			break;
 		case 10:
 			txtUnit = (TextBox)target;
 			break;
 		case 11:
-			((Button)target).Click += NjaCykTo2J;
+			((Button)target).Click += OnSaveButtonClick;
 			break;
 		case 12:
-			((Button)target).Click += pK3CXMgb92;
+			((Button)target).Click += OnResetDefaultButtonClick;
 			break;
 		case 13:
 			((Button)target).Click += rqlCFRtGUg;
@@ -223,7 +223,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private void VXjCW8ij41(object P_0, KeyEventArgs P_1)
+	private void OnPreviewKeyDown(object P_0, KeyEventArgs P_1)
 	{
 		if (P_1.Key == Key.Escape)
 		{

@@ -27,7 +27,7 @@ internal sealed class AiHelper_12
 	private Helper_22 _ai;
 
 	[CompilerGenerated]
-	private Dictionary<string, object> qu4trJ0fhN;
+	private Dictionary<string, object> _legacy;
 
 	public Helper_18 System
 	{
@@ -104,12 +104,12 @@ internal sealed class AiHelper_12
 		[CompilerGenerated]
 		get
 		{
-			return qu4trJ0fhN;
+			return _legacy;
 		}
 		[CompilerGenerated]
 		set
 		{
-			qu4trJ0fhN = value;
+			_legacy = value;
 		}
 	}
 
@@ -141,7 +141,7 @@ internal sealed class AiHelper_12
 		}
 		System.qyxtULiSoA();
 		OfficeTab.AdjustHeight();
-		DesktopPin.IEntCn565B();
+		DesktopPin.EnsureDefaultHotkey();
 		ExcelSync.Initialize();
 		Ai.DuXtXcAhKd();
 	}
@@ -154,6 +154,6 @@ internal sealed class AiHelper_12
 		ogctHhYAgX = new HotkeyHookService2();
 		_excelSync = new AiHelper_11();
 		_ai = new Helper_22();
-		qu4trJ0fhN = new Dictionary<string, object>();
+		_legacy = new Dictionary<string, object>();
 	}
 }

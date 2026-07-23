@@ -12,39 +12,39 @@ namespace AiHelper_17;
 internal static class AiHelper_17
 {
 	[CompilerGenerated]
-	private static Action<AiTargetBinder, AgentArtifact> f5UUuAwKhH;
+	private static Action<AiTargetBinder, AgentArtifact> _artifactHandler;
 
 	[SpecialName]
 	[CompilerGenerated]
 	public static void fWnUBnsIYw(Action<AiTargetBinder, AgentArtifact> P_0)
 	{
-		Action<AiTargetBinder, AgentArtifact> action = f5UUuAwKhH;
+		Action<AiTargetBinder, AgentArtifact> action = _artifactHandler;
 		Action<AiTargetBinder, AgentArtifact> action2;
 		do
 		{
 			action2 = action;
 			Action<AiTargetBinder, AgentArtifact> value = (Action<AiTargetBinder, AgentArtifact>)Delegate.Combine(action2, P_0);
-			action = Interlocked.CompareExchange(ref f5UUuAwKhH, value, action2);
+			action = Interlocked.CompareExchange(ref _artifactHandler, value, action2);
 		}
 		while ((object)action != action2);
 	}
 
 	[SpecialName]
 	[CompilerGenerated]
-	public static void vIPU93N8BE(Action<AiTargetBinder, AgentArtifact> P_0)
+	public static void remove_ArtifactHandler(Action<AiTargetBinder, AgentArtifact> P_0)
 	{
-		Action<AiTargetBinder, AgentArtifact> action = f5UUuAwKhH;
+		Action<AiTargetBinder, AgentArtifact> action = _artifactHandler;
 		Action<AiTargetBinder, AgentArtifact> action2;
 		do
 		{
 			action2 = action;
 			Action<AiTargetBinder, AgentArtifact> value = (Action<AiTargetBinder, AgentArtifact>)Delegate.Remove(action2, P_0);
-			action = Interlocked.CompareExchange(ref f5UUuAwKhH, value, action2);
+			action = Interlocked.CompareExchange(ref _artifactHandler, value, action2);
 		}
 		while ((object)action != action2);
 	}
 
-	public static void geJUR2mtQx(AgentArtifact P_0)
+	public static void PublishArtifact(AgentArtifact P_0)
 	{
 		VYkUViDjLf(null, P_0);
 	}
@@ -62,7 +62,7 @@ internal static class AiHelper_17
 			{
 				AiAssistantHost2.EnsureTargetPaneVisible(P_0);
 			}
-			f5UUuAwKhH?.Invoke(P_0, P_1);
+			_artifactHandler?.Invoke(P_0, P_1);
 		}
 	}
 }

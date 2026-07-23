@@ -390,11 +390,11 @@ internal static class ThousandsSeparatorService
 			string text = range.Text ?? string.Empty;
 			string text2 = text;
 			UiHelper_4 separatorConfig = ReadSeparatorConfig();
-			List<TextRange> list = (separatorConfig.ExcludeDateFormat ? UiHelper_5.teSSr7AnNl(text) : new List<TextRange>());
+			List<TextRange> list = (separatorConfig.ExcludeDateFormat ? UiHelper_5.FindDateRanges(text) : new List<TextRange>());
 			int num = 0;
-			foreach (Match item in UiHelper_5.K4hSE7usVJ.Matches(text))
+			foreach (Match item in UiHelper_5.NumberRegex.Matches(text))
 			{
-				if (!UiHelper_5.bcbSJ1pxpn(text, item, separatorConfig, list) && TryParseDouble(item.Value, out var num2))
+				if (!UiHelper_5.IsExcludedBySeparatorConfig(text, item, separatorConfig, list) && TryParseDouble(item.Value, out var num2))
 				{
 					string text3 = FormatNumberWithDecimals(num2, CS_8_locals_3.value);
 					int startIndex = item.Index + num;
