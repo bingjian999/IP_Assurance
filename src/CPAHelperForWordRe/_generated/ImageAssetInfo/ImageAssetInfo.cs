@@ -6,34 +6,34 @@ namespace ImageAssetInfo;
 internal sealed class ImageAssetInfo
 {
 	[CompilerGenerated]
-	private string ogCQ00usXV;
+	private string _pngPath;
 
 	[CompilerGenerated]
 	private string AjVQkQadX8;
 
 	[CompilerGenerated]
-	private string glNQxcWe3a;
+	private string _sourceHash;
 
 	[CompilerGenerated]
-	private int oS7QdIiWnp;
+	private int _pixelWidth;
 
 	[CompilerGenerated]
-	private int xBbQzT8sI7;
+	private int _pixelHeight;
 
 	[CompilerGenerated]
-	private long BMH1RmPnaf;
+	private long _pngBytes;
 
 	public string PngPath
 	{
 		[CompilerGenerated]
 		get
 		{
-			return ogCQ00usXV;
+			return _pngPath;
 		}
 		[CompilerGenerated]
 		set
 		{
-			ogCQ00usXV = value;
+			_pngPath = value;
 		}
 	}
 
@@ -56,12 +56,12 @@ internal sealed class ImageAssetInfo
 		[CompilerGenerated]
 		get
 		{
-			return glNQxcWe3a;
+			return _sourceHash;
 		}
 		[CompilerGenerated]
 		set
 		{
-			glNQxcWe3a = value;
+			_sourceHash = value;
 		}
 	}
 
@@ -70,12 +70,12 @@ internal sealed class ImageAssetInfo
 		[CompilerGenerated]
 		get
 		{
-			return oS7QdIiWnp;
+			return _pixelWidth;
 		}
 		[CompilerGenerated]
 		set
 		{
-			oS7QdIiWnp = value;
+			_pixelWidth = value;
 		}
 	}
 
@@ -84,12 +84,12 @@ internal sealed class ImageAssetInfo
 		[CompilerGenerated]
 		get
 		{
-			return xBbQzT8sI7;
+			return _pixelHeight;
 		}
 		[CompilerGenerated]
 		set
 		{
-			xBbQzT8sI7 = value;
+			_pixelHeight = value;
 		}
 	}
 
@@ -98,17 +98,17 @@ internal sealed class ImageAssetInfo
 		[CompilerGenerated]
 		get
 		{
-			return BMH1RmPnaf;
+			return _pngBytes;
 		}
 		[CompilerGenerated]
 		set
 		{
-			BMH1RmPnaf = value;
+			_pngBytes = value;
 		}
 	}
 
 	public ImageAssetInfo()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

@@ -8,7 +8,7 @@ internal static class UiHelper_3
 {
 	public static void SYABXhRbaZ()
 	{
-		WordTableToolService5.IPf5i0ZcV4(new UpdateWindow());
+		WordTableToolService5.ShowWpfWindow(new UpdateWindow());
 	}
 
 	public static void VyeBFJCHAY()

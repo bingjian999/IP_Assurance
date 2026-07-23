@@ -18,21 +18,21 @@ internal static class WordTableToolService5
 	private sealed class S0SXuwVZRFoj8tCjb8xt : System.Windows.Forms.IWin32Window
 	{
 		[CompilerGenerated]
-		private readonly IntPtr WytVZVC3GfP;
+		private readonly IntPtr _intPtr;
 
 		public IntPtr Handle
 		{
 			[CompilerGenerated]
 			get
 			{
-				return WytVZVC3GfP;
+				return _intPtr;
 			}
 		}
 
 		public S0SXuwVZRFoj8tCjb8xt(IntPtr P_0)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
-			WytVZVC3GfP = P_0;
+			SseStreamInitializer.InitializeRuntime();
+			_intPtr = P_0;
 		}
 	}
 
@@ -43,7 +43,7 @@ internal static class WordTableToolService5
 
 		public _G_c__DisplayClass10_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void CfrVZBpT5u6()
@@ -56,7 +56,7 @@ internal static class WordTableToolService5
 		}
 	}
 
-	public static System.Windows.Forms.IWin32Window KJy58rGLXb()
+	public static System.Windows.Forms.IWin32Window GetOwnerWindow()
 	{
 		try
 		{
@@ -78,13 +78,13 @@ internal static class WordTableToolService5
 		}
 	}
 
-	public static void I4W5IBiXJU(Form P_0)
+	public static void ShowForm(Form P_0)
 	{
 		if (P_0 == null)
 		{
 			return;
 		}
-		System.Windows.Forms.IWin32Window win32Window = KJy58rGLXb();
+		System.Windows.Forms.IWin32Window win32Window = GetOwnerWindow();
 		try
 		{
 			if (win32Window != null)
@@ -102,11 +102,11 @@ internal static class WordTableToolService5
 		}
 	}
 
-	public static void IPf5i0ZcV4(System.Windows.Window P_0)
+	public static void ShowWpfWindow(System.Windows.Window P_0)
 	{
 		if (P_0 != null)
 		{
-			R0R51l5M47(P_0);
+			SetupWindowOwner(P_0);
 			fYx5r0teaL(P_0);
 			AiHelper_4.b5KVmv3Pp9(P_0);
 			ElementHost.EnableModelessKeyboardInterop(P_0);
@@ -115,24 +115,24 @@ internal static class WordTableToolService5
 		}
 	}
 
-	public static bool? NJs5HCHQjv(System.Windows.Window P_0)
+	public static bool? ShowWpfDialog(System.Windows.Window P_0)
 	{
 		if (P_0 == null)
 		{
 			return false;
 		}
-		R0R51l5M47(P_0);
+		SetupWindowOwner(P_0);
 		fYx5r0teaL(P_0);
 		return P_0.ShowDialog();
 	}
 
-	public static DialogResult QIn5QOq3Ta(Form P_0)
+	public static DialogResult ShowFormDialog(Form P_0)
 	{
 		if (P_0 == null)
 		{
 			return DialogResult.None;
 		}
-		System.Windows.Forms.IWin32Window win32Window = KJy58rGLXb();
+		System.Windows.Forms.IWin32Window win32Window = GetOwnerWindow();
 		try
 		{
 			return (win32Window != null) ? P_0.ShowDialog(win32Window) : P_0.ShowDialog();
@@ -143,10 +143,10 @@ internal static class WordTableToolService5
 		}
 	}
 
-	private static void R0R51l5M47(System.Windows.Window P_0)
+	private static void SetupWindowOwner(System.Windows.Window P_0)
 	{
 		P_0.ShowInTaskbar = false;
-		IntPtr intPtr = KJy58rGLXb()?.Handle ?? IntPtr.Zero;
+		IntPtr intPtr = GetOwnerWindow()?.Handle ?? IntPtr.Zero;
 		if (intPtr != IntPtr.Zero)
 		{
 			new WindowInteropHelper(P_0).Owner = intPtr;

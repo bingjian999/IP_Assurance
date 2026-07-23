@@ -14,7 +14,7 @@ internal sealed class Helper_18
 	private bool tjqtEPb984;
 
 	[CompilerGenerated]
-	private bool a4Ct2VEL1O;
+	private bool _disableAutomaticStyleUpdate;
 
 	public string TabName
 	{
@@ -49,12 +49,12 @@ internal sealed class Helper_18
 		[CompilerGenerated]
 		get
 		{
-			return a4Ct2VEL1O;
+			return _disableAutomaticStyleUpdate;
 		}
 		[CompilerGenerated]
 		set
 		{
-			a4Ct2VEL1O = value;
+			_disableAutomaticStyleUpdate = value;
 		}
 	}
 
@@ -75,8 +75,8 @@ internal sealed class Helper_18
 
 	public Helper_18()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		wSLtKyZfHV = "IP_Assurance";
-		a4Ct2VEL1O = true;
+		_disableAutomaticStyleUpdate = true;
 	}
 }

@@ -17,16 +17,16 @@ internal static class AiAssistantService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_0
 	{
-		public string F13Vbxled7l;
+		public string text;
 
 		public _G_c__DisplayClass10_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool k4wVbkhEuvP(string name)
 		{
-			return name.EndsWith(F13Vbxled7l, StringComparison.OrdinalIgnoreCase);
+			return name.EndsWith(text, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 
@@ -66,7 +66,7 @@ internal static class AiAssistantService
 		}
 		if (num == 0 && num2 > 0)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[Ribbon] PNG icons were not matched; controls fell back to OfficeImageId.");
+			AiConfigBootstrap.LogWarn("[Ribbon] PNG icons were not matched; controls fell back to OfficeImageId.");
 		}
 	}
 
@@ -127,8 +127,8 @@ internal static class AiAssistantService
 		try
 		{
 			_G_c__DisplayClass10_0 CS_8_locals_2 = new _G_c__DisplayClass10_0();
-			CS_8_locals_2.F13Vbxled7l = P_0.Replace('\\', '.').Replace('/', '.');
-			string text = SV1FMjfGfH.Value.FirstOrDefault((string name) => name.EndsWith(CS_8_locals_2.F13Vbxled7l, StringComparison.OrdinalIgnoreCase));
+			CS_8_locals_2.text = P_0.Replace('\\', '.').Replace('/', '.');
+			string text = SV1FMjfGfH.Value.FirstOrDefault((string name) => name.EndsWith(CS_8_locals_2.text, StringComparison.OrdinalIgnoreCase));
 			if (string.IsNullOrWhiteSpace(text))
 			{
 				return null;
@@ -224,7 +224,7 @@ internal static class AiAssistantService
 
 	static AiAssistantService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		d69FfDi4LM = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
 		{
 			{

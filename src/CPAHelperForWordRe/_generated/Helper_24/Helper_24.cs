@@ -6,25 +6,25 @@ namespace Helper_24;
 internal sealed class Helper_24
 {
 	[CompilerGenerated]
-	private string CV4wpWtPLd;
+	private string _sourcePath;
 
 	[CompilerGenerated]
-	private string Y6HwOC7Lnd;
+	private string _targetPath;
 
 	[CompilerGenerated]
-	private bool dA8wn69ep1;
+	private bool _existsInTarget;
 
 	public string SourcePath
 	{
 		[CompilerGenerated]
 		get
 		{
-			return CV4wpWtPLd;
+			return _sourcePath;
 		}
 		[CompilerGenerated]
 		set
 		{
-			CV4wpWtPLd = value;
+			_sourcePath = value;
 		}
 	}
 
@@ -33,12 +33,12 @@ internal sealed class Helper_24
 		[CompilerGenerated]
 		get
 		{
-			return Y6HwOC7Lnd;
+			return _targetPath;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Y6HwOC7Lnd = value;
+			_targetPath = value;
 		}
 	}
 
@@ -47,19 +47,19 @@ internal sealed class Helper_24
 		[CompilerGenerated]
 		get
 		{
-			return dA8wn69ep1;
+			return _existsInTarget;
 		}
 		[CompilerGenerated]
 		set
 		{
-			dA8wn69ep1 = value;
+			_existsInTarget = value;
 		}
 	}
 
 	public Helper_24()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		CV4wpWtPLd = string.Empty;
-		Y6HwOC7Lnd = string.Empty;
+		SseStreamInitializer.InitializeRuntime();
+		_sourcePath = string.Empty;
+		_targetPath = string.Empty;
 	}
 }

@@ -43,6 +43,6 @@ internal class Resources
 
 	internal Resources()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

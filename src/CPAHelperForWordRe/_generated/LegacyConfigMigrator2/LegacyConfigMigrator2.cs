@@ -26,61 +26,61 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private readonly ConfigHelper_1 WvflFuaXMm;
 
-	private readonly HDS8hJGbnCWyNGfO01j EX0lheomn0;
+	private readonly HDS8hJGbnCWyNGfO01j _hDS8hJGbnCWyNGfO01j;
 
 	private readonly Dictionary<string, string> Oppla8MvS7;
 
-	private bool XNllq3mqNr;
+	private bool _bool;
 
-	private string vcalPB6oR1;
+	private string _selectedPreset;
 
 	private string eOilAwjRjm;
 
-	private string cQ7lv1wdNZ;
+	private string _chineseFont;
 
 	private string HlBlWECXrD;
 
-	private string QPYl0UyOIF;
+	private string _fontSize;
 
 	private bool gSElkxPsNa;
 
 	private string hgRlxflIIl;
 
-	private string F6PldKuOFg;
+	private string _lineSpacingRule;
 
 	private string NaWlznssvC;
 
-	private string mDCNRf4ck5;
+	private string _spacingUnit;
 
 	private string koYNVIJhgU;
 
-	private string PfGNB7ONHu;
+	private string _spaceAfter;
 
-	private string IKJN9w2NXt;
+	private string _indentUnit;
 
-	private string NlgN6CwPdo;
+	private string _leftIndent;
 
-	private string jc3NuEEoav;
+	private string _rightIndent;
 
-	private string SoLNDV1D7Q;
+	private string _specialIndent;
 
-	private string OKUNTky6gM;
+	private string _indentValue;
 
 	private bool UwNNgEHlFd;
 
-	private bool FcmN8k6tBy;
+	private bool _supportsSpacing;
 
 	private bool TEMNIEYRSA;
 
-	private bool HodNi6Yggg;
+	private bool _supportsIndent;
 
-	private bool xP4NH5kHwC;
-
-	[CompilerGenerated]
-	private Action N5oNQNnZhx;
+	private bool _supportsBold;
 
 	[CompilerGenerated]
-	private Action HQGN1QkWPK;
+	private Action _action;
+
+	[CompilerGenerated]
+	private Action _action;
 
 	[CompilerGenerated]
 	private readonly ObservableCollection<string> ea6Nrhmeu1;
@@ -110,22 +110,22 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	private readonly ObservableCollection<Helper_14> eLRNjIvbe0;
 
 	[CompilerGenerated]
-	private readonly ICommand SxLNYqAW1O;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand el6NZk663O;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand B1VNftUPbD;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand JePNM4y0Qv;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
 	private readonly ICommand jhONbXOfRa;
 
 	[CompilerGenerated]
-	private readonly ICommand q0DNS1Xqpa;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
 	private readonly ICommand yPwNwXtvLW;
@@ -216,7 +216,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return SxLNYqAW1O;
+			return _iCommand;
 		}
 	}
 
@@ -225,7 +225,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return el6NZk663O;
+			return _iCommand;
 		}
 	}
 
@@ -234,7 +234,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return B1VNftUPbD;
+			return _iCommand;
 		}
 	}
 
@@ -243,7 +243,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return JePNM4y0Qv;
+			return _iCommand;
 		}
 	}
 
@@ -261,7 +261,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return q0DNS1Xqpa;
+			return _iCommand;
 		}
 	}
 
@@ -278,11 +278,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return vcalPB6oR1;
+			return _selectedPreset;
 		}
 		set
 		{
-			if (!XNllq3mqNr && !string.Equals(vcalPB6oR1, value, StringComparison.Ordinal))
+			if (!_bool && !string.Equals(_selectedPreset, value, StringComparison.Ordinal))
 			{
 				YMDlQr1r9A(value);
 			}
@@ -297,7 +297,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		}
 		set
 		{
-			if (!XNllq3mqNr && !string.IsNullOrWhiteSpace(value) && !string.Equals(eOilAwjRjm, value, StringComparison.Ordinal))
+			if (!_bool && !string.IsNullOrWhiteSpace(value) && !string.Equals(eOilAwjRjm, value, StringComparison.Ordinal))
 			{
 				if (!FdUlJ0WwMF())
 				{
@@ -315,11 +315,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return cQ7lv1wdNZ;
+			return _chineseFont;
 		}
 		set
 		{
-			MrCsWWMvwp(ref cQ7lv1wdNZ, value, "ChineseFont");
+			MrCsWWMvwp(ref _chineseFont, value, "ChineseFont");
 		}
 	}
 
@@ -339,11 +339,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return QPYl0UyOIF;
+			return _fontSize;
 		}
 		set
 		{
-			MrCsWWMvwp(ref QPYl0UyOIF, value, "FontSize");
+			MrCsWWMvwp(ref _fontSize, value, "FontSize");
 		}
 	}
 
@@ -375,11 +375,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return F6PldKuOFg;
+			return _lineSpacingRule;
 		}
 		set
 		{
-			if (MrCsWWMvwp(ref F6PldKuOFg, value, "LineSpacingRule"))
+			if (MrCsWWMvwp(ref _lineSpacingRule, value, "LineSpacingRule"))
 			{
 				fpVsxno8nm("LineSpacingLabel");
 				fpVsxno8nm("IsLineSpacingValueEnabled");
@@ -403,11 +403,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return mDCNRf4ck5;
+			return _spacingUnit;
 		}
 		set
 		{
-			MrCsWWMvwp(ref mDCNRf4ck5, value, "SpacingUnit");
+			MrCsWWMvwp(ref _spacingUnit, value, "SpacingUnit");
 		}
 	}
 
@@ -427,11 +427,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return PfGNB7ONHu;
+			return _spaceAfter;
 		}
 		set
 		{
-			MrCsWWMvwp(ref PfGNB7ONHu, value, "SpaceAfter");
+			MrCsWWMvwp(ref _spaceAfter, value, "SpaceAfter");
 		}
 	}
 
@@ -439,11 +439,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return IKJN9w2NXt;
+			return _indentUnit;
 		}
 		set
 		{
-			MrCsWWMvwp(ref IKJN9w2NXt, value, "IndentUnit");
+			MrCsWWMvwp(ref _indentUnit, value, "IndentUnit");
 		}
 	}
 
@@ -451,11 +451,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return NlgN6CwPdo;
+			return _leftIndent;
 		}
 		set
 		{
-			MrCsWWMvwp(ref NlgN6CwPdo, value, "LeftIndent");
+			MrCsWWMvwp(ref _leftIndent, value, "LeftIndent");
 		}
 	}
 
@@ -463,11 +463,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return jc3NuEEoav;
+			return _rightIndent;
 		}
 		set
 		{
-			MrCsWWMvwp(ref jc3NuEEoav, value, "RightIndent");
+			MrCsWWMvwp(ref _rightIndent, value, "RightIndent");
 		}
 	}
 
@@ -475,11 +475,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return SoLNDV1D7Q;
+			return _specialIndent;
 		}
 		set
 		{
-			MrCsWWMvwp(ref SoLNDV1D7Q, value, "SpecialIndent");
+			MrCsWWMvwp(ref _specialIndent, value, "SpecialIndent");
 		}
 	}
 
@@ -487,11 +487,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return OKUNTky6gM;
+			return _indentValue;
 		}
 		set
 		{
-			MrCsWWMvwp(ref OKUNTky6gM, value, "IndentValue");
+			MrCsWWMvwp(ref _indentValue, value, "IndentValue");
 		}
 	}
 
@@ -511,11 +511,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return FcmN8k6tBy;
+			return _supportsSpacing;
 		}
 		private set
 		{
-			MrCsWWMvwp(ref FcmN8k6tBy, value, "SelectedLevel");
+			MrCsWWMvwp(ref _supportsSpacing, value, "SelectedLevel");
 		}
 	}
 
@@ -535,11 +535,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return HodNi6Yggg;
+			return _supportsIndent;
 		}
 		private set
 		{
-			MrCsWWMvwp(ref HodNi6Yggg, value, "WesternFont");
+			MrCsWWMvwp(ref _supportsIndent, value, "WesternFont");
 		}
 	}
 
@@ -547,11 +547,11 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		get
 		{
-			return xP4NH5kHwC;
+			return _supportsBold;
 		}
 		private set
 		{
-			MrCsWWMvwp(ref xP4NH5kHwC, value, "FontSize");
+			MrCsWWMvwp(ref _supportsBold, value, "FontSize");
 		}
 	}
 
@@ -585,12 +585,12 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	public LegacyConfigMigrator2(HDS8hJGbnCWyNGfO01j P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		WvflFuaXMm = new ConfigHelper_1("段落预设");
 		Oppla8MvS7 = new Dictionary<string, string>();
 		eOilAwjRjm = "一级";
 		ea6Nrhmeu1 = new ObservableCollection<string>();
-		EX0lheomn0 = P_0 ?? throw new ArgumentNullException("dialogs");
+		_hDS8hJGbnCWyNGfO01j = P_0 ?? throw new ArgumentNullException("dialogs");
 		fLLNJFnKRD = new ObservableCollection<string>(new string[9]
 		{
 			"一级",
@@ -622,18 +622,18 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		FjVN29oUiv = LchlgaLZpb(("字符", "字符"), ("厘米", "厘米"));
 		KcxN4MUHF3 = LchlgaLZpb(("首行", "首行"), ("悬挂", "悬挂"), ("无", "无"));
 		eLRNjIvbe0 = LchlgaLZpb(("单倍行距", "0"), ("1.5倍行距", "1"), ("双倍行距", "2"), ("最小值", "3"), ("固定值", "4"), ("多倍行距", "5"));
-		SxLNYqAW1O = new DelegateCommand(DDClUp83O8);
-		el6NZk663O = new DelegateCommand(DG8lKsffse);
-		B1VNftUPbD = new DelegateCommand(DOklEaplEE);
-		JePNM4y0Qv = new DelegateCommand(KcQl2YSaFW);
+		_iCommand = new DelegateCommand(DDClUp83O8);
+		_iCommand = new DelegateCommand(DG8lKsffse);
+		_iCommand = new DelegateCommand(DOklEaplEE);
+		_iCommand = new DelegateCommand(KcQl2YSaFW);
 		jhONbXOfRa = new DelegateCommand(CO7l40Llb1);
-		q0DNS1Xqpa = new DelegateCommand((Action)delegate
+		_iCommand = new DelegateCommand((Action)delegate
 		{
-			HQGN1QkWPK?.Invoke();
+			_action?.Invoke();
 		}, (Func<bool>)null);
 		yPwNwXtvLW = new DelegateCommand((Action)delegate
 		{
-			N5oNQNnZhx?.Invoke();
+			_action?.Invoke();
 		}, (Func<bool>)null);
 		oajl8u2dic();
 		LLvlHP8Kki();
@@ -644,13 +644,13 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	[CompilerGenerated]
 	public void Y0ZlOZZU1c(Action P_0)
 	{
-		Action action = N5oNQNnZhx;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Combine(action2, P_0);
-			action = Interlocked.CompareExchange(ref N5oNQNnZhx, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -659,13 +659,13 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	[CompilerGenerated]
 	public void pCWlnoa66Y(Action P_0)
 	{
-		Action action = N5oNQNnZhx;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Remove(action2, P_0);
-			action = Interlocked.CompareExchange(ref N5oNQNnZhx, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -674,13 +674,13 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	[CompilerGenerated]
 	public void hQml5xuThg(Action P_0)
 	{
-		Action action = HQGN1QkWPK;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Combine(action2, P_0);
-			action = Interlocked.CompareExchange(ref HQGN1QkWPK, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -689,13 +689,13 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	[CompilerGenerated]
 	public void lAilcTmhe9(Action P_0)
 	{
-		Action action = HQGN1QkWPK;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Remove(action2, P_0);
-			action = Interlocked.CompareExchange(ref HQGN1QkWPK, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -707,7 +707,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private void oajl8u2dic()
 	{
-		string text = (vcalPB6oR1 = Lw2lI1nRg0());
+		string text = (_selectedPreset = Lw2lI1nRg0());
 		v2ol10XIvm(WvflFuaXMm.COQStnlspT(text));
 	}
 
@@ -715,8 +715,8 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	{
 		string[] array = new string[2]
 		{
-			TableBorderConfig.Current.KxPSXHwy4c("段落配置_方案名", string.Empty),
-			TableBorderConfig.Current.KxPSXHwy4c("段落配置_当前方案", string.Empty)
+			TableBorderConfig.Current.GetString("段落配置_方案名", string.Empty),
+			TableBorderConfig.Current.GetString("段落配置_当前方案", string.Empty)
 		};
 		foreach (string text in array)
 		{
@@ -736,21 +736,21 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private static Dictionary<string, string> OyHli9l87R()
 	{
-		return (from pair in TableBorderConfig.Current.dnEScXBL9Y()
+		return (from pair in TableBorderConfig.Current.GetAllLegacy()
 			where pair.Key.StartsWith("Bold", StringComparison.Ordinal)
 			select pair).ToDictionary((KeyValuePair<string, object> pair) => pair.Key, (KeyValuePair<string, object> pair) => pair.Value?.ToString() ?? string.Empty);
 	}
 
 	private void LLvlHP8Kki()
 	{
-		XNllq3mqNr = true;
+		_bool = true;
 		PresetNames.Clear();
 		foreach (string item in WvflFuaXMm.ExsSbMHeGd())
 		{
 			PresetNames.Add(item);
 		}
 		fpVsxno8nm("SelectedPreset");
-		XNllq3mqNr = false;
+		_bool = false;
 	}
 
 	private void YMDlQr1r9A(string P_0)
@@ -762,14 +762,14 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 				fpVsxno8nm("SelectedPreset");
 				return;
 			}
-			vcalPB6oR1 = P_0;
+			_selectedPreset = P_0;
 			fpVsxno8nm("SelectedPreset");
 			v2ol10XIvm(WvflFuaXMm.COQStnlspT(P_0));
 			o3XlrGPH47(eOilAwjRjm);
 		}
 		catch (Exception ex)
 		{
-			EX0lheomn0.ULjVLJjCx1c("切换方案失败：" + ex.Message, "IP_Assurance");
+			_hDS8hJGbnCWyNGfO01j.LogDebugMessage("切换方案失败：" + ex.Message, "IP_Assurance");
 		}
 	}
 
@@ -788,7 +788,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private void o3XlrGPH47(string P_0)
 	{
-		XNllq3mqNr = true;
+		_bool = true;
 		string text = "段落_" + VK2lYxW8hh(P_0) + "_";
 		ChineseFont = svdljUF8xO(text + "中文字体", "宋体");
 		WesternFont = svdljUF8xO(text + "西文字体", "宋体");
@@ -822,7 +822,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			SpecialIndent = svdljUF8xO(text + "特殊缩进", hOElmclKUd(P_0));
 			IndentValue = svdljUF8xO(text + "缩进值", WPtlokdZkh(P_0));
 		}
-		XNllq3mqNr = false;
+		_bool = false;
 	}
 
 	private bool FdUlJ0WwMF()
@@ -832,7 +832,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 		{
 			if (!AiHelper_20.WmHw9yYx65(FontSize, out var value))
 			{
-				EX0lheomn0.GZdVLrQIdas("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
+				_hDS8hJGbnCWyNGfO01j.LogMessage("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
 				return false;
 			}
 			Oppla8MvS7[text + "中文字体"] = ChineseFont ?? string.Empty;
@@ -883,7 +883,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			}
 			else if (u2KlXNUBeC.Contains(u7HlGeIYYe(text)))
 			{
-				EX0lheomn0.GZdVLrQIdas("。请选择 Word 字号或输入数字磅值。" + text + "IP_Assurance" + dictionary[text] + "LineSpacingRule", "LineSpacingLabel");
+				_hDS8hJGbnCWyNGfO01j.LogMessage("。请选择 Word 字号或输入数字磅值。" + text + "IP_Assurance" + dictionary[text] + "LineSpacingRule", "LineSpacingLabel");
 				return false;
 			}
 		}
@@ -893,7 +893,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private void DDClUp83O8()
 	{
-		string text = EX0lheomn0.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的段落方案");
+		string text = _hDS8hJGbnCWyNGfO01j.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的段落方案");
 		if (!string.IsNullOrWhiteSpace(text))
 		{
 			string text2 = text.Trim();
@@ -905,21 +905,21 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			Dictionary<string, string> dictionary;
 			if (WvflFuaXMm.haGSSyJWCc(text2))
 			{
-				EX0lheomn0.GZdVLrQIdas("同名方案已存在。", "IP_Assurance");
+				_hDS8hJGbnCWyNGfO01j.LogMessage("同名方案已存在。", "IP_Assurance");
 			}
 			else if (P5wl3AebG9(out dictionary))
 			{
 				WvflFuaXMm.D73SsBjrqd(text2, dictionary);
-				vcalPB6oR1 = text2;
+				_selectedPreset = text2;
 				LLvlHP8Kki();
-				EX0lheomn0.tfDVL1SJK0M("段落方案已创建。", "IP_Assurance");
+				_hDS8hJGbnCWyNGfO01j.LogWarning("段落方案已创建。", "IP_Assurance");
 			}
 		}
 	}
 
 	private void DG8lKsffse()
 	{
-		WvflFuaXMm.Delete(vcalPB6oR1);
+		WvflFuaXMm.Delete(_selectedPreset);
 		oajl8u2dic();
 		LLvlHP8Kki();
 		o3XlrGPH47(eOilAwjRjm);
@@ -927,18 +927,18 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private void DOklEaplEE()
 	{
-		string text = EX0lheomn0.BxkVLIlDE06("导入段落配置方案");
+		string text = _hDS8hJGbnCWyNGfO01j.BxkVLIlDE06("导入段落配置方案");
 		if (text != null)
 		{
 			Dictionary<string, string> dictionary = WvflFuaXMm.Pb7SLGhc8Y(text);
 			if (!dictionary.Keys.Any((string key) => key.StartsWith("所选文件不包含段落配置数据。", StringComparison.Ordinal)))
 			{
-				EX0lheomn0.GZdVLrQIdas("IP_Assurance", "IsLineSpacingValueEnabled");
+				_hDS8hJGbnCWyNGfO01j.LogMessage("IP_Assurance", "IsLineSpacingValueEnabled");
 				return;
 			}
 			string text2 = WvflFuaXMm.Ky0SN0Vqdg(Path.GetFileNameWithoutExtension(text));
 			WvflFuaXMm.D73SsBjrqd(text2, dictionary);
-			vcalPB6oR1 = text2;
+			_selectedPreset = text2;
 			v2ol10XIvm(dictionary);
 			LLvlHP8Kki();
 			o3XlrGPH47(eOilAwjRjm);
@@ -947,7 +947,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	private void KcQl2YSaFW()
 	{
-		string text = EX0lheomn0.SA6VLiTt8Ir("导出段落配置方案", vcalPB6oR1 + ".json");
+		string text = _hDS8hJGbnCWyNGfO01j.SA6VLiTt8Ir("导出段落配置方案", _selectedPreset + ".json");
 		if (text != null && P5wl3AebG9(out var dictionary))
 		{
 			ConfigHelper_1.lRlSlvdQT7(text, dictionary);
@@ -962,20 +962,20 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 			{
 				return;
 			}
-			Dictionary<string, object> dictionary2 = TableBorderConfig.Current.dnEScXBL9Y();
+			Dictionary<string, object> dictionary2 = TableBorderConfig.Current.GetAllLegacy();
 			foreach (KeyValuePair<string, string> item in dictionary)
 			{
 				dictionary2[item.Key] = item.Value;
 			}
-			dictionary2["段落配置_方案名"] = vcalPB6oR1;
+			dictionary2["段落配置_方案名"] = _selectedPreset;
 			dictionary2.Remove("段落配置_当前方案");
-			TableBorderConfig.Current.TTVSewUqXZ(dictionary2);
-			WvflFuaXMm.D73SsBjrqd(vcalPB6oR1, dictionary);
-			EX0lheomn0.tfDVL1SJK0M("段落配置已保存。", "IP_Assurance");
+			TableBorderConfig.Current.SetAllLegacy(dictionary2);
+			WvflFuaXMm.D73SsBjrqd(_selectedPreset, dictionary);
+			_hDS8hJGbnCWyNGfO01j.LogWarning("段落配置已保存。", "IP_Assurance");
 		}
 		catch (Exception ex)
 		{
-			EX0lheomn0.ULjVLJjCx1c("保存段落配置失败：" + ex.Message, "IP_Assurance");
+			_hDS8hJGbnCWyNGfO01j.LogDebugMessage("保存段落配置失败：" + ex.Message, "IP_Assurance");
 		}
 	}
 
@@ -1121,7 +1121,7 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 
 	static LegacyConfigMigrator2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		WTalydwU2G = new string[1] { "表前单位" };
 		u2KlXNUBeC = new string[8]
 		{
@@ -1139,12 +1139,12 @@ internal sealed class LegacyConfigMigrator2 : Helper_2
 	[CompilerGenerated]
 	private void Jc8lCFys9L()
 	{
-		HQGN1QkWPK?.Invoke();
+		_action?.Invoke();
 	}
 
 	[CompilerGenerated]
 	private void PIrlpCy7ZM()
 	{
-		N5oNQNnZhx?.Invoke();
+		_action?.Invoke();
 	}
 }

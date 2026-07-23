@@ -36,7 +36,7 @@ internal static class AiHelper_14
 		{
 			if (stopwatch.ElapsedMilliseconds >= 25)
 			{
-				AiConfigBootstrap.swCsJ4IbrL("[AI Tool][WordQueue] Enter: " + P_0 + "; QueueId=" + num + "; WaitMs=" + stopwatch.ElapsedMilliseconds);
+				AiConfigBootstrap.LogInfo("[AI Tool][WordQueue] Enter: " + P_0 + "; QueueId=" + num + "; WaitMs=" + stopwatch.ElapsedMilliseconds);
 			}
 			return P_1();
 		}
@@ -47,7 +47,7 @@ internal static class AiHelper_14
 			IDiJ5M4ayu.Release();
 			if (stopwatch.ElapsedMilliseconds >= 25 || stopwatch2.ElapsedMilliseconds >= 1000)
 			{
-				AiConfigBootstrap.swCsJ4IbrL("[AI Tool][WordQueue] Exit: " + P_0 + "; QueueId=" + num + "; WaitMs=" + stopwatch.ElapsedMilliseconds + "; RunMs=" + stopwatch2.ElapsedMilliseconds);
+				AiConfigBootstrap.LogInfo("[AI Tool][WordQueue] Exit: " + P_0 + "; QueueId=" + num + "; WaitMs=" + stopwatch.ElapsedMilliseconds + "; RunMs=" + stopwatch2.ElapsedMilliseconds);
 			}
 		}
 	}
@@ -64,7 +64,7 @@ internal static class AiHelper_14
 
 	static AiHelper_14()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		IDiJ5M4ayu = new SemaphoreSlim(1, 1);
 		vMtJclmkWo = new AsyncLocal<int>();
 	}

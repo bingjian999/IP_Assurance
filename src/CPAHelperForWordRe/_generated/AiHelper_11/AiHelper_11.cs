@@ -6,28 +6,28 @@ namespace AiHelper_11;
 internal sealed class AiHelper_11
 {
 	[CompilerGenerated]
-	private bool iQCtc2KfDu;
+	private bool _syncHeaders;
 
 	public bool SyncHeaders
 	{
 		[CompilerGenerated]
 		get
 		{
-			return iQCtc2KfDu;
+			return _syncHeaders;
 		}
 		[CompilerGenerated]
 		set
 		{
-			iQCtc2KfDu = value;
+			_syncHeaders = value;
 		}
 	}
 
-	public void WJlt5JDtmQ()
+	public void Initialize()
 	{
 	}
 
 	public AiHelper_11()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

@@ -16,7 +16,7 @@ namespace CPAHelperForWordRe.UI.Forms;
 
 public sealed class SplitPagesWindow : Window, IComponentConnector
 {
-	private readonly int Yx4nOqBg2Q;
+	private readonly int _int;
 
 	[CompilerGenerated]
 	private int FVennAYbFk;
@@ -25,7 +25,7 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 
 	internal TextBlock txtHint;
 
-	private bool mbHn7ZQDj5;
+	private bool _bool;
 
 	public int PagesPerDocument
 	{
@@ -43,12 +43,12 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 
 	public SplitPagesWindow(int totalPages)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
-		Yx4nOqBg2Q = Math.Max(1, totalPages);
-		int num = Math.Min(20, Yx4nOqBg2Q);
+		_int = Math.Max(1, totalPages);
+		int num = Math.Min(20, _int);
 		txtPages.Text = num.ToString(CultureInfo.InvariantCulture);
-		txtHint.Text = string.Format("当前文档共 {0} 页。请输入 1 ~ {1} 之间的整数。", Yx4nOqBg2Q, Yx4nOqBg2Q);
+		txtHint.Text = string.Format("当前文档共 {0} 页。请输入 1 ~ {1} 之间的整数。", _int, _int);
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
 			if (P_1.Key == Key.Escape)
@@ -66,9 +66,9 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 
 	private void s86nlb1Mll(object P_0, RoutedEventArgs P_1)
 	{
-		if (!int.TryParse(txtPages.Text.Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out var result) || result < 1 || result > Yx4nOqBg2Q)
+		if (!int.TryParse(txtPages.Text.Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out var result) || result < 1 || result > _int)
 		{
-			MessageBox.Show(this, string.Format("每份页数必须是 1 ~ {0} 之间的整数。", Yx4nOqBg2Q), "提示", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+			MessageBox.Show(this, string.Format("每份页数必须是 1 ~ {0} 之间的整数。", _int), "提示", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 			txtPages.Focus();
 			txtPages.SelectAll();
 		}
@@ -111,9 +111,9 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!mbHn7ZQDj5)
+		if (!_bool)
 		{
-			mbHn7ZQDj5 = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/splitpageswindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -140,7 +140,7 @@ public sealed class SplitPagesWindow : Window, IComponentConnector
 			((Button)target).Click += eipnN2KJkv;
 			break;
 		default:
-			mbHn7ZQDj5 = true;
+			_bool = true;
 			break;
 		}
 	}

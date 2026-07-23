@@ -54,7 +54,7 @@ internal static class ScreenshotCaptureHelper2
 	public static extern IntPtr OyTxvptUZ(IntPtr P_0);
 
 	[DllImport("user32.dll", EntryPoint = "ShowWindow")]
-	public static extern bool eq5dmBARf(IntPtr P_0, int P_1);
+	public static extern bool CaptureScreen(IntPtr P_0, int P_1);
 
 	[DllImport("user32.dll", EntryPoint = "RegisterHotKey", SetLastError = true)]
 	public static extern bool mIozr8woi(IntPtr P_0, int P_1, uint P_2, uint P_3);

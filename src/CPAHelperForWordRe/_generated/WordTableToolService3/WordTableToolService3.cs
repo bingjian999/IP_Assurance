@@ -7,10 +7,10 @@ namespace WordTableToolService3;
 internal sealed class WordTableToolService3
 {
 	[CompilerGenerated]
-	private int Q7THZ0UebX;
+	private int _rows;
 
 	[CompilerGenerated]
-	private int ePdHfW74dq;
+	private int _columns;
 
 	[CompilerGenerated]
 	private string FefHMfkGKa;
@@ -19,13 +19,13 @@ internal sealed class WordTableToolService3
 	private bool igrHbQaSOm;
 
 	[CompilerGenerated]
-	private bool t6FHS4OZ2t;
+	private bool _adjustAfterInsert;
 
 	[CompilerGenerated]
-	private int T8BHwMvYo1;
+	private int _paragraphStart;
 
 	[CompilerGenerated]
-	private int Kk1HtODbW1;
+	private int _paragraphEnd;
 
 	[CompilerGenerated]
 	private int wdpHLpwvHM;
@@ -34,7 +34,7 @@ internal sealed class WordTableToolService3
 	private string LVlHsxnFE7;
 
 	[CompilerGenerated]
-	private bool TE8Hl7RJWF;
+	private bool _paragraphIsEmpty;
 
 	[CompilerGenerated]
 	private int iZMHNpXBqv;
@@ -43,19 +43,19 @@ internal sealed class WordTableToolService3
 	private int HbkHmLFNnk;
 
 	[CompilerGenerated]
-	private Range McSHoTJ4v7;
+	private Range _focusRange;
 
 	public int Rows
 	{
 		[CompilerGenerated]
 		get
 		{
-			return Q7THZ0UebX;
+			return _rows;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Q7THZ0UebX = value;
+			_rows = value;
 		}
 	}
 
@@ -64,12 +64,12 @@ internal sealed class WordTableToolService3
 		[CompilerGenerated]
 		get
 		{
-			return ePdHfW74dq;
+			return _columns;
 		}
 		[CompilerGenerated]
 		set
 		{
-			ePdHfW74dq = value;
+			_columns = value;
 		}
 	}
 
@@ -106,12 +106,12 @@ internal sealed class WordTableToolService3
 		[CompilerGenerated]
 		get
 		{
-			return t6FHS4OZ2t;
+			return _adjustAfterInsert;
 		}
 		[CompilerGenerated]
 		set
 		{
-			t6FHS4OZ2t = value;
+			_adjustAfterInsert = value;
 		}
 	}
 
@@ -120,12 +120,12 @@ internal sealed class WordTableToolService3
 		[CompilerGenerated]
 		get
 		{
-			return T8BHwMvYo1;
+			return _paragraphStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			T8BHwMvYo1 = value;
+			_paragraphStart = value;
 		}
 	}
 
@@ -134,12 +134,12 @@ internal sealed class WordTableToolService3
 		[CompilerGenerated]
 		get
 		{
-			return Kk1HtODbW1;
+			return _paragraphEnd;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Kk1HtODbW1 = value;
+			_paragraphEnd = value;
 		}
 	}
 
@@ -176,12 +176,12 @@ internal sealed class WordTableToolService3
 		[CompilerGenerated]
 		get
 		{
-			return TE8Hl7RJWF;
+			return _paragraphIsEmpty;
 		}
 		[CompilerGenerated]
 		set
 		{
-			TE8Hl7RJWF = value;
+			_paragraphIsEmpty = value;
 		}
 	}
 
@@ -218,17 +218,17 @@ internal sealed class WordTableToolService3
 		[CompilerGenerated]
 		get
 		{
-			return McSHoTJ4v7;
+			return _focusRange;
 		}
 		[CompilerGenerated]
 		set
 		{
-			McSHoTJ4v7 = value;
+			_focusRange = value;
 		}
 	}
 
 	public WordTableToolService3()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

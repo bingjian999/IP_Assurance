@@ -23,40 +23,40 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass8_0
 	{
-		public Range g0kVDhnm1D8;
+		public Range range;
 
 		public _G_c__DisplayClass8_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int JjrVDX2DsjM()
 		{
-			return g0kVDhnm1D8.Tables.Count;
+			return range.Tables.Count;
 		}
 
 		internal int PmWVDFgx9Kt()
 		{
-			return g0kVDhnm1D8.Paragraphs.Count;
+			return range.Paragraphs.Count;
 		}
 	}
 
-	private readonly AiTargetBinder V74JW1QeEM;
+	private readonly AiTargetBinder _aiTargetBinder;
 
-	private readonly WordTableToolService4 eQWJ06Z12e;
+	private readonly WordTableToolService4 _wordTableToolService4;
 
 	private static readonly IReadOnlyList<HostActionInfo> wgFJkXRbS4;
 
 	public HostActionDispatcher() : this(null)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	public HostActionDispatcher(AiTargetBinder P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		V74JW1QeEM = P_0;
-		eQWJ06Z12e = new WordTableToolService4(P_0);
+		SseStreamInitializer.InitializeRuntime();
+		_aiTargetBinder = P_0;
+		_wordTableToolService4 = new WordTableToolService4(P_0);
 	}
 
 	public Task<IReadOnlyList<HostActionInfo>> GetActionsAsync(CancellationToken P_0 = default(CancellationToken))
@@ -80,12 +80,12 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 			return GOEJh7vQUv(delegate(Application app)
 			{
 				_G_c__DisplayClass8_0 CS_8_locals_7 = new _G_c__DisplayClass8_0();
-				string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))
 				{
 					throw new InvalidOperationException(text);
 				}
-				Document document = DocumentLifecycleGuard.zrqujYgRXw(app);
+				Document document = DocumentLifecycleGuard.GetActiveDocument(app);
 				Selection selection = app.Selection;
 				if (document == null)
 				{
@@ -95,12 +95,12 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 				{
 					throw new InvalidOperationException("word.currentSelection");
 				}
-				CS_8_locals_7.g0kVDhnm1D8 = selection.Range.Duplicate;
-				int start = CS_8_locals_7.g0kVDhnm1D8.Start;
-				int end = CS_8_locals_7.g0kVDhnm1D8.End;
-				int num = vufJALQMfa(() => CS_8_locals_7.g0kVDhnm1D8.Tables.Count);
-				int num2 = vufJALQMfa(() => CS_8_locals_7.g0kVDhnm1D8.Paragraphs.Count);
-				string text2 = q9DJqvf9jN(CS_8_locals_7.g0kVDhnm1D8.Text);
+				CS_8_locals_7.range = selection.Range.Duplicate;
+				int start = CS_8_locals_7.range.Start;
+				int end = CS_8_locals_7.range.End;
+				int num = vufJALQMfa(() => CS_8_locals_7.range.Tables.Count);
+				int num2 = vufJALQMfa(() => CS_8_locals_7.range.Paragraphs.Count);
+				string text2 = q9DJqvf9jN(CS_8_locals_7.range.Text);
 				if (string.IsNullOrWhiteSpace(text2) && num <= 0 && num2 <= 0)
 				{
 					throw new InvalidOperationException("未知的宿主动作用：");
@@ -133,7 +133,7 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 					{
 						["document"] = document.Name,
 						["documentFullName"] = document.FullName,
-						["page"] = XvEJvBp6mc(CS_8_locals_7.g0kVDhnm1D8),
+						["page"] = XvEJvBp6mc(CS_8_locals_7.range),
 						["rangeStart"] = start,
 						["rangeEnd"] = end,
 						["preview"] = text3,
@@ -148,14 +148,14 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("引用当前 Word 选区失败：" + ex.Message);
+			AiConfigBootstrap.LogWarn("引用当前 Word 选区失败：" + ex.Message);
 			throw;
 		}
 	}
 
 	private ckEnEPJapYGYC9Kvom5 GOEJh7vQUv<ckEnEPJapYGYC9Kvom5>(Func<Application, ckEnEPJapYGYC9Kvom5> P_0)
 	{
-		return eQWJ06Z12e.MdXJlVhPku("host_action_word_selection", P_0);
+		return _wordTableToolService4.MdXJlVhPku("host_action_word_selection", P_0);
 	}
 
 	private static string q9DJqvf9jN(string P_0)
@@ -204,7 +204,7 @@ internal sealed class HostActionDispatcher : IHostActionProvider
 
 	static HostActionDispatcher()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		wgFJkXRbS4 = new HostActionInfo[1]
 		{
 			new HostActionInfo

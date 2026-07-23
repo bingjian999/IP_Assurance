@@ -27,7 +27,7 @@ internal static class BatchReplaceService
 		private readonly int nOyVURBbIRW;
 
 		[CompilerGenerated]
-		private readonly int wuMVUVdrX5y;
+		private readonly int _int;
 
 		public int Start
 		{
@@ -43,40 +43,40 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return wuMVUVdrX5y;
+				return _int;
 			}
 		}
 
 		public R2YhBSV3zlYwiRqrxZHs(int P_0, int P_1)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			nOyVURBbIRW = P_0;
-			wuMVUVdrX5y = P_1;
+			_int = P_1;
 		}
 	}
 
 	private sealed class lK59I4VUBQWVJpoki7MO
 	{
 		[CompilerGenerated]
-		private string KgkVU9tJsbA;
+		private string _nameFarEast;
 
 		[CompilerGenerated]
-		private string fUkVU6l3A2m;
+		private string _nameAscii;
 
 		[CompilerGenerated]
-		private string hGOVUu7in9u;
+		private string _nameOther;
 
 		[CompilerGenerated]
-		private float? SX2VUDpiZ4w;
+		private float? _size;
 
 		[CompilerGenerated]
-		private int? v4VVUTu90ND;
+		private int? _bold;
 
 		[CompilerGenerated]
-		private int? fBfVUgAv0D2;
+		private int? _italic;
 
 		[CompilerGenerated]
-		private WdUnderline? jf6VU8wB0BY;
+		private WdUnderline? _underline;
 
 		[CompilerGenerated]
 		private WdParagraphAlignment? OwLVUINNXFp;
@@ -89,12 +89,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return KgkVU9tJsbA;
+				return _nameFarEast;
 			}
 			[CompilerGenerated]
 			set
 			{
-				KgkVU9tJsbA = value;
+				_nameFarEast = value;
 			}
 		}
 
@@ -103,12 +103,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return fUkVU6l3A2m;
+				return _nameAscii;
 			}
 			[CompilerGenerated]
 			set
 			{
-				fUkVU6l3A2m = value;
+				_nameAscii = value;
 			}
 		}
 
@@ -117,12 +117,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return hGOVUu7in9u;
+				return _nameOther;
 			}
 			[CompilerGenerated]
 			set
 			{
-				hGOVUu7in9u = value;
+				_nameOther = value;
 			}
 		}
 
@@ -131,12 +131,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return SX2VUDpiZ4w;
+				return _size;
 			}
 			[CompilerGenerated]
 			set
 			{
-				SX2VUDpiZ4w = value;
+				_size = value;
 			}
 		}
 
@@ -145,12 +145,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return v4VVUTu90ND;
+				return _bold;
 			}
 			[CompilerGenerated]
 			set
 			{
-				v4VVUTu90ND = value;
+				_bold = value;
 			}
 		}
 
@@ -159,12 +159,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return fBfVUgAv0D2;
+				return _italic;
 			}
 			[CompilerGenerated]
 			set
 			{
-				fBfVUgAv0D2 = value;
+				_italic = value;
 			}
 		}
 
@@ -173,12 +173,12 @@ internal static class BatchReplaceService
 			[CompilerGenerated]
 			get
 			{
-				return jf6VU8wB0BY;
+				return _underline;
 			}
 			[CompilerGenerated]
 			set
 			{
-				jf6VU8wB0BY = value;
+				_underline = value;
 			}
 		}
 
@@ -212,7 +212,7 @@ internal static class BatchReplaceService
 
 		public lK59I4VUBQWVJpoki7MO()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
@@ -244,7 +244,7 @@ internal static class BatchReplaceService
 
 	private static TableBorderConfig Cfg => TableBorderConfig.Current;
 
-	public static void lyrMMMAAtt(int P_0)
+	public static void SetOutlineLevel(int P_0)
 	{
 		Paragraphs paragraphs = App.Selection.Paragraphs;
 		if (paragraphs.OutlineLevel != (WdOutlineLevel)P_0)
@@ -252,7 +252,7 @@ internal static class BatchReplaceService
 			paragraphs.OutlineLevel = (WdOutlineLevel)P_0;
 			if (paragraphs.OutlineLevel != (WdOutlineLevel)P_0)
 			{
-				LoggerInitializer.F9Ycoqv2I8("无法直接调整该段落的大纲级次，请检查是否已设置样式，请取消样式或手动调整样式级次", "IP_Assurance");
+				LoggerInitializer.ShowError("无法直接调整该段落的大纲级次，请检查是否已设置样式，请取消样式或手动调整样式级次", "IP_Assurance");
 			}
 		}
 	}
@@ -276,7 +276,7 @@ internal static class BatchReplaceService
 		}
 		catch
 		{
-			LoggerInitializer.Ay3cNuEgJo("你需要先选中一个批注", "IP_Assurance");
+			LoggerInitializer.ShowInfo("你需要先选中一个批注", "IP_Assurance");
 		}
 	}
 
@@ -294,13 +294,13 @@ internal static class BatchReplaceService
 		{
 			if (!dGUMmCaDyi(out var num, out var num2))
 			{
-				LoggerInitializer.F9Ycoqv2I8("未获取到 Excel/WPS 复制区域。请先在 Excel 中复制表格，或关闭任务管理器中的残留 Excel 后重试。", "IP_Assurance");
+				LoggerInitializer.ShowError("未获取到 Excel/WPS 复制区域。请先在 Excel 中复制表格，或关闭任务管理器中的残留 Excel 后重试。", "IP_Assurance");
 				return;
 			}
 			Selection selection = App.Selection;
 			if (selection.Tables.Count == 0)
 			{
-				LoggerInitializer.Ay3cNuEgJo("请将光标放在要粘贴的 Word 表格内", "IP_Assurance");
+				LoggerInitializer.ShowInfo("请将光标放在要粘贴的 Word 表格内", "IP_Assurance");
 				return;
 			}
 			int num3 = (dynamic)selection.get_Information(WdInformation.wdEndOfRangeColumnNumber);
@@ -335,7 +335,7 @@ internal static class BatchReplaceService
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8("请检查任务管理器后台进程中是否有残留Excel " + ex.Message, "IP_Assurance");
+			LoggerInitializer.ShowError("请检查任务管理器后台进程中是否有残留Excel " + ex.Message, "IP_Assurance");
 		}
 	}
 
@@ -578,7 +578,7 @@ internal static class BatchReplaceService
 		P_1 = 0;
 		try
 		{
-			object obj = ExcelInteropService.X11yRCCGO()?.Selection;
+			object obj = ExcelInteropService.GetActiveExcelApp()?.Selection;
 			if (obj != null)
 			{
 				object arg = obj;
@@ -692,7 +692,7 @@ internal static class BatchReplaceService
 
 	public static void OTQMCTfGfe()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
@@ -713,9 +713,9 @@ internal static class BatchReplaceService
 				paragraphFormat.CharacterUnitFirstLineIndent = 0f;
 				paragraphFormat.LineUnitBefore = 0f;
 				paragraphFormat.LineUnitAfter = 0f;
-				paragraph.Range.Font.NameFarEast = Cfg.KxPSXHwy4c("段落_表前单位_中文字体", "宋体");
-				paragraph.Range.Font.NameAscii = Cfg.KxPSXHwy4c("段落_表前单位_西文字体", "Times New Roman");
-				paragraph.Range.Font.NameOther = Cfg.KxPSXHwy4c("段落_表前单位_西文字体", "Times New Roman");
+				paragraph.Range.Font.NameFarEast = Cfg.GetString("段落_表前单位_中文字体", "宋体");
+				paragraph.Range.Font.NameAscii = Cfg.GetString("段落_表前单位_西文字体", "Times New Roman");
+				paragraph.Range.Font.NameOther = Cfg.GetString("段落_表前单位_西文字体", "Times New Roman");
 				paragraph.Range.Font.Size = LKIMOlo9Fh("段落_表前单位_字号", 10.5);
 				paragraph.Range.Font.Bold = 0;
 			}
@@ -728,7 +728,7 @@ internal static class BatchReplaceService
 
 	public static void xgwMpXfu5F()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
@@ -743,9 +743,9 @@ internal static class BatchReplaceService
 				paragraphFormat.CharacterUnitLeftIndent = 0f;
 				paragraphFormat.CharacterUnitRightIndent = 0f;
 				paragraphFormat.CharacterUnitFirstLineIndent = 0f;
-				paragraph.Range.Font.NameFarEast = Cfg.KxPSXHwy4c("段落_表后注释_中文字体", "宋体");
-				paragraph.Range.Font.NameAscii = Cfg.KxPSXHwy4c("段落_表后注释_西文字体", "Times New Roman");
-				paragraph.Range.Font.NameOther = Cfg.KxPSXHwy4c("段落_表后注释_西文字体", "Times New Roman");
+				paragraph.Range.Font.NameFarEast = Cfg.GetString("段落_表后注释_中文字体", "宋体");
+				paragraph.Range.Font.NameAscii = Cfg.GetString("段落_表后注释_西文字体", "Times New Roman");
+				paragraph.Range.Font.NameOther = Cfg.GetString("段落_表后注释_西文字体", "Times New Roman");
 				paragraph.Range.Font.Size = LKIMOlo9Fh("段落_表后注释_字号", 10.5);
 				paragraph.Range.Font.Bold = 0;
 				j8WM7tPosj(paragraphFormat, "表后注释", "无", 0.0, "字符");
@@ -760,7 +760,7 @@ internal static class BatchReplaceService
 
 	private static float LKIMOlo9Fh(string P_0, double P_1)
 	{
-		return (float)AiHelper_20.NgZw6CkHuw(Cfg.KxPSXHwy4c(P_0, string.Empty), P_1);
+		return (float)AiHelper_20.NgZw6CkHuw(Cfg.GetString(P_0, string.Empty), P_1);
 	}
 
 	private static void S3UMntpQqj(ParagraphFormat P_0)
@@ -782,9 +782,9 @@ internal static class BatchReplaceService
 	private static void j8WM7tPosj(ParagraphFormat P_0, string P_1, string P_2, double P_3, string P_4 = "字符")
 	{
 		S3UMntpQqj(P_0);
-		double num = Cfg.hB5SFqa39l("段落_" + P_1 + "_左缩进");
-		double num2 = Cfg.hB5SFqa39l("段落_" + P_1 + "_右缩进");
-		string text = (Cfg.KxPSXHwy4c("段落_" + P_1 + "_缩进单位", P_4) ?? string.Empty).ToLower();
+		double num = Cfg.GetDouble("段落_" + P_1 + "_左缩进");
+		double num2 = Cfg.GetDouble("段落_" + P_1 + "_右缩进");
+		string text = (Cfg.GetString("段落_" + P_1 + "_缩进单位", P_4) ?? string.Empty).ToLower();
 		if (text == "字符")
 		{
 			P_0.CharacterUnitLeftIndent = (float)num;
@@ -795,8 +795,8 @@ internal static class BatchReplaceService
 			P_0.LeftIndent = App.CentimetersToPoints((float)num);
 			P_0.RightIndent = App.CentimetersToPoints((float)num2);
 		}
-		string text2 = (Cfg.KxPSXHwy4c("段落_" + P_1 + "_特殊缩进", P_2) ?? string.Empty).ToLower();
-		double num3 = Cfg.hB5SFqa39l("段落_" + P_1 + "_缩进值", P_3);
+		string text2 = (Cfg.GetString("段落_" + P_1 + "_特殊缩进", P_2) ?? string.Empty).ToLower();
+		double num3 = Cfg.GetDouble("段落_" + P_1 + "_缩进值", P_3);
 		if (text2 == "首行")
 		{
 			if (text == "字符")
@@ -842,31 +842,31 @@ internal static class BatchReplaceService
 		ubNM5IVjYp(P_0);
 		if (P_7)
 		{
-			P_0.Alignment = (WdParagraphAlignment)Cfg.HYsSh2NDxY("段落_" + P_1 + "_对齐方式", P_2);
+			P_0.Alignment = (WdParagraphAlignment)Cfg.GetInt("段落_" + P_1 + "_对齐方式", P_2);
 		}
-		switch ((int)(P_0.LineSpacingRule = (WdLineSpacing)Cfg.HYsSh2NDxY("段落_" + P_1 + "_行距样式", P_3)))
+		switch ((int)(P_0.LineSpacingRule = (WdLineSpacing)Cfg.GetInt("段落_" + P_1 + "_行距样式", P_3)))
 		{
 		case 3:
 		case 4:
-			P_0.LineSpacing = (float)Cfg.hB5SFqa39l("段落_" + P_1 + "_行距值", 18.0);
+			P_0.LineSpacing = (float)Cfg.GetDouble("段落_" + P_1 + "_行距值", 18.0);
 			break;
 		case 5:
-			P_0.LineSpacing = App.LinesToPoints((float)Cfg.hB5SFqa39l("段落_" + P_1 + "_行距值", 1.0));
+			P_0.LineSpacing = App.LinesToPoints((float)Cfg.GetDouble("段落_" + P_1 + "_行距值", 1.0));
 			break;
 		}
-		if (Cfg.KxPSXHwy4c("段落_" + P_1 + "_段前距单位", P_4) == "行")
+		if (Cfg.GetString("段落_" + P_1 + "_段前距单位", P_4) == "行")
 		{
 			P_0.SpaceBefore = 0f;
 			P_0.SpaceAfter = 0f;
-			P_0.LineUnitBefore = (float)Cfg.hB5SFqa39l("段落_" + P_1 + "_段前距", P_5);
-			P_0.LineUnitAfter = (float)Cfg.hB5SFqa39l("段落_" + P_1 + "_段后距", P_6);
+			P_0.LineUnitBefore = (float)Cfg.GetDouble("段落_" + P_1 + "_段前距", P_5);
+			P_0.LineUnitAfter = (float)Cfg.GetDouble("段落_" + P_1 + "_段后距", P_6);
 		}
 		else
 		{
 			P_0.LineUnitBefore = 0f;
 			P_0.LineUnitAfter = 0f;
-			P_0.SpaceBefore = (float)Cfg.hB5SFqa39l("段落_" + P_1 + "_段前距", P_5);
-			P_0.SpaceAfter = (float)Cfg.hB5SFqa39l("段落_" + P_1 + "_段后距", P_6);
+			P_0.SpaceBefore = (float)Cfg.GetDouble("段落_" + P_1 + "_段前距", P_5);
+			P_0.SpaceAfter = (float)Cfg.GetDouble("段落_" + P_1 + "_段后距", P_6);
 		}
 	}
 
@@ -882,7 +882,7 @@ internal static class BatchReplaceService
 
 	internal static void hn7MXTwgTj(Range P_0, bool P_1, Func<int, int, string, bool> P_2)
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		ProgressWindow progressWindow = null;
 		try
@@ -943,7 +943,7 @@ internal static class BatchReplaceService
 			}
 			if (num2 > 0)
 			{
-				AiConfigBootstrap.ujWsURly3F(string.Format("[FormatParagraph] Paragraph formatting partially failed; Total={0}; Failed={1}", count, num2), ex);
+				AiConfigBootstrap.LogError(string.Format("[FormatParagraph] Paragraph formatting partially failed; Total={0}; Failed={1}", count, num2), ex);
 			}
 		}
 		finally
@@ -958,10 +958,10 @@ internal static class BatchReplaceService
 		P_2 = null;
 		try
 		{
-			P_0.Range.Font.Bold = Cfg.HYsSh2NDxY("段落_" + P_1 + "_加粗");
-			P_0.Range.Font.NameFarEast = Cfg.KxPSXHwy4c("段落_" + P_1 + "_中文字体", "宋体");
-			P_0.Range.Font.NameAscii = Cfg.KxPSXHwy4c("段落_" + P_1 + "_西文字体", "Times New Roman");
-			P_0.Range.Font.NameOther = Cfg.KxPSXHwy4c("段落_" + P_1 + "_西文字体", "Times New Roman");
+			P_0.Range.Font.Bold = Cfg.GetInt("段落_" + P_1 + "_加粗");
+			P_0.Range.Font.NameFarEast = Cfg.GetString("段落_" + P_1 + "_中文字体", "宋体");
+			P_0.Range.Font.NameAscii = Cfg.GetString("段落_" + P_1 + "_西文字体", "Times New Roman");
+			P_0.Range.Font.NameOther = Cfg.GetString("段落_" + P_1 + "_西文字体", "Times New Roman");
 			P_0.Range.Font.Size = LKIMOlo9Fh("段落_" + P_1 + "_字号", 10.5);
 			ParagraphFormat paragraphFormat = P_0.Range.ParagraphFormat;
 			j8WM7tPosj(paragraphFormat, P_1, "无", 0.0, "字符");
@@ -1074,12 +1074,12 @@ internal static class BatchReplaceService
 			}
 			App.ScreenUpdating = true;
 		}
-		LoggerInitializer.Ay3cNuEgJo(text, "IP_Assurance");
+		LoggerInitializer.ShowInfo(text, "IP_Assurance");
 	}
 
 	public static void a3lMqZdKO0()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		ProgressWindow progressWindow = null;
 		int num = 0;
@@ -1109,7 +1109,7 @@ internal static class BatchReplaceService
 			AVsb9xRHFx(progressWindow);
 			App.ScreenUpdating = true;
 		}
-		LoggerInitializer.Ay3cNuEgJo(text, "IP_Assurance");
+		LoggerInitializer.ShowInfo(text, "IP_Assurance");
 	}
 
 	private static int NJWMPFP8I4(Document P_0, ProgressWindow P_1)
@@ -1370,7 +1370,7 @@ internal static class BatchReplaceService
 		try
 		{
 			ProgressWindow progressWindow = new ProgressWindow();
-			WordTableToolService5.IPf5i0ZcV4(progressWindow);
+			WordTableToolService5.ShowWpfWindow(progressWindow);
 			return progressWindow;
 		}
 		catch
@@ -1443,7 +1443,7 @@ internal static class BatchReplaceService
 
 	static BatchReplaceService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		HnMb6R7ZKw = new List<R2YhBSV3zlYwiRqrxZHs>();
 		Tv0buOiKWt = string.Empty;
 	}

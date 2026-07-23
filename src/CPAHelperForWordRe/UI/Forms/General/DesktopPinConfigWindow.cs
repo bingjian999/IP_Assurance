@@ -31,7 +31,7 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 
 		public _G_c__DisplayClass12_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool YbtVYA7MB7a(string value)
@@ -49,26 +49,26 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 	{
 		public DesktopPinConfigWindow ddLVYkpOMA3;
 
-		public string P6rVYxn9wTr;
+		public string text;
 
-		public bool VB9VYdCDFS3;
+		public bool flag;
 
 		public string dDYVYzoJyTV;
 
 		public _G_c__DisplayClass4_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void jyPVYWjlStT(AiHelper_12 config)
 		{
 			config.DesktopPin.Enabled = ddLVYkpOMA3.chkEnabled.IsChecked == true;
-			config.DesktopPin.Hotkey = P6rVYxn9wTr;
+			config.DesktopPin.Hotkey = text;
 		}
 
 		internal void wCUVY0WB3v6(AiHelper_12 config)
 		{
-			config.DesktopPin.Enabled = VB9VYdCDFS3;
+			config.DesktopPin.Enabled = flag;
 			config.DesktopPin.Hotkey = dDYVYzoJyTV;
 		}
 	}
@@ -89,11 +89,11 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 
 	internal TextBlock txtRecordHint;
 
-	private bool aHl5DrVhlY;
+	private bool _bool;
 
 	public DesktopPinConfigWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		z4f5uNa8EW = new List<System.Windows.Controls.ComboBox>();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, System.Windows.Input.KeyEventArgs P_1)
@@ -112,9 +112,9 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 	{
 		_G_c__DisplayClass4_0 CS_8_locals_11 = new _G_c__DisplayClass4_0();
 		CS_8_locals_11.ddLVYkpOMA3 = this;
-		bool flag = GSE7zIY1sE(out CS_8_locals_11.P6rVYxn9wTr);
+		bool flag = GSE7zIY1sE(out CS_8_locals_11.text);
 		HotkeyHookService2 desktopPin = TableBorderConfig.Current.Config.DesktopPin;
-		CS_8_locals_11.VB9VYdCDFS3 = desktopPin.Enabled;
+		CS_8_locals_11.flag = desktopPin.Enabled;
 		CS_8_locals_11.dDYVYzoJyTV = desktopPin.Hotkey;
 		if (chkEnabled.IsChecked == true)
 		{
@@ -123,35 +123,35 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 				System.Windows.MessageBox.Show(this, "请选择至少一个修饰键，并选择一个主键。", "IP_Assurance", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				return;
 			}
-			if (!HotkeyHookService.kKcV477mFM(CS_8_locals_11.P6rVYxn9wTr, (SMvGfVVI8pN4lQroEEl)1u, out var fLLBq1VHNF5GNnjaJrS2))
+			if (!HotkeyHookService.TryRegisterHotkeyHook(CS_8_locals_11.text, (HotkeyAction)1u, out var fLLBq1VHNF5GNnjaJrS2))
 			{
 				System.Windows.MessageBox.Show(this, "请选择至少一个修饰键，并选择一个主键。", "IP_Assurance", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 				return;
 			}
-			CS_8_locals_11.P6rVYxn9wTr = HotkeyHookService.KgeVYgBu4k(fLLBq1VHNF5GNnjaJrS2);
+			CS_8_locals_11.text = HotkeyHookService.KgeVYgBu4k(fLLBq1VHNF5GNnjaJrS2);
 		}
 		else if (!flag)
 		{
-			CS_8_locals_11.P6rVYxn9wTr = "Alt+F1";
+			CS_8_locals_11.text = "Alt+F1";
 		}
-		TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 config)
+		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 config)
 		{
 			config.DesktopPin.Enabled = CS_8_locals_11.ddLVYkpOMA3.chkEnabled.IsChecked == true;
-			config.DesktopPin.Hotkey = CS_8_locals_11.P6rVYxn9wTr;
+			config.DesktopPin.Hotkey = CS_8_locals_11.text;
 		}, false);
-		if (!ScreenshotService.o6HBH667NB(out var text) && !string.IsNullOrWhiteSpace(text))
+		if (!ScreenshotService.TryRegisterHotkey(out var text) && !string.IsNullOrWhiteSpace(text))
 		{
-			TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 config)
+			TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 config)
 			{
-				config.DesktopPin.Enabled = CS_8_locals_11.VB9VYdCDFS3;
+				config.DesktopPin.Enabled = CS_8_locals_11.flag;
 				config.DesktopPin.Hotkey = CS_8_locals_11.dDYVYzoJyTV;
 			}, false);
-			ScreenshotService.o6HBH667NB(out var _);
+			ScreenshotService.TryRegisterHotkey(out var _);
 			System.Windows.MessageBox.Show(this, text, "IP_Assurance", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 		}
 		else
 		{
-			TableBorderConfig.Current.cPLSPKGCNb();
+			TableBorderConfig.Current.PersistConfig();
 			System.Windows.MessageBox.Show(this, "钉桌面配置已保存。", "IP_Assurance", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 			Close();
 		}
@@ -182,11 +182,11 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 	private void U767kM3HHo(string P_0, string P_1)
 	{
 		cmbMainKey.ItemsSource = R1M5V282sO().ToList();
-		if (!HotkeyHookService.kKcV477mFM(P_0, (SMvGfVVI8pN4lQroEEl)1u, out var fLLBq1VHNF5GNnjaJrS2) && !HotkeyHookService.kKcV477mFM(P_1, (SMvGfVVI8pN4lQroEEl)1u, out fLLBq1VHNF5GNnjaJrS2))
+		if (!HotkeyHookService.TryRegisterHotkeyHook(P_0, (HotkeyAction)1u, out var fLLBq1VHNF5GNnjaJrS2) && !HotkeyHookService.TryRegisterHotkeyHook(P_1, (HotkeyAction)1u, out fLLBq1VHNF5GNnjaJrS2))
 		{
 			fLLBq1VHNF5GNnjaJrS2 = new UiHelperService2
 			{
-				Modifiers = (SMvGfVVI8pN4lQroEEl)1u,
+				Modifiers = (HotkeyAction)1u,
 				Key = Keys.F1
 			};
 		}
@@ -241,7 +241,7 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 		{
 			return false;
 		}
-		if (!HotkeyHookService.kKcV477mFM(string.Join("请选择至少一个修饰键，并选择一个主键。", list.Concat(new string[1] { text })), (SMvGfVVI8pN4lQroEEl)1u, out var fLLBq1VHNF5GNnjaJrS2))
+		if (!HotkeyHookService.TryRegisterHotkeyHook(string.Join("请选择至少一个修饰键，并选择一个主键。", list.Concat(new string[1] { text })), (HotkeyAction)1u, out var fLLBq1VHNF5GNnjaJrS2))
 		{
 			return false;
 		}
@@ -275,21 +275,21 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 		}
 	}
 
-	private static IEnumerable<string> To45BkueCT(SMvGfVVI8pN4lQroEEl P_0)
+	private static IEnumerable<string> To45BkueCT(HotkeyAction P_0)
 	{
-		if ((P_0 & (SMvGfVVI8pN4lQroEEl)2u) == (SMvGfVVI8pN4lQroEEl)2u)
+		if ((P_0 & (HotkeyAction)2u) == (HotkeyAction)2u)
 		{
 			yield return "Alt+F1";
 		}
-		if ((P_0 & (SMvGfVVI8pN4lQroEEl)1u) == (SMvGfVVI8pN4lQroEEl)1u)
+		if ((P_0 & (HotkeyAction)1u) == (HotkeyAction)1u)
 		{
 			yield return "IP_Assurance";
 		}
-		if ((P_0 & (SMvGfVVI8pN4lQroEEl)4u) == (SMvGfVVI8pN4lQroEEl)4u)
+		if ((P_0 & (HotkeyAction)4u) == (HotkeyAction)4u)
 		{
 			yield return "钉桌面配置已保存。";
 		}
-		if ((P_0 & (SMvGfVVI8pN4lQroEEl)8u) == (SMvGfVVI8pN4lQroEEl)8u)
+		if ((P_0 & (HotkeyAction)8u) == (HotkeyAction)8u)
 		{
 			yield return "IP_Assurance";
 		}
@@ -299,9 +299,9 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 	[DebuggerNonUserCode]
 	public void InitializeComponent()
 	{
-		if (!aHl5DrVhlY)
+		if (!_bool)
 		{
-			aHl5DrVhlY = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/general/desktoppinconfigwindow.xaml", UriKind.Relative);
 			System.Windows.Application.LoadComponent(this, resourceLocator);
 		}
@@ -341,14 +341,14 @@ public sealed class DesktopPinConfigWindow : Window, IComponentConnector
 			((System.Windows.Controls.Button)target).Click += VcF7vp0Aa4;
 			break;
 		default:
-			aHl5DrVhlY = true;
+			_bool = true;
 			break;
 		}
 	}
 
 	static DesktopPinConfigWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		vEu56hqTPE = new string[5]
 		{
 			"无",

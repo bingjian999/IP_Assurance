@@ -9,31 +9,31 @@ namespace AiProviderConfig;
 internal sealed class AiProviderConfig
 {
 	[CompilerGenerated]
-	private string qb1LQYMfIL;
+	private string _name;
 
 	[CompilerGenerated]
-	private string AkvL1qAYUE;
+	private string _provider;
 
 	[CompilerGenerated]
-	private string nO8LrsZRmT;
+	private string _apiKey;
 
 	[CompilerGenerated]
-	private string DvYLJ9GuQN;
+	private string _baseUrl;
 
 	[CompilerGenerated]
-	private string FI5L3Vw5oO;
+	private string _model;
 
 	public string Name
 	{
 		[CompilerGenerated]
 		get
 		{
-			return qb1LQYMfIL;
+			return _name;
 		}
 		[CompilerGenerated]
 		set
 		{
-			qb1LQYMfIL = value;
+			_name = value;
 		}
 	}
 
@@ -42,12 +42,12 @@ internal sealed class AiProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return AkvL1qAYUE;
+			return _provider;
 		}
 		[CompilerGenerated]
 		set
 		{
-			AkvL1qAYUE = value;
+			_provider = value;
 		}
 	}
 
@@ -56,12 +56,12 @@ internal sealed class AiProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return nO8LrsZRmT;
+			return _apiKey;
 		}
 		[CompilerGenerated]
 		set
 		{
-			nO8LrsZRmT = value;
+			_apiKey = value;
 		}
 	}
 
@@ -70,12 +70,12 @@ internal sealed class AiProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return DvYLJ9GuQN;
+			return _baseUrl;
 		}
 		[CompilerGenerated]
 		set
 		{
-			DvYLJ9GuQN = value;
+			_baseUrl = value;
 		}
 	}
 
@@ -84,12 +84,12 @@ internal sealed class AiProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return FI5L3Vw5oO;
+			return _model;
 		}
 		[CompilerGenerated]
 		set
 		{
-			FI5L3Vw5oO = value;
+			_model = value;
 		}
 	}
 
@@ -177,11 +177,11 @@ internal sealed class AiProviderConfig
 
 	public AiProviderConfig()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		qb1LQYMfIL = "";
-		AkvL1qAYUE = "openai";
-		nO8LrsZRmT = "";
-		DvYLJ9GuQN = "";
-		FI5L3Vw5oO = "";
+		SseStreamInitializer.InitializeRuntime();
+		_name = "";
+		_provider = "openai";
+		_apiKey = "";
+		_baseUrl = "";
+		_model = "";
 	}
 }

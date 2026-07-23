@@ -7,25 +7,25 @@ namespace RibbonMenuItem;
 
 internal sealed class RibbonMenuItem : Helper_2
 {
-	private string ON5mv1cLlB;
+	private string _styleValue;
 
-	private string IBwmWs89D4;
-
-	[CompilerGenerated]
-	private readonly string InLm0R4pbI;
+	private string _widthValue;
 
 	[CompilerGenerated]
-	private readonly string DxJmksE0Sy;
+	private readonly string _string;
 
 	[CompilerGenerated]
-	private readonly bool Soamx5oBjM;
+	private readonly string _string;
+
+	[CompilerGenerated]
+	private readonly bool _bool;
 
 	public string Key
 	{
 		[CompilerGenerated]
 		get
 		{
-			return InLm0R4pbI;
+			return _string;
 		}
 	}
 
@@ -34,7 +34,7 @@ internal sealed class RibbonMenuItem : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return DxJmksE0Sy;
+			return _string;
 		}
 	}
 
@@ -43,7 +43,7 @@ internal sealed class RibbonMenuItem : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return Soamx5oBjM;
+			return _bool;
 		}
 	}
 
@@ -51,11 +51,11 @@ internal sealed class RibbonMenuItem : Helper_2
 	{
 		get
 		{
-			return ON5mv1cLlB;
+			return _styleValue;
 		}
 		set
 		{
-			MrCsWWMvwp(ref ON5mv1cLlB, value, "StyleValue");
+			MrCsWWMvwp(ref _styleValue, value, "StyleValue");
 		}
 	}
 
@@ -63,26 +63,26 @@ internal sealed class RibbonMenuItem : Helper_2
 	{
 		get
 		{
-			return IBwmWs89D4;
+			return _widthValue;
 		}
 		set
 		{
-			MrCsWWMvwp(ref IBwmWs89D4, value, "WidthValue");
+			MrCsWWMvwp(ref _widthValue, value, "WidthValue");
 		}
 	}
 
 	public RibbonMenuItem(string P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		InLm0R4pbI = P_0;
-		DxJmksE0Sy = P_0 + "：";
+		SseStreamInitializer.InitializeRuntime();
+		_string = P_0;
+		_string = P_0 + "：";
 	}
 
 	private RibbonMenuItem(string P_0, bool P_1)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		DxJmksE0Sy = P_0;
-		Soamx5oBjM = P_1;
+		SseStreamInitializer.InitializeRuntime();
+		_string = P_0;
+		_bool = P_1;
 	}
 
 	public static RibbonMenuItem SObmA0Jxbq(string P_0)

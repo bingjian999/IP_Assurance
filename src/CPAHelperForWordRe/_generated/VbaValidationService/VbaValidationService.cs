@@ -14,14 +14,14 @@ namespace VbaValidationService;
 
 internal sealed class VbaValidationService : IToolProvider
 {
-	private readonly WpsVbaCompatService NdH9vpTUbm;
+	private readonly WpsVbaCompatService _wpsVbaCompatService;
 
 	public string ProviderName => "VBA";
 
 	public VbaValidationService(WpsVbaCompatService P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		NdH9vpTUbm = P_0 ?? throw new ArgumentNullException("vbaService");
+		SseStreamInitializer.InitializeRuntime();
+		_wpsVbaCompatService = P_0 ?? throw new ArgumentNullException("vbaService");
 	}
 
 	public IList<AITool> GetTools()
@@ -62,10 +62,10 @@ internal sealed class VbaValidationService : IToolProvider
 	[Description("验证 Word VBA 代码片段是否合法，检查是否包含无参数 Sub 入口。run_vba_snippet 前必须先调用此工具；VBA 是专用 Word 工具覆盖不了时的高风险兜底。")]
 	private AiHelper_5 ValidateVbaSnippet([Description("完整的 Word VBA 代码字符串，必须包含一个无参数 Sub ... End Sub 入口过程。")] string vbaCode)
 	{
-		string text = NdH9vpTUbm.R1tJz1VIhA(vbaCode);
+		string text = _wpsVbaCompatService.R1tJz1VIhA(vbaCode);
 		if (text.StartsWith("验证通过", StringComparison.Ordinal))
 		{
-			return AiHelper_5.nt99CvEC4m("VBA snippet is valid.", new
+			return AiHelper_5.CreateSuccess("VBA snippet is valid.", new
 			{
 				valid = true,
 				warning = false,
@@ -74,14 +74,14 @@ internal sealed class VbaValidationService : IToolProvider
 		}
 		if (text.StartsWith("验证警告", StringComparison.Ordinal))
 		{
-			return AiHelper_5.x719pAJQxl("VBA snippet has a warning.", new
+			return AiHelper_5.CreateWarning("VBA snippet has a warning.", new
 			{
 				valid = true,
 				warning = true,
 				details = text
 			});
 		}
-		return AiHelper_5.QSD9OKWs4n("VBA snippet is invalid.", "invalid_vba", new
+		return AiHelper_5.CreateError("VBA snippet is invalid.", "invalid_vba", new
 		{
 			valid = false,
 			details = text
@@ -93,16 +93,16 @@ internal sealed class VbaValidationService : IToolProvider
 	{
 		try
 		{
-			string text = NdH9vpTUbm.R1tJz1VIhA(vbaCode);
+			string text = _wpsVbaCompatService.R1tJz1VIhA(vbaCode);
 			if (!text.StartsWith("验证通过", StringComparison.Ordinal) && !text.StartsWith("验证警告", StringComparison.Ordinal))
 			{
-				return AiHelper_5.QSD9OKWs4n("VBA snippet is invalid.", "invalid_vba", new
+				return AiHelper_5.CreateError("VBA snippet is invalid.", "invalid_vba", new
 				{
 					details = text
 				});
 			}
-			string details = NdH9vpTUbm.zer3R7UqTK(vbaCode);
-			return AiHelper_5.nt99CvEC4m("VBA snippet executed.", new
+			string details = _wpsVbaCompatService.zer3R7UqTK(vbaCode);
+			return AiHelper_5.CreateSuccess("VBA snippet executed.", new
 			{
 				executed = true,
 				details = details
@@ -110,11 +110,11 @@ internal sealed class VbaValidationService : IToolProvider
 		}
 		catch (Exception ex)
 		{
-			if (WordAgentRuntimeGuard2.r6TJwEkoUc(ex.GetBaseException()?.Message) || WordAgentRuntimeGuard2.r6TJwEkoUc(ex.Message))
+			if (WordAgentRuntimeGuard2.IsRetryableError(ex.GetBaseException()?.Message) || WordAgentRuntimeGuard2.IsRetryableError(ex.Message))
 			{
-				return WordAgentRuntimeGuard2.dclJSetxGY(ex.GetBaseException()?.Message ?? ex.Message);
+				return WordAgentRuntimeGuard2.CreateNotReadyError(ex.GetBaseException()?.Message ?? ex.Message);
 			}
-			return AiHelper_5.g7A9nYlk8v("VBA execution failed", "vba_error", ex);
+			return AiHelper_5.CreateExceptionError("VBA execution failed", "vba_error", ex);
 		}
 	}
 }

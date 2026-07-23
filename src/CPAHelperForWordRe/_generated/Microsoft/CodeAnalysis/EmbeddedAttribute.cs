@@ -10,6 +10,6 @@ internal sealed class EmbeddedAttribute : Attribute
 {
 	public EmbeddedAttribute()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

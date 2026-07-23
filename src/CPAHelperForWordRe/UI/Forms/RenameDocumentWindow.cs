@@ -24,11 +24,11 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 
 	internal Button btnRename;
 
-	private bool Vq7GOGxkHa;
+	private bool _bool;
 
 	public RenameDocumentWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -106,9 +106,9 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!Vq7GOGxkHa)
+		if (!_bool)
 		{
-			Vq7GOGxkHa = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/renamedocumentwindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -138,7 +138,7 @@ public sealed class RenameDocumentWindow : Window, IComponentConnector
 			((Button)target).Click += nbhGGR3871;
 			break;
 		default:
-			Vq7GOGxkHa = true;
+			_bool = true;
 			break;
 		}
 	}

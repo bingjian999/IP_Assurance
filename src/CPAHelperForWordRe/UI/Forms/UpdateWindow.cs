@@ -28,9 +28,9 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass5_0
 	{
-		public UpdateWindow dEAVYI0saVx;
+		public UpdateWindow updateWindow;
 
-		public HttpHelper_1 I8VVYisvYtR;
+		public HttpHelper_1 httpHelper_1;
 
 		public bool SPMVYHHvWZj;
 
@@ -38,52 +38,52 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 		public _G_c__DisplayClass5_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void OyMVYTEtbNt()
 		{
-			dEAVYI0saVx.btnCheck.IsEnabled = false;
-			dEAVYI0saVx.lblRemoteVersion.Text = "正在获取...";
-			dEAVYI0saVx.lblRemoteDate.Text = string.Empty;
-			dEAVYI0saVx.txtDescription.Text = string.Empty;
-			dEAVYI0saVx.btnDownload.IsEnabled = false;
-			dEAVYI0saVx.progressBar.Visibility = Visibility.Collapsed;
-			dEAVYI0saVx.lblProgress.Visibility = Visibility.Collapsed;
+			updateWindow.btnCheck.IsEnabled = false;
+			updateWindow.lblRemoteVersion.Text = "正在获取...";
+			updateWindow.lblRemoteDate.Text = string.Empty;
+			updateWindow.txtDescription.Text = string.Empty;
+			updateWindow.btnDownload.IsEnabled = false;
+			updateWindow.progressBar.Visibility = Visibility.Collapsed;
+			updateWindow.lblProgress.Visibility = Visibility.Collapsed;
 		}
 
 		internal void ruiVYgKkGZ0()
 		{
-			dEAVYI0saVx.lblRemoteVersion.Text = "获取失败";
-			dEAVYI0saVx.txtDescription.Text = "无法连接更新服务器，请检查网络后重试。";
-			dEAVYI0saVx.btnCheck.IsEnabled = true;
+			updateWindow.lblRemoteVersion.Text = "获取失败";
+			updateWindow.txtDescription.Text = "无法连接更新服务器，请检查网络后重试。";
+			updateWindow.btnCheck.IsEnabled = true;
 		}
 
 		internal void GiJVY8EBqPv()
 		{
-			dEAVYI0saVx.lblRemoteVersion.Text = I8VVYisvYtR.VersionText ?? "未知";
-			dEAVYI0saVx.lblRemoteDate.Text = I8VVYisvYtR.ReleaseDate ?? string.Empty;
-			dEAVYI0saVx.txtDescription.Text = (SPMVYHHvWZj ? ("当前已是最新版本。" + Environment.NewLine + Environment.NewLine + UJeVYQhHWDY) : ("发现新版本！" + Environment.NewLine + Environment.NewLine + UJeVYQhHWDY));
-			dEAVYI0saVx.btnDownload.IsEnabled = SPMVYHHvWZj && !string.IsNullOrWhiteSpace(I8VVYisvYtR.DownloadUrl);
-			dEAVYI0saVx.btnCheck.IsEnabled = true;
+			updateWindow.lblRemoteVersion.Text = httpHelper_1.VersionText ?? "未知";
+			updateWindow.lblRemoteDate.Text = httpHelper_1.ReleaseDate ?? string.Empty;
+			updateWindow.txtDescription.Text = (SPMVYHHvWZj ? ("当前已是最新版本。" + Environment.NewLine + Environment.NewLine + UJeVYQhHWDY) : ("发现新版本！" + Environment.NewLine + Environment.NewLine + UJeVYQhHWDY));
+			updateWindow.btnDownload.IsEnabled = SPMVYHHvWZj && !string.IsNullOrWhiteSpace(httpHelper_1.DownloadUrl);
+			updateWindow.btnCheck.IsEnabled = true;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass8_0
 	{
-		public Exception H0VVYrHuupw;
+		public Exception exception;
 
-		public UpdateWindow Rc4VYJxfurr;
+		public UpdateWindow updateWindow;
 
 		public _G_c__DisplayClass8_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void grbVY1pDLQ2()
 		{
-			MessageBox.Show(Rc4VYJxfurr, "下载失败：" + H0VVYrHuupw.Message, "检查更新", MessageBoxButton.OK, MessageBoxImage.Hand);
+			MessageBox.Show(updateWindow, "下载失败：" + exception.Message, "检查更新", MessageBoxButton.OK, MessageBoxImage.Hand);
 		}
 	}
 
@@ -98,7 +98,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 		public _G_c__DisplayClass9_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void MBKVY3YkeNX()
@@ -116,11 +116,11 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		}
 	}
 
-	private HttpHelper_1 znO71f1fyS;
+	private HttpHelper_1 _httpHelper_1;
 
-	private CancellationTokenSource QY27reFqRv;
+	private CancellationTokenSource _cancellationTokenSource;
 
-	private bool vyh7JLyDHT;
+	private bool _bool;
 
 	internal TextBlock lblCurrentVersion;
 
@@ -140,15 +140,15 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	internal CheckBox chkAutoUpdate;
 
-	private bool yeO73g5qG2;
+	private bool _bool;
 
 	public UpdateWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
-			if (P_1.Key == Key.Escape && !vyh7JLyDHT)
+			if (P_1.Key == Key.Escape && !_bool)
 			{
 				Close();
 			}
@@ -158,7 +158,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	private void jvrn0yOKXs(object P_0, RoutedEventArgs P_1)
 	{
-		lblCurrentVersion.Text = AiSseStreamService4.mVoL74rdRf();
+		lblCurrentVersion.Text = AiSseStreamService4.GetAssemblyVersion();
 		lblRemoteVersion.Text = "正在获取...";
 		lblRemoteDate.Text = "";
 		txtDescription.Text = "";
@@ -170,44 +170,44 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	private async void hnYnkOQoh2()
 	{
 		_G_c__DisplayClass5_0 CS_8_locals_30 = new _G_c__DisplayClass5_0();
-		CS_8_locals_30.dEAVYI0saVx = this;
+		CS_8_locals_30.updateWindow = this;
 		rhf7BnFSKl(delegate
 		{
-			CS_8_locals_30.dEAVYI0saVx.btnCheck.IsEnabled = false;
-			CS_8_locals_30.dEAVYI0saVx.lblRemoteVersion.Text = "正在获取...";
-			CS_8_locals_30.dEAVYI0saVx.lblRemoteDate.Text = string.Empty;
-			CS_8_locals_30.dEAVYI0saVx.txtDescription.Text = string.Empty;
-			CS_8_locals_30.dEAVYI0saVx.btnDownload.IsEnabled = false;
-			CS_8_locals_30.dEAVYI0saVx.progressBar.Visibility = Visibility.Collapsed;
-			CS_8_locals_30.dEAVYI0saVx.lblProgress.Visibility = Visibility.Collapsed;
+			CS_8_locals_30.updateWindow.btnCheck.IsEnabled = false;
+			CS_8_locals_30.updateWindow.lblRemoteVersion.Text = "正在获取...";
+			CS_8_locals_30.updateWindow.lblRemoteDate.Text = string.Empty;
+			CS_8_locals_30.updateWindow.txtDescription.Text = string.Empty;
+			CS_8_locals_30.updateWindow.btnDownload.IsEnabled = false;
+			CS_8_locals_30.updateWindow.progressBar.Visibility = Visibility.Collapsed;
+			CS_8_locals_30.updateWindow.lblProgress.Visibility = Visibility.Collapsed;
 		});
-		CS_8_locals_30.I8VVYisvYtR = await AiSseStreamService4.PJYL5bLAxq();
-		znO71f1fyS = CS_8_locals_30.I8VVYisvYtR;
-		if (CS_8_locals_30.I8VVYisvYtR == null)
+		CS_8_locals_30.httpHelper_1 = await AiSseStreamService4.PJYL5bLAxq();
+		_httpHelper_1 = CS_8_locals_30.httpHelper_1;
+		if (CS_8_locals_30.httpHelper_1 == null)
 		{
 			rhf7BnFSKl(delegate
 			{
-				CS_8_locals_30.dEAVYI0saVx.lblRemoteVersion.Text = "正在下载中，确定要取消吗？";
-				CS_8_locals_30.dEAVYI0saVx.txtDescription.Text = "检查更新";
-				CS_8_locals_30.dEAVYI0saVx.btnCheck.IsEnabled = true;
+				CS_8_locals_30.updateWindow.lblRemoteVersion.Text = "正在下载中，确定要取消吗？";
+				CS_8_locals_30.updateWindow.txtDescription.Text = "检查更新";
+				CS_8_locals_30.updateWindow.btnCheck.IsEnabled = true;
 			});
 			return;
 		}
-		CS_8_locals_30.UJeVYQhHWDY = MGO7uTfOsY(CS_8_locals_30.I8VVYisvYtR.Description);
-		CS_8_locals_30.SPMVYHHvWZj = AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.mVoL74rdRf(), CS_8_locals_30.I8VVYisvYtR.VersionText);
+		CS_8_locals_30.UJeVYQhHWDY = MGO7uTfOsY(CS_8_locals_30.httpHelper_1.Description);
+		CS_8_locals_30.SPMVYHHvWZj = AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), CS_8_locals_30.httpHelper_1.VersionText);
 		rhf7BnFSKl(delegate
 		{
-			CS_8_locals_30.dEAVYI0saVx.lblRemoteVersion.Text = CS_8_locals_30.I8VVYisvYtR.VersionText ?? ".exe";
-			CS_8_locals_30.dEAVYI0saVx.lblRemoteDate.Text = CS_8_locals_30.I8VVYisvYtR.ReleaseDate ?? string.Empty;
-			CS_8_locals_30.dEAVYI0saVx.txtDescription.Text = (CS_8_locals_30.SPMVYHHvWZj ? (".msi" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.UJeVYQhHWDY) : (".zip" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.UJeVYQhHWDY));
-			CS_8_locals_30.dEAVYI0saVx.btnDownload.IsEnabled = CS_8_locals_30.SPMVYHHvWZj && !string.IsNullOrWhiteSpace(CS_8_locals_30.I8VVYisvYtR.DownloadUrl);
-			CS_8_locals_30.dEAVYI0saVx.btnCheck.IsEnabled = true;
+			CS_8_locals_30.updateWindow.lblRemoteVersion.Text = CS_8_locals_30.httpHelper_1.VersionText ?? ".exe";
+			CS_8_locals_30.updateWindow.lblRemoteDate.Text = CS_8_locals_30.httpHelper_1.ReleaseDate ?? string.Empty;
+			CS_8_locals_30.updateWindow.txtDescription.Text = (CS_8_locals_30.SPMVYHHvWZj ? (".msi" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.UJeVYQhHWDY) : (".zip" + Environment.NewLine + Environment.NewLine + CS_8_locals_30.UJeVYQhHWDY));
+			CS_8_locals_30.updateWindow.btnDownload.IsEnabled = CS_8_locals_30.SPMVYHHvWZj && !string.IsNullOrWhiteSpace(CS_8_locals_30.httpHelper_1.DownloadUrl);
+			CS_8_locals_30.updateWindow.btnCheck.IsEnabled = true;
 		});
 	}
 
 	private void eL2nxb8BFW(object P_0, RoutedEventArgs P_1)
 	{
-		if (!vyh7JLyDHT)
+		if (!_bool)
 		{
 			hnYnkOQoh2();
 		}
@@ -215,7 +215,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	private async void e5Vnd8VSTM(object P_0, RoutedEventArgs P_1)
 	{
-		string text = znO71f1fyS?.DownloadUrl;
+		string text = _httpHelper_1?.DownloadUrl;
 		if (string.IsNullOrWhiteSpace(text))
 		{
 			text = " B";
@@ -232,7 +232,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	private async Task Lk8nz8vy6g(string P_0)
 	{
-		vyh7JLyDHT = true;
+		_bool = true;
 		rhf7BnFSKl(delegate
 		{
 			btnDownload.IsEnabled = false;
@@ -243,15 +243,15 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			lblProgress.Visibility = Visibility.Visible;
 			lblProgress.Text = "F1";
 		});
-		QY27reFqRv?.Dispose();
-		QY27reFqRv = new CancellationTokenSource();
-		CancellationToken token = QY27reFqRv.Token;
-		string tempDir = AiSseStreamService.XOes64flqb(" KB");
+		_cancellationTokenSource?.Dispose();
+		_cancellationTokenSource = new CancellationTokenSource();
+		CancellationToken token = _cancellationTokenSource.Token;
+		string tempDir = AiSseStreamService.GetTempPath(" KB");
 		string path = YDq7gFVLhY(P_0, null);
 		string tempPath = Path.Combine(tempDir, path);
 		try
 		{
-			if (!FileDownloadHelper2.nejLvR3Pvv(P_0))
+			if (!FileDownloadHelper2.IsHttpsUrl(P_0))
 			{
 				throw new InvalidOperationException("F1");
 			}
@@ -334,7 +334,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			djs7R66JV1(100, "\n");
 			if (!File.Exists(tempPath) || new FileInfo(tempPath).Length == 0L)
 			{
-				FileDownloadHelper2.z26LWVWmdm(tempPath);
+				FileDownloadHelper2.DeleteFileIfExists(tempPath);
 				rhf7BnFSKl(delegate
 				{
 					MessageBox.Show(this, "\\\\r", "\n", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -348,7 +348,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		}
 		catch (OperationCanceledException)
 		{
-			FileDownloadHelper2.z26LWVWmdm(tempPath);
+			FileDownloadHelper2.DeleteFileIfExists(tempPath);
 			rhf7BnFSKl(delegate
 			{
 				lblProgress.Text = "\n";
@@ -357,23 +357,23 @@ public sealed class UpdateWindow : Window, IComponentConnector
 		catch (Exception ex2)
 		{
 			_G_c__DisplayClass8_0 CS_8_locals_5 = new _G_c__DisplayClass8_0();
-			CS_8_locals_5.Rc4VYJxfurr = this;
+			CS_8_locals_5.updateWindow = this;
 			Exception h0VVYrHuupw = ex2;
-			CS_8_locals_5.H0VVYrHuupw = h0VVYrHuupw;
-			FileDownloadHelper2.z26LWVWmdm(tempPath);
-			AiConfigBootstrap.ujWsURly3F("explorer.exe", CS_8_locals_5.H0VVYrHuupw);
+			CS_8_locals_5.exception = h0VVYrHuupw;
+			FileDownloadHelper2.DeleteFileIfExists(tempPath);
+			AiConfigBootstrap.LogError("explorer.exe", CS_8_locals_5.exception);
 			rhf7BnFSKl(delegate
 			{
-				MessageBox.Show(CS_8_locals_5.Rc4VYJxfurr, "/select,\"" + CS_8_locals_5.H0VVYrHuupw.Message, "\"", MessageBoxButton.OK, MessageBoxImage.Hand);
+				MessageBox.Show(CS_8_locals_5.updateWindow, "/select,\"" + CS_8_locals_5.exception.Message, "\"", MessageBoxButton.OK, MessageBoxImage.Hand);
 			});
 		}
 		finally
 		{
-			vyh7JLyDHT = false;
+			_bool = false;
 			rhf7BnFSKl(delegate
 			{
 				btnCheck.IsEnabled = true;
-				btnDownload.IsEnabled = znO71f1fyS != null && !string.IsNullOrWhiteSpace(znO71f1fyS.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.mVoL74rdRf(), znO71f1fyS.VersionText);
+				btnDownload.IsEnabled = _httpHelper_1 != null && !string.IsNullOrWhiteSpace(_httpHelper_1.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), _httpHelper_1.VersionText);
 			});
 		}
 	}
@@ -406,14 +406,14 @@ public sealed class UpdateWindow : Window, IComponentConnector
 
 	protected override void OnClosing(CancelEventArgs e)
 	{
-		if (vyh7JLyDHT)
+		if (_bool)
 		{
 			if (MessageBox.Show(this, "正在下载中，确定要取消吗？", "检查更新", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
 			{
 				e.Cancel = true;
 				return;
 			}
-			QY27reFqRv?.Cancel();
+			_cancellationTokenSource?.Cancel();
 		}
 		base.OnClosing(e);
 	}
@@ -569,9 +569,9 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!yeO73g5qG2)
+		if (!_bool)
 		{
-			yeO73g5qG2 = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/updatewindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -616,7 +616,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 			chkAutoUpdate.Unchecked += wEu7VM60YP;
 			break;
 		default:
-			yeO73g5qG2 = true;
+			_bool = true;
 			break;
 		}
 	}
@@ -624,7 +624,7 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	[CompilerGenerated]
 	private void J9S78dIwYv(object P_0, KeyEventArgs P_1)
 	{
-		if (P_1.Key == Key.Escape && !vyh7JLyDHT)
+		if (P_1.Key == Key.Escape && !_bool)
 		{
 			Close();
 		}
@@ -658,6 +658,6 @@ public sealed class UpdateWindow : Window, IComponentConnector
 	private void URg7Qvog35()
 	{
 		btnCheck.IsEnabled = true;
-		btnDownload.IsEnabled = znO71f1fyS != null && !string.IsNullOrWhiteSpace(znO71f1fyS.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.mVoL74rdRf(), znO71f1fyS.VersionText);
+		btnDownload.IsEnabled = _httpHelper_1 != null && !string.IsNullOrWhiteSpace(_httpHelper_1.DownloadUrl) && AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), _httpHelper_1.VersionText);
 	}
 }

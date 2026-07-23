@@ -21,28 +21,28 @@ internal sealed class CliCommandService : IToolProvider
 	private sealed class peDdSyhbcuP9ypMdOqG
 	{
 		[CompilerGenerated]
-		private int? RPqhSjYT1e;
+		private int? _exitCode;
 
 		[CompilerGenerated]
-		private bool CbnhwE3cv6;
+		private bool _timedOut;
 
 		[CompilerGenerated]
 		private string gaFhtZlfcl;
 
 		[CompilerGenerated]
-		private string VZjhLAAR2l;
+		private string _stderr;
 
 		public int? ExitCode
 		{
 			[CompilerGenerated]
 			get
 			{
-				return RPqhSjYT1e;
+				return _exitCode;
 			}
 			[CompilerGenerated]
 			set
 			{
-				RPqhSjYT1e = value;
+				_exitCode = value;
 			}
 		}
 
@@ -51,12 +51,12 @@ internal sealed class CliCommandService : IToolProvider
 			[CompilerGenerated]
 			get
 			{
-				return CbnhwE3cv6;
+				return _timedOut;
 			}
 			[CompilerGenerated]
 			set
 			{
-				CbnhwE3cv6 = value;
+				_timedOut = value;
 			}
 		}
 
@@ -79,18 +79,18 @@ internal sealed class CliCommandService : IToolProvider
 			[CompilerGenerated]
 			get
 			{
-				return VZjhLAAR2l;
+				return _stderr;
 			}
 			[CompilerGenerated]
 			set
 			{
-				VZjhLAAR2l = value;
+				_stderr = value;
 			}
 		}
 
 		public peDdSyhbcuP9ypMdOqG()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
@@ -101,16 +101,16 @@ internal sealed class CliCommandService : IToolProvider
 
 		public string tuAhNGVMve;
 
-		public string IX2hmNBk9j;
+		public string text;
 
 		public _G_c__DisplayClass10_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal peDdSyhbcuP9ypMdOqG aq7hsMdx5p()
 		{
-			return fju9MgoMBK(Anl9Ssa2lw(), "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + tuAhNGVMve, IX2hmNBk9j, ebt9Z4TRlv(MxxhlOwAEk));
+			return fju9MgoMBK(Anl9Ssa2lw(), "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + tuAhNGVMve, text, ebt9Z4TRlv(MxxhlOwAEk));
 		}
 	}
 
@@ -119,7 +119,7 @@ internal sealed class CliCommandService : IToolProvider
 	{
 		public string IvihGyHUks;
 
-		public int gnGhCfkl5Z;
+		public int value;
 
 		public string OZohpSLKEr;
 
@@ -127,46 +127,46 @@ internal sealed class CliCommandService : IToolProvider
 
 		public _G_c__DisplayClass11_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal peDdSyhbcuP9ypMdOqG sFLhokwAUy()
 		{
-			return fju9MgoMBK(OZohpSLKEr, IvihGyHUks ?? string.Empty, xaghOgYyIZ, ebt9Z4TRlv(gnGhCfkl5Z));
+			return fju9MgoMBK(OZohpSLKEr, IvihGyHUks ?? string.Empty, xaghOgYyIZ, ebt9Z4TRlv(value));
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass17_0
 	{
-		public StringBuilder f79h59X2Ay;
+		public StringBuilder stringBuilder;
 
-		public StringBuilder i1hhcwGXZT;
+		public StringBuilder stringBuilder;
 
 		public _G_c__DisplayClass17_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void oWShnDR48h(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(f79h59X2Ay, args.Data);
+			Q4y9bTxUyf(stringBuilder, args.Data);
 		}
 
 		internal void cxlh7wwFYQ(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(i1hhcwGXZT, args.Data);
+			Q4y9bTxUyf(stringBuilder, args.Data);
 		}
 	}
 
-	private readonly IHostContext gh79twQlGS;
+	private readonly IHostContext _iHostContext;
 
 	public string ProviderName => "CLI";
 
 	public CliCommandService(IHostContext P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		gh79twQlGS = P_0 ?? throw new ArgumentNullException("hostContext");
+		SseStreamInitializer.InitializeRuntime();
+		_iHostContext = P_0 ?? throw new ArgumentNullException("hostContext");
 	}
 
 	public IList<AITool> GetTools()
@@ -212,22 +212,22 @@ internal sealed class CliCommandService : IToolProvider
 		CS_8_locals_8.MxxhlOwAEk = timeoutSeconds;
 		if (string.IsNullOrWhiteSpace(command))
 		{
-			return AiHelper_5.QSD9OKWs4n("CLI", "RunCliCommand");
+			return AiHelper_5.CreateError("CLI", "RunCliCommand");
 		}
 		if (AMR9fi0nye(command))
 		{
-			return AiHelper_5.QSD9OKWs4n("run_cli_command", "RunExeCommand");
+			return AiHelper_5.CreateError("run_cli_command", "RunExeCommand");
 		}
 		try
 		{
-			CS_8_locals_8.IX2hmNBk9j = sAl94Dv122(cwd);
+			CS_8_locals_8.text = sAl94Dv122(cwd);
 			CS_8_locals_8.tuAhNGVMve = Convert.ToBase64String(Encoding.Unicode.GetBytes(command));
-			peDdSyhbcuP9ypMdOqG peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => fju9MgoMBK(Anl9Ssa2lw(), "run_exe_command" + CS_8_locals_8.tuAhNGVMve, CS_8_locals_8.IX2hmNBk9j, ebt9Z4TRlv(CS_8_locals_8.MxxhlOwAEk))).ConfigureAwait(continueOnCapturedContext: false);
-			KOn9w5WDpJ("run_cli_command", command, CS_8_locals_8.IX2hmNBk9j, peDdSyhbcuP9ypMdOqG2);
-			return AiHelper_5.nt99CvEC4m("cli", new
+			peDdSyhbcuP9ypMdOqG peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => fju9MgoMBK(Anl9Ssa2lw(), "run_exe_command" + CS_8_locals_8.tuAhNGVMve, CS_8_locals_8.text, ebt9Z4TRlv(CS_8_locals_8.MxxhlOwAEk))).ConfigureAwait(continueOnCapturedContext: false);
+			KOn9w5WDpJ("run_cli_command", command, CS_8_locals_8.text, peDdSyhbcuP9ypMdOqG2);
+			return AiHelper_5.CreateSuccess("cli", new
 			{
 				command = command,
-				cwd = CS_8_locals_8.IX2hmNBk9j,
+				cwd = CS_8_locals_8.text,
 				exitCode = peDdSyhbcuP9ypMdOqG2.ExitCode,
 				timedOut = peDdSyhbcuP9ypMdOqG2.TimedOut,
 				stdout = peDdSyhbcuP9ypMdOqG2.Stdout,
@@ -236,7 +236,7 @@ internal sealed class CliCommandService : IToolProvider
 		}
 		catch (Exception ex)
 		{
-			return AiHelper_5.g7A9nYlk8v("risk.filesystem", "risk.high", ex);
+			return AiHelper_5.CreateExceptionError("risk.filesystem", "risk.high", ex);
 		}
 	}
 
@@ -245,18 +245,18 @@ internal sealed class CliCommandService : IToolProvider
 	{
 		_G_c__DisplayClass11_0 CS_8_locals_15 = new _G_c__DisplayClass11_0();
 		CS_8_locals_15.IvihGyHUks = arguments;
-		CS_8_locals_15.gnGhCfkl5Z = timeoutSeconds;
+		CS_8_locals_15.value = timeoutSeconds;
 		if (string.IsNullOrWhiteSpace(exePath))
 		{
-			return AiHelper_5.QSD9OKWs4n("执行非交互式 Windows PowerShell 命令；用于文件/脚本辅助，不绕过 Word 专用工具。", "run_exe_command");
+			return AiHelper_5.CreateError("执行非交互式 Windows PowerShell 命令；用于文件/脚本辅助，不绕过 Word 专用工具。", "run_exe_command");
 		}
 		try
 		{
 			CS_8_locals_15.xaghOgYyIZ = sAl94Dv122(cwd);
 			CS_8_locals_15.OZohpSLKEr = hku9jRL7Cj(exePath, CS_8_locals_15.xaghOgYyIZ);
-			peDdSyhbcuP9ypMdOqG peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => fju9MgoMBK(CS_8_locals_15.OZohpSLKEr, CS_8_locals_15.IvihGyHUks ?? string.Empty, CS_8_locals_15.xaghOgYyIZ, ebt9Z4TRlv(CS_8_locals_15.gnGhCfkl5Z))).ConfigureAwait(continueOnCapturedContext: false);
+			peDdSyhbcuP9ypMdOqG peDdSyhbcuP9ypMdOqG2 = await Task.Run(() => fju9MgoMBK(CS_8_locals_15.OZohpSLKEr, CS_8_locals_15.IvihGyHUks ?? string.Empty, CS_8_locals_15.xaghOgYyIZ, ebt9Z4TRlv(CS_8_locals_15.value))).ConfigureAwait(continueOnCapturedContext: false);
 			KOn9w5WDpJ("cli", CS_8_locals_15.OZohpSLKEr + "risk.filesystem" + (CS_8_locals_15.IvihGyHUks ?? string.Empty), CS_8_locals_15.xaghOgYyIZ, peDdSyhbcuP9ypMdOqG2);
-			return AiHelper_5.nt99CvEC4m("risk.high", new
+			return AiHelper_5.CreateSuccess("risk.high", new
 			{
 				exePath = CS_8_locals_15.OZohpSLKEr,
 				arguments = (CS_8_locals_15.IvihGyHUks ?? string.Empty),
@@ -269,21 +269,21 @@ internal sealed class CliCommandService : IToolProvider
 		}
 		catch (Exception ex)
 		{
-			return AiHelper_5.g7A9nYlk8v("直接执行非交互式 Windows 可执行文件；不经过 shell，不绕过 Word 专用工具。", "Agent", ex);
+			return AiHelper_5.CreateExceptionError("直接执行非交互式 Windows 可执行文件；不经过 shell，不绕过 Word 专用工具。", "Agent", ex);
 		}
 	}
 
 	private string sAl94Dv122(string P_0)
 	{
 		string text = null;
-		string projectPath = gh79twQlGS.GetProjectPath();
+		string projectPath = _iHostContext.GetProjectPath();
 		if (!string.IsNullOrWhiteSpace(projectPath))
 		{
 			text = (Directory.Exists(projectPath) ? projectPath : Path.GetDirectoryName(projectPath));
 		}
 		if (string.IsNullOrWhiteSpace(text) || !Directory.Exists(text))
 		{
-			text = AiSseStreamService.XOes64flqb("Agent", "CliWorkspace");
+			text = AiSseStreamService.GetTempPath("Agent", "CliWorkspace");
 		}
 		string path = (string.IsNullOrWhiteSpace(P_0) ? text : (Path.IsPathRooted(P_0) ? P_0 : Path.Combine(text, P_0)));
 		path = Path.GetFullPath(path);
@@ -361,8 +361,8 @@ internal sealed class CliCommandService : IToolProvider
 	private static peDdSyhbcuP9ypMdOqG fju9MgoMBK(string P_0, string P_1, string P_2, int P_3)
 	{
 		_G_c__DisplayClass17_0 CS_8_locals_8 = new _G_c__DisplayClass17_0();
-		CS_8_locals_8.f79h59X2Ay = new StringBuilder();
-		CS_8_locals_8.i1hhcwGXZT = new StringBuilder();
+		CS_8_locals_8.stringBuilder = new StringBuilder();
+		CS_8_locals_8.stringBuilder = new StringBuilder();
 		using Process process = new Process();
 		process.StartInfo = new ProcessStartInfo
 		{
@@ -378,11 +378,11 @@ internal sealed class CliCommandService : IToolProvider
 		};
 		process.OutputDataReceived += delegate(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(CS_8_locals_8.f79h59X2Ay, args.Data);
+			Q4y9bTxUyf(CS_8_locals_8.stringBuilder, args.Data);
 		};
 		process.ErrorDataReceived += delegate(object _, DataReceivedEventArgs args)
 		{
-			Q4y9bTxUyf(CS_8_locals_8.i1hhcwGXZT, args.Data);
+			Q4y9bTxUyf(CS_8_locals_8.stringBuilder, args.Data);
 		};
 		process.Start();
 		process.BeginOutputReadLine();
@@ -400,8 +400,8 @@ internal sealed class CliCommandService : IToolProvider
 			{
 				ExitCode = null,
 				TimedOut = true,
-				Stdout = CS_8_locals_8.f79h59X2Ay.ToString(),
-				Stderr = CS_8_locals_8.i1hhcwGXZT.ToString()
+				Stdout = CS_8_locals_8.stringBuilder.ToString(),
+				Stderr = CS_8_locals_8.stringBuilder.ToString()
 			};
 		}
 		process.WaitForExit();
@@ -409,8 +409,8 @@ internal sealed class CliCommandService : IToolProvider
 		{
 			ExitCode = process.ExitCode,
 			TimedOut = false,
-			Stdout = CS_8_locals_8.f79h59X2Ay.ToString(),
-			Stderr = CS_8_locals_8.i1hhcwGXZT.ToString()
+			Stdout = CS_8_locals_8.stringBuilder.ToString(),
+			Stderr = CS_8_locals_8.stringBuilder.ToString()
 		};
 	}
 
@@ -439,7 +439,7 @@ internal sealed class CliCommandService : IToolProvider
 	{
 		try
 		{
-			string path = AiSseStreamService.mSfs9VWIdb("Agent", "cli-logs");
+			string path = AiSseStreamService.GetUserDataPath("Agent", "cli-logs");
 			string text = string.Format("[{0:yyyy-MM-dd HH:mm:ss.fff}] backend={1} cwd=\"{2}\" exit={3} timeout={4} command={5}", DateTime.Now, P_0, P_2, P_3.ExitCode, P_3.TimedOut, P_1.Replace("\\r", "\\\\r").Replace("\n", "\\\\n"));
 			File.AppendAllText(Path.Combine(path, "cli-tool.log"), text + Environment.NewLine, Encoding.UTF8);
 		}

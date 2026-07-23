@@ -17,8 +17,8 @@ internal sealed class ConfigHelper_1
 
 	public ConfigHelper_1(string P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		bHiSmuFwEd = AiSseStreamService.mSfs9VWIdb("config", P_0);
+		SseStreamInitializer.InitializeRuntime();
+		bHiSmuFwEd = AiSseStreamService.GetUserDataPath("config", P_0);
 	}
 
 	public IReadOnlyList<string> ExsSbMHeGd()

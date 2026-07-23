@@ -15,26 +15,26 @@ namespace AiSseStreamService3;
 
 internal class AiSseStreamService3
 {
-	private delegate void uYxSE2Vw0ltoiRVEnCoS(object o);
+	private delegate void SimpleCallbackDelegate(object o);
 
-	internal class KQUBCcVwkSPZ6kvSnUlP : Attribute
+	internal class TokenAttribute : Attribute
 	{
-		internal class axZw0eVwxtDvwpZI4xqN<eUIGJRVwd6aI6rr5TZaK>
+		internal class MarkerGeneric<T>
 		{
-			public axZw0eVwxtDvwpZI4xqN()
+			public MarkerGeneric()
 			{
-				SseStreamInitializer.AlBVL0oCCKQ();
+				SseStreamInitializer.InitializeRuntime();
 			}
 		}
 
-		public KQUBCcVwkSPZ6kvSnUlP(object P_0)
+		public TokenAttribute(object P_0)
 		{
 		}
 	}
 
-	internal class yGR1deVwziPDHbXQMn02
+	internal class EncryptionHelper
 	{
-		internal static string FcLVtRs3WRg(string P_0, string P_1)
+		internal static string EncryptString(string P_0, string P_1)
 		{
 			byte[] bytes = Encoding.Unicode.GetBytes(P_0);
 			byte[] key = new byte[32]
@@ -44,9 +44,9 @@ internal class AiSseStreamService3
 				34, 158, 161, 41, 97, 28, 118, 181, 5, 25,
 				1, 88
 			};
-			byte[] iV = I0YVSOaKkT7(Encoding.Unicode.GetBytes(P_1));
+			byte[] iV = ComputeHash(Encoding.Unicode.GetBytes(P_1));
 			MemoryStream memoryStream = new MemoryStream();
-			SymmetricAlgorithm symmetricAlgorithm = iI8VSCYGOW0();
+			SymmetricAlgorithm symmetricAlgorithm = CreateSymmetricAlgorithm();
 			symmetricAlgorithm.Key = key;
 			symmetricAlgorithm.IV = iV;
 			CryptoStream cryptoStream = new CryptoStream(memoryStream, symmetricAlgorithm.CreateEncryptor(), CryptoStreamMode.Write);
@@ -57,164 +57,164 @@ internal class AiSseStreamService3
 	}
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	internal delegate uint Ic5FQuVtV6hYMO6Hw8Wq(IntPtr classthis, IntPtr comp, IntPtr info, [MarshalAs(UnmanagedType.U4)] uint flags, IntPtr nativeEntry, ref uint nativeSizeOfCode);
+	internal delegate uint NativeMethodDelegate(IntPtr classthis, IntPtr comp, IntPtr info, [MarshalAs(UnmanagedType.U4)] uint flags, IntPtr nativeEntry, ref uint nativeSizeOfCode);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	private delegate IntPtr worQWhVtBRQbc7pulIBJ();
+	private delegate IntPtr GetModuleHandleDelegate();
 
-	internal struct mXOZ8GVt9O7JakK5brAx
+	internal struct DecryptionResult
 	{
-		internal bool SDxVt6rQVyT;
+		internal bool success;
 
-		internal byte[] XkWVtuKm4hT;
+		internal byte[] data;
 	}
 
-	internal class pG2pc9VtDNfcA9tWEu1l
+	internal class BinaryReaderWrapper
 	{
-		private BinaryReader k7nVtiJ0PdX;
+		private BinaryReader reader;
 
-		public pG2pc9VtDNfcA9tWEu1l(Stream P_0)
+		public BinaryReaderWrapper(Stream P_0)
 		{
-			k7nVtiJ0PdX = new BinaryReader(P_0);
+			reader = new BinaryReader(P_0);
 		}
 
 		[SpecialName]
-		internal Stream nW4lBacjpc()
+		internal Stream GetBaseStream()
 		{
-			return k7nVtiJ0PdX.BaseStream;
+			return reader.BaseStream;
 		}
 
-		internal byte[] N58VtTHlnc1(int P_0)
+		internal byte[] ReadBytes(int P_0)
 		{
-			return k7nVtiJ0PdX.ReadBytes(P_0);
+			return reader.ReadBytes(P_0);
 		}
 
-		internal int OiGVtg2fttc(byte[] P_0, int P_1, int P_2)
+		internal int Read(byte[] P_0, int P_1, int P_2)
 		{
-			return k7nVtiJ0PdX.Read(P_0, P_1, P_2);
+			return reader.Read(P_0, P_1, P_2);
 		}
 
-		internal int xTbVt8qBXiV()
+		internal int ReadInt32()
 		{
-			return k7nVtiJ0PdX.ReadInt32();
+			return reader.ReadInt32();
 		}
 
-		internal void nloVtInXWpT()
+		internal void Close()
 		{
-			k7nVtiJ0PdX.Close();
+			reader.Close();
 		}
 	}
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
-	private delegate IntPtr CnIuNqVtHwf5uVko3Y8l(IntPtr hModule, string lpName, uint lpType);
+	private delegate IntPtr FindResourceDelegate(IntPtr hModule, string lpName, uint lpType);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	private delegate IntPtr Y1YaG9VtQrL3P37IPnHL(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+	private delegate IntPtr VirtualAllocDelegate(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	private delegate int Iycf5vVt18eEBxTpyfZu(IntPtr hProcess, IntPtr lpBaseAddress, [In][Out] byte[] buffer, uint size, out IntPtr lpNumberOfBytesWritten);
+	private delegate int WriteProcessMemoryDelegate(IntPtr hProcess, IntPtr lpBaseAddress, [In][Out] byte[] buffer, uint size, out IntPtr lpNumberOfBytesWritten);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	private delegate int B6yMGEVtrP4FhxghXxwm(IntPtr lpAddress, int dwSize, int flNewProtect, ref int lpflOldProtect);
+	private delegate int VirtualProtectDelegate(IntPtr lpAddress, int dwSize, int flNewProtect, ref int lpflOldProtect);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	private delegate IntPtr naVpbvVtJOgLxnw5rQgJ(uint dwDesiredAccess, int bInheritHandle, uint dwProcessId);
+	private delegate IntPtr OpenProcessDelegate(uint dwDesiredAccess, int bInheritHandle, uint dwProcessId);
 
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	private delegate int GGm8yZVt3BnmMj8JtHec(IntPtr ptr);
+	private delegate int CloseHandleDelegate(IntPtr ptr);
 
 	[Flags]
-	private enum AYK1u4VtU2tJ8P7OxO9r
+	private enum MemoryProtectionFlags
 	{
 
 	}
 
-	private static bool MrsVw319ZOP;
+	private static bool isInitialized;
 
-	private static bool TLbVwEPcwER;
+	private static bool fipsChecked;
 
-	internal static RSACryptoServiceProvider pBxVw4gXIEP;
+	internal static RSACryptoServiceProvider rsaProvider;
 
-	private static Dictionary<int, int> UCNVwjjwmBX;
+	private static Dictionary<int, int> tokenMap;
 
-	private static List<string> ASFVwMgcR10;
+	private static List<string> stringCache;
 
-	private static byte[] jwFVwwn4Ymg;
+	private static byte[] emptyBuffer;
 
-	private static int P83VwGawLMQ;
+	private static int currentState;
 
-	private static int uWPVw78g9Br;
+	private static int retryCount;
 
-	private static bool YtZVw5nSawh;
+	private static bool isLoaded;
 
-	private static CnIuNqVtHwf5uVko3Y8l lOnVwhDw2vP;
+	private static FindResourceDelegate findResourceDelegate;
 
-	private static Y1YaG9VtQrL3P37IPnHL gfyVwaBQbf6;
+	private static VirtualAllocDelegate virtualAllocDelegate;
 
-	private static GGm8yZVt3BnmMj8JtHec Vj2Vwvxv5ug;
+	private static CloseHandleDelegate closeHandleDelegate;
 
-	internal static Assembly auHVwUyvsY2;
+	internal static Assembly currentAssembly;
 
-	private static bool QoMVwmmMQpe;
+	private static bool isProtected;
 
-	private static B6yMGEVtrP4FhxghXxwm FjEVwPDZt6J;
+	private static VirtualProtectDelegate virtualProtectDelegate;
 
-	private static naVpbvVtJOgLxnw5rQgJ gvPVwACSnZR;
+	private static OpenProcessDelegate openProcessDelegate;
 
-	private static object zJgVwfnKSdt;
+	private static object stringLock;
 
-	private static IntPtr ra4VwyJ4ewv;
+	private static IntPtr nativeBuffer;
 
-	internal static Ic5FQuVtV6hYMO6Hw8Wq GCLVwpE6P4X;
+	internal static NativeMethodDelegate nativeMethodCallback;
 
-	private static byte[] lhSVwSSh4rK;
+	private static byte[] decryptedStringData;
 
-	private static int iEcVweSsGkg;
+	private static int streamPosition;
 
-	private static int pLiVwZWwirQ;
+	private static int callCount;
 
-	private static uint[] Hd8VwKOKvhh;
+	private static uint[] md5Constants;
 
-	private static long y4AVwCAC0Yh;
+	private static long fileSize;
 
-	private static bool KVKVw2yCJB8;
+	private static bool isFipsEnabled;
 
-	[KQUBCcVwkSPZ6kvSnUlP(typeof(KQUBCcVwkSPZ6kvSnUlP.axZw0eVwxtDvwpZI4xqN<object>[]))]
-	private static bool P32VwXHs5u8;
+	[TokenAttribute(typeof(TokenAttribute.MarkerGeneric<object>[]))]
+	private static bool isTokenResolved;
 
-	private static bool wO7VwcdbIju;
+	private static bool isVerified;
 
-	private static Iycf5vVt18eEBxTpyfZu NWZVwqYmPOO;
+	private static WriteProcessMemoryDelegate writeProcessMemoryDelegate;
 
-	private static long T1kVwnWkak5;
+	private static long timestamp;
 
-	internal static Ic5FQuVtV6hYMO6Hw8Wq dlfVwOGQmcw;
+	internal static NativeMethodDelegate nativeMethodCallback2;
 
-	private static List<int> dOEVwbBvEbj;
+	private static List<int> stringOffsets;
 
-	private static int RJVVwN5cHMS;
+	private static int instanceCount;
 
-	internal static Hashtable X9NVwFar7JP;
+	internal static Hashtable resourceCache;
 
-	private static IntPtr SCBVwt8e0Wv;
+	private static IntPtr moduleHandle;
 
-	private static object lL2VwY3JnIT;
+	private static object tokenMapLock;
 
-	private static IntPtr HMyVwW9VJBv;
+	private static IntPtr kernel32Handle;
 
-	private static IntPtr UWBVwLvoT9H;
+	private static IntPtr secondaryHandle;
 
-	private static int[] dDlVwlisBLS;
+	private static int[] offsetArray;
 
-	private static SortedList GVoVwojJ9BK;
+	private static SortedList sortedResources;
 
-	private static object YyFVwsU68eF;
+	private static object emptyStringArray;
 
 	static AiSseStreamService3()
 	{
-		MrsVw319ZOP = false;
-		auHVwUyvsY2 = typeof(AiSseStreamService3).Assembly;
-		Hd8VwKOKvhh = new uint[64]
+		isInitialized = false;
+		currentAssembly = typeof(AiSseStreamService3).Assembly;
+		md5Constants = new uint[64]
 		{
 			3614090360u, 3905402710u, 606105819u, 3250441966u, 4118548399u, 1200080426u, 2821735955u, 4249261313u, 1770035416u, 2336552879u,
 			4294925233u, 2304563134u, 1804603682u, 4254626195u, 2792965006u, 1236535329u, 4129170786u, 3225465664u, 643717713u, 3921069994u,
@@ -224,43 +224,43 @@ internal class AiSseStreamService3
 			2878612391u, 4237533241u, 1700485571u, 2399980690u, 4293915773u, 2240044497u, 1873313359u, 4264355552u, 2734768916u, 1309151649u,
 			4149444226u, 3174756917u, 718787259u, 3951481745u
 		};
-		TLbVwEPcwER = false;
-		KVKVw2yCJB8 = false;
-		pBxVw4gXIEP = null;
-		UCNVwjjwmBX = null;
-		lL2VwY3JnIT = new object();
-		pLiVwZWwirQ = 0;
-		zJgVwfnKSdt = new object();
-		ASFVwMgcR10 = null;
-		dOEVwbBvEbj = null;
-		lhSVwSSh4rK = new byte[0];
-		jwFVwwn4Ymg = new byte[0];
-		SCBVwt8e0Wv = IntPtr.Zero;
-		UWBVwLvoT9H = IntPtr.Zero;
-		YyFVwsU68eF = new string[0];
-		dDlVwlisBLS = new int[0];
-		RJVVwN5cHMS = 1;
-		QoMVwmmMQpe = false;
-		GVoVwojJ9BK = new SortedList();
-		P83VwGawLMQ = 0;
-		y4AVwCAC0Yh = 0L;
-		GCLVwpE6P4X = null;
-		dlfVwOGQmcw = null;
-		T1kVwnWkak5 = 0L;
-		uWPVw78g9Br = 0;
-		YtZVw5nSawh = false;
-		wO7VwcdbIju = false;
-		iEcVweSsGkg = 0;
-		ra4VwyJ4ewv = IntPtr.Zero;
-		P32VwXHs5u8 = false;
-		X9NVwFar7JP = new Hashtable();
-		lOnVwhDw2vP = null;
-		gfyVwaBQbf6 = null;
-		NWZVwqYmPOO = null;
-		FjEVwPDZt6J = null;
-		gvPVwACSnZR = null;
-		Vj2Vwvxv5ug = null;
-		HMyVwW9VJBv = IntPtr.Zero;
+		fipsChecked = false;
+		isFipsEnabled = false;
+		rsaProvider = null;
+		tokenMap = null;
+		tokenMapLock = new object();
+		callCount = 0;
+		stringLock = new object();
+		stringCache = null;
+		stringOffsets = null;
+		decryptedStringData = new byte[0];
+		emptyBuffer = new byte[0];
+		moduleHandle = IntPtr.Zero;
+		secondaryHandle = IntPtr.Zero;
+		emptyStringArray = new string[0];
+		offsetArray = new int[0];
+		instanceCount = 1;
+		isProtected = false;
+		sortedResources = new SortedList();
+		currentState = 0;
+		fileSize = 0L;
+		nativeMethodCallback = null;
+		nativeMethodCallback2 = null;
+		timestamp = 0L;
+		retryCount = 0;
+		isLoaded = false;
+		isVerified = false;
+		streamPosition = 0;
+		nativeBuffer = IntPtr.Zero;
+		isTokenResolved = false;
+		resourceCache = new Hashtable();
+		findResourceDelegate = null;
+		virtualAllocDelegate = null;
+		writeProcessMemoryDelegate = null;
+		virtualProtectDelegate = null;
+		openProcessDelegate = null;
+		closeHandleDelegate = null;
+		kernel32Handle = IntPtr.Zero;
 		try
 		{
 			RSACryptoServiceProvider.UseMachineKeyStore = true;
@@ -270,11 +270,11 @@ internal class AiSseStreamService3
 		}
 	}
 
-	private void AKFVLW0YWeA()
+	private void InitializeInstance()
 	{
 	}
 
-	internal static byte[] yb6VStK7JQF(byte[] P_0)
+	internal static byte[] ComputeMd5Hash(byte[] P_0)
 	{
 		uint[] array = new uint[16];
 		uint num = (uint)((448 - P_0.Length * 8 % 512 + 512) % 512);
@@ -310,70 +310,70 @@ internal class AiSseStreamService3
 			uint num14 = num7;
 			uint num15 = num8;
 			uint num16 = num9;
-			rABVSLgfaIV(ref num6, num7, num8, num9, 0u, 7, 1u, array);
-			rABVSLgfaIV(ref num9, num6, num7, num8, 1u, 12, 2u, array);
-			rABVSLgfaIV(ref num8, num9, num6, num7, 2u, 17, 3u, array);
-			rABVSLgfaIV(ref num7, num8, num9, num6, 3u, 22, 4u, array);
-			rABVSLgfaIV(ref num6, num7, num8, num9, 4u, 7, 5u, array);
-			rABVSLgfaIV(ref num9, num6, num7, num8, 5u, 12, 6u, array);
-			rABVSLgfaIV(ref num8, num9, num6, num7, 6u, 17, 7u, array);
-			rABVSLgfaIV(ref num7, num8, num9, num6, 7u, 22, 8u, array);
-			rABVSLgfaIV(ref num6, num7, num8, num9, 8u, 7, 9u, array);
-			rABVSLgfaIV(ref num9, num6, num7, num8, 9u, 12, 10u, array);
-			rABVSLgfaIV(ref num8, num9, num6, num7, 10u, 17, 11u, array);
-			rABVSLgfaIV(ref num7, num8, num9, num6, 11u, 22, 12u, array);
-			rABVSLgfaIV(ref num6, num7, num8, num9, 12u, 7, 13u, array);
-			rABVSLgfaIV(ref num9, num6, num7, num8, 13u, 12, 14u, array);
-			rABVSLgfaIV(ref num8, num9, num6, num7, 14u, 17, 15u, array);
-			rABVSLgfaIV(ref num7, num8, num9, num6, 15u, 22, 16u, array);
-			d3ZVSssx6X8(ref num6, num7, num8, num9, 1u, 5, 17u, array);
-			d3ZVSssx6X8(ref num9, num6, num7, num8, 6u, 9, 18u, array);
-			d3ZVSssx6X8(ref num8, num9, num6, num7, 11u, 14, 19u, array);
-			d3ZVSssx6X8(ref num7, num8, num9, num6, 0u, 20, 20u, array);
-			d3ZVSssx6X8(ref num6, num7, num8, num9, 5u, 5, 21u, array);
-			d3ZVSssx6X8(ref num9, num6, num7, num8, 10u, 9, 22u, array);
-			d3ZVSssx6X8(ref num8, num9, num6, num7, 15u, 14, 23u, array);
-			d3ZVSssx6X8(ref num7, num8, num9, num6, 4u, 20, 24u, array);
-			d3ZVSssx6X8(ref num6, num7, num8, num9, 9u, 5, 25u, array);
-			d3ZVSssx6X8(ref num9, num6, num7, num8, 14u, 9, 26u, array);
-			d3ZVSssx6X8(ref num8, num9, num6, num7, 3u, 14, 27u, array);
-			d3ZVSssx6X8(ref num7, num8, num9, num6, 8u, 20, 28u, array);
-			d3ZVSssx6X8(ref num6, num7, num8, num9, 13u, 5, 29u, array);
-			d3ZVSssx6X8(ref num9, num6, num7, num8, 2u, 9, 30u, array);
-			d3ZVSssx6X8(ref num8, num9, num6, num7, 7u, 14, 31u, array);
-			d3ZVSssx6X8(ref num7, num8, num9, num6, 12u, 20, 32u, array);
-			LQPVSlcK38P(ref num6, num7, num8, num9, 5u, 4, 33u, array);
-			LQPVSlcK38P(ref num9, num6, num7, num8, 8u, 11, 34u, array);
-			LQPVSlcK38P(ref num8, num9, num6, num7, 11u, 16, 35u, array);
-			LQPVSlcK38P(ref num7, num8, num9, num6, 14u, 23, 36u, array);
-			LQPVSlcK38P(ref num6, num7, num8, num9, 1u, 4, 37u, array);
-			LQPVSlcK38P(ref num9, num6, num7, num8, 4u, 11, 38u, array);
-			LQPVSlcK38P(ref num8, num9, num6, num7, 7u, 16, 39u, array);
-			LQPVSlcK38P(ref num7, num8, num9, num6, 10u, 23, 40u, array);
-			LQPVSlcK38P(ref num6, num7, num8, num9, 13u, 4, 41u, array);
-			LQPVSlcK38P(ref num9, num6, num7, num8, 0u, 11, 42u, array);
-			LQPVSlcK38P(ref num8, num9, num6, num7, 3u, 16, 43u, array);
-			LQPVSlcK38P(ref num7, num8, num9, num6, 6u, 23, 44u, array);
-			LQPVSlcK38P(ref num6, num7, num8, num9, 9u, 4, 45u, array);
-			LQPVSlcK38P(ref num9, num6, num7, num8, 12u, 11, 46u, array);
-			LQPVSlcK38P(ref num8, num9, num6, num7, 15u, 16, 47u, array);
-			LQPVSlcK38P(ref num7, num8, num9, num6, 2u, 23, 48u, array);
-			ROSVSNxeQva(ref num6, num7, num8, num9, 0u, 6, 49u, array);
-			ROSVSNxeQva(ref num9, num6, num7, num8, 7u, 10, 50u, array);
-			ROSVSNxeQva(ref num8, num9, num6, num7, 14u, 15, 51u, array);
-			ROSVSNxeQva(ref num7, num8, num9, num6, 5u, 21, 52u, array);
-			ROSVSNxeQva(ref num6, num7, num8, num9, 12u, 6, 53u, array);
-			ROSVSNxeQva(ref num9, num6, num7, num8, 3u, 10, 54u, array);
-			ROSVSNxeQva(ref num8, num9, num6, num7, 10u, 15, 55u, array);
-			ROSVSNxeQva(ref num7, num8, num9, num6, 1u, 21, 56u, array);
-			ROSVSNxeQva(ref num6, num7, num8, num9, 8u, 6, 57u, array);
-			ROSVSNxeQva(ref num9, num6, num7, num8, 15u, 10, 58u, array);
-			ROSVSNxeQva(ref num8, num9, num6, num7, 6u, 15, 59u, array);
-			ROSVSNxeQva(ref num7, num8, num9, num6, 13u, 21, 60u, array);
-			ROSVSNxeQva(ref num6, num7, num8, num9, 4u, 6, 61u, array);
-			ROSVSNxeQva(ref num9, num6, num7, num8, 11u, 10, 62u, array);
-			ROSVSNxeQva(ref num8, num9, num6, num7, 2u, 15, 63u, array);
-			ROSVSNxeQva(ref num7, num8, num9, num6, 9u, 21, 64u, array);
+			Md5RoundF(ref num6, num7, num8, num9, 0u, 7, 1u, array);
+			Md5RoundF(ref num9, num6, num7, num8, 1u, 12, 2u, array);
+			Md5RoundF(ref num8, num9, num6, num7, 2u, 17, 3u, array);
+			Md5RoundF(ref num7, num8, num9, num6, 3u, 22, 4u, array);
+			Md5RoundF(ref num6, num7, num8, num9, 4u, 7, 5u, array);
+			Md5RoundF(ref num9, num6, num7, num8, 5u, 12, 6u, array);
+			Md5RoundF(ref num8, num9, num6, num7, 6u, 17, 7u, array);
+			Md5RoundF(ref num7, num8, num9, num6, 7u, 22, 8u, array);
+			Md5RoundF(ref num6, num7, num8, num9, 8u, 7, 9u, array);
+			Md5RoundF(ref num9, num6, num7, num8, 9u, 12, 10u, array);
+			Md5RoundF(ref num8, num9, num6, num7, 10u, 17, 11u, array);
+			Md5RoundF(ref num7, num8, num9, num6, 11u, 22, 12u, array);
+			Md5RoundF(ref num6, num7, num8, num9, 12u, 7, 13u, array);
+			Md5RoundF(ref num9, num6, num7, num8, 13u, 12, 14u, array);
+			Md5RoundF(ref num8, num9, num6, num7, 14u, 17, 15u, array);
+			Md5RoundF(ref num7, num8, num9, num6, 15u, 22, 16u, array);
+			Md5RoundG(ref num6, num7, num8, num9, 1u, 5, 17u, array);
+			Md5RoundG(ref num9, num6, num7, num8, 6u, 9, 18u, array);
+			Md5RoundG(ref num8, num9, num6, num7, 11u, 14, 19u, array);
+			Md5RoundG(ref num7, num8, num9, num6, 0u, 20, 20u, array);
+			Md5RoundG(ref num6, num7, num8, num9, 5u, 5, 21u, array);
+			Md5RoundG(ref num9, num6, num7, num8, 10u, 9, 22u, array);
+			Md5RoundG(ref num8, num9, num6, num7, 15u, 14, 23u, array);
+			Md5RoundG(ref num7, num8, num9, num6, 4u, 20, 24u, array);
+			Md5RoundG(ref num6, num7, num8, num9, 9u, 5, 25u, array);
+			Md5RoundG(ref num9, num6, num7, num8, 14u, 9, 26u, array);
+			Md5RoundG(ref num8, num9, num6, num7, 3u, 14, 27u, array);
+			Md5RoundG(ref num7, num8, num9, num6, 8u, 20, 28u, array);
+			Md5RoundG(ref num6, num7, num8, num9, 13u, 5, 29u, array);
+			Md5RoundG(ref num9, num6, num7, num8, 2u, 9, 30u, array);
+			Md5RoundG(ref num8, num9, num6, num7, 7u, 14, 31u, array);
+			Md5RoundG(ref num7, num8, num9, num6, 12u, 20, 32u, array);
+			Md5RoundH(ref num6, num7, num8, num9, 5u, 4, 33u, array);
+			Md5RoundH(ref num9, num6, num7, num8, 8u, 11, 34u, array);
+			Md5RoundH(ref num8, num9, num6, num7, 11u, 16, 35u, array);
+			Md5RoundH(ref num7, num8, num9, num6, 14u, 23, 36u, array);
+			Md5RoundH(ref num6, num7, num8, num9, 1u, 4, 37u, array);
+			Md5RoundH(ref num9, num6, num7, num8, 4u, 11, 38u, array);
+			Md5RoundH(ref num8, num9, num6, num7, 7u, 16, 39u, array);
+			Md5RoundH(ref num7, num8, num9, num6, 10u, 23, 40u, array);
+			Md5RoundH(ref num6, num7, num8, num9, 13u, 4, 41u, array);
+			Md5RoundH(ref num9, num6, num7, num8, 0u, 11, 42u, array);
+			Md5RoundH(ref num8, num9, num6, num7, 3u, 16, 43u, array);
+			Md5RoundH(ref num7, num8, num9, num6, 6u, 23, 44u, array);
+			Md5RoundH(ref num6, num7, num8, num9, 9u, 4, 45u, array);
+			Md5RoundH(ref num9, num6, num7, num8, 12u, 11, 46u, array);
+			Md5RoundH(ref num8, num9, num6, num7, 15u, 16, 47u, array);
+			Md5RoundH(ref num7, num8, num9, num6, 2u, 23, 48u, array);
+			Md5RoundI(ref num6, num7, num8, num9, 0u, 6, 49u, array);
+			Md5RoundI(ref num9, num6, num7, num8, 7u, 10, 50u, array);
+			Md5RoundI(ref num8, num9, num6, num7, 14u, 15, 51u, array);
+			Md5RoundI(ref num7, num8, num9, num6, 5u, 21, 52u, array);
+			Md5RoundI(ref num6, num7, num8, num9, 12u, 6, 53u, array);
+			Md5RoundI(ref num9, num6, num7, num8, 3u, 10, 54u, array);
+			Md5RoundI(ref num8, num9, num6, num7, 10u, 15, 55u, array);
+			Md5RoundI(ref num7, num8, num9, num6, 1u, 21, 56u, array);
+			Md5RoundI(ref num6, num7, num8, num9, 8u, 6, 57u, array);
+			Md5RoundI(ref num9, num6, num7, num8, 15u, 10, 58u, array);
+			Md5RoundI(ref num8, num9, num6, num7, 6u, 15, 59u, array);
+			Md5RoundI(ref num7, num8, num9, num6, 13u, 21, 60u, array);
+			Md5RoundI(ref num6, num7, num8, num9, 4u, 6, 61u, array);
+			Md5RoundI(ref num9, num6, num7, num8, 11u, 10, 62u, array);
+			Md5RoundI(ref num8, num9, num6, num7, 2u, 15, 63u, array);
+			Md5RoundI(ref num7, num8, num9, num6, 9u, 21, 64u, array);
 			num6 += num13;
 			num7 += num14;
 			num8 += num15;
@@ -387,46 +387,46 @@ internal class AiSseStreamService3
 		return array3;
 	}
 
-	private static void rABVSLgfaIV(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
+	private static void Md5RoundF(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
 	{
-		P_0 = P_1 + ClEVSmdvAVT(P_0 + ((P_1 & P_2) | (~P_1 & P_3)) + P_7[P_4] + Hd8VwKOKvhh[P_6 - 1], P_5);
+		P_0 = P_1 + RotateLeft(P_0 + ((P_1 & P_2) | (~P_1 & P_3)) + P_7[P_4] + md5Constants[P_6 - 1], P_5);
 	}
 
-	private static void d3ZVSssx6X8(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
+	private static void Md5RoundG(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
 	{
-		P_0 = P_1 + ClEVSmdvAVT(P_0 + ((P_1 & P_3) | (P_2 & ~P_3)) + P_7[P_4] + Hd8VwKOKvhh[P_6 - 1], P_5);
+		P_0 = P_1 + RotateLeft(P_0 + ((P_1 & P_3) | (P_2 & ~P_3)) + P_7[P_4] + md5Constants[P_6 - 1], P_5);
 	}
 
-	private static void LQPVSlcK38P(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
+	private static void Md5RoundH(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
 	{
-		P_0 = P_1 + ClEVSmdvAVT(P_0 + (P_1 ^ P_2 ^ P_3) + P_7[P_4] + Hd8VwKOKvhh[P_6 - 1], P_5);
+		P_0 = P_1 + RotateLeft(P_0 + (P_1 ^ P_2 ^ P_3) + P_7[P_4] + md5Constants[P_6 - 1], P_5);
 	}
 
-	private static void ROSVSNxeQva(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
+	private static void Md5RoundI(ref uint P_0, uint P_1, uint P_2, uint P_3, uint P_4, ushort P_5, uint P_6, uint[] P_7)
 	{
-		P_0 = P_1 + ClEVSmdvAVT(P_0 + (P_2 ^ (P_1 | ~P_3)) + P_7[P_4] + Hd8VwKOKvhh[P_6 - 1], P_5);
+		P_0 = P_1 + RotateLeft(P_0 + (P_2 ^ (P_1 | ~P_3)) + P_7[P_4] + md5Constants[P_6 - 1], P_5);
 	}
 
-	private static uint ClEVSmdvAVT(uint P_0, ushort P_1)
+	private static uint RotateLeft(uint P_0, ushort P_1)
 	{
 		return (P_0 >> 32 - P_1) | (P_0 << (int)P_1);
 	}
 
-	internal static bool txAVSon061a()
+	internal static bool IsFipsCompliant()
 	{
-		if (!TLbVwEPcwER)
+		if (!fipsChecked)
 		{
 			r5xVSpS7YWm();
-			TLbVwEPcwER = true;
+			fipsChecked = true;
 		}
-		return KVKVw2yCJB8;
+		return isFipsEnabled;
 	}
 
 	internal AiSseStreamService3()
 	{
 	}
 
-	private void SLUVSGoY6ab(byte[] P_0, byte[] P_1, byte[] P_2)
+	private void DecryptData(byte[] P_0, byte[] P_1, byte[] P_2)
 	{
 		int num = P_2.Length % 4;
 		int num2 = P_2.Length / 4;
@@ -526,13 +526,13 @@ internal class AiSseStreamService3
 				array[num9 + 3] = (byte)((num22 & 0xFF000000u) >> 24);
 			}
 		}
-		lhSVwSSh4rK = array;
+		decryptedStringData = array;
 	}
 
-	internal static SymmetricAlgorithm iI8VSCYGOW0()
+	internal static SymmetricAlgorithm CreateSymmetricAlgorithm()
 	{
 		SymmetricAlgorithm symmetricAlgorithm = null;
-		if (txAVSon061a())
+		if (IsFipsCompliant())
 		{
 			return new AesCryptoServiceProvider();
 		}
@@ -561,44 +561,44 @@ internal class AiSseStreamService3
 		}
 		catch
 		{
-			KVKVw2yCJB8 = true;
+			isFipsEnabled = true;
 			return;
 		}
 		try
 		{
-			KVKVw2yCJB8 = CryptoConfig.AllowOnlyFipsAlgorithms;
+			isFipsEnabled = CryptoConfig.AllowOnlyFipsAlgorithms;
 		}
 		catch
 		{
 		}
 	}
 
-	internal static byte[] I0YVSOaKkT7(byte[] P_0)
+	internal static byte[] ComputeHash(byte[] P_0)
 	{
-		if (!txAVSon061a())
+		if (!IsFipsCompliant())
 		{
 			return new MD5CryptoServiceProvider().ComputeHash(P_0);
 		}
-		return yb6VStK7JQF(P_0);
+		return ComputeMd5Hash(P_0);
 	}
 
-	internal static void f2hVSnrfd3P(HashAlgorithm P_0, Stream P_1, uint P_2, byte[] P_3)
+	internal static void ReadStreamIntoHash(HashAlgorithm P_0, Stream P_1, uint P_2, byte[] P_3)
 	{
 		while (P_2 != 0)
 		{
 			int num = ((P_2 > (uint)P_3.Length) ? P_3.Length : ((int)P_2));
 			P_1.Read(P_3, 0, num);
-			anJVS7vdfNA(P_0, P_3, 0, num);
+			TransformBlock(P_0, P_3, 0, num);
 			P_2 -= (uint)num;
 		}
 	}
 
-	internal static void anJVS7vdfNA(HashAlgorithm P_0, byte[] P_1, int P_2, int P_3)
+	internal static void TransformBlock(HashAlgorithm P_0, byte[] P_1, int P_2, int P_3)
 	{
 		P_0.TransformBlock(P_1, P_2, P_3, P_1, P_2);
 	}
 
-	internal static uint kOlVS51UlUR(uint P_0, int P_1, long P_2, BinaryReader P_3)
+	internal static uint RvaToFileOffset(uint P_0, int P_1, long P_2, BinaryReader P_3)
 	{
 		for (int i = 0; i < P_1; i++)
 		{
@@ -615,14 +615,14 @@ internal class AiSseStreamService3
 		return 0u;
 	}
 
-	public static void R1WVSc3XvLY(RuntimeTypeHandle P_0)
+	public static void ResolveDelegates(RuntimeTypeHandle P_0)
 	{
 		try
 		{
 			Type typeFromHandle = Type.GetTypeFromHandle(P_0);
-			if (UCNVwjjwmBX == null)
+			if (tokenMap == null)
 			{
-				lock (lL2VwY3JnIT)
+				lock (tokenMapLock)
 				{
 					Dictionary<int, int> dictionary = new Dictionary<int, int>();
 					BinaryReader binaryReader = new BinaryReader(typeof(AiSseStreamService3).Assembly.GetManifestResourceStream("2BWb04irCgC5cG0Wfb.3XyKq7HoOCWibfsyqt"));
@@ -664,7 +664,7 @@ internal class AiSseStreamService3
 								num4 = (uint)((array[num5 + 3] << 24) | (array[num5 + 2] << 16) | (array[num5 + 1] << 8) | array[num5]);
 							}
 							num3 = num3;
-							num3 += a3dVSXOGFZb(num3);
+							num3 += GetZeroValue(num3);
 							if (i == num2 - 1 && num > 0)
 							{
 								uint num9 = num3 ^ num4;
@@ -690,16 +690,16 @@ internal class AiSseStreamService3
 						array = array2;
 						array2 = null;
 						int num11 = array.Length / 8;
-						pG2pc9VtDNfcA9tWEu1l pG2pc9VtDNfcA9tWEu1l2 = new pG2pc9VtDNfcA9tWEu1l(new MemoryStream(array));
+						BinaryReaderWrapper pG2pc9VtDNfcA9tWEu1l2 = new BinaryReaderWrapper(new MemoryStream(array));
 						for (int l = 0; l < num11; l++)
 						{
-							int key = pG2pc9VtDNfcA9tWEu1l2.xTbVt8qBXiV();
-							int value = pG2pc9VtDNfcA9tWEu1l2.xTbVt8qBXiV();
+							int key = pG2pc9VtDNfcA9tWEu1l2.ReadInt32();
+							int value = pG2pc9VtDNfcA9tWEu1l2.ReadInt32();
 							dictionary.Add(key, value);
 						}
-						pG2pc9VtDNfcA9tWEu1l2.nloVtInXWpT();
+						pG2pc9VtDNfcA9tWEu1l2.Close();
 					}
-					UCNVwjjwmBX = dictionary;
+					tokenMap = dictionary;
 				}
 			}
 			FieldInfo[] fields = typeFromHandle.GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.GetField);
@@ -709,7 +709,7 @@ internal class AiSseStreamService3
 				{
 					FieldInfo fieldInfo = fields[m];
 					int metadataToken = fieldInfo.MetadataToken;
-					int num12 = UCNVwjjwmBX[metadataToken];
+					int num12 = tokenMap[metadataToken];
 					bool flag = (num12 & 0x40000000) > 0;
 					num12 &= 0x3FFFFFFF;
 					MethodInfo methodInfo = (MethodInfo)typeof(AiSseStreamService3).Module.ResolveMethod(num12, typeFromHandle.GetGenericArguments(), new Type[0]);
@@ -771,22 +771,22 @@ internal class AiSseStreamService3
 		}
 	}
 
-	private static uint FF8VSy3IcAt(uint P_0)
+	private static uint GetConstantValue(uint P_0)
 	{
 		return (uint)"{11111-22222-10009-11112}".Length;
 	}
 
-	private static uint a3dVSXOGFZb(uint P_0)
+	private static uint GetZeroValue(uint P_0)
 	{
 		return 0u;
 	}
 
-	internal static void EcOVSFFwcdv()
+	internal static void Initialize()
 	{
 	}
 
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	private static void Uo9VShsM3hK(Stream P_0, int P_1)
+	private static void LoadAndDecryptResource(Stream P_0, int P_1)
 	{
 		int num = 221;
 		byte[] array = default(byte[]);
@@ -812,7 +812,7 @@ internal class AiSseStreamService3
 				case 27:
 					array[11] = (byte)num6;
 					num2 = 110;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 239;
 					}
@@ -824,7 +824,7 @@ internal class AiSseStreamService3
 				case 326:
 					array2[4] = 49;
 					num2 = 191;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 74;
 					}
@@ -832,7 +832,7 @@ internal class AiSseStreamService3
 				case 191:
 					num5 = 108 + 114;
 					num2 = 78;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 97;
 					}
@@ -840,7 +840,7 @@ internal class AiSseStreamService3
 				case 4:
 					array[0] = (byte)num6;
 					num2 = 29;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 38;
 					}
@@ -864,7 +864,7 @@ internal class AiSseStreamService3
 				case 229:
 					array2[11] = 28;
 					num2 = 1;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 99;
 					}
@@ -888,7 +888,7 @@ internal class AiSseStreamService3
 				case 115:
 					array[8] = (byte)num3;
 					num2 = 335;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 246;
 					}
@@ -896,7 +896,7 @@ internal class AiSseStreamService3
 				case 119:
 					num5 = 144 - 107;
 					num2 = 29;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 21;
 					}
@@ -904,7 +904,7 @@ internal class AiSseStreamService3
 				case 97:
 					array2[5] = (byte)num5;
 					num2 = 80;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 268;
 					}
@@ -920,7 +920,7 @@ internal class AiSseStreamService3
 				case 137:
 					array[14] = 75;
 					num2 = 1;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 1;
 					}
@@ -928,7 +928,7 @@ internal class AiSseStreamService3
 				case 9:
 					array3[15] = array4[7];
 					num2 = 132;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 284;
 					}
@@ -936,7 +936,7 @@ internal class AiSseStreamService3
 				case 278:
 					array[0] = (byte)num6;
 					num2 = 63;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 14;
 					}
@@ -948,7 +948,7 @@ internal class AiSseStreamService3
 				case 328:
 					array[1] = 88;
 					num2 = 126;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 188;
 					}
@@ -956,7 +956,7 @@ internal class AiSseStreamService3
 				case 13:
 					num3 = 15 + 122;
 					num2 = 261;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 303;
 					}
@@ -964,7 +964,7 @@ internal class AiSseStreamService3
 				case 59:
 					num3 = 213 - 71;
 					num2 = 96;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 62;
 					}
@@ -994,7 +994,7 @@ internal class AiSseStreamService3
 					num = 121;
 					break;
 				case 87:
-					array6 = lhSVwSSh4rK;
+					array6 = decryptedStringData;
 					num2 = 206;
 					continue;
 				case 293:
@@ -1032,7 +1032,7 @@ internal class AiSseStreamService3
 				case 245:
 					array2[30] = (byte)num5;
 					num2 = 34;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 117;
 					}
@@ -1056,7 +1056,7 @@ internal class AiSseStreamService3
 				case 178:
 					num6 = 213 - 71;
 					num2 = 66;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 49;
 					}
@@ -1084,7 +1084,7 @@ internal class AiSseStreamService3
 				case 199:
 					array[4] = (byte)num3;
 					num2 = 109;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 95;
 					}
@@ -1112,7 +1112,7 @@ internal class AiSseStreamService3
 				case 29:
 					array2[19] = (byte)num5;
 					num2 = 24;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 26;
 					}
@@ -1129,7 +1129,7 @@ internal class AiSseStreamService3
 					if (array4.Length == 0)
 					{
 						num2 = 91;
-						if (zZkkIgVLmB2l0yHbdVg6() == null)
+						if (AlwaysNull() == null)
 						{
 							num2 = 158;
 						}
@@ -1155,19 +1155,19 @@ internal class AiSseStreamService3
 				case 288:
 					array3[11] = array4[5];
 					num2 = 129;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 210;
 					}
 					continue;
 				case 298:
-					stream = (Stream)RysAegVLXHrEwKOvoDBR();
+					stream = (Stream)CreateStream();
 					num2 = 159;
 					continue;
 				case 11:
 					num4 = 252 - 84;
 					num2 = 279;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 148;
 					}
@@ -1191,7 +1191,7 @@ internal class AiSseStreamService3
 				case 63:
 					array[0] = 246;
 					num2 = 152;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 317;
 					}
@@ -1211,7 +1211,7 @@ internal class AiSseStreamService3
 				case 126:
 					array2[3] = (byte)num4;
 					num2 = 4;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 52;
 					}
@@ -1223,7 +1223,7 @@ internal class AiSseStreamService3
 				case 354:
 					array[0] = 68;
 					num2 = 276;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 23;
 					}
@@ -1247,7 +1247,7 @@ internal class AiSseStreamService3
 				case 154:
 					array2[1] = (byte)num5;
 					num2 = 53;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 254;
 					}
@@ -1255,7 +1255,7 @@ internal class AiSseStreamService3
 				case 279:
 					array2[8] = (byte)num4;
 					num2 = 264;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 265;
 					}
@@ -1267,7 +1267,7 @@ internal class AiSseStreamService3
 				case 50:
 					array5 = array2;
 					num2 = 193;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 85;
 					}
@@ -1279,7 +1279,7 @@ internal class AiSseStreamService3
 				case 253:
 					array[9] = 160;
 					num2 = 130;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 163;
 					}
@@ -1293,7 +1293,7 @@ internal class AiSseStreamService3
 				case 291:
 					array2[10] = 81;
 					num2 = 104;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 167;
 					}
@@ -1305,7 +1305,7 @@ internal class AiSseStreamService3
 				case 43:
 					array2[2] = 75;
 					num2 = 281;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 280;
 					}
@@ -1313,7 +1313,7 @@ internal class AiSseStreamService3
 				case 246:
 					num5 = 33 + 61;
 					num2 = 86;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 27;
 					}
@@ -1333,7 +1333,7 @@ internal class AiSseStreamService3
 				case 327:
 					array2[29] = 170;
 					num2 = 194;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 156;
 					}
@@ -1345,7 +1345,7 @@ internal class AiSseStreamService3
 				case 348:
 					num3 = 90 + 99;
 					num2 = 104;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 248;
 					}
@@ -1357,7 +1357,7 @@ internal class AiSseStreamService3
 				case 358:
 					num5 = 72 - 43;
 					num2 = 76;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 154;
 					}
@@ -1373,7 +1373,7 @@ internal class AiSseStreamService3
 				case 99:
 					num5 = 61 + 17;
 					num2 = 42;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 293;
 					}
@@ -1389,7 +1389,7 @@ internal class AiSseStreamService3
 				case 30:
 					array[2] = (byte)num6;
 					num2 = 95;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 6;
 					}
@@ -1425,7 +1425,7 @@ internal class AiSseStreamService3
 				case 217:
 					array[3] = 64;
 					num2 = 195;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 228;
 					}
@@ -1433,7 +1433,7 @@ internal class AiSseStreamService3
 				case 35:
 					array2[20] = 92;
 					num2 = 176;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 189;
 					}
@@ -1449,7 +1449,7 @@ internal class AiSseStreamService3
 				case 107:
 					array[7] = (byte)num3;
 					num2 = 0;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 2;
 					}
@@ -1469,7 +1469,7 @@ internal class AiSseStreamService3
 				case 93:
 					num5 = 216 - 72;
 					num2 = 87;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 245;
 					}
@@ -1513,7 +1513,7 @@ internal class AiSseStreamService3
 				case 111:
 					array[9] = (byte)num3;
 					num2 = 24;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 269;
 					}
@@ -1529,7 +1529,7 @@ internal class AiSseStreamService3
 				case 14:
 					num4 = 134 + 108;
 					num2 = 0;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 0;
 					}
@@ -1561,7 +1561,7 @@ internal class AiSseStreamService3
 				case 312:
 					num5 = 141 - 106;
 					num2 = 16;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 45;
 					}
@@ -1569,7 +1569,7 @@ internal class AiSseStreamService3
 				case 108:
 					array2[28] = 83;
 					num2 = 114;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 83;
 					}
@@ -1577,7 +1577,7 @@ internal class AiSseStreamService3
 				case 46:
 					array2[22] = 169;
 					num2 = 90;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 5;
 					}
@@ -1589,7 +1589,7 @@ internal class AiSseStreamService3
 				case 31:
 					array[15] = (byte)num6;
 					num2 = 76;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 151;
 					}
@@ -1629,13 +1629,13 @@ internal class AiSseStreamService3
 				case 159:
 				{
 					CryptoStream cryptoStream = new CryptoStream(stream, transform, CryptoStreamMode.Write);
-					F4qHdaVLFaJailqkY8yG(cryptoStream, array6, 0, array6.Length);
-					CakkBIVLhD8uxhEEn6oP(cryptoStream);
-					lhSVwSSh4rK = (byte[])KYPMC0VLaAomMaeM6Uk7(stream);
-					y2Ta8HVLqncaAeXCduaF(stream);
-					y2Ta8HVLqncaAeXCduaF(cryptoStream);
+					WriteToStream(cryptoStream, array6, 0, array6.Length);
+					FlushCryptoStream(cryptoStream);
+					decryptedStringData = (byte[])GetStreamBytes(stream);
+					CloseStream(stream);
+					CloseStream(cryptoStream);
 					num2 = 33;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 87;
 					}
@@ -1644,7 +1644,7 @@ internal class AiSseStreamService3
 				case 167:
 					array2[10] = 161;
 					num2 = 97;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 227;
 					}
@@ -1652,7 +1652,7 @@ internal class AiSseStreamService3
 				case 276:
 					num6 = 51 + 118;
 					num2 = 0;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 4;
 					}
@@ -1664,7 +1664,7 @@ internal class AiSseStreamService3
 				case 268:
 					array2[5] = 211;
 					num2 = 118;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 23;
 					}
@@ -1692,20 +1692,20 @@ internal class AiSseStreamService3
 				case 220:
 					array2 = new byte[32];
 					num2 = 131;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 340;
 					}
 					continue;
 				case 78:
 				case 125:
-					new AiSseStreamService3().SLUVSGoY6ab(array5, array3, array6);
+					new AiSseStreamService3().DecryptData(array5, array3, array6);
 					num2 = 301;
 					continue;
 				case 233:
 					array[11] = 205;
 					num2 = 348;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 61;
 					}
@@ -1717,7 +1717,7 @@ internal class AiSseStreamService3
 				case 148:
 					num4 = 18 + 21;
 					num2 = 64;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 142;
 					}
@@ -1725,7 +1725,7 @@ internal class AiSseStreamService3
 				case 127:
 					array2[12] = 103;
 					num2 = 150;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 98;
 					}
@@ -1737,7 +1737,7 @@ internal class AiSseStreamService3
 				case 213:
 					array2[4] = 221;
 					num2 = 234;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 326;
 					}
@@ -1757,7 +1757,7 @@ internal class AiSseStreamService3
 				case 86:
 					array2[4] = (byte)num5;
 					num2 = 289;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 215;
 					}
@@ -1769,7 +1769,7 @@ internal class AiSseStreamService3
 				case 256:
 					array2[16] = 144;
 					num2 = 37;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 13;
 					}
@@ -1777,7 +1777,7 @@ internal class AiSseStreamService3
 				case 190:
 					array2[30] = 219;
 					num2 = 121;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 346;
 					}
@@ -1785,19 +1785,19 @@ internal class AiSseStreamService3
 				case 130:
 					num4 = 133 - 44;
 					num2 = 238;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 243;
 					}
 					continue;
 				case 20:
-					QwDss4VLndQTLjAoLp6X(array3);
+					ReverseArray(array3);
 					num2 = 263;
 					continue;
 				case 90:
 					array2[22] = 65;
 					num2 = 83;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 257;
 					}
@@ -1821,7 +1821,7 @@ internal class AiSseStreamService3
 				case 342:
 					num5 = 182 - 60;
 					num2 = 319;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 238;
 					}
@@ -1829,7 +1829,7 @@ internal class AiSseStreamService3
 				case 223:
 					array2[17] = (byte)num4;
 					num2 = 321;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 232;
 					}
@@ -1849,7 +1849,7 @@ internal class AiSseStreamService3
 				case 262:
 					array2[16] = (byte)num4;
 					num2 = 24;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 20;
 					}
@@ -1879,7 +1879,7 @@ internal class AiSseStreamService3
 					if (num7 >= array3.Length)
 					{
 						num2 = 318;
-						if (!L60ZsqVLNiYGf6Wn3Rd6())
+						if (!AlwaysTrue())
 						{
 							num2 = 141;
 						}
@@ -1889,7 +1889,7 @@ internal class AiSseStreamService3
 				case 235:
 					array2[24] = 156;
 					num2 = 33;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 8;
 					}
@@ -1905,7 +1905,7 @@ internal class AiSseStreamService3
 				case 1:
 					num3 = 72 - 8;
 					num2 = 198;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 107;
 					}
@@ -1917,7 +1917,7 @@ internal class AiSseStreamService3
 				case 157:
 					num6 = 129 - 52;
 					num2 = 30;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 29;
 					}
@@ -1925,7 +1925,7 @@ internal class AiSseStreamService3
 				case 110:
 					array2[18] = 126;
 					num2 = 231;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 314;
 					}
@@ -1945,7 +1945,7 @@ internal class AiSseStreamService3
 				case 112:
 					array[14] = 154;
 					num2 = 137;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 85;
 					}
@@ -1985,7 +1985,7 @@ internal class AiSseStreamService3
 				case 120:
 					array[1] = 89;
 					num2 = 318;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 364;
 					}
@@ -1997,7 +1997,7 @@ internal class AiSseStreamService3
 				case 141:
 					array3[9] = array4[4];
 					num2 = 288;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 240;
 					}
@@ -2017,7 +2017,7 @@ internal class AiSseStreamService3
 				case 299:
 					array2[16] = 152;
 					num2 = 172;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 300;
 					}
@@ -2027,7 +2027,7 @@ internal class AiSseStreamService3
 					num = 270;
 					break;
 				case 206:
-					if (!QVqeqBVLAe2qVaYQ9Z2r(qKt29EVLPLn4wAeiyG3L(auHVwUyvsY2), null))
+					if (!AreMethodsEqual(GetAssemblyEntryPoint(currentAssembly), null))
 					{
 						num2 = 125;
 						continue;
@@ -2036,7 +2036,7 @@ internal class AiSseStreamService3
 				case 76:
 					array3[3] = array4[1];
 					num2 = 241;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 341;
 					}
@@ -2044,7 +2044,7 @@ internal class AiSseStreamService3
 				case 320:
 					num3 = 179 - 120;
 					num2 = 186;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 294;
 					}
@@ -2060,7 +2060,7 @@ internal class AiSseStreamService3
 				case 49:
 					array[9] = (byte)num6;
 					num2 = 91;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 161;
 					}
@@ -2073,17 +2073,17 @@ internal class AiSseStreamService3
 					continue;
 				case 221:
 				{
-					pG2pc9VtDNfcA9tWEu1l obj2 = new pG2pc9VtDNfcA9tWEu1l(P_0);
-					WwfRCQVLGM2cCHodUlSD(N09gCxVLoXsSbvCFUhE5(obj2), 0L);
-					array6 = (byte[])N50yaRVLp1I9b3cFxKuL(obj2, (int)qV2gcSVLCtWOMSUiGCTD(N09gCxVLoXsSbvCFUhE5(obj2)));
-					c99WaNVLOwXmdXwWaVXB(obj2);
+					BinaryReaderWrapper obj2 = new BinaryReaderWrapper(P_0);
+					SetStreamPosition(GetStreamFromReader(obj2), 0L);
+					array6 = (byte[])ReadBytesFromReader(obj2, (int)GetStreamLength(GetStreamFromReader(obj2)));
+					CloseReader(obj2);
 					num2 = 220;
 					continue;
 				}
 				case 228:
 					num6 = 33 + 61;
 					num2 = 84;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 65;
 					}
@@ -2099,7 +2099,7 @@ internal class AiSseStreamService3
 				case 143:
 					array2[2] = (byte)num5;
 					num2 = 251;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 272;
 					}
@@ -2127,7 +2127,7 @@ internal class AiSseStreamService3
 				case 151:
 					num6 = 54 + 4;
 					num2 = 43;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 56;
 					}
@@ -2135,7 +2135,7 @@ internal class AiSseStreamService3
 				case 34:
 					num4 = 54 + 54;
 					num2 = 261;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 64;
 					}
@@ -2143,7 +2143,7 @@ internal class AiSseStreamService3
 				case 212:
 					array3[1] = array4[0];
 					num2 = 19;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 76;
 					}
@@ -2155,7 +2155,7 @@ internal class AiSseStreamService3
 				case 17:
 					array2[22] = (byte)num5;
 					num2 = 39;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 54;
 					}
@@ -2163,7 +2163,7 @@ internal class AiSseStreamService3
 				case 324:
 					array2[3] = (byte)num4;
 					num2 = 126;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 147;
 					}
@@ -2187,7 +2187,7 @@ internal class AiSseStreamService3
 				case 363:
 					num5 = 14 + 113;
 					num2 = 19;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 6;
 					}
@@ -2195,7 +2195,7 @@ internal class AiSseStreamService3
 				case 183:
 					array2[31] = 142;
 					num2 = 315;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 229;
 					}
@@ -2215,7 +2215,7 @@ internal class AiSseStreamService3
 				case 41:
 					array2[14] = (byte)num5;
 					num2 = 164;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 251;
 					}
@@ -2223,7 +2223,7 @@ internal class AiSseStreamService3
 				case 196:
 					num5 = 45 + 108;
 					num2 = 71;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 129;
 					}
@@ -2235,7 +2235,7 @@ internal class AiSseStreamService3
 				case 166:
 					array2[16] = (byte)num5;
 					num2 = 44;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 48;
 					}
@@ -2251,7 +2251,7 @@ internal class AiSseStreamService3
 				case 133:
 					array2[7] = 251;
 					num2 = 79;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 66;
 					}
@@ -2263,7 +2263,7 @@ internal class AiSseStreamService3
 				case 189:
 					num5 = 83 - 68;
 					num2 = 250;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 195;
 					}
@@ -2271,7 +2271,7 @@ internal class AiSseStreamService3
 				case 161:
 					array[9] = 47;
 					num2 = 267;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 187;
 					}
@@ -2299,7 +2299,7 @@ internal class AiSseStreamService3
 				case 74:
 					array2[26] = 160;
 					num2 = 363;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 124;
 					}
@@ -2316,7 +2316,7 @@ internal class AiSseStreamService3
 					if (array4 == null)
 					{
 						num2 = 362;
-						if (zZkkIgVLmB2l0yHbdVg6() != null)
+						if (AlwaysNull() != null)
 						{
 							num2 = 206;
 						}
@@ -2326,7 +2326,7 @@ internal class AiSseStreamService3
 				case 142:
 					array2[4] = (byte)num4;
 					num2 = 116;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 213;
 					}
@@ -2338,7 +2338,7 @@ internal class AiSseStreamService3
 				case 77:
 					array[5] = (byte)num6;
 					num2 = 67;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 37;
 					}
@@ -2358,7 +2358,7 @@ internal class AiSseStreamService3
 				case 84:
 					array[4] = (byte)num6;
 					num2 = 225;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 161;
 					}
@@ -2372,9 +2372,9 @@ internal class AiSseStreamService3
 					num2 = 135;
 					continue;
 				case 185:
-					pLiVwZWwirQ = 80;
+					callCount = 80;
 					num2 = 1;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 78;
 					}
@@ -2394,7 +2394,7 @@ internal class AiSseStreamService3
 				case 272:
 					array2[2] = 59;
 					num2 = 283;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 60;
 					}
@@ -2406,7 +2406,7 @@ internal class AiSseStreamService3
 				case 216:
 					array2[16] = (byte)num5;
 					num2 = 24;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 256;
 					}
@@ -2426,7 +2426,7 @@ internal class AiSseStreamService3
 				case 182:
 					num3 = 242 - 80;
 					num2 = 38;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 61;
 					}
@@ -2438,7 +2438,7 @@ internal class AiSseStreamService3
 				case 321:
 					array2[17] = 180;
 					num2 = 181;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 101;
 					}
@@ -2458,7 +2458,7 @@ internal class AiSseStreamService3
 				case 244:
 					num3 = 115 + 21;
 					num2 = 169;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 15;
 					}
@@ -2466,7 +2466,7 @@ internal class AiSseStreamService3
 				case 118:
 					array2[5] = 52;
 					num2 = 91;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 234;
 					}
@@ -2486,7 +2486,7 @@ internal class AiSseStreamService3
 				case 73:
 					array2[8] = 96;
 					num2 = 38;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 177;
 					}
@@ -2506,7 +2506,7 @@ internal class AiSseStreamService3
 				case 123:
 					array2[27] = (byte)num4;
 					num2 = 140;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 138;
 					}
@@ -2515,7 +2515,7 @@ internal class AiSseStreamService3
 					if (P_1 == -1)
 					{
 						num2 = 6;
-						if (L60ZsqVLNiYGf6Wn3Rd6())
+						if (AlwaysTrue())
 						{
 							num2 = 286;
 						}
@@ -2529,19 +2529,19 @@ internal class AiSseStreamService3
 				case 124:
 					array2[19] = 115;
 					num2 = 11;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 44;
 					}
 					continue;
 				case 263:
-					array4 = (byte[])XQiculVL5yHDvrPoU1Z1(GVTyv2VL7aglyt71B2T5(auHVwUyvsY2));
+					array4 = (byte[])GetPublicKeyToken(GetAssemblyName(currentAssembly));
 					num2 = 355;
 					continue;
 				case 149:
 					num5 = 104 + 101;
 					num2 = 41;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 38;
 					}
@@ -2573,7 +2573,7 @@ internal class AiSseStreamService3
 				case 214:
 					array2[26] = 198;
 					num2 = 167;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 176;
 					}
@@ -2581,7 +2581,7 @@ internal class AiSseStreamService3
 				case 52:
 					array2[3] = 154;
 					num2 = 42;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 27;
 					}
@@ -2589,7 +2589,7 @@ internal class AiSseStreamService3
 				case 265:
 					array2[8] = 84;
 					num2 = 73;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 6;
 					}
@@ -2608,11 +2608,11 @@ internal class AiSseStreamService3
 					continue;
 				case 286:
 				{
-					object obj = SowsSCVLc9Ncon94VmxQ();
-					NHVvr8VLeluyVsKI18Ls(obj, CipherMode.CBC);
-					transform = (ICryptoTransform)XOFlZCVLyZfmMAqM7El5(obj, array5, array3);
+					object obj = CreateAesAlgorithm();
+					SetCipherMode(obj, CipherMode.CBC);
+					transform = (ICryptoTransform)CreateDecryptor(obj, array5, array3);
 					num2 = 298;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 268;
 					}
@@ -2633,7 +2633,7 @@ internal class AiSseStreamService3
 				case 21:
 					array[2] = (byte)num6;
 					num2 = 56;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 203;
 					}
@@ -2645,7 +2645,7 @@ internal class AiSseStreamService3
 				case 351:
 					num3 = 63 + 108;
 					num2 = 31;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 115;
 					}
@@ -2657,7 +2657,7 @@ internal class AiSseStreamService3
 				case 37:
 					num4 = 169 - 56;
 					num2 = 262;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 218;
 					}
@@ -2665,7 +2665,7 @@ internal class AiSseStreamService3
 				case 186:
 					num5 = 194 - 64;
 					num2 = 237;
-					if (zZkkIgVLmB2l0yHbdVg6() != null)
+					if (AlwaysNull() != null)
 					{
 						num2 = 107;
 					}
@@ -2677,7 +2677,7 @@ internal class AiSseStreamService3
 				case 139:
 					num5 = 86 + 29;
 					num2 = 307;
-					if (!L60ZsqVLNiYGf6Wn3Rd6())
+					if (!AlwaysTrue())
 					{
 						num2 = 44;
 					}
@@ -2685,7 +2685,7 @@ internal class AiSseStreamService3
 				case 219:
 					array[13] = (byte)num3;
 					num2 = 166;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 201;
 					}
@@ -2717,7 +2717,7 @@ internal class AiSseStreamService3
 				case 192:
 					num5 = 36 + 15;
 					num2 = 63;
-					if (L60ZsqVLNiYGf6Wn3Rd6())
+					if (AlwaysTrue())
 					{
 						num2 = 145;
 					}
@@ -2765,7 +2765,7 @@ internal class AiSseStreamService3
 				case 303:
 					array[13] = (byte)num3;
 					num2 = 2;
-					if (zZkkIgVLmB2l0yHbdVg6() == null)
+					if (AlwaysNull() == null)
 					{
 						num2 = 12;
 					}
@@ -2777,33 +2777,33 @@ internal class AiSseStreamService3
 	}
 
 	[MethodImpl(MethodImplOptions.NoInlining)]
-	internal static string bjdVSa2BvFN(int P_0)
+	internal static string DecryptString(int P_0)
 	{
-		if (lhSVwSSh4rK.Length == 0)
+		if (decryptedStringData.Length == 0)
 		{
-			ASFVwMgcR10 = new List<string>();
-			dOEVwbBvEbj = new List<int>();
+			stringCache = new List<string>();
+			stringOffsets = new List<int>();
 			try
 			{
-				var _stream = auHVwUyvsY2.GetManifestResourceStream("JmI6YdVEO5uX77WkHk.lmPHIDBA7YvWtgD3wV");
-				byte[] _pktInit = auHVwUyvsY2.GetName().GetPublicKeyToken();
+				var _stream = currentAssembly.GetManifestResourceStream("JmI6YdVEO5uX77WkHk.lmPHIDBA7YvWtgD3wV");
+				byte[] _pktInit = currentAssembly.GetName().GetPublicKeyToken();
 				string _pktInitStr = _pktInit == null ? "null" : (_pktInit.Length == 0 ? "empty" : BitConverter.ToString(_pktInit));
-				byte[] _pk = auHVwUyvsY2.GetName().GetPublicKey();
+				byte[] _pk = currentAssembly.GetName().GetPublicKey();
 				string _pkStr = _pk == null ? "null" : (_pk.Length == 0 ? "empty" : "len=" + _pk.Length);
 				System.IO.File.AppendAllText(@"C:\Users\bingjian.wang\AppData\Roaming\IP_Assurance\debug.log",
-					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] bjdVSa2BvFN init: P_0=" + P_0 + ", stream=" + (_stream == null ? "NULL" : _stream.Length.ToString()) +
-					", PKT=" + _pktInitStr + ", PK=" + _pkStr + ", AsmName=" + auHVwUyvsY2.GetName().Name + "\n");
-				Uo9VShsM3hK(_stream, P_0);
+					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] DecryptString init: P_0=" + P_0 + ", stream=" + (_stream == null ? "NULL" : _stream.Length.ToString()) +
+					", PKT=" + _pktInitStr + ", PK=" + _pkStr + ", AsmName=" + currentAssembly.GetName().Name + "\n");
+				LoadAndDecryptResource(_stream, P_0);
 				System.IO.File.AppendAllText(@"C:\Users\bingjian.wang\AppData\Roaming\IP_Assurance\debug.log",
-					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] After init: lhSVwSSh4rK.Length=" + lhSVwSSh4rK.Length + "\n");
+					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] After init: decryptedStringData.Length=" + decryptedStringData.Length + "\n");
 				// Log first 32 bytes of decrypted data to verify correctness
-				if (lhSVwSSh4rK.Length >= 32)
+				if (decryptedStringData.Length >= 32)
 				{
 					System.IO.File.AppendAllText(@"C:\Users\bingjian.wang\AppData\Roaming\IP_Assurance\debug.log",
-						"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] First 32 bytes: " + BitConverter.ToString(lhSVwSSh4rK, 0, 32) + "\n");
+						"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] First 32 bytes: " + BitConverter.ToString(decryptedStringData, 0, 32) + "\n");
 				}
 				// Verify first string at P_0=42184
-				int _testNum = BitConverter.ToInt32(lhSVwSSh4rK, P_0);
+				int _testNum = BitConverter.ToInt32(decryptedStringData, P_0);
 				System.IO.File.AppendAllText(@"C:\Users\bingjian.wang\AppData\Roaming\IP_Assurance\debug.log",
 					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] First call string len at P_0=" + P_0 + ": " + _testNum + "\n");
 			}
@@ -2813,42 +2813,42 @@ internal class AiSseStreamService3
 					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] EXCEPTION in init: " + _ex.ToString() + "\n");
 			}
 		}
-		if (pLiVwZWwirQ < 75)
+		if (callCount < 75)
 		{
-			if (auHVwUyvsY2 != new StackFrame(1).GetMethod().DeclaringType.Assembly)
+			if (currentAssembly != new StackFrame(1).GetMethod().DeclaringType.Assembly)
 			{
 				throw new Exception();
 			}
-			pLiVwZWwirQ++;
+			callCount++;
 		}
-		lock (zJgVwfnKSdt)
+		lock (stringLock)
 		{
 			// DIAGNOSTIC: Log every call and validate P_0
-			if (P_0 < 0 || P_0 + 4 > lhSVwSSh4rK.Length)
+			if (P_0 < 0 || P_0 + 4 > decryptedStringData.Length)
 			{
 				System.Diagnostics.StackFrame _sf = new System.Diagnostics.StackFrame(1);
 				string _caller = _sf.GetMethod() != null ? _sf.GetMethod().DeclaringType.FullName + "." + _sf.GetMethod().Name : "unknown";
-				byte[] _pkt = auHVwUyvsY2.GetName().GetPublicKeyToken();
+				byte[] _pkt = currentAssembly.GetName().GetPublicKeyToken();
 				string _pktStr = _pkt == null ? "null" : (_pkt.Length == 0 ? "empty" : BitConverter.ToString(_pkt));
 				System.IO.File.AppendAllText(@"C:\Users\bingjian.wang\AppData\Roaming\IP_Assurance\debug.log",
-					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] OUT_OF_RANGE: P_0=" + P_0 + ", len=" + lhSVwSSh4rK.Length +
+					"[" + System.DateTime.Now.ToString("HH:mm:ss.fff") + "] OUT_OF_RANGE: P_0=" + P_0 + ", len=" + decryptedStringData.Length +
 					", caller=" + _caller + ", PKT=" + _pktStr + "\n");
-				throw new ArgumentOutOfRangeException("P_0", "P_0=" + P_0 + " is out of range [0, " + (lhSVwSSh4rK.Length - 4) + "], caller=" + _caller);
+				throw new ArgumentOutOfRangeException("P_0", "P_0=" + P_0 + " is out of range [0, " + (decryptedStringData.Length - 4) + "], caller=" + _caller);
 			}
-			int num = BitConverter.ToInt32(lhSVwSSh4rK, P_0);
-			if (num < dOEVwbBvEbj.Count && dOEVwbBvEbj[num] == P_0)
+			int num = BitConverter.ToInt32(decryptedStringData, P_0);
+			if (num < stringOffsets.Count && stringOffsets[num] == P_0)
 			{
-				return ASFVwMgcR10[num];
+				return stringCache[num];
 			}
 			try
 			{
-				SseStreamInitializer.AlBVL0oCCKQ();
+				SseStreamInitializer.InitializeRuntime();
 				byte[] array = new byte[num];
-				Array.Copy(lhSVwSSh4rK, P_0 + 4, array, 0, num);
+				Array.Copy(decryptedStringData, P_0 + 4, array, 0, num);
 				string text = Encoding.Unicode.GetString(array, 0, array.Length);
-				ASFVwMgcR10.Add(text);
-				dOEVwbBvEbj.Add(P_0);
-				Array.Copy(BitConverter.GetBytes(ASFVwMgcR10.Count - 1), 0, lhSVwSSh4rK, P_0, 4);
+				stringCache.Add(text);
+				stringOffsets.Add(P_0);
+				Array.Copy(BitConverter.GetBytes(stringCache.Count - 1), 0, decryptedStringData, P_0, 4);
 				return text;
 			}
 			catch
@@ -2858,19 +2858,19 @@ internal class AiSseStreamService3
 		return "";
 	}
 
-	internal static string Wp7VSqBdHYW(string P_0)
+	internal static string Base64Decode(string P_0)
 	{
 		"{11111-22222-50001-00000}".Trim();
 		byte[] array = Convert.FromBase64String(P_0);
 		return Encoding.Unicode.GetString(array, 0, array.Length);
 	}
 
-	private static int Ec6VSPfF7Do()
+	private static int GetThreadCount()
 	{
 		return 5;
 	}
 
-	private static void gvNVSABtXbj()
+	private static void InitializeRsa()
 	{
 		try
 		{
@@ -2881,7 +2881,7 @@ internal class AiSseStreamService3
 		}
 	}
 
-	private static Delegate LNUVSvUCpDj(IntPtr P_0, Type P_1)
+	private static Delegate GetDelegateForFunctionPointer(IntPtr P_0, Type P_1)
 	{
 		return (Delegate)typeof(Marshal).GetMethod("GetDelegateForFunctionPointer", new Type[2]
 		{
@@ -2890,7 +2890,7 @@ internal class AiSseStreamService3
 		}).Invoke(null, new object[2] { P_0, P_1 });
 	}
 
-	internal static object a4SVSW2r6qt(object P_0)
+	internal static object GetAssemblyLocation(object P_0)
 	{
 		try
 		{
@@ -2928,76 +2928,76 @@ internal class AiSseStreamService3
 	}
 
 	[DllImport("kernel32", EntryPoint = "LoadLibrary")]
-	public static extern IntPtr RxuVS0tpP1r(string P_0);
+	public static extern IntPtr LoadLibrary(string P_0);
 
 	[DllImport("kernel32", CharSet = CharSet.Ansi, EntryPoint = "GetProcAddress")]
-	public static extern IntPtr MblVSkVIQnQ(IntPtr P_0, string P_1);
+	public static extern IntPtr GetProcAddress(IntPtr P_0, string P_1);
 
-	private static IntPtr XDmVSxPYxQY(IntPtr P_0, string P_1, uint P_2)
+	private static IntPtr FindResource(IntPtr P_0, string P_1, uint P_2)
 	{
-		if (lOnVwhDw2vP == null)
+		if (findResourceDelegate == null)
 		{
-			lOnVwhDw2vP = (CnIuNqVtHwf5uVko3Y8l)Marshal.GetDelegateForFunctionPointer(MblVSkVIQnQ(xTuFFuFOZ(), "Find ".Trim() + "ResourceA"), typeof(CnIuNqVtHwf5uVko3Y8l));
+			findResourceDelegate = (FindResourceDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetKernel32Handle(), "Find ".Trim() + "ResourceA"), typeof(FindResourceDelegate));
 		}
-		return lOnVwhDw2vP(P_0, P_1, P_2);
+		return findResourceDelegate(P_0, P_1, P_2);
 	}
 
-	private static IntPtr a9NVSdt87cP(IntPtr P_0, uint P_1, uint P_2, uint P_3)
+	private static IntPtr VirtualAlloc(IntPtr P_0, uint P_1, uint P_2, uint P_3)
 	{
-		if (gfyVwaBQbf6 == null)
+		if (virtualAllocDelegate == null)
 		{
-			gfyVwaBQbf6 = (Y1YaG9VtQrL3P37IPnHL)Marshal.GetDelegateForFunctionPointer(MblVSkVIQnQ(xTuFFuFOZ(), "Virtual ".Trim() + "Alloc"), typeof(Y1YaG9VtQrL3P37IPnHL));
+			virtualAllocDelegate = (VirtualAllocDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetKernel32Handle(), "Virtual ".Trim() + "Alloc"), typeof(VirtualAllocDelegate));
 		}
-		return gfyVwaBQbf6(P_0, P_1, P_2, P_3);
+		return virtualAllocDelegate(P_0, P_1, P_2, P_3);
 	}
 
-	private static int heQVSzmS4FD(IntPtr P_0, IntPtr P_1, [In][Out] byte[] P_2, uint P_3, out IntPtr P_4)
+	private static int WriteProcessMemory(IntPtr P_0, IntPtr P_1, [In][Out] byte[] P_2, uint P_3, out IntPtr P_4)
 	{
-		if (NWZVwqYmPOO == null)
+		if (writeProcessMemoryDelegate == null)
 		{
-			NWZVwqYmPOO = (Iycf5vVt18eEBxTpyfZu)Marshal.GetDelegateForFunctionPointer(MblVSkVIQnQ(xTuFFuFOZ(), "Write ".Trim() + "Process ".Trim() + "Memory"), typeof(Iycf5vVt18eEBxTpyfZu));
+			writeProcessMemoryDelegate = (WriteProcessMemoryDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetKernel32Handle(), "Write ".Trim() + "Process ".Trim() + "Memory"), typeof(WriteProcessMemoryDelegate));
 		}
-		return NWZVwqYmPOO(P_0, P_1, P_2, P_3, out P_4);
+		return writeProcessMemoryDelegate(P_0, P_1, P_2, P_3, out P_4);
 	}
 
-	private static int D5JVwRYBm7A(IntPtr P_0, int P_1, int P_2, ref int P_3)
+	private static int VirtualProtect(IntPtr P_0, int P_1, int P_2, ref int P_3)
 	{
-		if (FjEVwPDZt6J == null)
+		if (virtualProtectDelegate == null)
 		{
-			FjEVwPDZt6J = (B6yMGEVtrP4FhxghXxwm)Marshal.GetDelegateForFunctionPointer(MblVSkVIQnQ(xTuFFuFOZ(), "Virtual ".Trim() + "Protect"), typeof(B6yMGEVtrP4FhxghXxwm));
+			virtualProtectDelegate = (VirtualProtectDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetKernel32Handle(), "Virtual ".Trim() + "Protect"), typeof(VirtualProtectDelegate));
 		}
-		return FjEVwPDZt6J(P_0, P_1, P_2, ref P_3);
+		return virtualProtectDelegate(P_0, P_1, P_2, ref P_3);
 	}
 
-	private static IntPtr ko1VwVJ1ngE(uint P_0, int P_1, uint P_2)
+	private static IntPtr OpenProcess(uint P_0, int P_1, uint P_2)
 	{
-		if (gvPVwACSnZR == null)
+		if (openProcessDelegate == null)
 		{
-			gvPVwACSnZR = (naVpbvVtJOgLxnw5rQgJ)Marshal.GetDelegateForFunctionPointer(MblVSkVIQnQ(xTuFFuFOZ(), "Open ".Trim() + "Process"), typeof(naVpbvVtJOgLxnw5rQgJ));
+			openProcessDelegate = (OpenProcessDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetKernel32Handle(), "Open ".Trim() + "Process"), typeof(OpenProcessDelegate));
 		}
-		return gvPVwACSnZR(P_0, P_1, P_2);
+		return openProcessDelegate(P_0, P_1, P_2);
 	}
 
-	private static int dgPVwByK2pm(IntPtr P_0)
+	private static int CloseHandle(IntPtr P_0)
 	{
-		if (Vj2Vwvxv5ug == null)
+		if (closeHandleDelegate == null)
 		{
-			Vj2Vwvxv5ug = (GGm8yZVt3BnmMj8JtHec)Marshal.GetDelegateForFunctionPointer(MblVSkVIQnQ(xTuFFuFOZ(), "Close ".Trim() + "Handle"), typeof(GGm8yZVt3BnmMj8JtHec));
+			closeHandleDelegate = (CloseHandleDelegate)Marshal.GetDelegateForFunctionPointer(GetProcAddress(GetKernel32Handle(), "Close ".Trim() + "Handle"), typeof(CloseHandleDelegate));
 		}
-		return Vj2Vwvxv5ug(P_0);
+		return closeHandleDelegate(P_0);
 	}
 
 	[SpecialName]
-	private static IntPtr xTuFFuFOZ()
+	private static IntPtr GetKernel32Handle()
 	{
-		if (HMyVwW9VJBv == IntPtr.Zero)
+		if (kernel32Handle == IntPtr.Zero)
 		{
-			HMyVwW9VJBv = RxuVS0tpP1r("kernel ".Trim() + "32.dll");
+			kernel32Handle = LoadLibrary("kernel ".Trim() + "32.dll");
 		}
-		return HMyVwW9VJBv;
+		return kernel32Handle;
 	}
 
-	private static byte[] dsGVw9WbI0A(string P_0)
+	private static byte[] ReadFileBytes(string P_0)
 	{
 		using FileStream fileStream = new FileStream(P_0, FileMode.Open, FileAccess.Read, FileShare.Read);
 		int num = 0;
@@ -3012,20 +3012,20 @@ internal class AiSseStreamService3
 		return array;
 	}
 
-	internal static Stream YCnVw6sS3Dc()
+	internal static Stream CreateMemoryStream()
 	{
 		return new MemoryStream();
 	}
 
-	internal static byte[] KhIVwuGpL3D(Stream P_0)
+	internal static byte[] StreamToArray(Stream P_0)
 	{
 		return ((MemoryStream)P_0).ToArray();
 	}
 
-	private static byte[] jFtVwD8MpFk(byte[] P_0)
+	private static byte[] AesDecrypt(byte[] P_0)
 	{
-		Stream stream = YCnVw6sS3Dc();
-		SymmetricAlgorithm symmetricAlgorithm = iI8VSCYGOW0();
+		Stream stream = CreateMemoryStream();
+		SymmetricAlgorithm symmetricAlgorithm = CreateSymmetricAlgorithm();
 		symmetricAlgorithm.Key = new byte[32]
 		{
 			124, 140, 54, 254, 34, 162, 129, 32, 40, 6,
@@ -3041,173 +3041,173 @@ internal class AiSseStreamService3
 		CryptoStream cryptoStream = new CryptoStream(stream, symmetricAlgorithm.CreateDecryptor(), CryptoStreamMode.Write);
 		cryptoStream.Write(P_0, 0, P_0.Length);
 		cryptoStream.Close();
-		byte[] result = KhIVwuGpL3D(stream);
-		SseStreamInitializer.AlBVL0oCCKQ();
+		byte[] result = StreamToArray(stream);
+		SseStreamInitializer.InitializeRuntime();
 		return result;
 	}
 
-	private byte[] HluVwTpxFnA()
+	private byte[] GetNullData1()
 	{
 		return null;
 	}
 
-	private byte[] IssVwgDHgl2()
+	private byte[] GetNullData2()
 	{
 		return null;
 	}
 
-	private byte[] z6nVw8PmF9w()
+	private byte[] GetDummyData1()
 	{
 		_ = "{11111-22222-20001-00001}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	private byte[] Sd6VwIMRVIy()
+	private byte[] GetDummyData2()
 	{
 		_ = "{11111-22222-20001-00002}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	private byte[] c7gVwiGrKeU()
+	private byte[] GetDummyData3()
 	{
 		_ = "{11111-22222-30001-00001}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	private byte[] aSEVwHvIgxA()
+	private byte[] GetDummyData4()
 	{
 		_ = "{11111-22222-30001-00002}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	internal byte[] VuFVwQaRqpp()
+	internal byte[] GetDummyData5()
 	{
 		_ = "{11111-22222-40001-00001}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	internal byte[] TXKVw1xana3()
+	internal byte[] GetDummyData6()
 	{
 		_ = "{11111-22222-40001-00002}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	internal byte[] dCQVwrt3Y6w()
+	internal byte[] GetDummyData7()
 	{
 		_ = "{11111-22222-50001-00001}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	internal byte[] LoLVwJGsJg2()
+	internal byte[] GetDummyData8()
 	{
 		_ = "{11111-22222-50001-00002}".Length;
 		_ = 0;
 		return new byte[2] { 1, 2 };
 	}
 
-	internal static object N09gCxVLoXsSbvCFUhE5(object P_0)
+	internal static object GetStreamFromReader(object P_0)
 	{
-		return ((pG2pc9VtDNfcA9tWEu1l)P_0).nW4lBacjpc();
+		return ((BinaryReaderWrapper)P_0).GetBaseStream();
 	}
 
-	internal static void WwfRCQVLGM2cCHodUlSD(object P_0, long P_1)
+	internal static void SetStreamPosition(object P_0, long P_1)
 	{
 		((Stream)P_0).Position = P_1;
 	}
 
-	internal static long qV2gcSVLCtWOMSUiGCTD(object P_0)
+	internal static long GetStreamLength(object P_0)
 	{
 		return ((Stream)P_0).Length;
 	}
 
-	internal static object N50yaRVLp1I9b3cFxKuL(object P_0, int P_1)
+	internal static object ReadBytesFromReader(object P_0, int P_1)
 	{
-		return ((pG2pc9VtDNfcA9tWEu1l)P_0).N58VtTHlnc1(P_1);
+		return ((BinaryReaderWrapper)P_0).ReadBytes(P_1);
 	}
 
-	internal static void c99WaNVLOwXmdXwWaVXB(object P_0)
+	internal static void CloseReader(object P_0)
 	{
-		((pG2pc9VtDNfcA9tWEu1l)P_0).nloVtInXWpT();
+		((BinaryReaderWrapper)P_0).Close();
 	}
 
-	internal static void QwDss4VLndQTLjAoLp6X(object P_0)
+	internal static void ReverseArray(object P_0)
 	{
 		Array.Reverse((Array)P_0);
 	}
 
-	internal static object GVTyv2VL7aglyt71B2T5(object P_0)
+	internal static object GetAssemblyName(object P_0)
 	{
 		return ((Assembly)P_0).GetName();
 	}
 
-	internal static object XQiculVL5yHDvrPoU1Z1(object P_0)
+	internal static object GetPublicKeyToken(object P_0)
 	{
 		return ((AssemblyName)P_0).GetPublicKeyToken();
 	}
 
-	internal static object SowsSCVLc9Ncon94VmxQ()
+	internal static object CreateAesAlgorithm()
 	{
-		return iI8VSCYGOW0();
+		return CreateSymmetricAlgorithm();
 	}
 
-	internal static void NHVvr8VLeluyVsKI18Ls(object P_0, CipherMode P_1)
+	internal static void SetCipherMode(object P_0, CipherMode P_1)
 	{
 		((SymmetricAlgorithm)P_0).Mode = P_1;
 	}
 
-	internal static object XOFlZCVLyZfmMAqM7El5(object P_0, object P_1, object P_2)
+	internal static object CreateDecryptor(object P_0, object P_1, object P_2)
 	{
 		return ((SymmetricAlgorithm)P_0).CreateDecryptor((byte[])P_1, (byte[])P_2);
 	}
 
-	internal static object RysAegVLXHrEwKOvoDBR()
+	internal static object CreateStream()
 	{
-		return YCnVw6sS3Dc();
+		return CreateMemoryStream();
 	}
 
-	internal static void F4qHdaVLFaJailqkY8yG(object P_0, object P_1, int P_2, int P_3)
+	internal static void WriteToStream(object P_0, object P_1, int P_2, int P_3)
 	{
 		((Stream)P_0).Write((byte[])P_1, P_2, P_3);
 	}
 
-	internal static void CakkBIVLhD8uxhEEn6oP(object P_0)
+	internal static void FlushCryptoStream(object P_0)
 	{
 		((CryptoStream)P_0).FlushFinalBlock();
 	}
 
-	internal static object KYPMC0VLaAomMaeM6Uk7(object P_0)
+	internal static object GetStreamBytes(object P_0)
 	{
-		return KhIVwuGpL3D((Stream)P_0);
+		return StreamToArray((Stream)P_0);
 	}
 
-	internal static void y2Ta8HVLqncaAeXCduaF(object P_0)
+	internal static void CloseStream(object P_0)
 	{
 		((Stream)P_0).Close();
 	}
 
-	internal static object qKt29EVLPLn4wAeiyG3L(object P_0)
+	internal static object GetAssemblyEntryPoint(object P_0)
 	{
 		return ((Assembly)P_0).EntryPoint;
 	}
 
-	internal static bool QVqeqBVLAe2qVaYQ9Z2r(object P_0, object P_1)
+	internal static bool AreMethodsEqual(object P_0, object P_1)
 	{
 		return (MethodInfo)P_0 == (MethodInfo)P_1;
 	}
 
-	internal static bool L60ZsqVLNiYGf6Wn3Rd6()
+	internal static bool AlwaysTrue()
 	{
 		return null == null;
 	}
 
-	internal static object zZkkIgVLmB2l0yHbdVg6()
+	internal static object AlwaysNull()
 	{
 		return null;
 	}

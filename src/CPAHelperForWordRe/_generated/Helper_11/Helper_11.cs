@@ -6,22 +6,22 @@ namespace Helper_11;
 internal sealed class Helper_11
 {
 	[CompilerGenerated]
-	private string UT89hmPu4t;
+	private string _code;
 
 	[CompilerGenerated]
-	private string wHq9alrWh9;
+	private string _message;
 
 	public string code
 	{
 		[CompilerGenerated]
 		get
 		{
-			return UT89hmPu4t;
+			return _code;
 		}
 		[CompilerGenerated]
 		set
 		{
-			UT89hmPu4t = value;
+			_code = value;
 		}
 	}
 
@@ -30,17 +30,17 @@ internal sealed class Helper_11
 		[CompilerGenerated]
 		get
 		{
-			return wHq9alrWh9;
+			return _message;
 		}
 		[CompilerGenerated]
 		set
 		{
-			wHq9alrWh9 = value;
+			_message = value;
 		}
 	}
 
 	public Helper_11()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

@@ -8,7 +8,7 @@ namespace ShutdownStepRunner;
 
 internal sealed class ShutdownStepRunner
 {
-	private readonly List<KeyValuePair<string, Action>> chjsPcdIl7;
+	private readonly List<KeyValuePair<string, Action>> _shutdownSteps;
 
 	public void CdpsaonsgL(string P_0, Action P_1)
 	{
@@ -16,28 +16,28 @@ internal sealed class ShutdownStepRunner
 		{
 			throw new ArgumentNullException("step");
 		}
-		chjsPcdIl7.Add(new KeyValuePair<string, Action>(P_0, P_1));
+		_shutdownSteps.Add(new KeyValuePair<string, Action>(P_0, P_1));
 	}
 
-	public void wCBsq1dqWy()
+	public void RunShutdown()
 	{
-		for (int num = chjsPcdIl7.Count - 1; num >= 0; num--)
+		for (int num = _shutdownSteps.Count - 1; num >= 0; num--)
 		{
-			string text = (string.IsNullOrWhiteSpace(chjsPcdIl7[num].Key) ? "关闭步骤" : chjsPcdIl7[num].Key);
+			string text = (string.IsNullOrWhiteSpace(_shutdownSteps[num].Key) ? "关闭步骤" : _shutdownSteps[num].Key);
 			try
 			{
-				chjsPcdIl7[num].Value();
+				_shutdownSteps[num].Value();
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.ujWsURly3F("[Shutdown] " + text + " failed", ex);
+				AiConfigBootstrap.LogError("[Shutdown] " + text + " failed", ex);
 			}
 		}
 	}
 
 	public ShutdownStepRunner()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		chjsPcdIl7 = new List<KeyValuePair<string, Action>>();
+		SseStreamInitializer.InitializeRuntime();
+		_shutdownSteps = new List<KeyValuePair<string, Action>>();
 	}
 }

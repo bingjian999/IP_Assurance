@@ -6,17 +6,17 @@ namespace TextRange;
 internal struct TextRange
 {
 	[CompilerGenerated]
-	private readonly int DbvSYwHKn2;
+	private readonly int _start;
 
 	[CompilerGenerated]
-	private readonly int B3MSZXkHR0;
+	private readonly int _int;
 
 	public int Start
 	{
 		[CompilerGenerated]
 		get
 		{
-			return DbvSYwHKn2;
+			return _start;
 		}
 	}
 
@@ -25,7 +25,7 @@ internal struct TextRange
 		[CompilerGenerated]
 		get
 		{
-			return B3MSZXkHR0;
+			return _int;
 		}
 	}
 
@@ -33,8 +33,8 @@ internal struct TextRange
 
 	public TextRange(int P_0, int P_1)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		DbvSYwHKn2 = P_0;
-		B3MSZXkHR0 = P_1;
+		SseStreamInitializer.InitializeRuntime();
+		_start = P_0;
+		_int = P_1;
 	}
 }

@@ -29,37 +29,37 @@ internal sealed class AiAssistantHost : UserControl
 {
 	private static readonly JavaScriptSerializer tSS3hxNHc0;
 
-	private WebView2 wAT3avlLMh;
+	private WebView2 _webView2;
 
-	private DesktopAiBridgeServer Hsb3qVN1n2;
+	private DesktopAiBridgeServer _desktopAiBridgeServer;
 
-	private bool gdA3P70IOX;
+	private bool _bool;
 
-	private bool XmG3AqiI65;
+	private bool _bool;
 
-	private bool sRV3v4DOBf;
+	private bool _bool;
 
-	private bool dfN3WbCGRG;
+	private bool _bool;
 
-	private string Msd30L7SJ0;
-
-	[CompilerGenerated]
-	private string jj13kAM3U1;
+	private string _string;
 
 	[CompilerGenerated]
-	private AiTargetBinder iPJ3xa3Y18;
+	private string _windowKey;
+
+	[CompilerGenerated]
+	private AiTargetBinder _target;
 
 	public string WindowKey
 	{
 		[CompilerGenerated]
 		get
 		{
-			return jj13kAM3U1;
+			return _windowKey;
 		}
 		[CompilerGenerated]
 		set
 		{
-			jj13kAM3U1 = value;
+			_windowKey = value;
 		}
 	}
 
@@ -68,18 +68,18 @@ internal sealed class AiAssistantHost : UserControl
 		[CompilerGenerated]
 		get
 		{
-			return iPJ3xa3Y18;
+			return _target;
 		}
 		[CompilerGenerated]
 		set
 		{
-			iPJ3xa3Y18 = value;
+			_target = value;
 		}
 	}
 
 	public AiAssistantHost()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		O0p3l4nwwc();
 		AiHelper_17.fWnUBnsIYw(HwR37nWbFR);
 	}
@@ -87,15 +87,15 @@ internal sealed class AiAssistantHost : UserControl
 	private void O0p3l4nwwc()
 	{
 		SuspendLayout();
-		wAT3avlLMh = new WebView2
+		_webView2 = new WebView2
 		{
 			CreationProperties = new CoreWebView2CreationProperties
 			{
-				UserDataFolder = AiSseStreamService.mSfs9VWIdb("WebView2", "AgentTaskPane")
+				UserDataFolder = AiSseStreamService.GetUserDataPath("WebView2", "AgentTaskPane")
 			},
 			Dock = DockStyle.Fill
 		};
-		base.Controls.Add(wAT3avlLMh);
+		base.Controls.Add(_webView2);
 		base.Name = "WordAgentTaskPaneControl";
 		base.Size = new Size(560, 800);
 		ResumeLayout(performLayout: false);
@@ -103,16 +103,16 @@ internal sealed class AiAssistantHost : UserControl
 
 	public async Task nb43Nxg93w()
 	{
-		if (gdA3P70IOX || XmG3AqiI65)
+		if (_bool || _bool)
 		{
 			return;
 		}
-		XmG3AqiI65 = true;
+		_bool = true;
 		try
 		{
 			if (!Mj53mPmCxk())
 			{
-				if (LoggerInitializer.JWucG2ERAH("WebView2", "AgentTaskPane"))
+				if (LoggerInitializer.ShowConfirm("WebView2", "AgentTaskPane"))
 				{
 					Process.Start(new ProcessStartInfo("WordAgentTaskPaneControl")
 					{
@@ -121,39 +121,39 @@ internal sealed class AiAssistantHost : UserControl
 				}
 				return;
 			}
-			Hsb3qVN1n2 = AiAssistantHost2.mJIBvnaH0F(Target);
-			if (Hsb3qVN1n2 != null)
+			_desktopAiBridgeServer = AiAssistantHost2.mJIBvnaH0F(Target);
+			if (_desktopAiBridgeServer != null)
 			{
-				await wAT3avlLMh.EnsureCoreWebView2Async();
+				await _webView2.EnsureCoreWebView2Async();
 				PyX3CRqaXs();
-				await wAT3avlLMh.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(SOB3GPkoQ3());
+				await _webView2.CoreWebView2.AddScriptToExecuteOnDocumentCreatedAsync(SOB3GPkoQ3());
 				string text = Xvl3oTT4CU();
 				if (text == null)
 				{
 					throw new FileNotFoundException("index.html" + AiSseStreamService.FrontendAssetsDir);
 				}
-				wAT3avlLMh.CoreWebView2.SetVirtualHostNameToFolderMapping("app.local", text, CoreWebView2HostResourceAccessKind.Allow);
+				_webView2.CoreWebView2.SetVirtualHostNameToFolderMapping("app.local", text, CoreWebView2HostResourceAccessKind.Allow);
 				try
 				{
-					await wAT3avlLMh.CoreWebView2.Profile.ClearBrowsingDataAsync(CoreWebView2BrowsingDataKinds.CacheStorage | CoreWebView2BrowsingDataKinds.DiskCache);
+					await _webView2.CoreWebView2.Profile.ClearBrowsingDataAsync(CoreWebView2BrowsingDataKinds.CacheStorage | CoreWebView2BrowsingDataKinds.DiskCache);
 				}
 				catch
 				{
 				}
-				wAT3avlLMh.CoreWebView2.Navigate("https://app.local/index.html");
+				_webView2.CoreWebView2.Navigate("https://app.local/index.html");
 				wFK356xxfX();
-				gdA3P70IOX = true;
+				_bool = true;
 			}
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[AgentUI] initialization failed", ex);
-			LoggerInitializer.F9Ycoqv2I8("AI 助手初始化失败，请检查配置、网络环境和日志后重试。" + ex.Message, "AI 助手");
-			gdA3P70IOX = false;
+			AiConfigBootstrap.LogError("[AgentUI] initialization failed", ex);
+			LoggerInitializer.ShowError("AI 助手初始化失败，请检查配置、网络环境和日志后重试。" + ex.Message, "AI 助手");
+			_bool = false;
 		}
 		finally
 		{
-			XmG3AqiI65 = false;
+			_bool = false;
 		}
 	}
 
@@ -181,7 +181,7 @@ internal sealed class AiAssistantHost : UserControl
 
 	private string SOB3GPkoQ3()
 	{
-		bool isIntranetEnvironment = IntranetAiConfigService.Instance.Nju6iKu8Ci().IsIntranetEnvironment;
+		bool isIntranetEnvironment = IntranetAiConfigService.Instance.GetConfig().IsIntranetEnvironment;
 		var obj = new
 		{
 			hostKind = "word",
@@ -210,17 +210,17 @@ internal sealed class AiAssistantHost : UserControl
 			runtimeStatusPollIntervalMs = 0
 		};
 		string text = tSS3hxNHc0.Serialize(obj);
-		return string.Format("window.__BRIDGE_PORT__ = {0}; ", Hsb3qVN1n2.Port) + "window.__IS_LIGHT__ = true; window.__HOST_CONTEXT__ = " + text + ";window.__CPA_POST_ERROR__ = function (payload) {  try { if (window.chrome && window.chrome.webview && window.chrome.webview.postMessage) window.chrome.webview.postMessage(payload); } catch (_) { }};window.addEventListener('error', function (event) {  try { window.__CPA_POST_ERROR__('[agent-ui-error] ' + (event.message || 'unknown') + ' ' + (event.filename || '') + ':' + (event.lineno || 0)); } catch (_) { }});window.addEventListener('unhandledrejection', function (event) {  try { var r = event && event.reason; window.__CPA_POST_ERROR__('[agent-ui-rejection] ' + (typeof r === 'string' ? r : ((r && (r.stack || r.message)) || 'unknown'))); } catch (_) { }});(function(){function a(){if(!document.body)return;var b=document.getElementById('cpa-return-home');if(b)return;b=document.createElement('button');b.id='cpa-return-home';b.textContent='返回主界面';b.style.cssText='position:fixed;top:6px;right:8px;z-index:99999;background:rgba(255,255,255,0.92);border:1px solid #ccc;border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;color:#444;box-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:20px;transition:all .15s;white-space:nowrap';b.onmouseenter=function(){b.style.background='#e8e8e8';b.style.borderColor='#999'};b.onmouseleave=function(){b.style.background='rgba(255,255,255,0.92)';b.style.borderColor='#ccc'};b.onclick=function(){window.location.reload()};document.body.appendChild(b)}function init(){a();var m=new MutationObserver(function(){a()});m.observe(document.body,{childList:true,subtree:true})}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}})();";
+		return string.Format("window.__BRIDGE_PORT__ = {0}; ", _desktopAiBridgeServer.Port) + "window.__IS_LIGHT__ = true; window.__HOST_CONTEXT__ = " + text + ";window.__CPA_POST_ERROR__ = function (payload) {  try { if (window.chrome && window.chrome.webview && window.chrome.webview.postMessage) window.chrome.webview.postMessage(payload); } catch (_) { }};window.addEventListener('error', function (event) {  try { window.__CPA_POST_ERROR__('[agent-ui-error] ' + (event.message || 'unknown') + ' ' + (event.filename || '') + ':' + (event.lineno || 0)); } catch (_) { }});window.addEventListener('unhandledrejection', function (event) {  try { var r = event && event.reason; window.__CPA_POST_ERROR__('[agent-ui-rejection] ' + (typeof r === 'string' ? r : ((r && (r.stack || r.message)) || 'unknown'))); } catch (_) { }});(function(){function a(){if(!document.body)return;var b=document.getElementById('cpa-return-home');if(b)return;b=document.createElement('button');b.id='cpa-return-home';b.textContent='返回主界面';b.style.cssText='position:fixed;top:6px;right:8px;z-index:99999;background:rgba(255,255,255,0.92);border:1px solid #ccc;border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer;color:#444;box-shadow:0 1px 3px rgba(0,0,0,0.12);line-height:20px;transition:all .15s;white-space:nowrap';b.onmouseenter=function(){b.style.background='#e8e8e8';b.style.borderColor='#999'};b.onmouseleave=function(){b.style.background='rgba(255,255,255,0.92)';b.style.borderColor='#ccc'};b.onclick=function(){window.location.reload()};document.body.appendChild(b)}function init(){a();var m=new MutationObserver(function(){a()});m.observe(document.body,{childList:true,subtree:true})}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}})();";
 	}
 
 	private void PyX3CRqaXs()
 	{
-		if (!sRV3v4DOBf && wAT3avlLMh?.CoreWebView2 != null)
+		if (!_bool && _webView2?.CoreWebView2 != null)
 		{
-			wAT3avlLMh.CoreWebView2.WebMessageReceived += VGG3pk7osX;
-			wAT3avlLMh.CoreWebView2.ProcessFailed += lMB3OQ8Rl8;
-			wAT3avlLMh.CoreWebView2.NavigationCompleted += ixs3nlkvjU;
-			sRV3v4DOBf = true;
+			_webView2.CoreWebView2.WebMessageReceived += VGG3pk7osX;
+			_webView2.CoreWebView2.ProcessFailed += lMB3OQ8Rl8;
+			_webView2.CoreWebView2.NavigationCompleted += ixs3nlkvjU;
+			_bool = true;
 		}
 	}
 
@@ -231,18 +231,18 @@ internal sealed class AiAssistantHost : UserControl
 			string text = P_1.TryGetWebMessageAsString();
 			if (!string.IsNullOrWhiteSpace(text))
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AgentUI] " + text);
+				AiConfigBootstrap.LogWarn("[AgentUI] " + text);
 			}
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AgentUI] Failed to read web message: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AgentUI] Failed to read web message: " + ex.Message);
 		}
 	}
 
 	private void lMB3OQ8Rl8(object P_0, CoreWebView2ProcessFailedEventArgs P_1)
 	{
-		AiConfigBootstrap.ujWsURly3F(string.Format("[AgentUI] WebView process failed. Kind={0}; Reason={1}", P_1.ProcessFailedKind, P_1.Reason));
+		AiConfigBootstrap.LogError(string.Format("[AgentUI] WebView process failed. Kind={0}; Reason={1}", P_1.ProcessFailedKind, P_1.Reason));
 	}
 
 	private void ixs3nlkvjU(object P_0, CoreWebView2NavigationCompletedEventArgs P_1)
@@ -253,13 +253,13 @@ internal sealed class AiAssistantHost : UserControl
 		}
 		else
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AgentUI] Navigation failed. Status=" + P_1.WebErrorStatus);
+			AiConfigBootstrap.LogWarn("[AgentUI] Navigation failed. Status=" + P_1.WebErrorStatus);
 		}
 	}
 
 	private void HwR37nWbFR(AiTargetBinder P_0, AgentArtifact P_1)
 	{
-		if (P_1 == null || wAT3avlLMh?.CoreWebView2 == null || (P_0 != null && !string.Equals(P_0.WindowKey, WindowKey, StringComparison.OrdinalIgnoreCase)))
+		if (P_1 == null || _webView2?.CoreWebView2 == null || (P_0 != null && !string.Equals(P_0.WindowKey, WindowKey, StringComparison.OrdinalIgnoreCase)))
 		{
 			return;
 		}
@@ -271,33 +271,33 @@ internal sealed class AiAssistantHost : UserControl
 				title = P_1.Title,
 				recordCount = P_1.RecordCount
 			});
-			wAT3avlLMh.CoreWebView2.ExecuteScriptAsync("window.dispatchEvent(new CustomEvent('cpa-agent-artifact', { detail: " + text + " }));");
+			_webView2.CoreWebView2.ExecuteScriptAsync("window.dispatchEvent(new CustomEvent('cpa-agent-artifact', { detail: " + text + " }));");
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("HandleArtifactPublished failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("HandleArtifactPublished failed: " + ex.Message);
 		}
 	}
 
 	private void wFK356xxfX()
 	{
 		Microsoft.Office.Interop.Word.Application wordApp = WordTableToolService.WordApp;
-		if (!dfN3WbCGRG && wordApp != null)
+		if (!_bool && wordApp != null)
 		{
 			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowActivate").AddEventHandler(wordApp, new ApplicationEvents4_WindowActivateEventHandler(tEu3ebUT5B));
 			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").AddEventHandler(wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(Ink3y7HBFV));
-			dfN3WbCGRG = true;
+			_bool = true;
 		}
 	}
 
 	private void wBw3cW9FKn()
 	{
 		Microsoft.Office.Interop.Word.Application wordApp = WordTableToolService.WordApp;
-		if (dfN3WbCGRG && wordApp != null)
+		if (_bool && wordApp != null)
 		{
 			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowActivate").RemoveEventHandler(wordApp, new ApplicationEvents4_WindowActivateEventHandler(tEu3ebUT5B));
 			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").RemoveEventHandler(wordApp, new ApplicationEvents4_WindowSelectionChangeEventHandler(Ink3y7HBFV));
-			dfN3WbCGRG = false;
+			_bool = false;
 		}
 	}
 
@@ -313,16 +313,16 @@ internal sealed class AiAssistantHost : UserControl
 
 	private void eY03XNcEyA()
 	{
-		if (wAT3avlLMh?.CoreWebView2 == null)
+		if (_webView2?.CoreWebView2 == null)
 		{
 			return;
 		}
 		try
 		{
 			string text = CdZ3FO2FEj(Target);
-			if (!string.IsNullOrWhiteSpace(text) && !(text == Msd30L7SJ0))
+			if (!string.IsNullOrWhiteSpace(text) && !(text == _string))
 			{
-				Msd30L7SJ0 = text;
+				_string = text;
 				string text2 = tSS3hxNHc0.Serialize(new
 				{
 					items = new[]
@@ -335,12 +335,12 @@ internal sealed class AiAssistantHost : UserControl
 						}
 					}
 				});
-				wAT3avlLMh.CoreWebView2.ExecuteScriptAsync("window.__HOST_STATUS__ = " + text2 + "; window.dispatchEvent(new CustomEvent('cpa-host-status', { detail: window.__HOST_STATUS__ }));");
+				_webView2.CoreWebView2.ExecuteScriptAsync("window.__HOST_STATUS__ = " + text2 + "; window.dispatchEvent(new CustomEvent('cpa-host-status', { detail: window.__HOST_STATUS__ }));");
 			}
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("PushCurrentHostStatus failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("PushCurrentHostStatus failed: " + ex.Message);
 		}
 	}
 
@@ -383,21 +383,21 @@ internal sealed class AiAssistantHost : UserControl
 			AiHelper_17.vIPU93N8BE(HwR37nWbFR);
 			AiAssistantHost2.Kf7BW0nRZX(WindowKey);
 			wBw3cW9FKn();
-			if (wAT3avlLMh?.CoreWebView2 != null && sRV3v4DOBf)
+			if (_webView2?.CoreWebView2 != null && _bool)
 			{
-				wAT3avlLMh.CoreWebView2.WebMessageReceived -= VGG3pk7osX;
-				wAT3avlLMh.CoreWebView2.ProcessFailed -= lMB3OQ8Rl8;
-				wAT3avlLMh.CoreWebView2.NavigationCompleted -= ixs3nlkvjU;
-				sRV3v4DOBf = false;
+				_webView2.CoreWebView2.WebMessageReceived -= VGG3pk7osX;
+				_webView2.CoreWebView2.ProcessFailed -= lMB3OQ8Rl8;
+				_webView2.CoreWebView2.NavigationCompleted -= ixs3nlkvjU;
+				_bool = false;
 			}
-			wAT3avlLMh?.Dispose();
+			_webView2?.Dispose();
 		}
 		base.Dispose(P_0);
 	}
 
 	static AiAssistantHost()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		tSS3hxNHc0 = new JavaScriptSerializer();
 	}
 }

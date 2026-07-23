@@ -20,13 +20,13 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 {
 	internal TextBox txtStartNumber;
 
-	private bool KYFnssBt8V;
+	private bool _bool;
 
 	public PageNumberStartWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
-		int num = dXHnSRT5B2(TableBorderConfig.Current.HYsSh2NDxY("页面_页码_起始值", 1));
+		int num = dXHnSRT5B2(TableBorderConfig.Current.GetInt("页面_页码_起始值", 1));
 		txtStartNumber.Text = num.ToString(CultureInfo.InvariantCulture);
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -53,8 +53,8 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 		}
 		else
 		{
-			TableBorderConfig.Current.pE1SyAiPWc("页面_页码_起始值", result.ToString(CultureInfo.InvariantCulture));
-			LoggerInitializer.Ay3cNuEgJo("页码起始值已保存。", "IP_Assurance");
+			TableBorderConfig.Current.SetValue("页面_页码_起始值", result.ToString(CultureInfo.InvariantCulture));
+			LoggerInitializer.ShowInfo("页码起始值已保存。", "IP_Assurance");
 			base.DialogResult = true;
 			Close();
 		}
@@ -104,9 +104,9 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 	[DebuggerNonUserCode]
 	public void InitializeComponent()
 	{
-		if (!KYFnssBt8V)
+		if (!_bool)
 		{
-			KYFnssBt8V = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/pagenumberstartwindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -130,7 +130,7 @@ public sealed class PageNumberStartWindow : Window, IComponentConnector
 			((Button)target).Click += Q5anfVee0d;
 			break;
 		default:
-			KYFnssBt8V = true;
+			_bool = true;
 			break;
 		}
 	}

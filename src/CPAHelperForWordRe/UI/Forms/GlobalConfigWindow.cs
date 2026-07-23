@@ -18,11 +18,11 @@ public sealed class GlobalConfigWindow : Window, IComponentConnector
 {
 	private readonly NumberFormatConfig qVQGscCNQi;
 
-	private bool ueIGlkr7f5;
+	private bool _bool;
 
 	public GlobalConfigWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		qVQGscCNQi = new NumberFormatConfig(new JsonFileDialogHelper());
 		qVQGscCNQi.iVQon5Xo9R(base.Close);
@@ -76,9 +76,9 @@ public sealed class GlobalConfigWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!ueIGlkr7f5)
+		if (!_bool)
 		{
-			ueIGlkr7f5 = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/globalconfigwindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -89,6 +89,6 @@ public sealed class GlobalConfigWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	void IComponentConnector.Connect(int connectionId, object target)
 	{
-		ueIGlkr7f5 = true;
+		_bool = true;
 	}
 }

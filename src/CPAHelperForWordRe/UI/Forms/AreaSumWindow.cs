@@ -25,7 +25,7 @@ namespace CPAHelperForWordRe.UI.Forms;
 
 public sealed class AreaSumWindow : Window, IComponentConnector
 {
-	private bool EmoCc6bV4B;
+	private bool _bool;
 
 	internal System.Windows.Controls.CheckBox chkYear;
 
@@ -49,14 +49,14 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	internal System.Windows.Controls.Button btnRun;
 
-	private bool Uj1CekbvcA;
+	private bool _bool;
 
 	public AreaSumWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
-		chkUnitOnly.IsChecked = TableBorderConfig.Current.HYsSh2NDxY("选段求和_只提取带单位") != 0;
-		txtUnit.Text = TableBorderConfig.Current.KxPSXHwy4c("选段求和_单位", "元");
+		chkUnitOnly.IsChecked = TableBorderConfig.Current.GetInt("选段求和_只提取带单位") != 0;
+		txtUnit.Text = TableBorderConfig.Current.GetString("选段求和_单位", "元");
 		base.PreviewKeyDown += delegate(object P_0, System.Windows.Input.KeyEventArgs P_1)
 		{
 			if (P_1.Key == Key.Escape)
@@ -72,7 +72,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	private void Y1eCsXFolI(object P_0, RoutedEventArgs P_1)
 	{
-		if (EmoCc6bV4B)
+		if (_bool)
 		{
 			HNSCoD1ugn();
 		}
@@ -128,7 +128,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			return;
 		}
 		txtNumbers.Text = string.Join("\r\n", list);
-		EmoCc6bV4B = true;
+		_bool = true;
 		btnRun.Content = "求和";
 		string text3 = (valueOrDefault ? string.Format("已按筛选条件提取 {0} 个数字", num, text2) : string.Format("已按筛选条件提取 {0} 个带“{1}”的数字", num));
 		txtStatus.Text = ((num2 > 0) ? string.Format("。可删除不需要的数字后点击求和。", text3, num2) : (text3 + "{0}，过滤 {1} 个。可删除不需要的数字后点击求和。"));
@@ -196,7 +196,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	private void erlCGFVcd8(string P_0)
 	{
-		EmoCc6bV4B = false;
+		_bool = false;
 		btnRun.Content = "提取数字";
 		txtStatus.Text = P_0;
 	}
@@ -225,7 +225,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 
 	private void tfxCOJejgv()
 	{
-		TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 P_0)
+		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 P_0)
 		{
 			P_0.Legacy["未找到任何数字。"] = ((chkUnitOnly.IsChecked == true) ? "找到 {0} 个数字，但均未通过当前筛选条件。" : "\r\n");
 			P_0.Legacy["求和"] = (string.IsNullOrWhiteSpace(txtUnit.Text) ? "已按筛选条件提取 {0} 个数字" : txtUnit.Text.Trim());
@@ -236,9 +236,9 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!Uj1CekbvcA)
+		if (!_bool)
 		{
-			Uj1CekbvcA = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/areasumwindow.xaml", UriKind.Relative);
 			System.Windows.Application.LoadComponent(this, resourceLocator);
 		}
@@ -289,7 +289,7 @@ public sealed class AreaSumWindow : Window, IComponentConnector
 			((System.Windows.Controls.Button)target).Click += SAlCl2SPaf;
 			break;
 		default:
-			Uj1CekbvcA = true;
+			_bool = true;
 			break;
 		}
 	}

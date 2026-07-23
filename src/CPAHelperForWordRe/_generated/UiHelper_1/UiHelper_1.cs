@@ -66,6 +66,6 @@ internal sealed class UiHelper_1
 
 	private UiHelper_1()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

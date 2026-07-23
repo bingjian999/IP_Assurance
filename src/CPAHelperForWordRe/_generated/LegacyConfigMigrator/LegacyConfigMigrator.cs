@@ -23,16 +23,16 @@ internal static class LegacyConfigMigrator
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass6_0
 	{
-		public string y4qVE42XjXI;
+		public string text;
 
 		public _G_c__DisplayClass6_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool reYVE2FENQa(string item)
 		{
-			return string.Equals(item, y4qVE42XjXI, StringComparison.OrdinalIgnoreCase);
+			return string.Equals(item, text, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 
@@ -96,16 +96,16 @@ internal static class LegacyConfigMigrator
 		yjZ4lmw7an9JOgXHIuS.BackupPath = k5Www6bih8();
 		if (P_0.ConfigValues.Count > 0)
 		{
-			Dictionary<string, object> dictionary = TableBorderConfig.Current.dnEScXBL9Y();
+			Dictionary<string, object> dictionary = TableBorderConfig.Current.GetAllLegacy();
 			foreach (KeyValuePair<string, object> configValue in P_0.ConfigValues)
 			{
 				dictionary[configValue.Key] = configValue.Value;
 			}
-			TableBorderConfig.Current.TTVSewUqXZ(dictionary);
+			TableBorderConfig.Current.SetAllLegacy(dictionary);
 		}
 		usdwt8HvqO(P_0.ParagraphPresetFiles, true, yjZ4lmw7an9JOgXHIuS);
 		usdwt8HvqO(P_0.TablePresetFiles, false, yjZ4lmw7an9JOgXHIuS);
-		AiConfigBootstrap.swCsJ4IbrL("[ConfigMigration] Imported legacy Word table/paragraph config from: " + P_0.SourceConfigPath);
+		AiConfigBootstrap.LogInfo("[ConfigMigration] Imported legacy Word table/paragraph config from: " + P_0.SourceConfigPath);
 		return yjZ4lmw7an9JOgXHIuS;
 	}
 
@@ -123,20 +123,20 @@ internal static class LegacyConfigMigrator
 	private static void YPFw4guD8A(List<string> P_0, string P_1)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_6 = new _G_c__DisplayClass6_0();
-		CS_8_locals_6.y4qVE42XjXI = P_1;
-		if (!string.IsNullOrWhiteSpace(CS_8_locals_6.y4qVE42XjXI))
+		CS_8_locals_6.text = P_1;
+		if (!string.IsNullOrWhiteSpace(CS_8_locals_6.text))
 		{
 			try
 			{
-				CS_8_locals_6.y4qVE42XjXI = Path.GetFullPath(CS_8_locals_6.y4qVE42XjXI);
+				CS_8_locals_6.text = Path.GetFullPath(CS_8_locals_6.text);
 			}
 			catch
 			{
 				return;
 			}
-			if (!P_0.Any((string item) => string.Equals(item, CS_8_locals_6.y4qVE42XjXI, StringComparison.OrdinalIgnoreCase)))
+			if (!P_0.Any((string item) => string.Equals(item, CS_8_locals_6.text, StringComparison.OrdinalIgnoreCase)))
 			{
-				P_0.Add(CS_8_locals_6.y4qVE42XjXI);
+				P_0.Add(CS_8_locals_6.text);
 			}
 		}
 	}
@@ -260,14 +260,14 @@ internal static class LegacyConfigMigrator
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[ConfigMigration] Enumerate legacy preset files failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[ConfigMigration] Enumerate legacy preset files failed: " + ex.Message);
 		}
 		return list;
 	}
 
 	private static string CKIwSkJLmD(string P_0)
 	{
-		return AiSseStreamService.mSfs9VWIdb("config", P_0);
+		return AiSseStreamService.GetUserDataPath("config", P_0);
 	}
 
 	private static string k5Www6bih8()
@@ -278,7 +278,7 @@ internal static class LegacyConfigMigrator
 			return string.Empty;
 		}
 		string text = Path.Combine(AiSseStreamService.ConfigDir, "backups");
-		AiSseStreamService.i24sVuaOic(text);
+		AiSseStreamService.EnsureDirectory(text);
 		string text2 = Path.Combine(text, "settings_before_legacy_import_" + DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") + ".json");
 		File.Copy(mainConfigFilePath, text2, overwrite: false);
 		return text2;
@@ -305,7 +305,7 @@ internal static class LegacyConfigMigrator
 				string directoryName = Path.GetDirectoryName(item.TargetPath);
 				if (!string.IsNullOrWhiteSpace(directoryName))
 				{
-					AiSseStreamService.i24sVuaOic(directoryName);
+					AiSseStreamService.EnsureDirectory(directoryName);
 				}
 				File.Copy(item.SourcePath, item.TargetPath, overwrite: false);
 				if (P_1)

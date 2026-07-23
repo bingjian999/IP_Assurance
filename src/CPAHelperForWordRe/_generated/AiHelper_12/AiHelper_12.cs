@@ -21,10 +21,10 @@ internal sealed class AiHelper_12
 	private HotkeyHookService2 ogctHhYAgX;
 
 	[CompilerGenerated]
-	private AiHelper_11 Ra6tQAx5sR;
+	private AiHelper_11 _excelSync;
 
 	[CompilerGenerated]
-	private Helper_22 NeLt19vFa8;
+	private Helper_22 _ai;
 
 	[CompilerGenerated]
 	private Dictionary<string, object> qu4trJ0fhN;
@@ -76,12 +76,12 @@ internal sealed class AiHelper_12
 		[CompilerGenerated]
 		get
 		{
-			return Ra6tQAx5sR;
+			return _excelSync;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Ra6tQAx5sR = value;
+			_excelSync = value;
 		}
 	}
 
@@ -90,12 +90,12 @@ internal sealed class AiHelper_12
 		[CompilerGenerated]
 		get
 		{
-			return NeLt19vFa8;
+			return _ai;
 		}
 		[CompilerGenerated]
 		set
 		{
-			NeLt19vFa8 = value;
+			_ai = value;
 		}
 	}
 
@@ -140,20 +140,20 @@ internal sealed class AiHelper_12
 			Legacy = new Dictionary<string, object>();
 		}
 		System.qyxtULiSoA();
-		OfficeTab.O77tY1qK6N();
+		OfficeTab.AdjustHeight();
 		DesktopPin.IEntCn565B();
-		ExcelSync.WJlt5JDtmQ();
+		ExcelSync.Initialize();
 		Ai.DuXtXcAhKd();
 	}
 
 	public AiHelper_12()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		UPstIQSoRt = new Helper_18();
 		SRytiDQYmK = new Helper_1();
 		ogctHhYAgX = new HotkeyHookService2();
-		Ra6tQAx5sR = new AiHelper_11();
-		NeLt19vFa8 = new Helper_22();
+		_excelSync = new AiHelper_11();
+		_ai = new Helper_22();
 		qu4trJ0fhN = new Dictionary<string, object>();
 	}
 }

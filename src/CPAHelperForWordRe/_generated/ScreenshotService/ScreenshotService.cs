@@ -23,16 +23,16 @@ internal static class ScreenshotService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass8_0
 	{
-		public DesktopPinContextHelper DL7FzHGeRY;
+		public DesktopPinContextHelper desktopPinContextHelper;
 
 		public _G_c__DisplayClass8_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void tKLFddnaYm(object _, FormClosedEventArgs __)
 		{
-			dfCBKMIQgW.Remove(DL7FzHGeRY);
+			dfCBKMIQgW.Remove(desktopPinContextHelper);
 		}
 	}
 
@@ -52,7 +52,7 @@ internal static class ScreenshotService
 		}
 		catch (Exception ex)
 		{
-			System.Windows.Forms.MessageBox.Show(WordTableToolService5.KJy58rGLXb(), "启动截图功能失败：" + ex.Message, "IP_Assurance", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+			System.Windows.Forms.MessageBox.Show(WordTableToolService5.GetOwnerWindow(), "启动截图功能失败：" + ex.Message, "IP_Assurance", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 		}
 		finally
 		{
@@ -94,7 +94,7 @@ internal static class ScreenshotService
 		}
 		catch (Exception ex)
 		{
-			System.Windows.Forms.MessageBox.Show(WordTableToolService5.KJy58rGLXb(), "快速截图失败：" + ex.Message, "IP_Assurance", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+			System.Windows.Forms.MessageBox.Show(WordTableToolService5.GetOwnerWindow(), "快速截图失败：" + ex.Message, "IP_Assurance", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 		}
 	}
 
@@ -108,7 +108,7 @@ internal static class ScreenshotService
 		dfCBKMIQgW.Clear();
 	}
 
-	public static bool o6HBH667NB(out string P_0)
+	public static bool TryRegisterHotkey(out string P_0)
 	{
 		P_0 = null;
 		HotkeyHookService2 desktopPin = TableBorderConfig.Current.Config.DesktopPin;
@@ -117,7 +117,7 @@ internal static class ScreenshotService
 			HotkeyHookService.uQ7VKeL8py("DesktopPin");
 			return true;
 		}
-		if (!HotkeyHookService.kKcV477mFM(desktopPin.Hotkey, (SMvGfVVI8pN4lQroEEl)1u, out var fLLBq1VHNF5GNnjaJrS2))
+		if (!HotkeyHookService.TryRegisterHotkeyHook(desktopPin.Hotkey, (HotkeyAction)1u, out var fLLBq1VHNF5GNnjaJrS2))
 		{
 			HotkeyHookService.uQ7VKeL8py("DesktopPin");
 			P_0 = "钉桌面热键无效，请录制或输入 Alt/Ctrl/Shift/Win + 一个按键，例如 Alt+F1、Ctrl+Shift+Q。Fn 不是 Windows 可注册的修饰键。";
@@ -140,13 +140,13 @@ internal static class ScreenshotService
 	private static void VOtB1a9A6x(Image P_0, System.Drawing.Point P_1, double P_2)
 	{
 		_G_c__DisplayClass8_0 CS_8_locals_5 = new _G_c__DisplayClass8_0();
-		CS_8_locals_5.DL7FzHGeRY = new DesktopPinContextHelper(P_0, P_1, P_2);
-		CS_8_locals_5.DL7FzHGeRY.FormClosed += delegate
+		CS_8_locals_5.desktopPinContextHelper = new DesktopPinContextHelper(P_0, P_1, P_2);
+		CS_8_locals_5.desktopPinContextHelper.FormClosed += delegate
 		{
-			dfCBKMIQgW.Remove(CS_8_locals_5.DL7FzHGeRY);
+			dfCBKMIQgW.Remove(CS_8_locals_5.desktopPinContextHelper);
 		};
-		dfCBKMIQgW.Add(CS_8_locals_5.DL7FzHGeRY);
-		CS_8_locals_5.DL7FzHGeRY.Show();
+		dfCBKMIQgW.Add(CS_8_locals_5.desktopPinContextHelper);
+		CS_8_locals_5.desktopPinContextHelper.Show();
 	}
 
 	private static List<Window> slNBrIHLn5()
@@ -224,7 +224,7 @@ internal static class ScreenshotService
 
 	static ScreenshotService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		dfCBKMIQgW = new List<DesktopPinContextHelper>();
 	}
 }

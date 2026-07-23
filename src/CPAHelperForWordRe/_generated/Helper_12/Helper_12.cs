@@ -12,9 +12,9 @@ internal interface HDS8hJGbnCWyNGfO01j
 
 	bool LDCVLQYyCaG(string P_0, string P_1 = "IP_Assurance");
 
-	void tfDVL1SJK0M(string P_0, string P_1 = "IP_Assurance");
+	void LogWarning(string P_0, string P_1 = "IP_Assurance");
 
-	void GZdVLrQIdas(string P_0, string P_1 = "IP_Assurance");
+	void LogMessage(string P_0, string P_1 = "IP_Assurance");
 
-	void ULjVLJjCx1c(string P_0, string P_1 = "IP_Assurance");
+	void LogDebugMessage(string P_0, string P_1 = "IP_Assurance");
 }

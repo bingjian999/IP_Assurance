@@ -20,7 +20,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 {
 	private static readonly Regex VoenFWm86c;
 
-	private readonly int cl3nhaSv0L;
+	private readonly int _int;
 
 	[CompilerGenerated]
 	private IReadOnlyList<PageRange> TIonaklIR2;
@@ -29,7 +29,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 
 	internal TextBlock txtHint;
 
-	private bool PxLnq0HA0x;
+	private bool _bool;
 
 	internal IReadOnlyList<PageRange> PageRanges
 	{
@@ -47,11 +47,11 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 
 	public SplitPageRangesWindow(int totalPages)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
-		cl3nhaSv0L = Math.Max(1, totalPages);
+		_int = Math.Max(1, totalPages);
 		PageRanges = new List<PageRange>();
-		txtHint.Text = string.Format("当前文档共 {0} 页。示例：5 或 8-12 或 3, 8-12, 20-21。", cl3nhaSv0L);
+		txtHint.Text = string.Format("当前文档共 {0} 页。示例：5 或 8-12 或 3, 8-12, 20-21。", _int);
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
 			if (P_1.Key == Key.Escape)
@@ -145,7 +145,7 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 
 	private void eH0ncnKufX(object P_0, RoutedEventArgs P_1)
 	{
-		if (!GNen5M905m(txtRanges.Text, cl3nhaSv0L, out var pageRanges, out var messageBoxText))
+		if (!GNen5M905m(txtRanges.Text, _int, out var pageRanges, out var messageBoxText))
 		{
 			MessageBox.Show(this, messageBoxText, "提示", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 			txtRanges.Focus();
@@ -168,9 +168,9 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 	[DebuggerNonUserCode]
 	public void InitializeComponent()
 	{
-		if (!PxLnq0HA0x)
+		if (!_bool)
 		{
-			PxLnq0HA0x = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/splitpagerangeswindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -196,14 +196,14 @@ public sealed class SplitPageRangesWindow : Window, IComponentConnector
 			((Button)target).Click += crSneQumhk;
 			break;
 		default:
-			PxLnq0HA0x = true;
+			_bool = true;
 			break;
 		}
 	}
 
 	static SplitPageRangesWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		VoenFWm86c = new Regex("^\\\\s*(\\\\d+)\\\\s*(?:[-－—–~～]\\\\s*(\\\\d+)\\\\s*)?$", RegexOptions.Compiled);
 	}
 

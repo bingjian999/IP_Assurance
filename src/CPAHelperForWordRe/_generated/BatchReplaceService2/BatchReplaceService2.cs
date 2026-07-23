@@ -32,10 +32,10 @@ internal sealed class BatchReplaceService2
 		private string xObdzUoZXM;
 
 		[CompilerGenerated]
-		private bool jE5zRRVyhP;
+		private bool _documentSaved;
 
 		[CompilerGenerated]
-		private bool Gg3zVPU460;
+		private bool _trackRevisions;
 
 		[CompilerGenerated]
 		private Y8ewNwzgQ3iuUtQ05mK ROgzBRlrSw;
@@ -88,12 +88,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return jE5zRRVyhP;
+				return _documentSaved;
 			}
 			[CompilerGenerated]
 			set
 			{
-				jE5zRRVyhP = value;
+				_documentSaved = value;
 			}
 		}
 
@@ -102,12 +102,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return Gg3zVPU460;
+				return _trackRevisions;
 			}
 			[CompilerGenerated]
 			set
 			{
-				Gg3zVPU460 = value;
+				_trackRevisions = value;
 			}
 		}
 
@@ -226,7 +226,7 @@ internal sealed class BatchReplaceService2
 
 		public a5lLcpd0tjOGP93a2IH()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			JJXz6hPIUO = new List<ubtWXyzzVHfe9SR37mW>();
 			JMJzuSFJ5k = new List<tABVE1VR66mkVrCsbLlX>();
 			iE5zT2kBTY = new List<iltloQVRboLvh0PbMHDS>();
@@ -310,47 +310,47 @@ internal sealed class BatchReplaceService2
 
 		public Y8ewNwzgQ3iuUtQ05mK()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class IbFJ0vzQEvqcMM5hWZb
 	{
 		[CompilerGenerated]
-		private AiHelper_5 WTez1VkPNj;
+		private AiHelper_5 _error;
 
 		[CompilerGenerated]
 		private string tmEzrjwGwQ;
 
 		[CompilerGenerated]
-		private string yVHzJ3KgQn;
+		private string _documentFullName;
 
 		[CompilerGenerated]
-		private string Nh9z3bEfPv;
+		private string _documentKey;
 
 		[CompilerGenerated]
-		private bool HY6zUQHx9g;
+		private bool _documentSaved;
 
 		[CompilerGenerated]
-		private bool ap1zKewjp0;
+		private bool _trackRevisions;
 
 		[CompilerGenerated]
-		private Y8ewNwzgQ3iuUtQ05mK o3IzEaY1YK;
+		private Y8ewNwzgQ3iuUtQ05mK _selection;
 
 		[CompilerGenerated]
-		private string Avqz2sIi90;
+		private string _wordOpenXml;
 
 		public AiHelper_5 Error
 		{
 			[CompilerGenerated]
 			get
 			{
-				return WTez1VkPNj;
+				return _error;
 			}
 			[CompilerGenerated]
 			set
 			{
-				WTez1VkPNj = value;
+				_error = value;
 			}
 		}
 
@@ -373,12 +373,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return yVHzJ3KgQn;
+				return _documentFullName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				yVHzJ3KgQn = value;
+				_documentFullName = value;
 			}
 		}
 
@@ -387,12 +387,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return Nh9z3bEfPv;
+				return _documentKey;
 			}
 			[CompilerGenerated]
 			set
 			{
-				Nh9z3bEfPv = value;
+				_documentKey = value;
 			}
 		}
 
@@ -401,12 +401,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return HY6zUQHx9g;
+				return _documentSaved;
 			}
 			[CompilerGenerated]
 			set
 			{
-				HY6zUQHx9g = value;
+				_documentSaved = value;
 			}
 		}
 
@@ -415,12 +415,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return ap1zKewjp0;
+				return _trackRevisions;
 			}
 			[CompilerGenerated]
 			set
 			{
-				ap1zKewjp0 = value;
+				_trackRevisions = value;
 			}
 		}
 
@@ -429,12 +429,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return o3IzEaY1YK;
+				return _selection;
 			}
 			[CompilerGenerated]
 			set
 			{
-				o3IzEaY1YK = value;
+				_selection = value;
 			}
 		}
 
@@ -443,40 +443,40 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return Avqz2sIi90;
+				return _wordOpenXml;
 			}
 			[CompilerGenerated]
 			set
 			{
-				Avqz2sIi90 = value;
+				_wordOpenXml = value;
 			}
 		}
 
 		public IbFJ0vzQEvqcMM5hWZb()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class B4dteqz4khbXu1F8csG
 	{
 		[CompilerGenerated]
-		private AiHelper_5 NZZzj90ZwU;
+		private AiHelper_5 _error;
 
 		[CompilerGenerated]
-		private string I27zYqnk0d;
+		private string _documentName;
 
 		[CompilerGenerated]
-		private string HMYzZ6RGeX;
+		private string _documentFullName;
 
 		[CompilerGenerated]
-		private bool DLpzfUX3FL;
+		private bool _documentSaved;
 
 		[CompilerGenerated]
 		private int OgYzMuEEkU;
 
 		[CompilerGenerated]
-		private int sAMzb2QPju;
+		private int _rangeEnd;
 
 		[CompilerGenerated]
 		private string qZKzSpIHZU;
@@ -486,12 +486,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return NZZzj90ZwU;
+				return _error;
 			}
 			[CompilerGenerated]
 			set
 			{
-				NZZzj90ZwU = value;
+				_error = value;
 			}
 		}
 
@@ -500,12 +500,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return I27zYqnk0d;
+				return _documentName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				I27zYqnk0d = value;
+				_documentName = value;
 			}
 		}
 
@@ -514,12 +514,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return HMYzZ6RGeX;
+				return _documentFullName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				HMYzZ6RGeX = value;
+				_documentFullName = value;
 			}
 		}
 
@@ -528,12 +528,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return DLpzfUX3FL;
+				return _documentSaved;
 			}
 			[CompilerGenerated]
 			set
 			{
-				DLpzfUX3FL = value;
+				_documentSaved = value;
 			}
 		}
 
@@ -556,12 +556,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return sAMzb2QPju;
+				return _rangeEnd;
 			}
 			[CompilerGenerated]
 			set
 			{
-				sAMzb2QPju = value;
+				_rangeEnd = value;
 			}
 		}
 
@@ -581,32 +581,32 @@ internal sealed class BatchReplaceService2
 
 		public B4dteqz4khbXu1F8csG()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class n0p396zwSZtGyZIAden
 	{
 		[CompilerGenerated]
-		private AiHelper_5 Lf4ztJX8k4;
+		private AiHelper_5 _error;
 
 		[CompilerGenerated]
 		private string dapzLUMilH;
 
 		[CompilerGenerated]
-		private string LlIzsiS5UC;
+		private string _documentFullName;
 
 		[CompilerGenerated]
-		private bool F9gzlVxdAZ;
+		private bool _documentSaved;
 
 		[CompilerGenerated]
-		private int N4PzN70oGa;
+		private int _rangeStart;
 
 		[CompilerGenerated]
 		private int ghnzmeBYED;
 
 		[CompilerGenerated]
-		private int qeQzoCw2oE;
+		private int _totalTablesInRange;
 
 		[CompilerGenerated]
 		private readonly List<YA2LiRzCEWFlxyIhtIs> JoZzGVV6N7;
@@ -616,12 +616,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return Lf4ztJX8k4;
+				return _error;
 			}
 			[CompilerGenerated]
 			set
 			{
-				Lf4ztJX8k4 = value;
+				_error = value;
 			}
 		}
 
@@ -644,12 +644,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return LlIzsiS5UC;
+				return _documentFullName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				LlIzsiS5UC = value;
+				_documentFullName = value;
 			}
 		}
 
@@ -658,12 +658,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return F9gzlVxdAZ;
+				return _documentSaved;
 			}
 			[CompilerGenerated]
 			set
 			{
-				F9gzlVxdAZ = value;
+				_documentSaved = value;
 			}
 		}
 
@@ -672,12 +672,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return N4PzN70oGa;
+				return _rangeStart;
 			}
 			[CompilerGenerated]
 			set
 			{
-				N4PzN70oGa = value;
+				_rangeStart = value;
 			}
 		}
 
@@ -700,12 +700,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return qeQzoCw2oE;
+				return _totalTablesInRange;
 			}
 			[CompilerGenerated]
 			set
 			{
-				qeQzoCw2oE = value;
+				_totalTablesInRange = value;
 			}
 		}
 
@@ -720,7 +720,7 @@ internal sealed class BatchReplaceService2
 
 		public n0p396zwSZtGyZIAden()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			JoZzGVV6N7 = new List<YA2LiRzCEWFlxyIhtIs>();
 		}
 	}
@@ -731,16 +731,16 @@ internal sealed class BatchReplaceService2
 		private int iiDzpOXUGO;
 
 		[CompilerGenerated]
-		private int xJIzO2W0p2;
+		private int _rangeStart;
 
 		[CompilerGenerated]
 		private int YqOznlIqMg;
 
 		[CompilerGenerated]
-		private int E5mz7xLMwS;
+		private int _page;
 
 		[CompilerGenerated]
-		private string IUTz5yP8KB;
+		private string _wordOpenXml;
 
 		[CompilerGenerated]
 		private readonly List<oTy5bPzeK1hVaoCKkSw> fpdzcWHnZP;
@@ -764,12 +764,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return xJIzO2W0p2;
+				return _rangeStart;
 			}
 			[CompilerGenerated]
 			set
 			{
-				xJIzO2W0p2 = value;
+				_rangeStart = value;
 			}
 		}
 
@@ -792,12 +792,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return E5mz7xLMwS;
+				return _page;
 			}
 			[CompilerGenerated]
 			set
 			{
-				E5mz7xLMwS = value;
+				_page = value;
 			}
 		}
 
@@ -806,12 +806,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return IUTz5yP8KB;
+				return _wordOpenXml;
 			}
 			[CompilerGenerated]
 			set
 			{
-				IUTz5yP8KB = value;
+				_wordOpenXml = value;
 			}
 		}
 
@@ -826,7 +826,7 @@ internal sealed class BatchReplaceService2
 
 		public YA2LiRzCEWFlxyIhtIs()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			fpdzcWHnZP = new List<oTy5bPzeK1hVaoCKkSw>();
 		}
 	}
@@ -834,13 +834,13 @@ internal sealed class BatchReplaceService2
 	private sealed class oTy5bPzeK1hVaoCKkSw
 	{
 		[CompilerGenerated]
-		private int TOgzyw21o4;
+		private int _rowIndex;
 
 		[CompilerGenerated]
-		private int Df7zXKiFsb;
+		private int _columnIndex;
 
 		[CompilerGenerated]
-		private int eevzFWY6G5;
+		private int _rangeStart;
 
 		[CompilerGenerated]
 		private int NDozhxDxfG;
@@ -849,19 +849,19 @@ internal sealed class BatchReplaceService2
 		private int qfCzaKdWTS;
 
 		[CompilerGenerated]
-		private string YI3zqHX1x4;
+		private string _text;
 
 		public int RowIndex
 		{
 			[CompilerGenerated]
 			get
 			{
-				return TOgzyw21o4;
+				return _rowIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				TOgzyw21o4 = value;
+				_rowIndex = value;
 			}
 		}
 
@@ -870,12 +870,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return Df7zXKiFsb;
+				return _columnIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				Df7zXKiFsb = value;
+				_columnIndex = value;
 			}
 		}
 
@@ -884,12 +884,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return eevzFWY6G5;
+				return _rangeStart;
 			}
 			[CompilerGenerated]
 			set
 			{
-				eevzFWY6G5 = value;
+				_rangeStart = value;
 			}
 		}
 
@@ -926,25 +926,25 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return YI3zqHX1x4;
+				return _text;
 			}
 			[CompilerGenerated]
 			set
 			{
-				YI3zqHX1x4 = value;
+				_text = value;
 			}
 		}
 
 		public oTy5bPzeK1hVaoCKkSw()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class mdqrdFzPxt9txWyKKJW
 	{
 		[CompilerGenerated]
-		private int KAHzALFo5d;
+		private int _rangeStart;
 
 		[CompilerGenerated]
 		private int QMqzvfUvvJ;
@@ -954,12 +954,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return KAHzALFo5d;
+				return _rangeStart;
 			}
 			[CompilerGenerated]
 			set
 			{
-				KAHzALFo5d = value;
+				_rangeStart = value;
 			}
 		}
 
@@ -979,35 +979,35 @@ internal sealed class BatchReplaceService2
 
 		public mdqrdFzPxt9txWyKKJW()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class bK7KpszWkypJdk2Xvox
 	{
 		[CompilerGenerated]
-		private int ltBz0PnWHg;
+		private int _startRow;
 
 		[CompilerGenerated]
-		private int By2zkY5MMX;
+		private int _startColumn;
 
 		[CompilerGenerated]
 		private int mOTzxhxmBC;
 
 		[CompilerGenerated]
-		private int IoxzdA4iHu;
+		private int _endColumn;
 
 		public int StartRow
 		{
 			[CompilerGenerated]
 			get
 			{
-				return ltBz0PnWHg;
+				return _startRow;
 			}
 			[CompilerGenerated]
 			set
 			{
-				ltBz0PnWHg = value;
+				_startRow = value;
 			}
 		}
 
@@ -1016,12 +1016,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return By2zkY5MMX;
+				return _startColumn;
 			}
 			[CompilerGenerated]
 			set
 			{
-				By2zkY5MMX = value;
+				_startColumn = value;
 			}
 		}
 
@@ -1044,18 +1044,18 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return IoxzdA4iHu;
+				return _endColumn;
 			}
 			[CompilerGenerated]
 			set
 			{
-				IoxzdA4iHu = value;
+				_endColumn = value;
 			}
 		}
 
 		public bK7KpszWkypJdk2Xvox()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
@@ -1068,10 +1068,10 @@ internal sealed class BatchReplaceService2
 		private string SUQVRVJLgrU;
 
 		[CompilerGenerated]
-		private bool a5oVRBSahTx;
+		private bool _isHeading;
 
 		[CompilerGenerated]
-		private int lfgVR9hqjNp;
+		private int _outlineLevel;
 
 		public int ParagraphIndex
 		{
@@ -1106,12 +1106,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return a5oVRBSahTx;
+				return _isHeading;
 			}
 			[CompilerGenerated]
 			set
 			{
-				a5oVRBSahTx = value;
+				_isHeading = value;
 			}
 		}
 
@@ -1120,43 +1120,43 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return lfgVR9hqjNp;
+				return _outlineLevel;
 			}
 			[CompilerGenerated]
 			set
 			{
-				lfgVR9hqjNp = value;
+				_outlineLevel = value;
 			}
 		}
 
 		public ubtWXyzzVHfe9SR37mW()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class tABVE1VR66mkVrCsbLlX
 	{
 		[CompilerGenerated]
-		private string AfIVRu0x5UL;
+		private string _documentName;
 
 		[CompilerGenerated]
-		private string xrsVRDJ8qUK;
+		private string _documentFullName;
 
 		[CompilerGenerated]
-		private bool KplVRTxMr0A;
+		private bool _documentSaved;
 
 		[CompilerGenerated]
 		private int yrEVRgwrSdk;
 
 		[CompilerGenerated]
-		private int AT0VR8ZSgHO;
+		private int _firstParagraphIndex;
 
 		[CompilerGenerated]
-		private string KkhVRIOo7PC;
+		private string _altTextTitle;
 
 		[CompilerGenerated]
-		private string z1cVRiRRCxP;
+		private string _altTextDescription;
 
 		[CompilerGenerated]
 		private readonly List<List<string>> K70VRH3a2fA;
@@ -1165,7 +1165,7 @@ internal sealed class BatchReplaceService2
 		private readonly List<yYk52kVRJmeQHGAAHZBB> FptVRQWDyfr;
 
 		[CompilerGenerated]
-		private bool sRfVR1PcRLu;
+		private bool _hasMergedCells;
 
 		[CompilerGenerated]
 		private string SZAVRrQwPut;
@@ -1175,12 +1175,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return AfIVRu0x5UL;
+				return _documentName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				AfIVRu0x5UL = value;
+				_documentName = value;
 			}
 		}
 
@@ -1189,12 +1189,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return xrsVRDJ8qUK;
+				return _documentFullName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				xrsVRDJ8qUK = value;
+				_documentFullName = value;
 			}
 		}
 
@@ -1203,12 +1203,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return KplVRTxMr0A;
+				return _documentSaved;
 			}
 			[CompilerGenerated]
 			set
 			{
-				KplVRTxMr0A = value;
+				_documentSaved = value;
 			}
 		}
 
@@ -1231,12 +1231,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return AT0VR8ZSgHO;
+				return _firstParagraphIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				AT0VR8ZSgHO = value;
+				_firstParagraphIndex = value;
 			}
 		}
 
@@ -1245,12 +1245,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return KkhVRIOo7PC;
+				return _altTextTitle;
 			}
 			[CompilerGenerated]
 			set
 			{
-				KkhVRIOo7PC = value;
+				_altTextTitle = value;
 			}
 		}
 
@@ -1259,12 +1259,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return z1cVRiRRCxP;
+				return _altTextDescription;
 			}
 			[CompilerGenerated]
 			set
 			{
-				z1cVRiRRCxP = value;
+				_altTextDescription = value;
 			}
 		}
 
@@ -1291,12 +1291,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return sRfVR1PcRLu;
+				return _hasMergedCells;
 			}
 			[CompilerGenerated]
 			set
 			{
-				sRfVR1PcRLu = value;
+				_hasMergedCells = value;
 			}
 		}
 
@@ -1316,7 +1316,7 @@ internal sealed class BatchReplaceService2
 
 		public tABVE1VR66mkVrCsbLlX()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			K70VRH3a2fA = new List<List<string>>();
 			FptVRQWDyfr = new List<yYk52kVRJmeQHGAAHZBB>();
 		}
@@ -1325,34 +1325,34 @@ internal sealed class BatchReplaceService2
 	private sealed class yYk52kVRJmeQHGAAHZBB
 	{
 		[CompilerGenerated]
-		private int oTkVR3u2cib;
+		private int _cellIndex;
 
 		[CompilerGenerated]
 		private int BIXVRUDjiDx;
 
 		[CompilerGenerated]
-		private int e7YVRKgkKNi;
+		private int _columnIndex;
 
 		[CompilerGenerated]
-		private int u0ZVREEr3JI;
+		private int _rowSpan;
 
 		[CompilerGenerated]
-		private int KbiVR2VHcxe;
+		private int _columnSpan;
 
 		[CompilerGenerated]
-		private string fFvVR40lDbl;
+		private string _text;
 
 		public int CellIndex
 		{
 			[CompilerGenerated]
 			get
 			{
-				return oTkVR3u2cib;
+				return _cellIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				oTkVR3u2cib = value;
+				_cellIndex = value;
 			}
 		}
 
@@ -1375,12 +1375,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return e7YVRKgkKNi;
+				return _columnIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				e7YVRKgkKNi = value;
+				_columnIndex = value;
 			}
 		}
 
@@ -1389,12 +1389,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return u0ZVREEr3JI;
+				return _rowSpan;
 			}
 			[CompilerGenerated]
 			set
 			{
-				u0ZVREEr3JI = value;
+				_rowSpan = value;
 			}
 		}
 
@@ -1403,12 +1403,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return KbiVR2VHcxe;
+				return _columnSpan;
 			}
 			[CompilerGenerated]
 			set
 			{
-				KbiVR2VHcxe = value;
+				_columnSpan = value;
 			}
 		}
 
@@ -1417,18 +1417,18 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return fFvVR40lDbl;
+				return _text;
 			}
 			[CompilerGenerated]
 			set
 			{
-				fFvVR40lDbl = value;
+				_text = value;
 			}
 		}
 
 		public yYk52kVRJmeQHGAAHZBB()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
@@ -1438,13 +1438,13 @@ internal sealed class BatchReplaceService2
 		private string TfBVRYPQQuU;
 
 		[CompilerGenerated]
-		private string ec7VRZyOi9o;
+		private string _author;
 
 		[CompilerGenerated]
-		private string fe2VRfe0Rgn;
+		private string _date;
 
 		[CompilerGenerated]
-		private string R89VRMEZdx8;
+		private string _text;
 
 		public string Id
 		{
@@ -1465,12 +1465,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return ec7VRZyOi9o;
+				return _author;
 			}
 			[CompilerGenerated]
 			set
 			{
-				ec7VRZyOi9o = value;
+				_author = value;
 			}
 		}
 
@@ -1479,12 +1479,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return fe2VRfe0Rgn;
+				return _date;
 			}
 			[CompilerGenerated]
 			set
 			{
-				fe2VRfe0Rgn = value;
+				_date = value;
 			}
 		}
 
@@ -1493,34 +1493,34 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return R89VRMEZdx8;
+				return _text;
 			}
 			[CompilerGenerated]
 			set
 			{
-				R89VRMEZdx8 = value;
+				_text = value;
 			}
 		}
 
 		public wcRTakVRjwo5pepnDBig()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class iltloQVRboLvh0PbMHDS
 	{
 		[CompilerGenerated]
-		private int uqNVRS10gV3;
+		private int _paragraphIndex;
 
 		[CompilerGenerated]
 		private ubtWXyzzVHfe9SR37mW sUhVRwXdsd1;
 
 		[CompilerGenerated]
-		private int G94VRtYSmUW;
+		private int _tableIndex;
 
 		[CompilerGenerated]
-		private int uCQVRLT4tHe;
+		private int _firstParagraphIndex;
 
 		[CompilerGenerated]
 		private tABVE1VR66mkVrCsbLlX hIEVRsdBVC9;
@@ -1530,12 +1530,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return uqNVRS10gV3;
+				return _paragraphIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				uqNVRS10gV3 = value;
+				_paragraphIndex = value;
 			}
 		}
 
@@ -1558,12 +1558,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return G94VRtYSmUW;
+				return _tableIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				G94VRtYSmUW = value;
+				_tableIndex = value;
 			}
 		}
 
@@ -1572,12 +1572,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return uCQVRLT4tHe;
+				return _firstParagraphIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				uCQVRLT4tHe = value;
+				_firstParagraphIndex = value;
 			}
 		}
 
@@ -1597,14 +1597,14 @@ internal sealed class BatchReplaceService2
 
 		public iltloQVRboLvh0PbMHDS()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class mEoL0hVRljv4wDAmJe79
 	{
 		[CompilerGenerated]
-		private string GqZVRNj70Mb;
+		private string _type;
 
 		[CompilerGenerated]
 		private int WMaVRmTjjiJ;
@@ -1617,12 +1617,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return GqZVRNj70Mb;
+				return _type;
 			}
 			[CompilerGenerated]
 			set
 			{
-				GqZVRNj70Mb = value;
+				_type = value;
 			}
 		}
 
@@ -1656,38 +1656,38 @@ internal sealed class BatchReplaceService2
 
 		public mEoL0hVRljv4wDAmJe79()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class MNdq0PVRGorZsHaxpvRr
 	{
 		[CompilerGenerated]
-		private int JqFVRC3bs43;
+		private int _paragraphIndex;
 
 		[CompilerGenerated]
 		private int qwfVRpIFnSh;
 
 		[CompilerGenerated]
-		private int CY4VROEsxU8;
+		private int _charIndexEnd;
 
 		[CompilerGenerated]
-		private string fW0VRnm5t72;
+		private string _matchText;
 
 		[CompilerGenerated]
-		private string N7yVR78EErf;
+		private string _excerpt;
 
 		public int ParagraphIndex
 		{
 			[CompilerGenerated]
 			get
 			{
-				return JqFVRC3bs43;
+				return _paragraphIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				JqFVRC3bs43 = value;
+				_paragraphIndex = value;
 			}
 		}
 
@@ -1710,12 +1710,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return CY4VROEsxU8;
+				return _charIndexEnd;
 			}
 			[CompilerGenerated]
 			set
 			{
-				CY4VROEsxU8 = value;
+				_charIndexEnd = value;
 			}
 		}
 
@@ -1724,12 +1724,12 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return fW0VRnm5t72;
+				return _matchText;
 			}
 			[CompilerGenerated]
 			set
 			{
-				fW0VRnm5t72 = value;
+				_matchText = value;
 			}
 		}
 
@@ -1738,60 +1738,60 @@ internal sealed class BatchReplaceService2
 			[CompilerGenerated]
 			get
 			{
-				return N7yVR78EErf;
+				return _excerpt;
 			}
 			[CompilerGenerated]
 			set
 			{
-				N7yVR78EErf = value;
+				_excerpt = value;
 			}
 		}
 
 		public MNdq0PVRGorZsHaxpvRr()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_0
 	{
-		public int LhHVVwGX52p;
+		public int value;
 
-		public int EQoVVt4GEwq;
+		public int value;
 
 		public BatchReplaceService2 pDGVVLIgVmK;
 
-		public int Yf3VVswpJ4d;
+		public int value;
 
 		public _G_c__DisplayClass10_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 PM7VVSQtQ67()
 		{
 			try
 			{
-				if (LhHVVwGX52p < 0 || EQoVVt4GEwq < LhHVVwGX52p)
+				if (value < 0 || value < value)
 				{
-					return AiHelper_5.QSD9OKWs4n("rangeStart/rangeEnd 参数无效。", "invalid_arguments", new
+					return AiHelper_5.CreateError("rangeStart/rangeEnd 参数无效。", "invalid_arguments", new
 					{
-						rangeStart = LhHVVwGX52p,
-						rangeEnd = EQoVVt4GEwq
+						rangeStart = value,
+						rangeEnd = value
 					});
 				}
-				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = pDGVVLIgVmK.wkR1egPpPp(LhHVVwGX52p, EQoVVt4GEwq);
+				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = pDGVVLIgVmK.wkR1egPpPp(value, value);
 				if (b4dteqz4khbXu1F8csG.Error != null)
 				{
 					return b4dteqz4khbXu1F8csG.Error;
 				}
-				int num = sFarm8rvtQ(Yf3VVswpJ4d, 30000, 30000);
-				return AiHelper_5.nt99CvEC4m("Word range read.", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, 0));
+				int num = sFarm8rvtQ(value, 30000, 30000);
+				return AiHelper_5.CreateSuccess("Word range read.", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, 0));
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.g7A9nYlk8v("read_word_range failed", "word_read_error", ex);
+				return AiHelper_5.CreateExceptionError("read_word_range failed", "word_read_error", ex);
 			}
 		}
 	}
@@ -1803,74 +1803,74 @@ internal sealed class BatchReplaceService2
 
 		public int lbMVVmZlVvE;
 
-		public int ODKVVoO0dRF;
+		public int value;
 
 		public int XrmVVGfRwYu;
 
 		public _G_c__DisplayClass11_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal n0p396zwSZtGyZIAden NNoVVl2YqYm()
 		{
-			return jKPVVNnmOIw.Rta1F4FBcP(lbMVVmZlVvE, ODKVVoO0dRF, XrmVVGfRwYu);
+			return jKPVVNnmOIw.Rta1F4FBcP(lbMVVmZlVvE, value, XrmVVGfRwYu);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass12_0
 	{
-		public int vAZVVp6arNf;
+		public int value;
 
-		public int oqFVVOGty0R;
+		public int value;
 
 		public int DRKVVnbyDrk;
 
-		public int LXdVV7mdAkd;
+		public int value;
 
 		public _G_c__DisplayClass12_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 AiDVVC3g9xg(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass12_1 CS_8_locals_13 = new _G_c__DisplayClass12_1();
 			int count = context.Paragraphs.Count;
-			CS_8_locals_13.lEXVVebWsnI = Math.Max(1, (vAZVVp6arNf <= 0) ? 1 : vAZVVp6arNf);
+			CS_8_locals_13.lEXVVebWsnI = Math.Max(1, (value <= 0) ? 1 : value);
 			if (CS_8_locals_13.lEXVVebWsnI > count)
 			{
-				return AiHelper_5.QSD9OKWs4n("startParagraphIndex is out of range.", "invalid_arguments", new
+				return AiHelper_5.CreateError("startParagraphIndex is out of range.", "invalid_arguments", new
 				{
 					totalParagraphs = count
 				});
 			}
-			if (oqFVVOGty0R > 0)
+			if (value > 0)
 			{
-				if (oqFVVOGty0R < CS_8_locals_13.lEXVVebWsnI)
+				if (value < CS_8_locals_13.lEXVVebWsnI)
 				{
-					return AiHelper_5.QSD9OKWs4n("endParagraphIndex must be greater than or equal to startParagraphIndex.", "invalid_arguments");
+					return AiHelper_5.CreateError("endParagraphIndex must be greater than or equal to startParagraphIndex.", "invalid_arguments");
 				}
-				CS_8_locals_13.RsHVVyIt8ZD = Math.Min(count, oqFVVOGty0R);
+				CS_8_locals_13.value = Math.Min(count, value);
 			}
 			else
 			{
 				int num = sFarm8rvtQ(DRKVVnbyDrk, 20, 300);
-				CS_8_locals_13.RsHVVyIt8ZD = Math.Min(count, CS_8_locals_13.lEXVVebWsnI + num - 1);
+				CS_8_locals_13.value = Math.Min(count, CS_8_locals_13.lEXVVebWsnI + num - 1);
 			}
-			CS_8_locals_13.bpvVVXkrWNt = sFarm8rvtQ(LXdVV7mdAkd, 1000, 5000);
+			CS_8_locals_13.bpvVVXkrWNt = sFarm8rvtQ(value, 1000, 5000);
 			List<object> list = (from p in context.Paragraphs
-				where p.ParagraphIndex >= CS_8_locals_13.lEXVVebWsnI && p.ParagraphIndex <= CS_8_locals_13.RsHVVyIt8ZD
+				where p.ParagraphIndex >= CS_8_locals_13.lEXVVebWsnI && p.ParagraphIndex <= CS_8_locals_13.value
 				select gEt1WsLuCr(p, CS_8_locals_13.bpvVVXkrWNt)).ToList();
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
 			dictionary["totalParagraphs"] = count;
 			dictionary["startParagraphIndex"] = CS_8_locals_13.lEXVVebWsnI;
-			dictionary["endParagraphIndex"] = CS_8_locals_13.RsHVVyIt8ZD;
+			dictionary["endParagraphIndex"] = CS_8_locals_13.value;
 			dictionary["returned"] = list.Count;
-			dictionary["truncated"] = oqFVVOGty0R <= 0 && CS_8_locals_13.RsHVVyIt8ZD < count;
+			dictionary["truncated"] = value <= 0 && CS_8_locals_13.value < count;
 			dictionary["paragraphs"] = list;
-			return AiHelper_5.nt99CvEC4m("Word paragraphs read.", dictionary);
+			return AiHelper_5.CreateSuccess("Word paragraphs read.", dictionary);
 		}
 	}
 
@@ -1879,20 +1879,20 @@ internal sealed class BatchReplaceService2
 	{
 		public int lEXVVebWsnI;
 
-		public int RsHVVyIt8ZD;
+		public int value;
 
 		public int bpvVVXkrWNt;
 
 		public _G_c__DisplayClass12_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool M8yVV5Soi31(ubtWXyzzVHfe9SR37mW p)
 		{
 			if (p.ParagraphIndex >= lEXVVebWsnI)
 			{
-				return p.ParagraphIndex <= RsHVVyIt8ZD;
+				return p.ParagraphIndex <= value;
 			}
 			return false;
 		}
@@ -1914,7 +1914,7 @@ internal sealed class BatchReplaceService2
 
 		public _G_c__DisplayClass13_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 BiyVVFiu6vu(a5lLcpd0tjOGP93a2IH context)
@@ -1922,38 +1922,38 @@ internal sealed class BatchReplaceService2
 			_G_c__DisplayClass13_1 CS_8_locals_5 = new _G_c__DisplayClass13_1();
 			CS_8_locals_5.qIPVVvWNHDH = this;
 			int num = sFarm8rvtQ(ImSVVhZDaAJ, 300, 1000);
-			CS_8_locals_5.Pw9VVAcbbyu = awRro3mnDA(wesVVaUCmVo);
+			CS_8_locals_5.value = awRro3mnDA(wesVVaUCmVo);
 			List<ubtWXyzzVHfe9SR37mW> list = (from p in context.Paragraphs
 				where !string.IsNullOrWhiteSpace(p.Text)
-				where (p.IsHeading && p.OutlineLevel <= CS_8_locals_5.Pw9VVAcbbyu) || (!p.IsHeading & CS_8_locals_5.qIPVVvWNHDH.KEWVVqEbglr)
+				where (p.IsHeading && p.OutlineLevel <= CS_8_locals_5.value) || (!p.IsHeading & CS_8_locals_5.qIPVVvWNHDH.KEWVVqEbglr)
 				select p).Take(num).ToList();
 			int num2 = list.Count((ubtWXyzzVHfe9SR37mW p) => p.IsHeading);
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
-			dictionary["maxOutlineLevel"] = CS_8_locals_5.Pw9VVAcbbyu;
+			dictionary["maxOutlineLevel"] = CS_8_locals_5.value;
 			dictionary["includeBodyText"] = KEWVVqEbglr;
 			dictionary["headings"] = num2;
 			dictionary["returned"] = list.Count;
 			dictionary["truncated"] = list.Count >= num;
 			dictionary["items"] = list.Select((ubtWXyzzVHfe9SR37mW p) => gEt1WsLuCr(p, 240)).ToList();
-			return AiHelper_5.nt99CvEC4m("Word outline read.", dictionary);
+			return AiHelper_5.CreateSuccess("Word outline read.", dictionary);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass13_1
 	{
-		public int Pw9VVAcbbyu;
+		public int value;
 
 		public _G_c__DisplayClass13_0 qIPVVvWNHDH;
 
 		public _G_c__DisplayClass13_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool KUsVVPRNqWH(ubtWXyzzVHfe9SR37mW p)
 		{
-			if (!p.IsHeading || p.OutlineLevel > Pw9VVAcbbyu)
+			if (!p.IsHeading || p.OutlineLevel > value)
 			{
 				return !p.IsHeading & qIPVVvWNHDH.KEWVVqEbglr;
 			}
@@ -1964,60 +1964,60 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass14_0
 	{
-		public string c7OVV0KZjCI;
+		public string text;
 
-		public int uixVVker0Ra;
+		public int value;
 
-		public int BYvVVxCg2nt;
+		public int value;
 
-		public string ry0VVdRmfZZ;
+		public string text;
 
-		public int HvuVVzdG5fE;
+		public int value;
 
-		public int raUVBRus0wB;
+		public int value;
 
 		public int qxpVBVJeiBo;
 
-		public int fN1VBBbv9b3;
+		public int value;
 
-		public int e5LVB9ZSaRh;
+		public int value;
 
 		public _G_c__DisplayClass14_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 wEjVVWmYVVM(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass14_1 CS_8_locals_10 = new _G_c__DisplayClass14_1();
-			CS_8_locals_10.LWeVBukA3kY = q0ErEEV1r1(context, c7OVV0KZjCI, uixVVker0Ra, BYvVVxCg2nt, ry0VVdRmfZZ);
-			if (CS_8_locals_10.LWeVBukA3kY == null)
+			CS_8_locals_10.ubtWXyzzVHfe9SR37mW = q0ErEEV1r1(context, text, value, value, text);
+			if (CS_8_locals_10.ubtWXyzzVHfe9SR37mW == null)
 			{
-				return AiHelper_5.QSD9OKWs4n("未找到匹配的标题段落。", "not_found");
+				return AiHelper_5.CreateError("未找到匹配的标题段落。", "not_found");
 			}
-			if (!CS_8_locals_10.LWeVBukA3kY.IsHeading)
+			if (!CS_8_locals_10.ubtWXyzzVHfe9SR37mW.IsHeading)
 			{
-				return AiHelper_5.QSD9OKWs4n("目标段落不是 Word 标题/大纲段落。", "invalid_arguments", new
+				return AiHelper_5.CreateError("目标段落不是 Word 标题/大纲段落。", "invalid_arguments", new
 				{
-					headingParagraphIndex = CS_8_locals_10.LWeVBukA3kY.ParagraphIndex
+					headingParagraphIndex = CS_8_locals_10.ubtWXyzzVHfe9SR37mW.ParagraphIndex
 				});
 			}
 			int num = context.Paragraphs.Count;
-			foreach (ubtWXyzzVHfe9SR37mW item2 in context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => p.ParagraphIndex > CS_8_locals_10.LWeVBukA3kY.ParagraphIndex))
+			foreach (ubtWXyzzVHfe9SR37mW item2 in context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => p.ParagraphIndex > CS_8_locals_10.ubtWXyzzVHfe9SR37mW.ParagraphIndex))
 			{
-				if (item2.IsHeading && item2.OutlineLevel <= CS_8_locals_10.LWeVBukA3kY.OutlineLevel)
+				if (item2.IsHeading && item2.OutlineLevel <= CS_8_locals_10.ubtWXyzzVHfe9SR37mW.OutlineLevel)
 				{
 					num = item2.ParagraphIndex - 1;
 					break;
 				}
 			}
-			int num2 = sFarm8rvtQ(HvuVVzdG5fE, 1000, 5000);
-			int num3 = sFarm8rvtQ(raUVBRus0wB, 80, 500);
+			int num2 = sFarm8rvtQ(value, 1000, 5000);
+			int num3 = sFarm8rvtQ(value, 80, 500);
 			int num4 = sFarm8rvtQ(qxpVBVJeiBo, 20, 100);
 			List<mEoL0hVRljv4wDAmJe79> list = new List<mEoL0hVRljv4wDAmJe79>();
 			foreach (iltloQVRboLvh0PbMHDS block in context.Blocks)
 			{
-				if (block.ParagraphIndex > 0 && block.ParagraphIndex >= CS_8_locals_10.LWeVBukA3kY.ParagraphIndex && block.ParagraphIndex <= num)
+				if (block.ParagraphIndex > 0 && block.ParagraphIndex >= CS_8_locals_10.ubtWXyzzVHfe9SR37mW.ParagraphIndex && block.ParagraphIndex <= num)
 				{
 					ubtWXyzzVHfe9SR37mW paragraph = block.Paragraph;
 					list.Add(new mEoL0hVRljv4wDAmJe79
@@ -2027,7 +2027,7 @@ internal sealed class BatchReplaceService2
 						Data = gEt1WsLuCr(paragraph, num2)
 					});
 				}
-				else if (block.TableIndex > 0 && block.FirstParagraphIndex >= CS_8_locals_10.LWeVBukA3kY.ParagraphIndex && block.FirstParagraphIndex <= num)
+				else if (block.TableIndex > 0 && block.FirstParagraphIndex >= CS_8_locals_10.ubtWXyzzVHfe9SR37mW.ParagraphIndex && block.FirstParagraphIndex <= num)
 				{
 					list.Add(new mEoL0hVRljv4wDAmJe79
 					{
@@ -2037,8 +2037,8 @@ internal sealed class BatchReplaceService2
 					});
 				}
 			}
-			int num5 = Math.Max(0, fN1VBBbv9b3);
-			int num6 = sFarm8rvtQ(e5LVB9ZSaRh, 200, 1000);
+			int num5 = Math.Max(0, value);
+			int num6 = sFarm8rvtQ(value, 200, 1000);
 			if (num5 > list.Count)
 			{
 				num5 = list.Count;
@@ -2069,8 +2069,8 @@ internal sealed class BatchReplaceService2
 			}
 			bool flag = num7 < list.Count;
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
-			dictionary["heading"] = gEt1WsLuCr(CS_8_locals_10.LWeVBukA3kY, 500);
-			dictionary["startParagraphIndex"] = CS_8_locals_10.LWeVBukA3kY.ParagraphIndex;
+			dictionary["heading"] = gEt1WsLuCr(CS_8_locals_10.ubtWXyzzVHfe9SR37mW, 500);
+			dictionary["startParagraphIndex"] = CS_8_locals_10.ubtWXyzzVHfe9SR37mW.ParagraphIndex;
 			dictionary["endParagraphIndex"] = num;
 			dictionary["rangeStart"] = 0;
 			dictionary["rangeEnd"] = 0;
@@ -2085,25 +2085,25 @@ internal sealed class BatchReplaceService2
 			dictionary["blocks"] = list2;
 			dictionary["paragraphs"] = list3;
 			dictionary["tables"] = list4;
-			return AiHelper_5.nt99CvEC4m("Word section read.", dictionary);
+			return AiHelper_5.CreateSuccess("Word section read.", dictionary);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass14_1
 	{
-		public ubtWXyzzVHfe9SR37mW LWeVBukA3kY;
+		public ubtWXyzzVHfe9SR37mW ubtWXyzzVHfe9SR37mW;
 
 		public Func<ubtWXyzzVHfe9SR37mW, bool> IlBVBDA2eWK;
 
 		public _G_c__DisplayClass14_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool PLUVB6vLG9O(ubtWXyzzVHfe9SR37mW p)
 		{
-			return p.ParagraphIndex > LWeVBukA3kY.ParagraphIndex;
+			return p.ParagraphIndex > ubtWXyzzVHfe9SR37mW.ParagraphIndex;
 		}
 	}
 
@@ -2112,51 +2112,51 @@ internal sealed class BatchReplaceService2
 	{
 		public int TvKVBgUdUR8;
 
-		public int QZiVB864mEa;
+		public int value;
 
-		public int qlEVBId65wb;
+		public int value;
 
-		public int iI7VBimAU1q;
+		public int value;
 
-		public BatchReplaceService2 X1cVBHUUcX8;
+		public BatchReplaceService2 batchReplaceService2;
 
 		public _G_c__DisplayClass15_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 y0CVBTqmF38(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass15_1 CS_8_locals_20 = new _G_c__DisplayClass15_1();
-			CS_8_locals_20.Oo1VB3PcTd6 = context;
-			int count = CS_8_locals_20.Oo1VB3PcTd6.Tables.Count;
+			CS_8_locals_20.a5lLcpd0tjOGP93a2IH = context;
+			int count = CS_8_locals_20.a5lLcpd0tjOGP93a2IH.Tables.Count;
 			if (count == 0)
 			{
-				Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_20.Oo1VB3PcTd6);
+				Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_20.a5lLcpd0tjOGP93a2IH);
 				dictionary["totalTables"] = 0;
 				dictionary["tables"] = new object[0];
-				return AiHelper_5.nt99CvEC4m("No tables found.", dictionary);
+				return AiHelper_5.CreateSuccess("No tables found.", dictionary);
 			}
 			CS_8_locals_20.NaoVBrVDusK = ((TvKVBgUdUR8 <= 0) ? 1 : TvKVBgUdUR8);
-			CS_8_locals_20.nA7VBJ1BsJs = ((TvKVBgUdUR8 > 0) ? TvKVBgUdUR8 : Math.Min(count, sFarm8rvtQ(QZiVB864mEa, 5, 100)));
+			CS_8_locals_20.value = ((TvKVBgUdUR8 > 0) ? TvKVBgUdUR8 : Math.Min(count, sFarm8rvtQ(value, 5, 100)));
 			if (CS_8_locals_20.NaoVBrVDusK < 1 || CS_8_locals_20.NaoVBrVDusK > count)
 			{
-				return AiHelper_5.QSD9OKWs4n("tableIndex is out of range.", "invalid_arguments", new
+				return AiHelper_5.CreateError("tableIndex is out of range.", "invalid_arguments", new
 				{
 					totalTables = count
 				});
 			}
-			CS_8_locals_20.Ps2VBUS5wu6 = sFarm8rvtQ(qlEVBId65wb, 80, 500);
-			CS_8_locals_20.s91VBKcf2sn = sFarm8rvtQ(iI7VBimAU1q, 20, 100);
-			CS_8_locals_20.xEiVBEoubwj = X1cVBHUUcX8.hl01XRMNY4(CS_8_locals_20.NaoVBrVDusK, CS_8_locals_20.nA7VBJ1BsJs);
-			List<object> list = (from t in CS_8_locals_20.Oo1VB3PcTd6.Tables
-				where t.TableIndex >= CS_8_locals_20.NaoVBrVDusK && t.TableIndex <= CS_8_locals_20.nA7VBJ1BsJs
-				select JDR1x5m387(CS_8_locals_20.Oo1VB3PcTd6, t, CS_8_locals_20.Ps2VBUS5wu6, CS_8_locals_20.s91VBKcf2sn, CS_8_locals_20.xEiVBEoubwj)).ToList();
-			Dictionary<string, object> dictionary2 = tvv1A6x1MO(CS_8_locals_20.Oo1VB3PcTd6);
+			CS_8_locals_20.value = sFarm8rvtQ(value, 80, 500);
+			CS_8_locals_20.value = sFarm8rvtQ(value, 20, 100);
+			CS_8_locals_20.xEiVBEoubwj = batchReplaceService2.hl01XRMNY4(CS_8_locals_20.NaoVBrVDusK, CS_8_locals_20.value);
+			List<object> list = (from t in CS_8_locals_20.a5lLcpd0tjOGP93a2IH.Tables
+				where t.TableIndex >= CS_8_locals_20.NaoVBrVDusK && t.TableIndex <= CS_8_locals_20.value
+				select JDR1x5m387(CS_8_locals_20.a5lLcpd0tjOGP93a2IH, t, CS_8_locals_20.value, CS_8_locals_20.value, CS_8_locals_20.xEiVBEoubwj)).ToList();
+			Dictionary<string, object> dictionary2 = tvv1A6x1MO(CS_8_locals_20.a5lLcpd0tjOGP93a2IH);
 			dictionary2["totalTables"] = count;
 			dictionary2["returned"] = list.Count;
 			dictionary2["tables"] = list;
-			return AiHelper_5.nt99CvEC4m("Word tables read.", dictionary2);
+			return AiHelper_5.CreateSuccess("Word tables read.", dictionary2);
 		}
 	}
 
@@ -2165,49 +2165,49 @@ internal sealed class BatchReplaceService2
 	{
 		public int NaoVBrVDusK;
 
-		public int nA7VBJ1BsJs;
+		public int value;
 
-		public a5lLcpd0tjOGP93a2IH Oo1VB3PcTd6;
+		public a5lLcpd0tjOGP93a2IH a5lLcpd0tjOGP93a2IH;
 
-		public int Ps2VBUS5wu6;
+		public int value;
 
-		public int s91VBKcf2sn;
+		public int value;
 
 		public Dictionary<int, mdqrdFzPxt9txWyKKJW> xEiVBEoubwj;
 
 		public _G_c__DisplayClass15_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool L2RVBQLsjmi(tABVE1VR66mkVrCsbLlX t)
 		{
 			if (t.TableIndex >= NaoVBrVDusK)
 			{
-				return t.TableIndex <= nA7VBJ1BsJs;
+				return t.TableIndex <= value;
 			}
 			return false;
 		}
 
 		internal object r7uVB1olUi3(tABVE1VR66mkVrCsbLlX t)
 		{
-			return JDR1x5m387(Oo1VB3PcTd6, t, Ps2VBUS5wu6, s91VBKcf2sn, xEiVBEoubwj);
+			return JDR1x5m387(a5lLcpd0tjOGP93a2IH, t, value, value, xEiVBEoubwj);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass16_0
 	{
-		public int UJGVB4EIqGk;
+		public int value;
 
 		public _G_c__DisplayClass16_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 GlMVB2gA6b5(a5lLcpd0tjOGP93a2IH context)
 		{
-			int num = sFarm8rvtQ(UJGVB4EIqGk, 200, 1000);
+			int num = sFarm8rvtQ(value, 200, 1000);
 			List<object> list = ((IEnumerable<object>)(from c in context.Comments.Take(num)
 				select new
 				{
@@ -2221,44 +2221,44 @@ internal sealed class BatchReplaceService2
 			dictionary["returned"] = list.Count;
 			dictionary["truncated"] = list.Count >= num;
 			dictionary["comments"] = list;
-			return AiHelper_5.nt99CvEC4m("Word comments read.", dictionary);
+			return AiHelper_5.CreateSuccess("Word comments read.", dictionary);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass17_0
 	{
-		public int qnbVBZrF7Rb;
+		public int value;
 
 		public string uUNVBfrqteP;
 
-		public int iCmVBMf8Tri;
+		public int value;
 
-		public string YdQVBbpr1x2;
+		public string text;
 
 		public Func<ubtWXyzzVHfe9SR37mW, bool> rGWVBSA2rKn;
 
 		public _G_c__DisplayClass17_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 XcMVBjiB3oV(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass17_1 CS_8_locals_10 = new _G_c__DisplayClass17_1();
-			CS_8_locals_10.kY3VBl99CqZ = this;
-			CS_8_locals_10.yCvVBsSx7Cv = context;
-			int num = sFarm8rvtQ(qnbVBZrF7Rb, 50, 300);
-			CS_8_locals_10.KiXVBLZnV3J = (uUNVBfrqteP ?? "contains").Trim().ToLowerInvariant();
-			List<object> list = ((IEnumerable<object>)(from p in (from p in CS_8_locals_10.yCvVBsSx7Cv.Paragraphs
+			CS_8_locals_10._G_c__DisplayClass17_0 = this;
+			CS_8_locals_10.a5lLcpd0tjOGP93a2IH = context;
+			int num = sFarm8rvtQ(value, 50, 300);
+			CS_8_locals_10.text = (uUNVBfrqteP ?? "contains").Trim().ToLowerInvariant();
+			List<object> list = ((IEnumerable<object>)(from p in (from p in CS_8_locals_10.a5lLcpd0tjOGP93a2IH.Paragraphs
 					where p.IsHeading
-					where iCmVBMf8Tri <= 0 || p.OutlineLevel == iCmVBMf8Tri
-					where hctr2dw2UI(p.Text, CS_8_locals_10.kY3VBl99CqZ.YdQVBbpr1x2, CS_8_locals_10.KiXVBLZnV3J)
+					where value <= 0 || p.OutlineLevel == value
+					where hctr2dw2UI(p.Text, CS_8_locals_10._G_c__DisplayClass17_0.text, CS_8_locals_10.text)
 					select p).Take(num)
 				select new
 				{
-					document = CS_8_locals_10.yCvVBsSx7Cv.DocumentName,
-					documentFullName = CS_8_locals_10.yCvVBsSx7Cv.DocumentFullName,
+					document = CS_8_locals_10.a5lLcpd0tjOGP93a2IH.DocumentName,
+					documentFullName = CS_8_locals_10.a5lLcpd0tjOGP93a2IH.DocumentFullName,
 					page = (int?)null,
 					headingParagraphIndex = p.ParagraphIndex,
 					paragraphIndex = p.ParagraphIndex,
@@ -2270,21 +2270,21 @@ internal sealed class BatchReplaceService2
 						headingParagraphIndex = p.ParagraphIndex
 					}
 				})).ToList();
-			Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_10.yCvVBsSx7Cv);
-			dictionary["outlineLevel"] = YdQVBbpr1x2 ?? string.Empty;
-			dictionary["matchMode"] = ((iCmVBMf8Tri <= 0) ? ((int?)null) : new int?(iCmVBMf8Tri));
-			dictionary["returned"] = CS_8_locals_10.KiXVBLZnV3J;
+			Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_10.a5lLcpd0tjOGP93a2IH);
+			dictionary["outlineLevel"] = text ?? string.Empty;
+			dictionary["matchMode"] = ((value <= 0) ? ((int?)null) : new int?(value));
+			dictionary["returned"] = CS_8_locals_10.text;
 			dictionary["truncated"] = list.Count;
 			dictionary["matches"] = list.Count >= num;
 			dictionary["Word heading find completed."] = list;
-			return AiHelper_5.nt99CvEC4m("startParagraphIndex is out of range.", dictionary);
+			return AiHelper_5.CreateSuccess("startParagraphIndex is out of range.", dictionary);
 		}
 
 		internal bool wEtVBYmYsX0(ubtWXyzzVHfe9SR37mW p)
 		{
-			if (iCmVBMf8Tri > 0)
+			if (value > 0)
 			{
-				return p.OutlineLevel == iCmVBMf8Tri;
+				return p.OutlineLevel == value;
 			}
 			return true;
 		}
@@ -2293,28 +2293,28 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass17_1
 	{
-		public string KiXVBLZnV3J;
+		public string text;
 
-		public a5lLcpd0tjOGP93a2IH yCvVBsSx7Cv;
+		public a5lLcpd0tjOGP93a2IH a5lLcpd0tjOGP93a2IH;
 
-		public _G_c__DisplayClass17_0 kY3VBl99CqZ;
+		public _G_c__DisplayClass17_0 _G_c__DisplayClass17_0;
 
 		public _G_c__DisplayClass17_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool hwTVBwxvJeS(ubtWXyzzVHfe9SR37mW p)
 		{
-			return hctr2dw2UI(p.Text, kY3VBl99CqZ.YdQVBbpr1x2, KiXVBLZnV3J);
+			return hctr2dw2UI(p.Text, _G_c__DisplayClass17_0.text, text);
 		}
 
 		internal object jBpVBtGLAgp(ubtWXyzzVHfe9SR37mW p)
 		{
 			return new
 			{
-				document = yCvVBsSx7Cv.DocumentName,
-				documentFullName = yCvVBsSx7Cv.DocumentFullName,
+				document = a5lLcpd0tjOGP93a2IH.DocumentName,
+				documentFullName = a5lLcpd0tjOGP93a2IH.DocumentFullName,
 				page = (int?)null,
 				headingParagraphIndex = p.ParagraphIndex,
 				paragraphIndex = p.ParagraphIndex,
@@ -2332,27 +2332,27 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass18_0
 	{
-		public string ofhVBmj6BQa;
+		public string text;
 
-		public int RI2VBo0t5gQ;
+		public int value;
 
-		public bool O8JVBGLnYSN;
+		public bool flag;
 
-		public bool d91VBCCucF1;
+		public bool flag;
 
 		public _G_c__DisplayClass18_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 HVhVBN7xdry(a5lLcpd0tjOGP93a2IH context)
 		{
-			if (string.IsNullOrWhiteSpace(ofhVBmj6BQa))
+			if (string.IsNullOrWhiteSpace(text))
 			{
-				return AiHelper_5.QSD9OKWs4n("text must not be empty.", "invalid_arguments");
+				return AiHelper_5.CreateError("text must not be empty.", "invalid_arguments");
 			}
-			int num = sFarm8rvtQ(RI2VBo0t5gQ, 100, 500);
-			StringComparison stringComparison = ((!O8JVBGLnYSN) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
+			int num = sFarm8rvtQ(value, 100, 500);
+			StringComparison stringComparison = ((!flag) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
 			List<MNdq0PVRGorZsHaxpvRr> list = new List<MNdq0PVRGorZsHaxpvRr>();
 			foreach (ubtWXyzzVHfe9SR37mW paragraph in context.Paragraphs)
 			{
@@ -2360,35 +2360,35 @@ internal sealed class BatchReplaceService2
 				{
 					break;
 				}
-				moDrKNabHo(paragraph, ofhVBmj6BQa, stringComparison, d91VBCCucF1, num, list);
+				moDrKNabHo(paragraph, text, stringComparison, flag, num, list);
 			}
-			return AiHelper_5.nt99CvEC4m("Word text find completed.", QLTrUfY8oq(context, list, num));
+			return AiHelper_5.CreateSuccess("Word text find completed.", QLTrUfY8oq(context, list, num));
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass19_0
 	{
-		public string GlUVBO9y8Qq;
+		public string text;
 
 		public int wjoVBnKCVJt;
 
-		public bool GRIVB7Raqwf;
+		public bool flag;
 
 		public _G_c__DisplayClass19_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 LoZVBpQVJLi(a5lLcpd0tjOGP93a2IH context)
 		{
-			if (string.IsNullOrWhiteSpace(GlUVBO9y8Qq))
+			if (string.IsNullOrWhiteSpace(text))
 			{
-				return AiHelper_5.QSD9OKWs4n("pattern must not be empty.", "invalid_arguments");
+				return AiHelper_5.CreateError("pattern must not be empty.", "invalid_arguments");
 			}
 			int num = sFarm8rvtQ(wjoVBnKCVJt, 100, 500);
-			RegexOptions options = ((!GRIVB7Raqwf) ? RegexOptions.IgnoreCase : RegexOptions.None);
-			Regex regex = new Regex(GlUVBO9y8Qq, options);
+			RegexOptions options = ((!flag) ? RegexOptions.IgnoreCase : RegexOptions.None);
+			Regex regex = new Regex(text, options);
 			List<MNdq0PVRGorZsHaxpvRr> list = new List<MNdq0PVRGorZsHaxpvRr>();
 			foreach (ubtWXyzzVHfe9SR37mW paragraph in context.Paragraphs)
 			{
@@ -2412,32 +2412,32 @@ internal sealed class BatchReplaceService2
 					});
 				}
 			}
-			return AiHelper_5.nt99CvEC4m("Word regex find completed.", QLTrUfY8oq(context, list, num));
+			return AiHelper_5.CreateSuccess("Word regex find completed.", QLTrUfY8oq(context, list, num));
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass20_0
 	{
-		public string sLFVBc2Iboa;
+		public string text;
 
-		public int HRVVBeq9peR;
+		public int value;
 
-		public bool zNNVByyS2uC;
+		public bool flag;
 
 		public _G_c__DisplayClass20_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 tJ3VB5iAHGV(a5lLcpd0tjOGP93a2IH context)
 		{
-			if (string.IsNullOrWhiteSpace(sLFVBc2Iboa))
+			if (string.IsNullOrWhiteSpace(text))
 			{
-				return AiHelper_5.QSD9OKWs4n("text must not be empty.", "invalid_arguments");
+				return AiHelper_5.CreateError("text must not be empty.", "invalid_arguments");
 			}
-			int num = sFarm8rvtQ(HRVVBeq9peR, 100, 500);
-			StringComparison comparisonType = ((!zNNVByyS2uC) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
+			int num = sFarm8rvtQ(value, 100, 500);
+			StringComparison comparisonType = ((!flag) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
 			List<object> list = new List<object>();
 			foreach (tABVE1VR66mkVrCsbLlX table in context.Tables)
 			{
@@ -2458,7 +2458,7 @@ internal sealed class BatchReplaceService2
 							break;
 						}
 						string text = table.Matrix[i][j] ?? string.Empty;
-						int num2 = text.IndexOf(sLFVBc2Iboa, comparisonType);
+						int num2 = text.IndexOf(text, comparisonType);
 						if (num2 >= 0)
 						{
 							list.Add(new
@@ -2469,8 +2469,8 @@ internal sealed class BatchReplaceService2
 								columnIndex = j + 1,
 								rangeStart = (int?)null,
 								rangeEnd = (int?)null,
-								matchText = text.Substring(num2, sLFVBc2Iboa.Length),
-								excerpt = HyErOENeqf(text, num2, sLFVBc2Iboa.Length)
+								matchText = text.Substring(num2, text.Length),
+								excerpt = HyErOENeqf(text, num2, text.Length)
 							});
 						}
 					}
@@ -2482,7 +2482,7 @@ internal sealed class BatchReplaceService2
 			dictionary["returned"] = list.Count;
 			dictionary["truncated"] = list.Count >= num;
 			dictionary["matches"] = list;
-			return AiHelper_5.nt99CvEC4m("Word table text find completed.", dictionary);
+			return AiHelper_5.CreateSuccess("Word table text find completed.", dictionary);
 		}
 	}
 
@@ -2493,7 +2493,7 @@ internal sealed class BatchReplaceService2
 
 		public _G_c__DisplayClass23_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string W4PVBXqVGBT()
@@ -2525,36 +2525,36 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass25_0
 	{
-		public int xEWVBvRBT6X;
+		public int value;
 
-		public int O2XVBWVLmVm;
+		public int value;
 
 		public _G_c__DisplayClass25_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal B4dteqz4khbXu1F8csG WbwVBA8wuwO(Application app)
 		{
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				return new B4dteqz4khbXu1F8csG
 				{
-					Error = WordAgentRuntimeGuard2.dclJSetxGY(text)
+					Error = WordAgentRuntimeGuard2.CreateNotReadyError(text)
 				};
 			}
-			Document document = DocumentLifecycleGuard.zrqujYgRXw(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU2 = nNB1PSLKQE(document);
-			if (rU18qH9owXvBsPZ0iiU2 != null)
+			Document document = DocumentLifecycleGuard.GetActiveDocument(app);
+			AiHelper_5 insertResult = nNB1PSLKQE(document);
+			if (insertResult != null)
 			{
 				return new B4dteqz4khbXu1F8csG
 				{
-					Error = rU18qH9owXvBsPZ0iiU2
+					Error = insertResult
 				};
 			}
-			object Start = xEWVBvRBT6X;
-			object End = O2XVBWVLmVm;
+			object Start = value;
+			object End = value;
 			return bki1yLGJT9(document, document.Range(ref Start, ref End));
 		}
 	}
@@ -2562,56 +2562,56 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass26_0
 	{
-		public Range njJV9VlPGSg;
+		public Range range;
 
-		public Document v0mV9BaENEx;
+		public Document doc;
 
 		public _G_c__DisplayClass26_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string CfsVB0UhN9q()
 		{
-			return njJV9VlPGSg.WordOpenXML;
+			return range.WordOpenXML;
 		}
 
 		internal string uDwVBk9UFWH()
 		{
-			return v0mV9BaENEx.Name;
+			return doc.Name;
 		}
 
 		internal string pt4VBx6fCs1()
 		{
-			return v0mV9BaENEx.FullName;
+			return doc.FullName;
 		}
 
 		internal bool fBJVBdjhVAY()
 		{
-			return v0mV9BaENEx.Saved;
+			return doc.Saved;
 		}
 
 		internal int V1QVBz0UUN1()
 		{
-			return njJV9VlPGSg.Start;
+			return range.Start;
 		}
 
 		internal int jaQV9RZ4A4m()
 		{
-			return njJV9VlPGSg.End;
+			return range.End;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass27_0
 	{
-		public int ay8V96K2C8p;
+		public int value;
 
-		public int Y3LV9utDAa4;
+		public int value;
 
 		public _G_c__DisplayClass27_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal Dictionary<int, mdqrdFzPxt9txWyKKJW> fIDV995FEUg(Application app)
@@ -2620,23 +2620,23 @@ internal sealed class BatchReplaceService2
 			try
 			{
 				_G_c__DisplayClass27_1 CS_8_locals_4 = new _G_c__DisplayClass27_1();
-				if (!string.IsNullOrWhiteSpace(WordAgentRuntimeGuard2.gEFJbNPT5J(app)))
+				if (!string.IsNullOrWhiteSpace(WordAgentRuntimeGuard2.GetNotReadyMessage(app)))
 				{
 					return dictionary;
 				}
-				CS_8_locals_4.K1OV9TJDeDB = DocumentLifecycleGuard.zrqujYgRXw(app);
-				if (nNB1PSLKQE(CS_8_locals_4.K1OV9TJDeDB) != null)
+				CS_8_locals_4.doc = DocumentLifecycleGuard.GetActiveDocument(app);
+				if (nNB1PSLKQE(CS_8_locals_4.doc) != null)
 				{
 					return dictionary;
 				}
-				int val = VMbreGvrrq(() => CS_8_locals_4.K1OV9TJDeDB.Tables.Count, 0);
-				int num = Math.Max(1, ay8V96K2C8p);
-				int num2 = Math.Min(val, Y3LV9utDAa4);
+				int val = VMbreGvrrq(() => CS_8_locals_4.doc.Tables.Count, 0);
+				int num = Math.Max(1, value);
+				int num2 = Math.Min(val, value);
 				for (int num3 = num; num3 <= num2; num3++)
 				{
 					try
 					{
-						Range range = CS_8_locals_4.K1OV9TJDeDB.Tables[num3].Range;
+						Range range = CS_8_locals_4.doc.Tables[num3].Range;
 						dictionary[num3] = new mdqrdFzPxt9txWyKKJW
 						{
 							RangeStart = range.Start,
@@ -2658,94 +2658,94 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass27_1
 	{
-		public Document K1OV9TJDeDB;
+		public Document doc;
 
 		public _G_c__DisplayClass27_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int EO4V9DHFRKt()
 		{
-			return K1OV9TJDeDB.Tables.Count;
+			return doc.Tables.Count;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass28_0
 	{
-		public int HTKV98Meu9n;
+		public int value;
 
-		public int bIHV9IgRLUU;
+		public int value;
 
-		public int zkhV9iZkkeC;
+		public int value;
 
 		public _G_c__DisplayClass28_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal n0p396zwSZtGyZIAden addV9gRTVDN(Application app)
 		{
 			_G_c__DisplayClass28_1 CS_8_locals_18 = new _G_c__DisplayClass28_1();
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				return new n0p396zwSZtGyZIAden
 				{
-					Error = WordAgentRuntimeGuard2.dclJSetxGY(text)
+					Error = WordAgentRuntimeGuard2.CreateNotReadyError(text)
 				};
 			}
-			CS_8_locals_18.vFnV9J45IF4 = DocumentLifecycleGuard.zrqujYgRXw(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU2 = nNB1PSLKQE(CS_8_locals_18.vFnV9J45IF4);
-			if (rU18qH9owXvBsPZ0iiU2 != null)
+			CS_8_locals_18.doc = DocumentLifecycleGuard.GetActiveDocument(app);
+			AiHelper_5 insertResult = nNB1PSLKQE(CS_8_locals_18.doc);
+			if (insertResult != null)
 			{
 				return new n0p396zwSZtGyZIAden
 				{
-					Error = rU18qH9owXvBsPZ0iiU2
+					Error = insertResult
 				};
 			}
-			int start = CS_8_locals_18.vFnV9J45IF4.Content.Start;
-			int end = CS_8_locals_18.vFnV9J45IF4.Content.End;
-			if (HTKV98Meu9n < start || bIHV9IgRLUU > end || bIHV9IgRLUU <= HTKV98Meu9n)
+			int start = CS_8_locals_18.doc.Content.Start;
+			int end = CS_8_locals_18.doc.Content.End;
+			if (value < start || value > end || value <= value)
 			{
 				return new n0p396zwSZtGyZIAden
 				{
-					Error = AiHelper_5.QSD9OKWs4n("rangeStart/rangeEnd 超出文档范围或顺序无效。", "invalid_arguments", new
+					Error = AiHelper_5.CreateError("rangeStart/rangeEnd 超出文档范围或顺序无效。", "invalid_arguments", new
 					{
-						rangeStart = HTKV98Meu9n,
-						rangeEnd = bIHV9IgRLUU,
+						rangeStart = value,
+						rangeEnd = value,
 						contentStart = start,
 						contentEnd = end
 					})
 				};
 			}
-			Document document = CS_8_locals_18.vFnV9J45IF4;
-			object Start = HTKV98Meu9n;
-			object End = bIHV9IgRLUU;
-			CS_8_locals_18.DXgV931VCE2 = document.Range(ref Start, ref End);
+			Document document = CS_8_locals_18.doc;
+			object Start = value;
+			object End = value;
+			CS_8_locals_18.range = document.Range(ref Start, ref End);
 			n0p396zwSZtGyZIAden n0p396zwSZtGyZIAden2 = new n0p396zwSZtGyZIAden
 			{
-				DocumentName = N75r5VKX8X(() => CS_8_locals_18.vFnV9J45IF4.Name),
-				DocumentFullName = N75r5VKX8X(() => CS_8_locals_18.vFnV9J45IF4.FullName),
-				DocumentSaved = PSHrcSln4y(() => CS_8_locals_18.vFnV9J45IF4.Saved, false),
-				RangeStart = HTKV98Meu9n,
-				RangeEnd = bIHV9IgRLUU,
-				TotalTablesInRange = VMbreGvrrq(() => CS_8_locals_18.DXgV931VCE2.Tables.Count, 0)
+				DocumentName = N75r5VKX8X(() => CS_8_locals_18.doc.Name),
+				DocumentFullName = N75r5VKX8X(() => CS_8_locals_18.doc.FullName),
+				DocumentSaved = PSHrcSln4y(() => CS_8_locals_18.doc.Saved, false),
+				RangeStart = value,
+				RangeEnd = value,
+				TotalTablesInRange = VMbreGvrrq(() => CS_8_locals_18.range.Tables.Count, 0)
 			};
-			int num = Math.Min(n0p396zwSZtGyZIAden2.TotalTablesInRange, zkhV9iZkkeC);
+			int num = Math.Min(n0p396zwSZtGyZIAden2.TotalTablesInRange, value);
 			for (int num2 = 1; num2 <= num; num2++)
 			{
 				_G_c__DisplayClass28_2 CS_8_locals_21 = new _G_c__DisplayClass28_2();
-				Table table = CS_8_locals_18.DXgV931VCE2.Tables[num2];
-				CS_8_locals_21.SWVV92f9WkU = table.Range;
+				Table table = CS_8_locals_18.range.Tables[num2];
+				CS_8_locals_21.range = table.Range;
 				YA2LiRzCEWFlxyIhtIs yA2LiRzCEWFlxyIhtIs = new YA2LiRzCEWFlxyIhtIs
 				{
 					LocalTableIndex = num2,
-					RangeStart = VMbreGvrrq(() => CS_8_locals_21.SWVV92f9WkU.Start, 0),
-					RangeEnd = VMbreGvrrq(() => CS_8_locals_21.SWVV92f9WkU.End, 0),
-					Page = CtirifWFy5(CS_8_locals_21.SWVV92f9WkU),
-					WordOpenXml = N75r5VKX8X(() => CS_8_locals_21.SWVV92f9WkU.WordOpenXML)
+					RangeStart = VMbreGvrrq(() => CS_8_locals_21.range.Start, 0),
+					RangeEnd = VMbreGvrrq(() => CS_8_locals_21.range.End, 0),
+					Page = CtirifWFy5(CS_8_locals_21.range),
+					WordOpenXml = N75r5VKX8X(() => CS_8_locals_21.range.WordOpenXML)
 				};
 				try
 				{
@@ -2755,17 +2755,17 @@ internal sealed class BatchReplaceService2
 						while (enumerator.MoveNext())
 						{
 							_G_c__DisplayClass28_3 CS_8_locals_24 = new _G_c__DisplayClass28_3();
-							CS_8_locals_24.uifV9ZW45a9 = (Cell)enumerator.Current;
-							if (WX3rIraaAH(CS_8_locals_24.uifV9ZW45a9, out var rowIndex, out var columnIndex))
+							CS_8_locals_24.cell = (Cell)enumerator.Current;
+							if (WX3rIraaAH(CS_8_locals_24.cell, out var rowIndex, out var columnIndex))
 							{
 								yA2LiRzCEWFlxyIhtIs.Cells.Add(new oTy5bPzeK1hVaoCKkSw
 								{
 									RowIndex = rowIndex,
 									ColumnIndex = columnIndex,
-									RangeStart = VMbreGvrrq(() => CS_8_locals_24.uifV9ZW45a9.Range.Start, 0),
-									RangeEnd = VMbreGvrrq(() => CS_8_locals_24.uifV9ZW45a9.Range.End, 0),
-									Page = CtirifWFy5(CS_8_locals_24.uifV9ZW45a9.Range),
-									Text = W8DrGBw06b(N75r5VKX8X(() => CS_8_locals_24.uifV9ZW45a9.Range.Text))
+									RangeStart = VMbreGvrrq(() => CS_8_locals_24.cell.Range.Start, 0),
+									RangeEnd = VMbreGvrrq(() => CS_8_locals_24.cell.Range.End, 0),
+									Page = CtirifWFy5(CS_8_locals_24.cell.Range),
+									Text = W8DrGBw06b(N75r5VKX8X(() => CS_8_locals_24.cell.Range.Text))
 								});
 							}
 						}
@@ -2791,98 +2791,98 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass28_1
 	{
-		public Document vFnV9J45IF4;
+		public Document doc;
 
-		public Range DXgV931VCE2;
+		public Range range;
 
 		public _G_c__DisplayClass28_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string yyhV9H7epKm()
 		{
-			return vFnV9J45IF4.Name;
+			return doc.Name;
 		}
 
 		internal string bqnV9QLbqQy()
 		{
-			return vFnV9J45IF4.FullName;
+			return doc.FullName;
 		}
 
 		internal bool LiXV91XjowG()
 		{
-			return vFnV9J45IF4.Saved;
+			return doc.Saved;
 		}
 
 		internal int abwV9rWkkr6()
 		{
-			return DXgV931VCE2.Tables.Count;
+			return range.Tables.Count;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass28_2
 	{
-		public Range SWVV92f9WkU;
+		public Range range;
 
 		public _G_c__DisplayClass28_2()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int govV9UhvWUB()
 		{
-			return SWVV92f9WkU.Start;
+			return range.Start;
 		}
 
 		internal int zq0V9KgINTb()
 		{
-			return SWVV92f9WkU.End;
+			return range.End;
 		}
 
 		internal string Xf0V9ENo6fy()
 		{
-			return SWVV92f9WkU.WordOpenXML;
+			return range.WordOpenXML;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass28_3
 	{
-		public Cell uifV9ZW45a9;
+		public Cell cell;
 
 		public _G_c__DisplayClass28_3()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int GRtV94jc0Fj()
 		{
-			return uifV9ZW45a9.Range.Start;
+			return cell.Range.Start;
 		}
 
 		internal int tEpV9jWKYgx()
 		{
-			return uifV9ZW45a9.Range.End;
+			return cell.Range.End;
 		}
 
 		internal string aSsV9YNsPsN()
 		{
-			return uifV9ZW45a9.Range.Text;
+			return cell.Range.Text;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass39_0
 	{
-		public YA2LiRzCEWFlxyIhtIs oOrV9bF6NPK;
+		public YA2LiRzCEWFlxyIhtIs yA2LiRzCEWFlxyIhtIs;
 
-		public tABVE1VR66mkVrCsbLlX F92V9SyFQk9;
+		public tABVE1VR66mkVrCsbLlX tABVE1VR66mkVrCsbLlX;
 
 		public _G_c__DisplayClass39_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal Dictionary<string, object> MMLV9fvVwyN(Dictionary<string, object> item)
@@ -2890,7 +2890,7 @@ internal sealed class BatchReplaceService2
 			return new Dictionary<string, object>
 			{
 				["cellId"] = t0Ar14Clfb(item, "cellId"),
-				["localTableIndex"] = oOrV9bF6NPK.LocalTableIndex,
+				["localTableIndex"] = yA2LiRzCEWFlxyIhtIs.LocalTableIndex,
 				["rowIndex"] = VUFrr6lVTF(item, "rowIndex"),
 				["columnIndex"] = VUFrr6lVTF(item, "columnIndex"),
 				["isHeader"] = zLtrJh4fJ9(item, "isHeader"),
@@ -2910,7 +2910,7 @@ internal sealed class BatchReplaceService2
 				startColumn = m.StartColumn,
 				endRow = m.EndRow,
 				endColumn = m.EndColumn,
-				text = (QGOrDbp7Kg(F92V9SyFQk9, m.StartRow, m.StartColumn)?.Text ?? string.Empty)
+				text = (QGOrDbp7Kg(tABVE1VR66mkVrCsbLlX, m.StartRow, m.StartColumn)?.Text ?? string.Empty)
 			};
 		}
 	}
@@ -2918,18 +2918,18 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass42_0
 	{
-		public int qAxV9tHjsxJ;
+		public int value;
 
 		public _G_c__DisplayClass42_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool YpeV9wR7QwI(bK7KpszWkypJdk2Xvox merge)
 		{
-			if (merge.StartRow <= qAxV9tHjsxJ)
+			if (merge.StartRow <= value)
 			{
-				return merge.EndRow >= qAxV9tHjsxJ;
+				return merge.EndRow >= value;
 			}
 			return false;
 		}
@@ -2938,20 +2938,20 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass46_0
 	{
-		public int k2oV9srn1Wn;
+		public int value;
 
-		public int W8aV9lSkfp7;
+		public int value;
 
 		public _G_c__DisplayClass46_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool oLxV9L7bVxx(yYk52kVRJmeQHGAAHZBB cell)
 		{
-			if (cell.RowIndex <= k2oV9srn1Wn && k2oV9srn1Wn < cell.RowIndex + Math.Max(1, cell.RowSpan) && cell.ColumnIndex <= W8aV9lSkfp7)
+			if (cell.RowIndex <= value && value < cell.RowIndex + Math.Max(1, cell.RowSpan) && cell.ColumnIndex <= value)
 			{
-				return W8aV9lSkfp7 < cell.ColumnIndex + Math.Max(1, cell.ColumnSpan);
+				return value < cell.ColumnIndex + Math.Max(1, cell.ColumnSpan);
 			}
 			return false;
 		}
@@ -2960,18 +2960,18 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass57_0
 	{
-		public int VSKV9moHcKN;
+		public int value;
 
 		public _G_c__DisplayClass57_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool fSHV9NfX0hL(iltloQVRboLvh0PbMHDS b)
 		{
 			if (b.Table != null)
 			{
-				return b.TableIndex == VSKV9moHcKN;
+				return b.TableIndex == value;
 			}
 			return false;
 		}
@@ -2980,11 +2980,11 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass58_0
 	{
-		public a5lLcpd0tjOGP93a2IH RKPV9GMswFg;
+		public a5lLcpd0tjOGP93a2IH a5lLcpd0tjOGP93a2IH;
 
 		public _G_c__DisplayClass58_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal object VtEV9ol06Zv(MNdq0PVRGorZsHaxpvRr match)
@@ -2992,8 +2992,8 @@ internal sealed class BatchReplaceService2
 			return new
 			{
 				actionableRange = false,
-				document = RKPV9GMswFg.DocumentName,
-				documentFullName = RKPV9GMswFg.DocumentFullName,
+				document = a5lLcpd0tjOGP93a2IH.DocumentName,
+				documentFullName = a5lLcpd0tjOGP93a2IH.DocumentFullName,
 				page = (int?)null,
 				paragraphIndex = match.ParagraphIndex,
 				charIndexStart = match.CharIndexStart,
@@ -3009,22 +3009,22 @@ internal sealed class BatchReplaceService2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass60_0
 	{
-		public int vDeV9OtAZ2t;
+		public int value;
 
-		public int bgTV9n3AJu8;
+		public int value;
 
-		public string hG5V97YV9ew;
+		public string text;
 
-		public string KmlV95lH4lJ;
+		public string text;
 
 		public _G_c__DisplayClass60_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool jggV9CAgJ2L(ubtWXyzzVHfe9SR37mW p)
 		{
-			return p.ParagraphIndex == vDeV9OtAZ2t;
+			return p.ParagraphIndex == value;
 		}
 
 		internal bool Ok9V9poKaK2(ubtWXyzzVHfe9SR37mW p)
@@ -3033,43 +3033,43 @@ internal sealed class BatchReplaceService2
 			{
 				return false;
 			}
-			if (bgTV9n3AJu8 > 0 && p.OutlineLevel != bgTV9n3AJu8)
+			if (value > 0 && p.OutlineLevel != value)
 			{
 				return false;
 			}
-			return hctr2dw2UI(p.Text, hG5V97YV9ew, KmlV95lH4lJ);
+			return hctr2dw2UI(p.Text, text, text);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass71_0
 	{
-		public string w7mV9eP1ng9;
+		public string text;
 
 		public _G_c__DisplayClass71_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool Re3V9c1oqA6(XElement p)
 		{
-			return string.Equals(p.Attribute(noWrXsAkl3 + "name")?.Value, w7mV9eP1ng9, StringComparison.OrdinalIgnoreCase);
+			return string.Equals(p.Attribute(noWrXsAkl3 + "name")?.Value, text, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass7_0
 	{
-		public int Tf5V9X2mGwp;
+		public int value;
 
 		public _G_c__DisplayClass7_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 nk1V9yNE9SC(a5lLcpd0tjOGP93a2IH context)
 		{
-			int num = sFarm8rvtQ(Tf5V9X2mGwp, 240, 2000);
+			int num = sFarm8rvtQ(value, 240, 2000);
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
 			dictionary["pageCount"] = null;
 			dictionary["wordCount"] = null;
@@ -3079,43 +3079,43 @@ internal sealed class BatchReplaceService2
 			dictionary["commentCount"] = context.Comments.Count;
 			dictionary["trackRevisions"] = context.TrackRevisions;
 			dictionary["selection"] = G8H10y08aA(context.Selection, num);
-			return AiHelper_5.nt99CvEC4m("Word context read.", dictionary);
+			return AiHelper_5.CreateSuccess("Word context read.", dictionary);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass8_0
 	{
-		public int FPZV9hlMqny;
+		public int value;
 
-		public int HTxV9alAdxw;
+		public int value;
 
-		public int i51V9qFWdmp;
+		public int value;
 
-		public int C6fV9P50HJ8;
+		public int value;
 
-		public int DCmV9A8csbx;
+		public int value;
 
 		public _G_c__DisplayClass8_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 O6xV9FnlBGL(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass8_1 CS_8_locals_4 = new _G_c__DisplayClass8_1();
-			int count = sFarm8rvtQ(FPZV9hlMqny, 8, 50);
-			int num = sFarm8rvtQ(HTxV9alAdxw, 4, 50);
-			int num2 = sFarm8rvtQ(i51V9qFWdmp, 50, 300);
-			CS_8_locals_4.tfRV9kGnjlm = sFarm8rvtQ(C6fV9P50HJ8, 180, 1000);
-			int num3 = sFarm8rvtQ(DCmV9A8csbx, 240, 2000);
+			int count = sFarm8rvtQ(value, 8, 50);
+			int num = sFarm8rvtQ(value, 4, 50);
+			int num2 = sFarm8rvtQ(value, 50, 300);
+			CS_8_locals_4.value = sFarm8rvtQ(value, 180, 1000);
+			int num3 = sFarm8rvtQ(value, 240, 2000);
 			List<ubtWXyzzVHfe9SR37mW> list = context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => !string.IsNullOrWhiteSpace(p.Text)).ToList();
 			List<object> list2 = (from p in list.Take(count)
-				select gEt1WsLuCr(p, CS_8_locals_4.tfRV9kGnjlm)).ToList();
+				select gEt1WsLuCr(p, CS_8_locals_4.value)).ToList();
 			List<object> list3 = (from p in list.Skip(Math.Max(0, list.Count - num))
-				select gEt1WsLuCr(p, CS_8_locals_4.tfRV9kGnjlm)).ToList();
+				select gEt1WsLuCr(p, CS_8_locals_4.value)).ToList();
 			List<object> list4 = (from p in context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => p.IsHeading && p.OutlineLevel == 1 && !string.IsNullOrWhiteSpace(p.Text)).Take(num2)
-				select gEt1WsLuCr(p, CS_8_locals_4.tfRV9kGnjlm)).ToList();
+				select gEt1WsLuCr(p, CS_8_locals_4.value)).ToList();
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
 			dictionary["paragraphCount"] = context.Paragraphs.Count;
 			dictionary["tableCount"] = context.Tables.Count;
@@ -3127,63 +3127,63 @@ internal sealed class BatchReplaceService2
 			dictionary["head"] = list2;
 			dictionary["tail"] = list3;
 			dictionary["truncated"] = list.Count > list2.Count + list3.Count || list4.Count >= num2;
-			return AiHelper_5.nt99CvEC4m("Word document preview prepared.", dictionary);
+			return AiHelper_5.CreateSuccess("Word document preview prepared.", dictionary);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass8_1
 	{
-		public int tfRV9kGnjlm;
+		public int value;
 
 		public _G_c__DisplayClass8_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal object avrV9vZaaBq(ubtWXyzzVHfe9SR37mW p)
 		{
-			return gEt1WsLuCr(p, tfRV9kGnjlm);
+			return gEt1WsLuCr(p, value);
 		}
 
 		internal object TQ4V9WEImnO(ubtWXyzzVHfe9SR37mW p)
 		{
-			return gEt1WsLuCr(p, tfRV9kGnjlm);
+			return gEt1WsLuCr(p, value);
 		}
 
 		internal object WZ5V905ivAc(ubtWXyzzVHfe9SR37mW p)
 		{
-			return gEt1WsLuCr(p, tfRV9kGnjlm);
+			return gEt1WsLuCr(p, value);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass9_0
 	{
-		public BatchReplaceService2 XFEV9dHNIpj;
+		public BatchReplaceService2 batchReplaceService2;
 
-		public int g4mV9zaIHmy;
+		public int value;
 
 		public _G_c__DisplayClass9_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 XcsV9xNq0th()
 		{
 			try
 			{
-				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = XFEV9dHNIpj.xum1cwwH8X();
+				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = batchReplaceService2.xum1cwwH8X();
 				if (b4dteqz4khbXu1F8csG.Error != null)
 				{
 					return b4dteqz4khbXu1F8csG.Error;
 				}
-				int num = sFarm8rvtQ(g4mV9zaIHmy, 6000, 30000);
-				return AiHelper_5.nt99CvEC4m("Word selection preview prepared.", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, null));
+				int num = sFarm8rvtQ(value, 6000, 30000);
+				return AiHelper_5.CreateSuccess("Word selection preview prepared.", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, null));
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.g7A9nYlk8v("preview_word_selection failed", "word_read_error", ex);
+				return AiHelper_5.CreateExceptionError("preview_word_selection failed", "word_read_error", ex);
 			}
 		}
 	}
@@ -3192,29 +3192,29 @@ internal sealed class BatchReplaceService2
 
 	private static readonly XNamespace noWrXsAkl3;
 
-	private readonly AiTargetBinder SdMrFi0HLk;
+	private readonly AiTargetBinder _aiTargetBinder;
 
-	private readonly WordTableToolService4 P81rhkL3Fs;
+	private readonly WordTableToolService4 _wordTableToolService4;
 
 	public BatchReplaceService2() : this(null)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	public BatchReplaceService2(AiTargetBinder P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		SdMrFi0HLk = P_0;
-		P81rhkL3Fs = new WordTableToolService4(P_0);
+		SseStreamInitializer.InitializeRuntime();
+		_aiTargetBinder = P_0;
+		_wordTableToolService4 = new WordTableToolService4(P_0);
 	}
 
-	public AiHelper_5 lTT1bgc0h9(int P_0)
+	public AiHelper_5 GetCurrentContext(int P_0)
 	{
 		_G_c__DisplayClass7_0 CS_8_locals_2 = new _G_c__DisplayClass7_0();
-		CS_8_locals_2.Tf5V9X2mGwp = P_0;
+		CS_8_locals_2.value = P_0;
 		return Edw1nKYtwj("get_current_word_context", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
-			int num = sFarm8rvtQ(CS_8_locals_2.Tf5V9X2mGwp, 240, 2000);
+			int num = sFarm8rvtQ(CS_8_locals_2.value, 240, 2000);
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
 			dictionary["get_current_word_context"] = null;
 			dictionary["preview_word_document"] = null;
@@ -3224,33 +3224,33 @@ internal sealed class BatchReplaceService2
 			dictionary["invalid_arguments"] = context.Comments.Count;
 			dictionary["read_word_tables_in_range"] = context.TrackRevisions;
 			dictionary["read_word_tables_in_range failed"] = G8H10y08aA(context.Selection, num);
-			return AiHelper_5.nt99CvEC4m("word_read_error", dictionary);
+			return AiHelper_5.CreateSuccess("word_read_error", dictionary);
 		});
 	}
 
-	public AiHelper_5 lty1STfmJB(int P_0, int P_1, int P_2, int P_3, int P_4)
+	public AiHelper_5 PreviewDocument(int P_0, int P_1, int P_2, int P_3, int P_4)
 	{
 		_G_c__DisplayClass8_0 CS_8_locals_12 = new _G_c__DisplayClass8_0();
-		CS_8_locals_12.FPZV9hlMqny = P_0;
-		CS_8_locals_12.HTxV9alAdxw = P_1;
-		CS_8_locals_12.i51V9qFWdmp = P_2;
-		CS_8_locals_12.C6fV9P50HJ8 = P_3;
-		CS_8_locals_12.DCmV9A8csbx = P_4;
+		CS_8_locals_12.value = P_0;
+		CS_8_locals_12.value = P_1;
+		CS_8_locals_12.value = P_2;
+		CS_8_locals_12.value = P_3;
+		CS_8_locals_12.value = P_4;
 		return Edw1nKYtwj("preview_word_document", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass8_1 CS_8_locals_15 = new _G_c__DisplayClass8_1();
-			int count = sFarm8rvtQ(CS_8_locals_12.FPZV9hlMqny, 8, 50);
-			int num = sFarm8rvtQ(CS_8_locals_12.HTxV9alAdxw, 4, 50);
-			int num2 = sFarm8rvtQ(CS_8_locals_12.i51V9qFWdmp, 50, 300);
-			CS_8_locals_15.tfRV9kGnjlm = sFarm8rvtQ(CS_8_locals_12.C6fV9P50HJ8, 180, 1000);
-			int num3 = sFarm8rvtQ(CS_8_locals_12.DCmV9A8csbx, 240, 2000);
+			int count = sFarm8rvtQ(CS_8_locals_12.value, 8, 50);
+			int num = sFarm8rvtQ(CS_8_locals_12.value, 4, 50);
+			int num2 = sFarm8rvtQ(CS_8_locals_12.value, 50, 300);
+			CS_8_locals_15.value = sFarm8rvtQ(CS_8_locals_12.value, 180, 1000);
+			int num3 = sFarm8rvtQ(CS_8_locals_12.value, 240, 2000);
 			List<ubtWXyzzVHfe9SR37mW> list = context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => !string.IsNullOrWhiteSpace(p.Text)).ToList();
 			List<object> list2 = (from p in list.Take(count)
-				select gEt1WsLuCr(p, CS_8_locals_15.tfRV9kGnjlm)).ToList();
+				select gEt1WsLuCr(p, CS_8_locals_15.value)).ToList();
 			List<object> list3 = (from p in list.Skip(Math.Max(0, list.Count - num))
-				select gEt1WsLuCr(p, CS_8_locals_15.tfRV9kGnjlm)).ToList();
+				select gEt1WsLuCr(p, CS_8_locals_15.value)).ToList();
 			List<object> list4 = (from p in context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => p.IsHeading && p.OutlineLevel == 1 && !string.IsNullOrWhiteSpace(p.Text)).Take(num2)
-				select gEt1WsLuCr(p, CS_8_locals_15.tfRV9kGnjlm)).ToList();
+				select gEt1WsLuCr(p, CS_8_locals_15.value)).ToList();
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
 			dictionary["无法从该表格的 WordOpenXML 中解析表格结构。"] = context.Paragraphs.Count;
 			dictionary["document"] = context.Tables.Count;
@@ -3262,80 +3262,80 @@ internal sealed class BatchReplaceService2
 			dictionary["returnedTables"] = list2;
 			dictionary["truncated"] = list3;
 			dictionary["coordinateSystem"] = list.Count > list2.Count + list3.Count || list4.Count >= num2;
-			return AiHelper_5.nt99CvEC4m("localTableIndex,rowIndex,columnIndex are 1-based within the referenced Word range.", dictionary);
+			return AiHelper_5.CreateSuccess("localTableIndex,rowIndex,columnIndex are 1-based within the referenced Word range.", dictionary);
 		});
 	}
 
-	public AiHelper_5 BXo1w9Yht2(int P_0)
+	public AiHelper_5 PreviewSelection(int P_0)
 	{
 		_G_c__DisplayClass9_0 CS_8_locals_4 = new _G_c__DisplayClass9_0();
-		CS_8_locals_4.XFEV9dHNIpj = this;
-		CS_8_locals_4.g4mV9zaIHmy = P_0;
+		CS_8_locals_4.batchReplaceService2 = this;
+		CS_8_locals_4.value = P_0;
 		return AiHelper_14.no9JOmnkBj("preview_word_selection", delegate
 		{
 			try
 			{
-				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = CS_8_locals_4.XFEV9dHNIpj.xum1cwwH8X();
+				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = CS_8_locals_4.batchReplaceService2.xum1cwwH8X();
 				if (b4dteqz4khbXu1F8csG.Error != null)
 				{
 					return b4dteqz4khbXu1F8csG.Error;
 				}
-				int num = sFarm8rvtQ(CS_8_locals_4.g4mV9zaIHmy, 6000, 30000);
-				return AiHelper_5.nt99CvEC4m("writeTool", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, null));
+				int num = sFarm8rvtQ(CS_8_locals_4.value, 6000, 30000);
+				return AiHelper_5.CreateSuccess("writeTool", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, null));
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.g7A9nYlk8v("fill_word_table_cells_by_model", "structureEditTools", ex);
+				return AiHelper_5.CreateExceptionError("fill_word_table_cells_by_model", "structureEditTools", ex);
 			}
 		});
 	}
 
-	public AiHelper_5 pJ51tqSH7n(int P_0, int P_1, int P_2)
+	public AiHelper_5 ReadRange(int P_0, int P_1, int P_2)
 	{
 		_G_c__DisplayClass10_0 CS_8_locals_13 = new _G_c__DisplayClass10_0();
-		CS_8_locals_13.LhHVVwGX52p = P_0;
-		CS_8_locals_13.EQoVVt4GEwq = P_1;
+		CS_8_locals_13.value = P_0;
+		CS_8_locals_13.value = P_1;
 		CS_8_locals_13.pDGVVLIgVmK = this;
-		CS_8_locals_13.Yf3VVswpJ4d = P_2;
+		CS_8_locals_13.value = P_2;
 		return AiHelper_14.no9JOmnkBj("read_word_range", delegate
 		{
 			try
 			{
-				if (CS_8_locals_13.LhHVVwGX52p < 0 || CS_8_locals_13.EQoVVt4GEwq < CS_8_locals_13.LhHVVwGX52p)
+				if (CS_8_locals_13.value < 0 || CS_8_locals_13.value < CS_8_locals_13.value)
 				{
-					return AiHelper_5.QSD9OKWs4n("insert_word_table_rows_by_model", "fill_word_table_cells_by_model", new
+					return AiHelper_5.CreateError("insert_word_table_rows_by_model", "fill_word_table_cells_by_model", new
 					{
-						rangeStart = CS_8_locals_13.LhHVVwGX52p,
-						rangeEnd = CS_8_locals_13.EQoVVt4GEwq
+						rangeStart = CS_8_locals_13.value,
+						rangeEnd = CS_8_locals_13.value
 					});
 				}
-				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = CS_8_locals_13.pDGVVLIgVmK.wkR1egPpPp(CS_8_locals_13.LhHVVwGX52p, CS_8_locals_13.EQoVVt4GEwq);
+				B4dteqz4khbXu1F8csG b4dteqz4khbXu1F8csG = CS_8_locals_13.pDGVVLIgVmK.wkR1egPpPp(CS_8_locals_13.value, CS_8_locals_13.value);
 				if (b4dteqz4khbXu1F8csG.Error != null)
 				{
 					return b4dteqz4khbXu1F8csG.Error;
 				}
-				int num = sFarm8rvtQ(CS_8_locals_13.Yf3VVswpJ4d, 30000, 30000);
-				return AiHelper_5.nt99CvEC4m("tables", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, 0));
+				int num = sFarm8rvtQ(CS_8_locals_13.value, 30000, 30000);
+				return AiHelper_5.CreateSuccess("tables", NR21kjpUWn(b4dteqz4khbXu1F8csG, num, 0));
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.g7A9nYlk8v("No tables found in range.", "Word range tables read.", ex);
+				return AiHelper_5.CreateExceptionError("No tables found in range.", "Word range tables read.", ex);
 			}
 		});
 	}
 
-	public AiHelper_5 Fxp1LonZUJ(int P_0, int P_1, int P_2, int P_3, int P_4)
+	public AiHelper_5 ReadTablesInRange(int P_0, int P_1, int P_2, int P_3, int P_4)
 	{
 		_G_c__DisplayClass11_0 CS_8_locals_13 = new _G_c__DisplayClass11_0();
 		CS_8_locals_13.jKPVVNnmOIw = this;
 		CS_8_locals_13.lbMVVmZlVvE = P_0;
-		CS_8_locals_13.ODKVVoO0dRF = P_1;
-		if (CS_8_locals_13.lbMVVmZlVvE < 0 || CS_8_locals_13.ODKVVoO0dRF <= CS_8_locals_13.lbMVVmZlVvE)
+		CS_8_locals_13.value = P_1;
+		if (CS_8_locals_13.lbMVVmZlVvE < 0 || CS_8_locals_13.value <= CS_8_locals_13.lbMVVmZlVvE)
 		{
-			return AiHelper_5.QSD9OKWs4n("rangeStart/rangeEnd 参数无效。", "invalid_arguments", new
+			return AiHelper_5.CreateError("rangeStart/rangeEnd 参数无效。", "invalid_arguments", new
 			{
 				rangeStart = CS_8_locals_13.lbMVVmZlVvE,
-				rangeEnd = CS_8_locals_13.ODKVVoO0dRF
+				rangeEnd = CS_8_locals_13.value
 			});
 		}
 		CS_8_locals_13.XrmVVGfRwYu = sFarm8rvtQ(P_2, 20, 100);
@@ -3344,11 +3344,11 @@ internal sealed class BatchReplaceService2
 		n0p396zwSZtGyZIAden n0p396zwSZtGyZIAden2;
 		try
 		{
-			n0p396zwSZtGyZIAden2 = AiHelper_14.no9JOmnkBj("read_word_tables_in_range", () => CS_8_locals_13.jKPVVNnmOIw.Rta1F4FBcP(CS_8_locals_13.lbMVVmZlVvE, CS_8_locals_13.ODKVVoO0dRF, CS_8_locals_13.XrmVVGfRwYu));
+			n0p396zwSZtGyZIAden2 = AiHelper_14.no9JOmnkBj("read_word_tables_in_range", () => CS_8_locals_13.jKPVVNnmOIw.Rta1F4FBcP(CS_8_locals_13.lbMVVmZlVvE, CS_8_locals_13.value, CS_8_locals_13.XrmVVGfRwYu));
 		}
 		catch (Exception ex)
 		{
-			return AiHelper_5.g7A9nYlk8v("read_word_tables_in_range failed", "word_read_error", ex);
+			return AiHelper_5.CreateExceptionError("read_word_tables_in_range failed", "word_read_error", ex);
 		}
 		if (n0p396zwSZtGyZIAden2.Error != null)
 		{
@@ -3394,62 +3394,62 @@ internal sealed class BatchReplaceService2
 			};
 			dictionary["tables"] = list;
 			Dictionary<string, object> dictionary2 = dictionary;
-			return AiHelper_5.nt99CvEC4m((n0p396zwSZtGyZIAden2.TotalTablesInRange > 0) ? "No tables found in range." : "Word range tables read.", dictionary2);
+			return AiHelper_5.CreateSuccess((n0p396zwSZtGyZIAden2.TotalTablesInRange > 0) ? "No tables found in range." : "Word range tables read.", dictionary2);
 		}
 		catch (Exception ex2)
 		{
-			return AiHelper_5.g7A9nYlk8v("read_word_tables_in_range parse failed", "word_read_error", ex2);
+			return AiHelper_5.CreateExceptionError("read_word_tables_in_range parse failed", "word_read_error", ex2);
 		}
 	}
 
-	public AiHelper_5 zQ01sVaGV6(int P_0, int P_1, int P_2, int P_3)
+	public AiHelper_5 ReadParagraphs(int P_0, int P_1, int P_2, int P_3)
 	{
 		_G_c__DisplayClass12_0 CS_8_locals_22 = new _G_c__DisplayClass12_0();
-		CS_8_locals_22.vAZVVp6arNf = P_0;
-		CS_8_locals_22.oqFVVOGty0R = P_2;
+		CS_8_locals_22.value = P_0;
+		CS_8_locals_22.value = P_2;
 		CS_8_locals_22.DRKVVnbyDrk = P_1;
-		CS_8_locals_22.LXdVV7mdAkd = P_3;
+		CS_8_locals_22.value = P_3;
 		return Edw1nKYtwj("read_word_paragraphs", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass12_1 CS_8_locals_26 = new _G_c__DisplayClass12_1();
 			int count = context.Paragraphs.Count;
-			CS_8_locals_26.lEXVVebWsnI = Math.Max(1, (CS_8_locals_22.vAZVVp6arNf <= 0) ? 1 : CS_8_locals_22.vAZVVp6arNf);
+			CS_8_locals_26.lEXVVebWsnI = Math.Max(1, (CS_8_locals_22.value <= 0) ? 1 : CS_8_locals_22.value);
 			if (CS_8_locals_26.lEXVVebWsnI > count)
 			{
-				return AiHelper_5.QSD9OKWs4n("read_word_tables_in_range parse failed", "word_read_error", new
+				return AiHelper_5.CreateError("read_word_tables_in_range parse failed", "word_read_error", new
 				{
 					totalParagraphs = count
 				});
 			}
-			if (CS_8_locals_22.oqFVVOGty0R > 0)
+			if (CS_8_locals_22.value > 0)
 			{
-				if (CS_8_locals_22.oqFVVOGty0R < CS_8_locals_26.lEXVVebWsnI)
+				if (CS_8_locals_22.value < CS_8_locals_26.lEXVVebWsnI)
 				{
-					return AiHelper_5.QSD9OKWs4n("read_word_paragraphs", "read_word_outline");
+					return AiHelper_5.CreateError("read_word_paragraphs", "read_word_outline");
 				}
-				CS_8_locals_26.RsHVVyIt8ZD = Math.Min(count, CS_8_locals_22.oqFVVOGty0R);
+				CS_8_locals_26.value = Math.Min(count, CS_8_locals_22.value);
 			}
 			else
 			{
 				int num = sFarm8rvtQ(CS_8_locals_22.DRKVVnbyDrk, 20, 300);
-				CS_8_locals_26.RsHVVyIt8ZD = Math.Min(count, CS_8_locals_26.lEXVVebWsnI + num - 1);
+				CS_8_locals_26.value = Math.Min(count, CS_8_locals_26.lEXVVebWsnI + num - 1);
 			}
-			CS_8_locals_26.bpvVVXkrWNt = sFarm8rvtQ(CS_8_locals_22.LXdVV7mdAkd, 1000, 5000);
+			CS_8_locals_26.bpvVVXkrWNt = sFarm8rvtQ(CS_8_locals_22.value, 1000, 5000);
 			List<object> list = (from p in context.Paragraphs
-				where p.ParagraphIndex >= CS_8_locals_26.lEXVVebWsnI && p.ParagraphIndex <= CS_8_locals_26.RsHVVyIt8ZD
+				where p.ParagraphIndex >= CS_8_locals_26.lEXVVebWsnI && p.ParagraphIndex <= CS_8_locals_26.value
 				select gEt1WsLuCr(p, CS_8_locals_26.bpvVVXkrWNt)).ToList();
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
 			dictionary["read_word_section"] = count;
 			dictionary["read_word_tables"] = CS_8_locals_26.lEXVVebWsnI;
-			dictionary["read_word_comments"] = CS_8_locals_26.RsHVVyIt8ZD;
+			dictionary["read_word_comments"] = CS_8_locals_26.value;
 			dictionary["find_word_heading"] = list.Count;
-			dictionary["find_word_text"] = CS_8_locals_22.oqFVVOGty0R <= 0 && CS_8_locals_26.RsHVVyIt8ZD < count;
+			dictionary["find_word_text"] = CS_8_locals_22.value <= 0 && CS_8_locals_26.value < count;
 			dictionary["find_word_regex"] = list;
-			return AiHelper_5.nt99CvEC4m("find_word_table_text", dictionary);
+			return AiHelper_5.CreateSuccess("find_word_table_text", dictionary);
 		});
 	}
 
-	public AiHelper_5 Od41lLla1u(int P_0, bool P_1, int P_2)
+	public AiHelper_5 ReadOutline(int P_0, bool P_1, int P_2)
 	{
 		_G_c__DisplayClass13_0 CS_8_locals_11 = new _G_c__DisplayClass13_0();
 		CS_8_locals_11.ImSVVhZDaAJ = P_0;
@@ -3460,66 +3460,66 @@ internal sealed class BatchReplaceService2
 			_G_c__DisplayClass13_1 CS_8_locals_13 = new _G_c__DisplayClass13_1();
 			CS_8_locals_13.qIPVVvWNHDH = CS_8_locals_11;
 			int num = sFarm8rvtQ(CS_8_locals_11.ImSVVhZDaAJ, 300, 1000);
-			CS_8_locals_13.Pw9VVAcbbyu = awRro3mnDA(CS_8_locals_11.wesVVaUCmVo);
+			CS_8_locals_13.value = awRro3mnDA(CS_8_locals_11.wesVVaUCmVo);
 			List<ubtWXyzzVHfe9SR37mW> list = (from p in context.Paragraphs
 				where !string.IsNullOrWhiteSpace(p.Text)
-				where (p.IsHeading && p.OutlineLevel <= CS_8_locals_13.Pw9VVAcbbyu) || (!p.IsHeading & CS_8_locals_13.qIPVVvWNHDH.KEWVVqEbglr)
+				where (p.IsHeading && p.OutlineLevel <= CS_8_locals_13.value) || (!p.IsHeading & CS_8_locals_13.qIPVVvWNHDH.KEWVVqEbglr)
 				select p).Take(num).ToList();
 			int num2 = list.Count((ubtWXyzzVHfe9SR37mW p) => p.IsHeading);
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
-			dictionary[" failed"] = CS_8_locals_13.Pw9VVAcbbyu;
+			dictionary[" failed"] = CS_8_locals_13.value;
 			dictionary["word_read_error"] = CS_8_locals_11.KEWVVqEbglr;
 			dictionary["word_openxml_com"] = num2;
 			dictionary["当前没有打开的 Word 文档。"] = list.Count;
 			dictionary["no_document"] = list.Count >= num;
 			dictionary["document"] = list.Select((ubtWXyzzVHfe9SR37mW p) => gEt1WsLuCr(p, 240)).ToList();
-			return AiHelper_5.nt99CvEC4m("documentFullName", dictionary);
+			return AiHelper_5.CreateSuccess("documentFullName", dictionary);
 		});
 	}
 
-	public AiHelper_5 D2A1N5h1KA(string P_0, int P_1, int P_2, string P_3, int P_4, int P_5, int P_6, int P_7, int P_8)
+	public AiHelper_5 ReadSection(string P_0, int P_1, int P_2, string P_3, int P_4, int P_5, int P_6, int P_7, int P_8)
 	{
 		_G_c__DisplayClass14_0 CS_8_locals_26 = new _G_c__DisplayClass14_0();
-		CS_8_locals_26.c7OVV0KZjCI = P_0;
-		CS_8_locals_26.uixVVker0Ra = P_1;
-		CS_8_locals_26.BYvVVxCg2nt = P_2;
-		CS_8_locals_26.ry0VVdRmfZZ = P_3;
-		CS_8_locals_26.HvuVVzdG5fE = P_6;
-		CS_8_locals_26.raUVBRus0wB = P_7;
+		CS_8_locals_26.text = P_0;
+		CS_8_locals_26.value = P_1;
+		CS_8_locals_26.value = P_2;
+		CS_8_locals_26.text = P_3;
+		CS_8_locals_26.value = P_6;
+		CS_8_locals_26.value = P_7;
 		CS_8_locals_26.qxpVBVJeiBo = P_8;
-		CS_8_locals_26.fN1VBBbv9b3 = P_4;
-		CS_8_locals_26.e5LVB9ZSaRh = P_5;
+		CS_8_locals_26.value = P_4;
+		CS_8_locals_26.value = P_5;
 		return Edw1nKYtwj("read_word_section", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass14_1 CS_8_locals_29 = new _G_c__DisplayClass14_1();
-			CS_8_locals_29.LWeVBukA3kY = q0ErEEV1r1(context, CS_8_locals_26.c7OVV0KZjCI, CS_8_locals_26.uixVVker0Ra, CS_8_locals_26.BYvVVxCg2nt, CS_8_locals_26.ry0VVdRmfZZ);
-			if (CS_8_locals_29.LWeVBukA3kY == null)
+			CS_8_locals_29.ubtWXyzzVHfe9SR37mW = q0ErEEV1r1(context, CS_8_locals_26.text, CS_8_locals_26.value, CS_8_locals_26.value, CS_8_locals_26.text);
+			if (CS_8_locals_29.ubtWXyzzVHfe9SR37mW == null)
 			{
-				return AiHelper_5.QSD9OKWs4n("documentSaved", "document");
+				return AiHelper_5.CreateError("documentSaved", "document");
 			}
-			if (!CS_8_locals_29.LWeVBukA3kY.IsHeading)
+			if (!CS_8_locals_29.ubtWXyzzVHfe9SR37mW.IsHeading)
 			{
-				return AiHelper_5.QSD9OKWs4n("documentFullName", "documentSaved", new
+				return AiHelper_5.CreateError("documentFullName", "documentSaved", new
 				{
-					headingParagraphIndex = CS_8_locals_29.LWeVBukA3kY.ParagraphIndex
+					headingParagraphIndex = CS_8_locals_29.ubtWXyzzVHfe9SR37mW.ParagraphIndex
 				});
 			}
 			int num = context.Paragraphs.Count;
-			foreach (ubtWXyzzVHfe9SR37mW item2 in context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => p.ParagraphIndex > CS_8_locals_29.LWeVBukA3kY.ParagraphIndex))
+			foreach (ubtWXyzzVHfe9SR37mW item2 in context.Paragraphs.Where((ubtWXyzzVHfe9SR37mW p) => p.ParagraphIndex > CS_8_locals_29.ubtWXyzzVHfe9SR37mW.ParagraphIndex))
 			{
-				if (item2.IsHeading && item2.OutlineLevel <= CS_8_locals_29.LWeVBukA3kY.OutlineLevel)
+				if (item2.IsHeading && item2.OutlineLevel <= CS_8_locals_29.ubtWXyzzVHfe9SR37mW.OutlineLevel)
 				{
 					num = item2.ParagraphIndex - 1;
 					break;
 				}
 			}
-			int num2 = sFarm8rvtQ(CS_8_locals_26.HvuVVzdG5fE, 1000, 5000);
-			int num3 = sFarm8rvtQ(CS_8_locals_26.raUVBRus0wB, 80, 500);
+			int num2 = sFarm8rvtQ(CS_8_locals_26.value, 1000, 5000);
+			int num3 = sFarm8rvtQ(CS_8_locals_26.value, 80, 500);
 			int num4 = sFarm8rvtQ(CS_8_locals_26.qxpVBVJeiBo, 20, 100);
 			List<mEoL0hVRljv4wDAmJe79> list = new List<mEoL0hVRljv4wDAmJe79>();
 			foreach (iltloQVRboLvh0PbMHDS block in context.Blocks)
 			{
-				if (block.ParagraphIndex > 0 && block.ParagraphIndex >= CS_8_locals_29.LWeVBukA3kY.ParagraphIndex && block.ParagraphIndex <= num)
+				if (block.ParagraphIndex > 0 && block.ParagraphIndex >= CS_8_locals_29.ubtWXyzzVHfe9SR37mW.ParagraphIndex && block.ParagraphIndex <= num)
 				{
 					ubtWXyzzVHfe9SR37mW paragraph = block.Paragraph;
 					list.Add(new mEoL0hVRljv4wDAmJe79
@@ -3529,7 +3529,7 @@ internal sealed class BatchReplaceService2
 						Data = gEt1WsLuCr(paragraph, num2)
 					});
 				}
-				else if (block.TableIndex > 0 && block.FirstParagraphIndex >= CS_8_locals_29.LWeVBukA3kY.ParagraphIndex && block.FirstParagraphIndex <= num)
+				else if (block.TableIndex > 0 && block.FirstParagraphIndex >= CS_8_locals_29.ubtWXyzzVHfe9SR37mW.ParagraphIndex && block.FirstParagraphIndex <= num)
 				{
 					list.Add(new mEoL0hVRljv4wDAmJe79
 					{
@@ -3539,8 +3539,8 @@ internal sealed class BatchReplaceService2
 					});
 				}
 			}
-			int num5 = Math.Max(0, CS_8_locals_26.fN1VBBbv9b3);
-			int num6 = sFarm8rvtQ(CS_8_locals_26.e5LVB9ZSaRh, 200, 1000);
+			int num5 = Math.Max(0, CS_8_locals_26.value);
+			int num6 = sFarm8rvtQ(CS_8_locals_26.value, 200, 1000);
 			if (num5 > list.Count)
 			{
 				num5 = list.Count;
@@ -3571,8 +3571,8 @@ internal sealed class BatchReplaceService2
 			}
 			bool flag = num7 < list.Count;
 			Dictionary<string, object> dictionary = tvv1A6x1MO(context);
-			dictionary["documentFullName"] = gEt1WsLuCr(CS_8_locals_29.LWeVBukA3kY, 500);
-			dictionary["documentSaved"] = CS_8_locals_29.LWeVBukA3kY.ParagraphIndex;
+			dictionary["documentFullName"] = gEt1WsLuCr(CS_8_locals_29.ubtWXyzzVHfe9SR37mW, 500);
+			dictionary["documentSaved"] = CS_8_locals_29.ubtWXyzzVHfe9SR37mW.ParagraphIndex;
 			dictionary["page"] = num;
 			dictionary["rangeStart"] = 0;
 			dictionary["rangeEnd"] = 0;
@@ -3587,60 +3587,60 @@ internal sealed class BatchReplaceService2
 			dictionary["columns"] = list2;
 			dictionary["returnedRows"] = list3;
 			dictionary["returnedColumns"] = list4;
-			return AiHelper_5.nt99CvEC4m("page", dictionary);
+			return AiHelper_5.CreateSuccess("page", dictionary);
 		});
 	}
 
-	public AiHelper_5 bI11mujLRl(int P_0, int P_1, int P_2, int P_3)
+	public AiHelper_5 ReadTables(int P_0, int P_1, int P_2, int P_3)
 	{
 		_G_c__DisplayClass15_0 CS_8_locals_24 = new _G_c__DisplayClass15_0();
 		CS_8_locals_24.TvKVBgUdUR8 = P_0;
-		CS_8_locals_24.QZiVB864mEa = P_1;
-		CS_8_locals_24.qlEVBId65wb = P_2;
-		CS_8_locals_24.iI7VBimAU1q = P_3;
-		CS_8_locals_24.X1cVBHUUcX8 = this;
+		CS_8_locals_24.value = P_1;
+		CS_8_locals_24.value = P_2;
+		CS_8_locals_24.value = P_3;
+		CS_8_locals_24.batchReplaceService2 = this;
 		return Edw1nKYtwj("read_word_tables", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass15_1 CS_8_locals_34 = new _G_c__DisplayClass15_1();
-			CS_8_locals_34.Oo1VB3PcTd6 = context;
-			int count = CS_8_locals_34.Oo1VB3PcTd6.Tables.Count;
+			CS_8_locals_34.a5lLcpd0tjOGP93a2IH = context;
+			int count = CS_8_locals_34.a5lLcpd0tjOGP93a2IH.Tables.Count;
 			if (count == 0)
 			{
-				Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_34.Oo1VB3PcTd6);
+				Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_34.a5lLcpd0tjOGP93a2IH);
 				dictionary["paragraphIndex"] = 0;
 				dictionary["rangeStart"] = new object[0];
-				return AiHelper_5.nt99CvEC4m("rangeEnd", dictionary);
+				return AiHelper_5.CreateSuccess("rangeEnd", dictionary);
 			}
 			CS_8_locals_34.NaoVBrVDusK = ((CS_8_locals_24.TvKVBgUdUR8 <= 0) ? 1 : CS_8_locals_24.TvKVBgUdUR8);
-			CS_8_locals_34.nA7VBJ1BsJs = ((CS_8_locals_24.TvKVBgUdUR8 > 0) ? CS_8_locals_24.TvKVBgUdUR8 : Math.Min(count, sFarm8rvtQ(CS_8_locals_24.QZiVB864mEa, 5, 100)));
+			CS_8_locals_34.value = ((CS_8_locals_24.TvKVBgUdUR8 > 0) ? CS_8_locals_24.TvKVBgUdUR8 : Math.Min(count, sFarm8rvtQ(CS_8_locals_24.value, 5, 100)));
 			if (CS_8_locals_34.NaoVBrVDusK < 1 || CS_8_locals_34.NaoVBrVDusK > count)
 			{
-				return AiHelper_5.QSD9OKWs4n("actionableRange", "rangeSource", new
+				return AiHelper_5.CreateError("actionableRange", "rangeSource", new
 				{
 					totalTables = count
 				});
 			}
-			CS_8_locals_34.Ps2VBUS5wu6 = sFarm8rvtQ(CS_8_locals_24.qlEVBId65wb, 80, 500);
-			CS_8_locals_34.s91VBKcf2sn = sFarm8rvtQ(CS_8_locals_24.iI7VBimAU1q, 20, 100);
-			CS_8_locals_34.xEiVBEoubwj = CS_8_locals_24.X1cVBHUUcX8.hl01XRMNY4(CS_8_locals_34.NaoVBrVDusK, CS_8_locals_34.nA7VBJ1BsJs);
-			List<object> list = (from t in CS_8_locals_34.Oo1VB3PcTd6.Tables
-				where t.TableIndex >= CS_8_locals_34.NaoVBrVDusK && t.TableIndex <= CS_8_locals_34.nA7VBJ1BsJs
-				select JDR1x5m387(CS_8_locals_34.Oo1VB3PcTd6, t, CS_8_locals_34.Ps2VBUS5wu6, CS_8_locals_34.s91VBKcf2sn, CS_8_locals_34.xEiVBEoubwj)).ToList();
-			Dictionary<string, object> dictionary2 = tvv1A6x1MO(CS_8_locals_34.Oo1VB3PcTd6);
+			CS_8_locals_34.value = sFarm8rvtQ(CS_8_locals_24.value, 80, 500);
+			CS_8_locals_34.value = sFarm8rvtQ(CS_8_locals_24.value, 20, 100);
+			CS_8_locals_34.xEiVBEoubwj = CS_8_locals_24.batchReplaceService2.hl01XRMNY4(CS_8_locals_34.NaoVBrVDusK, CS_8_locals_34.value);
+			List<object> list = (from t in CS_8_locals_34.a5lLcpd0tjOGP93a2IH.Tables
+				where t.TableIndex >= CS_8_locals_34.NaoVBrVDusK && t.TableIndex <= CS_8_locals_34.value
+				select JDR1x5m387(CS_8_locals_34.a5lLcpd0tjOGP93a2IH, t, CS_8_locals_34.value, CS_8_locals_34.value, CS_8_locals_34.xEiVBEoubwj)).ToList();
+			Dictionary<string, object> dictionary2 = tvv1A6x1MO(CS_8_locals_34.a5lLcpd0tjOGP93a2IH);
 			dictionary2["openxml_unavailable"] = count;
 			dictionary2["word_com_table_range"] = list.Count;
 			dictionary2["previousParagraph"] = list;
-			return AiHelper_5.nt99CvEC4m("nextParagraph", dictionary2);
+			return AiHelper_5.CreateSuccess("nextParagraph", dictionary2);
 		});
 	}
 
 	public AiHelper_5 Eq21oOZC6p(int P_0)
 	{
 		_G_c__DisplayClass16_0 CS_8_locals_2 = new _G_c__DisplayClass16_0();
-		CS_8_locals_2.UJGVB4EIqGk = P_0;
+		CS_8_locals_2.value = P_0;
 		return Edw1nKYtwj("read_word_comments", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
-			int num = sFarm8rvtQ(CS_8_locals_2.UJGVB4EIqGk, 200, 1000);
+			int num = sFarm8rvtQ(CS_8_locals_2.value, 200, 1000);
 			List<object> list = ((IEnumerable<object>)(from c in context.Comments.Take(num)
 				select new
 				{
@@ -3654,33 +3654,33 @@ internal sealed class BatchReplaceService2
 			dictionary["rowsData"] = list.Count;
 			dictionary["cellsFlat"] = list.Count >= num;
 			dictionary["markdown"] = list;
-			return AiHelper_5.nt99CvEC4m("rawText", dictionary);
+			return AiHelper_5.CreateSuccess("rawText", dictionary);
 		});
 	}
 
-	public AiHelper_5 iOu1GDQ38e(string P_0, int P_1, string P_2, int P_3)
+	public AiHelper_5 FindHeading(string P_0, int P_1, string P_2, int P_3)
 	{
 		_G_c__DisplayClass17_0 CS_8_locals_19 = new _G_c__DisplayClass17_0();
-		CS_8_locals_19.qnbVBZrF7Rb = P_3;
+		CS_8_locals_19.value = P_3;
 		CS_8_locals_19.uUNVBfrqteP = P_2;
-		CS_8_locals_19.iCmVBMf8Tri = P_1;
-		CS_8_locals_19.YdQVBbpr1x2 = P_0;
+		CS_8_locals_19.value = P_1;
+		CS_8_locals_19.text = P_0;
 		return Edw1nKYtwj("find_word_heading", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
 			_G_c__DisplayClass17_1 CS_8_locals_23 = new _G_c__DisplayClass17_1();
-			CS_8_locals_23.kY3VBl99CqZ = CS_8_locals_19;
-			CS_8_locals_23.yCvVBsSx7Cv = context;
-			int num = sFarm8rvtQ(CS_8_locals_19.qnbVBZrF7Rb, 50, 300);
-			CS_8_locals_23.KiXVBLZnV3J = (CS_8_locals_19.uUNVBfrqteP ?? "hasMergedOrUnavailableCells").Trim().ToLowerInvariant();
-			List<object> list = ((IEnumerable<object>)(from p in (from p in CS_8_locals_23.yCvVBsSx7Cv.Paragraphs
+			CS_8_locals_23._G_c__DisplayClass17_0 = CS_8_locals_19;
+			CS_8_locals_23.a5lLcpd0tjOGP93a2IH = context;
+			int num = sFarm8rvtQ(CS_8_locals_19.value, 50, 300);
+			CS_8_locals_23.text = (CS_8_locals_19.uUNVBfrqteP ?? "hasMergedOrUnavailableCells").Trim().ToLowerInvariant();
+			List<object> list = ((IEnumerable<object>)(from p in (from p in CS_8_locals_23.a5lLcpd0tjOGP93a2IH.Paragraphs
 					where p.IsHeading
-					where CS_8_locals_19.iCmVBMf8Tri <= 0 || p.OutlineLevel == CS_8_locals_19.iCmVBMf8Tri
-					where hctr2dw2UI(p.Text, CS_8_locals_23.kY3VBl99CqZ.YdQVBbpr1x2, CS_8_locals_23.KiXVBLZnV3J)
+					where CS_8_locals_19.value <= 0 || p.OutlineLevel == CS_8_locals_19.value
+					where hctr2dw2UI(p.Text, CS_8_locals_23._G_c__DisplayClass17_0.text, CS_8_locals_23.text)
 					select p).Take(num)
 				select new
 				{
-					document = CS_8_locals_23.yCvVBsSx7Cv.DocumentName,
-					documentFullName = CS_8_locals_23.yCvVBsSx7Cv.DocumentFullName,
+					document = CS_8_locals_23.a5lLcpd0tjOGP93a2IH.DocumentName,
+					documentFullName = CS_8_locals_23.a5lLcpd0tjOGP93a2IH.DocumentFullName,
 					page = (int?)null,
 					headingParagraphIndex = p.ParagraphIndex,
 					paragraphIndex = p.ParagraphIndex,
@@ -3692,32 +3692,32 @@ internal sealed class BatchReplaceService2
 						headingParagraphIndex = p.ParagraphIndex
 					}
 				})).ToList();
-			Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_23.yCvVBsSx7Cv);
-			dictionary["warnings"] = CS_8_locals_19.YdQVBbpr1x2 ?? string.Empty;
-			dictionary["localTableIndex"] = ((CS_8_locals_19.iCmVBMf8Tri <= 0) ? ((int?)null) : new int?(CS_8_locals_19.iCmVBMf8Tri));
-			dictionary["rangeStart"] = CS_8_locals_23.KiXVBLZnV3J;
+			Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_23.a5lLcpd0tjOGP93a2IH);
+			dictionary["warnings"] = CS_8_locals_19.text ?? string.Empty;
+			dictionary["localTableIndex"] = ((CS_8_locals_19.value <= 0) ? ((int?)null) : new int?(CS_8_locals_19.value));
+			dictionary["rangeStart"] = CS_8_locals_23.text;
 			dictionary["rangeEnd"] = list.Count;
 			dictionary["page"] = list.Count >= num;
 			dictionary["actionableRange"] = list;
-			return AiHelper_5.nt99CvEC4m("rangeSource", dictionary);
+			return AiHelper_5.CreateSuccess("rangeSource", dictionary);
 		});
 	}
 
 	public AiHelper_5 vYa1CKwX1i(string P_0, bool P_1, bool P_2, int P_3)
 	{
 		_G_c__DisplayClass18_0 CS_8_locals_9 = new _G_c__DisplayClass18_0();
-		CS_8_locals_9.ofhVBmj6BQa = P_0;
-		CS_8_locals_9.RI2VBo0t5gQ = P_3;
-		CS_8_locals_9.O8JVBGLnYSN = P_1;
-		CS_8_locals_9.d91VBCCucF1 = P_2;
+		CS_8_locals_9.text = P_0;
+		CS_8_locals_9.value = P_3;
+		CS_8_locals_9.flag = P_1;
+		CS_8_locals_9.flag = P_2;
 		return Edw1nKYtwj("find_word_text", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
-			if (string.IsNullOrWhiteSpace(CS_8_locals_9.ofhVBmj6BQa))
+			if (string.IsNullOrWhiteSpace(CS_8_locals_9.text))
 			{
-				return AiHelper_5.QSD9OKWs4n("word_com_selection_table_range", "rows");
+				return AiHelper_5.CreateError("word_com_selection_table_range", "rows");
 			}
-			int num = sFarm8rvtQ(CS_8_locals_9.RI2VBo0t5gQ, 100, 500);
-			StringComparison stringComparison = ((!CS_8_locals_9.O8JVBGLnYSN) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
+			int num = sFarm8rvtQ(CS_8_locals_9.value, 100, 500);
+			StringComparison stringComparison = ((!CS_8_locals_9.flag) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
 			List<MNdq0PVRGorZsHaxpvRr> list = new List<MNdq0PVRGorZsHaxpvRr>();
 			foreach (ubtWXyzzVHfe9SR37mW paragraph in context.Paragraphs)
 			{
@@ -3725,27 +3725,27 @@ internal sealed class BatchReplaceService2
 				{
 					break;
 				}
-				moDrKNabHo(paragraph, CS_8_locals_9.ofhVBmj6BQa, stringComparison, CS_8_locals_9.d91VBCCucF1, num, list);
+				moDrKNabHo(paragraph, CS_8_locals_9.text, stringComparison, CS_8_locals_9.flag, num, list);
 			}
-			return AiHelper_5.nt99CvEC4m("columns", QLTrUfY8oq(context, list, num));
+			return AiHelper_5.CreateSuccess("columns", QLTrUfY8oq(context, list, num));
 		});
 	}
 
-	public AiHelper_5 iOe1pEASiN(string P_0, bool P_1, int P_2)
+	public AiHelper_5 FindRegex(string P_0, bool P_1, int P_2)
 	{
 		_G_c__DisplayClass19_0 CS_8_locals_7 = new _G_c__DisplayClass19_0();
-		CS_8_locals_7.GlUVBO9y8Qq = P_0;
+		CS_8_locals_7.text = P_0;
 		CS_8_locals_7.wjoVBnKCVJt = P_2;
-		CS_8_locals_7.GRIVB7Raqwf = P_1;
+		CS_8_locals_7.flag = P_1;
 		return Edw1nKYtwj("find_word_regex", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
-			if (string.IsNullOrWhiteSpace(CS_8_locals_7.GlUVBO9y8Qq))
+			if (string.IsNullOrWhiteSpace(CS_8_locals_7.text))
 			{
-				return AiHelper_5.QSD9OKWs4n("returnedRows", "returnedColumns");
+				return AiHelper_5.CreateError("returnedRows", "returnedColumns");
 			}
 			int num = sFarm8rvtQ(CS_8_locals_7.wjoVBnKCVJt, 100, 500);
-			RegexOptions options = ((!CS_8_locals_7.GRIVB7Raqwf) ? RegexOptions.IgnoreCase : RegexOptions.None);
-			Regex regex = new Regex(CS_8_locals_7.GlUVBO9y8Qq, options);
+			RegexOptions options = ((!CS_8_locals_7.flag) ? RegexOptions.IgnoreCase : RegexOptions.None);
+			Regex regex = new Regex(CS_8_locals_7.text, options);
 			List<MNdq0PVRGorZsHaxpvRr> list = new List<MNdq0PVRGorZsHaxpvRr>();
 			foreach (ubtWXyzzVHfe9SR37mW paragraph in context.Paragraphs)
 			{
@@ -3769,24 +3769,24 @@ internal sealed class BatchReplaceService2
 					});
 				}
 			}
-			return AiHelper_5.nt99CvEC4m("headerRowCount", QLTrUfY8oq(context, list, num));
+			return AiHelper_5.CreateSuccess("headerRowCount", QLTrUfY8oq(context, list, num));
 		});
 	}
 
 	public AiHelper_5 oOq1O59cQ7(string P_0, bool P_1, int P_2)
 	{
 		_G_c__DisplayClass20_0 CS_8_locals_9 = new _G_c__DisplayClass20_0();
-		CS_8_locals_9.sLFVBc2Iboa = P_0;
-		CS_8_locals_9.HRVVBeq9peR = P_2;
-		CS_8_locals_9.zNNVByyS2uC = P_1;
+		CS_8_locals_9.text = P_0;
+		CS_8_locals_9.value = P_2;
+		CS_8_locals_9.flag = P_1;
 		return Edw1nKYtwj("find_word_table_text", delegate(a5lLcpd0tjOGP93a2IH context)
 		{
-			if (string.IsNullOrWhiteSpace(CS_8_locals_9.sLFVBc2Iboa))
+			if (string.IsNullOrWhiteSpace(CS_8_locals_9.text))
 			{
-				return AiHelper_5.QSD9OKWs4n("rowsData", "cellsFlat");
+				return AiHelper_5.CreateError("rowsData", "cellsFlat");
 			}
-			int num = sFarm8rvtQ(CS_8_locals_9.HRVVBeq9peR, 100, 500);
-			StringComparison comparisonType = ((!CS_8_locals_9.zNNVByyS2uC) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
+			int num = sFarm8rvtQ(CS_8_locals_9.value, 100, 500);
+			StringComparison comparisonType = ((!CS_8_locals_9.flag) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
 			List<object> list = new List<object>();
 			foreach (tABVE1VR66mkVrCsbLlX table in context.Tables)
 			{
@@ -3807,7 +3807,7 @@ internal sealed class BatchReplaceService2
 							break;
 						}
 						string text = table.Matrix[i][j] ?? string.Empty;
-						int num2 = text.IndexOf(CS_8_locals_9.sLFVBc2Iboa, comparisonType);
+						int num2 = text.IndexOf(CS_8_locals_9.text, comparisonType);
 						if (num2 >= 0)
 						{
 							list.Add(new
@@ -3818,8 +3818,8 @@ internal sealed class BatchReplaceService2
 								columnIndex = j + 1,
 								rangeStart = (int?)null,
 								rangeEnd = (int?)null,
-								matchText = text.Substring(num2, CS_8_locals_9.sLFVBc2Iboa.Length),
-								excerpt = HyErOENeqf(text, num2, CS_8_locals_9.sLFVBc2Iboa.Length)
+								matchText = text.Substring(num2, CS_8_locals_9.text.Length),
+								excerpt = HyErOENeqf(text, num2, CS_8_locals_9.text.Length)
 							});
 						}
 					}
@@ -3831,7 +3831,7 @@ internal sealed class BatchReplaceService2
 			dictionary["rawText"] = list.Count;
 			dictionary["hasMergedOrUnavailableCells"] = list.Count >= num;
 			dictionary["expandedMergedCells"] = list;
-			return AiHelper_5.nt99CvEC4m("truncated", dictionary);
+			return AiHelper_5.CreateSuccess("truncated", dictionary);
 		});
 	}
 
@@ -3850,12 +3850,12 @@ internal sealed class BatchReplaceService2
 				return ibFJ0vzQEvqcMM5hWZb.Error;
 			}
 			a5lLcpd0tjOGP93a2IH a5lLcpd0tjOGP93a2IH3 = a5lLcpd0tjOGP93a2IH.hhudkjcOIs(ibFJ0vzQEvqcMM5hWZb);
-			DocumentLifecycleGuard.hZYuUt7cr7(ibFJ0vzQEvqcMM5hWZb.DocumentKey, a5lLcpd0tjOGP93a2IH3);
+			DocumentLifecycleGuard.SetCachedProperty(ibFJ0vzQEvqcMM5hWZb.DocumentKey, a5lLcpd0tjOGP93a2IH3);
 			return P_1(a5lLcpd0tjOGP93a2IH3);
 		}
 		catch (Exception ex)
 		{
-			return AiHelper_5.g7A9nYlk8v(P_0 + " failed", "word_read_error", ex);
+			return AiHelper_5.CreateExceptionError(P_0 + " failed", "word_read_error", ex);
 		}
 	}
 
@@ -3866,11 +3866,11 @@ internal sealed class BatchReplaceService2
 		{
 			return null;
 		}
-		if (SdMrFi0HLk != null && !string.Equals(current.WindowKey, SdMrFi0HLk.WindowKey, StringComparison.OrdinalIgnoreCase))
+		if (_aiTargetBinder != null && !string.Equals(current.WindowKey, _aiTargetBinder.WindowKey, StringComparison.OrdinalIgnoreCase))
 		{
 			return null;
 		}
-		return DocumentLifecycleGuard.hZfu3nWZl7(IYo1q1aGqt(current.DocumentName, current.DocumentFullName)) as a5lLcpd0tjOGP93a2IH;
+		return DocumentLifecycleGuard.GetCachedProperty(IYo1q1aGqt(current.DocumentName, current.DocumentFullName)) as a5lLcpd0tjOGP93a2IH;
 	}
 
 	private IbFJ0vzQEvqcMM5hWZb JhP15OCSFR()
@@ -3878,21 +3878,21 @@ internal sealed class BatchReplaceService2
 		return GV11hMNVs2(delegate(Application app)
 		{
 			_G_c__DisplayClass23_0 CS_8_locals_7 = new _G_c__DisplayClass23_0();
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				return new IbFJ0vzQEvqcMM5hWZb
 				{
-					Error = WordAgentRuntimeGuard2.dclJSetxGY(text)
+					Error = WordAgentRuntimeGuard2.CreateNotReadyError(text)
 				};
 			}
-			CS_8_locals_7.VSQVBPeQEih = DocumentLifecycleGuard.zrqujYgRXw(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU2 = nNB1PSLKQE(CS_8_locals_7.VSQVBPeQEih);
-			if (rU18qH9owXvBsPZ0iiU2 != null)
+			CS_8_locals_7.VSQVBPeQEih = DocumentLifecycleGuard.GetActiveDocument(app);
+			AiHelper_5 insertResult = nNB1PSLKQE(CS_8_locals_7.VSQVBPeQEih);
+			if (insertResult != null)
 			{
 				return new IbFJ0vzQEvqcMM5hWZb
 				{
-					Error = rU18qH9owXvBsPZ0iiU2
+					Error = insertResult
 				};
 			}
 			string text2 = N75r5VKX8X(() => CS_8_locals_7.VSQVBPeQEih.Name);
@@ -3919,27 +3919,27 @@ internal sealed class BatchReplaceService2
 	{
 		return GV11hMNVs2(delegate(Application app)
 		{
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				return new B4dteqz4khbXu1F8csG
 				{
-					Error = WordAgentRuntimeGuard2.dclJSetxGY(text)
+					Error = WordAgentRuntimeGuard2.CreateNotReadyError(text)
 				};
 			}
-			Document document = DocumentLifecycleGuard.zrqujYgRXw(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU2 = nNB1PSLKQE(document);
-			if (rU18qH9owXvBsPZ0iiU2 != null)
+			Document document = DocumentLifecycleGuard.GetActiveDocument(app);
+			AiHelper_5 insertResult = nNB1PSLKQE(document);
+			if (insertResult != null)
 			{
 				return new B4dteqz4khbXu1F8csG
 				{
-					Error = rU18qH9owXvBsPZ0iiU2
+					Error = insertResult
 				};
 			}
 			Selection selection = app?.Selection;
 			return (selection == null || selection.Range == null) ? new B4dteqz4khbXu1F8csG
 			{
-				Error = AiHelper_5.QSD9OKWs4n("1-based rowIndex from cellsFlat/fillableCells", "1-based columnIndex from cellsFlat/fillableCells")
+				Error = AiHelper_5.CreateError("1-based rowIndex from cellsFlat/fillableCells", "1-based columnIndex from cellsFlat/fillableCells")
 			} : bki1yLGJT9(document, selection.Range);
 		});
 	}
@@ -3947,29 +3947,29 @@ internal sealed class BatchReplaceService2
 	private B4dteqz4khbXu1F8csG wkR1egPpPp(int P_0, int P_1)
 	{
 		_G_c__DisplayClass25_0 CS_8_locals_4 = new _G_c__DisplayClass25_0();
-		CS_8_locals_4.xEWVBvRBT6X = P_0;
-		CS_8_locals_4.O2XVBWVLmVm = P_1;
+		CS_8_locals_4.value = P_0;
+		CS_8_locals_4.value = P_1;
 		return GV11hMNVs2(delegate(Application app)
 		{
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				return new B4dteqz4khbXu1F8csG
 				{
-					Error = WordAgentRuntimeGuard2.dclJSetxGY(text)
+					Error = WordAgentRuntimeGuard2.CreateNotReadyError(text)
 				};
 			}
-			Document document = DocumentLifecycleGuard.zrqujYgRXw(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU2 = nNB1PSLKQE(document);
-			if (rU18qH9owXvBsPZ0iiU2 != null)
+			Document document = DocumentLifecycleGuard.GetActiveDocument(app);
+			AiHelper_5 insertResult = nNB1PSLKQE(document);
+			if (insertResult != null)
 			{
 				return new B4dteqz4khbXu1F8csG
 				{
-					Error = rU18qH9owXvBsPZ0iiU2
+					Error = insertResult
 				};
 			}
-			object Start = CS_8_locals_4.xEWVBvRBT6X;
-			object End = CS_8_locals_4.O2XVBWVLmVm;
+			object Start = CS_8_locals_4.value;
+			object End = CS_8_locals_4.value;
 			return bki1yLGJT9(document, document.Range(ref Start, ref End));
 		});
 	}
@@ -3977,16 +3977,16 @@ internal sealed class BatchReplaceService2
 	private static B4dteqz4khbXu1F8csG bki1yLGJT9(Document P_0, Range P_1)
 	{
 		_G_c__DisplayClass26_0 CS_8_locals_8 = new _G_c__DisplayClass26_0();
-		CS_8_locals_8.njJV9VlPGSg = P_1;
-		CS_8_locals_8.v0mV9BaENEx = P_0;
-		string wordOpenXml = N75r5VKX8X(() => CS_8_locals_8.njJV9VlPGSg.WordOpenXML);
+		CS_8_locals_8.range = P_1;
+		CS_8_locals_8.doc = P_0;
+		string wordOpenXml = N75r5VKX8X(() => CS_8_locals_8.range.WordOpenXML);
 		return new B4dteqz4khbXu1F8csG
 		{
-			DocumentName = N75r5VKX8X(() => CS_8_locals_8.v0mV9BaENEx.Name),
-			DocumentFullName = N75r5VKX8X(() => CS_8_locals_8.v0mV9BaENEx.FullName),
-			DocumentSaved = PSHrcSln4y(() => CS_8_locals_8.v0mV9BaENEx.Saved, false),
-			RangeStart = VMbreGvrrq(() => CS_8_locals_8.njJV9VlPGSg.Start, 0),
-			RangeEnd = VMbreGvrrq(() => CS_8_locals_8.njJV9VlPGSg.End, 0),
+			DocumentName = N75r5VKX8X(() => CS_8_locals_8.doc.Name),
+			DocumentFullName = N75r5VKX8X(() => CS_8_locals_8.doc.FullName),
+			DocumentSaved = PSHrcSln4y(() => CS_8_locals_8.doc.Saved, false),
+			RangeStart = VMbreGvrrq(() => CS_8_locals_8.range.Start, 0),
+			RangeEnd = VMbreGvrrq(() => CS_8_locals_8.range.End, 0),
 			WordOpenXml = wordOpenXml
 		};
 	}
@@ -3994,31 +3994,31 @@ internal sealed class BatchReplaceService2
 	private Dictionary<int, mdqrdFzPxt9txWyKKJW> hl01XRMNY4(int P_0, int P_1)
 	{
 		_G_c__DisplayClass27_0 CS_8_locals_7 = new _G_c__DisplayClass27_0();
-		CS_8_locals_7.ay8V96K2C8p = P_0;
-		CS_8_locals_7.Y3LV9utDAa4 = P_1;
+		CS_8_locals_7.value = P_0;
+		CS_8_locals_7.value = P_1;
 		return GV11hMNVs2(delegate(Application app)
 		{
 			Dictionary<int, mdqrdFzPxt9txWyKKJW> dictionary = new Dictionary<int, mdqrdFzPxt9txWyKKJW>();
 			try
 			{
 				_G_c__DisplayClass27_1 CS_8_locals_9 = new _G_c__DisplayClass27_1();
-				if (!string.IsNullOrWhiteSpace(WordAgentRuntimeGuard2.gEFJbNPT5J(app)))
+				if (!string.IsNullOrWhiteSpace(WordAgentRuntimeGuard2.GetNotReadyMessage(app)))
 				{
 					return dictionary;
 				}
-				CS_8_locals_9.K1OV9TJDeDB = DocumentLifecycleGuard.zrqujYgRXw(app);
-				if (nNB1PSLKQE(CS_8_locals_9.K1OV9TJDeDB) != null)
+				CS_8_locals_9.doc = DocumentLifecycleGuard.GetActiveDocument(app);
+				if (nNB1PSLKQE(CS_8_locals_9.doc) != null)
 				{
 					return dictionary;
 				}
-				int val = VMbreGvrrq(() => CS_8_locals_9.K1OV9TJDeDB.Tables.Count, 0);
-				int num = Math.Max(1, CS_8_locals_7.ay8V96K2C8p);
-				int num2 = Math.Min(val, CS_8_locals_7.Y3LV9utDAa4);
+				int val = VMbreGvrrq(() => CS_8_locals_9.doc.Tables.Count, 0);
+				int num = Math.Max(1, CS_8_locals_7.value);
+				int num2 = Math.Min(val, CS_8_locals_7.value);
 				for (int num3 = num; num3 <= num2; num3++)
 				{
 					try
 					{
-						Range range = CS_8_locals_9.K1OV9TJDeDB.Tables[num3].Range;
+						Range range = CS_8_locals_9.doc.Tables[num3].Range;
 						dictionary[num3] = new mdqrdFzPxt9txWyKKJW
 						{
 							RangeStart = range.Start,
@@ -4040,70 +4040,70 @@ internal sealed class BatchReplaceService2
 	private n0p396zwSZtGyZIAden Rta1F4FBcP(int P_0, int P_1, int P_2)
 	{
 		_G_c__DisplayClass28_0 CS_8_locals_21 = new _G_c__DisplayClass28_0();
-		CS_8_locals_21.HTKV98Meu9n = P_0;
-		CS_8_locals_21.bIHV9IgRLUU = P_1;
-		CS_8_locals_21.zkhV9iZkkeC = P_2;
+		CS_8_locals_21.value = P_0;
+		CS_8_locals_21.value = P_1;
+		CS_8_locals_21.value = P_2;
 		return GV11hMNVs2(delegate(Application app)
 		{
 			_G_c__DisplayClass28_1 CS_8_locals_33 = new _G_c__DisplayClass28_1();
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				return new n0p396zwSZtGyZIAden
 				{
-					Error = WordAgentRuntimeGuard2.dclJSetxGY(text)
+					Error = WordAgentRuntimeGuard2.CreateNotReadyError(text)
 				};
 			}
-			CS_8_locals_33.vFnV9J45IF4 = DocumentLifecycleGuard.zrqujYgRXw(app);
-			AiHelper_5 rU18qH9owXvBsPZ0iiU2 = nNB1PSLKQE(CS_8_locals_33.vFnV9J45IF4);
-			if (rU18qH9owXvBsPZ0iiU2 != null)
+			CS_8_locals_33.doc = DocumentLifecycleGuard.GetActiveDocument(app);
+			AiHelper_5 insertResult = nNB1PSLKQE(CS_8_locals_33.doc);
+			if (insertResult != null)
 			{
 				return new n0p396zwSZtGyZIAden
 				{
-					Error = rU18qH9owXvBsPZ0iiU2
+					Error = insertResult
 				};
 			}
-			int start = CS_8_locals_33.vFnV9J45IF4.Content.Start;
-			int end = CS_8_locals_33.vFnV9J45IF4.Content.End;
-			if (CS_8_locals_21.HTKV98Meu9n < start || CS_8_locals_21.bIHV9IgRLUU > end || CS_8_locals_21.bIHV9IgRLUU <= CS_8_locals_21.HTKV98Meu9n)
+			int start = CS_8_locals_33.doc.Content.Start;
+			int end = CS_8_locals_33.doc.Content.End;
+			if (CS_8_locals_21.value < start || CS_8_locals_21.value > end || CS_8_locals_21.value <= CS_8_locals_21.value)
 			{
 				return new n0p396zwSZtGyZIAden
 				{
-					Error = AiHelper_5.QSD9OKWs4n("oldText from fillableCells", "new cell text", new
+					Error = AiHelper_5.CreateError("oldText from fillableCells", "new cell text", new
 					{
-						rangeStart = CS_8_locals_21.HTKV98Meu9n,
-						rangeEnd = CS_8_locals_21.bIHV9IgRLUU,
+						rangeStart = CS_8_locals_21.value,
+						rangeEnd = CS_8_locals_21.value,
 						contentStart = start,
 						contentEnd = end
 					})
 				};
 			}
-			Document document = CS_8_locals_33.vFnV9J45IF4;
-			object Start = CS_8_locals_21.HTKV98Meu9n;
-			object End = CS_8_locals_21.bIHV9IgRLUU;
-			CS_8_locals_33.DXgV931VCE2 = document.Range(ref Start, ref End);
+			Document document = CS_8_locals_33.doc;
+			object Start = CS_8_locals_21.value;
+			object End = CS_8_locals_21.value;
+			CS_8_locals_33.range = document.Range(ref Start, ref End);
 			n0p396zwSZtGyZIAden n0p396zwSZtGyZIAden2 = new n0p396zwSZtGyZIAden
 			{
-				DocumentName = N75r5VKX8X(() => CS_8_locals_33.vFnV9J45IF4.Name),
-				DocumentFullName = N75r5VKX8X(() => CS_8_locals_33.vFnV9J45IF4.FullName),
-				DocumentSaved = PSHrcSln4y(() => CS_8_locals_33.vFnV9J45IF4.Saved, false),
-				RangeStart = CS_8_locals_21.HTKV98Meu9n,
-				RangeEnd = CS_8_locals_21.bIHV9IgRLUU,
-				TotalTablesInRange = VMbreGvrrq(() => CS_8_locals_33.DXgV931VCE2.Tables.Count, 0)
+				DocumentName = N75r5VKX8X(() => CS_8_locals_33.doc.Name),
+				DocumentFullName = N75r5VKX8X(() => CS_8_locals_33.doc.FullName),
+				DocumentSaved = PSHrcSln4y(() => CS_8_locals_33.doc.Saved, false),
+				RangeStart = CS_8_locals_21.value,
+				RangeEnd = CS_8_locals_21.value,
+				TotalTablesInRange = VMbreGvrrq(() => CS_8_locals_33.range.Tables.Count, 0)
 			};
-			int num = Math.Min(n0p396zwSZtGyZIAden2.TotalTablesInRange, CS_8_locals_21.zkhV9iZkkeC);
+			int num = Math.Min(n0p396zwSZtGyZIAden2.TotalTablesInRange, CS_8_locals_21.value);
 			for (int num2 = 1; num2 <= num; num2++)
 			{
 				_G_c__DisplayClass28_2 CS_8_locals_36 = new _G_c__DisplayClass28_2();
-				Table table = CS_8_locals_33.DXgV931VCE2.Tables[num2];
-				CS_8_locals_36.SWVV92f9WkU = table.Range;
+				Table table = CS_8_locals_33.range.Tables[num2];
+				CS_8_locals_36.range = table.Range;
 				YA2LiRzCEWFlxyIhtIs yA2LiRzCEWFlxyIhtIs = new YA2LiRzCEWFlxyIhtIs
 				{
 					LocalTableIndex = num2,
-					RangeStart = VMbreGvrrq(() => CS_8_locals_36.SWVV92f9WkU.Start, 0),
-					RangeEnd = VMbreGvrrq(() => CS_8_locals_36.SWVV92f9WkU.End, 0),
-					Page = CtirifWFy5(CS_8_locals_36.SWVV92f9WkU),
-					WordOpenXml = N75r5VKX8X(() => CS_8_locals_36.SWVV92f9WkU.WordOpenXML)
+					RangeStart = VMbreGvrrq(() => CS_8_locals_36.range.Start, 0),
+					RangeEnd = VMbreGvrrq(() => CS_8_locals_36.range.End, 0),
+					Page = CtirifWFy5(CS_8_locals_36.range),
+					WordOpenXml = N75r5VKX8X(() => CS_8_locals_36.range.WordOpenXML)
 				};
 				try
 				{
@@ -4113,17 +4113,17 @@ internal sealed class BatchReplaceService2
 						while (enumerator.MoveNext())
 						{
 							_G_c__DisplayClass28_3 CS_8_locals_39 = new _G_c__DisplayClass28_3();
-							CS_8_locals_39.uifV9ZW45a9 = (Cell)enumerator.Current;
-							if (WX3rIraaAH(CS_8_locals_39.uifV9ZW45a9, out var rowIndex, out var columnIndex))
+							CS_8_locals_39.cell = (Cell)enumerator.Current;
+							if (WX3rIraaAH(CS_8_locals_39.cell, out var rowIndex, out var columnIndex))
 							{
 								yA2LiRzCEWFlxyIhtIs.Cells.Add(new oTy5bPzeK1hVaoCKkSw
 								{
 									RowIndex = rowIndex,
 									ColumnIndex = columnIndex,
-									RangeStart = VMbreGvrrq(() => CS_8_locals_39.uifV9ZW45a9.Range.Start, 0),
-									RangeEnd = VMbreGvrrq(() => CS_8_locals_39.uifV9ZW45a9.Range.End, 0),
-									Page = CtirifWFy5(CS_8_locals_39.uifV9ZW45a9.Range),
-									Text = W8DrGBw06b(N75r5VKX8X(() => CS_8_locals_39.uifV9ZW45a9.Range.Text))
+									RangeStart = VMbreGvrrq(() => CS_8_locals_39.cell.Range.Start, 0),
+									RangeEnd = VMbreGvrrq(() => CS_8_locals_39.cell.Range.End, 0),
+									Page = CtirifWFy5(CS_8_locals_39.cell.Range),
+									Text = W8DrGBw06b(N75r5VKX8X(() => CS_8_locals_39.cell.Range.Text))
 								});
 							}
 						}
@@ -4148,7 +4148,7 @@ internal sealed class BatchReplaceService2
 
 	private bofQyd1aG8OooLE9BF3 GV11hMNVs2<bofQyd1aG8OooLE9BF3>(Func<Application, bofQyd1aG8OooLE9BF3> P_0)
 	{
-		return P81rhkL3Fs.MdXJlVhPku("warnings", P_0);
+		return _wordTableToolService4.MdXJlVhPku("warnings", P_0);
 	}
 
 	private static string IYo1q1aGqt(string P_0, string P_1)
@@ -4164,7 +4164,7 @@ internal sealed class BatchReplaceService2
 	{
 		if (P_0 == null)
 		{
-			return AiHelper_5.QSD9OKWs4n("当前没有打开的 Word 文档。", "no_document");
+			return AiHelper_5.CreateError("当前没有打开的 Word 文档。", "no_document");
 		}
 		return null;
 	}
@@ -4335,10 +4335,10 @@ internal sealed class BatchReplaceService2
 	private static object i041zjkxm7(tABVE1VR66mkVrCsbLlX P_0, YA2LiRzCEWFlxyIhtIs P_1, int P_2, int P_3)
 	{
 		_G_c__DisplayClass39_0 CS_8_locals_25 = new _G_c__DisplayClass39_0();
-		CS_8_locals_25.oOrV9bF6NPK = P_1;
-		CS_8_locals_25.F92V9SyFQk9 = P_0;
-		int count = CS_8_locals_25.F92V9SyFQk9.Matrix.Count;
-		int num = ((CS_8_locals_25.F92V9SyFQk9.Matrix.Count != 0) ? CS_8_locals_25.F92V9SyFQk9.Matrix.Max((List<string> r) => r.Count) : 0);
+		CS_8_locals_25.yA2LiRzCEWFlxyIhtIs = P_1;
+		CS_8_locals_25.tABVE1VR66mkVrCsbLlX = P_0;
+		int count = CS_8_locals_25.tABVE1VR66mkVrCsbLlX.Matrix.Count;
+		int num = ((CS_8_locals_25.tABVE1VR66mkVrCsbLlX.Matrix.Count != 0) ? CS_8_locals_25.tABVE1VR66mkVrCsbLlX.Matrix.Max((List<string> r) => r.Count) : 0);
 		int num2 = Math.Min(count, P_2);
 		int num3 = Math.Min(num, P_3);
 		List<List<string>> list = new List<List<string>>();
@@ -4347,20 +4347,20 @@ internal sealed class BatchReplaceService2
 			List<string> list2 = new List<string>();
 			for (int num5 = 0; num5 < num3; num5++)
 			{
-				list2.Add((num5 < CS_8_locals_25.F92V9SyFQk9.Matrix[num4].Count) ? CS_8_locals_25.F92V9SyFQk9.Matrix[num4][num5] : string.Empty);
+				list2.Add((num5 < CS_8_locals_25.tABVE1VR66mkVrCsbLlX.Matrix[num4].Count) ? CS_8_locals_25.tABVE1VR66mkVrCsbLlX.Matrix[num4][num5] : string.Empty);
 			}
 			list.Add(list2);
 		}
-		List<bK7KpszWkypJdk2Xvox> list3 = nlxrVudBFD(CS_8_locals_25.F92V9SyFQk9);
-		int num6 = NeBrBnQFG6(CS_8_locals_25.F92V9SyFQk9, list3);
-		Dictionary<string, oTy5bPzeK1hVaoCKkSw> dictionary = Hv3rTBRVQS(CS_8_locals_25.oOrV9bF6NPK);
-		List<Dictionary<string, object>> list4 = vSgrRZ2rop(CS_8_locals_25.F92V9SyFQk9, CS_8_locals_25.oOrV9bF6NPK.LocalTableIndex, num6, num2, num3, dictionary);
+		List<bK7KpszWkypJdk2Xvox> list3 = nlxrVudBFD(CS_8_locals_25.tABVE1VR66mkVrCsbLlX);
+		int num6 = NeBrBnQFG6(CS_8_locals_25.tABVE1VR66mkVrCsbLlX, list3);
+		Dictionary<string, oTy5bPzeK1hVaoCKkSw> dictionary = Hv3rTBRVQS(CS_8_locals_25.yA2LiRzCEWFlxyIhtIs);
+		List<Dictionary<string, object>> list4 = vSgrRZ2rop(CS_8_locals_25.tABVE1VR66mkVrCsbLlX, CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.LocalTableIndex, num6, num2, num3, dictionary);
 		List<object> value = ((IEnumerable<object>)(from item in list4
 			where string.Equals(t0Ar14Clfb(item, "localTableIndex"), "rangeStart", StringComparison.Ordinal) && zLtrJh4fJ9(item, "rangeEnd")
 			select new Dictionary<string, object>
 			{
 				["page"] = t0Ar14Clfb(item, "actionableRange"),
-				["rangeSource"] = CS_8_locals_25.oOrV9bF6NPK.LocalTableIndex,
+				["rangeSource"] = CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.LocalTableIndex,
 				["word_com_selection_table_range"] = VUFrr6lVTF(item, "rows"),
 				["columns"] = VUFrr6lVTF(item, "returnedRows"),
 				["returnedColumns"] = zLtrJh4fJ9(item, "headerRowCount"),
@@ -4370,12 +4370,12 @@ internal sealed class BatchReplaceService2
 				["rawText"] = item["hasMergedOrUnavailableCells"],
 				["expandedMergedCells"] = item["truncated"]
 			})).ToList();
-		Dictionary<string, object> dictionary2 = E0o1v57WVB(CS_8_locals_25.F92V9SyFQk9);
-		dictionary2["writeCoordinateExample"] = CS_8_locals_25.oOrV9bF6NPK.LocalTableIndex;
-		dictionary2["1-based rowIndex from cellsFlat/fillableCells"] = CS_8_locals_25.oOrV9bF6NPK.RangeStart;
-		dictionary2["1-based columnIndex from cellsFlat/fillableCells"] = CS_8_locals_25.oOrV9bF6NPK.RangeEnd;
-		dictionary2["oldText from fillableCells"] = CS_8_locals_25.oOrV9bF6NPK.Page;
-		dictionary2["new cell text"] = CS_8_locals_25.oOrV9bF6NPK.RangeEnd >= CS_8_locals_25.oOrV9bF6NPK.RangeStart;
+		Dictionary<string, object> dictionary2 = E0o1v57WVB(CS_8_locals_25.tABVE1VR66mkVrCsbLlX);
+		dictionary2["writeCoordinateExample"] = CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.LocalTableIndex;
+		dictionary2["1-based rowIndex from cellsFlat/fillableCells"] = CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.RangeStart;
+		dictionary2["1-based columnIndex from cellsFlat/fillableCells"] = CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.RangeEnd;
+		dictionary2["oldText from fillableCells"] = CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.Page;
+		dictionary2["new cell text"] = CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.RangeEnd >= CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.RangeStart;
 		dictionary2["warnings"] = "未能读取该表格的真实 Word COM 单元格坐标，写入工具可能无法定位。";
 		dictionary2["cellId"] = count;
 		dictionary2["cellKind"] = num;
@@ -4391,16 +4391,16 @@ internal sealed class BatchReplaceService2
 			startColumn = m.StartColumn,
 			endRow = m.EndRow,
 			endColumn = m.EndColumn,
-			text = (QGOrDbp7Kg(CS_8_locals_25.F92V9SyFQk9, m.StartRow, m.StartColumn)?.Text ?? string.Empty)
+			text = (QGOrDbp7Kg(CS_8_locals_25.tABVE1VR66mkVrCsbLlX, m.StartRow, m.StartColumn)?.Text ?? string.Empty)
 		})).ToList();
 		dictionary2["requiresAllowHeaderEdit"] = irdrjYZm1n(list);
-		dictionary2["defaultWritable"] = cmxrpX5s5e(CS_8_locals_25.F92V9SyFQk9.RawText, 3000);
-		dictionary2["page"] = CS_8_locals_25.F92V9SyFQk9.HasMergedCells;
-		dictionary2["rangeStart"] = CS_8_locals_25.F92V9SyFQk9.HasMergedCells;
+		dictionary2["defaultWritable"] = cmxrpX5s5e(CS_8_locals_25.tABVE1VR66mkVrCsbLlX.RawText, 3000);
+		dictionary2["page"] = CS_8_locals_25.tABVE1VR66mkVrCsbLlX.HasMergedCells;
+		dictionary2["rangeStart"] = CS_8_locals_25.tABVE1VR66mkVrCsbLlX.HasMergedCells;
 		dictionary2["rangeEnd"] = count > num2 || num > num3;
 		dictionary2["actionableRange"] = new
 		{
-			localTableIndex = CS_8_locals_25.oOrV9bF6NPK.LocalTableIndex,
+			localTableIndex = CS_8_locals_25.yA2LiRzCEWFlxyIhtIs.LocalTableIndex,
 			rowIndex = "rangeSource",
 			columnIndex = "unavailable",
 			expectedOldText = "word_com_table_cell",
@@ -4536,11 +4536,11 @@ internal sealed class BatchReplaceService2
 		int num = 0;
 		int count = P_0.Matrix.Count;
 		_G_c__DisplayClass42_0 CS_8_locals_6 = new _G_c__DisplayClass42_0();
-		CS_8_locals_6.qAxV9tHjsxJ = 1;
-		while (CS_8_locals_6.qAxV9tHjsxJ <= count && P_1.Any((bK7KpszWkypJdk2Xvox merge) => merge.StartRow <= CS_8_locals_6.qAxV9tHjsxJ && merge.EndRow >= CS_8_locals_6.qAxV9tHjsxJ))
+		CS_8_locals_6.value = 1;
+		while (CS_8_locals_6.value <= count && P_1.Any((bK7KpszWkypJdk2Xvox merge) => merge.StartRow <= CS_8_locals_6.value && merge.EndRow >= CS_8_locals_6.value))
 		{
-			num = CS_8_locals_6.qAxV9tHjsxJ;
-			CS_8_locals_6.qAxV9tHjsxJ++;
+			num = CS_8_locals_6.value;
+			CS_8_locals_6.value++;
 		}
 		bool flag;
 		do
@@ -4639,9 +4639,9 @@ internal sealed class BatchReplaceService2
 	private static yYk52kVRJmeQHGAAHZBB QGOrDbp7Kg(tABVE1VR66mkVrCsbLlX P_0, int P_1, int P_2)
 	{
 		_G_c__DisplayClass46_0 CS_8_locals_6 = new _G_c__DisplayClass46_0();
-		CS_8_locals_6.k2oV9srn1Wn = P_1;
-		CS_8_locals_6.W8aV9lSkfp7 = P_2;
-		return P_0?.Cells.FirstOrDefault((yYk52kVRJmeQHGAAHZBB cell) => cell.RowIndex <= CS_8_locals_6.k2oV9srn1Wn && CS_8_locals_6.k2oV9srn1Wn < cell.RowIndex + Math.Max(1, cell.RowSpan) && cell.ColumnIndex <= CS_8_locals_6.W8aV9lSkfp7 && CS_8_locals_6.W8aV9lSkfp7 < cell.ColumnIndex + Math.Max(1, cell.ColumnSpan));
+		CS_8_locals_6.value = P_1;
+		CS_8_locals_6.value = P_2;
+		return P_0?.Cells.FirstOrDefault((yYk52kVRJmeQHGAAHZBB cell) => cell.RowIndex <= CS_8_locals_6.value && CS_8_locals_6.value < cell.RowIndex + Math.Max(1, cell.RowSpan) && cell.ColumnIndex <= CS_8_locals_6.value && CS_8_locals_6.value < cell.ColumnIndex + Math.Max(1, cell.ColumnSpan));
 	}
 
 	private static Dictionary<string, oTy5bPzeK1hVaoCKkSw> Hv3rTBRVQS(YA2LiRzCEWFlxyIhtIs P_0)
@@ -4767,12 +4767,12 @@ internal sealed class BatchReplaceService2
 	private static object DHAr3WoUQu(a5lLcpd0tjOGP93a2IH P_0, int P_1, int P_2)
 	{
 		_G_c__DisplayClass57_0 CS_8_locals_2 = new _G_c__DisplayClass57_0();
-		CS_8_locals_2.VSKV9moHcKN = P_1;
+		CS_8_locals_2.value = P_1;
 		if (P_0 == null)
 		{
 			return null;
 		}
-		int num = P_0.Blocks.FindIndex((iltloQVRboLvh0PbMHDS b) => b.Table != null && b.TableIndex == CS_8_locals_2.VSKV9moHcKN);
+		int num = P_0.Blocks.FindIndex((iltloQVRboLvh0PbMHDS b) => b.Table != null && b.TableIndex == CS_8_locals_2.value);
 		if (num < 0)
 		{
 			return null;
@@ -4791,8 +4791,8 @@ internal sealed class BatchReplaceService2
 	private static object QLTrUfY8oq(a5lLcpd0tjOGP93a2IH P_0, List<MNdq0PVRGorZsHaxpvRr> P_1, int P_2)
 	{
 		_G_c__DisplayClass58_0 CS_8_locals_4 = new _G_c__DisplayClass58_0();
-		CS_8_locals_4.RKPV9GMswFg = P_0;
-		Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_4.RKPV9GMswFg);
+		CS_8_locals_4.a5lLcpd0tjOGP93a2IH = P_0;
+		Dictionary<string, object> dictionary = tvv1A6x1MO(CS_8_locals_4.a5lLcpd0tjOGP93a2IH);
 		dictionary["actionableRange"] = false;
 		dictionary["rangeWarning"] = "该查找结果不包含可用于写入的 Word Range；如需批注、选中或替换，请使用 find_word_text 获取真实 Range。";
 		dictionary["returned"] = P_1.Count;
@@ -4800,8 +4800,8 @@ internal sealed class BatchReplaceService2
 		dictionary["matches"] = ((IEnumerable<object>)P_1.Select((MNdq0PVRGorZsHaxpvRr match) => new
 		{
 			actionableRange = false,
-			document = CS_8_locals_4.RKPV9GMswFg.DocumentName,
-			documentFullName = CS_8_locals_4.RKPV9GMswFg.DocumentFullName,
+			document = CS_8_locals_4.a5lLcpd0tjOGP93a2IH.DocumentName,
+			documentFullName = CS_8_locals_4.a5lLcpd0tjOGP93a2IH.DocumentFullName,
 			page = (int?)null,
 			paragraphIndex = match.ParagraphIndex,
 			charIndexStart = match.CharIndexStart,
@@ -4844,21 +4844,21 @@ internal sealed class BatchReplaceService2
 	private static ubtWXyzzVHfe9SR37mW q0ErEEV1r1(a5lLcpd0tjOGP93a2IH P_0, string P_1, int P_2, int P_3, string P_4)
 	{
 		_G_c__DisplayClass60_0 CS_8_locals_10 = new _G_c__DisplayClass60_0();
-		CS_8_locals_10.vDeV9OtAZ2t = P_2;
-		CS_8_locals_10.bgTV9n3AJu8 = P_3;
-		CS_8_locals_10.hG5V97YV9ew = P_1;
-		if (CS_8_locals_10.vDeV9OtAZ2t > 0)
+		CS_8_locals_10.value = P_2;
+		CS_8_locals_10.value = P_3;
+		CS_8_locals_10.text = P_1;
+		if (CS_8_locals_10.value > 0)
 		{
-			return P_0.Paragraphs.FirstOrDefault((ubtWXyzzVHfe9SR37mW p) => p.ParagraphIndex == CS_8_locals_10.vDeV9OtAZ2t);
+			return P_0.Paragraphs.FirstOrDefault((ubtWXyzzVHfe9SR37mW p) => p.ParagraphIndex == CS_8_locals_10.value);
 		}
-		CS_8_locals_10.KmlV95lH4lJ = (P_4 ?? "contains").Trim().ToLowerInvariant();
+		CS_8_locals_10.text = (P_4 ?? "contains").Trim().ToLowerInvariant();
 		return P_0.Paragraphs.FirstOrDefault(delegate(ubtWXyzzVHfe9SR37mW p)
 		{
 			if (!p.IsHeading)
 			{
 				return false;
 			}
-			return (CS_8_locals_10.bgTV9n3AJu8 <= 0 || p.OutlineLevel == CS_8_locals_10.bgTV9n3AJu8) && hctr2dw2UI(p.Text, CS_8_locals_10.hG5V97YV9ew, CS_8_locals_10.KmlV95lH4lJ);
+			return (CS_8_locals_10.value <= 0 || p.OutlineLevel == CS_8_locals_10.value) && hctr2dw2UI(p.Text, CS_8_locals_10.text, CS_8_locals_10.text);
 		});
 	}
 
@@ -5038,16 +5038,16 @@ internal sealed class BatchReplaceService2
 	private static XDocument En9rt9aqSr(XDocument P_0, string P_1)
 	{
 		_G_c__DisplayClass71_0 CS_8_locals_3 = new _G_c__DisplayClass71_0();
-		CS_8_locals_3.w7mV9eP1ng9 = P_1;
+		CS_8_locals_3.text = P_1;
 		if (P_0?.Root == null)
 		{
 			return null;
 		}
-		if (P_0.Root.Name == zA2ryEPNHO + "document" && string.Equals(CS_8_locals_3.w7mV9eP1ng9, "/word/document.xml", StringComparison.OrdinalIgnoreCase))
+		if (P_0.Root.Name == zA2ryEPNHO + "document" && string.Equals(CS_8_locals_3.text, "/word/document.xml", StringComparison.OrdinalIgnoreCase))
 		{
 			return P_0;
 		}
-		XElement xElement = P_0.Root.Elements(noWrXsAkl3 + "part").FirstOrDefault((XElement p) => string.Equals(p.Attribute(noWrXsAkl3 + "xmlData")?.Value, CS_8_locals_3.w7mV9eP1ng9, StringComparison.OrdinalIgnoreCase))?.Element(noWrXsAkl3 + "columnSpan")?.Elements().FirstOrDefault();
+		XElement xElement = P_0.Root.Elements(noWrXsAkl3 + "part").FirstOrDefault((XElement p) => string.Equals(p.Attribute(noWrXsAkl3 + "xmlData")?.Value, CS_8_locals_3.text, StringComparison.OrdinalIgnoreCase))?.Element(noWrXsAkl3 + "columnSpan")?.Elements().FirstOrDefault();
 		if (xElement == null)
 		{
 			return null;
@@ -5300,7 +5300,7 @@ internal sealed class BatchReplaceService2
 
 	static BatchReplaceService2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		zA2ryEPNHO = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
 		noWrXsAkl3 = "http://schemas.microsoft.com/office/2006/xmlPackage";
 	}

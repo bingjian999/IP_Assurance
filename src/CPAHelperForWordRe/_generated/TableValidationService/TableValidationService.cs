@@ -91,17 +91,17 @@ internal static class TableValidationService
 
 	private static void L3OKrbE2FM(bool P_0)
 	{
-		Microsoft.Office.Interop.Excel.Application application = ExcelInteropService.gM4XBr1Rq();
+		Microsoft.Office.Interop.Excel.Application application = ExcelInteropService.GetOrCreateExcelApp();
 		if (application == null)
 		{
-			LoggerInitializer.F9Ycoqv2I8("无法启动 Excel/WPS 表格。", "IP_Assurance");
+			LoggerInitializer.ShowError("无法启动 Excel/WPS 表格。", "IP_Assurance");
 			return;
 		}
 		application.Visible = true;
 		Tables tables = App.Selection.Tables;
 		if (tables.Count == 0)
 		{
-			LoggerInitializer.u0kcmnykTv("No tables selected.", "IP_Assurance");
+			LoggerInitializer.ShowWarning("No tables selected.", "IP_Assurance");
 			return;
 		}
 		Worksheet worksheet = yekKEcMdXi(application.ActiveWorkbook ?? application.Workbooks.Add(Type.Missing), "Word表格校验");
@@ -195,7 +195,7 @@ internal static class TableValidationService
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8(ex.ToString(), "IP_Assurance");
+			LoggerInitializer.ShowError(ex.ToString(), "IP_Assurance");
 		}
 		finally
 		{
@@ -237,14 +237,14 @@ internal static class TableValidationService
 			}
 			if (WordTableToolService.IsWps)
 			{
-				LoggerInitializer.Ay3cNuEgJo(text2 + "  可直接粘贴", "IP_Assurance");
+				LoggerInitializer.ShowInfo(text2 + "  可直接粘贴", "IP_Assurance");
 			}
 			App.StatusBar = text2 + "可直接粘贴";
 			Clipboard.SetText(num.ToString("#,##0.00;-#,##0.00; ", CultureInfo.CurrentCulture));
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8(ex.ToString(), "IP_Assurance");
+			LoggerInitializer.ShowError(ex.ToString(), "IP_Assurance");
 		}
 		finally
 		{
@@ -358,10 +358,10 @@ internal static class TableValidationService
 
 	public static void CKSKKAnPKH()
 	{
-		Microsoft.Office.Interop.Excel.Application application = ExcelInteropService.gM4XBr1Rq();
+		Microsoft.Office.Interop.Excel.Application application = ExcelInteropService.GetOrCreateExcelApp();
 		if (application == null)
 		{
-			LoggerInitializer.F9Ycoqv2I8("无法启动 Excel/WPS 表格。", "IP_Assurance");
+			LoggerInitializer.ShowError("无法启动 Excel/WPS 表格。", "IP_Assurance");
 			return;
 		}
 		application.Visible = true;
@@ -432,7 +432,7 @@ internal static class TableValidationService
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8(ex.ToString(), "IP_Assurance");
+			LoggerInitializer.ShowError(ex.ToString(), "IP_Assurance");
 		}
 		finally
 		{
@@ -590,7 +590,7 @@ internal static class TableValidationService
 		try
 		{
 			ProgressWindow progressWindow = new ProgressWindow();
-			WordTableToolService5.IPf5i0ZcV4(progressWindow);
+			WordTableToolService5.ShowWpfWindow(progressWindow);
 			return progressWindow;
 		}
 		catch

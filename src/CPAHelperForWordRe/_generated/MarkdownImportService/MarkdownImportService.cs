@@ -28,48 +28,48 @@ internal static class MarkdownImportService
 {
 	private sealed class aAlPvcVUL6QeYdQQTx4o
 	{
-		private readonly Application S4MVKgeaWSv;
+		private readonly Application _application;
 
-		private readonly Document tCAVK8nqeU8;
+		private readonly Document _document;
 
 		private readonly List<raLl8RVKsxnTrBWY49kg> xI3VKICDWZW;
 
 		private readonly List<pfvElaVK28PPZKRbg4It> diFVKiV96mN;
 
-		private Range ALVVKHQJk1O;
+		private Range _range;
 
-		private int PlDVKQGgg5a;
+		private int _int;
 
-		private int LYWVK1W4udM;
+		private int _int;
 
 		private int GMjVKron835;
 
 		[CompilerGenerated]
-		private int JR4VKJWekPR;
+		private int _headingCount;
 
 		[CompilerGenerated]
-		private int P9JVK3Pct0J;
+		private int _paragraphCount;
 
 		[CompilerGenerated]
-		private int B8mVKU7atmJ;
+		private int _tableCount;
 
 		[CompilerGenerated]
-		private int Q8PVKKtNGlW;
+		private int _inlineStyleFailureCount;
 
 		[CompilerGenerated]
-		private int sCLVKEodJ8w;
+		private int _headingNumberingFailureCount;
 
 		public int HeadingCount
 		{
 			[CompilerGenerated]
 			get
 			{
-				return JR4VKJWekPR;
+				return _headingCount;
 			}
 			[CompilerGenerated]
 			private set
 			{
-				JR4VKJWekPR = value;
+				_headingCount = value;
 			}
 		}
 
@@ -78,12 +78,12 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return P9JVK3Pct0J;
+				return _paragraphCount;
 			}
 			[CompilerGenerated]
 			private set
 			{
-				P9JVK3Pct0J = value;
+				_paragraphCount = value;
 			}
 		}
 
@@ -92,12 +92,12 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return B8mVKU7atmJ;
+				return _tableCount;
 			}
 			[CompilerGenerated]
 			private set
 			{
-				B8mVKU7atmJ = value;
+				_tableCount = value;
 			}
 		}
 
@@ -106,12 +106,12 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return Q8PVKKtNGlW;
+				return _inlineStyleFailureCount;
 			}
 			[CompilerGenerated]
 			private set
 			{
-				Q8PVKKtNGlW = value;
+				_inlineStyleFailureCount = value;
 			}
 		}
 
@@ -120,22 +120,22 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return sCLVKEodJ8w;
+				return _headingNumberingFailureCount;
 			}
 			[CompilerGenerated]
 			private set
 			{
-				sCLVKEodJ8w = value;
+				_headingNumberingFailureCount = value;
 			}
 		}
 
 		public aAlPvcVUL6QeYdQQTx4o(Application P_0, Document P_1)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			xI3VKICDWZW = new List<raLl8RVKsxnTrBWY49kg>();
 			diFVKiV96mN = new List<pfvElaVK28PPZKRbg4It>();
-			S4MVKgeaWSv = P_0;
-			tCAVK8nqeU8 = P_1;
+			_application = P_0;
+			_document = P_1;
 		}
 
 		public void zHcVUs5hLZv(MarkdownDocument P_0)
@@ -145,18 +145,18 @@ internal static class MarkdownImportService
 			{
 				OwWVUCS7bIW(item);
 			}
-			LYWVK1W4udM = ALVVKHQJk1O.Start;
+			_int = _range.Start;
 		}
 
 		public Range byJVUlMc00b()
 		{
-			if (LYWVK1W4udM <= PlDVKQGgg5a)
+			if (_int <= _int)
 			{
 				return null;
 			}
-			Document document = tCAVK8nqeU8;
-			object Start = PlDVKQGgg5a;
-			object End = LYWVK1W4udM;
+			Document document = _document;
+			object Start = _int;
+			object End = _int;
 			return document.Range(ref Start, ref End);
 		}
 
@@ -167,7 +167,7 @@ internal static class MarkdownImportService
 			string text = null;
 			foreach (raLl8RVKsxnTrBWY49kg item in xI3VKICDWZW)
 			{
-				if6J2oVKC21QN5q6nYBW if6J2oVKC21QN5q6nYBW2 = item.iyaVKlfHfTe(tCAVK8nqeU8);
+				if6J2oVKC21QN5q6nYBW if6J2oVKC21QN5q6nYBW2 = item.iyaVKlfHfTe(_document);
 				if (!if6J2oVKC21QN5q6nYBW2.Success)
 				{
 					InlineStyleFailureCount++;
@@ -180,7 +180,7 @@ internal static class MarkdownImportService
 			}
 			if (InlineStyleFailureCount > 0)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl(string.Format("[MarkdownImport] Inline styles partially applied; TotalSpans={0}; FailedSpans={1}; FailedProperties={2}; FirstFailure={3}", xI3VKICDWZW.Count, InlineStyleFailureCount, num, text ?? string.Empty));
+				AiConfigBootstrap.LogWarn(string.Format("[MarkdownImport] Inline styles partially applied; TotalSpans={0}; FailedSpans={1}; FailedProperties={2}; FirstFailure={3}", xI3VKICDWZW.Count, InlineStyleFailureCount, num, text ?? string.Empty));
 			}
 		}
 
@@ -204,7 +204,7 @@ internal static class MarkdownImportService
 			{
 				try
 				{
-					Document document = tCAVK8nqeU8;
+					Document document = _document;
 					object Start = item.Start;
 					object End = item.End;
 					Range range = document.Range(ref Start, ref End);
@@ -229,7 +229,7 @@ internal static class MarkdownImportService
 			if (num > 0)
 			{
 				HeadingNumberingFailureCount = num;
-				AiConfigBootstrap.z7Us3dJ6Cl(string.Format("[MarkdownImport] Heading numbering partially applied; Total={0}; Failed={1}; FirstFailure={2}", diFVKiV96mN.Count, num, text ?? string.Empty));
+				AiConfigBootstrap.LogWarn(string.Format("[MarkdownImport] Heading numbering partially applied; Total={0}; Failed={1}; FirstFailure={2}", diFVKiV96mN.Count, num, text ?? string.Empty));
 			}
 		}
 
@@ -237,9 +237,9 @@ internal static class MarkdownImportService
 		{
 			try
 			{
-				Document document = tCAVK8nqeU8;
-				object Start = LYWVK1W4udM;
-				object End = LYWVK1W4udM;
+				Document document = _document;
+				object Start = _int;
+				object End = _int;
 				document.Range(ref Start, ref End).Select();
 			}
 			catch
@@ -249,16 +249,16 @@ internal static class MarkdownImportService
 
 		private void oTEVUG21RJh()
 		{
-			Selection selection = S4MVKgeaWSv.Selection;
-			Range range = ((selection != null) ? selection.Range.Duplicate : tCAVK8nqeU8.Content.Duplicate);
-			int num = ((range != null) ? Math.Max(range.Start, range.End) : Math.Max(0, tCAVK8nqeU8.Content.End - 1));
-			Document document = tCAVK8nqeU8;
+			Selection selection = _application.Selection;
+			Range range = ((selection != null) ? selection.Range.Duplicate : _document.Content.Duplicate);
+			int num = ((range != null) ? Math.Max(range.Start, range.End) : Math.Max(0, _document.Content.End - 1));
+			Document document = _document;
 			object Start = num;
 			object End = num;
-			ALVVKHQJk1O = document.Range(ref Start, ref End);
-			ALVVKHQJk1O.Select();
-			PlDVKQGgg5a = num;
-			LYWVK1W4udM = num;
+			_range = document.Range(ref Start, ref End);
+			_range.Select();
+			_int = num;
+			_int = num;
 		}
 
 		private void OwWVUCS7bIW(Block P_0)
@@ -325,7 +325,7 @@ internal static class MarkdownImportService
 
 		private Range qhvVUO6n4l9(ContainerInline P_0, WdOutlineLevel P_1, string P_2)
 		{
-			int start = ALVVKHQJk1O.Start;
+			int start = _range.Start;
 			string text = mIDVUWOawP9() + (P_2 ?? string.Empty);
 			if (text.Length > 0)
 			{
@@ -333,9 +333,9 @@ internal static class MarkdownImportService
 			}
 			eqrVUqU4btV(P_0, LOUXUXVKZBmgcWu9S7lG.Normal);
 			bB5VUva3Dt6("\\r");
-			Document document = tCAVK8nqeU8;
+			Document document = _document;
 			object Start = start;
-			object End = ALVVKHQJk1O.Start;
+			object End = _range.Start;
 			Range range = document.Range(ref Start, ref End);
 			range.ParagraphFormat.OutlineLevel = P_1;
 			ParagraphCount++;
@@ -370,13 +370,13 @@ internal static class MarkdownImportService
 			string[] array2 = array;
 			foreach (string text2 in array2)
 			{
-				int start = ALVVKHQJk1O.Start;
+				int start = _range.Start;
 				rOsVUAVse01(mIDVUWOawP9(), LOUXUXVKZBmgcWu9S7lG.Normal);
 				rOsVUAVse01(text2, LOUXUXVKZBmgcWu9S7lG.DruVKM09SLJ);
 				bB5VUva3Dt6("\\r");
-				Document document = tCAVK8nqeU8;
+				Document document = _document;
 				object Start = start;
-				object End = ALVVKHQJk1O.Start;
+				object End = _range.Start;
 				document.Range(ref Start, ref End).ParagraphFormat.OutlineLevel = WdOutlineLevel.wdOutlineLevelBodyText;
 				ParagraphCount++;
 			}
@@ -483,8 +483,8 @@ internal static class MarkdownImportService
 			}
 			int count = list.Count;
 			int num = Math.Max(1, list.Max((List<string> row) => row.Count));
-			Tables tables = tCAVK8nqeU8.Tables;
-			Range aLVVKHQJk1O = ALVVKHQJk1O;
+			Tables tables = _document.Tables;
+			Range aLVVKHQJk1O = _range;
 			object DefaultTableBehavior = Type.Missing;
 			object AutoFitBehavior = Type.Missing;
 			Microsoft.Office.Interop.Word.Table table = tables.Add(aLVVKHQJk1O, count, num, ref DefaultTableBehavior, ref AutoFitBehavior);
@@ -503,8 +503,8 @@ internal static class MarkdownImportService
 			duplicate.InsertParagraphAfter();
 			AutoFitBehavior = WdCollapseDirection.wdCollapseEnd;
 			duplicate.Collapse(ref AutoFitBehavior);
-			ALVVKHQJk1O = duplicate.Duplicate;
-			LYWVK1W4udM = ALVVKHQJk1O.Start;
+			_range = duplicate.Duplicate;
+			_int = _range.Start;
 			TableCount++;
 		}
 
@@ -625,9 +625,9 @@ internal static class MarkdownImportService
 			string text = TWUVKR0rlfS(P_0);
 			if (text.Length != 0)
 			{
-				int start = ALVVKHQJk1O.Start;
+				int start = _range.Start;
 				bB5VUva3Dt6(text);
-				int start2 = ALVVKHQJk1O.Start;
+				int start2 = _range.Start;
 				if (P_1.HasFormatting)
 				{
 					raLl8RVKsxnTrBWY49kg item = new raLl8RVKsxnTrBWY49kg(start, start2, P_1.LPkVKfa2RCQ());
@@ -640,12 +640,12 @@ internal static class MarkdownImportService
 		{
 			if (!string.IsNullOrEmpty(P_0))
 			{
-				int start = ALVVKHQJk1O.Start;
-				ALVVKHQJk1O.Text = P_0;
+				int start = _range.Start;
+				_range.Text = P_0;
 				int num;
 				try
 				{
-					num = ALVVKHQJk1O.End;
+					num = _range.End;
 				}
 				catch
 				{
@@ -655,11 +655,11 @@ internal static class MarkdownImportService
 				{
 					num = start + P_0.Length;
 				}
-				Document document = tCAVK8nqeU8;
+				Document document = _document;
 				object Start = num;
 				object End = num;
-				ALVVKHQJk1O = document.Range(ref Start, ref End);
-				LYWVK1W4udM = num;
+				_range = document.Range(ref Start, ref End);
+				_int = num;
 			}
 		}
 
@@ -822,7 +822,7 @@ internal static class MarkdownImportService
 			ListTemplate listTemplate = null;
 			try
 			{
-				ListTemplates listTemplates = tCAVK8nqeU8.ListTemplates;
+				ListTemplates listTemplates = _document.ListTemplates;
 				object OutlineNumbered = true;
 				object Name = "IPA_MD_" + Guid.NewGuid().ToString("N");
 				listTemplate = listTemplates.Add(ref OutlineNumbered, ref Name);
@@ -834,13 +834,13 @@ internal static class MarkdownImportService
 			{
 				try
 				{
-					ListTemplates listTemplates2 = S4MVKgeaWSv.ListGalleries[WdListGalleryType.wdOutlineNumberGallery].ListTemplates;
+					ListTemplates listTemplates2 = _application.ListGalleries[WdListGalleryType.wdOutlineNumberGallery].ListTemplates;
 					object Name = 1;
 					listTemplate = listTemplates2[ref Name];
 				}
 				catch (Exception ex2)
 				{
-					AiConfigBootstrap.z7Us3dJ6Cl("[MarkdownImport] Use outline number gallery failed: " + ex2.Message);
+					AiConfigBootstrap.LogWarn("[MarkdownImport] Use outline number gallery failed: " + ex2.Message);
 					return null;
 				}
 			}
@@ -867,8 +867,8 @@ internal static class MarkdownImportService
 					listLevel.ResetOnHigher = ((i != 1) ? (i - 1) : 0);
 					listLevel.TrailingCharacter = WdTrailingCharacter.wdTrailingNone;
 					listLevel.Alignment = WdListLevelAlignment.wdListLevelAlignLeft;
-					float numberPosition = S4MVKgeaWSv.CentimetersToPoints((float)((double)(i - 1) * 0.65));
-					float num2 = S4MVKgeaWSv.CentimetersToPoints((float)((double)i * 0.65));
+					float numberPosition = _application.CentimetersToPoints((float)((double)(i - 1) * 0.65));
+					float num2 = _application.CentimetersToPoints((float)((double)i * 0.65));
 					listLevel.NumberPosition = numberPosition;
 					listLevel.TextPosition = num2;
 					listLevel.TabPosition = num2;
@@ -884,7 +884,7 @@ internal static class MarkdownImportService
 			}
 			if (num > 0)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl(string.Format("[MarkdownImport] Heading number template partially configured; FailedLevels={0}; FirstFailure={1}", num, text ?? string.Empty));
+				AiConfigBootstrap.LogWarn(string.Format("[MarkdownImport] Heading number template partially configured; FailedLevels={0}; FirstFailure={1}", num, text ?? string.Empty));
 			}
 		}
 
@@ -919,10 +919,10 @@ internal static class MarkdownImportService
 	private sealed class pfvElaVK28PPZKRbg4It
 	{
 		[CompilerGenerated]
-		private readonly int oOuVK4oZt0k;
+		private readonly int _int;
 
 		[CompilerGenerated]
-		private readonly int N9MVKj0QxtD;
+		private readonly int _int;
 
 		[CompilerGenerated]
 		private readonly int zpeVKYiyYMQ;
@@ -932,7 +932,7 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return oOuVK4oZt0k;
+				return _int;
 			}
 		}
 
@@ -941,7 +941,7 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return N9MVKj0QxtD;
+				return _int;
 			}
 		}
 
@@ -956,9 +956,9 @@ internal static class MarkdownImportService
 
 		public pfvElaVK28PPZKRbg4It(int P_0, int P_1, int P_2)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
-			oOuVK4oZt0k = P_0;
-			N9MVKj0QxtD = P_1;
+			SseStreamInitializer.InitializeRuntime();
+			_int = P_0;
+			_int = P_1;
 			zpeVKYiyYMQ = P_2;
 		}
 	}
@@ -973,10 +973,10 @@ internal static class MarkdownImportService
 		private bool NxmVKbaCLJ1;
 
 		[CompilerGenerated]
-		private bool uD6VKSin1kj;
+		private bool _italic;
 
 		[CompilerGenerated]
-		private bool XEhVKwqXa0I;
+		private bool _strike;
 
 		[CompilerGenerated]
 		private bool CDfVKteaRvr;
@@ -1003,12 +1003,12 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return uD6VKSin1kj;
+				return _italic;
 			}
 			[CompilerGenerated]
 			set
 			{
-				uD6VKSin1kj = value;
+				_italic = value;
 			}
 		}
 
@@ -1017,12 +1017,12 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return XEhVKwqXa0I;
+				return _strike;
 			}
 			[CompilerGenerated]
 			set
 			{
-				XEhVKwqXa0I = value;
+				_strike = value;
 			}
 		}
 
@@ -1080,12 +1080,12 @@ internal static class MarkdownImportService
 
 		public LOUXUXVKZBmgcWu9S7lG()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		static LOUXUXVKZBmgcWu9S7lG()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			Normal = new LOUXUXVKZBmgcWu9S7lG();
 			DruVKM09SLJ = new LOUXUXVKZBmgcWu9S7lG
 			{
@@ -1099,67 +1099,67 @@ internal static class MarkdownImportService
 		[CompilerGenerated]
 		private sealed class _G_c__DisplayClass4_0
 		{
-			public Range u7OVSYHS4RI;
+			public Range range;
 
 			public _G_c__DisplayClass4_0()
 			{
-				SseStreamInitializer.AlBVL0oCCKQ();
+				SseStreamInitializer.InitializeRuntime();
 			}
 
 			internal void sdBVS3Bc8CU()
 			{
-				u7OVSYHS4RI.Font.Bold = -1;
+				range.Font.Bold = -1;
 			}
 
 			internal void i7QVSUrrYA5()
 			{
-				u7OVSYHS4RI.Font.Italic = -1;
+				range.Font.Italic = -1;
 			}
 
 			internal void znjVSKAiWq1()
 			{
-				u7OVSYHS4RI.Font.StrikeThrough = -1;
+				range.Font.StrikeThrough = -1;
 			}
 
 			internal void PI4VSE7Tjqx()
 			{
-				u7OVSYHS4RI.Font.NameAscii = "Consolas";
+				range.Font.NameAscii = "Consolas";
 			}
 
 			internal void p1ZVS24K1GG()
 			{
-				u7OVSYHS4RI.Font.NameOther = "Consolas";
+				range.Font.NameOther = "Consolas";
 			}
 
 			internal void rIQVS415YRc()
 			{
-				u7OVSYHS4RI.Font.Underline = WdUnderline.wdUnderlineSingle;
+				range.Font.Underline = WdUnderline.wdUnderlineSingle;
 			}
 
 			internal void T2HVSjXmR7l()
 			{
-				u7OVSYHS4RI.Font.Color = WdColor.wdColorBlue;
+				range.Font.Color = WdColor.wdColorBlue;
 			}
 		}
 
 		private readonly int GMWVKmnOZDC;
 
-		private readonly int MxmVKon2JAK;
+		private readonly int _int;
 
-		private readonly LOUXUXVKZBmgcWu9S7lG p7HVKGYJfG3;
+		private readonly LOUXUXVKZBmgcWu9S7lG _lOUXUXVKZBmgcWu9S7lG;
 
 		public raLl8RVKsxnTrBWY49kg(int P_0, int P_1, LOUXUXVKZBmgcWu9S7lG P_2)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			GMWVKmnOZDC = P_0;
-			MxmVKon2JAK = P_1;
-			p7HVKGYJfG3 = P_2;
+			_int = P_1;
+			_lOUXUXVKZBmgcWu9S7lG = P_2;
 		}
 
 		public if6J2oVKC21QN5q6nYBW iyaVKlfHfTe(Document P_0)
 		{
 			_G_c__DisplayClass4_0 CS_8_locals_8 = new _G_c__DisplayClass4_0();
-			if6J2oVKC21QN5q6nYBW if6J2oVKC21QN5q6nYBW2 = new if6J2oVKC21QN5q6nYBW(GMWVKmnOZDC, MxmVKon2JAK);
+			if6J2oVKC21QN5q6nYBW if6J2oVKC21QN5q6nYBW2 = new if6J2oVKC21QN5q6nYBW(GMWVKmnOZDC, _int);
 			if (P_0 == null)
 			{
 				if6J2oVKC21QN5q6nYBW2.CDvVKptgDXx("Document", 0, new InvalidOperationException("Word document is unavailable."));
@@ -1178,63 +1178,63 @@ internal static class MarkdownImportService
 				if6J2oVKC21QN5q6nYBW2.CDvVKptgDXx("DocumentRange", 0, ex);
 				return if6J2oVKC21QN5q6nYBW2;
 			}
-			if (MxmVKon2JAK <= GMWVKmnOZDC || GMWVKmnOZDC < start || MxmVKon2JAK > end)
+			if (_int <= GMWVKmnOZDC || GMWVKmnOZDC < start || _int > end)
 			{
-				if6J2oVKC21QN5q6nYBW2.CDvVKptgDXx("Range", end, new ArgumentOutOfRangeException("range", string.Format("Inline range {0}-{1} is outside document range {2}-{3}.", GMWVKmnOZDC, MxmVKon2JAK, start, end)));
+				if6J2oVKC21QN5q6nYBW2.CDvVKptgDXx("Range", end, new ArgumentOutOfRangeException("range", string.Format("Inline range {0}-{1} is outside document range {2}-{3}.", GMWVKmnOZDC, _int, start, end)));
 				return if6J2oVKC21QN5q6nYBW2;
 			}
 			try
 			{
 				object Start = GMWVKmnOZDC;
-				object End = MxmVKon2JAK;
-				CS_8_locals_8.u7OVSYHS4RI = P_0.Range(ref Start, ref End);
+				object End = _int;
+				CS_8_locals_8.range = P_0.Range(ref Start, ref End);
 			}
 			catch (Exception ex2)
 			{
 				if6J2oVKC21QN5q6nYBW2.CDvVKptgDXx("Range", end, ex2);
 				return if6J2oVKC21QN5q6nYBW2;
 			}
-			if (p7HVKGYJfG3.Bold)
+			if (_lOUXUXVKZBmgcWu9S7lG.Bold)
 			{
 				x0YVKN486Vs(if6J2oVKC21QN5q6nYBW2, "Bold", end, delegate
 				{
-					CS_8_locals_8.u7OVSYHS4RI.Font.Bold = -1;
+					CS_8_locals_8.range.Font.Bold = -1;
 				});
 			}
-			if (p7HVKGYJfG3.Italic)
+			if (_lOUXUXVKZBmgcWu9S7lG.Italic)
 			{
 				x0YVKN486Vs(if6J2oVKC21QN5q6nYBW2, "Italic", end, delegate
 				{
-					CS_8_locals_8.u7OVSYHS4RI.Font.Italic = -1;
+					CS_8_locals_8.range.Font.Italic = -1;
 				});
 			}
-			if (p7HVKGYJfG3.Strike)
+			if (_lOUXUXVKZBmgcWu9S7lG.Strike)
 			{
 				x0YVKN486Vs(if6J2oVKC21QN5q6nYBW2, "StrikeThrough", end, delegate
 				{
-					CS_8_locals_8.u7OVSYHS4RI.Font.StrikeThrough = -1;
+					CS_8_locals_8.range.Font.StrikeThrough = -1;
 				});
 			}
-			if (p7HVKGYJfG3.Code)
+			if (_lOUXUXVKZBmgcWu9S7lG.Code)
 			{
 				x0YVKN486Vs(if6J2oVKC21QN5q6nYBW2, "NameAscii", end, delegate
 				{
-					CS_8_locals_8.u7OVSYHS4RI.Font.NameAscii = "NameOther";
+					CS_8_locals_8.range.Font.NameAscii = "NameOther";
 				});
 				x0YVKN486Vs(if6J2oVKC21QN5q6nYBW2, "Underline", end, delegate
 				{
-					CS_8_locals_8.u7OVSYHS4RI.Font.NameOther = "Color";
+					CS_8_locals_8.range.Font.NameOther = "Color";
 				});
 			}
-			if (p7HVKGYJfG3.Link)
+			if (_lOUXUXVKZBmgcWu9S7lG.Link)
 			{
 				x0YVKN486Vs(if6J2oVKC21QN5q6nYBW2, "Document", end, delegate
 				{
-					CS_8_locals_8.u7OVSYHS4RI.Font.Underline = WdUnderline.wdUnderlineSingle;
+					CS_8_locals_8.range.Font.Underline = WdUnderline.wdUnderlineSingle;
 				});
 				x0YVKN486Vs(if6J2oVKC21QN5q6nYBW2, "Word document is unavailable.", end, delegate
 				{
-					CS_8_locals_8.u7OVSYHS4RI.Font.Color = WdColor.wdColorBlue;
+					CS_8_locals_8.range.Font.Color = WdColor.wdColorBlue;
 				});
 			}
 			return if6J2oVKC21QN5q6nYBW2;
@@ -1255,27 +1255,27 @@ internal static class MarkdownImportService
 
 	private sealed class if6J2oVKC21QN5q6nYBW
 	{
-		private readonly int vcMVKOkVh3C;
+		private readonly int _int;
 
 		private readonly int hRcVKnKxgwE;
 
 		[CompilerGenerated]
-		private int r5kVK7hkL3j;
+		private int _failureCount;
 
 		[CompilerGenerated]
-		private string WFaVK5HJEXw;
+		private string _firstFailure;
 
 		public int FailureCount
 		{
 			[CompilerGenerated]
 			get
 			{
-				return r5kVK7hkL3j;
+				return _failureCount;
 			}
 			[CompilerGenerated]
 			private set
 			{
-				r5kVK7hkL3j = value;
+				_failureCount = value;
 			}
 		}
 
@@ -1284,12 +1284,12 @@ internal static class MarkdownImportService
 			[CompilerGenerated]
 			get
 			{
-				return WFaVK5HJEXw;
+				return _firstFailure;
 			}
 			[CompilerGenerated]
 			private set
 			{
-				WFaVK5HJEXw = value;
+				_firstFailure = value;
 			}
 		}
 
@@ -1297,8 +1297,8 @@ internal static class MarkdownImportService
 
 		public if6J2oVKC21QN5q6nYBW(int P_0, int P_1)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
-			vcMVKOkVh3C = P_0;
+			SseStreamInitializer.InitializeRuntime();
+			_int = P_0;
 			hRcVKnKxgwE = P_1;
 		}
 
@@ -1320,7 +1320,7 @@ internal static class MarkdownImportService
 
 		public _G_c__DisplayClass2_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool uPxVKXg9FaT(int current, int count, string message)
@@ -1346,13 +1346,13 @@ internal static class MarkdownImportService
 		_G_c__DisplayClass2_0 CS_8_locals_19 = new _G_c__DisplayClass2_0();
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
-			LoggerInitializer.u0kcmnykTv("请先粘贴 Markdown 文本。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先粘贴 Markdown 文本。", "IP_Assurance");
 			return false;
 		}
 		Application wordApp = WordTableToolService.WordApp;
 		if (wordApp == null)
 		{
-			LoggerInitializer.F9Ycoqv2I8("未找到 Word/WPS 文档窗口。", "IP_Assurance");
+			LoggerInitializer.ShowError("未找到 Word/WPS 文档窗口。", "IP_Assurance");
 			return false;
 		}
 		Document activeDocument;
@@ -1362,12 +1362,12 @@ internal static class MarkdownImportService
 		}
 		catch
 		{
-			LoggerInitializer.F9Ycoqv2I8("请先打开一个 Word/WPS 文档。", "IP_Assurance");
+			LoggerInitializer.ShowError("请先打开一个 Word/WPS 文档。", "IP_Assurance");
 			return false;
 		}
 		if (activeDocument == null)
 		{
-			LoggerInitializer.F9Ycoqv2I8("请先打开一个 Word/WPS 文档。", "IP_Assurance");
+			LoggerInitializer.ShowError("请先打开一个 Word/WPS 文档。", "IP_Assurance");
 			return false;
 		}
 		CS_8_locals_19.IYTVKhTpBD8 = null;
@@ -1385,8 +1385,8 @@ internal static class MarkdownImportService
 		catch (Exception ex)
 		{
 			toUbrnO456(CS_8_locals_19.IYTVKhTpBD8);
-			AiConfigBootstrap.ujWsURly3F("[MarkdownImport] Parse failed", ex);
-			LoggerInitializer.F9Ycoqv2I8("Markdown 解析失败：" + ex.Message, "IP_Assurance");
+			AiConfigBootstrap.LogError("[MarkdownImport] Parse failed", ex);
+			LoggerInitializer.ShowError("Markdown 解析失败：" + ex.Message, "IP_Assurance");
 			return false;
 		}
 		bool screenUpdating = wordApp.ScreenUpdating;
@@ -1402,7 +1402,7 @@ internal static class MarkdownImportService
 			Range range = aAlPvcVUL6QeYdQQTx4o2.byJVUlMc00b();
 			if (range == null || range.End <= range.Start)
 			{
-				LoggerInitializer.u0kcmnykTv("未生成可导入的 Word 内容。", "IP_Assurance");
+				LoggerInitializer.ShowWarning("未生成可导入的 Word 内容。", "IP_Assurance");
 				return false;
 			}
 			if (P_1)
@@ -1447,13 +1447,13 @@ internal static class MarkdownImportService
 			YTWbi7fmXQ(CS_8_locals_19.IYTVKhTpBD8, 98, "正在定位导入结束位置...");
 			aAlPvcVUL6QeYdQQTx4o2.IXpVUo7IqG4();
 			YTWbi7fmXQ(CS_8_locals_19.IYTVKhTpBD8, 100, "Markdown 导入完成。");
-			LoggerInitializer.Ay3cNuEgJo(N5AbJXUjJs(aAlPvcVUL6QeYdQQTx4o2), "IP_Assurance");
+			LoggerInitializer.ShowInfo(N5AbJXUjJs(aAlPvcVUL6QeYdQQTx4o2), "IP_Assurance");
 			return true;
 		}
 		catch (Exception ex2)
 		{
-			AiConfigBootstrap.ujWsURly3F("[MarkdownImport] Import failed", ex2);
-			LoggerInitializer.F9Ycoqv2I8("Markdown 导入失败：" + ex2.Message, "IP_Assurance");
+			AiConfigBootstrap.LogError("[MarkdownImport] Import failed", ex2);
+			LoggerInitializer.ShowError("Markdown 导入失败：" + ex2.Message, "IP_Assurance");
 			return false;
 		}
 		finally
@@ -1471,7 +1471,7 @@ internal static class MarkdownImportService
 			{
 				Title = "Markdown 导入"
 			};
-			WordTableToolService5.IPf5i0ZcV4(obj);
+			WordTableToolService5.ShowWpfWindow(obj);
 			return obj;
 		}
 		catch
@@ -1532,7 +1532,7 @@ internal static class MarkdownImportService
 
 	private static bool jiab1MdR7Y()
 	{
-		LoggerInitializer.u0kcmnykTv("Markdown 导入已取消，可使用 Word 撤销回退本次导入。", "IP_Assurance");
+		LoggerInitializer.ShowWarning("Markdown 导入已取消，可使用 Word 撤销回退本次导入。", "IP_Assurance");
 		return false;
 	}
 
@@ -1567,7 +1567,7 @@ internal static class MarkdownImportService
 
 	static MarkdownImportService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		gTVb3YLUE9 = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
 	}
 }

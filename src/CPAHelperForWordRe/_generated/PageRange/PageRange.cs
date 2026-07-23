@@ -8,17 +8,17 @@ namespace PageRange;
 internal sealed class PageRange
 {
 	[CompilerGenerated]
-	private readonly int nTnnvqCXgI;
+	private readonly int _startPage;
 
 	[CompilerGenerated]
-	private readonly int qRxnWr32us;
+	private readonly int _endPage;
 
 	public int StartPage
 	{
 		[CompilerGenerated]
 		get
 		{
-			return nTnnvqCXgI;
+			return _startPage;
 		}
 	}
 
@@ -27,7 +27,7 @@ internal sealed class PageRange
 		[CompilerGenerated]
 		get
 		{
-			return qRxnWr32us;
+			return _endPage;
 		}
 	}
 
@@ -45,8 +45,8 @@ internal sealed class PageRange
 
 	public PageRange(int P_0, int P_1)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		nTnnvqCXgI = P_0;
-		qRxnWr32us = P_1;
+		SseStreamInitializer.InitializeRuntime();
+		_startPage = P_0;
+		_endPage = P_1;
 	}
 }

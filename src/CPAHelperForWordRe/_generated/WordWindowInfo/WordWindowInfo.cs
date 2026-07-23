@@ -6,34 +6,34 @@ namespace WordWindowInfo;
 internal sealed class WordWindowInfo
 {
 	[CompilerGenerated]
-	private string N3vu9eKiZC;
+	private string _windowKey;
 
 	[CompilerGenerated]
-	private int WCau6rTCR4;
+	private int _windowHwnd;
 
 	[CompilerGenerated]
-	private string VxCuu2f8TW;
+	private string _documentName;
 
 	[CompilerGenerated]
-	private string e9luDJ1jxh;
+	private string _documentFullName;
 
 	[CompilerGenerated]
-	private string tOTuT4yE0E;
+	private string _documentPath;
 
 	[CompilerGenerated]
-	private int pIGugBTu4C;
+	private int _selectionStart;
 
 	[CompilerGenerated]
-	private int wD6u8gEOFm;
+	private int _selectionEnd;
 
 	[CompilerGenerated]
-	private int N7quI0tINI;
+	private int _selectionTextLength;
 
 	[CompilerGenerated]
-	private int gG0uiKUiGe;
+	private int _pageNumber;
 
 	[CompilerGenerated]
-	private string c9LuHflALi;
+	private string _wordOpenXmlCacheDocumentKey;
 
 	[CompilerGenerated]
 	private object dicuQthwMm;
@@ -43,12 +43,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return N3vu9eKiZC;
+			return _windowKey;
 		}
 		[CompilerGenerated]
 		set
 		{
-			N3vu9eKiZC = value;
+			_windowKey = value;
 		}
 	}
 
@@ -57,12 +57,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return WCau6rTCR4;
+			return _windowHwnd;
 		}
 		[CompilerGenerated]
 		set
 		{
-			WCau6rTCR4 = value;
+			_windowHwnd = value;
 		}
 	}
 
@@ -71,12 +71,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return VxCuu2f8TW;
+			return _documentName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			VxCuu2f8TW = value;
+			_documentName = value;
 		}
 	}
 
@@ -85,12 +85,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return e9luDJ1jxh;
+			return _documentFullName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			e9luDJ1jxh = value;
+			_documentFullName = value;
 		}
 	}
 
@@ -99,12 +99,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return tOTuT4yE0E;
+			return _documentPath;
 		}
 		[CompilerGenerated]
 		set
 		{
-			tOTuT4yE0E = value;
+			_documentPath = value;
 		}
 	}
 
@@ -113,12 +113,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return pIGugBTu4C;
+			return _selectionStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			pIGugBTu4C = value;
+			_selectionStart = value;
 		}
 	}
 
@@ -127,12 +127,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return wD6u8gEOFm;
+			return _selectionEnd;
 		}
 		[CompilerGenerated]
 		set
 		{
-			wD6u8gEOFm = value;
+			_selectionEnd = value;
 		}
 	}
 
@@ -141,12 +141,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return N7quI0tINI;
+			return _selectionTextLength;
 		}
 		[CompilerGenerated]
 		set
 		{
-			N7quI0tINI = value;
+			_selectionTextLength = value;
 		}
 	}
 
@@ -155,12 +155,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return gG0uiKUiGe;
+			return _pageNumber;
 		}
 		[CompilerGenerated]
 		set
 		{
-			gG0uiKUiGe = value;
+			_pageNumber = value;
 		}
 	}
 
@@ -169,12 +169,12 @@ internal sealed class WordWindowInfo
 		[CompilerGenerated]
 		get
 		{
-			return c9LuHflALi;
+			return _wordOpenXmlCacheDocumentKey;
 		}
 		[CompilerGenerated]
 		set
 		{
-			c9LuHflALi = value;
+			_wordOpenXmlCacheDocumentKey = value;
 		}
 	}
 
@@ -208,6 +208,6 @@ internal sealed class WordWindowInfo
 
 	public WordWindowInfo()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

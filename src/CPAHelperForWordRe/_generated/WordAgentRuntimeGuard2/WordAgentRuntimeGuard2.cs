@@ -9,7 +9,7 @@ namespace WordAgentRuntimeGuard2;
 
 internal static class WordAgentRuntimeGuard2
 {
-	public static string gEFJbNPT5J(Application P_0)
+	public static string GetNotReadyMessage(Application P_0)
 	{
 		if (P_0 == null)
 		{
@@ -23,22 +23,22 @@ internal static class WordAgentRuntimeGuard2
 			}
 			_ = P_0.ActiveDocument;
 		}
-		catch (COMException ex) when (gJKJtq6LwA(ex))
+		catch (COMException ex) when (IsWordBusyCOMException(ex))
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("Word 当前正在编辑、弹窗或处理其他操作，暂时不能执行这个 Word 工具。这是临时状态；请稍后重试同一个工具，不要改用 CLI 或其它绕开的方法。" + ex.Message);
+			AiConfigBootstrap.LogWarn("Word 当前正在编辑、弹窗或处理其他操作，暂时不能执行这个 Word 工具。这是临时状态；请稍后重试同一个工具，不要改用 CLI 或其它绕开的方法。" + ex.Message);
 			return "Unable to check Word ready state before AI automation: ";
 		}
 		catch (Exception ex2)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("当前没有可用的 Word 活动文档。" + ex2.Message);
+			AiConfigBootstrap.LogWarn("当前没有可用的 Word 活动文档。" + ex2.Message);
 			return "Word 应用尚未初始化。";
 		}
 		return null;
 	}
 
-	public static AiHelper_5 dclJSetxGY(string P_0)
+	public static AiHelper_5 CreateNotReadyError(string P_0)
 	{
-		return AiHelper_5.QSD9OKWs4n(P_0, "word_not_ready", new
+		return AiHelper_5.CreateError(P_0, "word_not_ready", new
 		{
 			retryable = string.Equals(P_0, "Word 当前正在编辑、弹窗或处理其他操作，暂时不能执行这个 Word 工具。这是临时状态；请稍后重试同一个工具，不要改用 CLI 或其它绕开的方法。", StringComparison.Ordinal),
 			retrySameTool = string.Equals(P_0, "Word 当前正在编辑、弹窗或处理其他操作，暂时不能执行这个 Word 工具。这是临时状态；请稍后重试同一个工具，不要改用 CLI 或其它绕开的方法。", StringComparison.Ordinal),
@@ -46,7 +46,7 @@ internal static class WordAgentRuntimeGuard2
 		});
 	}
 
-	public static bool r6TJwEkoUc(string P_0)
+	public static bool IsRetryableError(string P_0)
 	{
 		if (!string.IsNullOrWhiteSpace(P_0))
 		{
@@ -59,7 +59,7 @@ internal static class WordAgentRuntimeGuard2
 		return false;
 	}
 
-	private static bool gJKJtq6LwA(COMException P_0)
+	private static bool IsWordBusyCOMException(COMException P_0)
 	{
 		if (P_0 != null)
 		{

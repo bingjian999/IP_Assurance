@@ -6,10 +6,10 @@ namespace Helper_23;
 internal sealed class Helper_23
 {
 	[CompilerGenerated]
-	private string owVL2bLhyo;
+	private string _rememberedUsername;
 
 	[CompilerGenerated]
-	private string F3fL49meGj;
+	private string _rememberedPassword;
 
 	[CompilerGenerated]
 	private bool JWULjyoYZ5;
@@ -19,12 +19,12 @@ internal sealed class Helper_23
 		[CompilerGenerated]
 		get
 		{
-			return owVL2bLhyo;
+			return _rememberedUsername;
 		}
 		[CompilerGenerated]
 		set
 		{
-			owVL2bLhyo = value;
+			_rememberedUsername = value;
 		}
 	}
 
@@ -33,12 +33,12 @@ internal sealed class Helper_23
 		[CompilerGenerated]
 		get
 		{
-			return F3fL49meGj;
+			return _rememberedPassword;
 		}
 		[CompilerGenerated]
 		set
 		{
-			F3fL49meGj = value;
+			_rememberedPassword = value;
 		}
 	}
 
@@ -56,7 +56,7 @@ internal sealed class Helper_23
 		}
 	}
 
-	public void fb6LEfM5qk()
+	public void EnsureDefaults()
 	{
 		RememberedUsername = RememberedUsername ?? "";
 		RememberedPassword = RememberedPassword ?? "";
@@ -64,8 +64,8 @@ internal sealed class Helper_23
 
 	public Helper_23()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		owVL2bLhyo = "";
-		F3fL49meGj = "";
+		SseStreamInitializer.InitializeRuntime();
+		_rememberedUsername = "";
+		_rememberedPassword = "";
 	}
 }

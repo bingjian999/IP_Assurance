@@ -174,7 +174,7 @@ internal static class AiHelper_20
 
 	static AiHelper_20()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		lc9wQgDIqS = new(string, double)[16]
 		{
 			("初号", 42.0),

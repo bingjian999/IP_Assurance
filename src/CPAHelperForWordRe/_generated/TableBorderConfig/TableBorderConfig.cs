@@ -15,27 +15,27 @@ namespace TableBorderConfig;
 
 internal sealed class TableBorderConfig
 {
-	private static readonly Lazy<TableBorderConfig> EsoSkPa5xe;
+	private static readonly Lazy<TableBorderConfig> _instance;
 
-	private AiHelper_12 NeMSxdgZVf;
+	private AiHelper_12 _configData;
 
-	private string ygUSdyrv11;
+	private string _configPath;
 
-	private readonly object S2JSzFMl3n;
+	private readonly object _configLock;
 
-	public static TableBorderConfig Current => EsoSkPa5xe.Value;
+	public static TableBorderConfig Current => _instance.Value;
 
-	public static TableBorderConfig Instance => EsoSkPa5xe.Value;
+	public static TableBorderConfig Instance => _instance.Value;
 
-	public string ConfigPath => ygUSdyrv11 ?? AiSseStreamService.MainConfigFilePath;
+	public string ConfigPath => _configPath ?? AiSseStreamService.MainConfigFilePath;
 
 	public AiHelper_12 Config
 	{
 		get
 		{
-			lock (S2JSzFMl3n)
+			lock (_configLock)
 			{
-				return NeMSxdgZVf;
+				return _configData;
 			}
 		}
 	}
@@ -44,84 +44,84 @@ internal sealed class TableBorderConfig
 	{
 		get
 		{
-			lock (S2JSzFMl3n)
+			lock (_configLock)
 			{
-				return NeMSxdgZVf.Legacy;
+				return _configData.Legacy;
 			}
 		}
 	}
 
 	public wSx55RS7lsLReJ1W8jr mZ2Sn1wU53<wSx55RS7lsLReJ1W8jr>(Func<AiHelper_12, wSx55RS7lsLReJ1W8jr> P_0)
 	{
-		lock (S2JSzFMl3n)
+		lock (_configLock)
 		{
-			return P_0(NeMSxdgZVf);
+			return P_0(_configData);
 		}
 	}
 
-	public void wpmS5yUw9A(Action<AiHelper_12> P_0, bool P_1 = true)
+	public void UpdateConfig(Action<AiHelper_12> P_0, bool P_1 = true)
 	{
 		if (P_0 == null)
 		{
 			return;
 		}
-		lock (S2JSzFMl3n)
+		lock (_configLock)
 		{
-			P_0(NeMSxdgZVf);
-			NeMSxdgZVf.BkGt8QpMWu();
+			P_0(_configData);
+			_configData.BkGt8QpMWu();
 			if (P_1)
 			{
-				cPLSPKGCNb();
+				PersistConfig();
 			}
 		}
 	}
 
-	public Dictionary<string, object> dnEScXBL9Y()
+	public Dictionary<string, object> GetAllLegacy()
 	{
-		lock (S2JSzFMl3n)
+		lock (_configLock)
 		{
-			return (NeMSxdgZVf?.Legacy == null) ? new Dictionary<string, object>() : new Dictionary<string, object>(NeMSxdgZVf.Legacy);
+			return (_configData?.Legacy == null) ? new Dictionary<string, object>() : new Dictionary<string, object>(_configData.Legacy);
 		}
 	}
 
-	public void TTVSewUqXZ(Dictionary<string, object> P_0, bool P_1 = true)
+	public void SetAllLegacy(Dictionary<string, object> P_0, bool P_1 = true)
 	{
-		lock (S2JSzFMl3n)
+		lock (_configLock)
 		{
-			NeMSxdgZVf.Legacy = P_0 ?? new Dictionary<string, object>();
-			viUSvQ8ndh(NeMSxdgZVf);
+			_configData.Legacy = P_0 ?? new Dictionary<string, object>();
+			ValidateConfig(_configData);
 			if (P_1)
 			{
-				cPLSPKGCNb();
+				PersistConfig();
 			}
 		}
 	}
 
-	public void pE1SyAiPWc(string P_0, object P_1, bool P_2 = true)
+	public void SetValue(string P_0, object P_1, bool P_2 = true)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
 			return;
 		}
-		lock (S2JSzFMl3n)
+		lock (_configLock)
 		{
-			if (NeMSxdgZVf.Legacy == null)
+			if (_configData.Legacy == null)
 			{
-				NeMSxdgZVf.Legacy = new Dictionary<string, object>();
+				_configData.Legacy = new Dictionary<string, object>();
 			}
-			NeMSxdgZVf.Legacy[P_0] = P_1;
+			_configData.Legacy[P_0] = P_1;
 			if (P_2)
 			{
-				cPLSPKGCNb();
+				PersistConfig();
 			}
 		}
 	}
 
-	public string KxPSXHwy4c(string P_0, string P_1 = "")
+	public string GetString(string P_0, string P_1 = "")
 	{
-		lock (S2JSzFMl3n)
+		lock (_configLock)
 		{
-			if (NeMSxdgZVf?.Legacy != null && NeMSxdgZVf.Legacy.TryGetValue(P_0, out var value) && value != null)
+			if (_configData?.Legacy != null && _configData.Legacy.TryGetValue(P_0, out var value) && value != null)
 			{
 				return value.ToString();
 			}
@@ -129,18 +129,18 @@ internal sealed class TableBorderConfig
 		}
 	}
 
-	public double hB5SFqa39l(string P_0, double P_1 = 0.0)
+	public double GetDouble(string P_0, double P_1 = 0.0)
 	{
-		if (double.TryParse(KxPSXHwy4c(P_0, null), out var result))
+		if (double.TryParse(GetString(P_0, null), out var result))
 		{
 			return result;
 		}
 		return P_1;
 	}
 
-	public int HYsSh2NDxY(string P_0, int P_1 = 0)
+	public int GetInt(string P_0, int P_1 = 0)
 	{
-		string s = KxPSXHwy4c(P_0, null);
+		string s = GetString(P_0, null);
 		if (int.TryParse(s, out var result))
 		{
 			return result;
@@ -156,60 +156,60 @@ internal sealed class TableBorderConfig
 	{
 		try
 		{
-			AiSseStreamService.c6JsBBJkO2();
-			ygUSdyrv11 = AiSseStreamService.MainConfigFilePath;
-			if (!File.Exists(ygUSdyrv11))
+			AiSseStreamService.EnsureAllDirectories();
+			_configPath = AiSseStreamService.MainConfigFilePath;
+			if (!File.Exists(_configPath))
 			{
-				NeMSxdgZVf = bm6SAF0HvB();
-				cPLSPKGCNb();
+				_configData = bm6SAF0HvB();
+				PersistConfig();
 			}
-			m15SqmKUa9();
+			SaveToFile();
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[Config] Initialize failed", ex);
+			AiConfigBootstrap.LogError("[Config] Initialize failed", ex);
 		}
 	}
 
-	public void m15SqmKUa9()
+	public void SaveToFile()
 	{
 		try
 		{
-			if (!string.IsNullOrEmpty(ygUSdyrv11) && File.Exists(ygUSdyrv11))
+			if (!string.IsNullOrEmpty(_configPath) && File.Exists(_configPath))
 			{
-				AiHelper_12 nKy3wjtTwmsradOXPDy = JsonConvert.DeserializeObject<AiHelper_12>(File.ReadAllText(ygUSdyrv11, Encoding.UTF8)) ?? new AiHelper_12();
+				AiHelper_12 nKy3wjtTwmsradOXPDy = JsonConvert.DeserializeObject<AiHelper_12>(File.ReadAllText(_configPath, Encoding.UTF8)) ?? new AiHelper_12();
 				nKy3wjtTwmsradOXPDy.BkGt8QpMWu();
-				bool flag = viUSvQ8ndh(nKy3wjtTwmsradOXPDy);
-				lock (S2JSzFMl3n)
+				bool flag = ValidateConfig(nKy3wjtTwmsradOXPDy);
+				lock (_configLock)
 				{
-					NeMSxdgZVf = nKy3wjtTwmsradOXPDy;
+					_configData = nKy3wjtTwmsradOXPDy;
 				}
 				if (flag)
 				{
-					cPLSPKGCNb();
+					PersistConfig();
 				}
 			}
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[Config] Reload failed", ex);
+			AiConfigBootstrap.LogError("[Config] Reload failed", ex);
 		}
 	}
 
-	public void cPLSPKGCNb()
+	public void PersistConfig()
 	{
 		try
 		{
-			lock (S2JSzFMl3n)
+			lock (_configLock)
 			{
-				NeMSxdgZVf.BkGt8QpMWu();
-				string contents = JsonConvert.SerializeObject(NeMSxdgZVf, Formatting.Indented);
-				File.WriteAllText(ygUSdyrv11, contents, Encoding.UTF8);
+				_configData.BkGt8QpMWu();
+				string contents = JsonConvert.SerializeObject(_configData, Formatting.Indented);
+				File.WriteAllText(_configPath, contents, Encoding.UTF8);
 			}
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[Config] Save failed", ex);
+			AiConfigBootstrap.LogError("[Config] Save failed", ex);
 		}
 	}
 
@@ -231,13 +231,13 @@ internal sealed class TableBorderConfig
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[Config] Legacy config migration skipped: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[Config] Legacy config migration skipped: " + ex.Message);
 		}
-		viUSvQ8ndh(nKy3wjtTwmsradOXPDy);
+		ValidateConfig(nKy3wjtTwmsradOXPDy);
 		return nKy3wjtTwmsradOXPDy;
 	}
 
-	private static bool viUSvQ8ndh(AiHelper_12 P_0)
+	private static bool ValidateConfig(AiHelper_12 P_0)
 	{
 		if (P_0 == null)
 		{
@@ -292,22 +292,22 @@ internal sealed class TableBorderConfig
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[Config] Initialize failed" + ex.Message);
+			AiConfigBootstrap.LogWarn("[Config] Initialize failed" + ex.Message);
 			return new Dictionary<string, object>();
 		}
 	}
 
 	public TableBorderConfig()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		NeMSxdgZVf = new AiHelper_12();
-		ygUSdyrv11 = AiSseStreamService.MainConfigFilePath;
-		S2JSzFMl3n = new object();
+		SseStreamInitializer.InitializeRuntime();
+		_configData = new AiHelper_12();
+		_configPath = AiSseStreamService.MainConfigFilePath;
+		_configLock = new object();
 	}
 
 	static TableBorderConfig()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		EsoSkPa5xe = new Lazy<TableBorderConfig>(() => new TableBorderConfig());
+		SseStreamInitializer.InitializeRuntime();
+		_instance = new Lazy<TableBorderConfig>(() => new TableBorderConfig());
 	}
 }

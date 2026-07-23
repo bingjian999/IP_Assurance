@@ -12,13 +12,13 @@ internal sealed class NullableAttribute : Attribute
 
 	public NullableAttribute(byte P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		NullableFlags = new byte[1] { P_0 };
 	}
 
 	public NullableAttribute(byte[] P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		NullableFlags = P_0;
 	}
 }

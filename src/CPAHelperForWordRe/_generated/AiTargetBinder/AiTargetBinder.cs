@@ -20,7 +20,7 @@ internal sealed class AiTargetBinder
 
 		public _G_c__DisplayClass30_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string rvxqW9cAcd()
@@ -37,26 +37,26 @@ internal sealed class AiTargetBinder
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass32_0
 	{
-		public Document UoHqz6wiT2;
+		public Document doc;
 
 		public _G_c__DisplayClass32_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string EShqkH5YFs()
 		{
-			return UoHqz6wiT2.Name;
+			return doc.Name;
 		}
 
 		internal string N4pqx6IsCx()
 		{
-			return UoHqz6wiT2.FullName;
+			return doc.FullName;
 		}
 
 		internal string BMuqdAhyxs()
 		{
-			return UoHqz6wiT2.Path;
+			return doc.Path;
 		}
 	}
 
@@ -67,7 +67,7 @@ internal sealed class AiTargetBinder
 
 		public _G_c__DisplayClass38_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string BwoPRYb6HE()
@@ -84,16 +84,16 @@ internal sealed class AiTargetBinder
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass39_0
 	{
-		public Document JCBP6qPUa5;
+		public Document doc;
 
 		public _G_c__DisplayClass39_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string Q1lP9djNlS()
 		{
-			return JCBP6qPUa5.FullName;
+			return doc.FullName;
 		}
 	}
 
@@ -104,7 +104,7 @@ internal sealed class AiTargetBinder
 
 		public _G_c__DisplayClass40_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string gNtPuTLHwo()
@@ -117,20 +117,20 @@ internal sealed class AiTargetBinder
 	private string EJBuqWERwe;
 
 	[CompilerGenerated]
-	private int zl1uPV5ea4;
+	private int _windowHwnd;
 
 	[CompilerGenerated]
 	private string JqBuASpfAI;
 
 	[CompilerGenerated]
-	private string ri4uvtPvsG;
+	private string _documentFullName;
 
 	[CompilerGenerated]
 	private string sCPuWnOnOg;
 
-	private Window hMwu01diWC;
+	private Window _window;
 
-	private Document bOYuksQ0qF;
+	private Document _document;
 
 	public string WindowKey
 	{
@@ -151,12 +151,12 @@ internal sealed class AiTargetBinder
 		[CompilerGenerated]
 		get
 		{
-			return zl1uPV5ea4;
+			return _windowHwnd;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			zl1uPV5ea4 = value;
+			_windowHwnd = value;
 		}
 	}
 
@@ -179,12 +179,12 @@ internal sealed class AiTargetBinder
 		[CompilerGenerated]
 		get
 		{
-			return ri4uvtPvsG;
+			return _documentFullName;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			ri4uvtPvsG = value;
+			_documentFullName = value;
 		}
 	}
 
@@ -240,7 +240,7 @@ internal sealed class AiTargetBinder
 		}
 		AiTargetBinder rkZt4ZuLjXTP5cAL48p = new AiTargetBinder
 		{
-			hMwu01diWC = P_0,
+			_window = P_0,
 			WindowHwnd = ORluoOGP40(P_0)
 		};
 		try
@@ -314,13 +314,13 @@ internal sealed class AiTargetBinder
 	public void ML7uGGyNIv(Document P_0)
 	{
 		_G_c__DisplayClass32_0 CS_8_locals_6 = new _G_c__DisplayClass32_0();
-		CS_8_locals_6.UoHqz6wiT2 = P_0;
-		if (CS_8_locals_6.UoHqz6wiT2 != null)
+		CS_8_locals_6.doc = P_0;
+		if (CS_8_locals_6.doc != null)
 		{
-			DocumentName = b0QuaLFO45(() => CS_8_locals_6.UoHqz6wiT2.Name);
-			DocumentFullName = b0QuaLFO45(() => CS_8_locals_6.UoHqz6wiT2.FullName);
-			DocumentPath = b0QuaLFO45(() => CS_8_locals_6.UoHqz6wiT2.Path);
-			bOYuksQ0qF = CS_8_locals_6.UoHqz6wiT2;
+			DocumentName = b0QuaLFO45(() => CS_8_locals_6.doc.Name);
+			DocumentFullName = b0QuaLFO45(() => CS_8_locals_6.doc.FullName);
+			DocumentPath = b0QuaLFO45(() => CS_8_locals_6.doc.Path);
+			_document = CS_8_locals_6.doc;
 		}
 	}
 
@@ -338,7 +338,7 @@ internal sealed class AiTargetBinder
 				{
 					continue;
 				}
-				if (DrMuhvXNA4(window, hMwu01diWC))
+				if (DrMuhvXNA4(window, _window))
 				{
 					return window;
 				}
@@ -351,7 +351,7 @@ internal sealed class AiTargetBinder
 					Document document = window.Document;
 					if (AXWu5GjCxV(document))
 					{
-						hMwu01diWC = window;
+						_window = window;
 						return window;
 					}
 				}
@@ -447,7 +447,7 @@ internal sealed class AiTargetBinder
 
 	private Document liEu7Hj5L6(Application P_0)
 	{
-		if (P_0 == null || bOYuksQ0qF == null)
+		if (P_0 == null || _document == null)
 		{
 			return null;
 		}
@@ -455,7 +455,7 @@ internal sealed class AiTargetBinder
 		{
 			foreach (Document document in P_0.Documents)
 			{
-				if (DrMuhvXNA4(document, bOYuksQ0qF))
+				if (DrMuhvXNA4(document, _document))
 				{
 					ML7uGGyNIv(document);
 					return document;
@@ -476,7 +476,7 @@ internal sealed class AiTargetBinder
 		{
 			return false;
 		}
-		if (DrMuhvXNA4(CS_8_locals_5.IcoPBTyHo2, bOYuksQ0qF))
+		if (DrMuhvXNA4(CS_8_locals_5.IcoPBTyHo2, _document))
 		{
 			return true;
 		}
@@ -502,10 +502,10 @@ internal sealed class AiTargetBinder
 				while (enumerator.MoveNext())
 				{
 					_G_c__DisplayClass39_0 CS_8_locals_3 = new _G_c__DisplayClass39_0();
-					CS_8_locals_3.JCBP6qPUa5 = (Document)enumerator.Current;
-					if (k40uyLIsKC(b0QuaLFO45(() => CS_8_locals_3.JCBP6qPUa5.FullName), text))
+					CS_8_locals_3.doc = (Document)enumerator.Current;
+					if (k40uyLIsKC(b0QuaLFO45(() => CS_8_locals_3.doc.FullName), text))
 					{
-						return CS_8_locals_3.JCBP6qPUa5;
+						return CS_8_locals_3.doc;
 					}
 				}
 			}
@@ -647,6 +647,6 @@ internal sealed class AiTargetBinder
 
 	public AiTargetBinder()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

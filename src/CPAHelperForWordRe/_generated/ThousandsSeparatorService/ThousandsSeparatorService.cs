@@ -27,15 +27,15 @@ internal static class ThousandsSeparatorService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass27_0
 	{
-		public double S3SVKWlYVG9;
+		public double double;
 
-		public bool FZlVK0QaTMa;
+		public bool flag;
 
-		public string AZFVKkTy9jF;
+		public string text;
 
 		public _G_c__DisplayClass27_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string KKVVKvaAt7O(string text)
@@ -44,12 +44,12 @@ internal static class ThousandsSeparatorService
 			{
 				return text;
 			}
-			string text2 = k5Fbv3LNWS(num / S3SVKWlYVG9);
-			if (!FZlVK0QaTMa)
+			string text2 = k5Fbv3LNWS(num / double);
+			if (!flag)
 			{
 				return text2;
 			}
-			return text2 + AZFVKkTy9jF;
+			return text2 + text;
 		}
 	}
 
@@ -60,7 +60,7 @@ internal static class ThousandsSeparatorService
 
 		public _G_c__DisplayClass28_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string nqqVKxeWDyP(string text)
@@ -76,11 +76,11 @@ internal static class ThousandsSeparatorService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass29_0
 	{
-		public int tQrVERp7Y1n;
+		public int value;
 
 		public _G_c__DisplayClass29_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string qJ0VKzip8Ky(string text)
@@ -89,20 +89,20 @@ internal static class ThousandsSeparatorService
 			{
 				return text;
 			}
-			return MZYbWulvTX(num, tQrVERp7Y1n);
+			return MZYbWulvTX(num, value);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass38_0
 	{
-		public Qf9l8XVKaY8crinpPDHi MNpVEB6fal2;
+		public Qf9l8XVKaY8crinpPDHi qf9l8XVKaY8crinpPDHi;
 
-		public int noTVE9WHbVk;
+		public int value;
 
 		public _G_c__DisplayClass38_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string hTZVEVqbXSY(Match match)
@@ -111,12 +111,12 @@ internal static class ThousandsSeparatorService
 			{
 				return match.Value;
 			}
-			string text = OfkbO4QThB(dateTime, MNpVEB6fal2);
+			string text = OfkbO4QThB(dateTime, qf9l8XVKaY8crinpPDHi);
 			if (string.Equals(text, match.Value, StringComparison.Ordinal))
 			{
 				return match.Value;
 			}
-			noTVE9WHbVk++;
+			value++;
 			return text;
 		}
 	}
@@ -124,18 +124,18 @@ internal static class ThousandsSeparatorService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass44_0
 	{
-		public int iUsVEupQ3Fk;
+		public int value;
 
 		public UiHelper_4 gPiVEDhoZEL;
 
 		public _G_c__DisplayClass44_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void GTwVE6iegvP(AiHelper_12 c)
 		{
-			c.Legacy["数字_千分位符_小数位数"] = iUsVEupQ3Fk.ToString(CultureInfo.InvariantCulture);
+			c.Legacy["数字_千分位符_小数位数"] = value.ToString(CultureInfo.InvariantCulture);
 			c.Legacy["数字_千分位符_排除年"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeYear);
 			c.Legacy["数字_千分位符_排除月"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeMonth);
 			c.Legacy["数字_千分位符_排除日"] = KhrbxSmalP(gPiVEDhoZEL.ExcludeDay);
@@ -151,13 +151,13 @@ internal static class ThousandsSeparatorService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass46_0
 	{
-		public double iR9VEgvhfNW;
+		public double double;
 
-		public bool IbhVE84QpbS;
+		public bool flag;
 
 		public _G_c__DisplayClass46_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string enGVETZB4xO(string text)
@@ -166,8 +166,8 @@ internal static class ThousandsSeparatorService
 			{
 				return text;
 			}
-			string text2 = k5Fbv3LNWS(num * iR9VEgvhfNW);
-			if (!IbhVE84QpbS)
+			string text2 = k5Fbv3LNWS(num * double);
+			if (!flag)
 			{
 				return text2;
 			}
@@ -330,26 +330,26 @@ internal static class ThousandsSeparatorService
 
 	public static void dSnbbZLY1r()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
 			_G_c__DisplayClass27_0 CS_8_locals_8 = new _G_c__DisplayClass27_0();
-			CS_8_locals_8.S3SVKWlYVG9 = Cfg.hB5SFqa39l("数字_除以一万_自定义", 10000.0);
-			if (CS_8_locals_8.S3SVKWlYVG9 == 0.0)
+			CS_8_locals_8.double = Cfg.GetDouble("数字_除以一万_自定义", 10000.0);
+			if (CS_8_locals_8.double == 0.0)
 			{
-				CS_8_locals_8.S3SVKWlYVG9 = 10000.0;
+				CS_8_locals_8.double = 10000.0;
 			}
-			CS_8_locals_8.FZlVK0QaTMa = Cfg.HYsSh2NDxY("数字_除以一万_执行添加万") != 0;
-			CS_8_locals_8.AZFVKkTy9jF = Cfg.KxPSXHwy4c("数字_添加万字_添加的字符", "万");
+			CS_8_locals_8.flag = Cfg.GetInt("数字_除以一万_执行添加万") != 0;
+			CS_8_locals_8.text = Cfg.GetString("数字_添加万字_添加的字符", "万");
 			q9PbqGOMSk(delegate(string text)
 			{
 				if (!dU3bP2kG38(text, out var num))
 				{
 					return text;
 				}
-				string text2 = k5Fbv3LNWS(num / CS_8_locals_8.S3SVKWlYVG9);
-				return (!CS_8_locals_8.FZlVK0QaTMa) ? text2 : (text2 + CS_8_locals_8.AZFVKkTy9jF);
+				string text2 = k5Fbv3LNWS(num / CS_8_locals_8.double);
+				return (!CS_8_locals_8.flag) ? text2 : (text2 + CS_8_locals_8.text);
 			});
 		}
 		finally
@@ -360,12 +360,12 @@ internal static class ThousandsSeparatorService
 
 	public static void jyWbS77xyK()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
 			_G_c__DisplayClass28_0 obj = new _G_c__DisplayClass28_0();
-			obj.qKLVKdoJqxG = Cfg.KxPSXHwy4c("数字_添加万字_添加的字符", "万");
+			obj.qKLVKdoJqxG = Cfg.GetString("数字_添加万字_添加的字符", "万");
 			q9PbqGOMSk((string text) => (!dU3bP2kG38(text, out var num)) ? text : (k5Fbv3LNWS(num) + obj.qKLVKdoJqxG));
 		}
 		finally
@@ -377,8 +377,8 @@ internal static class ThousandsSeparatorService
 	public static void tl1bwFFDD1()
 	{
 		_G_c__DisplayClass29_0 CS_8_locals_3 = new _G_c__DisplayClass29_0();
-		Cfg.m15SqmKUa9();
-		CS_8_locals_3.tQrVERp7Y1n = Wr8b0ba5yt();
+		Cfg.SaveToFile();
+		CS_8_locals_3.value = Wr8b0ba5yt();
 		Selection selection = App.Selection;
 		if (selection == null)
 		{
@@ -396,7 +396,7 @@ internal static class ThousandsSeparatorService
 			{
 				if (!UiHelper_5.bcbSJ1pxpn(text, item, w9DpQgSBDhHwuwkYtki, list) && dU3bP2kG38(item.Value, out var num2))
 				{
-					string text3 = MZYbWulvTX(num2, CS_8_locals_3.tQrVERp7Y1n);
+					string text3 = MZYbWulvTX(num2, CS_8_locals_3.value);
 					int startIndex = item.Index + num;
 					text2 = text2.Remove(startIndex, item.Length).Insert(startIndex, text3);
 					num += text3.Length - item.Length;
@@ -406,7 +406,7 @@ internal static class ThousandsSeparatorService
 		}
 		else if (selection.Type == WdSelectionType.wdSelectionColumn || selection.Type == WdSelectionType.wdSelectionRow)
 		{
-			q9PbqGOMSk((string text4) => (!dU3bP2kG38(text4, out var num3)) ? text4 : MZYbWulvTX(num3, CS_8_locals_3.tQrVERp7Y1n));
+			q9PbqGOMSk((string text4) => (!dU3bP2kG38(text4, out var num3)) ? text4 : MZYbWulvTX(num3, CS_8_locals_3.value));
 		}
 	}
 
@@ -438,7 +438,7 @@ internal static class ThousandsSeparatorService
 			Selection selection = App.Selection;
 			if (selection == null || selection.Start == selection.End)
 			{
-				LoggerInitializer.Ay3cNuEgJo("请先选中需要转换的日期范围。", "日期转换");
+				LoggerInitializer.ShowInfo("请先选中需要转换的日期范围。", "日期转换");
 				return;
 			}
 			if (!Etnbmn4y4x(selection, P_0, out var num))
@@ -447,11 +447,11 @@ internal static class ThousandsSeparatorService
 			}
 			if (num == 0)
 			{
-				LoggerInitializer.Ay3cNuEgJo("选区中未找到可转换的有效日期。", "日期转换");
+				LoggerInitializer.ShowInfo("选区中未找到可转换的有效日期。", "日期转换");
 			}
 			else
 			{
-				LoggerInitializer.Ay3cNuEgJo(string.Format("日期转换完成，共转换 {0} 处。", num), "日期转换");
+				LoggerInitializer.ShowInfo(string.Format("日期转换完成，共转换 {0} 处。", num), "日期转换");
 			}
 		}
 		finally
@@ -536,28 +536,28 @@ internal static class ThousandsSeparatorService
 	private static string LRCbCUXZ5H(string P_0, Qf9l8XVKaY8crinpPDHi P_1, out int P_2)
 	{
 		_G_c__DisplayClass38_0 CS_8_locals_5 = new _G_c__DisplayClass38_0();
-		CS_8_locals_5.MNpVEB6fal2 = P_1;
+		CS_8_locals_5.qf9l8XVKaY8crinpPDHi = P_1;
 		P_2 = 0;
 		if (string.IsNullOrEmpty(P_0))
 		{
 			return P_0 ?? string.Empty;
 		}
-		CS_8_locals_5.noTVE9WHbVk = 0;
+		CS_8_locals_5.value = 0;
 		string result = F2GSVZQYM6.Replace(P_0, delegate(Match match)
 		{
 			if (!OvKbpnjTaJ(match, out var dateTime))
 			{
 				return match.Value;
 			}
-			string text = OfkbO4QThB(dateTime, CS_8_locals_5.MNpVEB6fal2);
+			string text = OfkbO4QThB(dateTime, CS_8_locals_5.qf9l8XVKaY8crinpPDHi);
 			if (string.Equals(text, match.Value, StringComparison.Ordinal))
 			{
 				return match.Value;
 			}
-			CS_8_locals_5.noTVE9WHbVk++;
+			CS_8_locals_5.value++;
 			return text;
 		});
-		P_2 = CS_8_locals_5.noTVE9WHbVk;
+		P_2 = CS_8_locals_5.value;
 		return result;
 	}
 
@@ -599,7 +599,7 @@ internal static class ThousandsSeparatorService
 
 	internal static UiHelper_4 i4XbnSK0XW()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		return new UiHelper_4
 		{
 			ExcludeYear = yMebkbEGjS("数字_千分位符_排除年", true),
@@ -610,7 +610,7 @@ internal static class ThousandsSeparatorService
 			ExcludePercent = yMebkbEGjS("数字_千分位符_排除百分比", false),
 			ExcludeDateFormat = yMebkbEGjS("数字_千分位符_排除日期格式", true),
 			IncludeUnitOnly = yMebkbEGjS("数字_千分位符_只处理带单位", false),
-			UnitText = SG9bdAH5sJ(Cfg.KxPSXHwy4c("数字_千分位符_单位", "元"))
+			UnitText = SG9bdAH5sJ(Cfg.GetString("数字_千分位符_单位", "元"))
 		};
 	}
 
@@ -643,10 +643,10 @@ internal static class ThousandsSeparatorService
 		{
 			CS_8_locals_14.gPiVEDhoZEL = iJpb7cZpBN();
 		}
-		CS_8_locals_14.iUsVEupQ3Fk = JTHSRmZV4w(P_1);
-		TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 c)
+		CS_8_locals_14.value = JTHSRmZV4w(P_1);
+		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 c)
 		{
-			c.Legacy[" "] = CS_8_locals_14.iUsVEupQ3Fk.ToString(CultureInfo.InvariantCulture);
+			c.Legacy[" "] = CS_8_locals_14.value.ToString(CultureInfo.InvariantCulture);
 			c.Legacy["　"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeYear);
 			c.Legacy["^p^p"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeMonth);
 			c.Legacy["^p"] = KhrbxSmalP(CS_8_locals_14.gPiVEDhoZEL.ExcludeDay);
@@ -661,7 +661,7 @@ internal static class ThousandsSeparatorService
 
 	public static void W2IbekWIMv()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
@@ -675,25 +675,25 @@ internal static class ThousandsSeparatorService
 
 	public static void nySbyq4v2j()
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		App.ScreenUpdating = false;
 		try
 		{
 			_G_c__DisplayClass46_0 CS_8_locals_6 = new _G_c__DisplayClass46_0();
-			CS_8_locals_6.iR9VEgvhfNW = Cfg.hB5SFqa39l("数字_乘以一百_自定义", 100.0);
-			if (CS_8_locals_6.iR9VEgvhfNW == 0.0)
+			CS_8_locals_6.double = Cfg.GetDouble("数字_乘以一百_自定义", 100.0);
+			if (CS_8_locals_6.double == 0.0)
 			{
-				CS_8_locals_6.iR9VEgvhfNW = 100.0;
+				CS_8_locals_6.double = 100.0;
 			}
-			CS_8_locals_6.IbhVE84QpbS = Cfg.HYsSh2NDxY("数字_乘以一百_执行添加%") != 0;
+			CS_8_locals_6.flag = Cfg.GetInt("数字_乘以一百_执行添加%") != 0;
 			q9PbqGOMSk(delegate(string text)
 			{
 				if (!dU3bP2kG38(text, out var num))
 				{
 					return text;
 				}
-				string text2 = k5Fbv3LNWS(num * CS_8_locals_6.iR9VEgvhfNW);
-				return (!CS_8_locals_6.IbhVE84QpbS) ? text2 : (text2 + "数字_除以一万_自定义");
+				string text2 = k5Fbv3LNWS(num * CS_8_locals_6.double);
+				return (!CS_8_locals_6.flag) ? text2 : (text2 + "数字_除以一万_自定义");
 			});
 		}
 		finally
@@ -1011,13 +1011,13 @@ internal static class ThousandsSeparatorService
 
 	internal static int Wr8b0ba5yt()
 	{
-		return JTHSRmZV4w(Cfg.HYsSh2NDxY("数字_千分位符_小数位数", 2));
+		return JTHSRmZV4w(Cfg.GetInt("数字_千分位符_小数位数", 2));
 	}
 
 	private static bool yMebkbEGjS(string P_0, bool P_1)
 	{
 		string text = (P_1 ? "1" : "0");
-		string a = Cfg.KxPSXHwy4c(P_0, text);
+		string a = Cfg.GetString(P_0, text);
 		if (!string.Equals(a, "1", StringComparison.Ordinal))
 		{
 			return string.Equals(a, "true", StringComparison.OrdinalIgnoreCase);
@@ -1067,7 +1067,7 @@ internal static class ThousandsSeparatorService
 
 	static ThousandsSeparatorService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		F2GSVZQYM6 = new Regex("(?<!\\\\d)(?<year>\\\\d{4})\\\\s*(?:(?<sep>[./-])\\\\s*(?<month>\\\\d{1,2})\\\\s*\\\\k<sep>\\\\s*(?<day>\\\\d{1,2})|年\\\\s*(?<monthCn>\\\\d{1,2})\\\\s*月\\\\s*(?<dayCn>\\\\d{1,2})\\\\s*日)(?!\\\\d)", RegexOptions.Compiled);
 	}
 }

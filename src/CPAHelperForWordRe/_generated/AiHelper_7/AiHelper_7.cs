@@ -10,9 +10,9 @@ namespace AiHelper_7;
 
 internal static class AiHelper_7
 {
-	private static int SjxFmtrD1T;
+	private static int _undoDepth;
 
-	public static void iHUFttreO8(Action P_0, string P_1)
+	public static void RunCommand(Action P_0, string P_1)
 	{
 		if (P_0 == null)
 		{
@@ -20,22 +20,22 @@ internal static class AiHelper_7
 		}
 		try
 		{
-			AiConfigBootstrap.swCsJ4IbrL("[Command] Begin: " + P_1);
+			AiConfigBootstrap.LogInfo("[Command] Begin: " + P_1);
 			P_0();
-			AiConfigBootstrap.swCsJ4IbrL("[Command] End: " + P_1);
+			AiConfigBootstrap.LogInfo("[Command] End: " + P_1);
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[Command] " + P_1 + " failed", ex);
-			LoggerInitializer.F9Ycoqv2I8(P_1 + " 执行失败：\r\n" + ex.Message, "IP_Assurance");
+			AiConfigBootstrap.LogError("[Command] " + P_1 + " failed", ex);
+			LoggerInitializer.ShowError(P_1 + " 执行失败：\r\n" + ex.Message, "IP_Assurance");
 		}
 		finally
 		{
-			b1BFNiPd8M();
+			CleanupAfterCommand();
 		}
 	}
 
-	public static void sY9FLcxGhc(Action P_0, string P_1)
+	public static void RunCommandWithUndo(Action P_0, string P_1)
 	{
 		if (P_0 == null)
 		{
@@ -44,29 +44,29 @@ internal static class AiHelper_7
 		Application wordApp = WordTableToolService.WordApp;
 		if (wordApp == null)
 		{
-			iHUFttreO8(P_0, P_1);
+			RunCommand(P_0, P_1);
 			return;
 		}
 		try
 		{
-			AiConfigBootstrap.swCsJ4IbrL("[Command] Begin (undo): " + P_1);
-			YJ6FsYeGU1(wordApp, P_0, P_1);
-			AiConfigBootstrap.swCsJ4IbrL("[Command] End (undo): " + P_1);
+			AiConfigBootstrap.LogInfo("[Command] Begin (undo): " + P_1);
+			ExecuteWithUndoRecord(wordApp, P_0, P_1);
+			AiConfigBootstrap.LogInfo("[Command] End (undo): " + P_1);
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[Command] " + P_1 + " failed", ex);
-			LoggerInitializer.F9Ycoqv2I8(P_1 + " 执行失败：\r\n" + ex.Message, "IP_Assurance");
+			AiConfigBootstrap.LogError("[Command] " + P_1 + " failed", ex);
+			LoggerInitializer.ShowError(P_1 + " 执行失败：\r\n" + ex.Message, "IP_Assurance");
 		}
 		finally
 		{
-			b1BFNiPd8M();
+			CleanupAfterCommand();
 		}
 	}
 
-	private static void YJ6FsYeGU1(Application P_0, Action P_1, string P_2)
+	private static void ExecuteWithUndoRecord(Application P_0, Action P_1, string P_2)
 	{
-		if (SjxFmtrD1T > 0)
+		if (_undoDepth > 0)
 		{
 			P_1();
 			return;
@@ -77,12 +77,12 @@ internal static class AiHelper_7
 			try
 			{
 				P_0.UndoRecord.StartCustomRecord(P_2);
-				SjxFmtrD1T++;
+				_undoDepth++;
 				flag = true;
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[Undo] StartCustomRecord failed for " + P_2 + ": " + ex.Message);
+				AiConfigBootstrap.LogWarn("[Undo] StartCustomRecord failed for " + P_2 + ": " + ex.Message);
 			}
 			P_1();
 		}
@@ -96,22 +96,22 @@ internal static class AiHelper_7
 				}
 				catch (Exception ex2)
 				{
-					AiConfigBootstrap.z7Us3dJ6Cl("[Undo] EndCustomRecord failed for " + P_2 + ": " + ex2.Message);
+					AiConfigBootstrap.LogWarn("[Undo] EndCustomRecord failed for " + P_2 + ": " + ex2.Message);
 				}
 				finally
 				{
-					SjxFmtrD1T = Math.Max(0, SjxFmtrD1T - 1);
+					_undoDepth = Math.Max(0, _undoDepth - 1);
 				}
 			}
 		}
 	}
 
 	[Conditional("DEBUG")]
-	private static void wjQFlQL3wU(string P_0, string P_1)
+	private static void DebugTrace(string P_0, string P_1)
 	{
 	}
 
-	private static void b1BFNiPd8M()
+	private static void CleanupAfterCommand()
 	{
 		try
 		{

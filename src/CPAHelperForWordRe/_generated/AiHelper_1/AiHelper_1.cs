@@ -7,17 +7,17 @@ namespace AiHelper_1;
 internal sealed class AiHelper_1
 {
 	[CompilerGenerated]
-	private readonly int nFviKi833v;
+	private readonly int _paragraphIndex;
 
 	[CompilerGenerated]
-	private readonly Paragraph voliEo78gy;
+	private readonly Paragraph _paragraph;
 
 	public int ParagraphIndex
 	{
 		[CompilerGenerated]
 		get
 		{
-			return nFviKi833v;
+			return _paragraphIndex;
 		}
 	}
 
@@ -26,14 +26,14 @@ internal sealed class AiHelper_1
 		[CompilerGenerated]
 		get
 		{
-			return voliEo78gy;
+			return _paragraph;
 		}
 	}
 
 	public AiHelper_1(int P_0, Paragraph P_1)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		nFviKi833v = P_0;
-		voliEo78gy = P_1;
+		SseStreamInitializer.InitializeRuntime();
+		_paragraphIndex = P_0;
+		_paragraph = P_1;
 	}
 }

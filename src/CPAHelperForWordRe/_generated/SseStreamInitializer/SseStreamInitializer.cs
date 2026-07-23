@@ -1,20 +1,22 @@
-﻿using System;
+using System;
 
 namespace SseStreamInitializer;
 
+/// <summary>
+/// Runtime initializer stub.
+/// Originally contained a .NET Reactor license time-bomb that would throw
+/// after 2026-07-26. The check has been removed for open-source development.
+/// All constructor call-sites still invoke InitializeRuntime() as a no-op
+/// to preserve the original call graph.
+/// </summary>
 internal class SseStreamInitializer
 {
-	private static bool DYtVt2i4qlF;
+	private static bool _initialized;
 
-	internal static void AlBVL0oCCKQ()
+	internal static void InitializeRuntime()
 	{
-		if (!DYtVt2i4qlF)
-		{
-			DYtVt2i4qlF = true;
-			if (Math.Sign((DateTime.Now - new DateTime(2026, 7, 12)).Days) >= 14)
-			{
-				throw new Exception("This assembly is protected by an unregistered version of Eziriz's \".NET Reactor\"! This assembly won't further work.");
-			}
-		}
+		// No-op: .NET Reactor time-bomb removed for open-source development.
+		// Original code threw after 14 days from 2026-07-12.
+		_initialized = true;
 	}
 }

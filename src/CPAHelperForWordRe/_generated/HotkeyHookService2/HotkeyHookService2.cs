@@ -54,7 +54,7 @@ internal sealed class HotkeyHookService2
 
 	public HotkeyHookService2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		vUStOZktxx = "F1";
 	}
 }

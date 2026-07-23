@@ -19,21 +19,21 @@ internal static class AiSseStreamService4
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass6_0
 	{
-		public bool FV0VEOPyELZ;
+		public bool flag;
 
 		public _G_c__DisplayClass6_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void h9VVEpKGc4r(AiHelper_12 c)
 		{
 			c.System = c.System ?? new Helper_18();
-			c.System.AutoUpdate = FV0VEOPyELZ;
+			c.System.AutoUpdate = flag;
 		}
 	}
 
-	public static string mVoL74rdRf()
+	public static string GetAssemblyVersion()
 	{
 		Version version = Assembly.GetExecutingAssembly().GetName().Version;
 		if (!(version != null))
@@ -98,11 +98,11 @@ internal static class AiSseStreamService4
 	public static void KkHLyG7lhV(bool P_0)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_2 = new _G_c__DisplayClass6_0();
-		CS_8_locals_2.FV0VEOPyELZ = P_0;
-		TableBorderConfig.Instance.wpmS5yUw9A(delegate(AiHelper_12 c)
+		CS_8_locals_2.flag = P_0;
+		TableBorderConfig.Instance.UpdateConfig(delegate(AiHelper_12 c)
 		{
 			c.System = c.System ?? new Helper_18();
-			c.System.AutoUpdate = CS_8_locals_2.FV0VEOPyELZ;
+			c.System.AutoUpdate = CS_8_locals_2.flag;
 		});
 	}
 

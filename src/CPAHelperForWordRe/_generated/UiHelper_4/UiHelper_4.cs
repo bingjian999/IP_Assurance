@@ -6,28 +6,28 @@ namespace UiHelper_4;
 internal sealed class UiHelper_4
 {
 	[CompilerGenerated]
-	private bool TtQS6BnoOW;
+	private bool _excludeYear;
 
 	[CompilerGenerated]
-	private bool HiDSutSg6t;
+	private bool _excludeMonth;
 
 	[CompilerGenerated]
 	private bool YurSDkhaN4;
 
 	[CompilerGenerated]
-	private bool IU2STxRqmj;
+	private bool _excludeNumber;
 
 	[CompilerGenerated]
-	private bool y5OSgWD67M;
+	private bool _excludeOrdinal;
 
 	[CompilerGenerated]
-	private bool X9iS89UCS2;
+	private bool _excludePercent;
 
 	[CompilerGenerated]
-	private bool q2VSIrXKkP;
+	private bool _excludeDateFormat;
 
 	[CompilerGenerated]
-	private bool F2bSiMsdkh;
+	private bool _includeUnitOnly;
 
 	[CompilerGenerated]
 	private string uRQSHlldIo;
@@ -37,12 +37,12 @@ internal sealed class UiHelper_4
 		[CompilerGenerated]
 		get
 		{
-			return TtQS6BnoOW;
+			return _excludeYear;
 		}
 		[CompilerGenerated]
 		set
 		{
-			TtQS6BnoOW = value;
+			_excludeYear = value;
 		}
 	}
 
@@ -51,12 +51,12 @@ internal sealed class UiHelper_4
 		[CompilerGenerated]
 		get
 		{
-			return HiDSutSg6t;
+			return _excludeMonth;
 		}
 		[CompilerGenerated]
 		set
 		{
-			HiDSutSg6t = value;
+			_excludeMonth = value;
 		}
 	}
 
@@ -79,12 +79,12 @@ internal sealed class UiHelper_4
 		[CompilerGenerated]
 		get
 		{
-			return IU2STxRqmj;
+			return _excludeNumber;
 		}
 		[CompilerGenerated]
 		set
 		{
-			IU2STxRqmj = value;
+			_excludeNumber = value;
 		}
 	}
 
@@ -93,12 +93,12 @@ internal sealed class UiHelper_4
 		[CompilerGenerated]
 		get
 		{
-			return y5OSgWD67M;
+			return _excludeOrdinal;
 		}
 		[CompilerGenerated]
 		set
 		{
-			y5OSgWD67M = value;
+			_excludeOrdinal = value;
 		}
 	}
 
@@ -107,12 +107,12 @@ internal sealed class UiHelper_4
 		[CompilerGenerated]
 		get
 		{
-			return X9iS89UCS2;
+			return _excludePercent;
 		}
 		[CompilerGenerated]
 		set
 		{
-			X9iS89UCS2 = value;
+			_excludePercent = value;
 		}
 	}
 
@@ -121,12 +121,12 @@ internal sealed class UiHelper_4
 		[CompilerGenerated]
 		get
 		{
-			return q2VSIrXKkP;
+			return _excludeDateFormat;
 		}
 		[CompilerGenerated]
 		set
 		{
-			q2VSIrXKkP = value;
+			_excludeDateFormat = value;
 		}
 	}
 
@@ -135,12 +135,12 @@ internal sealed class UiHelper_4
 		[CompilerGenerated]
 		get
 		{
-			return F2bSiMsdkh;
+			return _includeUnitOnly;
 		}
 		[CompilerGenerated]
 		set
 		{
-			F2bSiMsdkh = value;
+			_includeUnitOnly = value;
 		}
 	}
 
@@ -160,6 +160,6 @@ internal sealed class UiHelper_4
 
 	public UiHelper_4()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

@@ -9,16 +9,16 @@ internal sealed class Helper_10
 	private readonly string PEpBpqhFor;
 
 	[CompilerGenerated]
-	private readonly string sYSBO49R9W;
+	private readonly string _string;
 
 	[CompilerGenerated]
-	private readonly bool IrZBnoR4go;
+	private readonly bool _bool;
 
 	[CompilerGenerated]
-	private readonly string bMLB7nKMiZ;
+	private readonly string _string;
 
 	[CompilerGenerated]
-	private readonly bool WqxB5B83TT;
+	private readonly bool _bool;
 
 	[CompilerGenerated]
 	private readonly bool QMUBcaypD1;
@@ -37,7 +37,7 @@ internal sealed class Helper_10
 		[CompilerGenerated]
 		get
 		{
-			return sYSBO49R9W;
+			return _string;
 		}
 	}
 
@@ -46,7 +46,7 @@ internal sealed class Helper_10
 		[CompilerGenerated]
 		get
 		{
-			return IrZBnoR4go;
+			return _bool;
 		}
 	}
 
@@ -55,7 +55,7 @@ internal sealed class Helper_10
 		[CompilerGenerated]
 		get
 		{
-			return bMLB7nKMiZ;
+			return _string;
 		}
 	}
 
@@ -64,7 +64,7 @@ internal sealed class Helper_10
 		[CompilerGenerated]
 		get
 		{
-			return WqxB5B83TT;
+			return _bool;
 		}
 	}
 
@@ -79,12 +79,12 @@ internal sealed class Helper_10
 
 	private Helper_10(string P_0, string P_1, bool P_2, string P_3, bool P_4, bool P_5)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		PEpBpqhFor = P_0 ?? string.Empty;
-		sYSBO49R9W = P_1 ?? string.Empty;
-		IrZBnoR4go = P_2;
-		bMLB7nKMiZ = P_3 ?? string.Empty;
-		WqxB5B83TT = P_4;
+		_string = P_1 ?? string.Empty;
+		_bool = P_2;
+		_string = P_3 ?? string.Empty;
+		_bool = P_4;
 		QMUBcaypD1 = P_5;
 	}
 

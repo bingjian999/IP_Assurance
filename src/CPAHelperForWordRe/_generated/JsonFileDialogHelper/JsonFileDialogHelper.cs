@@ -14,7 +14,7 @@ internal sealed class JsonFileDialogHelper : HDS8hJGbnCWyNGfO01j
 	public string hveVL8NJXjM(string P_0, string P_1, string P_2)
 	{
 		TextPromptWindow textPromptWindow = new TextPromptWindow(P_0, P_1, P_2);
-		if (WordTableToolService5.NJs5HCHQjv(textPromptWindow) != true)
+		if (WordTableToolService5.ShowWpfDialog(textPromptWindow) != true)
 		{
 			return null;
 		}
@@ -28,7 +28,7 @@ internal sealed class JsonFileDialogHelper : HDS8hJGbnCWyNGfO01j
 			Filter = "JSON 文件 (*.json)|*.json",
 			Title = P_0
 		};
-		return (openFileDialog.ShowDialog(WordTableToolService5.KJy58rGLXb()) == DialogResult.OK) ? openFileDialog.FileName : null;
+		return (openFileDialog.ShowDialog(WordTableToolService5.GetOwnerWindow()) == DialogResult.OK) ? openFileDialog.FileName : null;
 	}
 
 	public string SA6VLiTt8Ir(string P_0, string P_1)
@@ -39,7 +39,7 @@ internal sealed class JsonFileDialogHelper : HDS8hJGbnCWyNGfO01j
 			Title = P_0,
 			FileName = P_1
 		};
-		return (saveFileDialog.ShowDialog(WordTableToolService5.KJy58rGLXb()) == DialogResult.OK) ? saveFileDialog.FileName : null;
+		return (saveFileDialog.ShowDialog(WordTableToolService5.GetOwnerWindow()) == DialogResult.OK) ? saveFileDialog.FileName : null;
 	}
 
 	public int? KutVLHOhcIC(int? P_0)
@@ -53,7 +53,7 @@ internal sealed class JsonFileDialogHelper : HDS8hJGbnCWyNGfO01j
 			int value = P_0.Value;
 			colorDialog.Color = Color.FromArgb(value & 0xFF, (value >> 8) & 0xFF, (value >> 16) & 0xFF);
 		}
-		if (colorDialog.ShowDialog(WordTableToolService5.KJy58rGLXb()) != DialogResult.OK)
+		if (colorDialog.ShowDialog(WordTableToolService5.GetOwnerWindow()) != DialogResult.OK)
 		{
 			return null;
 		}
@@ -62,26 +62,26 @@ internal sealed class JsonFileDialogHelper : HDS8hJGbnCWyNGfO01j
 
 	public bool LDCVLQYyCaG(string P_0, string P_1 = "IP_Assurance")
 	{
-		return LoggerInitializer.JWucG2ERAH(P_0, P_1);
+		return LoggerInitializer.ShowConfirm(P_0, P_1);
 	}
 
-	public void tfDVL1SJK0M(string P_0, string P_1 = "IP_Assurance")
+	public void LogWarning(string P_0, string P_1 = "IP_Assurance")
 	{
-		LoggerInitializer.Ay3cNuEgJo(P_0, P_1);
+		LoggerInitializer.ShowInfo(P_0, P_1);
 	}
 
-	public void GZdVLrQIdas(string P_0, string P_1 = "IP_Assurance")
+	public void LogMessage(string P_0, string P_1 = "IP_Assurance")
 	{
-		LoggerInitializer.u0kcmnykTv(P_0, P_1);
+		LoggerInitializer.ShowWarning(P_0, P_1);
 	}
 
-	public void ULjVLJjCx1c(string P_0, string P_1 = "IP_Assurance")
+	public void LogDebugMessage(string P_0, string P_1 = "IP_Assurance")
 	{
-		LoggerInitializer.F9Ycoqv2I8(P_0, P_1);
+		LoggerInitializer.ShowError(P_0, P_1);
 	}
 
 	public JsonFileDialogHelper()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

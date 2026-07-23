@@ -19,7 +19,7 @@ internal static class AiSseStreamService
 
 		public _G_c__DisplayClass31_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool puuVEaZYY9v(string existing)
@@ -28,13 +28,13 @@ internal static class AiSseStreamService
 		}
 	}
 
-	private static readonly Lazy<string[]> osssI06PGW;
+	private static readonly Lazy<string[]> _installPathCandidates;
 
-	private static readonly Lazy<string> DiCsihNrBY;
+	private static readonly Lazy<string> _installPath;
 
-	public static string InstallPath => DiCsihNrBY.Value;
+	public static string InstallPath => _installPath.Value;
 
-	public static IReadOnlyList<string> InstallPathCandidates => osssI06PGW.Value;
+	public static IReadOnlyList<string> InstallPathCandidates => _installPathCandidates.Value;
 
 	public static string UserDataDir => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "IP_Assurance");
 
@@ -54,12 +54,12 @@ internal static class AiSseStreamService
 
 	public static string FrontendAssetsDir => Path.Combine(InstallPath, "Assets", "FrontendAssets");
 
-	public static void VyDsR9yN8r()
+	public static void InitializeDirectories()
 	{
 		MigrateOldConfig();
-		i24sVuaOic(UserDataDir);
-		i24sVuaOic(LogDir);
-		i24sVuaOic(UserTempDir);
+		EnsureDirectory(UserDataDir);
+		EnsureDirectory(LogDir);
+		EnsureDirectory(UserTempDir);
 	}
 
 	private static void MigrateOldConfig()
@@ -97,7 +97,7 @@ internal static class AiSseStreamService
 		}
 	}
 
-	public static void i24sVuaOic(string P_0)
+	public static void EnsureDirectory(string P_0)
 	{
 		if (!Directory.Exists(P_0))
 		{
@@ -105,16 +105,16 @@ internal static class AiSseStreamService
 		}
 	}
 
-	public static void c6JsBBJkO2()
+	public static void EnsureAllDirectories()
 	{
 		string[] array = new string[5] { UserDataDir, ConfigDir, TemplateDir, LogDir, UserTempDir };
 		for (int i = 0; i < array.Length; i++)
 		{
-			i24sVuaOic(array[i]);
+			EnsureDirectory(array[i]);
 		}
 	}
 
-	public static string mSfs9VWIdb(params string[] segments)
+	public static string GetUserDataPath(params string[] segments)
 	{
 		string text = UserDataDir;
 		if (segments != null)
@@ -127,11 +127,11 @@ internal static class AiSseStreamService
 				}
 			}
 		}
-		i24sVuaOic(text);
+		EnsureDirectory(text);
 		return text;
 	}
 
-	public static string XOes64flqb(params string[] segments)
+	public static string GetTempPath(params string[] segments)
 	{
 		string text = UserTempDir;
 		if (segments != null)
@@ -144,7 +144,7 @@ internal static class AiSseStreamService
 				}
 			}
 		}
-		i24sVuaOic(text);
+		EnsureDirectory(text);
 		return text;
 	}
 
@@ -246,8 +246,8 @@ internal static class AiSseStreamService
 
 	static AiSseStreamService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		osssI06PGW = new Lazy<string[]>(xwjsu2yKBi);
-		DiCsihNrBY = new Lazy<string>(() => FlWsTl2BBb(Assembly.GetExecutingAssembly().CodeBase) ?? osssI06PGW.Value.FirstOrDefault((string path) => !string.IsNullOrWhiteSpace(path)) ?? string.Empty);
+		SseStreamInitializer.InitializeRuntime();
+		_installPathCandidates = new Lazy<string[]>(xwjsu2yKBi);
+		_installPath = new Lazy<string>(() => FlWsTl2BBb(Assembly.GetExecutingAssembly().CodeBase) ?? _installPathCandidates.Value.FirstOrDefault((string path) => !string.IsNullOrWhiteSpace(path)) ?? string.Empty);
 	}
 }

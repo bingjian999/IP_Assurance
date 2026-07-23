@@ -307,372 +307,372 @@ public class Ribbon1 : RibbonBase
 	{
 		AZAeYmLFnX.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiAssistantHost2.aRJB0cfkok, "IP_Assurance");
+			AiHelper_7.RunCommand(AiAssistantHost2.aRJB0cfkok, "IP_Assurance");
 		};
 		ObyeZaW2w9.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiAssistantHost2.SIRBdRBylk, "Template_OpenFolder");
+			AiHelper_7.RunCommand(AiAssistantHost2.SIRBdRBylk, "Template_OpenFolder");
 		};
 		QQkefaO87T.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiAssistantHost2.KAcBz9syTd, "打开目录");
+			AiHelper_7.RunCommand(AiAssistantHost2.KAcBz9syTd, "打开目录");
 		};
 		GH0eMf7VqG.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(ScreenshotService.SqNBgKb64d, "TemplateFolder_");
+			AiHelper_7.RunCommand(ScreenshotService.SqNBgKb64d, "TemplateFolder_");
 		};
 		PEcebFj4uu.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(ScreenshotService.lK0B8Dimq2, "*.*");
+			AiHelper_7.RunCommand(ScreenshotService.lK0B8Dimq2, "*.*");
 		};
 		XtceSdypsH.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(ScreenshotService.V8uBId6JSR, "~");
+			AiHelper_7.RunCommand(ScreenshotService.V8uBId6JSR, "~");
 		};
 		aRDewydID6.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(ScreenshotService.bpaBiR3K57, "Template_");
+			AiHelper_7.RunCommand(ScreenshotService.bpaBiR3K57, "Template_");
 		};
 		YQletHXVWR.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.NJs5HCHQjv(new DesktopPinConfigWindow());
+				WordTableToolService5.ShowWpfDialog(new DesktopPinConfigWindow());
 			}, "N");
 		};
 		U6weLyMaIs.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchReplaceService.BBAMen3SA4, "_");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.BBAMen3SA4, "_");
 		};
 		KR0el1JrZB.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new ParagraphConfigWindow());
+				WordTableToolService5.ShowWpfWindow(new ParagraphConfigWindow());
 			}, "IP_Assurance");
 		};
 		PsQemjAYEX.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchReplaceService.OTQMCTfGfe, "tabCPA");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.OTQMCTfGfe, "tabCPA");
 		};
 		O2neocYeVm.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchReplaceService.xgwMpXfu5F, "通用");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.xgwMpXfu5F, "通用");
 		};
 		bLLeCoCtqb.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(BatchReplaceService.IlFMa7FUcE, "grpGeneral");
+			AiHelper_7.RunCommand(BatchReplaceService.IlFMa7FUcE, "grpGeneral");
 		};
 		YBwepj7oQk.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchReplaceService.a3lMqZdKO0, "智能助手");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.a3lMqZdKO0, "智能助手");
 		};
 		XuKeOjATgB.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchTableAdjustService.HUeflwYrZr, "SBAI助手");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.HUeflwYrZr, "SBAI助手");
 		};
 		DpUenM8VkU.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new TableConfigWindow());
+				WordTableToolService5.ShowWpfWindow(new TableConfigWindow());
 			}, "配置");
 		};
 		hjme7a7ldE.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchTableAdjustService.tlpfdNjFFa, "BtnAI配置");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.tlpfdNjFFa, "BtnAI配置");
 		};
 		Xaje5BbwlX.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchReplaceService.kcGMtYHAg8, "帮助");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.kcGMtYHAg8, "帮助");
 		};
 		y00eeSplD5.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchTableAdjustService.HbTfxQrf6q, "BtnAI帮助");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.HbTfxQrf6q, "BtnAI帮助");
 		};
 		XMReyfDAJ6.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchTableAdjustService.FZ4fqGTpEn, "最大列宽");
+			AiHelper_7.RunCommandWithUndo(BatchTableAdjustService.FZ4fqGTpEn, "最大列宽");
 		};
 		JYyeXQZPep.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(BatchTableAdjustService.PL3fzV7hld, "全选表格");
+			AiHelper_7.RunCommand(BatchTableAdjustService.PL3fzV7hld, "全选表格");
 		};
 		DDFeFR1h9o.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.tl1bwFFDD1, "千分位符");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.tl1bwFFDD1, "千分位符");
 		};
 		QclehQJ0Qe.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new ThousandsSeparatorConfigWindow());
+				WordTableToolService5.ShowWpfWindow(new ThousandsSeparatorConfigWindow());
 			}, "SplitBtn钉桌面");
 		};
 		Y4weqgO6Ip.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.RG3btZhbBZ, "系统截图/录屏");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.RG3btZhbBZ, "系统截图/录屏");
 		};
 		GSseP3ATQx.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.IjpbLTQyda, "Btn开始截图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.IjpbLTQyda, "Btn开始截图");
 		};
 		JHKeAsJpU4.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.klPbsBaHvp, "快速全屏截图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.klPbsBaHvp, "快速全屏截图");
 		};
 		eIievpV7yo.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.U40blaH8Pe, "Btn快速全屏截图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.U40blaH8Pe, "Btn快速全屏截图");
 		};
 		lQMeWPEgFZ.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.dSnbbZLY1r, "除以万");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.dSnbbZLY1r, "除以万");
 		};
 		jUPe0WVcH5.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.jyWbS77xyK, "Btn关闭所有钉图");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.jyWbS77xyK, "Btn关闭所有钉图");
 		};
 		O1Nek8dtjg.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.nySbyq4v2j, "配置");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.nySbyq4v2j, "配置");
 		};
 		AfNexqU5xE.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.W2IbekWIMv, "Btn钉图配置");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.W2IbekWIMv, "Btn钉图配置");
 		};
 		E4NednknFu.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new AreaSumWindow());
+				WordTableToolService5.ShowWpfWindow(new AreaSumWindow());
 			}, "全局配置");
 		};
 		DDYyRiDwU0.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.OQqb2EBLne, "B全局配置");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.OQqb2EBLne, "B全局配置");
 		};
 		F3SyViFQfi.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.n48bEYCJjN, "使用帮助");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.n48bEYCJjN, "使用帮助");
 		};
 		gvCy9TVUH2.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(ThousandsSeparatorService.Ws1bXTwZbX, "B说明");
+			AiHelper_7.RunCommandWithUndo(ThousandsSeparatorService.Ws1bXTwZbX, "B说明");
 		};
 		批量替换.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new BatchReplaceWindow());
+				WordTableToolService5.ShowWpfWindow(new BatchReplaceWindow());
 			}, "段落");
 		};
 		WOoyup6EfT.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchReplaceService.lUNMdtyonR, "grpParagraph");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.lUNMdtyonR, "grpParagraph");
 		};
 		GS0yDJ0IHx.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(BatchReplaceService.JasMzZGiuF, "段落调整");
+			AiHelper_7.RunCommandWithUndo(BatchReplaceService.JasMzZGiuF, "段落调整");
 		};
 		QXuyTpqqg5.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(delegate
+			AiHelper_7.RunCommandWithUndo(delegate
 			{
-				BatchReplaceService.lyrMMMAAtt(1);
+				BatchReplaceService.SetOutlineLevel(1);
 			}, "B段落格式调整");
 		};
 		QxVygurCMp.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(delegate
+			AiHelper_7.RunCommandWithUndo(delegate
 			{
-				BatchReplaceService.lyrMMMAAtt(2);
+				BatchReplaceService.SetOutlineLevel(2);
 			}, "段落配置");
 		};
 		Jgty8WWI8v.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(delegate
+			AiHelper_7.RunCommandWithUndo(delegate
 			{
-				BatchReplaceService.lyrMMMAAtt(3);
+				BatchReplaceService.SetOutlineLevel(3);
 			}, "B段落配置");
 		};
 		L4byIXApGn.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(delegate
+			AiHelper_7.RunCommandWithUndo(delegate
 			{
-				BatchReplaceService.lyrMMMAAtt(4);
+				BatchReplaceService.SetOutlineLevel(4);
 			}, "关闭样式自动更新");
 		};
 		KjyyiTpBqf.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(delegate
+			AiHelper_7.RunCommandWithUndo(delegate
 			{
-				BatchReplaceService.lyrMMMAAtt(5);
+				BatchReplaceService.SetOutlineLevel(5);
 			}, "C关闭自动样式");
 		};
 		StJyHMefXC.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(delegate
+			AiHelper_7.RunCommandWithUndo(delegate
 			{
-				BatchReplaceService.lyrMMMAAtt(10);
+				BatchReplaceService.SetOutlineLevel(10);
 			}, "表前单位");
 		};
 		c99y1e88Ah.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(TableValidationService.vG5KQkPQxL, "b表前单位");
+			AiHelper_7.RunCommand(TableValidationService.vG5KQkPQxL, "b表前单位");
 		};
 		VFKyroq1pl.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(TableValidationService.aguK1H8YCQ, "表后注释");
+			AiHelper_7.RunCommand(TableValidationService.aguK1H8YCQ, "表后注释");
 		};
 		oAlyJlhmwW.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(TableValidationService.pSAKJ3DAt3, "b表后注释");
+			AiHelper_7.RunCommand(TableValidationService.pSAKJ3DAt3, "b表后注释");
 		};
 		FUPyUfkrpN.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(crmeVUrrhp, "表后段落");
+			AiHelper_7.RunCommand(crmeVUrrhp, "表后段落");
 		};
 		kVXyKrngMn.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new ExcelSyncWindow());
+				WordTableToolService5.ShowWpfWindow(new ExcelSyncWindow());
 			}, "m表后段落");
 		};
 		OCPy2sVgbO.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new ExcelSyncWindow());
+				WordTableToolService5.ShowWpfWindow(new ExcelSyncWindow());
 			}, "全选表后第一段");
 		};
 		Lg5yYCLRLo.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new ExcelSyncWindow());
+				WordTableToolService5.ShowWpfWindow(new ExcelSyncWindow());
 			}, "b全选表后第一段");
 		};
 		OKDyZCymnC.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(TableValidationService.BFXK3Dv3Bc, "表后间距处理");
+			AiHelper_7.RunCommandWithUndo(TableValidationService.BFXK3Dv3Bc, "表后间距处理");
 		};
 		CtnyfNejNN.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(TableValidationService.CKSKKAnPKH, "b表后段落处理");
+			AiHelper_7.RunCommand(TableValidationService.CKSKKAnPKH, "b表后段落处理");
 		};
 		NSUySeG74c.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(OutlineNavigationService.P5jKuEliQP, "表格");
+			AiHelper_7.RunCommand(OutlineNavigationService.P5jKuEliQP, "表格");
 		};
 		lRiywfx5RI.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(OutlineNavigationService.dW1KDnLD9h, "grpTable");
+			AiHelper_7.RunCommand(OutlineNavigationService.dW1KDnLD9h, "grpTable");
 		};
 		Ttiyto9c3J.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(OutlineNavigationService.QJhKInF2on, "表格调整");
+			AiHelper_7.RunCommand(OutlineNavigationService.QJhKInF2on, "表格调整");
 		};
 		Mykys9pFbA.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(PageSplitService.r35fVUVyl3, "B表格调整");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.r35fVUVyl3, "B表格调整");
 		};
 		x1myldNW5p.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(PageSplitService.pIHf9JibWB, "表格配置");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.pIHf9JibWB, "表格配置");
 		};
 		gLjyNtF5wS.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(PageSplitService.uqUfBw6cB5, "B表格配置");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.uqUfBw6cB5, "B表格配置");
 		};
 		PJlym1E13O.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(PageSplitService.q6BfuLcjaG, "重复标题");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.q6BfuLcjaG, "重复标题");
 		};
 		lXiyOWFVa5.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.NJs5HCHQjv(new RenameDocumentWindow());
+				WordTableToolService5.ShowWpfDialog(new RenameDocumentWindow());
 			}, "B重复首行");
 		};
 		stZyopAEjj.Click += delegate
 		{
-			AiHelper_7.sY9FLcxGhc(PageSplitService.a1VfDCrrNS, "粘贴表格");
+			AiHelper_7.RunCommandWithUndo(PageSplitService.a1VfDCrrNS, "粘贴表格");
 		};
 		NCjyGburcY.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.NJs5HCHQjv(new PageNumberStartWindow());
+				WordTableToolService5.ShowWpfDialog(new PageNumberStartWindow());
 			}, "bEW粘贴");
 		};
 		xg0yCgJFpq.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(PageSplitService.ykFfgO7l4C, "其他调整");
+			AiHelper_7.RunCommand(PageSplitService.ykFfgO7l4C, "其他调整");
 		};
 		h0WyplNuXA.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(PageSplitService.Y5Tfix9LLg, "M列宽");
+			AiHelper_7.RunCommand(PageSplitService.Y5Tfix9LLg, "M列宽");
 		};
 		IeJy52VjG7.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(PageSplitService.TpofHWy9aJ, "统一列宽");
+			AiHelper_7.RunCommand(PageSplitService.TpofHWy9aJ, "统一列宽");
 		};
 		FjOycmk3RK.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(PageSplitService.Wq4f1QfrnV, "b统一列宽");
+			AiHelper_7.RunCommand(PageSplitService.Wq4f1QfrnV, "b统一列宽");
 		};
 		sdlyedNyXA.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(PageSplitService.vFrfrDlytO, "最大列宽");
+			AiHelper_7.RunCommand(PageSplitService.vFrfrDlytO, "最大列宽");
 		};
 		Go4yyvMTqe.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiHelper_3.BWIBRayGaa, "b列宽调整");
+			AiHelper_7.RunCommand(AiHelper_3.BWIBRayGaa, "b列宽调整");
 		};
 		IclyXnfJ75.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiHelper_3.YWiVzgIWFQ, "全选表格");
+			AiHelper_7.RunCommand(AiHelper_3.YWiVzgIWFQ, "全选表格");
 		};
 		V7pyhA6tbO.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiHelper_3.kTVBVZcQB1, "B全选表格");
+			AiHelper_7.RunCommand(AiHelper_3.kTVBVZcQB1, "B全选表格");
 		};
 		zPjyasMy9S.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiHelper_3.EhnBBx56DY, "数字");
+			AiHelper_7.RunCommand(AiHelper_3.EhnBBx56DY, "数字");
 		};
 		tWiyqkQmfh.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiHelper_3.LrSB63WJSY, "grpNumber");
+			AiHelper_7.RunCommand(AiHelper_3.LrSB63WJSY, "grpNumber");
 		};
 		ueWyPmEhpB.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiHelper_3.T3uB9HfbiT, "千分位符");
+			AiHelper_7.RunCommand(AiHelper_3.T3uB9HfbiT, "千分位符");
 		};
 		检查更新.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new UpdateWindow());
+				WordTableToolService5.ShowWpfWindow(new UpdateWindow());
 			}, "b千分符");
 		};
 		PdeyAnLaqI.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(AiHelper_3.UuQBu9AoPh, "千分位符配置");
+			AiHelper_7.RunCommand(AiHelper_3.UuQBu9AoPh, "千分位符配置");
 		};
 		s22yvkIREp.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new GlobalConfigWindow());
+				WordTableToolService5.ShowWpfWindow(new GlobalConfigWindow());
 			}, "B千分符配置");
 		};
 		mNaeNSP9JX.Click += delegate
 		{
-			TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 nKy3wjtTwmsradOXPDy)
+			TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 nKy3wjtTwmsradOXPDy)
 			{
 				nKy3wjtTwmsradOXPDy.System.DisableAutomaticStyleUpdate = mNaeNSP9JX.Checked;
 			});
@@ -685,7 +685,7 @@ public class Ribbon1 : RibbonBase
 
 	private void crmeVUrrhp()
 	{
-		AiSseStreamService.i24sVuaOic(AiSseStreamService.TemplateDir);
+		AiSseStreamService.EnsureDirectory(AiSseStreamService.TemplateDir);
 		while (ARky3sm6Hj.Items.Count > 1)
 		{
 			ARky3sm6Hj.Items.RemoveAt(ARky3sm6Hj.Items.Count - 1);
@@ -696,7 +696,7 @@ public class Ribbon1 : RibbonBase
 		ribbonButton.ShowImage = false;
 		ribbonButton.Click += delegate
 		{
-			AiHelper_7.iHUFttreO8(IpUeDmgi1F, "TemplateFolder_");
+			AiHelper_7.RunCommand(IpUeDmgi1F, "TemplateFolder_");
 		};
 		ARky3sm6Hj.Items.Add(ribbonButton);
 		string[] directories = Directory.GetDirectories(AiSseStreamService.TemplateDir);
@@ -771,7 +771,7 @@ public class Ribbon1 : RibbonBase
 
 	private static void IpUeDmgi1F()
 	{
-		AiSseStreamService.i24sVuaOic(AiSseStreamService.TemplateDir);
+		AiSseStreamService.EnsureDirectory(AiSseStreamService.TemplateDir);
 		Process.Start(new ProcessStartInfo(AiSseStreamService.TemplateDir)
 		{
 			UseShellExecute = true
@@ -780,7 +780,7 @@ public class Ribbon1 : RibbonBase
 
 	public Ribbon1() : base(UiHelper_1.Factory.GetRibbonFactory())
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		HVYeTxmVvj();
 	}
 
@@ -1347,13 +1347,13 @@ public class Ribbon1 : RibbonBase
 	[CompilerGenerated]
 	private void e7pegctZBX(object P_0, RibbonControlEventArgs P_1)
 	{
-		AiHelper_7.iHUFttreO8(crmeVUrrhp, "刷新模板列表");
+		AiHelper_7.RunCommand(crmeVUrrhp, "刷新模板列表");
 	}
 
 	[CompilerGenerated]
 	private void Knwe85eEQJ(object P_0, RibbonControlEventArgs P_1)
 	{
-		TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 nKy3wjtTwmsradOXPDy)
+		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 nKy3wjtTwmsradOXPDy)
 		{
 			nKy3wjtTwmsradOXPDy.System.DisableAutomaticStyleUpdate = mNaeNSP9JX.Checked;
 		});

@@ -5,11 +5,11 @@ namespace Helper_5;
 
 internal struct Helper_5
 {
-	public IntPtr gT5UziDMSM;
+	public IntPtr intPtr;
 
-	public IntPtr H3wKRbItAK;
+	public IntPtr intPtr;
 
-	public Rectangle Sl2KVgL5Cf;
+	public Rectangle rectangle;
 
 	public Rectangle vBSKBPTg82;
 }

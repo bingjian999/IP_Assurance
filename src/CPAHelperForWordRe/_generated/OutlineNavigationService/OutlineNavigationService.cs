@@ -23,7 +23,7 @@ internal static class OutlineNavigationService
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8(ex.Message, "IP_Assurance");
+			LoggerInitializer.ShowError(ex.Message, "IP_Assurance");
 		}
 	}
 
@@ -79,11 +79,11 @@ internal static class OutlineNavigationService
 				}
 				num = Math.Min((range.End > num) ? range.End : (num + 1), end);
 			}
-			LoggerInitializer.Ay3cNuEgJo("没有找到下一个高亮", "IP_Assurance");
+			LoggerInitializer.ShowInfo("没有找到下一个高亮", "IP_Assurance");
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8(ex.Message, "IP_Assurance");
+			LoggerInitializer.ShowError(ex.Message, "IP_Assurance");
 		}
 	}
 
@@ -211,7 +211,7 @@ internal static class OutlineNavigationService
 		}
 		if (num2 < 0)
 		{
-			LoggerInitializer.Ay3cNuEgJo("没有找到下一个标题", "IP_Assurance");
+			LoggerInitializer.ShowInfo("没有找到下一个标题", "IP_Assurance");
 			return;
 		}
 		selection.Start = end;

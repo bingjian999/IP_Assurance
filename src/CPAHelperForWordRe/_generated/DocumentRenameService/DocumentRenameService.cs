@@ -16,16 +16,16 @@ internal static class DocumentRenameService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass2_0
 	{
-		public Document TrRhV0gxVq;
+		public Document doc;
 
 		public _G_c__DisplayClass2_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string sudhRsvTpt()
 		{
-			return TrRhV0gxVq.Name;
+			return doc.Name;
 		}
 	}
 
@@ -36,7 +36,7 @@ internal static class DocumentRenameService
 
 		public _G_c__DisplayClass4_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string QhVhBdk0xM()
@@ -63,31 +63,31 @@ internal static class DocumentRenameService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass5_0
 	{
-		public Document WRIhij4kSi;
+		public Document doc;
 
 		public _G_c__DisplayClass5_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string g1WhTVKb0a()
 		{
-			return WRIhij4kSi.Name;
+			return doc.Name;
 		}
 
 		internal string JlEhg71oo6()
 		{
-			return WRIhij4kSi.FullName;
+			return doc.FullName;
 		}
 
 		internal string Sfwh8GwEht()
 		{
-			return WRIhij4kSi.Path;
+			return doc.Path;
 		}
 
 		internal bool gc1hIpwXjJ()
 		{
-			return WRIhij4kSi.Saved;
+			return doc.Saved;
 		}
 	}
 
@@ -96,10 +96,10 @@ internal static class DocumentRenameService
 	internal static string p22B4gZ207()
 	{
 		_G_c__DisplayClass2_0 CS_8_locals_3 = new _G_c__DisplayClass2_0();
-		CS_8_locals_3.TrRhV0gxVq = JrbBtdamCI();
-		if (CS_8_locals_3.TrRhV0gxVq != null)
+		CS_8_locals_3.doc = JrbBtdamCI();
+		if (CS_8_locals_3.doc != null)
 		{
-			return fwlBshSt6y(() => CS_8_locals_3.TrRhV0gxVq.Name);
+			return fwlBshSt6y(() => CS_8_locals_3.doc.Name);
 		}
 		return null;
 	}
@@ -157,10 +157,10 @@ internal static class DocumentRenameService
 		{
 			throw new InvalidOperationException(message);
 		}
-		CS_8_locals_7.WRIhij4kSi = JrbBtdamCI();
-		string text = fwlBshSt6y(() => CS_8_locals_7.WRIhij4kSi.Name);
-		string text2 = fwlBshSt6y(() => CS_8_locals_7.WRIhij4kSi.FullName);
-		string path = fwlBshSt6y(() => CS_8_locals_7.WRIhij4kSi.Path);
+		CS_8_locals_7.doc = JrbBtdamCI();
+		string text = fwlBshSt6y(() => CS_8_locals_7.doc.Name);
+		string text2 = fwlBshSt6y(() => CS_8_locals_7.doc.FullName);
+		string path = fwlBshSt6y(() => CS_8_locals_7.doc.Path);
 		string text3 = vG2BwOq8Bw(text, text2);
 		string text4 = ur0Bb9fPt3(P_0);
 		string text5 = Path.Combine(path, text4 + text3);
@@ -172,22 +172,22 @@ internal static class DocumentRenameService
 		{
 			throw new InvalidOperationException("目标文件已存在，请更换一个文件名。");
 		}
-		if (!A3eBlQ6j8f(() => CS_8_locals_7.WRIhij4kSi.Saved, true))
+		if (!A3eBlQ6j8f(() => CS_8_locals_7.doc.Saved, true))
 		{
 			string text6 = "当前文档有尚未保存的修改。继续重命名将保存这些修改，是否继续？";
-			if (!(P_1?.Invoke(text6) ?? LoggerInitializer.JWucG2ERAH(text6, "IP_Assurance")))
+			if (!(P_1?.Invoke(text6) ?? LoggerInitializer.ShowConfirm(text6, "IP_Assurance")))
 			{
 				return Helper_10.UdoBCP2Rh6(text2);
 			}
 		}
-		Y9cBf0FXlN(CS_8_locals_7.WRIhij4kSi, text5);
+		Y9cBf0FXlN(CS_8_locals_7.doc, text5);
 		if (!File.Exists(text5))
 		{
 			throw new InvalidOperationException("重命名失败：新文件未成功生成。");
 		}
 		try
 		{
-			CS_8_locals_7.WRIhij4kSi.Activate();
+			CS_8_locals_7.doc.Activate();
 		}
 		catch
 		{

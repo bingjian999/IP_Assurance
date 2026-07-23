@@ -15,18 +15,18 @@ namespace CPAHelperForWordRe.UI.Forms;
 
 public sealed class ParagraphConfigWindow : Window, IComponentConnector
 {
-	private readonly LegacyConfigMigrator2 i9eCUPlAlM;
+	private readonly LegacyConfigMigrator2 _legacyConfigMigrator2;
 
 	private bool erTCKRYVh2;
 
 	public ParagraphConfigWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
-		i9eCUPlAlM = new LegacyConfigMigrator2(new JsonFileDialogHelper());
-		i9eCUPlAlM.Y0ZlOZZU1c(base.Close);
-		i9eCUPlAlM.hQml5xuThg(dTqC3t4uPZ);
-		base.DataContext = i9eCUPlAlM;
+		_legacyConfigMigrator2 = new LegacyConfigMigrator2(new JsonFileDialogHelper());
+		_legacyConfigMigrator2.Y0ZlOZZU1c(base.Close);
+		_legacyConfigMigrator2.hQml5xuThg(dTqC3t4uPZ);
+		base.DataContext = _legacyConfigMigrator2;
 		base.PreviewKeyDown += vg3CJM4XQx;
 	}
 
@@ -40,7 +40,7 @@ public sealed class ParagraphConfigWindow : Window, IComponentConnector
 
 	private void dTqC3t4uPZ()
 	{
-		WordTableToolService5.IPf5i0ZcV4(new TableConfigWindow());
+		WordTableToolService5.ShowWpfWindow(new TableConfigWindow());
 		Close();
 	}
 

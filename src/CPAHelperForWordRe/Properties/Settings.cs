@@ -15,12 +15,12 @@ internal sealed class Settings : ApplicationSettingsBase
 
 	public Settings()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	static Settings()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		defaultInstance = (Settings)SettingsBase.Synchronized(new Settings());
 	}
 }

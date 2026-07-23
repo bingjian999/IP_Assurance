@@ -7,22 +7,22 @@ namespace UiHelperService2;
 internal struct UiHelperService2
 {
 	[CompilerGenerated]
-	private SMvGfVVI8pN4lQroEEl bTAV1P8xVM;
+	private HotkeyAction _modifiers;
 
 	[CompilerGenerated]
-	private Keys bHPVrgnFL3;
+	private Keys _key;
 
-	public SMvGfVVI8pN4lQroEEl Modifiers
+	public HotkeyAction Modifiers
 	{
 		[CompilerGenerated]
 		get
 		{
-			return bTAV1P8xVM;
+			return _modifiers;
 		}
 		[CompilerGenerated]
 		set
 		{
-			bTAV1P8xVM = value;
+			_modifiers = value;
 		}
 	}
 
@@ -31,12 +31,12 @@ internal struct UiHelperService2
 		[CompilerGenerated]
 		get
 		{
-			return bHPVrgnFL3;
+			return _key;
 		}
 		[CompilerGenerated]
 		set
 		{
-			bHPVrgnFL3 = value;
+			_key = value;
 		}
 	}
 }

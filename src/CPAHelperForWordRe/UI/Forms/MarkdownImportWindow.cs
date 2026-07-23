@@ -20,18 +20,18 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass2_0
 	{
-		public bool xGtV4BI5U0F;
+		public bool flag;
 
-		public MarkdownImportWindow vI1V49iRKoi;
+		public MarkdownImportWindow markdownImportWindow;
 
 		public _G_c__DisplayClass2_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void W8PV4Vx80ng()
 		{
-			xGtV4BI5U0F = MarkdownImportService.XiHb8xdPLA(vI1V49iRKoi.txtMarkdown.Text, vI1V49iRKoi.chkApplyHeadingNumbering.IsChecked == true);
+			flag = MarkdownImportService.XiHb8xdPLA(markdownImportWindow.txtMarkdown.Text, markdownImportWindow.chkApplyHeadingNumbering.IsChecked == true);
 		}
 	}
 
@@ -43,7 +43,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 
 	public MarkdownImportWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		base.PreviewKeyDown += delegate(object P_0, KeyEventArgs P_1)
 		{
@@ -64,7 +64,7 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		{
 			if (!Clipboard.ContainsText())
 			{
-				LoggerInitializer.u0kcmnykTv("剪贴板中没有可粘贴的文本。", "IP_Assurance");
+				LoggerInitializer.ShowWarning("剪贴板中没有可粘贴的文本。", "IP_Assurance");
 				return;
 			}
 			txtMarkdown.Text = Clipboard.GetText();
@@ -73,20 +73,20 @@ public sealed class MarkdownImportWindow : Window, IComponentConnector
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8("读取剪贴板失败：" + ex.Message, "IP_Assurance");
+			LoggerInitializer.ShowError("读取剪贴板失败：" + ex.Message, "IP_Assurance");
 		}
 	}
 
 	private void sVxCiGSm3i(object P_0, RoutedEventArgs P_1)
 	{
 		_G_c__DisplayClass2_0 obj = new _G_c__DisplayClass2_0();
-		obj.vI1V49iRKoi = this;
-		obj.xGtV4BI5U0F = false;
-		AiHelper_7.sY9FLcxGhc(delegate
+		obj.markdownImportWindow = this;
+		obj.flag = false;
+		AiHelper_7.RunCommandWithUndo(delegate
 		{
-			obj.xGtV4BI5U0F = MarkdownImportService.XiHb8xdPLA(obj.vI1V49iRKoi.txtMarkdown.Text, obj.vI1V49iRKoi.chkApplyHeadingNumbering.IsChecked == true);
+			obj.flag = MarkdownImportService.XiHb8xdPLA(obj.markdownImportWindow.txtMarkdown.Text, obj.markdownImportWindow.chkApplyHeadingNumbering.IsChecked == true);
 		}, "Markdown 导入");
-		if (obj.xGtV4BI5U0F)
+		if (obj.flag)
 		{
 			Close();
 		}

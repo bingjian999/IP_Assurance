@@ -21,34 +21,34 @@ internal sealed class AiHelper_2
 	{
 		public string fardXZwHxs;
 
-		public int k5DdFLjOTw;
+		public int value;
 
-		public int IFMdhfe6pO;
+		public int value;
 
 		public string TpddahokY1;
 
 		public double hKqdqALOn1;
 
-		public double yPcdPKW6i5;
+		public double double;
 
-		public string q2xdAyYwCH;
+		public string text;
 
-		public string jNydvm1qyv;
+		public string text;
 
 		public _G_c__DisplayClass2_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 w4mdyDK6GA(Application app)
 		{
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
-				return WordAgentRuntimeGuard2.dclJSetxGY(text);
+				return WordAgentRuntimeGuard2.CreateNotReadyError(text);
 			}
-			Document document = DocumentLifecycleGuard.zrqujYgRXw(app);
-			Range range = no8143nY9C(app, document, fardXZwHxs, k5DdFLjOTw, IFMdhfe6pO);
+			Document document = DocumentLifecycleGuard.GetActiveDocument(app);
+			Range range = no8143nY9C(app, document, fardXZwHxs, value, value);
 			int start = range.Start;
 			InlineShape inlineShape = null;
 			try
@@ -70,8 +70,8 @@ internal sealed class AiHelper_2
 				}
 				_G_o__2.kxxdWPKgCB.Target(_G_o__2.kxxdWPKgCB, arg, 0);
 				inlineShape.Width = (float)hKqdqALOn1;
-				inlineShape.Height = (float)yPcdPKW6i5;
-				string text2 = (string.IsNullOrWhiteSpace(q2xdAyYwCH) ? "HTML视觉" : q2xdAyYwCH.Trim());
+				inlineShape.Height = (float)double;
+				string text2 = (string.IsNullOrWhiteSpace(text) ? "HTML视觉" : text.Trim());
 				try
 				{
 					inlineShape.Title = text2;
@@ -81,13 +81,13 @@ internal sealed class AiHelper_2
 				}
 				try
 				{
-					inlineShape.AlternativeText = "IP_Assurance HTML Visual; name=" + text2 + "; hash=" + (jNydvm1qyv ?? string.Empty);
+					inlineShape.AlternativeText = "IP_Assurance HTML Visual; name=" + text2 + "; hash=" + (text ?? string.Empty);
 				}
 				catch
 				{
 				}
-				DocumentLifecycleGuard.ySsuKsA6u8();
-				return AiHelper_5.nt99CvEC4m("HTML visual inserted into Word.", new
+				DocumentLifecycleGuard.ClearWordOpenXmlCache();
+				return AiHelper_5.CreateSuccess("HTML visual inserted into Word.", new
 				{
 					document = document.Name,
 					position = nmD1YFmls9(fardXZwHxs),
@@ -96,8 +96,8 @@ internal sealed class AiHelper_2
 					rangeEnd = inlineShape.Range.End,
 					visualName = text2,
 					widthPoints = hKqdqALOn1,
-					heightPoints = yPcdPKW6i5,
-					sourceHash = jNydvm1qyv,
+					heightPoints = double,
+					sourceHash = text,
 					inlineShapeType = inlineShape.Type.ToString(),
 					embedded = true
 				});
@@ -125,44 +125,44 @@ internal sealed class AiHelper_2
 		public static CallSite<Func<CallSite, object, int, object>> kxxdWPKgCB;
 	}
 
-	private readonly WordTableToolService4 Cow1Z1ymNA;
+	private readonly WordTableToolService4 _wordTableToolService4;
 
 	public AiHelper_2(AiTargetBinder P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		Cow1Z1ymNA = new WordTableToolService4(P_0);
+		SseStreamInitializer.InitializeRuntime();
+		_wordTableToolService4 = new WordTableToolService4(P_0);
 	}
 
 	public AiHelper_5 Uwp128MQKQ(string P_0, string P_1, int P_2, int P_3, double P_4, double P_5, string P_6, string P_7)
 	{
 		_G_c__DisplayClass2_0 CS_8_locals_25 = new _G_c__DisplayClass2_0();
 		CS_8_locals_25.fardXZwHxs = P_1;
-		CS_8_locals_25.k5DdFLjOTw = P_2;
-		CS_8_locals_25.IFMdhfe6pO = P_3;
+		CS_8_locals_25.value = P_2;
+		CS_8_locals_25.value = P_3;
 		CS_8_locals_25.TpddahokY1 = P_0;
 		CS_8_locals_25.hKqdqALOn1 = P_4;
-		CS_8_locals_25.yPcdPKW6i5 = P_5;
-		CS_8_locals_25.q2xdAyYwCH = P_6;
-		CS_8_locals_25.jNydvm1qyv = P_7;
+		CS_8_locals_25.double = P_5;
+		CS_8_locals_25.text = P_6;
+		CS_8_locals_25.text = P_7;
 		try
 		{
 			if (string.IsNullOrWhiteSpace(CS_8_locals_25.TpddahokY1) || !File.Exists(CS_8_locals_25.TpddahokY1))
 			{
 				throw new ArgumentException("HTML visual PNG file does not exist.", "imagePath");
 			}
-			if (CS_8_locals_25.hKqdqALOn1 <= 0.0 || CS_8_locals_25.yPcdPKW6i5 <= 0.0)
+			if (CS_8_locals_25.hKqdqALOn1 <= 0.0 || CS_8_locals_25.double <= 0.0)
 			{
 				throw new ArgumentException("HTML visual display size must be greater than zero.");
 			}
-			return Cow1Z1ymNA.MdXJlVhPku("create_html_visual", delegate(Application app)
+			return _wordTableToolService4.MdXJlVhPku("create_html_visual", delegate(Application app)
 			{
-				string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))
 				{
-					return WordAgentRuntimeGuard2.dclJSetxGY(text);
+					return WordAgentRuntimeGuard2.CreateNotReadyError(text);
 				}
-				Document document = DocumentLifecycleGuard.zrqujYgRXw(app);
-				Range range = no8143nY9C(app, document, CS_8_locals_25.fardXZwHxs, CS_8_locals_25.k5DdFLjOTw, CS_8_locals_25.IFMdhfe6pO);
+				Document document = DocumentLifecycleGuard.GetActiveDocument(app);
+				Range range = no8143nY9C(app, document, CS_8_locals_25.fardXZwHxs, CS_8_locals_25.value, CS_8_locals_25.value);
 				int start = range.Start;
 				InlineShape inlineShape = null;
 				try
@@ -184,8 +184,8 @@ internal sealed class AiHelper_2
 					}
 					_G_o__2.kxxdWPKgCB.Target(_G_o__2.kxxdWPKgCB, arg, 0);
 					inlineShape.Width = (float)CS_8_locals_25.hKqdqALOn1;
-					inlineShape.Height = (float)CS_8_locals_25.yPcdPKW6i5;
-					string text2 = (string.IsNullOrWhiteSpace(CS_8_locals_25.q2xdAyYwCH) ? "Insert HTML visual failed" : CS_8_locals_25.q2xdAyYwCH.Trim());
+					inlineShape.Height = (float)CS_8_locals_25.double;
+					string text2 = (string.IsNullOrWhiteSpace(CS_8_locals_25.text) ? "Insert HTML visual failed" : CS_8_locals_25.text.Trim());
 					try
 					{
 						inlineShape.Title = text2;
@@ -195,13 +195,13 @@ internal sealed class AiHelper_2
 					}
 					try
 					{
-						inlineShape.AlternativeText = "word_error" + text2 + "invalid_arguments" + (CS_8_locals_25.jNydvm1qyv ?? string.Empty);
+						inlineShape.AlternativeText = "word_error" + text2 + "invalid_arguments" + (CS_8_locals_25.text ?? string.Empty);
 					}
 					catch
 					{
 					}
-					DocumentLifecycleGuard.ySsuKsA6u8();
-					return AiHelper_5.nt99CvEC4m("HTML visual PNG file does not exist.", new
+					DocumentLifecycleGuard.ClearWordOpenXmlCache();
+					return AiHelper_5.CreateSuccess("HTML visual PNG file does not exist.", new
 					{
 						document = document.Name,
 						position = nmD1YFmls9(CS_8_locals_25.fardXZwHxs),
@@ -210,8 +210,8 @@ internal sealed class AiHelper_2
 						rangeEnd = inlineShape.Range.End,
 						visualName = text2,
 						widthPoints = CS_8_locals_25.hKqdqALOn1,
-						heightPoints = CS_8_locals_25.yPcdPKW6i5,
-						sourceHash = CS_8_locals_25.jNydvm1qyv,
+						heightPoints = CS_8_locals_25.double,
+						sourceHash = CS_8_locals_25.text,
 						inlineShapeType = inlineShape.Type.ToString(),
 						embedded = true
 					});
@@ -234,9 +234,9 @@ internal sealed class AiHelper_2
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("imagePath", ex);
+			AiConfigBootstrap.LogError("imagePath", ex);
 			Exception baseException = ex.GetBaseException();
-			return AiHelper_5.g7A9nYlk8v("HTML visual display size must be greater than zero.", (baseException is ArgumentException) ? "create_html_visual" : "[AI Tool][Word] Insert HTML visual failed.", ex);
+			return AiHelper_5.CreateExceptionError("HTML visual display size must be greater than zero.", (baseException is ArgumentException) ? "create_html_visual" : "[AI Tool][Word] Insert HTML visual failed.", ex);
 		}
 	}
 

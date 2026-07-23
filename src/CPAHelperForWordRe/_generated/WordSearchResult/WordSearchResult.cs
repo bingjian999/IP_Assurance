@@ -6,22 +6,22 @@ namespace WordSearchResult;
 internal sealed class WordSearchResult
 {
 	[CompilerGenerated]
-	private int? U60is1iBCr;
+	private int? _paragraphIndex;
 
 	[CompilerGenerated]
-	private int AaFilq7H85;
+	private int _rangeStart;
 
 	[CompilerGenerated]
-	private int y67iNqHv50;
+	private int _rangeEnd;
 
 	[CompilerGenerated]
 	private string fncimGsLsj;
 
 	[CompilerGenerated]
-	private string SfGio2yJ8P;
+	private string _paragraphText;
 
 	[CompilerGenerated]
-	private int MG1iGpraIR;
+	private int _paragraphTextCharacters;
 
 	[CompilerGenerated]
 	private bool lNHiCaRow4;
@@ -31,12 +31,12 @@ internal sealed class WordSearchResult
 		[CompilerGenerated]
 		get
 		{
-			return U60is1iBCr;
+			return _paragraphIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			U60is1iBCr = value;
+			_paragraphIndex = value;
 		}
 	}
 
@@ -45,12 +45,12 @@ internal sealed class WordSearchResult
 		[CompilerGenerated]
 		get
 		{
-			return AaFilq7H85;
+			return _rangeStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			AaFilq7H85 = value;
+			_rangeStart = value;
 		}
 	}
 
@@ -59,12 +59,12 @@ internal sealed class WordSearchResult
 		[CompilerGenerated]
 		get
 		{
-			return y67iNqHv50;
+			return _rangeEnd;
 		}
 		[CompilerGenerated]
 		set
 		{
-			y67iNqHv50 = value;
+			_rangeEnd = value;
 		}
 	}
 
@@ -87,12 +87,12 @@ internal sealed class WordSearchResult
 		[CompilerGenerated]
 		get
 		{
-			return SfGio2yJ8P;
+			return _paragraphText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			SfGio2yJ8P = value;
+			_paragraphText = value;
 		}
 	}
 
@@ -101,12 +101,12 @@ internal sealed class WordSearchResult
 		[CompilerGenerated]
 		get
 		{
-			return MG1iGpraIR;
+			return _paragraphTextCharacters;
 		}
 		[CompilerGenerated]
 		set
 		{
-			MG1iGpraIR = value;
+			_paragraphTextCharacters = value;
 		}
 	}
 
@@ -126,6 +126,6 @@ internal sealed class WordSearchResult
 
 	public WordSearchResult()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

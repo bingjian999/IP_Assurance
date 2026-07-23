@@ -15,66 +15,66 @@ internal class DesktopPinContextHelper : Form
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass23_0
 	{
-		public double rlkVZulA8uR;
+		public double double;
 
 		public DesktopPinContextHelper zkqVZDdaibO;
 
 		public _G_c__DisplayClass23_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void gC7VZ69pkvH(object _, EventArgs __)
 		{
-			zkqVZDdaibO.AVx5CX60a1(rlkVZulA8uR);
+			zkqVZDdaibO.AVx5CX60a1(double);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass23_1
 	{
-		public int e0cVZgZdIAo;
+		public int value;
 
-		public DesktopPinContextHelper QpYVZ8MF2tu;
+		public DesktopPinContextHelper desktopPinContextHelper;
 
 		public _G_c__DisplayClass23_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void rtUVZTmATRl(object _, EventArgs __)
 		{
-			QpYVZ8MF2tu.Opacity = (double)e0cVZgZdIAo / 100.0;
-			QpYVZ8MF2tu.Invalidate();
+			desktopPinContextHelper.Opacity = (double)value / 100.0;
+			desktopPinContextHelper.Invalidate();
 		}
 	}
 
-	private readonly Image frQ5k0l9su;
+	private readonly Image _image;
 
-	private readonly ContextMenuStrip Lf05xd11lG;
+	private readonly ContextMenuStrip _contextMenuStrip;
 
-	private readonly Timer t045du1tST;
+	private readonly Timer _timer;
 
-	private ToolStripMenuItem v3e5z0e5QX;
+	private ToolStripMenuItem _toolStripMenuItem;
 
-	private ToolStripMenuItem wn9cRR8rno;
+	private ToolStripMenuItem _toolStripMenuItem;
 
 	private bool iJncVAFqx1;
 
 	private Point hdWcBtSmSo;
 
-	private double Ciwc9Rlkmj;
+	private double _double;
 
-	private bool v8Uc6NclOg;
+	private bool _bool;
 
-	private string p7dcuDlGpl;
+	private string _string;
 
 	public DesktopPinContextHelper(Image P_0, Point? P_1 = null, double P_2 = 1.0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		v8Uc6NclOg = true;
-		frQ5k0l9su = P_0 ?? throw new ArgumentNullException("image");
-		Ciwc9Rlkmj = vxZ5yKGr8m(P_2);
+		SseStreamInitializer.InitializeRuntime();
+		_bool = true;
+		_image = P_0 ?? throw new ArgumentNullException("image");
+		_double = vxZ5yKGr8m(P_2);
 		Font = new Font("Microsoft YaHei UI", 9f);
 		base.FormBorderStyle = FormBorderStyle.None;
 		base.KeyPreview = true;
@@ -90,13 +90,13 @@ internal class DesktopPinContextHelper : Form
 		{
 			base.Location = P_1.Value;
 		}
-		Lf05xd11lG = gnZ5sArDPc();
-		ContextMenuStrip = Lf05xd11lG;
-		t045du1tST = new Timer
+		_contextMenuStrip = gnZ5sArDPc();
+		ContextMenuStrip = _contextMenuStrip;
+		_timer = new Timer
 		{
 			Interval = 1000
 		};
-		t045du1tST.Tick += JFo5FdcSkH;
+		_timer.Tick += JFo5FdcSkH;
 		base.DoubleClick += delegate
 		{
 			Close();
@@ -141,16 +141,16 @@ internal class DesktopPinContextHelper : Form
 		}
 		else if (P_1.Control && P_1.KeyCode == Keys.B)
 		{
-			NIp5pEGFUW(!v8Uc6NclOg);
+			NIp5pEGFUW(!_bool);
 		}
 	}
 
 	private void Ybr5bphpiG(object P_0, FormClosedEventArgs P_1)
 	{
-		t045du1tST.Stop();
-		t045du1tST.Dispose();
-		Lf05xd11lG.Dispose();
-		frQ5k0l9su.Dispose();
+		_timer.Stop();
+		_timer.Dispose();
+		_contextMenuStrip.Dispose();
+		_image.Dispose();
 	}
 
 	protected override void OnPaint(PaintEventArgs P_0)
@@ -161,8 +161,8 @@ internal class DesktopPinContextHelper : Form
 		P_0.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 		P_0.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 		P_0.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-		P_0.Graphics.DrawImage(frQ5k0l9su, rect);
-		if (v8Uc6NclOg)
+		P_0.Graphics.DrawImage(_image, rect);
+		if (_bool)
 		{
 			using Pen pen = new Pen(Color.Gray, 2f);
 			P_0.Graphics.DrawRectangle(pen, rect);
@@ -245,15 +245,15 @@ internal class DesktopPinContextHelper : Form
 		toolStripMenuItem3.DropDownItems.Add(toolStripMenuItem4);
 		toolStripMenuItem3.DropDownItems.Add(new ToolStripSeparator());
 		double[] array = new double[7] { 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0 };
-		foreach (double rlkVZulA8uR in array)
+		foreach (double double in array)
 		{
 			_G_c__DisplayClass23_0 CS_8_locals_9 = new _G_c__DisplayClass23_0();
 			CS_8_locals_9.zkqVZDdaibO = this;
-			CS_8_locals_9.rlkVZulA8uR = rlkVZulA8uR;
-			ToolStripMenuItem toolStripMenuItem5 = new ToolStripMenuItem(string.Format("{0}%", (int)(CS_8_locals_9.rlkVZulA8uR * 100.0)));
+			CS_8_locals_9.double = double;
+			ToolStripMenuItem toolStripMenuItem5 = new ToolStripMenuItem(string.Format("{0}%", (int)(CS_8_locals_9.double * 100.0)));
 			toolStripMenuItem5.Click += delegate
 			{
-				CS_8_locals_9.zkqVZDdaibO.AVx5CX60a1(CS_8_locals_9.rlkVZulA8uR);
+				CS_8_locals_9.zkqVZDdaibO.AVx5CX60a1(CS_8_locals_9.double);
 			};
 			toolStripMenuItem3.DropDownItems.Add(toolStripMenuItem5);
 		}
@@ -263,31 +263,31 @@ internal class DesktopPinContextHelper : Form
 		for (int num2 = 10; num2 <= 100; num2 += 10)
 		{
 			_G_c__DisplayClass23_1 CS_8_locals_12 = new _G_c__DisplayClass23_1();
-			CS_8_locals_12.QpYVZ8MF2tu = this;
-			CS_8_locals_12.e0cVZgZdIAo = num2;
-			ToolStripMenuItem toolStripMenuItem7 = new ToolStripMenuItem(string.Format("{0}%", CS_8_locals_12.e0cVZgZdIAo));
+			CS_8_locals_12.desktopPinContextHelper = this;
+			CS_8_locals_12.value = num2;
+			ToolStripMenuItem toolStripMenuItem7 = new ToolStripMenuItem(string.Format("{0}%", CS_8_locals_12.value));
 			toolStripMenuItem7.Click += delegate
 			{
-				CS_8_locals_12.QpYVZ8MF2tu.Opacity = (double)CS_8_locals_12.e0cVZgZdIAo / 100.0;
-				CS_8_locals_12.QpYVZ8MF2tu.Invalidate();
+				CS_8_locals_12.desktopPinContextHelper.Opacity = (double)CS_8_locals_12.value / 100.0;
+				CS_8_locals_12.desktopPinContextHelper.Invalidate();
 			};
 			toolStripMenuItem6.DropDownItems.Add(toolStripMenuItem7);
 		}
 		contextMenuStrip.Items.Add(toolStripMenuItem6);
 		contextMenuStrip.Items.Add(new ToolStripSeparator());
 		ToolStripMenuItem toolStripMenuItem8 = new ToolStripMenuItem("边框");
-		v3e5z0e5QX = new ToolStripMenuItem("显示边框");
-		v3e5z0e5QX.Click += delegate
+		_toolStripMenuItem = new ToolStripMenuItem("显示边框");
+		_toolStripMenuItem.Click += delegate
 		{
 			NIp5pEGFUW( true);
 		};
-		wn9cRR8rno = new ToolStripMenuItem("隐藏边框");
-		wn9cRR8rno.Click += delegate
+		_toolStripMenuItem = new ToolStripMenuItem("隐藏边框");
+		_toolStripMenuItem.Click += delegate
 		{
 			NIp5pEGFUW( false);
 		};
-		toolStripMenuItem8.DropDownItems.Add(v3e5z0e5QX);
-		toolStripMenuItem8.DropDownItems.Add(wn9cRR8rno);
+		toolStripMenuItem8.DropDownItems.Add(_toolStripMenuItem);
+		toolStripMenuItem8.DropDownItems.Add(_toolStripMenuItem);
 		contextMenuStrip.Items.Add(toolStripMenuItem8);
 		contextMenuStrip.Items.Add(new ToolStripSeparator());
 		ToolStripMenuItem toolStripMenuItem9 = new ToolStripMenuItem("操作说明");
@@ -327,7 +327,7 @@ internal class DesktopPinContextHelper : Form
 	{
 		try
 		{
-			Clipboard.SetImage(frQ5k0l9su);
+			Clipboard.SetImage(_image);
 		}
 		catch (Exception ex)
 		{
@@ -347,7 +347,7 @@ internal class DesktopPinContextHelper : Form
 		}
 		try
 		{
-			frQ5k0l9su.Save(saveFileDialog.FileName, vxK5m4IL5D(saveFileDialog.FileName));
+			_image.Save(saveFileDialog.FileName, vxK5m4IL5D(saveFileDialog.FileName));
 			MessageBox.Show(this, "保存成功。", "IP_Assurance", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 		}
 		catch (Exception ex)
@@ -372,8 +372,8 @@ internal class DesktopPinContextHelper : Form
 
 	private void Rv65onvxdk(double P_0, Point P_1)
 	{
-		double num = vxZ5yKGr8m(Ciwc9Rlkmj + P_0);
-		if (!(Math.Abs(num - Ciwc9Rlkmj) < 0.001))
+		double num = vxZ5yKGr8m(_double + P_0);
+		if (!(Math.Abs(num - _double) < 0.001))
 		{
 			Rectangle rectangle = NSp57mPLhM();
 			Point point = PointToScreen(P_1);
@@ -381,12 +381,12 @@ internal class DesktopPinContextHelper : Form
 			double val2 = ((rectangle.Height > 0) ? ((double)(P_1.Y - rectangle.Y) / (double)rectangle.Height) : 0.5);
 			val = Math.Max(0.0, Math.Min(1.0, val));
 			val2 = Math.Max(0.0, Math.Min(1.0, val2));
-			Ciwc9Rlkmj = num;
+			_double = num;
 			Size size = ItL5nwIcAP();
 			Rectangle rectangle2 = Yfh55ZW0I6(size);
 			base.ClientSize = size;
 			base.Location = new Point(point.X - (int)Math.Round((double)rectangle2.X + (double)rectangle2.Width * val), point.Y - (int)Math.Round((double)rectangle2.Y + (double)rectangle2.Height * val2));
-			PeS5Xuey1N(string.Format("缩放: {0}%", (int)Math.Round(Ciwc9Rlkmj * 100.0)));
+			PeS5Xuey1N(string.Format("缩放: {0}%", (int)Math.Round(_double * 100.0)));
 			Invalidate();
 		}
 	}
@@ -398,19 +398,19 @@ internal class DesktopPinContextHelper : Form
 
 	private void AVx5CX60a1(double P_0)
 	{
-		Ciwc9Rlkmj = vxZ5yKGr8m(P_0);
+		_double = vxZ5yKGr8m(P_0);
 		FHT5O4ouqE();
 		Invalidate();
 	}
 
 	private void NIp5pEGFUW(bool P_0)
 	{
-		if (v8Uc6NclOg != P_0)
+		if (_bool != P_0)
 		{
-			v8Uc6NclOg = P_0;
+			_bool = P_0;
 			FHT5O4ouqE();
 			Y6W5ea9aYR();
-			PeS5Xuey1N(v8Uc6NclOg ? "已隐藏边框" : "已显示边框");
+			PeS5Xuey1N(_bool ? "已隐藏边框" : "已显示边框");
 			Invalidate();
 		}
 	}
@@ -422,9 +422,9 @@ internal class DesktopPinContextHelper : Form
 
 	private Size ItL5nwIcAP()
 	{
-		int num = (v8Uc6NclOg ? 4 : 0);
-		int num2 = Math.Max(1, (int)Math.Round((double)frQ5k0l9su.Width * Ciwc9Rlkmj));
-		int num3 = Math.Max(1, (int)Math.Round((double)frQ5k0l9su.Height * Ciwc9Rlkmj));
+		int num = (_bool ? 4 : 0);
+		int num2 = Math.Max(1, (int)Math.Round((double)_image.Width * _double));
+		int num3 = Math.Max(1, (int)Math.Round((double)_image.Height * _double));
 		return new Size(num2 + num, num3 + num);
 	}
 
@@ -435,21 +435,21 @@ internal class DesktopPinContextHelper : Form
 
 	private Rectangle Yfh55ZW0I6(Size P_0)
 	{
-		int num = (v8Uc6NclOg ? 2 : 0);
+		int num = (_bool ? 2 : 0);
 		return new Rectangle(num, num, Math.Max(1, P_0.Width - num * 2), Math.Max(1, P_0.Height - num * 2));
 	}
 
 	private string nTD5cAMJI9()
 	{
-		return p7dcuDlGpl;
+		return _string;
 	}
 
 	private void Y6W5ea9aYR()
 	{
-		if (v3e5z0e5QX != null && wn9cRR8rno != null)
+		if (_toolStripMenuItem != null && _toolStripMenuItem != null)
 		{
-			v3e5z0e5QX.Checked = v8Uc6NclOg;
-			wn9cRR8rno.Checked = !v8Uc6NclOg;
+			_toolStripMenuItem.Checked = _bool;
+			_toolStripMenuItem.Checked = !_bool;
 		}
 	}
 
@@ -460,15 +460,15 @@ internal class DesktopPinContextHelper : Form
 
 	private void PeS5Xuey1N(string P_0)
 	{
-		p7dcuDlGpl = P_0;
-		t045du1tST.Stop();
-		t045du1tST.Start();
+		_string = P_0;
+		_timer.Stop();
+		_timer.Start();
 	}
 
 	private void JFo5FdcSkH(object P_0, EventArgs P_1)
 	{
-		t045du1tST.Stop();
-		p7dcuDlGpl = null;
+		_timer.Stop();
+		_string = null;
 		Invalidate();
 	}
 

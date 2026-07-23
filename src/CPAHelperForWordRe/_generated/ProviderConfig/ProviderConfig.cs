@@ -13,34 +13,34 @@ namespace ProviderConfig;
 internal sealed class ProviderConfig
 {
 	[CompilerGenerated]
-	private string iUCtAH02WK;
+	private string _webUrl;
 
 	[CompilerGenerated]
 	private AiHelper_8 VHjtvPHku3;
 
 	[CompilerGenerated]
-	private List<AiProviderConfig> sVotWsIL6U;
+	private List<AiProviderConfig> _providers;
 
 	[CompilerGenerated]
-	private int EBCt0TZyy8;
+	private int _activeProviderIndex;
 
 	[CompilerGenerated]
-	private Helper_23 n1ZtkSy3m4;
+	private Helper_23 _intranet;
 
 	[CompilerGenerated]
-	private AiHelper_9 d3ktx5jnwX;
+	private AiHelper_9 _summary;
 
 	public string WebUrl
 	{
 		[CompilerGenerated]
 		get
 		{
-			return iUCtAH02WK;
+			return _webUrl;
 		}
 		[CompilerGenerated]
 		set
 		{
-			iUCtAH02WK = value;
+			_webUrl = value;
 		}
 	}
 
@@ -63,12 +63,12 @@ internal sealed class ProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return sVotWsIL6U;
+			return _providers;
 		}
 		[CompilerGenerated]
 		set
 		{
-			sVotWsIL6U = value;
+			_providers = value;
 		}
 	}
 
@@ -77,12 +77,12 @@ internal sealed class ProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return EBCt0TZyy8;
+			return _activeProviderIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			EBCt0TZyy8 = value;
+			_activeProviderIndex = value;
 		}
 	}
 
@@ -91,12 +91,12 @@ internal sealed class ProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return n1ZtkSy3m4;
+			return _intranet;
 		}
 		[CompilerGenerated]
 		set
 		{
-			n1ZtkSy3m4 = value;
+			_intranet = value;
 		}
 	}
 
@@ -105,22 +105,22 @@ internal sealed class ProviderConfig
 		[CompilerGenerated]
 		get
 		{
-			return d3ktx5jnwX;
+			return _summary;
 		}
 		[CompilerGenerated]
 		set
 		{
-			d3ktx5jnwX = value;
+			_summary = value;
 		}
 	}
 
-	public void SH0tq5ryQE()
+	public void Initialize()
 	{
 		Runtime = Runtime ?? new AiHelper_8();
 		Providers = Providers ?? new List<AiProviderConfig>();
 		Intranet = Intranet ?? new Helper_23();
 		Summary = Summary ?? new AiHelper_9();
-		Intranet.fb6LEfM5qk();
+		Intranet.EnsureDefaults();
 		Summary.qBDLf9An1g();
 		if (Providers.Count == 0)
 		{
@@ -171,11 +171,11 @@ internal sealed class ProviderConfig
 
 	public ProviderConfig()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		iUCtAH02WK = "";
+		SseStreamInitializer.InitializeRuntime();
+		_webUrl = "";
 		VHjtvPHku3 = new AiHelper_8();
-		sVotWsIL6U = new List<AiProviderConfig>();
-		n1ZtkSy3m4 = new Helper_23();
-		d3ktx5jnwX = new AiHelper_9();
+		_providers = new List<AiProviderConfig>();
+		_intranet = new Helper_23();
+		_summary = new AiHelper_9();
 	}
 }

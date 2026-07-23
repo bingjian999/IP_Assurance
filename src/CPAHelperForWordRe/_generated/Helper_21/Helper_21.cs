@@ -9,7 +9,7 @@ internal static class Helper_21
 	{
 		get
 		{
-			if (!IntranetAiConfigService.Instance.Nju6iKu8Ci().IsIntranetEnvironment)
+			if (!IntranetAiConfigService.Instance.GetConfig().IsIntranetEnvironment)
 			{
 				return "IP_Assurance in Word";
 			}

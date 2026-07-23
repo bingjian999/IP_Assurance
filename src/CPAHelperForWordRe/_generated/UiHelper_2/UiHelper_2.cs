@@ -7,15 +7,15 @@ namespace UiHelper_2;
 
 internal sealed class UiHelper_2 : Helper_2
 {
-	private string kBAoRK7Vi3;
+	private string _horizontalValue;
 
-	private string bHLoV0F0pN;
+	private string _verticalValue;
 
 	[CompilerGenerated]
 	private readonly string NDFoBgJNOB;
 
 	[CompilerGenerated]
-	private readonly string BRYo9Qnwe8;
+	private readonly string _string;
 
 	public string Key
 	{
@@ -31,7 +31,7 @@ internal sealed class UiHelper_2 : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return BRYo9Qnwe8;
+			return _string;
 		}
 	}
 
@@ -39,11 +39,11 @@ internal sealed class UiHelper_2 : Helper_2
 	{
 		get
 		{
-			return kBAoRK7Vi3;
+			return _horizontalValue;
 		}
 		set
 		{
-			MrCsWWMvwp(ref kBAoRK7Vi3, value, "HorizontalValue");
+			MrCsWWMvwp(ref _horizontalValue, value, "HorizontalValue");
 		}
 	}
 
@@ -51,18 +51,18 @@ internal sealed class UiHelper_2 : Helper_2
 	{
 		get
 		{
-			return bHLoV0F0pN;
+			return _verticalValue;
 		}
 		set
 		{
-			MrCsWWMvwp(ref bHLoV0F0pN, value, "VerticalValue");
+			MrCsWWMvwp(ref _verticalValue, value, "VerticalValue");
 		}
 	}
 
 	public UiHelper_2(string P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		NDFoBgJNOB = P_0;
-		BRYo9Qnwe8 = P_0 + "：";
+		_string = P_0 + "：";
 	}
 }

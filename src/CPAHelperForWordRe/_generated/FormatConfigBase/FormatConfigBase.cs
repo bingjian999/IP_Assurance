@@ -11,28 +11,28 @@ namespace FormatConfigBase;
 internal sealed class FormatConfigBase
 {
 	[CompilerGenerated]
-	private string Ji9wlrhbTG;
+	private string _sourceConfigPath;
 
 	[CompilerGenerated]
 	private Dictionary<string, object> twIwN2awoR;
 
 	[CompilerGenerated]
-	private List<Helper_24> XLdwm7wdJt;
+	private List<Helper_24> _paragraphPresetFiles;
 
 	[CompilerGenerated]
-	private List<Helper_24> w4vwoTTKUt;
+	private List<Helper_24> _tablePresetFiles;
 
 	public string SourceConfigPath
 	{
 		[CompilerGenerated]
 		get
 		{
-			return Ji9wlrhbTG;
+			return _sourceConfigPath;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Ji9wlrhbTG = value;
+			_sourceConfigPath = value;
 		}
 	}
 
@@ -55,12 +55,12 @@ internal sealed class FormatConfigBase
 		[CompilerGenerated]
 		get
 		{
-			return XLdwm7wdJt;
+			return _paragraphPresetFiles;
 		}
 		[CompilerGenerated]
 		set
 		{
-			XLdwm7wdJt = value;
+			_paragraphPresetFiles = value;
 		}
 	}
 
@@ -69,12 +69,12 @@ internal sealed class FormatConfigBase
 		[CompilerGenerated]
 		get
 		{
-			return w4vwoTTKUt;
+			return _tablePresetFiles;
 		}
 		[CompilerGenerated]
 		set
 		{
-			w4vwoTTKUt = value;
+			_tablePresetFiles = value;
 		}
 	}
 
@@ -106,10 +106,10 @@ internal sealed class FormatConfigBase
 
 	public FormatConfigBase()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		Ji9wlrhbTG = string.Empty;
+		SseStreamInitializer.InitializeRuntime();
+		_sourceConfigPath = string.Empty;
 		twIwN2awoR = new Dictionary<string, object>(StringComparer.Ordinal);
-		XLdwm7wdJt = new List<Helper_24>();
-		w4vwoTTKUt = new List<Helper_24>();
+		_paragraphPresetFiles = new List<Helper_24>();
+		_tablePresetFiles = new List<Helper_24>();
 	}
 }

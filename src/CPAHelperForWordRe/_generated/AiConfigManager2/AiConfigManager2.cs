@@ -33,6 +33,6 @@ internal sealed class AiConfigManager2 : IAgentInstructionBuilder, IAgentRuntime
 
 	public AiConfigManager2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

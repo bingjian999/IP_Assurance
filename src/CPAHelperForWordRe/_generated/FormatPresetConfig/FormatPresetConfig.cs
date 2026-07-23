@@ -31,66 +31,66 @@ internal sealed class FormatPresetConfig : Helper_2
 		public Dictionary<string, string> JaJV2wnEdlA;
 	}
 
-	private readonly ConfigHelper_1 yQQNd0wXRg;
+	private readonly ConfigHelper_1 _configHelper_1;
 
-	private readonly HDS8hJGbnCWyNGfO01j pkKNzOr6LG;
+	private readonly HDS8hJGbnCWyNGfO01j _hDS8hJGbnCWyNGfO01j;
 
-	private bool RMtmRY12mx;
+	private bool _bool;
 
 	private string lBCmVvFJW1;
 
 	private string lvSmBtqVbD;
 
-	private string yn0m94hKbc;
+	private string _bottomPadding;
 
-	private string LRRm6GJjZc;
+	private string _leftPadding;
 
 	private string LOnmuvqlNR;
 
-	private string q5gmDGwQab;
+	private string _rowHeight;
 
-	private string xeXmTiV9oo;
+	private string _widthMode;
 
-	private string eWfmg5QVHT;
+	private string _maxColumnWidth;
 
-	private string qRTm8EPoIW;
+	private string _chineseFont;
 
 	private string rTmmIkKnjo;
 
-	private string gcCmiV6cbg;
+	private string _fontSize;
 
-	private string x6qmHNANFi;
+	private string _lineSpacingRule;
 
 	private string UngmQPZX68;
 
-	private string LWYm1RkllA;
+	private string _spacingUnit;
 
-	private string c3smrV1DxY;
+	private string _spaceBefore;
 
-	private string cPnmJcv99d;
+	private string _spaceAfter;
 
-	private bool SPxm3K29gl;
+	private bool _headerBold;
 
 	private bool pSCmUXAujA;
 
-	private bool b5rmKWR3ab;
+	private bool _summaryUnderlineIncludesText;
 
-	private bool tsVmEAU2a6;
+	private bool _totalBold;
 
-	private bool y9tm2Ru4Ul;
+	private bool _summaryBoldIncludesText;
 
-	private bool FD5m42lnbF;
+	private bool _subtotalBold;
 
 	private string lxbmjAhYOJ;
 
-	private string GV0mYEIRys;
+	private string _totalUnderline;
 
-	private string H3wmZp6A9e;
+	private string _subtotalUnderline;
 
-	private string v6amfDoirJ;
+	private string _headerColorValue;
 
 	[CompilerGenerated]
-	private Action ArZmM2P3y7;
+	private Action _action;
 
 	[CompilerGenerated]
 	private Action RlvmbRoGbi;
@@ -138,31 +138,31 @@ internal sealed class FormatPresetConfig : Helper_2
 	private readonly ObservableCollection<UiHelper_2> vZgmnXFbbI;
 
 	[CompilerGenerated]
-	private readonly ICommand tomm7DBPfh;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand IhVm5xUNLe;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand JY8mcSWuME;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand QvBmes1bFF;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
 	private readonly ICommand UUSmyMNmVS;
 
 	[CompilerGenerated]
-	private readonly ICommand G02mXu6PhS;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
 	private readonly ICommand bUWmFMuVAY;
 
 	[CompilerGenerated]
-	private readonly ICommand z15mhuUrcG;
+	private readonly ICommand _iCommand;
 
 	[CompilerGenerated]
-	private readonly ICommand fqVmaPE7FN;
+	private readonly ICommand _iCommand;
 
 	public ObservableCollection<string> PresetNames
 	{
@@ -295,7 +295,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return tomm7DBPfh;
+			return _iCommand;
 		}
 	}
 
@@ -304,7 +304,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return IhVm5xUNLe;
+			return _iCommand;
 		}
 	}
 
@@ -313,7 +313,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return JY8mcSWuME;
+			return _iCommand;
 		}
 	}
 
@@ -322,7 +322,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return QvBmes1bFF;
+			return _iCommand;
 		}
 	}
 
@@ -340,7 +340,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return G02mXu6PhS;
+			return _iCommand;
 		}
 	}
 
@@ -358,7 +358,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return z15mhuUrcG;
+			return _iCommand;
 		}
 	}
 
@@ -367,7 +367,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return fqVmaPE7FN;
+			return _iCommand;
 		}
 	}
 
@@ -379,24 +379,24 @@ internal sealed class FormatPresetConfig : Helper_2
 		}
 		set
 		{
-			if (RMtmRY12mx || string.IsNullOrWhiteSpace(value) || string.Equals(lBCmVvFJW1, value, StringComparison.Ordinal))
+			if (_bool || string.IsNullOrWhiteSpace(value) || string.Equals(lBCmVvFJW1, value, StringComparison.Ordinal))
 			{
 				return;
 			}
 			try
 			{
-				if (!yQQNd0wXRg.haGSSyJWCc(value))
+				if (!_configHelper_1.haGSSyJWCc(value))
 				{
 					fpVsxno8nm("SelectedPreset");
 					return;
 				}
 				lBCmVvFJW1 = value;
 				fpVsxno8nm("SelectedPreset");
-				HchNCvEEG9(yQQNd0wXRg.COQStnlspT(value));
+				HchNCvEEG9(_configHelper_1.COQStnlspT(value));
 			}
 			catch (Exception ex)
 			{
-				pkKNzOr6LG.ULjVLJjCx1c("切换表格方案失败：" + ex.Message, "IP_Assurance");
+				_hDS8hJGbnCWyNGfO01j.LogDebugMessage("切换表格方案失败：" + ex.Message, "IP_Assurance");
 			}
 		}
 	}
@@ -417,11 +417,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return yn0m94hKbc;
+			return _bottomPadding;
 		}
 		set
 		{
-			MrCsWWMvwp(ref yn0m94hKbc, value, "BottomPadding");
+			MrCsWWMvwp(ref _bottomPadding, value, "BottomPadding");
 		}
 	}
 
@@ -429,11 +429,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return LRRm6GJjZc;
+			return _leftPadding;
 		}
 		set
 		{
-			MrCsWWMvwp(ref LRRm6GJjZc, value, "LeftPadding");
+			MrCsWWMvwp(ref _leftPadding, value, "LeftPadding");
 		}
 	}
 
@@ -453,11 +453,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return q5gmDGwQab;
+			return _rowHeight;
 		}
 		set
 		{
-			MrCsWWMvwp(ref q5gmDGwQab, value, "RowHeight");
+			MrCsWWMvwp(ref _rowHeight, value, "RowHeight");
 		}
 	}
 
@@ -465,11 +465,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return xeXmTiV9oo;
+			return _widthMode;
 		}
 		set
 		{
-			if (MrCsWWMvwp(ref xeXmTiV9oo, sonNFtgWGK(value), "WidthMode"))
+			if (MrCsWWMvwp(ref _widthMode, sonNFtgWGK(value), "WidthMode"))
 			{
 				fpVsxno8nm("IsMaxColumnWidthEnabled");
 			}
@@ -480,11 +480,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return eWfmg5QVHT;
+			return _maxColumnWidth;
 		}
 		set
 		{
-			MrCsWWMvwp(ref eWfmg5QVHT, value, "MaxColumnWidth");
+			MrCsWWMvwp(ref _maxColumnWidth, value, "MaxColumnWidth");
 		}
 	}
 
@@ -494,11 +494,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return qRTm8EPoIW;
+			return _chineseFont;
 		}
 		set
 		{
-			MrCsWWMvwp(ref qRTm8EPoIW, value, "ChineseFont");
+			MrCsWWMvwp(ref _chineseFont, value, "ChineseFont");
 		}
 	}
 
@@ -518,11 +518,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return gcCmiV6cbg;
+			return _fontSize;
 		}
 		set
 		{
-			MrCsWWMvwp(ref gcCmiV6cbg, value, "FontSize");
+			MrCsWWMvwp(ref _fontSize, value, "FontSize");
 		}
 	}
 
@@ -530,11 +530,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return x6qmHNANFi;
+			return _lineSpacingRule;
 		}
 		set
 		{
-			if (MrCsWWMvwp(ref x6qmHNANFi, value, "LineSpacingRule"))
+			if (MrCsWWMvwp(ref _lineSpacingRule, value, "LineSpacingRule"))
 			{
 				fpVsxno8nm("LineSpacingLabel");
 				fpVsxno8nm("IsLineSpacingValueEnabled");
@@ -558,11 +558,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return LWYm1RkllA;
+			return _spacingUnit;
 		}
 		set
 		{
-			MrCsWWMvwp(ref LWYm1RkllA, value, "SpacingUnit");
+			MrCsWWMvwp(ref _spacingUnit, value, "SpacingUnit");
 		}
 	}
 
@@ -570,11 +570,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return c3smrV1DxY;
+			return _spaceBefore;
 		}
 		set
 		{
-			MrCsWWMvwp(ref c3smrV1DxY, value, "SpaceBefore");
+			MrCsWWMvwp(ref _spaceBefore, value, "SpaceBefore");
 		}
 	}
 
@@ -582,11 +582,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return cPnmJcv99d;
+			return _spaceAfter;
 		}
 		set
 		{
-			MrCsWWMvwp(ref cPnmJcv99d, value, "SpaceAfter");
+			MrCsWWMvwp(ref _spaceAfter, value, "SpaceAfter");
 		}
 	}
 
@@ -594,11 +594,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return SPxm3K29gl;
+			return _headerBold;
 		}
 		set
 		{
-			MrCsWWMvwp(ref SPxm3K29gl, value, "HeaderBold");
+			MrCsWWMvwp(ref _headerBold, value, "HeaderBold");
 		}
 	}
 
@@ -630,11 +630,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return GV0mYEIRys;
+			return _totalUnderline;
 		}
 		set
 		{
-			MrCsWWMvwp(ref GV0mYEIRys, value, "TotalUnderline");
+			MrCsWWMvwp(ref _totalUnderline, value, "TotalUnderline");
 		}
 	}
 
@@ -642,11 +642,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return H3wmZp6A9e;
+			return _subtotalUnderline;
 		}
 		set
 		{
-			MrCsWWMvwp(ref H3wmZp6A9e, value, "SubtotalUnderline");
+			MrCsWWMvwp(ref _subtotalUnderline, value, "SubtotalUnderline");
 		}
 	}
 
@@ -654,11 +654,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return b5rmKWR3ab;
+			return _summaryUnderlineIncludesText;
 		}
 		set
 		{
-			MrCsWWMvwp(ref b5rmKWR3ab, value, "SummaryUnderlineIncludesText");
+			MrCsWWMvwp(ref _summaryUnderlineIncludesText, value, "SummaryUnderlineIncludesText");
 		}
 	}
 
@@ -666,11 +666,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return tsVmEAU2a6;
+			return _totalBold;
 		}
 		set
 		{
-			MrCsWWMvwp(ref tsVmEAU2a6, value, "TotalBold");
+			MrCsWWMvwp(ref _totalBold, value, "TotalBold");
 		}
 	}
 
@@ -678,11 +678,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return y9tm2Ru4Ul;
+			return _summaryBoldIncludesText;
 		}
 		set
 		{
-			MrCsWWMvwp(ref y9tm2Ru4Ul, value, "SummaryBoldIncludesText");
+			MrCsWWMvwp(ref _summaryBoldIncludesText, value, "SummaryBoldIncludesText");
 		}
 	}
 
@@ -690,11 +690,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return FD5m42lnbF;
+			return _subtotalBold;
 		}
 		set
 		{
-			MrCsWWMvwp(ref FD5m42lnbF, value, "SubtotalBold");
+			MrCsWWMvwp(ref _subtotalBold, value, "SubtotalBold");
 		}
 	}
 
@@ -702,11 +702,11 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		get
 		{
-			return v6amfDoirJ;
+			return _headerColorValue;
 		}
 		set
 		{
-			if (MrCsWWMvwp(ref v6amfDoirJ, value, "HeaderColorValue"))
+			if (MrCsWWMvwp(ref _headerColorValue, value, "HeaderColorValue"))
 			{
 				fpVsxno8nm("HeaderColorText");
 				fpVsxno8nm("HeaderColorBrush");
@@ -768,13 +768,13 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	public FormatPresetConfig(HDS8hJGbnCWyNGfO01j P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		yQQNd0wXRg = new ConfigHelper_1("表格预设");
-		v6amfDoirJ = "-16777216";
+		SseStreamInitializer.InitializeRuntime();
+		_configHelper_1 = new ConfigHelper_1("表格预设");
+		_headerColorValue = "-16777216";
 		VGNmSO6Hlg = new ObservableCollection<string>();
 		GoGmOKiS63 = new ObservableCollection<RibbonMenuItem>();
 		vZgmnXFbbI = new ObservableCollection<UiHelper_2>();
-		pkKNzOr6LG = P_0 ?? throw new ArgumentNullException("dialogs");
+		_hDS8hJGbnCWyNGfO01j = P_0 ?? throw new ArgumentNullException("dialogs");
 		pKnmw78MJc = new ObservableCollection<string>(new string[9]
 		{
 			"宋体",
@@ -799,23 +799,23 @@ internal sealed class FormatPresetConfig : Helper_2
 		w8ymC0CB32 = BAiNsYbegG(("无", "0"), ("单下划线", "1"), ("双下划线", "3"));
 		mSAmpOS99K = BAiNsYbegG(("首行优先", "首行"), ("首列优先", "首列"));
 		SPhNl4gZtt();
-		tomm7DBPfh = new DelegateCommand(Oo6Nnxg7FW);
-		IhVm5xUNLe = new DelegateCommand(v3tN7yQU9v);
-		JY8mcSWuME = new DelegateCommand(f2JN5t390X);
-		QvBmes1bFF = new DelegateCommand(qZDNc8B8of);
+		_iCommand = new DelegateCommand(Oo6Nnxg7FW);
+		_iCommand = new DelegateCommand(v3tN7yQU9v);
+		_iCommand = new DelegateCommand(f2JN5t390X);
+		_iCommand = new DelegateCommand(qZDNc8B8of);
 		UUSmyMNmVS = new DelegateCommand(cxfNejZcGA);
-		G02mXu6PhS = new DelegateCommand((Action)delegate
+		_iCommand = new DelegateCommand((Action)delegate
 		{
 			HeaderColorValue = "SelectedPreset";
 		}, (Func<bool>)null);
 		bUWmFMuVAY = new DelegateCommand(CmaNyetNlS);
-		z15mhuUrcG = new DelegateCommand((Action)delegate
+		_iCommand = new DelegateCommand((Action)delegate
 		{
 			RlvmbRoGbi?.Invoke();
 		}, (Func<bool>)null);
-		fqVmaPE7FN = new DelegateCommand((Action)delegate
+		_iCommand = new DelegateCommand((Action)delegate
 		{
-			ArZmM2P3y7?.Invoke();
+			_action?.Invoke();
 		}, (Func<bool>)null);
 		YIaNmkmpjo();
 		AeiNGYhXCg();
@@ -825,13 +825,13 @@ internal sealed class FormatPresetConfig : Helper_2
 	[CompilerGenerated]
 	public void BBoNAij429(Action P_0)
 	{
-		Action action = ArZmM2P3y7;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Combine(action2, P_0);
-			action = Interlocked.CompareExchange(ref ArZmM2P3y7, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -840,13 +840,13 @@ internal sealed class FormatPresetConfig : Helper_2
 	[CompilerGenerated]
 	public void X7CNvN0M4s(Action P_0)
 	{
-		Action action = ArZmM2P3y7;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Remove(action2, P_0);
-			action = Interlocked.CompareExchange(ref ArZmM2P3y7, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -915,34 +915,34 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	private void YIaNmkmpjo()
 	{
-		string text = TableBorderConfig.Current.KxPSXHwy4c("表格配置_方案名", string.Empty).Trim();
-		string text2 = ((!string.IsNullOrWhiteSpace(text) && yQQNd0wXRg.haGSSyJWCc(text)) ? text : yQQNd0wXRg.ExsSbMHeGd().FirstOrDefault());
+		string text = TableBorderConfig.Current.GetString("表格配置_方案名", string.Empty).Trim();
+		string text2 = ((!string.IsNullOrWhiteSpace(text) && _configHelper_1.haGSSyJWCc(text)) ? text : _configHelper_1.ExsSbMHeGd().FirstOrDefault());
 		if (string.IsNullOrWhiteSpace(text2))
 		{
 			text2 = "默认方案";
-			yQQNd0wXRg.D73SsBjrqd(text2, sSpNoDVtIq());
+			_configHelper_1.D73SsBjrqd(text2, sSpNoDVtIq());
 		}
 		lBCmVvFJW1 = text2;
-		HchNCvEEG9(yQQNd0wXRg.COQStnlspT(text2));
+		HchNCvEEG9(_configHelper_1.COQStnlspT(text2));
 	}
 
 	private static Dictionary<string, string> sSpNoDVtIq()
 	{
-		return (from pair in TableBorderConfig.Current.dnEScXBL9Y()
+		return (from pair in TableBorderConfig.Current.GetAllLegacy()
 			where pair.Key.StartsWith("SelectedPreset", StringComparison.Ordinal)
 			select pair).ToDictionary((KeyValuePair<string, object> pair) => pair.Key, (KeyValuePair<string, object> pair) => pair.Value?.ToString() ?? string.Empty);
 	}
 
 	private void AeiNGYhXCg()
 	{
-		RMtmRY12mx = true;
+		_bool = true;
 		PresetNames.Clear();
-		foreach (string item in yQQNd0wXRg.ExsSbMHeGd())
+		foreach (string item in _configHelper_1.ExsSbMHeGd())
 		{
 			PresetNames.Add(item);
 		}
 		fpVsxno8nm("SelectedPreset");
-		RMtmRY12mx = false;
+		_bool = false;
 	}
 
 	private void HchNCvEEG9(Dictionary<string, string> P_0)
@@ -1004,7 +1004,7 @@ internal sealed class FormatPresetConfig : Helper_2
 		P_0 = null;
 		if (!AiHelper_20.WmHw9yYx65(FontSize, out var value))
 		{
-			pkKNzOr6LG.GZdVLrQIdas("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
+			_hDS8hJGbnCWyNGfO01j.LogMessage("字号填写有误，请选择 Word 字号或输入数字磅值。", "IP_Assurance");
 			return false;
 		}
 		Dictionary<string, string> dictionary = new Dictionary<string, string>
@@ -1053,11 +1053,11 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	private void Oo6Nnxg7FW()
 	{
-		string text = pkKNzOr6LG.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的方案");
+		string text = _hDS8hJGbnCWyNGfO01j.hveVL8NJXjM("新建方案", "请输入新方案名称：", "我的方案");
 		if (!string.IsNullOrWhiteSpace(text) && LsWNObRqVx(out var dictionary))
 		{
-			string text2 = yQQNd0wXRg.Ky0SN0Vqdg(text);
-			yQQNd0wXRg.D73SsBjrqd(text2, dictionary);
+			string text2 = _configHelper_1.Ky0SN0Vqdg(text);
+			_configHelper_1.D73SsBjrqd(text2, dictionary);
 			lBCmVvFJW1 = text2;
 			AeiNGYhXCg();
 		}
@@ -1065,24 +1065,24 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	private void v3tN7yQU9v()
 	{
-		yQQNd0wXRg.Delete(lBCmVvFJW1);
+		_configHelper_1.Delete(lBCmVvFJW1);
 		YIaNmkmpjo();
 		AeiNGYhXCg();
 	}
 
 	private void f2JN5t390X()
 	{
-		string text = pkKNzOr6LG.BxkVLIlDE06("导入表格配置方案");
+		string text = _hDS8hJGbnCWyNGfO01j.BxkVLIlDE06("导入表格配置方案");
 		if (text != null)
 		{
-			Dictionary<string, string> dictionary = yQQNd0wXRg.Pb7SLGhc8Y(text);
+			Dictionary<string, string> dictionary = _configHelper_1.Pb7SLGhc8Y(text);
 			if (!dictionary.Keys.Any((string key) => key.StartsWith("所选文件不包含表格配置数据。", StringComparison.Ordinal)))
 			{
-				pkKNzOr6LG.GZdVLrQIdas("IP_Assurance", "切换表格方案失败：");
+				_hDS8hJGbnCWyNGfO01j.LogMessage("IP_Assurance", "切换表格方案失败：");
 				return;
 			}
-			string text2 = yQQNd0wXRg.Ky0SN0Vqdg(Path.GetFileNameWithoutExtension(text));
-			yQQNd0wXRg.D73SsBjrqd(text2, dictionary);
+			string text2 = _configHelper_1.Ky0SN0Vqdg(Path.GetFileNameWithoutExtension(text));
+			_configHelper_1.D73SsBjrqd(text2, dictionary);
 			lBCmVvFJW1 = text2;
 			HchNCvEEG9(dictionary);
 			AeiNGYhXCg();
@@ -1091,7 +1091,7 @@ internal sealed class FormatPresetConfig : Helper_2
 
 	private void qZDNc8B8of()
 	{
-		string text = pkKNzOr6LG.SA6VLiTt8Ir("导出表格配置方案", lBCmVvFJW1 + ".json");
+		string text = _hDS8hJGbnCWyNGfO01j.SA6VLiTt8Ir("导出表格配置方案", lBCmVvFJW1 + ".json");
 		if (text != null && LsWNObRqVx(out var dictionary))
 		{
 			ConfigHelper_1.lRlSlvdQT7(text, dictionary);
@@ -1102,7 +1102,7 @@ internal sealed class FormatPresetConfig : Helper_2
 	{
 		int result;
 		int? num = (int.TryParse(HeaderColorValue, out result) ? new int?(result) : ((int?)null));
-		int? num2 = pkKNzOr6LG.KutVLHOhcIC(num);
+		int? num2 = _hDS8hJGbnCWyNGfO01j.KutVLHOhcIC(num);
 		if (num2.HasValue)
 		{
 			HeaderColorValue = num2.Value.ToString();
@@ -1117,7 +1117,7 @@ internal sealed class FormatPresetConfig : Helper_2
 			{
 				return;
 			}
-			Dictionary<string, object> dictionary2 = TableBorderConfig.Current.dnEScXBL9Y();
+			Dictionary<string, object> dictionary2 = TableBorderConfig.Current.GetAllLegacy();
 			dictionary2.Remove("表格_边框样式_表尾底边框线");
 			dictionary2.Remove("表格_边框粗细_表尾底边框线");
 			foreach (KeyValuePair<string, string> item in dictionary)
@@ -1125,13 +1125,13 @@ internal sealed class FormatPresetConfig : Helper_2
 				dictionary2[item.Key] = item.Value;
 			}
 			dictionary2["表格配置_方案名"] = lBCmVvFJW1;
-			TableBorderConfig.Current.TTVSewUqXZ(dictionary2);
-			yQQNd0wXRg.D73SsBjrqd(lBCmVvFJW1, dictionary);
-			pkKNzOr6LG.tfDVL1SJK0M("表格配置已保存。", "IP_Assurance");
+			TableBorderConfig.Current.SetAllLegacy(dictionary2);
+			_configHelper_1.D73SsBjrqd(lBCmVvFJW1, dictionary);
+			_hDS8hJGbnCWyNGfO01j.LogWarning("表格配置已保存。", "IP_Assurance");
 		}
 		catch (Exception ex)
 		{
-			pkKNzOr6LG.ULjVLJjCx1c("保存表格配置失败：" + ex.Message, "IP_Assurance");
+			_hDS8hJGbnCWyNGfO01j.LogDebugMessage("保存表格配置失败：" + ex.Message, "IP_Assurance");
 		}
 	}
 
@@ -1168,7 +1168,7 @@ internal sealed class FormatPresetConfig : Helper_2
 	[CompilerGenerated]
 	private void lmeNqrlVVC()
 	{
-		ArZmM2P3y7?.Invoke();
+		_action?.Invoke();
 	}
 
 	[CompilerGenerated]

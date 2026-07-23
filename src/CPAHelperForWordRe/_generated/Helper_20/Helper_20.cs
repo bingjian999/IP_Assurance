@@ -6,10 +6,10 @@ namespace Helper_20;
 internal sealed class Helper_20
 {
 	[CompilerGenerated]
-	private string eMaQsKRcAr;
+	private string _type;
 
 	[CompilerGenerated]
-	private int UXDQlNWybc;
+	private int _rangeStart;
 
 	[CompilerGenerated]
 	private object TSGQNwarhb;
@@ -19,12 +19,12 @@ internal sealed class Helper_20
 		[CompilerGenerated]
 		get
 		{
-			return eMaQsKRcAr;
+			return _type;
 		}
 		[CompilerGenerated]
 		set
 		{
-			eMaQsKRcAr = value;
+			_type = value;
 		}
 	}
 
@@ -33,12 +33,12 @@ internal sealed class Helper_20
 		[CompilerGenerated]
 		get
 		{
-			return UXDQlNWybc;
+			return _rangeStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			UXDQlNWybc = value;
+			_rangeStart = value;
 		}
 	}
 
@@ -58,6 +58,6 @@ internal sealed class Helper_20
 
 	public Helper_20()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

@@ -15,7 +15,7 @@ internal sealed class AiHelper_10
 	private string cnaUWbwC97;
 
 	[CompilerGenerated]
-	private bool hETU0E7pMM;
+	private bool _isActive;
 
 	[CompilerGenerated]
 	private bool YnqUkYtLaq;
@@ -67,12 +67,12 @@ internal sealed class AiHelper_10
 		[CompilerGenerated]
 		get
 		{
-			return hETU0E7pMM;
+			return _isActive;
 		}
 		[CompilerGenerated]
 		set
 		{
-			hETU0E7pMM = value;
+			_isActive = value;
 		}
 	}
 
@@ -92,6 +92,6 @@ internal sealed class AiHelper_10
 
 	public AiHelper_10()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

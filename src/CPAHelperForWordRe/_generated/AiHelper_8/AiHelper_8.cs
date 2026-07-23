@@ -7,28 +7,28 @@ namespace AiHelper_8;
 internal sealed class AiHelper_8
 {
 	[CompilerGenerated]
-	private string Hu1L9j1MIi;
+	private string _provider;
 
 	[CompilerGenerated]
-	private string a7IL69pId7;
+	private string _apiKey;
 
 	[CompilerGenerated]
-	private string zr0Luiygdy;
+	private string _baseUrl;
 
 	[CompilerGenerated]
-	private string L6fLDVDEXK;
+	private string _model;
 
 	public string Provider
 	{
 		[CompilerGenerated]
 		get
 		{
-			return Hu1L9j1MIi;
+			return _provider;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Hu1L9j1MIi = value;
+			_provider = value;
 		}
 	}
 
@@ -37,12 +37,12 @@ internal sealed class AiHelper_8
 		[CompilerGenerated]
 		get
 		{
-			return a7IL69pId7;
+			return _apiKey;
 		}
 		[CompilerGenerated]
 		set
 		{
-			a7IL69pId7 = value;
+			_apiKey = value;
 		}
 	}
 
@@ -51,12 +51,12 @@ internal sealed class AiHelper_8
 		[CompilerGenerated]
 		get
 		{
-			return zr0Luiygdy;
+			return _baseUrl;
 		}
 		[CompilerGenerated]
 		set
 		{
-			zr0Luiygdy = value;
+			_baseUrl = value;
 		}
 	}
 
@@ -65,12 +65,12 @@ internal sealed class AiHelper_8
 		[CompilerGenerated]
 		get
 		{
-			return L6fLDVDEXK;
+			return _model;
 		}
 		[CompilerGenerated]
 		set
 		{
-			L6fLDVDEXK = value;
+			_model = value;
 		}
 	}
 
@@ -105,10 +105,10 @@ internal sealed class AiHelper_8
 
 	public AiHelper_8()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		Hu1L9j1MIi = "openai";
-		a7IL69pId7 = "";
-		zr0Luiygdy = "";
-		L6fLDVDEXK = "";
+		SseStreamInitializer.InitializeRuntime();
+		_provider = "openai";
+		_apiKey = "";
+		_baseUrl = "";
+		_model = "";
 	}
 }

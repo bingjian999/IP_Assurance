@@ -7,19 +7,19 @@ namespace Helper_22;
 internal sealed class Helper_22
 {
 	[CompilerGenerated]
-	private ProviderConfig qJOtFAttBP;
+	private ProviderConfig _assistant;
 
 	public ProviderConfig Assistant
 	{
 		[CompilerGenerated]
 		get
 		{
-			return qJOtFAttBP;
+			return _assistant;
 		}
 		[CompilerGenerated]
 		set
 		{
-			qJOtFAttBP = value;
+			_assistant = value;
 		}
 	}
 
@@ -29,12 +29,12 @@ internal sealed class Helper_22
 		{
 			Assistant = new ProviderConfig();
 		}
-		Assistant.SH0tq5ryQE();
+		Assistant.Initialize();
 	}
 
 	public Helper_22()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		qJOtFAttBP = new ProviderConfig();
+		SseStreamInitializer.InitializeRuntime();
+		_assistant = new ProviderConfig();
 	}
 }

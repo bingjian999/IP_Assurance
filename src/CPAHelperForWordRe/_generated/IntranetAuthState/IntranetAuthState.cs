@@ -7,58 +7,58 @@ namespace IntranetAuthState;
 internal sealed class IntranetAuthState
 {
 	[CompilerGenerated]
-	private bool BPk6OyNOqy;
+	private bool _isIntranetEnvironment;
 
 	[CompilerGenerated]
-	private bool A9K6nklPP9;
+	private bool _isManagedModeActive;
 
 	[CompilerGenerated]
-	private bool mAc674J48k;
+	private bool _isAuthenticated;
 
 	[CompilerGenerated]
 	private bool mov651p2xq;
 
 	[CompilerGenerated]
-	private string FXo6cPcye5;
+	private string _accessToken;
 
 	[CompilerGenerated]
-	private string dKL6en5jxR;
+	private string _userName;
 
 	[CompilerGenerated]
-	private string p3r6y1d3La;
+	private string _chatModel;
 
 	[CompilerGenerated]
-	private string xWn6XRv5d3;
+	private string _chatBaseUrl;
 
 	[CompilerGenerated]
-	private string Kqu6FZeNjH;
+	private string _managedVersion;
 
 	[CompilerGenerated]
-	private string BUG6hmh1Hr;
+	private string _rememberedUsername;
 
 	[CompilerGenerated]
-	private string dsZ6aNb4oE;
+	private string _rememberedPassword;
 
 	[CompilerGenerated]
-	private string kbP6qUCOFo;
+	private string _lastErrorMessage;
 
 	[CompilerGenerated]
-	private DateTime ELw6PMEZKl;
+	private DateTime _lastProbeUtc;
 
 	[CompilerGenerated]
-	private DateTime EVd6AB8MYI;
+	private DateTime _lastLoginUtc;
 
 	public bool IsIntranetEnvironment
 	{
 		[CompilerGenerated]
 		get
 		{
-			return BPk6OyNOqy;
+			return _isIntranetEnvironment;
 		}
 		[CompilerGenerated]
 		set
 		{
-			BPk6OyNOqy = value;
+			_isIntranetEnvironment = value;
 		}
 	}
 
@@ -67,12 +67,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return A9K6nklPP9;
+			return _isManagedModeActive;
 		}
 		[CompilerGenerated]
 		set
 		{
-			A9K6nklPP9 = value;
+			_isManagedModeActive = value;
 		}
 	}
 
@@ -81,12 +81,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return mAc674J48k;
+			return _isAuthenticated;
 		}
 		[CompilerGenerated]
 		set
 		{
-			mAc674J48k = value;
+			_isAuthenticated = value;
 		}
 	}
 
@@ -109,12 +109,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return FXo6cPcye5;
+			return _accessToken;
 		}
 		[CompilerGenerated]
 		set
 		{
-			FXo6cPcye5 = value;
+			_accessToken = value;
 		}
 	}
 
@@ -123,12 +123,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return dKL6en5jxR;
+			return _userName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			dKL6en5jxR = value;
+			_userName = value;
 		}
 	}
 
@@ -137,12 +137,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return p3r6y1d3La;
+			return _chatModel;
 		}
 		[CompilerGenerated]
 		set
 		{
-			p3r6y1d3La = value;
+			_chatModel = value;
 		}
 	}
 
@@ -151,12 +151,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return xWn6XRv5d3;
+			return _chatBaseUrl;
 		}
 		[CompilerGenerated]
 		set
 		{
-			xWn6XRv5d3 = value;
+			_chatBaseUrl = value;
 		}
 	}
 
@@ -165,12 +165,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return Kqu6FZeNjH;
+			return _managedVersion;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Kqu6FZeNjH = value;
+			_managedVersion = value;
 		}
 	}
 
@@ -179,12 +179,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return BUG6hmh1Hr;
+			return _rememberedUsername;
 		}
 		[CompilerGenerated]
 		set
 		{
-			BUG6hmh1Hr = value;
+			_rememberedUsername = value;
 		}
 	}
 
@@ -193,12 +193,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return dsZ6aNb4oE;
+			return _rememberedPassword;
 		}
 		[CompilerGenerated]
 		set
 		{
-			dsZ6aNb4oE = value;
+			_rememberedPassword = value;
 		}
 	}
 
@@ -207,12 +207,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return kbP6qUCOFo;
+			return _lastErrorMessage;
 		}
 		[CompilerGenerated]
 		set
 		{
-			kbP6qUCOFo = value;
+			_lastErrorMessage = value;
 		}
 	}
 
@@ -221,12 +221,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return ELw6PMEZKl;
+			return _lastProbeUtc;
 		}
 		[CompilerGenerated]
 		set
 		{
-			ELw6PMEZKl = value;
+			_lastProbeUtc = value;
 		}
 	}
 
@@ -235,12 +235,12 @@ internal sealed class IntranetAuthState
 		[CompilerGenerated]
 		get
 		{
-			return EVd6AB8MYI;
+			return _lastLoginUtc;
 		}
 		[CompilerGenerated]
 		set
 		{
-			EVd6AB8MYI = value;
+			_lastLoginUtc = value;
 		}
 	}
 
@@ -263,14 +263,14 @@ internal sealed class IntranetAuthState
 
 	public IntranetAuthState()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		FXo6cPcye5 = string.Empty;
-		dKL6en5jxR = string.Empty;
-		p3r6y1d3La = string.Empty;
-		xWn6XRv5d3 = string.Empty;
-		Kqu6FZeNjH = string.Empty;
-		BUG6hmh1Hr = string.Empty;
-		dsZ6aNb4oE = string.Empty;
-		kbP6qUCOFo = string.Empty;
+		SseStreamInitializer.InitializeRuntime();
+		_accessToken = string.Empty;
+		_userName = string.Empty;
+		_chatModel = string.Empty;
+		_chatBaseUrl = string.Empty;
+		_managedVersion = string.Empty;
+		_rememberedUsername = string.Empty;
+		_rememberedPassword = string.Empty;
+		_lastErrorMessage = string.Empty;
 	}
 }

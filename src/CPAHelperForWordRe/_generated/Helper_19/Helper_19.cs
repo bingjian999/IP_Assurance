@@ -3,7 +3,7 @@
 namespace Helper_19;
 
 [Flags]
-internal enum SMvGfVVI8pN4lQroEEl : uint
+internal enum HotkeyAction : uint
 {
 	None = 0u
 }

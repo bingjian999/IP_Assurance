@@ -46,6 +46,6 @@ internal sealed class SubAgentCatalog : ISubAgentCatalog
 
 	public SubAgentCatalog()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

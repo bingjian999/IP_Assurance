@@ -14,31 +14,31 @@ namespace CPAHelperForWordRe.UI.Forms;
 public sealed class ProgressWindow : Window, IComponentConnector
 {
 	[CompilerGenerated]
-	private bool JC4njWCqLg;
+	private bool _isCancelRequested;
 
 	internal TextBlock txtMessage;
 
 	internal ProgressBar barProgress;
 
-	private bool i9xnYixbJ7;
+	private bool _bool;
 
 	public bool IsCancelRequested
 	{
 		[CompilerGenerated]
 		get
 		{
-			return JC4njWCqLg;
+			return _isCancelRequested;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			JC4njWCqLg = value;
+			_isCancelRequested = value;
 		}
 	}
 
 	public ProgressWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 	}
 
@@ -69,9 +69,9 @@ public sealed class ProgressWindow : Window, IComponentConnector
 	[DebuggerNonUserCode]
 	public void InitializeComponent()
 	{
-		if (!i9xnYixbJ7)
+		if (!_bool)
 		{
-			i9xnYixbJ7 = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/progresswindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -94,7 +94,7 @@ public sealed class ProgressWindow : Window, IComponentConnector
 			((Button)target).Click += flxn4AA95q;
 			break;
 		default:
-			i9xnYixbJ7 = true;
+			_bool = true;
 			break;
 		}
 	}

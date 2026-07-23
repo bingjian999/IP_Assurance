@@ -17,7 +17,7 @@ internal sealed class DelegateCommand : ICommand
 
 		public _G_c__DisplayClass2_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void lHHVEAZNUvp(object _)
@@ -52,15 +52,15 @@ internal sealed class DelegateCommand : ICommand
 		_G_c__DisplayClass2_0 CS_8_locals_5 = new _G_c__DisplayClass2_0();
 		CS_8_locals_5.DMZVEWkGhgT = P_0;
 		CS_8_locals_5.GAvVE0JwPK9 = P_1;
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		LPVlR9wDEn = new Action<object>(CS_8_locals_5.lHHVEAZNUvp);
 		jbLlVkNMjF = (CS_8_locals_5.GAvVE0JwPK9 == null) ? null : new Predicate<object>(CS_8_locals_5.lE6VEvOvRv6);
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	public DelegateCommand(Action<object> P_0, Predicate<object> P_1 = null)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		LPVlR9wDEn = P_0 ?? throw new ArgumentNullException("execute");
 		jbLlVkNMjF = P_1;
 	}

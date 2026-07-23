@@ -6,13 +6,13 @@ namespace Helper_4;
 internal sealed class Helper_4
 {
 	[CompilerGenerated]
-	private int unNHeq73XG;
+	private int _startRow;
 
 	[CompilerGenerated]
-	private int PXgHyX9we2;
+	private int _startColumn;
 
 	[CompilerGenerated]
-	private int NWAHXNc8ti;
+	private int _endRow;
 
 	[CompilerGenerated]
 	private int MIWHFcdXRS;
@@ -22,12 +22,12 @@ internal sealed class Helper_4
 		[CompilerGenerated]
 		get
 		{
-			return unNHeq73XG;
+			return _startRow;
 		}
 		[CompilerGenerated]
 		set
 		{
-			unNHeq73XG = value;
+			_startRow = value;
 		}
 	}
 
@@ -36,12 +36,12 @@ internal sealed class Helper_4
 		[CompilerGenerated]
 		get
 		{
-			return PXgHyX9we2;
+			return _startColumn;
 		}
 		[CompilerGenerated]
 		set
 		{
-			PXgHyX9we2 = value;
+			_startColumn = value;
 		}
 	}
 
@@ -50,12 +50,12 @@ internal sealed class Helper_4
 		[CompilerGenerated]
 		get
 		{
-			return NWAHXNc8ti;
+			return _endRow;
 		}
 		[CompilerGenerated]
 		set
 		{
-			NWAHXNc8ti = value;
+			_endRow = value;
 		}
 	}
 
@@ -75,6 +75,6 @@ internal sealed class Helper_4
 
 	public Helper_4()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

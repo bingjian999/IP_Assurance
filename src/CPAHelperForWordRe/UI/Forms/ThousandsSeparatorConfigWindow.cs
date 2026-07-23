@@ -37,11 +37,11 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 
 	internal TextBox txtUnit;
 
-	private bool t5BC0odNp0;
+	private bool _bool;
 
 	public ThousandsSeparatorConfigWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		for (int i = 0; i <= 6; i++)
 		{
@@ -62,7 +62,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		if (vddCqqexkg(out var w9DpQgSBDhHwuwkYtki) && RkwCPY0rTt(out var num))
 		{
 			ThousandsSeparatorService.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, num);
-			LoggerInitializer.Ay3cNuEgJo("千分位符配置已保存。", "千分位符配置");
+			LoggerInitializer.ShowInfo("千分位符配置已保存。", "千分位符配置");
 			Close();
 		}
 	}
@@ -72,7 +72,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		UiHelper_4 w9DpQgSBDhHwuwkYtki = ThousandsSeparatorService.iJpb7cZpBN();
 		Ig8CaDUwk9(w9DpQgSBDhHwuwkYtki, 2);
 		ThousandsSeparatorService.w81bcr8VrJ(w9DpQgSBDhHwuwkYtki, 2);
-		LoggerInitializer.Ay3cNuEgJo("千分位符配置已恢复默认。", "千分位符配置");
+		LoggerInitializer.ShowInfo("千分位符配置已恢复默认。", "千分位符配置");
 	}
 
 	private void rqlCFRtGUg(object P_0, RoutedEventArgs P_1)
@@ -110,7 +110,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		string unitText = gVlCvRBiPn(txtUnit.Text);
 		if (chkUnitOnly.IsChecked == true && string.IsNullOrWhiteSpace(txtUnit.Text))
 		{
-			LoggerInitializer.u0kcmnykTv("已启用“仅处理带单位数字”，请先填写匹配单位。", "千分位符配置");
+			LoggerInitializer.ShowWarning("已启用“仅处理带单位数字”，请先填写匹配单位。", "千分位符配置");
 			txtUnit.Focus();
 			return false;
 		}
@@ -134,7 +134,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 		P_0 = 2;
 		if (!int.TryParse((cmbDecimalPlaces.Text ?? string.Empty).Trim(), out var result) || result < 0 || result > 6)
 		{
-			LoggerInitializer.u0kcmnykTv("千分位符小数位数请输入 0 到 6 之间的整数。", "千分位符配置");
+			LoggerInitializer.ShowWarning("千分位符小数位数请输入 0 到 6 之间的整数。", "千分位符配置");
 			cmbDecimalPlaces.Focus();
 			return false;
 		}
@@ -160,9 +160,9 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!t5BC0odNp0)
+		if (!_bool)
 		{
-			t5BC0odNp0 = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/thousandsseparatorconfigwindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -217,7 +217,7 @@ public sealed class ThousandsSeparatorConfigWindow : Window, IComponentConnector
 			((Button)target).Click += rqlCFRtGUg;
 			break;
 		default:
-			t5BC0odNp0 = true;
+			_bool = true;
 			break;
 		}
 	}

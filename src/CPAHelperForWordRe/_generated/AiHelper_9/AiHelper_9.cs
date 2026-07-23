@@ -7,16 +7,16 @@ namespace AiHelper_9;
 internal sealed class AiHelper_9
 {
 	[CompilerGenerated]
-	private int Xx3LbndFEP;
+	private int _contextWindowTokens;
 
 	[CompilerGenerated]
-	private double gl8LS780sf;
+	private double _triggerRatio;
 
 	[CompilerGenerated]
 	private double oirLwSpKS6;
 
 	[CompilerGenerated]
-	private double T6fLtaKAXJ;
+	private double _hardLimitRatio;
 
 	[CompilerGenerated]
 	private int zciLLLqyI2;
@@ -29,12 +29,12 @@ internal sealed class AiHelper_9
 		[CompilerGenerated]
 		get
 		{
-			return Xx3LbndFEP;
+			return _contextWindowTokens;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Xx3LbndFEP = value;
+			_contextWindowTokens = value;
 		}
 	}
 
@@ -43,12 +43,12 @@ internal sealed class AiHelper_9
 		[CompilerGenerated]
 		get
 		{
-			return gl8LS780sf;
+			return _triggerRatio;
 		}
 		[CompilerGenerated]
 		set
 		{
-			gl8LS780sf = value;
+			_triggerRatio = value;
 		}
 	}
 
@@ -71,12 +71,12 @@ internal sealed class AiHelper_9
 		[CompilerGenerated]
 		get
 		{
-			return T6fLtaKAXJ;
+			return _hardLimitRatio;
 		}
 		[CompilerGenerated]
 		set
 		{
-			T6fLtaKAXJ = value;
+			_hardLimitRatio = value;
 		}
 	}
 
@@ -152,11 +152,11 @@ internal sealed class AiHelper_9
 
 	public AiHelper_9()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		Xx3LbndFEP = 200000;
-		gl8LS780sf = 0.7;
+		SseStreamInitializer.InitializeRuntime();
+		_contextWindowTokens = 200000;
+		_triggerRatio = 0.7;
 		oirLwSpKS6 = 0.45;
-		T6fLtaKAXJ = 0.9;
+		_hardLimitRatio = 0.9;
 		zciLLLqyI2 = 12;
 		vuGLssGfpe = 30;
 	}

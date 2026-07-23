@@ -52,7 +52,7 @@ internal static class AiAssistantHost2
 		private DesktopAiBridgeServer zxQhQDWnk2;
 
 		[CompilerGenerated]
-		private ServiceProvider aDWh1LrlZt;
+		private ServiceProvider _serviceProvider;
 
 		public DesktopAiBridgeServer Server
 		{
@@ -73,12 +73,12 @@ internal static class AiAssistantHost2
 			[CompilerGenerated]
 			get
 			{
-				return aDWh1LrlZt;
+				return _serviceProvider;
 			}
 			[CompilerGenerated]
 			set
 			{
-				aDWh1LrlZt = value;
+				_serviceProvider = value;
 			}
 		}
 
@@ -90,7 +90,7 @@ internal static class AiAssistantHost2
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AI] Pane bridge cleanup failed: " + ex.Message);
+				AiConfigBootstrap.LogWarn("[AI] Pane bridge cleanup failed: " + ex.Message);
 			}
 			try
 			{
@@ -98,13 +98,13 @@ internal static class AiAssistantHost2
 			}
 			catch (Exception ex2)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AI] Pane service provider cleanup failed: " + ex2.Message);
+				AiConfigBootstrap.LogWarn("[AI] Pane service provider cleanup failed: " + ex2.Message);
 			}
 		}
 
 		public RXCwJGhHcxjX0yklsaw()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
@@ -117,17 +117,17 @@ internal static class AiAssistantHost2
 
 		public _G_c__DisplayClass10_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void OgDhU55L8X(AgentArtifact artifact)
 		{
 			_G_c__DisplayClass10_1 CS_8_locals_4 = new _G_c__DisplayClass10_1();
-			CS_8_locals_4.uJ8hjxEQDT = this;
-			CS_8_locals_4.qhjh4Xcgpp = artifact;
+			CS_8_locals_4._G_c__DisplayClass10_0 = this;
+			CS_8_locals_4.agentArtifact = artifact;
 			TKPhEGXwHy.InvokeOnUiThread(delegate
 			{
-				AiHelper_17.VYkUViDjLf(CS_8_locals_4.uJ8hjxEQDT.OTthKVmcnx, CS_8_locals_4.qhjh4Xcgpp);
+				AiHelper_17.VYkUViDjLf(CS_8_locals_4._G_c__DisplayClass10_0.OTthKVmcnx, CS_8_locals_4.agentArtifact);
 			});
 		}
 	}
@@ -135,18 +135,18 @@ internal static class AiAssistantHost2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_1
 	{
-		public AgentArtifact qhjh4Xcgpp;
+		public AgentArtifact agentArtifact;
 
-		public _G_c__DisplayClass10_0 uJ8hjxEQDT;
+		public _G_c__DisplayClass10_0 _G_c__DisplayClass10_0;
 
 		public _G_c__DisplayClass10_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void rIIh2mrLbO()
 		{
-			AiHelper_17.VYkUViDjLf(uJ8hjxEQDT.OTthKVmcnx, qhjh4Xcgpp);
+			AiHelper_17.VYkUViDjLf(_G_c__DisplayClass10_0.OTthKVmcnx, agentArtifact);
 		}
 	}
 
@@ -157,7 +157,7 @@ internal static class AiAssistantHost2
 
 		public _G_c__DisplayClass28_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_15 EfkhYTMjkF(IServiceProvider _)
@@ -210,18 +210,18 @@ internal static class AiAssistantHost2
 				FileDownloadHelper.Current.t9vwx1YSVk();
 				if (!IntranetAiConfigService.Instance.gDh6IIK89w())
 				{
-					AiConfigBootstrap.swCsJ4IbrL("Agent initialization aborted because intranet authentication was not completed.");
+					AiConfigBootstrap.LogInfo("Agent initialization aborted because intranet authentication was not completed.");
 					return false;
 				}
-				JsonSessionIndexManager.Initialize(AiSseStreamService.mSfs9VWIdb("Agent", "chat-sessions"));
+				JsonSessionIndexManager.Initialize(AiSseStreamService.GetUserDataPath("Agent", "chat-sessions"));
 				uyS93RQrn8 = true;
 				return true;
 			}
 			catch (Exception ex)
 			{
 				RAo9QloHrl( false);
-				AiConfigBootstrap.ujWsURly3F("[AI] Agent initialization failed", ex);
-				LoggerInitializer.F9Ycoqv2I8("AI 助手初始化失败，请检查配置、网络环境和日志后重试。\r\n" + ex.Message, "AI 助手");
+				AiConfigBootstrap.LogError("[AI] Agent initialization failed", ex);
+				LoggerInitializer.ShowError("AI 助手初始化失败，请检查配置、网络环境和日志后重试。\r\n" + ex.Message, "AI 助手");
 				return false;
 			}
 		}
@@ -257,11 +257,11 @@ internal static class AiAssistantHost2
 				desktopAiBridgeServer = new DesktopAiBridgeServer(serviceProvider.GetRequiredService<AgentRuntime>(), serviceProvider.GetRequiredService<IAgentConfigProvider>(), serviceProvider.GetRequiredService<IAgentInstructionBuilder>(), instructionContextFactory: serviceProvider.GetRequiredService<AiHelper_19>().QhF3fbjxg1, hostContext: CS_8_locals_14.TKPhEGXwHy, onArtifact: delegate(AgentArtifact artifact)
 				{
 					_G_c__DisplayClass10_1 CS_8_locals_16 = new _G_c__DisplayClass10_1();
-					CS_8_locals_16.uJ8hjxEQDT = CS_8_locals_14;
-					CS_8_locals_16.qhjh4Xcgpp = artifact;
+					CS_8_locals_16._G_c__DisplayClass10_0 = CS_8_locals_14;
+					CS_8_locals_16.agentArtifact = artifact;
 					CS_8_locals_14.TKPhEGXwHy.InvokeOnUiThread(delegate
 					{
-						AiHelper_17.VYkUViDjLf(CS_8_locals_16.uJ8hjxEQDT.OTthKVmcnx, CS_8_locals_16.qhjh4Xcgpp);
+						AiHelper_17.VYkUViDjLf(CS_8_locals_16._G_c__DisplayClass10_0.OTthKVmcnx, CS_8_locals_16.agentArtifact);
 					});
 				}, hostActionProvider: dguCpUJyDDpMGwLPwHA);
 				desktopAiBridgeServer.Start();
@@ -270,7 +270,7 @@ internal static class AiAssistantHost2
 					Server = desktopAiBridgeServer,
 					ServiceProvider = serviceProvider
 				};
-				AiConfigBootstrap.swCsJ4IbrL("[AI] Pane bridge started. Key=" + text + "; Port=" + desktopAiBridgeServer.Port + "; Target=" + (CS_8_locals_14.OTthKVmcnx?.DisplayName ?? "(active)"));
+				AiConfigBootstrap.LogInfo("[AI] Pane bridge started. Key=" + text + "; Port=" + desktopAiBridgeServer.Port + "; Target=" + (CS_8_locals_14.OTthKVmcnx?.DisplayName ?? "(active)"));
 				return desktopAiBridgeServer;
 			}
 			catch (Exception ex)
@@ -283,8 +283,8 @@ internal static class AiAssistantHost2
 				catch
 				{
 				}
-				AiConfigBootstrap.ujWsURly3F("[AI] Create pane bridge failed", ex);
-				LoggerInitializer.F9Ycoqv2I8("AI 助手通信服务启动失败：\r\n" + ex.Message, "AI 助手");
+				AiConfigBootstrap.LogError("[AI] Create pane bridge failed", ex);
+				LoggerInitializer.ShowError("AI 助手通信服务启动失败：\r\n" + ex.Message, "AI 助手");
 				return null;
 			}
 		}
@@ -319,7 +319,7 @@ internal static class AiAssistantHost2
 			CustomTaskPane customTaskPane = Im899AXlNf(out window, out rkZt4ZuLjXTP5cAL48p);
 			if (window == null || rkZt4ZuLjXTP5cAL48p == null || string.IsNullOrWhiteSpace(rkZt4ZuLjXTP5cAL48p.WindowKey))
 			{
-				LoggerInitializer.u0kcmnykTv("当前没有可用的 Word 文档窗口，无法打开 AI 助手。", "AI 助手");
+				LoggerInitializer.ShowWarning("当前没有可用的 Word 文档窗口，无法打开 AI 助手。", "AI 助手");
 				return;
 			}
 			if (customTaskPane == null)
@@ -342,8 +342,8 @@ internal static class AiAssistantHost2
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[AI] Open assistant pane failed", ex);
-			LoggerInitializer.F9Ycoqv2I8("打开 AI 助手失败：\r\n" + ex.Message, "AI 助手");
+			AiConfigBootstrap.LogError("[AI] Open assistant pane failed", ex);
+			LoggerInitializer.ShowError("打开 AI 助手失败：\r\n" + ex.Message, "AI 助手");
 		}
 	}
 
@@ -376,7 +376,7 @@ internal static class AiAssistantHost2
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AI] Ensure assistant pane visible failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AI] Ensure assistant pane visible failed: " + ex.Message);
 		}
 	}
 
@@ -415,14 +415,14 @@ internal static class AiAssistantHost2
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AI] Ensure target assistant pane visible failed: " + ex.Message);
+				AiConfigBootstrap.LogWarn("[AI] Ensure target assistant pane visible failed: " + ex.Message);
 			}
 		}
 	}
 
 	public static void SIRBdRBylk()
 	{
-		WordTableToolService5.IPf5i0ZcV4(new AIAssistantConfigWindow());
+		WordTableToolService5.ShowWpfWindow(new AIAssistantConfigWindow());
 	}
 
 	public static void KAcBz9syTd()
@@ -512,7 +512,7 @@ internal static class AiAssistantHost2
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AI] Unable to resolve active Word window for assistant pane: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AI] Unable to resolve active Word window for assistant pane: " + ex.Message);
 			return false;
 		}
 	}
@@ -571,7 +571,7 @@ internal static class AiAssistantHost2
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AI] Remove assistant pane failed: " + ex.Message);
+				AiConfigBootstrap.LogWarn("[AI] Remove assistant pane failed: " + ex.Message);
 			}
 		}
 		finally
@@ -586,7 +586,7 @@ internal static class AiAssistantHost2
 		if (!vyT9UyqU67 && !q5U98g8CvW())
 		{
 			oCK9RZLXy4();
-			AiConfigBootstrap.swCsJ4IbrL("All AI panes closed and bootstrapper shutdown completed.");
+			AiConfigBootstrap.LogInfo("All AI panes closed and bootstrapper shutdown completed.");
 		}
 	}
 
@@ -609,7 +609,7 @@ internal static class AiAssistantHost2
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AI] Check assistant pane existence failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AI] Check assistant pane existence failed: " + ex.Message);
 		}
 		return false;
 	}
@@ -676,7 +676,7 @@ internal static class AiAssistantHost2
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AI] Prepare agent runtime base directory failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AI] Prepare agent runtime base directory failed: " + ex.Message);
 		}
 	}
 
@@ -702,7 +702,7 @@ internal static class AiAssistantHost2
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AI] Task pane cleanup failed: " + ex.Message);
+				AiConfigBootstrap.LogWarn("[AI] Task pane cleanup failed: " + ex.Message);
 			}
 			try
 			{
@@ -714,14 +714,14 @@ internal static class AiAssistantHost2
 					}
 					catch (Exception ex2)
 					{
-						AiConfigBootstrap.z7Us3dJ6Cl("[AI] Bridge cleanup failed: " + ex2.Message);
+						AiConfigBootstrap.LogWarn("[AI] Bridge cleanup failed: " + ex2.Message);
 					}
 				}
 				HSw9JKPvWP.Clear();
 			}
 			catch (Exception ex3)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AI] Bridge cleanup loop failed: " + ex3.Message);
+				AiConfigBootstrap.LogWarn("[AI] Bridge cleanup loop failed: " + ex3.Message);
 			}
 			if (P_0)
 			{
@@ -737,7 +737,7 @@ internal static class AiAssistantHost2
 
 	static AiAssistantHost2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		CTS91vctKd = new object();
 		Spc9riTU3E = new HashSet<CustomTaskPane>();
 		HSw9JKPvWP = new Dictionary<string, RXCwJGhHcxjX0yklsaw>(StringComparer.OrdinalIgnoreCase);

@@ -12,67 +12,67 @@ internal sealed class Helper_9
 	public static readonly HashSet<string> TcvQQSKPF8;
 
 	[CompilerGenerated]
-	private string He8Q1Wj6Ml;
+	private string _fontName;
 
 	[CompilerGenerated]
-	private string SJ6QrF6g4s;
+	private string _eastAsianFontName;
 
 	[CompilerGenerated]
 	private float? avmQJXlCo7;
 
 	[CompilerGenerated]
-	private bool? BGdQ3pZoPN;
+	private bool? _bold;
 
 	[CompilerGenerated]
-	private bool? IZBQU0k0Zg;
+	private bool? _italic;
 
 	[CompilerGenerated]
 	private string ExnQKcUoSa;
 
 	[CompilerGenerated]
-	private string we5QEutDN1;
+	private string _rowAlignment;
 
 	[CompilerGenerated]
-	private string W1sQ2NE8Mu;
+	private string _verticalAlignment;
 
 	[CompilerGenerated]
-	private string tKFQ4ihb7w;
+	private string _autoFit;
 
 	[CompilerGenerated]
-	private float? AjgQjNG4vl;
+	private float? _preferredWidthPercent;
 
 	[CompilerGenerated]
-	private float? sv3QYIGZUs;
+	private float? _cellPaddingPt;
 
 	[CompilerGenerated]
-	private float? rNkQZYB1hY;
+	private float? _rowHeightPt;
 
 	[CompilerGenerated]
-	private string RunQfj5u8Q;
+	private string _rowHeightRule;
 
 	[CompilerGenerated]
-	private string Yb2QMwSZYN;
+	private string _borderStyle;
 
 	[CompilerGenerated]
 	private float? EwDQbpfKeB;
 
 	[CompilerGenerated]
-	private bool? auMQSFe3eK;
+	private bool? _headerRowBold;
 
 	[CompilerGenerated]
-	private int? kUpQwC0ULg;
+	private int? _headerRowShading;
 
 	public string FontName
 	{
 		[CompilerGenerated]
 		get
 		{
-			return He8Q1Wj6Ml;
+			return _fontName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			He8Q1Wj6Ml = value;
+			_fontName = value;
 		}
 	}
 
@@ -81,12 +81,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return SJ6QrF6g4s;
+			return _eastAsianFontName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			SJ6QrF6g4s = value;
+			_eastAsianFontName = value;
 		}
 	}
 
@@ -109,12 +109,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return BGdQ3pZoPN;
+			return _bold;
 		}
 		[CompilerGenerated]
 		set
 		{
-			BGdQ3pZoPN = value;
+			_bold = value;
 		}
 	}
 
@@ -123,12 +123,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return IZBQU0k0Zg;
+			return _italic;
 		}
 		[CompilerGenerated]
 		set
 		{
-			IZBQU0k0Zg = value;
+			_italic = value;
 		}
 	}
 
@@ -151,12 +151,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return we5QEutDN1;
+			return _rowAlignment;
 		}
 		[CompilerGenerated]
 		set
 		{
-			we5QEutDN1 = value;
+			_rowAlignment = value;
 		}
 	}
 
@@ -165,12 +165,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return W1sQ2NE8Mu;
+			return _verticalAlignment;
 		}
 		[CompilerGenerated]
 		set
 		{
-			W1sQ2NE8Mu = value;
+			_verticalAlignment = value;
 		}
 	}
 
@@ -179,12 +179,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return tKFQ4ihb7w;
+			return _autoFit;
 		}
 		[CompilerGenerated]
 		set
 		{
-			tKFQ4ihb7w = value;
+			_autoFit = value;
 		}
 	}
 
@@ -193,12 +193,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return AjgQjNG4vl;
+			return _preferredWidthPercent;
 		}
 		[CompilerGenerated]
 		set
 		{
-			AjgQjNG4vl = value;
+			_preferredWidthPercent = value;
 		}
 	}
 
@@ -207,12 +207,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return sv3QYIGZUs;
+			return _cellPaddingPt;
 		}
 		[CompilerGenerated]
 		set
 		{
-			sv3QYIGZUs = value;
+			_cellPaddingPt = value;
 		}
 	}
 
@@ -221,12 +221,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return rNkQZYB1hY;
+			return _rowHeightPt;
 		}
 		[CompilerGenerated]
 		set
 		{
-			rNkQZYB1hY = value;
+			_rowHeightPt = value;
 		}
 	}
 
@@ -235,12 +235,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return RunQfj5u8Q;
+			return _rowHeightRule;
 		}
 		[CompilerGenerated]
 		set
 		{
-			RunQfj5u8Q = value;
+			_rowHeightRule = value;
 		}
 	}
 
@@ -249,12 +249,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return Yb2QMwSZYN;
+			return _borderStyle;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Yb2QMwSZYN = value;
+			_borderStyle = value;
 		}
 	}
 
@@ -277,12 +277,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return auMQSFe3eK;
+			return _headerRowBold;
 		}
 		[CompilerGenerated]
 		set
 		{
-			auMQSFe3eK = value;
+			_headerRowBold = value;
 		}
 	}
 
@@ -291,12 +291,12 @@ internal sealed class Helper_9
 		[CompilerGenerated]
 		get
 		{
-			return kUpQwC0ULg;
+			return _headerRowShading;
 		}
 		[CompilerGenerated]
 		set
 		{
-			kUpQwC0ULg = value;
+			_headerRowShading = value;
 		}
 	}
 
@@ -325,12 +325,12 @@ internal sealed class Helper_9
 
 	public Helper_9()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	static Helper_9()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		TcvQQSKPF8 = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
 		{
 			"fontName",

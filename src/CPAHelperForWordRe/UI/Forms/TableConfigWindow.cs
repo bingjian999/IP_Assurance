@@ -15,18 +15,18 @@ namespace CPAHelperForWordRe.UI.Forms;
 
 public sealed class TableConfigWindow : Window, IComponentConnector
 {
-	private readonly FormatPresetConfig tI5C4JoHK5;
+	private readonly FormatPresetConfig _formatPresetConfig;
 
-	private bool I2tCjHwhcC;
+	private bool _bool;
 
 	public TableConfigWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
-		tI5C4JoHK5 = new FormatPresetConfig(new JsonFileDialogHelper());
-		tI5C4JoHK5.BBoNAij429(base.Close);
-		tI5C4JoHK5.QdBN0W28SI(hJsC2ywgN3);
-		base.DataContext = tI5C4JoHK5;
+		_formatPresetConfig = new FormatPresetConfig(new JsonFileDialogHelper());
+		_formatPresetConfig.BBoNAij429(base.Close);
+		_formatPresetConfig.QdBN0W28SI(hJsC2ywgN3);
+		base.DataContext = _formatPresetConfig;
 		base.PreviewKeyDown += cgPCEufjgs;
 	}
 
@@ -40,7 +40,7 @@ public sealed class TableConfigWindow : Window, IComponentConnector
 
 	private void hJsC2ywgN3()
 	{
-		WordTableToolService5.IPf5i0ZcV4(new ParagraphConfigWindow());
+		WordTableToolService5.ShowWpfWindow(new ParagraphConfigWindow());
 		Close();
 	}
 
@@ -48,9 +48,9 @@ public sealed class TableConfigWindow : Window, IComponentConnector
 	[DebuggerNonUserCode]
 	public void InitializeComponent()
 	{
-		if (!I2tCjHwhcC)
+		if (!_bool)
 		{
-			I2tCjHwhcC = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/tableconfigwindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -61,6 +61,6 @@ public sealed class TableConfigWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	void IComponentConnector.Connect(int connectionId, object target)
 	{
-		I2tCjHwhcC = true;
+		_bool = true;
 	}
 }

@@ -12,7 +12,7 @@ internal sealed class NullableContextAttribute : Attribute
 
 	public NullableContextAttribute(byte P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		Flag = P_0;
 	}
 }

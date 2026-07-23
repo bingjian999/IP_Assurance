@@ -14,16 +14,16 @@ internal static class AiHelper_6
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass1_0
 	{
-		public Action fc5VEeB4nMu;
+		public Action action;
 
 		public _G_c__DisplayClass1_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void YoHVEcN2Hk8(object _)
 		{
-			fc5VEeB4nMu();
+			action();
 		}
 	}
 
@@ -42,24 +42,24 @@ internal static class AiHelper_6
 		{
 			_G_c__DisplayClass1_0 CS_8_locals_3 = new _G_c__DisplayClass1_0();
 			HttpHelper_1 rei3DhLlLQm1bCVIXFi = await AiSseStreamService4.PJYL5bLAxq( true);
-			if (rei3DhLlLQm1bCVIXFi == null || !AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.mVoL74rdRf(), rei3DhLlLQm1bCVIXFi.VersionText))
+			if (rei3DhLlLQm1bCVIXFi == null || !AiSseStreamService4.DodLcdpfxo(AiSseStreamService4.GetAssemblyVersion(), rei3DhLlLQm1bCVIXFi.VersionText))
 			{
 				return;
 			}
-			CS_8_locals_3.fc5VEeB4nMu = delegate
+			CS_8_locals_3.action = delegate
 			{
-				WordTableToolService5.IPf5i0ZcV4(new UpdateWindow());
+				WordTableToolService5.ShowWpfWindow(new UpdateWindow());
 			};
 			if (syncContext != null)
 			{
 				syncContext.Post(delegate
 				{
-					CS_8_locals_3.fc5VEeB4nMu();
+					CS_8_locals_3.action();
 				}, null);
 			}
 			else
 			{
-				CS_8_locals_3.fc5VEeB4nMu();
+				CS_8_locals_3.action();
 			}
 		}
 		catch (Exception)

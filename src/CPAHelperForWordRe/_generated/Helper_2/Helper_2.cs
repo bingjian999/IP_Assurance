@@ -60,6 +60,6 @@ internal abstract class Helper_2 : INotifyPropertyChanged
 
 	protected Helper_2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

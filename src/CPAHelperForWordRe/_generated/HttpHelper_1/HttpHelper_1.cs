@@ -6,7 +6,7 @@ namespace HttpHelper_1;
 internal sealed class HttpHelper_1
 {
 	[CompilerGenerated]
-	private string xnqLmw7lRv;
+	private string _name;
 
 	[CompilerGenerated]
 	private string AqjLourxUg;
@@ -15,22 +15,22 @@ internal sealed class HttpHelper_1
 	private string qDgLGeDoc0;
 
 	[CompilerGenerated]
-	private string VwdLCIe4KD;
+	private string _description;
 
 	[CompilerGenerated]
-	private string WMELph0PRd;
+	private string _downloadUrl;
 
 	public string Name
 	{
 		[CompilerGenerated]
 		get
 		{
-			return xnqLmw7lRv;
+			return _name;
 		}
 		[CompilerGenerated]
 		set
 		{
-			xnqLmw7lRv = value;
+			_name = value;
 		}
 	}
 
@@ -67,12 +67,12 @@ internal sealed class HttpHelper_1
 		[CompilerGenerated]
 		get
 		{
-			return VwdLCIe4KD;
+			return _description;
 		}
 		[CompilerGenerated]
 		set
 		{
-			VwdLCIe4KD = value;
+			_description = value;
 		}
 	}
 
@@ -81,17 +81,17 @@ internal sealed class HttpHelper_1
 		[CompilerGenerated]
 		get
 		{
-			return WMELph0PRd;
+			return _downloadUrl;
 		}
 		[CompilerGenerated]
 		set
 		{
-			WMELph0PRd = value;
+			_downloadUrl = value;
 		}
 	}
 
 	public HttpHelper_1()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

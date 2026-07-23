@@ -8,7 +8,7 @@ namespace ExcelInteropService;
 
 internal static class ExcelInteropService
 {
-	public static Application X11yRCCGO()
+	public static Application GetActiveExcelApp()
 	{
 		try
 		{
@@ -24,9 +24,9 @@ internal static class ExcelInteropService
 		}
 	}
 
-	public static Application gM4XBr1Rq()
+	public static Application GetOrCreateExcelApp()
 	{
-		Application application = X11yRCCGO();
+		Application application = GetActiveExcelApp();
 		if (application != null)
 		{
 			return application;

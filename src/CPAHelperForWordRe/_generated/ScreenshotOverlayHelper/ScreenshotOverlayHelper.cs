@@ -21,41 +21,41 @@ internal sealed class ScreenshotOverlayHelper : Form
 
 	private readonly Rectangle yMLcQrPaCU;
 
-	private Bitmap oeNc1QNjFw;
+	private Bitmap _bitmap;
 
-	private Point Bo2crjs2bE;
+	private Point _point;
 
 	private Point QNZcJpxRon;
 
-	private bool j9bc3T9ITS;
+	private bool _bool;
 
-	private bool vP3cUZAQXU;
+	private bool _bool;
 
-	private IntPtr U1xcKye0r1;
+	private IntPtr _intPtr;
 
-	private bool JgxcE0hviE;
+	private bool _bool;
 
-	private WdWindowState QNMc2oPqdb;
+	private WdWindowState _wdWindowState;
 
-	private bool Plhc4jjZkZ;
-
-	[CompilerGenerated]
-	private Bitmap uXucj3uJYV;
+	private bool _bool;
 
 	[CompilerGenerated]
-	private Rectangle IiEcYbc1lk;
+	private Bitmap _capturedImage;
+
+	[CompilerGenerated]
+	private Rectangle _captureBounds;
 
 	public Bitmap CapturedImage
 	{
 		[CompilerGenerated]
 		get
 		{
-			return uXucj3uJYV;
+			return _capturedImage;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			uXucj3uJYV = value;
+			_capturedImage = value;
 		}
 	}
 
@@ -64,21 +64,21 @@ internal sealed class ScreenshotOverlayHelper : Form
 		[CompilerGenerated]
 		get
 		{
-			return IiEcYbc1lk;
+			return _captureBounds;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			IiEcYbc1lk = value;
+			_captureBounds = value;
 		}
 	}
 
 	public ScreenshotOverlayHelper()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		JgxcE0hviE = true;
+		SseStreamInitializer.InitializeRuntime();
+		_bool = true;
 		yMLcQrPaCU = ScreenshotCaptureHelper.o2DcMOKyEe();
-		oeNc1QNjFw = ScreenshotCaptureHelper.SEvcbGvKps();
+		_bitmap = ScreenshotCaptureHelper.SEvcbGvKps();
 		T0dcgIxXI1();
 		base.FormBorderStyle = FormBorderStyle.None;
 		base.StartPosition = FormStartPosition.Manual;
@@ -105,10 +105,10 @@ internal sealed class ScreenshotOverlayHelper : Form
 	{
 		if (P_0.Button == MouseButtons.Left)
 		{
-			Bo2crjs2bE = P_0.Location;
+			_point = P_0.Location;
 			QNZcJpxRon = P_0.Location;
-			j9bc3T9ITS = true;
-			vP3cUZAQXU = true;
+			_bool = true;
+			_bool = true;
 			Invalidate();
 			base.OnMouseDown(P_0);
 		}
@@ -118,17 +118,17 @@ internal sealed class ScreenshotOverlayHelper : Form
 	{
 		QNZcJpxRon = P_0.Location;
 		Invalidate();
-		_ = j9bc3T9ITS;
+		_ = _bool;
 		base.OnMouseMove(P_0);
 	}
 
 	protected override void OnMouseUp(MouseEventArgs P_0)
 	{
-		if (P_0.Button != MouseButtons.Left || !j9bc3T9ITS)
+		if (P_0.Button != MouseButtons.Left || !_bool)
 		{
 			return;
 		}
-		j9bc3T9ITS = false;
+		_bool = false;
 		QNZcJpxRon = P_0.Location;
 		Rectangle srcRect = h24cHU7RGI();
 		if (srcRect.Width >= 8 && srcRect.Height >= 8)
@@ -137,7 +137,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 			CapturedImage = new Bitmap(srcRect.Width, srcRect.Height);
 			using (Graphics graphics = Graphics.FromImage(CapturedImage))
 			{
-				graphics.DrawImage(oeNc1QNjFw, new Rectangle(0, 0, srcRect.Width, srcRect.Height), srcRect, GraphicsUnit.Pixel);
+				graphics.DrawImage(_bitmap, new Rectangle(0, 0, srcRect.Width, srcRect.Height), srcRect, GraphicsUnit.Pixel);
 			}
 			base.DialogResult = DialogResult.OK;
 		}
@@ -145,7 +145,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 		{
 			base.DialogResult = DialogResult.Cancel;
 		}
-		vP3cUZAQXU = false;
+		_bool = false;
 		Close();
 		base.OnMouseUp(P_0);
 	}
@@ -177,15 +177,15 @@ internal sealed class ScreenshotOverlayHelper : Form
 
 	protected override void OnPaint(PaintEventArgs P_0)
 	{
-		P_0.Graphics.DrawImageUnscaled(oeNc1QNjFw, Point.Empty);
+		P_0.Graphics.DrawImageUnscaled(_bitmap, Point.Empty);
 		using (SolidBrush brush = new SolidBrush(Color.FromArgb(120, Color.Black)))
 		{
 			P_0.Graphics.FillRectangle(brush, base.ClientRectangle);
 		}
-		Rectangle rectangle = (vP3cUZAQXU ? h24cHU7RGI() : Rectangle.Empty);
+		Rectangle rectangle = (_bool ? h24cHU7RGI() : Rectangle.Empty);
 		if (rectangle.Width > 0 && rectangle.Height > 0)
 		{
-			P_0.Graphics.DrawImage(oeNc1QNjFw, rectangle, rectangle, GraphicsUnit.Pixel);
+			P_0.Graphics.DrawImage(_bitmap, rectangle, rectangle, GraphicsUnit.Pixel);
 			using Pen pen = new Pen(Color.DeepSkyBlue, 2f);
 			P_0.Graphics.DrawRectangle(pen, rectangle.X, rectangle.Y, rectangle.Width - 1, rectangle.Height - 1);
 		}
@@ -202,7 +202,7 @@ internal sealed class ScreenshotOverlayHelper : Form
 	{
 		if (P_0)
 		{
-			oeNc1QNjFw.Dispose();
+			_bitmap.Dispose();
 			wiociuwGol();
 		}
 		base.Dispose(P_0);
@@ -218,27 +218,27 @@ internal sealed class ScreenshotOverlayHelper : Form
 		try
 		{
 			Window activeWindow = wordApp.ActiveWindow;
-			U1xcKye0r1 = ((activeWindow == null) ? IntPtr.Zero : new IntPtr(activeWindow.Hwnd));
+			_intPtr = ((activeWindow == null) ? IntPtr.Zero : new IntPtr(activeWindow.Hwnd));
 		}
 		catch
 		{
-			U1xcKye0r1 = IntPtr.Zero;
+			_intPtr = IntPtr.Zero;
 		}
 		try
 		{
-			JgxcE0hviE = wordApp.Visible;
+			_bool = wordApp.Visible;
 		}
 		catch
 		{
-			JgxcE0hviE = true;
+			_bool = true;
 		}
 		try
 		{
-			QNMc2oPqdb = wordApp.WindowState;
+			_wdWindowState = wordApp.WindowState;
 		}
 		catch
 		{
-			QNMc2oPqdb = WdWindowState.wdWindowStateNormal;
+			_wdWindowState = WdWindowState.wdWindowStateNormal;
 		}
 	}
 
@@ -256,18 +256,18 @@ internal sealed class ScreenshotOverlayHelper : Form
 				try
 				{
 					wordApp.WindowState = WdWindowState.wdWindowStateMinimize;
-					Plhc4jjZkZ = true;
+					_bool = true;
 				}
 				catch
 				{
 				}
 			}
-			if (U1xcKye0r1 != IntPtr.Zero)
+			if (_intPtr != IntPtr.Zero)
 			{
 				try
 				{
-					ScreenshotCaptureHelper2.eq5dmBARf(U1xcKye0r1, 6);
-					Plhc4jjZkZ = true;
+					ScreenshotCaptureHelper2.CaptureScreen(_intPtr, 6);
+					_bool = true;
 				}
 				catch
 				{
@@ -299,8 +299,8 @@ internal sealed class ScreenshotOverlayHelper : Form
 				(BPuOTVVZI70taClJes5e)2 => ScreenshotCaptureHelper.Rr5cS2CmV7(), 
 				_ => ScreenshotCaptureHelper.SEvcbGvKps(), 
 			};
-			Bitmap bitmap2 = oeNc1QNjFw;
-			oeNc1QNjFw = bitmap;
+			Bitmap bitmap2 = _bitmap;
+			_bitmap = bitmap;
 			bitmap2.Dispose();
 		}
 		catch
@@ -316,44 +316,44 @@ internal sealed class ScreenshotOverlayHelper : Form
 		{
 			try
 			{
-				wordApp.Visible = JgxcE0hviE;
+				wordApp.Visible = _bool;
 			}
 			catch
 			{
 			}
-			if (Plhc4jjZkZ)
+			if (_bool)
 			{
 				try
 				{
-					wordApp.WindowState = QNMc2oPqdb;
+					wordApp.WindowState = _wdWindowState;
 				}
 				catch
 				{
 				}
 			}
 		}
-		if (U1xcKye0r1 == IntPtr.Zero)
+		if (_intPtr == IntPtr.Zero)
 		{
 			return;
 		}
 		try
 		{
-			if (Plhc4jjZkZ)
+			if (_bool)
 			{
-				switch (QNMc2oPqdb)
+				switch (_wdWindowState)
 				{
 				case WdWindowState.wdWindowStateMaximize:
-					ScreenshotCaptureHelper2.eq5dmBARf(U1xcKye0r1, 3);
+					ScreenshotCaptureHelper2.CaptureScreen(_intPtr, 3);
 					break;
 				case WdWindowState.wdWindowStateMinimize:
-					ScreenshotCaptureHelper2.eq5dmBARf(U1xcKye0r1, 9);
+					ScreenshotCaptureHelper2.CaptureScreen(_intPtr, 9);
 					break;
 				default:
-					ScreenshotCaptureHelper2.eq5dmBARf(U1xcKye0r1, 5);
+					ScreenshotCaptureHelper2.CaptureScreen(_intPtr, 5);
 					break;
 				}
 			}
-			ScreenshotCaptureHelper2.d2kP0Du2a(U1xcKye0r1);
+			ScreenshotCaptureHelper2.d2kP0Du2a(_intPtr);
 		}
 		catch
 		{
@@ -362,10 +362,10 @@ internal sealed class ScreenshotOverlayHelper : Form
 
 	private Rectangle h24cHU7RGI()
 	{
-		int num = Math.Min(Bo2crjs2bE.X, QNZcJpxRon.X);
-		int num2 = Math.Min(Bo2crjs2bE.Y, QNZcJpxRon.Y);
-		int num3 = Math.Abs(QNZcJpxRon.X - Bo2crjs2bE.X);
-		int num4 = Math.Abs(QNZcJpxRon.Y - Bo2crjs2bE.Y);
+		int num = Math.Min(_point.X, QNZcJpxRon.X);
+		int num2 = Math.Min(_point.Y, QNZcJpxRon.Y);
+		int num3 = Math.Abs(QNZcJpxRon.X - _point.X);
+		int num4 = Math.Abs(QNZcJpxRon.Y - _point.Y);
 		return new Rectangle(num, num2, num3, num4);
 	}
 }

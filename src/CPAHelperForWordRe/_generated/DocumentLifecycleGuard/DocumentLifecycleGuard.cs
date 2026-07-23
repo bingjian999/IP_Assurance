@@ -17,42 +17,42 @@ internal static class DocumentLifecycleGuard
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass11_0
 	{
-		public Document zZxqO2SkRt;
+		public Document doc;
 
 		public _G_c__DisplayClass11_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string aVlqC8Q22u()
+		internal string GetFullName()
 		{
-			return zZxqO2SkRt.FullName;
+			return doc.FullName;
 		}
 
-		internal string maBqp2dq4M()
+		internal string GetName()
 		{
-			return zZxqO2SkRt.Name;
+			return doc.Name;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass12_0
 	{
-		public Document t6Mq54Wf8e;
+		public Document doc;
 
 		public _G_c__DisplayClass12_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string VB4qnmDJtZ()
+		internal string GetName()
 		{
-			return t6Mq54Wf8e.Name;
+			return doc.Name;
 		}
 
-		internal string ccPq7HvAZ7()
+		internal string GetFullName()
 		{
-			return t6Mq54Wf8e.FullName;
+			return doc.FullName;
 		}
 	}
 
@@ -63,20 +63,20 @@ internal static class DocumentLifecycleGuard
 
 		public _G_c__DisplayClass17_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string zaLqcCHkwj()
+		internal string GetName()
 		{
 			return doc.Name;
 		}
 
-		internal string DMXqebtrvA()
+		internal string GetFullName()
 		{
 			return doc.FullName;
 		}
 
-		internal string YwcqyD27yW()
+		internal string GetPath()
 		{
 			return doc.Path;
 		}
@@ -85,16 +85,16 @@ internal static class DocumentLifecycleGuard
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass17_1
 	{
-		public Selection LooqFWR0QU;
+		public Selection selection;
 
 		public _G_c__DisplayClass17_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string NJcqXkhUS6()
+		internal string GetSelectionText()
 		{
-			return LooqFWR0QU.Range.Text;
+			return selection.Range.Text;
 		}
 	}
 
@@ -103,58 +103,58 @@ internal static class DocumentLifecycleGuard
 	{
 		public Document doc;
 
-		public Selection wtsqAg3mgE;
+		public Selection selection;
 
 		public _G_c__DisplayClass7_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal string uxxqhc6nrb()
+		internal string GetName()
 		{
 			return doc.Name;
 		}
 
-		internal string maIqa2kdlg()
+		internal string GetFullName()
 		{
 			return doc.FullName;
 		}
 
-		internal string sWmqqcXEMN()
+		internal string GetPath()
 		{
 			return doc.Path;
 		}
 
-		internal string so5qPPYSWp()
+		internal string GetSelectionText()
 		{
-			return wtsqAg3mgE.Range.Text;
+			return selection.Range.Text;
 		}
 	}
 
-	private static readonly AsyncLocal<WordWindowInfo> Cf3utiDaak;
+	private static readonly AsyncLocal<WordWindowInfo> _currentWindow;
 
-	public static WordWindowInfo Current => Cf3utiDaak.Value;
+	public static WordWindowInfo Current => _currentWindow.Value;
 
-	public static void Q9OuJfHKAR(WordWindowInfo P_0)
+	public static void SetCurrentWindow(WordWindowInfo P_0)
 	{
-		Cf3utiDaak.Value = P_0;
+		_currentWindow.Value = P_0;
 	}
 
-	public static object hZfu3nWZl7(string P_0)
+	public static object GetCachedProperty(string P_0)
 	{
 		WordWindowInfo current = Current;
 		if (current == null || string.IsNullOrWhiteSpace(P_0))
 		{
 			return null;
 		}
-		if (!j9tuMfqIC8(current.WordOpenXmlCacheDocumentKey, P_0))
+		if (!MatchesCacheKey(current.WordOpenXmlCacheDocumentKey, P_0))
 		{
 			return null;
 		}
 		return current.WordOpenXmlCache;
 	}
 
-	public static void hZYuUt7cr7(string P_0, object P_1)
+	public static void SetCachedProperty(string P_0, object P_1)
 	{
 		WordWindowInfo current = Current;
 		if (current != null && !string.IsNullOrWhiteSpace(P_0) && P_1 != null)
@@ -164,7 +164,7 @@ internal static class DocumentLifecycleGuard
 		}
 	}
 
-	public static void ySsuKsA6u8()
+	public static void ClearWordOpenXmlCache()
 	{
 		WordWindowInfo current = Current;
 		if (current != null)
@@ -174,12 +174,12 @@ internal static class DocumentLifecycleGuard
 		}
 	}
 
-	public static WordWindowInfo HCFuEiq9tL(Application P_0)
+	public static WordWindowInfo CaptureWindowInfo(Application P_0)
 	{
-		WordWindowInfo vVx8AbuVh8WDeqd4oUQ = new WordWindowInfo();
+		WordWindowInfo windowInfo = new WordWindowInfo();
 		if (P_0 == null)
 		{
-			return vVx8AbuVh8WDeqd4oUQ;
+			return windowInfo;
 		}
 		try
 		{
@@ -187,30 +187,30 @@ internal static class DocumentLifecycleGuard
 			CS_8_locals_12.doc = P_0.ActiveDocument;
 			if (CS_8_locals_12.doc != null)
 			{
-				vVx8AbuVh8WDeqd4oUQ.DocumentName = iTNubDBlxS(() => CS_8_locals_12.doc.Name);
-				vVx8AbuVh8WDeqd4oUQ.DocumentFullName = iTNubDBlxS(() => CS_8_locals_12.doc.FullName);
-				vVx8AbuVh8WDeqd4oUQ.DocumentPath = iTNubDBlxS(() => CS_8_locals_12.doc.Path);
+				windowInfo.DocumentName = SafeReadString(() => CS_8_locals_12.doc.Name);
+				windowInfo.DocumentFullName = SafeReadString(() => CS_8_locals_12.doc.FullName);
+				windowInfo.DocumentPath = SafeReadString(() => CS_8_locals_12.doc.Path);
 			}
-			CS_8_locals_12.wtsqAg3mgE = P_0.Selection;
-			if (CS_8_locals_12.wtsqAg3mgE != null && CS_8_locals_12.wtsqAg3mgE.Range != null)
+			CS_8_locals_12.selection = P_0.Selection;
+			if (CS_8_locals_12.selection != null && CS_8_locals_12.selection.Range != null)
 			{
-				vVx8AbuVh8WDeqd4oUQ.SelectionStart = CS_8_locals_12.wtsqAg3mgE.Range.Start;
-				vVx8AbuVh8WDeqd4oUQ.SelectionEnd = CS_8_locals_12.wtsqAg3mgE.Range.End;
-				vVx8AbuVh8WDeqd4oUQ.SelectionTextLength = iTNubDBlxS(() => CS_8_locals_12.wtsqAg3mgE.Range.Text).Length;
-				vVx8AbuVh8WDeqd4oUQ.PageNumber = qv0uSgDm2s(CS_8_locals_12.wtsqAg3mgE.Range);
+				windowInfo.SelectionStart = CS_8_locals_12.selection.Range.Start;
+				windowInfo.SelectionEnd = CS_8_locals_12.selection.Range.End;
+				windowInfo.SelectionTextLength = SafeReadString(() => CS_8_locals_12.selection.Range.Text).Length;
+				windowInfo.PageNumber = GetPageNumber(CS_8_locals_12.selection.Range);
 			}
 		}
 		catch
 		{
 		}
-		return vVx8AbuVh8WDeqd4oUQ;
+		return windowInfo;
 	}
 
-	public static WordWindowInfo xeAu2ueFL1(Application P_0, AiTargetBinder P_1)
+	public static WordWindowInfo CaptureWindowInfoWithBinder(Application P_0, AiTargetBinder P_1)
 	{
 		if (P_1 == null)
 		{
-			return HCFuEiq9tL(P_0);
+			return CaptureWindowInfo(P_0);
 		}
 		if (P_0 == null)
 		{
@@ -225,16 +225,16 @@ internal static class DocumentLifecycleGuard
 		{
 			throw new InvalidOperationException(P_1.FUHunlB6Z7());
 		}
-		WordWindowInfo vVx8AbuVh8WDeqd4oUQ = HcIuw328IO(P_0, document, P_1.WindowKey, P_1.WindowHwnd);
-		if (!vVx8AbuVh8WDeqd4oUQ.HasDocument)
+		WordWindowInfo windowInfo = BuildWindowInfo(P_0, document, P_1.WindowKey, P_1.WindowHwnd);
+		if (!windowInfo.HasDocument)
 		{
 			throw new InvalidOperationException(P_1.FUHunlB6Z7());
 		}
 		P_1.ML7uGGyNIv(document);
-		return vVx8AbuVh8WDeqd4oUQ;
+		return windowInfo;
 	}
 
-	public static void dDwu4bAmJp(Application P_0)
+	public static void ValidatePaneTarget(Application P_0)
 	{
 		WordWindowInfo current = Current;
 		if (current == null || !current.HasPaneTarget || AiTargetBinder.hYCuNwB2K0(current).c38uOkT1SI(P_0, out var message))
@@ -244,7 +244,7 @@ internal static class DocumentLifecycleGuard
 		throw new InvalidOperationException(message);
 	}
 
-	public static Document zrqujYgRXw(Application P_0, string P_1 = "")
+	public static Document GetActiveDocument(Application P_0, string P_1 = "")
 	{
 		if (P_0 == null)
 		{
@@ -276,7 +276,7 @@ internal static class DocumentLifecycleGuard
 			}
 			return P_0.ActiveDocument ?? throw new InvalidOperationException("当前没有打开的 Word 文档。");
 		}
-		Document document2 = SB8uZO400c(P_0, text);
+		Document document2 = FindDocumentByName(P_0, text);
 		if (document2 != null)
 		{
 			return document2;
@@ -288,25 +288,25 @@ internal static class DocumentLifecycleGuard
 		throw new InvalidOperationException("未找到 Word 文档“" + P_1 + "”。");
 	}
 
-	public static bool Se3uYFg09e(Document P_0)
+	public static bool IsCurrentDocument(Document P_0)
 	{
 		_G_c__DisplayClass11_0 CS_8_locals_4 = new _G_c__DisplayClass11_0();
-		CS_8_locals_4.zZxqO2SkRt = P_0;
+		CS_8_locals_4.doc = P_0;
 		WordWindowInfo current = Current;
-		if (CS_8_locals_4.zZxqO2SkRt == null || current == null || !current.HasDocument)
+		if (CS_8_locals_4.doc == null || current == null || !current.HasDocument)
 		{
 			return false;
 		}
-		string text = iTNubDBlxS(() => CS_8_locals_4.zZxqO2SkRt.FullName);
-		string text2 = iTNubDBlxS(() => CS_8_locals_4.zZxqO2SkRt.Name);
-		if (!j9tuMfqIC8(text, current.DocumentFullName) && !j9tuMfqIC8(text2, current.DocumentName))
+		string text = SafeReadString(() => CS_8_locals_4.doc.FullName);
+		string text2 = SafeReadString(() => CS_8_locals_4.doc.Name);
+		if (!MatchesCacheKey(text, current.DocumentFullName) && !MatchesCacheKey(text2, current.DocumentName))
 		{
-			return j9tuMfqIC8(text2, Path.GetFileName(current.DocumentFullName ?? string.Empty));
+			return MatchesCacheKey(text2, Path.GetFileName(current.DocumentFullName ?? string.Empty));
 		}
 		return true;
 	}
 
-	private static Document SB8uZO400c(Application P_0, string P_1)
+	private static Document FindDocumentByName(Application P_0, string P_1)
 	{
 		if (P_0 == null || string.IsNullOrWhiteSpace(P_1))
 		{
@@ -315,22 +315,22 @@ internal static class DocumentLifecycleGuard
 		string text = P_1.Trim();
 		string fileName = Path.GetFileName(text);
 		string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(text);
-		bool flag = eJbuf0QLyt(text);
+		bool flag = IsAbsolutePath(text);
 		IEnumerator enumerator = P_0.Documents.GetEnumerator();
 		try
 		{
 			while (enumerator.MoveNext())
 			{
 				_G_c__DisplayClass12_0 CS_8_locals_5 = new _G_c__DisplayClass12_0();
-				CS_8_locals_5.t6Mq54Wf8e = (Document)enumerator.Current;
-				string text2 = iTNubDBlxS(() => CS_8_locals_5.t6Mq54Wf8e.Name);
-				if (j9tuMfqIC8(iTNubDBlxS(() => CS_8_locals_5.t6Mq54Wf8e.FullName), text))
+				CS_8_locals_5.doc = (Document)enumerator.Current;
+				string text2 = SafeReadString(() => CS_8_locals_5.doc.Name);
+				if (MatchesCacheKey(SafeReadString(() => CS_8_locals_5.doc.FullName), text))
 				{
-					return CS_8_locals_5.t6Mq54Wf8e;
+					return CS_8_locals_5.doc;
 				}
-				if (!flag && (j9tuMfqIC8(text2, text) || j9tuMfqIC8(text2, fileName) || j9tuMfqIC8(Path.GetFileNameWithoutExtension(text2), fileNameWithoutExtension)))
+				if (!flag && (MatchesCacheKey(text2, text) || MatchesCacheKey(text2, fileName) || MatchesCacheKey(Path.GetFileNameWithoutExtension(text2), fileNameWithoutExtension)))
 				{
-					return CS_8_locals_5.t6Mq54Wf8e;
+					return CS_8_locals_5.doc;
 				}
 			}
 		}
@@ -345,7 +345,7 @@ internal static class DocumentLifecycleGuard
 		return null;
 	}
 
-	private static bool eJbuf0QLyt(string P_0)
+	private static bool IsAbsolutePath(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -358,7 +358,7 @@ internal static class DocumentLifecycleGuard
 		return true;
 	}
 
-	private static bool j9tuMfqIC8(string P_0, string P_1)
+	private static bool MatchesCacheKey(string P_0, string P_1)
 	{
 		if (string.IsNullOrWhiteSpace(P_0) || string.IsNullOrWhiteSpace(P_1))
 		{
@@ -367,7 +367,7 @@ internal static class DocumentLifecycleGuard
 		return string.Equals(P_0.Trim(), P_1.Trim(), StringComparison.OrdinalIgnoreCase);
 	}
 
-	private static string iTNubDBlxS(Func<string> P_0)
+	private static string SafeReadString(Func<string> P_0)
 	{
 		try
 		{
@@ -380,7 +380,7 @@ internal static class DocumentLifecycleGuard
 		}
 	}
 
-	private static int qv0uSgDm2s(Range P_0)
+	private static int GetPageNumber(Range P_0)
 	{
 		try
 		{
@@ -392,39 +392,39 @@ internal static class DocumentLifecycleGuard
 		}
 	}
 
-	private static WordWindowInfo HcIuw328IO(Application P_0, Document P_1, string P_2, int P_3)
+	private static WordWindowInfo BuildWindowInfo(Application P_0, Document P_1, string P_2, int P_3)
 	{
 		_G_c__DisplayClass17_0 CS_8_locals_11 = new _G_c__DisplayClass17_0();
 		CS_8_locals_11.doc = P_1;
-		WordWindowInfo vVx8AbuVh8WDeqd4oUQ = new WordWindowInfo
+		WordWindowInfo windowInfo = new WordWindowInfo
 		{
 			WindowKey = (P_2 ?? string.Empty),
 			WindowHwnd = P_3,
-			DocumentName = iTNubDBlxS(() => CS_8_locals_11.doc.Name),
-			DocumentFullName = iTNubDBlxS(() => CS_8_locals_11.doc.FullName),
-			DocumentPath = iTNubDBlxS(() => CS_8_locals_11.doc.Path)
+			DocumentName = SafeReadString(() => CS_8_locals_11.doc.Name),
+			DocumentFullName = SafeReadString(() => CS_8_locals_11.doc.FullName),
+			DocumentPath = SafeReadString(() => CS_8_locals_11.doc.Path)
 		};
 		try
 		{
 			_G_c__DisplayClass17_1 CS_8_locals_12 = new _G_c__DisplayClass17_1();
-			CS_8_locals_12.LooqFWR0QU = P_0.Selection;
-			if (CS_8_locals_12.LooqFWR0QU != null && CS_8_locals_12.LooqFWR0QU.Range != null)
+			CS_8_locals_12.selection = P_0.Selection;
+			if (CS_8_locals_12.selection != null && CS_8_locals_12.selection.Range != null)
 			{
-				vVx8AbuVh8WDeqd4oUQ.SelectionStart = CS_8_locals_12.LooqFWR0QU.Range.Start;
-				vVx8AbuVh8WDeqd4oUQ.SelectionEnd = CS_8_locals_12.LooqFWR0QU.Range.End;
-				vVx8AbuVh8WDeqd4oUQ.SelectionTextLength = iTNubDBlxS(() => CS_8_locals_12.LooqFWR0QU.Range.Text).Length;
-				vVx8AbuVh8WDeqd4oUQ.PageNumber = qv0uSgDm2s(CS_8_locals_12.LooqFWR0QU.Range);
+				windowInfo.SelectionStart = CS_8_locals_12.selection.Range.Start;
+				windowInfo.SelectionEnd = CS_8_locals_12.selection.Range.End;
+				windowInfo.SelectionTextLength = SafeReadString(() => CS_8_locals_12.selection.Range.Text).Length;
+				windowInfo.PageNumber = GetPageNumber(CS_8_locals_12.selection.Range);
 			}
 		}
 		catch
 		{
 		}
-		return vVx8AbuVh8WDeqd4oUQ;
+		return windowInfo;
 	}
 
 	static DocumentLifecycleGuard()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		Cf3utiDaak = new AsyncLocal<WordWindowInfo>();
+		SseStreamInitializer.InitializeRuntime();
+		_currentWindow = new AsyncLocal<WordWindowInfo>();
 	}
 }

@@ -6,28 +6,28 @@ namespace Helper_3;
 internal sealed class Helper_3
 {
 	[CompilerGenerated]
-	private int w2ZQGIcb7b;
+	private int _cellIndex;
 
 	[CompilerGenerated]
-	private int? lQhQC7XSTO;
+	private int? _rowIndex;
 
 	[CompilerGenerated]
-	private int? Nk5QpN3xb5;
+	private int? _columnIndex;
 
 	[CompilerGenerated]
 	private int OhaQOpLyxo;
 
 	[CompilerGenerated]
-	private int Y1YQn1rXhX;
+	private int _columnSpan;
 
 	[CompilerGenerated]
-	private int PipQ753u0l;
+	private int _page;
 
 	[CompilerGenerated]
-	private int lsuQ5PaBLR;
+	private int _rangeStart;
 
 	[CompilerGenerated]
-	private int B2wQcV9epS;
+	private int _rangeEnd;
 
 	[CompilerGenerated]
 	private string hOtQeZhkNk;
@@ -37,12 +37,12 @@ internal sealed class Helper_3
 		[CompilerGenerated]
 		get
 		{
-			return w2ZQGIcb7b;
+			return _cellIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			w2ZQGIcb7b = value;
+			_cellIndex = value;
 		}
 	}
 
@@ -51,12 +51,12 @@ internal sealed class Helper_3
 		[CompilerGenerated]
 		get
 		{
-			return lQhQC7XSTO;
+			return _rowIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			lQhQC7XSTO = value;
+			_rowIndex = value;
 		}
 	}
 
@@ -65,12 +65,12 @@ internal sealed class Helper_3
 		[CompilerGenerated]
 		get
 		{
-			return Nk5QpN3xb5;
+			return _columnIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Nk5QpN3xb5 = value;
+			_columnIndex = value;
 		}
 	}
 
@@ -93,12 +93,12 @@ internal sealed class Helper_3
 		[CompilerGenerated]
 		get
 		{
-			return Y1YQn1rXhX;
+			return _columnSpan;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Y1YQn1rXhX = value;
+			_columnSpan = value;
 		}
 	}
 
@@ -107,12 +107,12 @@ internal sealed class Helper_3
 		[CompilerGenerated]
 		get
 		{
-			return PipQ753u0l;
+			return _page;
 		}
 		[CompilerGenerated]
 		set
 		{
-			PipQ753u0l = value;
+			_page = value;
 		}
 	}
 
@@ -121,12 +121,12 @@ internal sealed class Helper_3
 		[CompilerGenerated]
 		get
 		{
-			return lsuQ5PaBLR;
+			return _rangeStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			lsuQ5PaBLR = value;
+			_rangeStart = value;
 		}
 	}
 
@@ -135,12 +135,12 @@ internal sealed class Helper_3
 		[CompilerGenerated]
 		get
 		{
-			return B2wQcV9epS;
+			return _rangeEnd;
 		}
 		[CompilerGenerated]
 		set
 		{
-			B2wQcV9epS = value;
+			_rangeEnd = value;
 		}
 	}
 
@@ -160,6 +160,6 @@ internal sealed class Helper_3
 
 	public Helper_3()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

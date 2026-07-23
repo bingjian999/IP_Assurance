@@ -28,11 +28,11 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 
 	internal TextBlock txtStatus;
 
-	private bool N9H7PIyo2r;
+	private bool _bool;
 
 	public IntranetLoginWindow(string rememberedUsername, string rememberedPassword, bool autoLoginEnabled, string description, string initialStatus)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		txtUsername.Text = rememberedUsername ?? string.Empty;
 		txtPassword.Password = rememberedPassword ?? string.Empty;
@@ -115,9 +115,9 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!N9H7PIyo2r)
+		if (!_bool)
 		{
-			N9H7PIyo2r = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/general/intranetloginwindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -150,7 +150,7 @@ public sealed class IntranetLoginWindow : Window, IComponentConnector
 			txtStatus = (TextBlock)target;
 			break;
 		default:
-			N9H7PIyo2r = true;
+			_bool = true;
 			break;
 		}
 	}

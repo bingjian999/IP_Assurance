@@ -20,8 +20,8 @@ internal sealed class AiSseStreamService5 : IAgentConfigProvider, IAgentAuthenti
 		{
 			FileAccessEnabled = true,
 			FileMemoryEnabled = true,
-			FileAccessRoot = AiSseStreamService.mSfs9VWIdb("Agent", "files"),
-			FileMemoryRoot = AiSseStreamService.mSfs9VWIdb("Agent", "memory")
+			FileAccessRoot = AiSseStreamService.GetUserDataPath("Agent", "files"),
+			FileMemoryRoot = AiSseStreamService.GetUserDataPath("Agent", "memory")
 		};
 		return agentConfig;
 	}
@@ -38,6 +38,6 @@ internal sealed class AiSseStreamService5 : IAgentConfigProvider, IAgentAuthenti
 
 	public AiSseStreamService5()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

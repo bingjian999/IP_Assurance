@@ -9,25 +9,25 @@ internal sealed class RegexMatchResult
 	private int dRhijfbcQv;
 
 	[CompilerGenerated]
-	private int? m70iYc7Vmg;
+	private int? _page;
 
 	[CompilerGenerated]
-	private int qUUiZ3fw79;
+	private int _charIndexStart;
 
 	[CompilerGenerated]
-	private int HImif0dhqo;
+	private int _charIndexEnd;
 
 	[CompilerGenerated]
 	private int NgViMxdWHQ;
 
 	[CompilerGenerated]
-	private int wKiibpRQ8R;
+	private int _rangeEnd;
 
 	[CompilerGenerated]
 	private string dcFiSvbAWw;
 
 	[CompilerGenerated]
-	private string Skpiwev0Zj;
+	private string _excerpt;
 
 	public int ParagraphIndex
 	{
@@ -48,12 +48,12 @@ internal sealed class RegexMatchResult
 		[CompilerGenerated]
 		get
 		{
-			return m70iYc7Vmg;
+			return _page;
 		}
 		[CompilerGenerated]
 		set
 		{
-			m70iYc7Vmg = value;
+			_page = value;
 		}
 	}
 
@@ -62,12 +62,12 @@ internal sealed class RegexMatchResult
 		[CompilerGenerated]
 		get
 		{
-			return qUUiZ3fw79;
+			return _charIndexStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			qUUiZ3fw79 = value;
+			_charIndexStart = value;
 		}
 	}
 
@@ -76,12 +76,12 @@ internal sealed class RegexMatchResult
 		[CompilerGenerated]
 		get
 		{
-			return HImif0dhqo;
+			return _charIndexEnd;
 		}
 		[CompilerGenerated]
 		set
 		{
-			HImif0dhqo = value;
+			_charIndexEnd = value;
 		}
 	}
 
@@ -104,12 +104,12 @@ internal sealed class RegexMatchResult
 		[CompilerGenerated]
 		get
 		{
-			return wKiibpRQ8R;
+			return _rangeEnd;
 		}
 		[CompilerGenerated]
 		set
 		{
-			wKiibpRQ8R = value;
+			_rangeEnd = value;
 		}
 	}
 
@@ -132,17 +132,17 @@ internal sealed class RegexMatchResult
 		[CompilerGenerated]
 		get
 		{
-			return Skpiwev0Zj;
+			return _excerpt;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Skpiwev0Zj = value;
+			_excerpt = value;
 		}
 	}
 
 	public RegexMatchResult()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

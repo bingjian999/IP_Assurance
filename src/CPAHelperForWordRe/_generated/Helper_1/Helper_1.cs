@@ -17,22 +17,22 @@ internal sealed class Helper_1
 	private int GvttwcTshP;
 
 	[CompilerGenerated]
-	private string z6nttIbwZ9;
+	private string _fontName;
 
 	[CompilerGenerated]
 	private double NFStLVSjpw;
 
 	[CompilerGenerated]
-	private bool Im1ts8SZ1U;
+	private bool _autoHideOnDeactivate;
 
 	[CompilerGenerated]
-	private string O3RtlbAEQK;
+	private string _activeAccentColor;
 
 	[CompilerGenerated]
-	private string YGxtNh1o9X;
+	private string _documentNameDisplayMode;
 
 	[CompilerGenerated]
-	private int Oq7tmkJj2K;
+	private int _documentNamePrefixLength;
 
 	public bool Enabled
 	{
@@ -81,12 +81,12 @@ internal sealed class Helper_1
 		[CompilerGenerated]
 		get
 		{
-			return z6nttIbwZ9;
+			return _fontName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			z6nttIbwZ9 = value;
+			_fontName = value;
 		}
 	}
 
@@ -109,12 +109,12 @@ internal sealed class Helper_1
 		[CompilerGenerated]
 		get
 		{
-			return Im1ts8SZ1U;
+			return _autoHideOnDeactivate;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Im1ts8SZ1U = value;
+			_autoHideOnDeactivate = value;
 		}
 	}
 
@@ -123,12 +123,12 @@ internal sealed class Helper_1
 		[CompilerGenerated]
 		get
 		{
-			return O3RtlbAEQK;
+			return _activeAccentColor;
 		}
 		[CompilerGenerated]
 		set
 		{
-			O3RtlbAEQK = value;
+			_activeAccentColor = value;
 		}
 	}
 
@@ -137,12 +137,12 @@ internal sealed class Helper_1
 		[CompilerGenerated]
 		get
 		{
-			return YGxtNh1o9X;
+			return _documentNameDisplayMode;
 		}
 		[CompilerGenerated]
 		set
 		{
-			YGxtNh1o9X = value;
+			_documentNameDisplayMode = value;
 		}
 	}
 
@@ -151,16 +151,16 @@ internal sealed class Helper_1
 		[CompilerGenerated]
 		get
 		{
-			return Oq7tmkJj2K;
+			return _documentNamePrefixLength;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Oq7tmkJj2K = value;
+			_documentNamePrefixLength = value;
 		}
 	}
 
-	public void O77tY1qK6N()
+	public void AdjustHeight()
 	{
 		if (Height < 22)
 		{
@@ -240,14 +240,14 @@ internal sealed class Helper_1
 
 	public Helper_1()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		ar1tbt07s2 = true;
 		IGrtSxQreL = 26;
 		GvttwcTshP = 220;
-		z6nttIbwZ9 = "Microsoft YaHei UI";
+		_fontName = "Microsoft YaHei UI";
 		NFStLVSjpw = 9.0;
-		O3RtlbAEQK = "#2B74F2";
-		YGxtNh1o9X = "Full";
-		Oq7tmkJj2K = 12;
+		_activeAccentColor = "#2B74F2";
+		_documentNameDisplayMode = "Full";
+		_documentNamePrefixLength = 12;
 	}
 }

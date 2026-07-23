@@ -20,17 +20,17 @@ internal sealed class AiConfigBootstrap2
 	private sealed class onEqFoV6VqxGOBHbQtJW : Exception
 	{
 		[CompilerGenerated]
-		private readonly string xQGV6Bfh2VH;
+		private readonly string _string;
 
 		[CompilerGenerated]
-		private readonly object GAYV69ai91n;
+		private readonly object _object;
 
 		public string Code
 		{
 			[CompilerGenerated]
 			get
 			{
-				return xQGV6Bfh2VH;
+				return _string;
 			}
 		}
 
@@ -39,15 +39,15 @@ internal sealed class AiConfigBootstrap2
 			[CompilerGenerated]
 			get
 			{
-				return GAYV69ai91n;
+				return _object;
 			}
 		}
 
 		public onEqFoV6VqxGOBHbQtJW(string P_0, string P_1, object P_2 = null) : base(P_0)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
-			xQGV6Bfh2VH = P_1;
-			GAYV69ai91n = P_2;
+			SseStreamInitializer.InitializeRuntime();
+			_string = P_1;
+			_object = P_2;
 		}
 	}
 
@@ -83,7 +83,7 @@ internal sealed class AiConfigBootstrap2
 
 		public XFNayjV66fonCSKcSbOJ()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			EYPV6gY5voB = new List<object>();
 		}
 	}
@@ -91,17 +91,17 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_0
 	{
-		public AiHelper_5 HxcV63kMOK7;
+		public AiHelper_5 aiHelper_5;
 
-		public string tNlV6Uc69Ov;
+		public string text;
 
 		public Func<Application, XFNayjV66fonCSKcSbOJ, AiHelper_5> ALPV6KJXDoZ;
 
-		public Exception S0RV6EnSD9i;
+		public Exception exception;
 
 		public _G_c__DisplayClass10_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void QrkV6J1ibaQ()
@@ -110,33 +110,33 @@ internal sealed class AiConfigBootstrap2
 			XFNayjV66fonCSKcSbOJ xFNayjV66fonCSKcSbOJ = new XFNayjV66fonCSKcSbOJ();
 			try
 			{
-				application = ExcelInteropService.X11yRCCGO();
+				application = ExcelInteropService.GetActiveExcelApp();
 				if (application == null)
 				{
-					HxcV63kMOK7 = AiHelper_5.QSD9OKWs4n("未检测到已打开的 " + i0rJZwDpdH() + "。请先打开对应的表格应用和工作簿。", "spreadsheet_not_running", new
+					aiHelper_5 = AiHelper_5.CreateError("未检测到已打开的 " + i0rJZwDpdH() + "。请先打开对应的表格应用和工作簿。", "spreadsheet_not_running", new
 					{
 						host = i0rJZwDpdH()
 					});
 					return;
 				}
-				AiConfigBootstrap.swCsJ4IbrL("[AI Tool][Excel] Begin: " + tNlV6Uc69Ov);
-				HxcV63kMOK7 = ALPV6KJXDoZ(application, xFNayjV66fonCSKcSbOJ);
-				AiConfigBootstrap.swCsJ4IbrL("[AI Tool][Excel] End: " + tNlV6Uc69Ov + "; Success=" + (HxcV63kMOK7 != null && HxcV63kMOK7.success));
+				AiConfigBootstrap.LogInfo("[AI Tool][Excel] Begin: " + text);
+				aiHelper_5 = ALPV6KJXDoZ(application, xFNayjV66fonCSKcSbOJ);
+				AiConfigBootstrap.LogInfo("[AI Tool][Excel] End: " + text + "; Success=" + (aiHelper_5 != null && aiHelper_5.success));
 			}
 			catch (COMException ex)
 			{
-				AiConfigBootstrap.ujWsURly3F("[AI Tool][Excel] " + tNlV6Uc69Ov + " failed", ex);
-				HxcV63kMOK7 = AiHelper_5.g7A9nYlk8v(tNlV6Uc69Ov + " failed", "spreadsheet_com_error", ex);
+				AiConfigBootstrap.LogError("[AI Tool][Excel] " + text + " failed", ex);
+				aiHelper_5 = AiHelper_5.CreateExceptionError(text + " failed", "spreadsheet_com_error", ex);
 			}
 			catch (onEqFoV6VqxGOBHbQtJW onEqFoV6VqxGOBHbQtJW2)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[AI Tool][Excel] " + tNlV6Uc69Ov + " failed: " + onEqFoV6VqxGOBHbQtJW2.Message);
-				HxcV63kMOK7 = AiHelper_5.QSD9OKWs4n(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
+				AiConfigBootstrap.LogWarn("[AI Tool][Excel] " + text + " failed: " + onEqFoV6VqxGOBHbQtJW2.Message);
+				aiHelper_5 = AiHelper_5.CreateError(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
 			}
 			catch (Exception ex2)
 			{
-				AiConfigBootstrap.ujWsURly3F("[AI Tool][Excel] " + tNlV6Uc69Ov + " failed", ex2);
-				S0RV6EnSD9i = ex2;
+				AiConfigBootstrap.LogError("[AI Tool][Excel] " + text + " failed", ex2);
+				exception = ex2;
 			}
 			finally
 			{
@@ -158,41 +158,41 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass11_0
 	{
-		public Workbooks CpKV6jX7XS8;
+		public Workbooks workbooks;
 
 		public Func<int> AFfV6YsKxMA;
 
 		public _G_c__DisplayClass11_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int TB7V62gMQ0q()
 		{
-			return CpKV6jX7XS8.Count;
+			return workbooks.Count;
 		}
 
 		internal int wLaV64PhZcw()
 		{
-			return CpKV6jX7XS8.Count;
+			return workbooks.Count;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass12_0
 	{
-		public Sheets IECV6f5YUIC;
+		public Sheets sheets;
 
 		public Func<int> z12V6MPx6rV;
 
 		public _G_c__DisplayClass12_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int w5lV6Z8wKMI()
 		{
-			return IECV6f5YUIC.Count;
+			return sheets.Count;
 		}
 	}
 
@@ -201,11 +201,11 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Microsoft.Office.Interop.Excel.Range agZV6tbacUb;
 
-		public Workbook XkPV6LkxPkZ;
+		public Workbook workbook;
 
 		public _G_c__DisplayClass16_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int dOWV6bgMLm6()
@@ -220,7 +220,7 @@ internal sealed class AiConfigBootstrap2
 
 		internal string ztIV6wpXj70()
 		{
-			return XkPV6LkxPkZ.FullName;
+			return workbook.FullName;
 		}
 	}
 
@@ -231,7 +231,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass16_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool yN5V6sp6LoY()
@@ -247,7 +247,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass16_2()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string SImV6N7QuKb()
@@ -317,7 +317,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass18_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int L2tV6pPcMua()
@@ -338,7 +338,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass19_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal object ANqV675qvYQ()
@@ -360,18 +360,18 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass1_0
 	{
-		public Workbook gkiV6hLLvMu;
+		public Workbook workbook;
 
 		public Microsoft.Office.Interop.Excel.Range Uy3V6aJaiSk;
 
 		public _G_c__DisplayClass1_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string bhDV6yBhVoC()
 		{
-			return gkiV6hLLvMu.FullName;
+			return workbook.FullName;
 		}
 
 		internal int TcEV6XrljnS()
@@ -392,7 +392,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass20_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int uh9V6qsXOtu()
@@ -431,7 +431,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass21_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int suMV6W9q4wR()
@@ -448,18 +448,18 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass23_0
 	{
-		public Names EsbV6djlCSO;
+		public Names names;
 
 		public Func<int> OABV6zVyGRF;
 
 		public _G_c__DisplayClass23_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int GU4V6xZclog()
 		{
-			return EsbV6djlCSO.Count;
+			return names.Count;
 		}
 	}
 
@@ -472,7 +472,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass23_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int FalVuRjaACn()
@@ -484,18 +484,18 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass23_2
 	{
-		public Names hClVu63L3hp;
+		public Names names;
 
 		public Func<int> z2xVuuhK3AW;
 
 		public _G_c__DisplayClass23_2()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int rBMVu9rwCSr()
 		{
-			return hClVu63L3hp.Count;
+			return names.Count;
 		}
 	}
 
@@ -506,7 +506,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass24_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string tPgVuDMSEvI()
@@ -518,21 +518,21 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass26_0
 	{
-		public Workbook i5mVuITLgOH;
+		public Workbook workbook;
 
 		public _G_c__DisplayClass26_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string Wx9Vug0DerK()
 		{
-			return i5mVuITLgOH.Name;
+			return workbook.Name;
 		}
 
 		internal string DDtVu8HY9gn()
 		{
-			return i5mVuITLgOH.FullName;
+			return workbook.FullName;
 		}
 	}
 
@@ -543,7 +543,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass29_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string i8HVuiGv6MV()
@@ -570,13 +570,13 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Workbook zmaVurdydP4;
 
-		public Workbooks bDFVuJ7xY4x;
+		public Workbooks workbooks;
 
 		public Func<int> ns3Vu30RDmQ;
 
 		public _G_c__DisplayClass2_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string U1PVuQP0nq2()
@@ -586,7 +586,7 @@ internal sealed class AiConfigBootstrap2
 
 		internal int HkZVu1BQPDg()
 		{
-			return bDFVuJ7xY4x.Count;
+			return workbooks.Count;
 		}
 	}
 
@@ -597,7 +597,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass2_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string OyUVuUFgW3Z()
@@ -638,7 +638,7 @@ internal sealed class AiConfigBootstrap2
 
 		public _G_c__DisplayClass30_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string kcrVuZuVhoR()
@@ -650,18 +650,18 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass3_0
 	{
-		public string AhDVubjV0nx;
+		public string text;
 
 		public _G_c__DisplayClass3_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 TWDVuMtXBUI(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
 			_G_c__DisplayClass3_1 CS_8_locals_7 = new _G_c__DisplayClass3_1();
-			CS_8_locals_7.iUYVuL0KBFm = yFgJROsdyk(app, scope, AhDVubjV0nx);
-			CS_8_locals_7.vhoVutjxFsc = scope.eKvV6uFJpGF(CS_8_locals_7.iUYVuL0KBFm.Worksheets);
+			CS_8_locals_7.workbook = yFgJROsdyk(app, scope, text);
+			CS_8_locals_7.vhoVutjxFsc = scope.eKvV6uFJpGF(CS_8_locals_7.workbook.Worksheets);
 			List<object> list = new List<object>();
 			for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_7.vhoVutjxFsc.Count); i++)
 			{
@@ -672,10 +672,10 @@ internal sealed class AiConfigBootstrap2
 					name = worksheet.Name
 				});
 			}
-			return AiHelper_5.nt99CvEC4m("Worksheet list retrieved.", new
+			return AiHelper_5.CreateSuccess("Worksheet list retrieved.", new
 			{
-				workbook = CS_8_locals_7.iUYVuL0KBFm.Name,
-				workbookFullName = hjGJjwaZBM(() => CS_8_locals_7.iUYVuL0KBFm.FullName),
+				workbook = CS_8_locals_7.workbook.Name,
+				workbookFullName = hjGJjwaZBM(() => CS_8_locals_7.workbook.FullName),
 				count = list.Count,
 				sheets = list
 			});
@@ -687,13 +687,13 @@ internal sealed class AiConfigBootstrap2
 	{
 		public Sheets vhoVutjxFsc;
 
-		public Workbook iUYVuL0KBFm;
+		public Workbook workbook;
 
 		public Func<int> AndVusk9e6t;
 
 		public _G_c__DisplayClass3_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal int fK4VuSSq2sG()
@@ -703,100 +703,100 @@ internal sealed class AiConfigBootstrap2
 
 		internal string jAbVuwGU5F4()
 		{
-			return iUYVuL0KBFm.FullName;
+			return workbook.FullName;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass4_0
 	{
-		public string Ai0VuNvsdOk;
+		public string text;
 
 		public string hoIVumAoPTa;
 
-		public int i00VuoRDxHB;
+		public int value;
 
 		public int zqpVuGBMiia;
 
-		public int Kt0VuCSfkUD;
+		public int value;
 
-		public bool jXVVup6LQdh;
+		public bool flag;
 
 		public bool ECVVuOlhpGG;
 
 		public _G_c__DisplayClass4_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 N1CVulNfYof(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
-			Workbook workbook = yFgJROsdyk(app, scope, Ai0VuNvsdOk);
+			Workbook workbook = yFgJROsdyk(app, scope, text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, hoIVumAoPTa);
 			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
-			return AiHelper_5.nt99CvEC4m("Spreadsheet sheet preview prepared.", w5bJ6d8hYp(workbook, worksheet, range, "UsedRange", i00VuoRDxHB, zqpVuGBMiia, Kt0VuCSfkUD, false, jXVVup6LQdh, ECVVuOlhpGG, scope));
+			return AiHelper_5.CreateSuccess("Spreadsheet sheet preview prepared.", w5bJ6d8hYp(workbook, worksheet, range, "UsedRange", value, zqpVuGBMiia, value, false, flag, ECVVuOlhpGG, scope));
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass5_0
 	{
-		public string vw5Vu7gFWG8;
+		public string text;
 
-		public string hyUVu5N6iji;
+		public string text;
 
-		public string T88VucH6ZmS;
+		public string text;
 
 		public int tfHVueraXKO;
 
-		public int QHvVuy8GSJG;
+		public int value;
 
-		public int mwJVuX7Ymgi;
+		public int value;
 
 		public bool aPbVuFFmHHA;
 
-		public bool x8LVuhPui3M;
+		public bool flag;
 
 		public bool cCPVuaUQwRs;
 
 		public _G_c__DisplayClass5_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 mT5Vunm0jMn(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
-			Workbook workbook = yFgJROsdyk(app, scope, vw5Vu7gFWG8);
-			qqRJBchH8m(app, workbook, scope, hyUVu5N6iji, T88VucH6ZmS, out var worksheet, out var range, out var text);
-			return AiHelper_5.nt99CvEC4m("Spreadsheet range preview prepared.", w5bJ6d8hYp(workbook, worksheet, range, text, tfHVueraXKO, QHvVuy8GSJG, mwJVuX7Ymgi, aPbVuFFmHHA, x8LVuhPui3M, cCPVuaUQwRs, scope));
+			Workbook workbook = yFgJROsdyk(app, scope, text);
+			qqRJBchH8m(app, workbook, scope, text, text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess("Spreadsheet range preview prepared.", w5bJ6d8hYp(workbook, worksheet, range, text, tfHVueraXKO, value, value, aPbVuFFmHHA, flag, cCPVuaUQwRs, scope));
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass6_0
 	{
-		public string cR4VuPnFnfp;
+		public string text;
 
 		public string HTsVuAiAaQk;
 
-		public string ed5VuvmAfsi;
+		public string text;
 
 		public bool tANVuWCfBa3;
 
 		public _G_c__DisplayClass6_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 wdcVuq4QmYP(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
-			if (string.IsNullOrWhiteSpace(cR4VuPnFnfp))
+			if (string.IsNullOrWhiteSpace(text))
 			{
-				return AiHelper_5.QSD9OKWs4n("address must not be empty.", "invalid_arguments");
+				return AiHelper_5.CreateError("address must not be empty.", "invalid_arguments");
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, HTsVuAiAaQk);
-			qqRJBchH8m(app, workbook, scope, ed5VuvmAfsi, cR4VuPnFnfp, out var worksheet, out var range, out var text);
-			return AiHelper_5.nt99CvEC4m(tANVuWCfBa3 ? "Range values and formulas retrieved." : "Visible range values and formulas retrieved.", ybqJuWfEtN(workbook, worksheet, range, text, tANVuWCfBa3, true, false, scope));
+			qqRJBchH8m(app, workbook, scope, text, text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess(tANVuWCfBa3 ? "Range values and formulas retrieved." : "Visible range values and formulas retrieved.", ybqJuWfEtN(workbook, worksheet, range, text, tANVuWCfBa3, true, false, scope));
 		}
 	}
 
@@ -805,41 +805,41 @@ internal sealed class AiConfigBootstrap2
 	{
 		public string iuWVukLgGoV;
 
-		public string jmyVuxJ74ES;
+		public string text;
 
 		public string usJVudwJBJr;
 
-		public bool HpxVuzsk4xt;
+		public bool flag;
 
 		public _G_c__DisplayClass8_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 VJJVu0Tur8G(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
 			if (string.IsNullOrEmpty(iuWVukLgGoV))
 			{
-				return AiHelper_5.QSD9OKWs4n("searchValue must not be empty.", "invalid_arguments");
+				return AiHelper_5.CreateError("searchValue must not be empty.", "invalid_arguments");
 			}
-			Workbook workbook = yFgJROsdyk(app, scope, jmyVuxJ74ES);
+			Workbook workbook = yFgJROsdyk(app, scope, text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, usJVudwJBJr);
 			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
 			List<object> list = new List<object>();
 			string text;
-			bool flag = h8CJTM4gse(worksheet, range, iuWVukLgGoV, HpxVuzsk4xt, scope, list, out text);
+			bool flag = h8CJTM4gse(worksheet, range, iuWVukLgGoV, flag, scope, list, out text);
 			string searchMethod = "excel_range_find";
 			if (!flag)
 			{
-				list = UtOJgG2Q1H(worksheet, range, iuWVukLgGoV, HpxVuzsk4xt, scope);
+				list = UtOJgG2Q1H(worksheet, range, iuWVukLgGoV, flag, scope);
 				searchMethod = "value2_array_scan";
 			}
-			return AiHelper_5.nt99CvEC4m("Spreadsheet cell find completed.", new
+			return AiHelper_5.CreateSuccess("Spreadsheet cell find completed.", new
 			{
 				workbook = workbook.Name,
 				worksheet = worksheet.Name,
 				searchValue = iuWVukLgGoV,
-				matchCase = HpxVuzsk4xt,
+				matchCase = flag,
 				searchMethod = searchMethod,
 				nativeFindError = (flag ? null : text),
 				returned = list.Count,
@@ -856,13 +856,13 @@ internal sealed class AiConfigBootstrap2
 
 		public string kWOVDBeqpDL;
 
-		public string t21VD9iumWB;
+		public string text;
 
-		public string UT6VD6A2EYk;
+		public string text;
 
 		public _G_c__DisplayClass9_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal AiHelper_5 CLTVDRfTkNP(Application app, XFNayjV66fonCSKcSbOJ scope)
@@ -870,40 +870,40 @@ internal sealed class AiConfigBootstrap2
 			_G_c__DisplayClass9_1 CS_8_locals_15 = new _G_c__DisplayClass9_1();
 			if (!string.Equals(string.IsNullOrWhiteSpace(ELRVDVADLlW) ? "get" : ELRVDVADLlW.Trim().ToLowerInvariant(), "get", StringComparison.Ordinal))
 			{
-				return AiHelper_5.QSD9OKWs4n("WordRe 中 manage_excel_named_range 只支持 action=get，不创建或更新名称区域。", "invalid_arguments", new
+				return AiHelper_5.CreateError("WordRe 中 manage_excel_named_range 只支持 action=get，不创建或更新名称区域。", "invalid_arguments", new
 				{
 					action = ELRVDVADLlW
 				});
 			}
 			if (string.IsNullOrWhiteSpace(kWOVDBeqpDL))
 			{
-				return AiHelper_5.QSD9OKWs4n("name must not be empty.", "invalid_arguments");
+				return AiHelper_5.CreateError("name must not be empty.", "invalid_arguments");
 			}
-			Workbook workbook = yFgJROsdyk(app, scope, t21VD9iumWB);
-			CS_8_locals_15.nA1VD8sEAwo = FLbJHX5Yf0(workbook, scope, kWOVDBeqpDL, UT6VD6A2EYk);
-			if (CS_8_locals_15.nA1VD8sEAwo == null)
+			Workbook workbook = yFgJROsdyk(app, scope, text);
+			CS_8_locals_15.name = FLbJHX5Yf0(workbook, scope, kWOVDBeqpDL, text);
+			if (CS_8_locals_15.name == null)
 			{
-				return AiHelper_5.QSD9OKWs4n("未找到指定名称区域。", "not_found", new
+				return AiHelper_5.CreateError("未找到指定名称区域。", "not_found", new
 				{
 					workbook = workbook.Name,
 					name = kWOVDBeqpDL,
-					nameScope = UT6VD6A2EYk
+					nameScope = text
 				});
 			}
 			CS_8_locals_15.I0WVDIhUTqI = null;
 			try
 			{
-				CS_8_locals_15.I0WVDIhUTqI = scope.eKvV6uFJpGF(CS_8_locals_15.nA1VD8sEAwo.RefersToRange);
+				CS_8_locals_15.I0WVDIhUTqI = scope.eKvV6uFJpGF(CS_8_locals_15.name.RefersToRange);
 			}
 			catch
 			{
 			}
-			return AiHelper_5.nt99CvEC4m("Named range retrieved.", new
+			return AiHelper_5.CreateSuccess("Named range retrieved.", new
 			{
 				workbook = workbook.Name,
-				name = CS_8_locals_15.nA1VD8sEAwo.Name,
-				nameScope = (string.IsNullOrWhiteSpace(UT6VD6A2EYk) ? "workbook_or_worksheet" : UT6VD6A2EYk),
-				refersTo = hjGJjwaZBM(() => (dynamic)CS_8_locals_15.nA1VD8sEAwo.RefersTo),
+				name = CS_8_locals_15.name.Name,
+				nameScope = (string.IsNullOrWhiteSpace(text) ? "workbook_or_worksheet" : text),
+				refersTo = hjGJjwaZBM(() => (dynamic)CS_8_locals_15.name.RefersTo),
 				worksheet = ((CS_8_locals_15.I0WVDIhUTqI == null) ? null : hjGJjwaZBM(() => CS_8_locals_15.I0WVDIhUTqI.Worksheet.Name)),
 				address = ((CS_8_locals_15.I0WVDIhUTqI == null) ? null : tqdJKIVpyV(CS_8_locals_15.I0WVDIhUTqI)),
 				rows = ((CS_8_locals_15.I0WVDIhUTqI != null) ? pCPJ2o3f45(() => CS_8_locals_15.I0WVDIhUTqI.Rows.Count) : 0),
@@ -915,18 +915,18 @@ internal sealed class AiConfigBootstrap2
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass9_1
 	{
-		public Name nA1VD8sEAwo;
+		public Name name;
 
 		public Microsoft.Office.Interop.Excel.Range I0WVDIhUTqI;
 
 		public _G_c__DisplayClass9_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string U77VDuR5bqs()
 		{
-			return (dynamic)nA1VD8sEAwo.RefersTo;
+			return (dynamic)name.RefersTo;
 		}
 
 		internal string pSlVDDIlX8P()
@@ -1010,18 +1010,18 @@ internal sealed class AiConfigBootstrap2
 		return oaarzjrmjs("get_current_excel_context", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
 			_G_c__DisplayClass1_0 CS_8_locals_10 = new _G_c__DisplayClass1_0();
-			CS_8_locals_10.gkiV6hLLvMu = yFgJROsdyk(app, scope, string.Empty);
+			CS_8_locals_10.workbook = yFgJROsdyk(app, scope, string.Empty);
 			Worksheet worksheet = scope.eKvV6uFJpGF(app.ActiveSheet as Worksheet);
 			CS_8_locals_10.Uy3V6aJaiSk = scope.eKvV6uFJpGF(app.Selection as Microsoft.Office.Interop.Excel.Range);
 			if (worksheet == null && CS_8_locals_10.Uy3V6aJaiSk != null)
 			{
 				worksheet = scope.eKvV6uFJpGF(CS_8_locals_10.Uy3V6aJaiSk.Worksheet);
 			}
-			return (worksheet == null) ? AiHelper_5.QSD9OKWs4n("get_current_excel_context", "list_open_excel_workbooks") : AiHelper_5.nt99CvEC4m("get_excel_sheet_list", new
+			return (worksheet == null) ? AiHelper_5.CreateError("get_current_excel_context", "list_open_excel_workbooks") : AiHelper_5.CreateSuccess("get_excel_sheet_list", new
 			{
 				host = i0rJZwDpdH(),
-				workbook = CS_8_locals_10.gkiV6hLLvMu.Name,
-				workbookFullName = hjGJjwaZBM(() => CS_8_locals_10.gkiV6hLLvMu.FullName),
+				workbook = CS_8_locals_10.workbook.Name,
+				workbookFullName = hjGJjwaZBM(() => CS_8_locals_10.workbook.FullName),
 				worksheet = worksheet.Name,
 				selection = ((CS_8_locals_10.Uy3V6aJaiSk == null) ? null : new
 				{
@@ -1038,14 +1038,14 @@ internal sealed class AiConfigBootstrap2
 		return oaarzjrmjs("list_open_excel_workbooks", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
 			_G_c__DisplayClass2_0 CS_8_locals_8 = new _G_c__DisplayClass2_0();
-			CS_8_locals_8.bDFVuJ7xY4x = scope.eKvV6uFJpGF(app.Workbooks);
+			CS_8_locals_8.workbooks = scope.eKvV6uFJpGF(app.Workbooks);
 			CS_8_locals_8.zmaVurdydP4 = scope.eKvV6uFJpGF(app.ActiveWorkbook);
 			string text = ((CS_8_locals_8.zmaVurdydP4 == null) ? null : hjGJjwaZBM(() => CS_8_locals_8.zmaVurdydP4.Name));
 			List<object> list = new List<object>();
-			for (int num = 1; num <= pCPJ2o3f45(() => CS_8_locals_8.bDFVuJ7xY4x.Count); num++)
+			for (int num = 1; num <= pCPJ2o3f45(() => CS_8_locals_8.workbooks.Count); num++)
 			{
 				_G_c__DisplayClass2_1 CS_8_locals_14 = new _G_c__DisplayClass2_1();
-				CS_8_locals_14.HitVuYWWWDt = scope.eKvV6uFJpGF(CS_8_locals_8.bDFVuJ7xY4x[num]);
+				CS_8_locals_14.HitVuYWWWDt = scope.eKvV6uFJpGF(CS_8_locals_8.workbooks[num]);
 				string text2 = hjGJjwaZBM(() => CS_8_locals_14.HitVuYWWWDt.Name);
 				string fullName = hjGJjwaZBM(() => CS_8_locals_14.HitVuYWWWDt.FullName);
 				list.Add(new
@@ -1060,7 +1060,7 @@ internal sealed class AiConfigBootstrap2
 					sheetCount = pCPJ2o3f45(() => CS_8_locals_14.HitVuYWWWDt.Worksheets.Count)
 				});
 			}
-			return AiHelper_5.nt99CvEC4m("preview_excel_sheet", new
+			return AiHelper_5.CreateSuccess("preview_excel_sheet", new
 			{
 				host = i0rJZwDpdH(),
 				count = list.Count,
@@ -1073,12 +1073,12 @@ internal sealed class AiConfigBootstrap2
 	public AiHelper_5 vgirvnM1Fs(string P_0)
 	{
 		_G_c__DisplayClass3_0 CS_8_locals_4 = new _G_c__DisplayClass3_0();
-		CS_8_locals_4.AhDVubjV0nx = P_0;
+		CS_8_locals_4.text = P_0;
 		return oaarzjrmjs("get_excel_sheet_list", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
 			_G_c__DisplayClass3_1 CS_8_locals_10 = new _G_c__DisplayClass3_1();
-			CS_8_locals_10.iUYVuL0KBFm = yFgJROsdyk(app, scope, CS_8_locals_4.AhDVubjV0nx);
-			CS_8_locals_10.vhoVutjxFsc = scope.eKvV6uFJpGF(CS_8_locals_10.iUYVuL0KBFm.Worksheets);
+			CS_8_locals_10.workbook = yFgJROsdyk(app, scope, CS_8_locals_4.text);
+			CS_8_locals_10.vhoVutjxFsc = scope.eKvV6uFJpGF(CS_8_locals_10.workbook.Worksheets);
 			List<object> list = new List<object>();
 			for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_10.vhoVutjxFsc.Count); i++)
 			{
@@ -1089,10 +1089,10 @@ internal sealed class AiConfigBootstrap2
 					name = worksheet.Name
 				});
 			}
-			return AiHelper_5.nt99CvEC4m("preview_excel_range", new
+			return AiHelper_5.CreateSuccess("preview_excel_range", new
 			{
-				workbook = CS_8_locals_10.iUYVuL0KBFm.Name,
-				workbookFullName = hjGJjwaZBM(() => CS_8_locals_10.iUYVuL0KBFm.FullName),
+				workbook = CS_8_locals_10.workbook.Name,
+				workbookFullName = hjGJjwaZBM(() => CS_8_locals_10.workbook.FullName),
 				count = list.Count,
 				sheets = list
 			});
@@ -1102,58 +1102,58 @@ internal sealed class AiConfigBootstrap2
 	public AiHelper_5 dhorWDIpcu(string P_0, string P_1, int P_2, int P_3, int P_4, bool P_5, bool P_6)
 	{
 		_G_c__DisplayClass4_0 CS_8_locals_14 = new _G_c__DisplayClass4_0();
-		CS_8_locals_14.Ai0VuNvsdOk = P_1;
+		CS_8_locals_14.text = P_1;
 		CS_8_locals_14.hoIVumAoPTa = P_0;
-		CS_8_locals_14.i00VuoRDxHB = P_2;
+		CS_8_locals_14.value = P_2;
 		CS_8_locals_14.zqpVuGBMiia = P_3;
-		CS_8_locals_14.Kt0VuCSfkUD = P_4;
-		CS_8_locals_14.jXVVup6LQdh = P_5;
+		CS_8_locals_14.value = P_4;
+		CS_8_locals_14.flag = P_5;
 		CS_8_locals_14.ECVVuOlhpGG = P_6;
 		return oaarzjrmjs("preview_excel_sheet", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
-			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_14.Ai0VuNvsdOk);
+			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_14.text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, CS_8_locals_14.hoIVumAoPTa);
 			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
-			return AiHelper_5.nt99CvEC4m("get_excel_range_values_and_formulas", w5bJ6d8hYp(workbook, worksheet, range, "get_current_selection_values_and_formulas", CS_8_locals_14.i00VuoRDxHB, CS_8_locals_14.zqpVuGBMiia, CS_8_locals_14.Kt0VuCSfkUD, false, CS_8_locals_14.jXVVup6LQdh, CS_8_locals_14.ECVVuOlhpGG, scope));
+			return AiHelper_5.CreateSuccess("get_excel_range_values_and_formulas", w5bJ6d8hYp(workbook, worksheet, range, "get_current_selection_values_and_formulas", CS_8_locals_14.value, CS_8_locals_14.zqpVuGBMiia, CS_8_locals_14.value, false, CS_8_locals_14.flag, CS_8_locals_14.ECVVuOlhpGG, scope));
 		});
 	}
 
 	public AiHelper_5 kDNr0R99Bs(string P_0, string P_1, string P_2, int P_3, int P_4, int P_5, bool P_6, bool P_7, bool P_8)
 	{
 		_G_c__DisplayClass5_0 CS_8_locals_18 = new _G_c__DisplayClass5_0();
-		CS_8_locals_18.vw5Vu7gFWG8 = P_2;
-		CS_8_locals_18.hyUVu5N6iji = P_0;
-		CS_8_locals_18.T88VucH6ZmS = P_1;
+		CS_8_locals_18.text = P_2;
+		CS_8_locals_18.text = P_0;
+		CS_8_locals_18.text = P_1;
 		CS_8_locals_18.tfHVueraXKO = P_3;
-		CS_8_locals_18.QHvVuy8GSJG = P_4;
-		CS_8_locals_18.mwJVuX7Ymgi = P_5;
+		CS_8_locals_18.value = P_4;
+		CS_8_locals_18.value = P_5;
 		CS_8_locals_18.aPbVuFFmHHA = P_6;
-		CS_8_locals_18.x8LVuhPui3M = P_7;
+		CS_8_locals_18.flag = P_7;
 		CS_8_locals_18.cCPVuaUQwRs = P_8;
 		return oaarzjrmjs("preview_excel_range", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
-			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_18.vw5Vu7gFWG8);
-			qqRJBchH8m(app, workbook, scope, CS_8_locals_18.hyUVu5N6iji, CS_8_locals_18.T88VucH6ZmS, out var worksheet, out var range, out var text);
-			return AiHelper_5.nt99CvEC4m("find_excel_cells", w5bJ6d8hYp(workbook, worksheet, range, text, CS_8_locals_18.tfHVueraXKO, CS_8_locals_18.QHvVuy8GSJG, CS_8_locals_18.mwJVuX7Ymgi, CS_8_locals_18.aPbVuFFmHHA, CS_8_locals_18.x8LVuhPui3M, CS_8_locals_18.cCPVuaUQwRs, scope));
+			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_18.text);
+			qqRJBchH8m(app, workbook, scope, CS_8_locals_18.text, CS_8_locals_18.text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess("find_excel_cells", w5bJ6d8hYp(workbook, worksheet, range, text, CS_8_locals_18.tfHVueraXKO, CS_8_locals_18.value, CS_8_locals_18.value, CS_8_locals_18.aPbVuFFmHHA, CS_8_locals_18.flag, CS_8_locals_18.cCPVuaUQwRs, scope));
 		});
 	}
 
 	public AiHelper_5 XY6rk05nUf(string P_0, string P_1, string P_2, bool P_3)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_10 = new _G_c__DisplayClass6_0();
-		CS_8_locals_10.cR4VuPnFnfp = P_1;
+		CS_8_locals_10.text = P_1;
 		CS_8_locals_10.HTsVuAiAaQk = P_2;
-		CS_8_locals_10.ed5VuvmAfsi = P_0;
+		CS_8_locals_10.text = P_0;
 		CS_8_locals_10.tANVuWCfBa3 = P_3;
 		return oaarzjrmjs("get_excel_range_values_and_formulas", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
-			if (string.IsNullOrWhiteSpace(CS_8_locals_10.cR4VuPnFnfp))
+			if (string.IsNullOrWhiteSpace(CS_8_locals_10.text))
 			{
-				return AiHelper_5.QSD9OKWs4n("manage_excel_named_range", " failed");
+				return AiHelper_5.CreateError("manage_excel_named_range", " failed");
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_10.HTsVuAiAaQk);
-			qqRJBchH8m(app, workbook, scope, CS_8_locals_10.ed5VuvmAfsi, CS_8_locals_10.cR4VuPnFnfp, out var worksheet, out var range, out var text);
-			return AiHelper_5.nt99CvEC4m(CS_8_locals_10.tANVuWCfBa3 ? "spreadsheet_error" : "Unknown spreadsheet error.", ybqJuWfEtN(workbook, worksheet, range, text, CS_8_locals_10.tANVuWCfBa3, true, false, scope));
+			qqRJBchH8m(app, workbook, scope, CS_8_locals_10.text, CS_8_locals_10.text, out var worksheet, out var range, out var text);
+			return AiHelper_5.CreateSuccess(CS_8_locals_10.tANVuWCfBa3 ? "spreadsheet_error" : "Unknown spreadsheet error.", ybqJuWfEtN(workbook, worksheet, range, text, CS_8_locals_10.tANVuWCfBa3, true, false, scope));
 		});
 	}
 
@@ -1165,10 +1165,10 @@ internal sealed class AiConfigBootstrap2
 			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(app.Selection as Microsoft.Office.Interop.Excel.Range);
 			if (range == null)
 			{
-				return AiHelper_5.QSD9OKWs4n("当前没有打开的工作簿。", "no_workbook");
+				return AiHelper_5.CreateError("当前没有打开的工作簿。", "no_workbook");
 			}
 			Worksheet worksheet = scope.eKvV6uFJpGF(range.Worksheet);
-			return AiHelper_5.nt99CvEC4m("当前没有活动工作簿。", ybqJuWfEtN(workbook, worksheet, range, tqdJKIVpyV(range), false, true, false, scope));
+			return AiHelper_5.CreateSuccess("当前没有活动工作簿。", ybqJuWfEtN(workbook, worksheet, range, tqdJKIVpyV(range), false, true, false, scope));
 		});
 	}
 
@@ -1176,33 +1176,33 @@ internal sealed class AiConfigBootstrap2
 	{
 		_G_c__DisplayClass8_0 CS_8_locals_13 = new _G_c__DisplayClass8_0();
 		CS_8_locals_13.iuWVukLgGoV = P_1;
-		CS_8_locals_13.jmyVuxJ74ES = P_3;
+		CS_8_locals_13.text = P_3;
 		CS_8_locals_13.usJVudwJBJr = P_0;
-		CS_8_locals_13.HpxVuzsk4xt = P_2;
+		CS_8_locals_13.flag = P_2;
 		return oaarzjrmjs("find_excel_cells", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
 			if (string.IsNullOrEmpty(CS_8_locals_13.iuWVukLgGoV))
 			{
-				return AiHelper_5.QSD9OKWs4n("no_workbook", "未找到指定工作簿。");
+				return AiHelper_5.CreateError("no_workbook", "未找到指定工作簿。");
 			}
-			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_13.jmyVuxJ74ES);
+			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_13.text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, CS_8_locals_13.usJVudwJBJr);
 			Microsoft.Office.Interop.Excel.Range range = scope.eKvV6uFJpGF(worksheet.UsedRange);
 			List<object> list = new List<object>();
 			string text;
-			bool flag = h8CJTM4gse(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.HpxVuzsk4xt, scope, list, out text);
+			bool flag = h8CJTM4gse(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope, list, out text);
 			string searchMethod = "workbook_not_found";
 			if (!flag)
 			{
-				list = UtOJgG2Q1H(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.HpxVuzsk4xt, scope);
+				list = UtOJgG2Q1H(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope);
 				searchMethod = "当前没有打开的工作簿。";
 			}
-			return AiHelper_5.nt99CvEC4m("no_workbook", new
+			return AiHelper_5.CreateSuccess("no_workbook", new
 			{
 				workbook = workbook.Name,
 				worksheet = worksheet.Name,
 				searchValue = CS_8_locals_13.iuWVukLgGoV,
-				matchCase = CS_8_locals_13.HpxVuzsk4xt,
+				matchCase = CS_8_locals_13.flag,
 				searchMethod = searchMethod,
 				nativeFindError = (flag ? null : text),
 				returned = list.Count,
@@ -1217,47 +1217,47 @@ internal sealed class AiConfigBootstrap2
 		_G_c__DisplayClass9_0 CS_8_locals_22 = new _G_c__DisplayClass9_0();
 		CS_8_locals_22.ELRVDVADLlW = P_0;
 		CS_8_locals_22.kWOVDBeqpDL = P_1;
-		CS_8_locals_22.t21VD9iumWB = P_2;
-		CS_8_locals_22.UT6VD6A2EYk = P_3;
+		CS_8_locals_22.text = P_2;
+		CS_8_locals_22.text = P_3;
 		return oaarzjrmjs("manage_excel_named_range", delegate(Application app, XFNayjV66fonCSKcSbOJ scope)
 		{
 			_G_c__DisplayClass9_1 CS_8_locals_31 = new _G_c__DisplayClass9_1();
 			if (!string.Equals(string.IsNullOrWhiteSpace(CS_8_locals_22.ELRVDVADLlW) ? "未找到指定工作表。" : CS_8_locals_22.ELRVDVADLlW.Trim().ToLowerInvariant(), "worksheet_not_found", StringComparison.Ordinal))
 			{
-				return AiHelper_5.QSD9OKWs4n("!", "!", new
+				return AiHelper_5.CreateError("!", "!", new
 				{
 					action = CS_8_locals_22.ELRVDVADLlW
 				});
 			}
 			if (string.IsNullOrWhiteSpace(CS_8_locals_22.kWOVDBeqpDL))
 			{
-				return AiHelper_5.QSD9OKWs4n("!UsedRange", "当前 Excel/WPS 表格选区不是可读取区域。");
+				return AiHelper_5.CreateError("!UsedRange", "当前 Excel/WPS 表格选区不是可读取区域。");
 			}
-			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_22.t21VD9iumWB);
-			CS_8_locals_31.nA1VD8sEAwo = FLbJHX5Yf0(workbook, scope, CS_8_locals_22.kWOVDBeqpDL, CS_8_locals_22.UT6VD6A2EYk);
-			if (CS_8_locals_31.nA1VD8sEAwo == null)
+			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_22.text);
+			CS_8_locals_31.name = FLbJHX5Yf0(workbook, scope, CS_8_locals_22.kWOVDBeqpDL, CS_8_locals_22.text);
+			if (CS_8_locals_31.name == null)
 			{
-				return AiHelper_5.QSD9OKWs4n("empty_selection", "!", new
+				return AiHelper_5.CreateError("empty_selection", "!", new
 				{
 					workbook = workbook.Name,
 					name = CS_8_locals_22.kWOVDBeqpDL,
-					nameScope = CS_8_locals_22.UT6VD6A2EYk
+					nameScope = CS_8_locals_22.text
 				});
 			}
 			CS_8_locals_31.I0WVDIhUTqI = null;
 			try
 			{
-				CS_8_locals_31.I0WVDIhUTqI = scope.eKvV6uFJpGF(CS_8_locals_31.nA1VD8sEAwo.RefersToRange);
+				CS_8_locals_31.I0WVDIhUTqI = scope.eKvV6uFJpGF(CS_8_locals_31.name.RefersToRange);
 			}
 			catch
 			{
 			}
-			return AiHelper_5.nt99CvEC4m("当前没有活动工作表。", new
+			return AiHelper_5.CreateSuccess("当前没有活动工作表。", new
 			{
 				workbook = workbook.Name,
-				name = CS_8_locals_31.nA1VD8sEAwo.Name,
-				nameScope = (string.IsNullOrWhiteSpace(CS_8_locals_22.UT6VD6A2EYk) ? "no_worksheet" : CS_8_locals_22.UT6VD6A2EYk),
-				refersTo = hjGJjwaZBM(() => (dynamic)CS_8_locals_31.nA1VD8sEAwo.RefersTo),
+				name = CS_8_locals_31.name.Name,
+				nameScope = (string.IsNullOrWhiteSpace(CS_8_locals_22.text) ? "no_worksheet" : CS_8_locals_22.text),
+				refersTo = hjGJjwaZBM(() => (dynamic)CS_8_locals_31.name.RefersTo),
 				worksheet = ((CS_8_locals_31.I0WVDIhUTqI == null) ? null : hjGJjwaZBM(() => CS_8_locals_31.I0WVDIhUTqI.Worksheet.Name)),
 				address = ((CS_8_locals_31.I0WVDIhUTqI == null) ? null : tqdJKIVpyV(CS_8_locals_31.I0WVDIhUTqI)),
 				rows = ((CS_8_locals_31.I0WVDIhUTqI != null) ? pCPJ2o3f45(() => CS_8_locals_31.I0WVDIhUTqI.Rows.Count) : 0),
@@ -1269,45 +1269,45 @@ internal sealed class AiConfigBootstrap2
 	private static AiHelper_5 oaarzjrmjs(string P_0, Func<Application, XFNayjV66fonCSKcSbOJ, AiHelper_5> P_1)
 	{
 		_G_c__DisplayClass10_0 CS_8_locals_22 = new _G_c__DisplayClass10_0();
-		CS_8_locals_22.tNlV6Uc69Ov = P_0;
+		CS_8_locals_22.text = P_0;
 		CS_8_locals_22.ALPV6KJXDoZ = P_1;
-		CS_8_locals_22.HxcV63kMOK7 = null;
-		CS_8_locals_22.S0RV6EnSD9i = null;
+		CS_8_locals_22.aiHelper_5 = null;
+		CS_8_locals_22.exception = null;
 		Thread thread = new Thread((ThreadStart)delegate
 		{
 			Application application = null;
 			XFNayjV66fonCSKcSbOJ xFNayjV66fonCSKcSbOJ = new XFNayjV66fonCSKcSbOJ();
 			try
 			{
-				application = ExcelInteropService.X11yRCCGO();
+				application = ExcelInteropService.GetActiveExcelApp();
 				if (application == null)
 				{
-					CS_8_locals_22.HxcV63kMOK7 = AiHelper_5.QSD9OKWs4n(" failed" + i0rJZwDpdH() + "spreadsheet_error", "Unknown spreadsheet error.", new
+					CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateError(" failed" + i0rJZwDpdH() + "spreadsheet_error", "Unknown spreadsheet error.", new
 					{
 						host = i0rJZwDpdH()
 					});
 				}
 				else
 				{
-					AiConfigBootstrap.swCsJ4IbrL("address must not be empty." + CS_8_locals_22.tNlV6Uc69Ov);
-					CS_8_locals_22.HxcV63kMOK7 = CS_8_locals_22.ALPV6KJXDoZ(application, xFNayjV66fonCSKcSbOJ);
-					AiConfigBootstrap.swCsJ4IbrL("invalid_arguments" + CS_8_locals_22.tNlV6Uc69Ov + "区域地址无效：" + (CS_8_locals_22.HxcV63kMOK7 != null && CS_8_locals_22.HxcV63kMOK7.success));
+					AiConfigBootstrap.LogInfo("address must not be empty." + CS_8_locals_22.text);
+					CS_8_locals_22.aiHelper_5 = CS_8_locals_22.ALPV6KJXDoZ(application, xFNayjV66fonCSKcSbOJ);
+					AiConfigBootstrap.LogInfo("invalid_arguments" + CS_8_locals_22.text + "区域地址无效：" + (CS_8_locals_22.aiHelper_5 != null && CS_8_locals_22.aiHelper_5.success));
 				}
 			}
 			catch (COMException ex)
 			{
-				AiConfigBootstrap.ujWsURly3F("invalid_arguments" + CS_8_locals_22.tNlV6Uc69Ov + ": ", ex);
-				CS_8_locals_22.HxcV63kMOK7 = AiHelper_5.g7A9nYlk8v(CS_8_locals_22.tNlV6Uc69Ov + ":", "yyyy-MM-dd HH:mm:ss", ex);
+				AiConfigBootstrap.LogError("invalid_arguments" + CS_8_locals_22.text + ": ", ex);
+				CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateExceptionError(CS_8_locals_22.text + ":", "yyyy-MM-dd HH:mm:ss", ex);
 			}
 			catch (onEqFoV6VqxGOBHbQtJW onEqFoV6VqxGOBHbQtJW2)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("workbook_or_worksheet" + CS_8_locals_22.tNlV6Uc69Ov + "workbook" + onEqFoV6VqxGOBHbQtJW2.Message);
-				CS_8_locals_22.HxcV63kMOK7 = AiHelper_5.QSD9OKWs4n(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
+				AiConfigBootstrap.LogWarn("workbook_or_worksheet" + CS_8_locals_22.text + "workbook" + onEqFoV6VqxGOBHbQtJW2.Message);
+				CS_8_locals_22.aiHelper_5 = AiHelper_5.CreateError(onEqFoV6VqxGOBHbQtJW2.Message, onEqFoV6VqxGOBHbQtJW2.Code, onEqFoV6VqxGOBHbQtJW2.DataObject);
 			}
 			catch (Exception ex2)
 			{
-				AiConfigBootstrap.ujWsURly3F("workbook_or_worksheet" + CS_8_locals_22.tNlV6Uc69Ov + "worksheet", ex2);
-				CS_8_locals_22.S0RV6EnSD9i = ex2;
+				AiConfigBootstrap.LogError("workbook_or_worksheet" + CS_8_locals_22.text + "worksheet", ex2);
+				CS_8_locals_22.exception = ex2;
 			}
 			finally
 			{
@@ -1327,18 +1327,18 @@ internal sealed class AiConfigBootstrap2
 		thread.SetApartmentState(ApartmentState.STA);
 		thread.Start();
 		thread.Join();
-		if (CS_8_locals_22.HxcV63kMOK7 != null)
+		if (CS_8_locals_22.aiHelper_5 != null)
 		{
-			return CS_8_locals_22.HxcV63kMOK7;
+			return CS_8_locals_22.aiHelper_5;
 		}
-		return AiHelper_5.g7A9nYlk8v(CS_8_locals_22.tNlV6Uc69Ov + "workbook_or_worksheet", "'", CS_8_locals_22.S0RV6EnSD9i ?? new InvalidOperationException("'"));
+		return AiHelper_5.CreateExceptionError(CS_8_locals_22.text + "workbook_or_worksheet", "'", CS_8_locals_22.exception ?? new InvalidOperationException("'"));
 	}
 
 	private static Workbook yFgJROsdyk(Application P_0, XFNayjV66fonCSKcSbOJ P_1, string P_2)
 	{
 		_G_c__DisplayClass11_0 CS_8_locals_4 = new _G_c__DisplayClass11_0();
-		CS_8_locals_4.CpKV6jX7XS8 = P_1.eKvV6uFJpGF(P_0.Workbooks);
-		if (pCPJ2o3f45(() => CS_8_locals_4.CpKV6jX7XS8.Count) <= 0)
+		CS_8_locals_4.workbooks = P_1.eKvV6uFJpGF(P_0.Workbooks);
+		if (pCPJ2o3f45(() => CS_8_locals_4.workbooks.Count) <= 0)
 		{
 			throw new onEqFoV6VqxGOBHbQtJW("当前没有打开的工作簿。", "no_workbook");
 		}
@@ -1346,9 +1346,9 @@ internal sealed class AiConfigBootstrap2
 		{
 			return P_1.eKvV6uFJpGF(P_0.ActiveWorkbook) ?? throw new onEqFoV6VqxGOBHbQtJW("当前没有活动工作簿。", "no_workbook");
 		}
-		for (int num = 1; num <= pCPJ2o3f45(() => CS_8_locals_4.CpKV6jX7XS8.Count); num++)
+		for (int num = 1; num <= pCPJ2o3f45(() => CS_8_locals_4.workbooks.Count); num++)
 		{
-			Workbook workbook = P_1.eKvV6uFJpGF(CS_8_locals_4.CpKV6jX7XS8[num]);
+			Workbook workbook = P_1.eKvV6uFJpGF(CS_8_locals_4.workbooks[num]);
 			if (skJJrNGIkj(workbook, P_2))
 			{
 				return workbook;
@@ -1376,10 +1376,10 @@ internal sealed class AiConfigBootstrap2
 			}
 			return P_2.eKvV6uFJpGF((Worksheet)(dynamic)P_1.Worksheets[1]);
 		}
-		CS_8_locals_3.IECV6f5YUIC = P_2.eKvV6uFJpGF(P_1.Worksheets);
-		for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_3.IECV6f5YUIC.Count); i++)
+		CS_8_locals_3.sheets = P_2.eKvV6uFJpGF(P_1.Worksheets);
+		for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_3.sheets.Count); i++)
 		{
-			Worksheet worksheet2 = P_2.eKvV6uFJpGF((Worksheet)(dynamic)CS_8_locals_3.IECV6f5YUIC[i]);
+			Worksheet worksheet2 = P_2.eKvV6uFJpGF((Worksheet)(dynamic)CS_8_locals_3.sheets[i]);
 			if (string.Equals(worksheet2.Name, P_3, StringComparison.OrdinalIgnoreCase))
 			{
 				return worksheet2;
@@ -1457,7 +1457,7 @@ internal sealed class AiConfigBootstrap2
 	{
 		_G_c__DisplayClass16_0 CS_8_locals_19 = new _G_c__DisplayClass16_0();
 		CS_8_locals_19.agZV6tbacUb = P_2;
-		CS_8_locals_19.XkPV6LkxPkZ = P_0;
+		CS_8_locals_19.workbook = P_0;
 		int num = pCPJ2o3f45(() => CS_8_locals_19.agZV6tbacUb.Rows.Count);
 		int num2 = pCPJ2o3f45(() => CS_8_locals_19.agZV6tbacUb.Columns.Count);
 		int num3 = ((P_10 > 0) ? Math.Min(num2, Math.Max(1, P_10)) : num2);
@@ -1562,8 +1562,8 @@ internal sealed class AiConfigBootstrap2
 		}
 		return new
 		{
-			workbook = CS_8_locals_19.XkPV6LkxPkZ.Name,
-			workbookFullName = hjGJjwaZBM(() => CS_8_locals_19.XkPV6LkxPkZ.FullName),
+			workbook = CS_8_locals_19.workbook.Name,
+			workbookFullName = hjGJjwaZBM(() => CS_8_locals_19.workbook.FullName),
 			worksheet = P_1.Name,
 			requestedAddress = P_3,
 			address = tqdJKIVpyV(CS_8_locals_19.agZV6tbacUb),
@@ -1749,10 +1749,10 @@ internal sealed class AiConfigBootstrap2
 		if (text == "workbook" || text == "workbook_or_worksheet")
 		{
 			_G_c__DisplayClass23_0 CS_8_locals_9 = new _G_c__DisplayClass23_0();
-			CS_8_locals_9.EsbV6djlCSO = P_1.eKvV6uFJpGF(P_0.Names);
-			for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_9.EsbV6djlCSO.Count); i++)
+			CS_8_locals_9.names = P_1.eKvV6uFJpGF(P_0.Names);
+			for (int i = 1; i <= pCPJ2o3f45(() => CS_8_locals_9.names.Count); i++)
 			{
-				Name name = P_1.eKvV6uFJpGF(CS_8_locals_9.EsbV6djlCSO.Item(i, Type.Missing, Type.Missing));
+				Name name = P_1.eKvV6uFJpGF(CS_8_locals_9.names.Item(i, Type.Missing, Type.Missing));
 				if (ObsJQvCckC(name, P_2))
 				{
 					return name;
@@ -1767,10 +1767,10 @@ internal sealed class AiConfigBootstrap2
 			{
 				_G_c__DisplayClass23_2 CS_8_locals_11 = new _G_c__DisplayClass23_2();
 				Worksheet worksheet = P_1.eKvV6uFJpGF((Worksheet)(dynamic)CS_8_locals_10.nuvVuVXaUZa[num]);
-				CS_8_locals_11.hClVu63L3hp = P_1.eKvV6uFJpGF(worksheet.Names);
-				for (int num2 = 1; num2 <= pCPJ2o3f45(() => CS_8_locals_11.hClVu63L3hp.Count); num2++)
+				CS_8_locals_11.names = P_1.eKvV6uFJpGF(worksheet.Names);
+				for (int num2 = 1; num2 <= pCPJ2o3f45(() => CS_8_locals_11.names.Count); num2++)
 				{
-					Name name2 = P_1.eKvV6uFJpGF(CS_8_locals_11.hClVu63L3hp.Item(num2, Type.Missing, Type.Missing));
+					Name name2 = P_1.eKvV6uFJpGF(CS_8_locals_11.names.Item(num2, Type.Missing, Type.Missing));
 					if (ObsJQvCckC(name2, P_2))
 					{
 						return name2;
@@ -1833,10 +1833,10 @@ internal sealed class AiConfigBootstrap2
 	private static bool skJJrNGIkj(Workbook P_0, string P_1)
 	{
 		_G_c__DisplayClass26_0 CS_8_locals_3 = new _G_c__DisplayClass26_0();
-		CS_8_locals_3.i5mVuITLgOH = P_0;
-		if (!string.Equals(hjGJjwaZBM(() => CS_8_locals_3.i5mVuITLgOH.Name), P_1, StringComparison.OrdinalIgnoreCase))
+		CS_8_locals_3.workbook = P_0;
+		if (!string.Equals(hjGJjwaZBM(() => CS_8_locals_3.workbook.Name), P_1, StringComparison.OrdinalIgnoreCase))
 		{
-			return string.Equals(hjGJjwaZBM(() => CS_8_locals_3.i5mVuITLgOH.FullName), P_1, StringComparison.OrdinalIgnoreCase);
+			return string.Equals(hjGJjwaZBM(() => CS_8_locals_3.workbook.FullName), P_1, StringComparison.OrdinalIgnoreCase);
 		}
 		return true;
 	}
@@ -1981,6 +1981,6 @@ internal sealed class AiConfigBootstrap2
 
 	public AiConfigBootstrap2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

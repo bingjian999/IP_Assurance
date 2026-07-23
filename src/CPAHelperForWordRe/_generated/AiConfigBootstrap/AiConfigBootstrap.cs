@@ -12,106 +12,106 @@ namespace AiConfigBootstrap;
 
 internal static class AiConfigBootstrap
 {
-	private static readonly object C10sMv1U6m;
+	private static readonly object _lockObj;
 
-	private static BlockingCollection<string> jPtsbvt3mL;
+	private static BlockingCollection<string> _logQueue;
 
-	private static Thread XAOsS5Zsxy;
+	private static Thread _loggerThread;
 
-	private static string rTyswvhLmE;
+	private static string _logFilePath;
 
-	private static string sYpstIgm9D;
+	private static string _tempLogPath;
 
-	private static int x0vsLnuHe5;
+	private static int _logState;
 
-	private static long gLYssQmZ4X;
+	private static long _droppedCount;
 
-	public static void nCOs10kYTP()
+	public static void InitializeLogger()
 	{
-		lock (C10sMv1U6m)
+		lock (_lockObj)
 		{
-			if (x0vsLnuHe5 != 1 && x0vsLnuHe5 != 2)
+			if (_logState != 1 && _logState != 2)
 			{
-				sYpstIgm9D = Path.Combine(Path.GetTempPath(), "IP_Assurance.log");
+				_tempLogPath = Path.Combine(Path.GetTempPath(), "IP_Assurance.log");
 				try
 				{
 					string text = Path.Combine(AiSseStreamService.UserDataDir, "Logs");
 					Directory.CreateDirectory(text);
-					rTyswvhLmE = Path.Combine(text, "addin-runtime.log");
+					_logFilePath = Path.Combine(text, "addin-runtime.log");
 				}
 				catch (Exception ex)
 				{
-					rTyswvhLmE = sYpstIgm9D;
-					jZEsfgSt73("Logger directory unavailable; using temporary log. " + ex.Message);
+					_logFilePath = _tempLogPath;
+					WriteToDebug("Logger directory unavailable; using temporary log. " + ex.Message);
 				}
-				jPtsbvt3mL = new BlockingCollection<string>(new ConcurrentQueue<string>(), 4096);
-				x0vsLnuHe5 = 1;
-				XAOsS5Zsxy = new Thread(ytNs2Um93C)
+				_logQueue = new BlockingCollection<string>(new ConcurrentQueue<string>(), 4096);
+				_logState = 1;
+				_loggerThread = new Thread(LoggerThreadMain)
 				{
 					IsBackground = true,
 					Name = "IP_Assurance.Logger"
 				};
-				XAOsS5Zsxy.Start();
+				_loggerThread.Start();
 			}
 		}
 	}
 
-	public static void pnHsrIThtj()
+	public static void ShutdownLogger()
 	{
-		Thread xAOsS5Zsxy;
-		lock (C10sMv1U6m)
+		Thread loggerThread;
+		lock (_lockObj)
 		{
-			if (x0vsLnuHe5 != 1)
+			if (_logState != 1)
 			{
 				return;
 			}
-			x0vsLnuHe5 = 2;
+			_logState = 2;
 			try
 			{
-				jPtsbvt3mL.CompleteAdding();
+				_logQueue.CompleteAdding();
 			}
 			catch
 			{
 			}
-			xAOsS5Zsxy = XAOsS5Zsxy;
+			loggerThread = _loggerThread;
 		}
-		if (xAOsS5Zsxy != null && !xAOsS5Zsxy.Join(TimeSpan.FromSeconds(2.0)))
+		if (loggerThread != null && !loggerThread.Join(TimeSpan.FromSeconds(2.0)))
 		{
-			jZEsfgSt73("Logger shutdown timed out after 2 seconds; remaining entries will be flushed by the background writer when possible.");
+			WriteToDebug("Logger shutdown timed out after 2 seconds; remaining entries will be flushed by the background writer when possible.");
 		}
 	}
 
-	public static void swCsJ4IbrL(string P_0)
+	public static void LogInfo(string P_0)
 	{
-		LMasEID2rM("INFO", P_0, null);
+		WriteLogEntry("INFO", P_0, null);
 	}
 
-	public static void z7Us3dJ6Cl(string P_0)
+	public static void LogWarn(string P_0)
 	{
-		LMasEID2rM("WARN", P_0, null);
+		WriteLogEntry("WARN", P_0, null);
 	}
 
-	public static void ujWsURly3F(string P_0, Exception P_1 = null)
+	public static void LogError(string P_0, Exception P_1 = null)
 	{
-		LMasEID2rM("ERROR", P_0, P_1);
+		WriteLogEntry("ERROR", P_0, P_1);
 	}
 
 	[Conditional("DEBUG")]
-	public static void kPHsKe5Rot(string P_0)
+	public static void LogDebug(string P_0)
 	{
-		LMasEID2rM("DEBUG", P_0, null);
+		WriteLogEntry("DEBUG", P_0, null);
 	}
 
-	private static void LMasEID2rM(string P_0, string P_1, Exception P_2)
+	private static void WriteLogEntry(string P_0, string P_1, Exception P_2)
 	{
 		string text = string.Format("{0:yyyy-MM-dd HH:mm:ss} [{1}] {2}{3}", DateTime.Now, P_0, P_1, (P_2 != null) ? (Environment.NewLine + P_2) : string.Empty);
-		jZEsfgSt73(text);
-		if (Volatile.Read(ref x0vsLnuHe5) == 0)
+		WriteToDebug(text);
+		if (Volatile.Read(ref _logState) == 0)
 		{
-			nCOs10kYTP();
+			InitializeLogger();
 		}
-		BlockingCollection<string> blockingCollection = jPtsbvt3mL;
-		if (Volatile.Read(ref x0vsLnuHe5) != 1 || blockingCollection == null)
+		BlockingCollection<string> blockingCollection = _logQueue;
+		if (Volatile.Read(ref _logState) != 1 || blockingCollection == null)
 		{
 			return;
 		}
@@ -119,49 +119,49 @@ internal static class AiConfigBootstrap
 		{
 			if (!blockingCollection.TryAdd(text))
 			{
-				long num = Interlocked.Increment(ref gLYssQmZ4X);
-				jZEsfgSt73("Logger queue full; dropped line count=" + num + ".");
+				long num = Interlocked.Increment(ref _droppedCount);
+				WriteToDebug("Logger queue full; dropped line count=" + num + ".");
 			}
 		}
 		catch (InvalidOperationException)
 		{
-			jZEsfgSt73("Logger is shutting down; the line was written only to Debug output.");
+			WriteToDebug("Logger is shutting down; the line was written only to Debug output.");
 		}
 		catch (Exception ex2)
 		{
-			jZEsfgSt73("Logger enqueue failed: " + ex2.Message);
+			WriteToDebug("Logger enqueue failed: " + ex2.Message);
 		}
 	}
 
-	private static void ytNs2Um93C()
+	private static void LoggerThreadMain()
 	{
 		try
 		{
-			foreach (string item in jPtsbvt3mL.GetConsumingEnumerable())
+			foreach (string item in _logQueue.GetConsumingEnumerable())
 			{
-				long num = Interlocked.Exchange(ref gLYssQmZ4X, 0L);
+				long num = Interlocked.Exchange(ref _droppedCount, 0L);
 				if (num > 0)
 				{
-					Pdms4aenQV(ShIsZDmoZx("Logger queue was full; dropped " + num + " log line(s)."));
+					WriteToFile(FormatLogEntry("Logger queue was full; dropped " + num + " log line(s)."));
 				}
-				Pdms4aenQV(item);
+				WriteToFile(item);
 			}
-			long num2 = Interlocked.Exchange(ref gLYssQmZ4X, 0L);
+			long num2 = Interlocked.Exchange(ref _droppedCount, 0L);
 			if (num2 > 0)
 			{
-				Pdms4aenQV(ShIsZDmoZx("Logger queue was full; dropped " + num2 + " log line(s) before shutdown."));
+				WriteToFile(FormatLogEntry("Logger queue was full; dropped " + num2 + " log line(s) before shutdown."));
 			}
 		}
 		catch (Exception ex)
 		{
-			jZEsfgSt73("Logger writer failed: " + ex);
-			RZisYqE1cm(ShIsZDmoZx("Logger writer failed: " + ex.Message));
+			WriteToDebug("Logger writer failed: " + ex);
+			WriteToTempLog(FormatLogEntry("Logger writer failed: " + ex.Message));
 		}
 	}
 
-	private static void Pdms4aenQV(string P_0)
+	private static void WriteToFile(string P_0)
 	{
-		string text = rTyswvhLmE ?? sYpstIgm9D;
+		string text = _logFilePath ?? _tempLogPath;
 		try
 		{
 			JMIsjaV0V3(text, Encoding.UTF8.GetByteCount(P_0 + Environment.NewLine));
@@ -169,11 +169,11 @@ internal static class AiConfigBootstrap
 		}
 		catch (Exception ex)
 		{
-			jZEsfgSt73("Logger disk write failed for '" + text + "': " + ex.Message);
-			if (!string.Equals(text, sYpstIgm9D, StringComparison.OrdinalIgnoreCase))
+			WriteToDebug("Logger disk write failed for '" + text + "': " + ex.Message);
+			if (!string.Equals(text, _tempLogPath, StringComparison.OrdinalIgnoreCase))
 			{
-				RZisYqE1cm(ShIsZDmoZx("Primary log unavailable; original line follows. " + ex.Message));
-				RZisYqE1cm(P_0);
+				WriteToTempLog(FormatLogEntry("Primary log unavailable; original line follows. " + ex.Message));
+				WriteToTempLog(P_0);
 			}
 		}
 	}
@@ -207,37 +207,37 @@ internal static class AiConfigBootstrap
 		}
 		catch (Exception ex)
 		{
-			jZEsfgSt73("Logger rotation failed: " + ex.Message);
-			if (!string.Equals(P_0, sYpstIgm9D, StringComparison.OrdinalIgnoreCase))
+			WriteToDebug("Logger rotation failed: " + ex.Message);
+			if (!string.Equals(P_0, _tempLogPath, StringComparison.OrdinalIgnoreCase))
 			{
-				RZisYqE1cm(ShIsZDmoZx("Logger rotation failed: " + ex.Message));
+				WriteToTempLog(FormatLogEntry("Logger rotation failed: " + ex.Message));
 			}
 		}
 	}
 
-	private static void RZisYqE1cm(string P_0)
+	private static void WriteToTempLog(string P_0)
 	{
 		try
 		{
-			if (string.IsNullOrWhiteSpace(sYpstIgm9D))
+			if (string.IsNullOrWhiteSpace(_tempLogPath))
 			{
-				sYpstIgm9D = Path.Combine(Path.GetTempPath(), "IP_Assurance.log");
+				_tempLogPath = Path.Combine(Path.GetTempPath(), "IP_Assurance.log");
 			}
-			JMIsjaV0V3(sYpstIgm9D, Encoding.UTF8.GetByteCount(P_0 + Environment.NewLine));
-			File.AppendAllText(sYpstIgm9D, P_0 + Environment.NewLine, Encoding.UTF8);
+			JMIsjaV0V3(_tempLogPath, Encoding.UTF8.GetByteCount(P_0 + Environment.NewLine));
+			File.AppendAllText(_tempLogPath, P_0 + Environment.NewLine, Encoding.UTF8);
 		}
 		catch (Exception ex)
 		{
-			jZEsfgSt73("Logger fallback write failed: " + ex.Message);
+			WriteToDebug("Logger fallback write failed: " + ex.Message);
 		}
 	}
 
-	private static string ShIsZDmoZx(string P_0)
+	private static string FormatLogEntry(string P_0)
 	{
 		return string.Format("{0:yyyy-MM-dd HH:mm:ss} [WARN] [Logger] {1}", DateTime.Now, P_0);
 	}
 
-	private static void jZEsfgSt73(string P_0)
+	private static void WriteToDebug(string P_0)
 	{
 		try
 		{
@@ -249,7 +249,7 @@ internal static class AiConfigBootstrap
 
 	static AiConfigBootstrap()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		C10sMv1U6m = new object();
+		SseStreamInitializer.InitializeRuntime();
+		_lockObj = new object();
 	}
 }

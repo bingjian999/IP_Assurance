@@ -6,28 +6,28 @@ namespace Helper_17;
 internal sealed class Helper_17
 {
 	[CompilerGenerated]
-	private bool PHq6xwGiuC;
+	private bool _succeeded;
 
 	[CompilerGenerated]
-	private string ydW6dwQnAt;
+	private string _accessToken;
 
 	[CompilerGenerated]
-	private string Wia6zfBoXq;
+	private string _message;
 
 	[CompilerGenerated]
-	private bool Iy9uRYXY9n;
+	private bool _isCanceled;
 
 	public bool Succeeded
 	{
 		[CompilerGenerated]
 		get
 		{
-			return PHq6xwGiuC;
+			return _succeeded;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			PHq6xwGiuC = value;
+			_succeeded = value;
 		}
 	}
 
@@ -36,12 +36,12 @@ internal sealed class Helper_17
 		[CompilerGenerated]
 		get
 		{
-			return ydW6dwQnAt;
+			return _accessToken;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			ydW6dwQnAt = value;
+			_accessToken = value;
 		}
 	}
 
@@ -50,12 +50,12 @@ internal sealed class Helper_17
 		[CompilerGenerated]
 		get
 		{
-			return Wia6zfBoXq;
+			return _message;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			Wia6zfBoXq = value;
+			_message = value;
 		}
 	}
 
@@ -64,12 +64,12 @@ internal sealed class Helper_17
 		[CompilerGenerated]
 		get
 		{
-			return Iy9uRYXY9n;
+			return _isCanceled;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			Iy9uRYXY9n = value;
+			_isCanceled = value;
 		}
 	}
 
@@ -94,6 +94,6 @@ internal sealed class Helper_17
 
 	public Helper_17()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

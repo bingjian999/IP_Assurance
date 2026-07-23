@@ -118,7 +118,7 @@ internal static class UiHelper_5
 
 	static UiHelper_5()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		K4hSE7usVJ = new Regex("(-?\\d{1,3}(,\\d{3})*(,\\d{3}|\\d{0,13})(\\.\\d+)?)", RegexOptions.Compiled);
 		o28S2q7DEq = new Regex("(?<!\\d)\\d{2,4}\\s*[-/.]\\s*\\d{1,2}\\s*[-/.]\\s*\\d{1,2}(?!\\d)", RegexOptions.Compiled);
 	}

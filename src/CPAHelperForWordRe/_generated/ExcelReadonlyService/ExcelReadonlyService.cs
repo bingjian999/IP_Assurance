@@ -13,14 +13,14 @@ namespace ExcelReadonlyService;
 
 internal sealed class ExcelReadonlyService : IToolProvider
 {
-	private readonly AiConfigBootstrap2 EMs9mYt8R4;
+	private readonly AiConfigBootstrap2 _aiConfigBootstrap2;
 
 	public string ProviderName => "ExcelRead";
 
 	public ExcelReadonlyService(AiConfigBootstrap2 P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		EMs9mYt8R4 = P_0 ?? throw new ArgumentNullException("excelService");
+		SseStreamInitializer.InitializeRuntime();
+		_aiConfigBootstrap2 = P_0 ?? throw new ArgumentNullException("excelService");
 	}
 
 	public IList<AITool> GetTools()
@@ -94,55 +94,55 @@ internal sealed class ExcelReadonlyService : IToolProvider
 	[Description("只读获取当前 Excel/WPS 表格上下文，包括当前活动工作簿、活动工作表和当前选区地址。Office Word 连接 Excel，WPS 文字连接 WPS 表格。")]
 	private AiHelper_5 GetCurrentExcelContext()
 	{
-		return EMs9mYt8R4.H1trPxTugZ();
+		return _aiConfigBootstrap2.H1trPxTugZ();
 	}
 
 	[Description("只读列出当前 Excel/WPS 表格实例中所有已打开的工作簿，包括名称、路径、活动状态和基本属性。")]
 	private AiHelper_5 ListOpenExcelWorkbooks()
 	{
-		return EMs9mYt8R4.dE6rAOoIGx();
+		return _aiConfigBootstrap2.dE6rAOoIGx();
 	}
 
 	[Description("只读列出 Excel/WPS 表格工作簿中的所有工作表名称。可选指定工作簿名，未指定时使用当前活动工作簿。")]
 	private AiHelper_5 GetExcelSheetList(string workbookName = "")
 	{
-		return EMs9mYt8R4.vgirvnM1Fs(workbookName);
+		return _aiConfigBootstrap2.vgirvnM1Fs(workbookName);
 	}
 
 	[Description("只读快速预览指定工作表或当前工作表的 UsedRange，以及前几行/后几行内容；用于底稿概览，不修改工作簿。")]
 	private AiHelper_5 PreviewExcelSheet(string sheetName = "", int headRows = 20, int tailRows = 20, int maxColumns = 40, bool includeFormulas = false, bool includeFormats = false, string workbookName = "")
 	{
-		return EMs9mYt8R4.dhorWDIpcu(sheetName, workbookName, EYw9NTHISY(headRows, 20), EYw9NTHISY(tailRows, 20), EYw9NTHISY(maxColumns, 40), includeFormulas, includeFormats);
+		return _aiConfigBootstrap2.dhorWDIpcu(sheetName, workbookName, EYw9NTHISY(headRows, 20), EYw9NTHISY(tailRows, 20), EYw9NTHISY(maxColumns, 40), includeFormulas, includeFormats);
 	}
 
 	[Description("只读快速预览当前选区或指定区域的前几行和后几行。sheetName/rangeAddress 为空时默认使用当前 Excel/WPS 表格选区；不修改工作簿。")]
 	private AiHelper_5 PreviewExcelRange(string sheetName = "", string rangeAddress = "", int headRows = 15, int tailRows = 10, int maxColumns = 30, bool visibleOnly = false, bool includeFormulas = true, bool includeFormats = false, string workbookName = "")
 	{
-		return EMs9mYt8R4.kDNr0R99Bs(sheetName, rangeAddress, workbookName, EYw9NTHISY(headRows, 15), EYw9NTHISY(tailRows, 10), EYw9NTHISY(maxColumns, 30), visibleOnly, includeFormulas, includeFormats);
+		return _aiConfigBootstrap2.kDNr0R99Bs(sheetName, rangeAddress, workbookName, EYw9NTHISY(headRows, 15), EYw9NTHISY(tailRows, 10), EYw9NTHISY(maxColumns, 30), visibleOnly, includeFormulas, includeFormats);
 	}
 
 	[Description("只读按工作表名称和单元格区域地址读取 Excel/WPS 表格区域中的值和公式。可选指定工作簿名，未指定时默认使用当前活动工作簿。")]
 	private AiHelper_5 GetExcelRangeValuesAndFormulas(string sheetName, string address, string workbookName = "", bool visibleOnly = false)
 	{
-		return EMs9mYt8R4.XY6rk05nUf(sheetName, address, workbookName, visibleOnly);
+		return _aiConfigBootstrap2.XY6rk05nUf(sheetName, address, workbookName, visibleOnly);
 	}
 
 	[Description("只读读取当前 Excel/WPS 表格选区中的值和公式。适合用户已经手动选中底稿区域时直接查看。")]
 	private AiHelper_5 GetCurrentSelectionValuesAndFormulas()
 	{
-		return EMs9mYt8R4.GetCurrentSelectionValuesAndFormulas();
+		return _aiConfigBootstrap2.GetCurrentSelectionValuesAndFormulas();
 	}
 
 	[Description("只读在 Excel/WPS 表格工作表中查找包含指定值的单元格，最多返回 50 个结果。")]
 	private AiHelper_5 FindExcelCells(string sheetName, string searchValue, bool matchCase = false, string workbookName = "")
 	{
-		return EMs9mYt8R4.kpSrxrdvDy(sheetName, searchValue, matchCase, workbookName);
+		return _aiConfigBootstrap2.kpSrxrdvDy(sheetName, searchValue, matchCase, workbookName);
 	}
 
 	[Description("只读查询 Excel/WPS 表格名称区域。仅支持 action=get；不会创建或更新名称区域。nameScope 可选 workbook、worksheet 或留空。")]
 	private AiHelper_5 ManageExcelNamedRange(string action, string name, string workbookName = "", string nameScope = "")
 	{
-		return EMs9mYt8R4.nCmrdMSTjR(action, name, workbookName, nameScope);
+		return _aiConfigBootstrap2.nCmrdMSTjR(action, name, workbookName, nameScope);
 	}
 
 	private static int EYw9NTHISY(int P_0, int P_1)

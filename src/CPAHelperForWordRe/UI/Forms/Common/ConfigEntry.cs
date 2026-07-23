@@ -6,22 +6,22 @@ namespace CPAHelperForWordRe.UI.Forms.Common;
 public sealed class ConfigEntry
 {
 	[CompilerGenerated]
-	private string LUv5Eutnku;
+	private string _key;
 
 	[CompilerGenerated]
-	private string Sk152iub5r;
+	private string _value;
 
 	public string Key
 	{
 		[CompilerGenerated]
 		get
 		{
-			return LUv5Eutnku;
+			return _key;
 		}
 		[CompilerGenerated]
 		set
 		{
-			LUv5Eutnku = value;
+			_key = value;
 		}
 	}
 
@@ -30,17 +30,17 @@ public sealed class ConfigEntry
 		[CompilerGenerated]
 		get
 		{
-			return Sk152iub5r;
+			return _value;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Sk152iub5r = value;
+			_value = value;
 		}
 	}
 
 	public ConfigEntry()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

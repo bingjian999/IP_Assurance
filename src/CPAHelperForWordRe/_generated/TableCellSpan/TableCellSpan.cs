@@ -6,28 +6,28 @@ namespace TableCellSpan;
 internal sealed class TableCellSpan
 {
 	[CompilerGenerated]
-	private int zT9HpoITMj;
+	private int _rowIndex;
 
 	[CompilerGenerated]
 	private int YFLHOeOqYu;
 
 	[CompilerGenerated]
-	private int zF9Hne672X;
+	private int _rowSpan;
 
 	[CompilerGenerated]
-	private int UrfH7Tr8y4;
+	private int _columnSpan;
 
 	public int RowIndex
 	{
 		[CompilerGenerated]
 		get
 		{
-			return zT9HpoITMj;
+			return _rowIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			zT9HpoITMj = value;
+			_rowIndex = value;
 		}
 	}
 
@@ -50,12 +50,12 @@ internal sealed class TableCellSpan
 		[CompilerGenerated]
 		get
 		{
-			return zF9Hne672X;
+			return _rowSpan;
 		}
 		[CompilerGenerated]
 		set
 		{
-			zF9Hne672X = value;
+			_rowSpan = value;
 		}
 	}
 
@@ -64,17 +64,17 @@ internal sealed class TableCellSpan
 		[CompilerGenerated]
 		get
 		{
-			return UrfH7Tr8y4;
+			return _columnSpan;
 		}
 		[CompilerGenerated]
 		set
 		{
-			UrfH7Tr8y4 = value;
+			_columnSpan = value;
 		}
 	}
 
 	public TableCellSpan()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

@@ -6,28 +6,28 @@ namespace Helper_16;
 internal sealed class Helper_16
 {
 	[CompilerGenerated]
-	private string Bf3QaZjV7R;
+	private string _htmlFragment;
 
 	[CompilerGenerated]
-	private int oufQq6QwEH;
+	private int _pixelWidth;
 
 	[CompilerGenerated]
-	private int daJQPHjC3V;
+	private int _pixelHeight;
 
 	[CompilerGenerated]
-	private string nD4QARAMAs;
+	private string _backgroundColor;
 
 	public string HtmlFragment
 	{
 		[CompilerGenerated]
 		get
 		{
-			return Bf3QaZjV7R;
+			return _htmlFragment;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Bf3QaZjV7R = value;
+			_htmlFragment = value;
 		}
 	}
 
@@ -36,12 +36,12 @@ internal sealed class Helper_16
 		[CompilerGenerated]
 		get
 		{
-			return oufQq6QwEH;
+			return _pixelWidth;
 		}
 		[CompilerGenerated]
 		set
 		{
-			oufQq6QwEH = value;
+			_pixelWidth = value;
 		}
 	}
 
@@ -50,12 +50,12 @@ internal sealed class Helper_16
 		[CompilerGenerated]
 		get
 		{
-			return daJQPHjC3V;
+			return _pixelHeight;
 		}
 		[CompilerGenerated]
 		set
 		{
-			daJQPHjC3V = value;
+			_pixelHeight = value;
 		}
 	}
 
@@ -64,17 +64,17 @@ internal sealed class Helper_16
 		[CompilerGenerated]
 		get
 		{
-			return nD4QARAMAs;
+			return _backgroundColor;
 		}
 		[CompilerGenerated]
 		set
 		{
-			nD4QARAMAs = value;
+			_backgroundColor = value;
 		}
 	}
 
 	public Helper_16()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

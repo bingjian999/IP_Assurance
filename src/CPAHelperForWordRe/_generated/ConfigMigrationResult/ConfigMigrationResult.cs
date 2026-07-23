@@ -7,52 +7,52 @@ namespace ConfigMigrationResult;
 internal sealed class ConfigMigrationResult
 {
 	[CompilerGenerated]
-	private string HC2wcQCJu9;
+	private string _sourceConfigPath;
 
 	[CompilerGenerated]
-	private string crqweB6dQE;
+	private string _backupPath;
 
 	[CompilerGenerated]
-	private int e8swyCAlhw;
+	private int _paragraphConfigCount;
 
 	[CompilerGenerated]
 	private int aekwXilqid;
 
 	[CompilerGenerated]
-	private int E08wFBb0i6;
+	private int _otherConfigCount;
 
 	[CompilerGenerated]
-	private int Pk7whtQGY8;
+	private int _copiedParagraphPresetCount;
 
 	[CompilerGenerated]
 	private int kTnwaArgdV;
 
 	[CompilerGenerated]
-	private int wIIwqar6nQ;
+	private int _skippedParagraphPresetCount;
 
 	[CompilerGenerated]
-	private int C0JwPqgnsd;
+	private int _skippedTablePresetCount;
 
 	[CompilerGenerated]
-	private int agXwAOJ7ZK;
+	private int _failedParagraphPresetCount;
 
 	[CompilerGenerated]
-	private int Wy0wvjUHiR;
+	private int _failedTablePresetCount;
 
 	[CompilerGenerated]
-	private List<string> U68wWlmmI8;
+	private List<string> _failedPresetFiles;
 
 	public string SourceConfigPath
 	{
 		[CompilerGenerated]
 		get
 		{
-			return HC2wcQCJu9;
+			return _sourceConfigPath;
 		}
 		[CompilerGenerated]
 		set
 		{
-			HC2wcQCJu9 = value;
+			_sourceConfigPath = value;
 		}
 	}
 
@@ -61,12 +61,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return crqweB6dQE;
+			return _backupPath;
 		}
 		[CompilerGenerated]
 		set
 		{
-			crqweB6dQE = value;
+			_backupPath = value;
 		}
 	}
 
@@ -75,12 +75,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return e8swyCAlhw;
+			return _paragraphConfigCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			e8swyCAlhw = value;
+			_paragraphConfigCount = value;
 		}
 	}
 
@@ -103,12 +103,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return E08wFBb0i6;
+			return _otherConfigCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			E08wFBb0i6 = value;
+			_otherConfigCount = value;
 		}
 	}
 
@@ -117,12 +117,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return Pk7whtQGY8;
+			return _copiedParagraphPresetCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Pk7whtQGY8 = value;
+			_copiedParagraphPresetCount = value;
 		}
 	}
 
@@ -145,12 +145,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return wIIwqar6nQ;
+			return _skippedParagraphPresetCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			wIIwqar6nQ = value;
+			_skippedParagraphPresetCount = value;
 		}
 	}
 
@@ -159,12 +159,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return C0JwPqgnsd;
+			return _skippedTablePresetCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			C0JwPqgnsd = value;
+			_skippedTablePresetCount = value;
 		}
 	}
 
@@ -173,12 +173,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return agXwAOJ7ZK;
+			return _failedParagraphPresetCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			agXwAOJ7ZK = value;
+			_failedParagraphPresetCount = value;
 		}
 	}
 
@@ -187,12 +187,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return Wy0wvjUHiR;
+			return _failedTablePresetCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Wy0wvjUHiR = value;
+			_failedTablePresetCount = value;
 		}
 	}
 
@@ -201,12 +201,12 @@ internal sealed class ConfigMigrationResult
 		[CompilerGenerated]
 		get
 		{
-			return U68wWlmmI8;
+			return _failedPresetFiles;
 		}
 		[CompilerGenerated]
 		set
 		{
-			U68wWlmmI8 = value;
+			_failedPresetFiles = value;
 		}
 	}
 
@@ -214,9 +214,9 @@ internal sealed class ConfigMigrationResult
 
 	public ConfigMigrationResult()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		HC2wcQCJu9 = string.Empty;
-		crqweB6dQE = string.Empty;
-		U68wWlmmI8 = new List<string>();
+		SseStreamInitializer.InitializeRuntime();
+		_sourceConfigPath = string.Empty;
+		_backupPath = string.Empty;
+		_failedPresetFiles = new List<string>();
 	}
 }

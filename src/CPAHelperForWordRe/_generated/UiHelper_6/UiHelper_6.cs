@@ -14,6 +14,6 @@ internal sealed class UiHelper_6 : RibbonCollectionBase
 
 	internal UiHelper_6(RibbonFactory P_0) : base(P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

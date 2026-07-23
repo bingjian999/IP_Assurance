@@ -28,7 +28,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 	{
 		private SmS6GoVbbfh1MhoEaGD5() : base(null)
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		public static IPictureDisp z7NVbSHZprT(Image P_0)
@@ -44,7 +44,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 		public _G_c__DisplayClass23_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool vLiVbLM0NPS(XElement group)
@@ -60,7 +60,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 		public _G_c__DisplayClass31_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool aGkVblrAXTG(string name)
@@ -93,7 +93,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 	public CompositeRibbonExtensibility(IRibbonExtensibility designerRibbon)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		tFKXUdudKk = designerRibbon ?? throw new ArgumentNullException("designerRibbon");
 		CP2XKImP7l = designerRibbon as IReflect;
 	}
@@ -111,7 +111,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[Ribbon] Excel sync context menu XML merge skipped: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[Ribbon] Excel sync context menu XML merge skipped: " + ex.Message);
 			return customUI;
 		}
 	}
@@ -305,7 +305,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[Ribbon] Designer onLoad callback skipped: " + AWbXE6MFgG + "; " + ex.Message);
+			AiConfigBootstrap.LogWarn("[Ribbon] Designer onLoad callback skipped: " + AWbXE6MFgG + "; " + ex.Message);
 		}
 	}
 
@@ -548,7 +548,7 @@ public sealed class CompositeRibbonExtensibility : IRibbonExtensibility, IReflec
 
 	static CompositeRibbonExtensibility()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		SRGXrKgLK0 = "http://schemas.microsoft.com/office/2009/07/customui";
 		Q2WXJBIxKt = new string[5]
 		{

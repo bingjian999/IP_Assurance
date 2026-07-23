@@ -18,13 +18,13 @@ public sealed class TextPromptWindow : Window, IComponentConnector
 
 	internal TextBox InputBox;
 
-	private bool bIX5YLHCpy;
+	private bool _bool;
 
 	public string InputText => InputBox.Text;
 
 	public TextPromptWindow(string title, string label, string defaultValue)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		InitializeComponent();
 		base.Title = title;
 		PromptLabel.Text = label;
@@ -46,9 +46,9 @@ public sealed class TextPromptWindow : Window, IComponentConnector
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public void InitializeComponent()
 	{
-		if (!bIX5YLHCpy)
+		if (!_bool)
 		{
-			bIX5YLHCpy = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/common/textpromptwindow.xaml", UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
@@ -71,7 +71,7 @@ public sealed class TextPromptWindow : Window, IComponentConnector
 			((Button)target).Click += vom54bIIgc;
 			break;
 		default:
-			bIX5YLHCpy = true;
+			_bool = true;
 			break;
 		}
 	}

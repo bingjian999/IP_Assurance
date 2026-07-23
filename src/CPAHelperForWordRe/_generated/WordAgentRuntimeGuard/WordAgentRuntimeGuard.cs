@@ -19,33 +19,33 @@ internal sealed class WordAgentRuntimeGuard : IHostContext
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass5_0
 	{
-		public Action Yw7VTigJ7VO;
+		public Action action;
 
 		public _G_c__DisplayClass5_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void pG0VTI0t7Tg(object _)
 		{
-			Yw7VTigJ7VO();
+			action();
 		}
 	}
 
-	private readonly AiTargetBinder yQh332O4pP;
+	private readonly AiTargetBinder _aiTargetBinder;
 
-	private readonly WordTableToolService4 zv13UnLTq2;
+	private readonly WordTableToolService4 _wordTableToolService4;
 
 	public WordAgentRuntimeGuard() : this(null)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	public WordAgentRuntimeGuard(AiTargetBinder P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		yQh332O4pP = P_0;
-		zv13UnLTq2 = new WordTableToolService4(P_0);
+		SseStreamInitializer.InitializeRuntime();
+		_aiTargetBinder = P_0;
+		_wordTableToolService4 = new WordTableToolService4(P_0);
 	}
 
 	public string GetProjectPath()
@@ -57,15 +57,15 @@ internal sealed class WordAgentRuntimeGuard : IHostContext
 			{
 				return current.DocumentFullName;
 			}
-			if (!string.IsNullOrWhiteSpace(yQh332O4pP?.DocumentFullName))
+			if (!string.IsNullOrWhiteSpace(_aiTargetBinder?.DocumentFullName))
 			{
-				return yQh332O4pP.DocumentFullName;
+				return _aiTargetBinder.DocumentFullName;
 			}
-			if (yQh332O4pP != null)
+			if (_aiTargetBinder != null)
 			{
-				return yQh332O4pP.DocumentName;
+				return _aiTargetBinder.DocumentName;
 			}
-			return zv13UnLTq2.MdXJlVhPku("host_context_project_path", (Application app) => app.ActiveDocument?.FullName);
+			return _wordTableToolService4.MdXJlVhPku("host_context_project_path", (Application app) => app.ActiveDocument?.FullName);
 		}
 		catch
 		{
@@ -76,18 +76,18 @@ internal sealed class WordAgentRuntimeGuard : IHostContext
 	public void InvokeOnUiThread(Action P_0)
 	{
 		_G_c__DisplayClass5_0 CS_8_locals_3 = new _G_c__DisplayClass5_0();
-		CS_8_locals_3.Yw7VTigJ7VO = P_0;
+		CS_8_locals_3.action = P_0;
 		SynchronizationContext syncContext = WordTableToolService.SyncContext;
 		if (syncContext != null)
 		{
 			syncContext.Post(delegate
 			{
-				CS_8_locals_3.Yw7VTigJ7VO();
+				CS_8_locals_3.action();
 			}, null);
 		}
 		else
 		{
-			CS_8_locals_3.Yw7VTigJ7VO();
+			CS_8_locals_3.action();
 		}
 	}
 
@@ -97,28 +97,28 @@ internal sealed class WordAgentRuntimeGuard : IHostContext
 		{
 			return "Word 应用尚未初始化。";
 		}
-		WordWindowInfo vVx8AbuVh8WDeqd4oUQ;
+		WordWindowInfo windowInfo;
 		try
 		{
-			vVx8AbuVh8WDeqd4oUQ = zv13UnLTq2.MdXJlVhPku("host_context_ensure_ready", delegate(Application app)
+			windowInfo = _wordTableToolService4.MdXJlVhPku("host_context_ensure_ready", delegate(Application app)
 			{
-				string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))
 				{
 					throw new InvalidOperationException(text);
 				}
-				return DocumentLifecycleGuard.Current ?? DocumentLifecycleGuard.HCFuEiq9tL(app);
+				return DocumentLifecycleGuard.Current ?? DocumentLifecycleGuard.CaptureWindowInfo(app);
 			});
 		}
 		catch (Exception ex)
 		{
 			return ex.Message;
 		}
-		if (vVx8AbuVh8WDeqd4oUQ == null || !vVx8AbuVh8WDeqd4oUQ.HasDocument)
+		if (windowInfo == null || !windowInfo.HasDocument)
 		{
 			return "当前没有打开的 Word 文档。";
 		}
-		DocumentLifecycleGuard.Q9OuJfHKAR(vVx8AbuVh8WDeqd4oUQ);
+		DocumentLifecycleGuard.SetCurrentWindow(windowInfo);
 		return null;
 	}
 }

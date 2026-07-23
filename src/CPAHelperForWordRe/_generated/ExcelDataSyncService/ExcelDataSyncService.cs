@@ -22,58 +22,58 @@ internal static class ExcelDataSyncService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass41_0
 	{
-		public TableComWriteService.B8Id9rVIwgTW2spgYNvs OQKVbeL2HSs;
+		public TableComWriteService.SyncResult OQKVbeL2HSs;
 
-		public ProgressWindow s7ZVbyORkkZ;
+		public ProgressWindow progressWindow;
 
-		public TableComWriteService.ffxcqxVIn1iOgk0nKLUY K2ZVbXqAMC3;
+		public TableComWriteService.ProgressCallback K2ZVbXqAMC3;
 
-		public Action y2FVbFq16Tg;
+		public Action action;
 
 		public _G_c__DisplayClass41_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void kDJVb74DwvM()
 		{
 			wMSXdLtYmv(delegate
 			{
-				OQKVbeL2HSs = TableComWriteService.XVJ45smyDw((int current, int total, string message) => GQlFRxrmSC(s7ZVbyORkkZ, current, total, message));
+				OQKVbeL2HSs = TableComWriteService.SyncCurrentTable((int current, int total, string message) => GQlFRxrmSC(progressWindow, current, total, message));
 			}, "数据同步");
 		}
 
 		internal void oNjVb53J1er()
 		{
-			OQKVbeL2HSs = TableComWriteService.XVJ45smyDw((int current, int total, string message) => GQlFRxrmSC(s7ZVbyORkkZ, current, total, message));
+			OQKVbeL2HSs = TableComWriteService.SyncCurrentTable((int current, int total, string message) => GQlFRxrmSC(progressWindow, current, total, message));
 		}
 
 		internal bool zybVbcaYAMP(int current, int total, string message)
 		{
-			return GQlFRxrmSC(s7ZVbyORkkZ, current, total, message);
+			return GQlFRxrmSC(progressWindow, current, total, message);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass42_0
 	{
-		public TableComWriteService.B8Id9rVIwgTW2spgYNvs BLYVba1rP6j;
+		public TableComWriteService.SyncResult BLYVba1rP6j;
 
 		public _G_c__DisplayClass42_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void AGgVbhfKb0g()
 		{
 			try
 			{
-				BLYVba1rP6j = TableComWriteService.VuQ4c2ipxq();
+				BLYVba1rP6j = TableComWriteService.GetCurrentTableSyncStatus();
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.ujWsURly3F("[ExcelSync] Context menu locate crashed", ex);
-				BLYVba1rP6j = new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+				AiConfigBootstrap.LogError("[ExcelSync] Context menu locate crashed", ex);
+				BLYVba1rP6j = new TableComWriteService.SyncResult
 				{
 					Success = false,
 					Message = "定位数据失败：" + ex.Message
@@ -89,7 +89,7 @@ internal static class ExcelDataSyncService
 
 		public _G_c__DisplayClass52_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void aoLVbqcNxWq()
@@ -170,7 +170,7 @@ internal static class ExcelDataSyncService
 			string text = bmJXClxTxp();
 			if (!IsLoaded)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[ExcelSync] WPS native context menu auto load skipped: " + text);
+				AiConfigBootstrap.LogWarn("[ExcelSync] WPS native context menu auto load skipped: " + text);
 			}
 			CtJXNX8dgh();
 		}
@@ -245,7 +245,7 @@ internal static class ExcelDataSyncService
 	{
 		try
 		{
-			string text = TableBorderConfig.Current.KxPSXHwy4c("Excel同步_右键菜单_自动加载", "false");
+			string text = TableBorderConfig.Current.GetString("Excel同步_右键菜单_自动加载", "false");
 			if (bool.TryParse(text, out var result))
 			{
 				return result;
@@ -278,7 +278,7 @@ internal static class ExcelDataSyncService
 	{
 		try
 		{
-			TableBorderConfig.Current.pE1SyAiPWc("Excel同步_右键菜单_自动加载", P_0 ? "false" : "true");
+			TableBorderConfig.Current.SetValue("Excel同步_右键菜单_自动加载", P_0 ? "false" : "true");
 		}
 		catch
 		{
@@ -676,7 +676,7 @@ internal static class ExcelDataSyncService
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[ExcelSync] Restore NormalTemplate saved state failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[ExcelSync] Restore NormalTemplate saved state failed: " + ex.Message);
 		}
 	}
 
@@ -694,7 +694,7 @@ internal static class ExcelDataSyncService
 		TKkXkjis2w("同步数据", delegate
 		{
 			_G_c__DisplayClass41_0 CS_8_locals_17 = new _G_c__DisplayClass41_0();
-			CS_8_locals_17.s7ZVbyORkkZ = a9VXzcJTG2("已卸载右键菜单。", "已加载右键菜单。");
+			CS_8_locals_17.progressWindow = a9VXzcJTG2("已卸载右键菜单。", "已加载右键菜单。");
 			CS_8_locals_17.OQKVbeL2HSs = null;
 			try
 			{
@@ -702,14 +702,14 @@ internal static class ExcelDataSyncService
 				{
 					wMSXdLtYmv(delegate
 					{
-						CS_8_locals_17.OQKVbeL2HSs = TableComWriteService.XVJ45smyDw((int current, int total, string message) => GQlFRxrmSC(CS_8_locals_17.s7ZVbyORkkZ, current, total, message));
+						CS_8_locals_17.OQKVbeL2HSs = TableComWriteService.SyncCurrentTable((int current, int total, string message) => GQlFRxrmSC(CS_8_locals_17.progressWindow, current, total, message));
 					}, "[ExcelSync] WPS native context menu auto load skipped: ");
 				});
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.ujWsURly3F("Locate", ex);
-				CS_8_locals_17.OQKVbeL2HSs = new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+				AiConfigBootstrap.LogError("Locate", ex);
+				CS_8_locals_17.OQKVbeL2HSs = new TableComWriteService.SyncResult
 				{
 					Success = false,
 					Message = "Excel同步_右键菜单_自动加载" + ex.Message
@@ -717,23 +717,23 @@ internal static class ExcelDataSyncService
 			}
 			finally
 			{
-				wZJFVG9n37(CS_8_locals_17.s7ZVbyORkkZ);
+				wZJFVG9n37(CS_8_locals_17.progressWindow);
 			}
 			if (CS_8_locals_17.OQKVbeL2HSs != null)
 			{
 				if (CS_8_locals_17.OQKVbeL2HSs.Success)
 				{
-					AiConfigBootstrap.swCsJ4IbrL("false" + CS_8_locals_17.OQKVbeL2HSs.Message);
-					UiHelperService.SeXce6fgLN(string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message) ? "Excel同步_右键菜单_自动加载" : CS_8_locals_17.OQKVbeL2HSs.Message, "false");
+					AiConfigBootstrap.LogInfo("false" + CS_8_locals_17.OQKVbeL2HSs.Message);
+					UiHelperService.ShowToastInfo(string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message) ? "Excel同步_右键菜单_自动加载" : CS_8_locals_17.OQKVbeL2HSs.Message, "false");
 				}
 				else if (CS_8_locals_17.OQKVbeL2HSs.Cancelled)
 				{
-					UiHelperService.Kn6cyKZe85(string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message) ? "true" : CS_8_locals_17.OQKVbeL2HSs.Message, "无法获取 WPS 应用对象，右键菜单未加载。");
+					UiHelperService.ShowToastWarning(string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message) ? "true" : CS_8_locals_17.OQKVbeL2HSs.Message, "无法获取 WPS 应用对象，右键菜单未加载。");
 				}
 				else if (!string.IsNullOrWhiteSpace(CS_8_locals_17.OQKVbeL2HSs.Message))
 				{
-					AiConfigBootstrap.z7Us3dJ6Cl("无法获取 WPS CommandBars，右键菜单未加载。" + CS_8_locals_17.OQKVbeL2HSs.Message);
-					UiHelperService.IuZcXy6pki(CS_8_locals_17.OQKVbeL2HSs.Message, "同步数据");
+					AiConfigBootstrap.LogWarn("无法获取 WPS CommandBars，右键菜单未加载。" + CS_8_locals_17.OQKVbeL2HSs.Message);
+					UiHelperService.ShowToastError(CS_8_locals_17.OQKVbeL2HSs.Message, "同步数据");
 				}
 			}
 		});
@@ -750,12 +750,12 @@ internal static class ExcelDataSyncService
 			{
 				try
 				{
-					CS_8_locals_11.BLYVba1rP6j = TableComWriteService.VuQ4c2ipxq();
+					CS_8_locals_11.BLYVba1rP6j = TableComWriteService.GetCurrentTableSyncStatus();
 				}
 				catch (Exception ex)
 				{
-					AiConfigBootstrap.ujWsURly3F("CPAHelper.ExcelSync.SyncData", ex);
-					CS_8_locals_11.BLYVba1rP6j = new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+					AiConfigBootstrap.LogError("CPAHelper.ExcelSync.SyncData", ex);
+					CS_8_locals_11.BLYVba1rP6j = new TableComWriteService.SyncResult
 					{
 						Success = false,
 						Message = "定位数据" + ex.Message
@@ -769,13 +769,13 @@ internal static class ExcelDataSyncService
 			else if (CS_8_locals_11.BLYVba1rP6j.Success)
 			{
 				ygcXvh8pOP();
-				UiHelperService.SeXce6fgLN(string.IsNullOrWhiteSpace(CS_8_locals_11.BLYVba1rP6j.Message) ? "CPAHelper.ExcelSync.LocateData" : CS_8_locals_11.BLYVba1rP6j.Message, "已加载右键菜单。");
+				UiHelperService.ShowToastInfo(string.IsNullOrWhiteSpace(CS_8_locals_11.BLYVba1rP6j.Message) ? "CPAHelper.ExcelSync.LocateData" : CS_8_locals_11.BLYVba1rP6j.Message, "已加载右键菜单。");
 			}
 			else if (!string.IsNullOrWhiteSpace(CS_8_locals_11.BLYVba1rP6j.Message))
 			{
 				GxjXAL3yeg(CS_8_locals_11.BLYVba1rP6j.Message);
-				AiConfigBootstrap.z7Us3dJ6Cl("加载右键菜单失败：没有找到可挂载的 WPS 表格右键菜单。" + CS_8_locals_11.BLYVba1rP6j.Message);
-				UiHelperService.Kn6cyKZe85(CS_8_locals_11.BLYVba1rP6j.Message, "同步数据");
+				AiConfigBootstrap.LogWarn("加载右键菜单失败：没有找到可挂载的 WPS 表格右键菜单。" + CS_8_locals_11.BLYVba1rP6j.Message);
+				UiHelperService.ShowToastWarning(CS_8_locals_11.BLYVba1rP6j.Message, "同步数据");
 			}
 			else
 			{
@@ -829,16 +829,16 @@ internal static class ExcelDataSyncService
 	{
 		try
 		{
-			TableComWriteService.gMo5J5VI9LOS3nqRiEJZ gMo5J5VI9LOS3nqRiEJZ = TableComWriteService.inT4f2XO4S(false, false);
-			if (gMo5J5VI9LOS3nqRiEJZ == null || !gMo5J5VI9LOS3nqRiEJZ.HasBinding)
+			TableComWriteService.TableSyncStatus TableSyncStatus = TableComWriteService.GetTableSyncStatus(false, false);
+			if (TableSyncStatus == null || !TableSyncStatus.HasBinding)
 			{
 				return string.Empty;
 			}
-			if (!string.IsNullOrWhiteSpace(gMo5J5VI9LOS3nqRiEJZ.BoundWorkbook))
+			if (!string.IsNullOrWhiteSpace(TableSyncStatus.BoundWorkbook))
 			{
-				return gMo5J5VI9LOS3nqRiEJZ.BoundWorkbook;
+				return TableSyncStatus.BoundWorkbook;
 			}
-			string boundFullPath = gMo5J5VI9LOS3nqRiEJZ.BoundFullPath;
+			string boundFullPath = TableSyncStatus.BoundFullPath;
 			if (!string.IsNullOrWhiteSpace(boundFullPath))
 			{
 				return Path.GetFileName(boundFullPath);
@@ -958,7 +958,7 @@ internal static class ExcelDataSyncService
 			}
 			catch (Exception ex)
 			{
-				AiConfigBootstrap.z7Us3dJ6Cl("[ExcelSync] Context menu StartCustomRecord failed: " + ex.Message);
+				AiConfigBootstrap.LogWarn("[ExcelSync] Context menu StartCustomRecord failed: " + ex.Message);
 			}
 			P_0();
 		}
@@ -972,7 +972,7 @@ internal static class ExcelDataSyncService
 				}
 				catch (Exception ex2)
 				{
-					AiConfigBootstrap.z7Us3dJ6Cl("[ExcelSync] Context menu EndCustomRecord failed: " + ex2.Message);
+					AiConfigBootstrap.LogWarn("[ExcelSync] Context menu EndCustomRecord failed: " + ex2.Message);
 				}
 			}
 		}
@@ -985,7 +985,7 @@ internal static class ExcelDataSyncService
 			ProgressWindow progressWindow = new ProgressWindow();
 			progressWindow.Title = (string.IsNullOrWhiteSpace(P_0) ? "处理中" : P_0);
 			progressWindow.SetProgress(0, string.IsNullOrWhiteSpace(P_1) ? "正在处理..." : P_1);
-			WordTableToolService5.IPf5i0ZcV4(progressWindow);
+			WordTableToolService5.ShowWpfWindow(progressWindow);
 			return progressWindow;
 		}
 		catch (Exception)
@@ -1052,7 +1052,7 @@ internal static class ExcelDataSyncService
 
 	static ExcelDataSyncService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		swAFBWjhJe = new string[8]
 		{
 			"Text",

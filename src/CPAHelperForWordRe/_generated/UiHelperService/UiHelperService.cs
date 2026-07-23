@@ -14,57 +14,57 @@ internal static class UiHelperService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass9_0
 	{
-		public string I6qVZH05DbW;
+		public string message;
 
-		public string JQQVZQ5OXNq;
+		public string title;
 
-		public ToolTipIcon WIoVZ1mLL3v;
+		public ToolTipIcon toolTipIcon;
 
-		public Icon KKTVZrAlEHg;
+		public Icon icon;
 
-		public int bLIVZJQZUYn;
+		public int timeout;
 
 		public _G_c__DisplayClass9_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal void GbeVZixvIAd(object _)
+		internal void ShowToastCallback(object _)
 		{
-			TDwcaL4GpW(I6qVZH05DbW, JQQVZQ5OXNq, WIoVZ1mLL3v, KKTVZrAlEHg, bLIVZJQZUYn);
+			ShowToastInternal(message, title, toolTipIcon, icon, timeout);
 		}
 	}
 
-	private static readonly object duScvvFykF;
+	private static readonly object _toastLock;
 
-	private static NotifyIcon LBScW5bBBr;
+	private static NotifyIcon _notifyIcon;
 
-	public static void SeXce6fgLN(string P_0, string P_1 = "IP_Assurance", int P_2 = 3000)
+	public static void ShowToastInfo(string P_0, string P_1 = "IP_Assurance", int P_2 = 3000)
 	{
-		DjUchP5iGm(P_0, P_1, ToolTipIcon.Info, SystemIcons.Information, P_2);
+		ShowToast(P_0, P_1, ToolTipIcon.Info, SystemIcons.Information, P_2);
 	}
 
-	public static void Kn6cyKZe85(string P_0, string P_1 = "IP_Assurance", int P_2 = 3000)
+	public static void ShowToastWarning(string P_0, string P_1 = "IP_Assurance", int P_2 = 3000)
 	{
-		DjUchP5iGm(P_0, P_1, ToolTipIcon.Warning, SystemIcons.Warning, P_2);
+		ShowToast(P_0, P_1, ToolTipIcon.Warning, SystemIcons.Warning, P_2);
 	}
 
-	public static void IuZcXy6pki(string P_0, string P_1 = "IP_Assurance", int P_2 = 3000)
+	public static void ShowToastError(string P_0, string P_1 = "IP_Assurance", int P_2 = 3000)
 	{
-		DjUchP5iGm(P_0, P_1, ToolTipIcon.Error, SystemIcons.Error, P_2);
+		ShowToast(P_0, P_1, ToolTipIcon.Error, SystemIcons.Error, P_2);
 	}
 
-	public static void OpbcFWIPED()
+	public static void DisposeNotifyIcon()
 	{
-		lock (duScvvFykF)
+		lock (_toastLock)
 		{
 			try
 			{
-				if (LBScW5bBBr != null)
+				if (_notifyIcon != null)
 				{
-					LBScW5bBBr.Visible = false;
-					LBScW5bBBr.Dispose();
-					LBScW5bBBr = null;
+					_notifyIcon.Visible = false;
+					_notifyIcon.Dispose();
+					_notifyIcon = null;
 				}
 			}
 			catch
@@ -73,15 +73,15 @@ internal static class UiHelperService
 		}
 	}
 
-	private static void DjUchP5iGm(string P_0, string P_1, ToolTipIcon P_2, Icon P_3, int P_4)
+	private static void ShowToast(string P_0, string P_1, ToolTipIcon P_2, Icon P_3, int P_4)
 	{
 		_G_c__DisplayClass9_0 CS_8_locals_16 = new _G_c__DisplayClass9_0();
-		CS_8_locals_16.I6qVZH05DbW = P_0;
-		CS_8_locals_16.JQQVZQ5OXNq = P_1;
-		CS_8_locals_16.WIoVZ1mLL3v = P_2;
-		CS_8_locals_16.KKTVZrAlEHg = P_3;
-		CS_8_locals_16.bLIVZJQZUYn = P_4;
-		if (string.IsNullOrWhiteSpace(CS_8_locals_16.I6qVZH05DbW))
+		CS_8_locals_16.message = P_0;
+		CS_8_locals_16.title = P_1;
+		CS_8_locals_16.toolTipIcon = P_2;
+		CS_8_locals_16.icon = P_3;
+		CS_8_locals_16.timeout = P_4;
+		if (string.IsNullOrWhiteSpace(CS_8_locals_16.message))
 		{
 			return;
 		}
@@ -90,27 +90,27 @@ internal static class UiHelperService
 		{
 			syncContext.Post(delegate
 			{
-				TDwcaL4GpW(CS_8_locals_16.I6qVZH05DbW, CS_8_locals_16.JQQVZQ5OXNq, CS_8_locals_16.WIoVZ1mLL3v, CS_8_locals_16.KKTVZrAlEHg, CS_8_locals_16.bLIVZJQZUYn);
+				ShowToastInternal(CS_8_locals_16.message, CS_8_locals_16.title, CS_8_locals_16.toolTipIcon, CS_8_locals_16.icon, CS_8_locals_16.timeout);
 			}, null);
 		}
 		else
 		{
-			TDwcaL4GpW(CS_8_locals_16.I6qVZH05DbW, CS_8_locals_16.JQQVZQ5OXNq, CS_8_locals_16.WIoVZ1mLL3v, CS_8_locals_16.KKTVZrAlEHg, CS_8_locals_16.bLIVZJQZUYn);
+			ShowToastInternal(CS_8_locals_16.message, CS_8_locals_16.title, CS_8_locals_16.toolTipIcon, CS_8_locals_16.icon, CS_8_locals_16.timeout);
 		}
 	}
 
-	private static void TDwcaL4GpW(string P_0, string P_1, ToolTipIcon P_2, Icon P_3, int P_4)
+	private static void ShowToastInternal(string P_0, string P_1, ToolTipIcon P_2, Icon P_3, int P_4)
 	{
 		try
 		{
-			lock (duScvvFykF)
+			lock (_toastLock)
 			{
-				H8ecqfY1J1();
-				LBScW5bBBr.Icon = P_3 ?? SystemIcons.Information;
-				LBScW5bBBr.BalloonTipTitle = MGLcPCf5Bh(P_1);
-				LBScW5bBBr.BalloonTipText = af1cALIZnk(P_0);
-				LBScW5bBBr.BalloonTipIcon = P_2;
-				LBScW5bBBr.ShowBalloonTip(Math.Max(1000, P_4));
+				EnsureNotifyIcon();
+				_notifyIcon.Icon = P_3 ?? SystemIcons.Information;
+				_notifyIcon.BalloonTipTitle = NormalizeTitle(P_1);
+				_notifyIcon.BalloonTipText = NormalizeText(P_0);
+				_notifyIcon.BalloonTipIcon = P_2;
+				_notifyIcon.ShowBalloonTip(Math.Max(1000, P_4));
 			}
 		}
 		catch (Exception)
@@ -118,11 +118,11 @@ internal static class UiHelperService
 		}
 	}
 
-	private static void H8ecqfY1J1()
+	private static void EnsureNotifyIcon()
 	{
-		if (LBScW5bBBr == null)
+		if (_notifyIcon == null)
 		{
-			LBScW5bBBr = new NotifyIcon
+			_notifyIcon = new NotifyIcon
 			{
 				Icon = SystemIcons.Information,
 				Text = "IP_Assurance",
@@ -131,7 +131,7 @@ internal static class UiHelperService
 		}
 	}
 
-	private static string MGLcPCf5Bh(string P_0)
+	private static string NormalizeTitle(string P_0)
 	{
 		string text = (string.IsNullOrWhiteSpace(P_0) ? "IP_Assurance" : P_0.Trim());
 		if (text.Length > 63)
@@ -141,7 +141,7 @@ internal static class UiHelperService
 		return text;
 	}
 
-	private static string af1cALIZnk(string P_0)
+	private static string NormalizeText(string P_0)
 	{
 		string text = P_0.Trim();
 		if (text.Length > 180)
@@ -153,7 +153,7 @@ internal static class UiHelperService
 
 	static UiHelperService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		duScvvFykF = new object();
+		SseStreamInitializer.InitializeRuntime();
+		_toastLock = new object();
 	}
 }

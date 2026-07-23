@@ -37,15 +37,15 @@ internal static class PageSplitService
 
 	private static void CO7f6S6Mxg(string P_0)
 	{
-		Cfg.m15SqmKUa9();
+		Cfg.SaveToFile();
 		PageSetup pageSetup = App.ActiveDocument.PageSetup;
 		pageSetup.Orientation = WdOrientation.wdOrientPortrait;
-		pageSetup.TopMargin = App.CentimetersToPoints((float)Cfg.hB5SFqa39l("页面_" + P_0 + "_上边距", 2.54));
-		pageSetup.BottomMargin = App.CentimetersToPoints((float)Cfg.hB5SFqa39l("页面_" + P_0 + "_下边距", 2.54));
-		pageSetup.LeftMargin = App.CentimetersToPoints((float)Cfg.hB5SFqa39l("页面_" + P_0 + "_左边距", 3.18));
-		pageSetup.RightMargin = App.CentimetersToPoints((float)Cfg.hB5SFqa39l("页面_" + P_0 + "_右边距", 3.18));
-		pageSetup.HeaderDistance = App.CentimetersToPoints((float)Cfg.hB5SFqa39l("页面_" + P_0 + "_页眉", 1.5));
-		pageSetup.FooterDistance = App.CentimetersToPoints((float)Cfg.hB5SFqa39l("页面_" + P_0 + "_页脚", 1.75));
+		pageSetup.TopMargin = App.CentimetersToPoints((float)Cfg.GetDouble("页面_" + P_0 + "_上边距", 2.54));
+		pageSetup.BottomMargin = App.CentimetersToPoints((float)Cfg.GetDouble("页面_" + P_0 + "_下边距", 2.54));
+		pageSetup.LeftMargin = App.CentimetersToPoints((float)Cfg.GetDouble("页面_" + P_0 + "_左边距", 3.18));
+		pageSetup.RightMargin = App.CentimetersToPoints((float)Cfg.GetDouble("页面_" + P_0 + "_右边距", 3.18));
+		pageSetup.HeaderDistance = App.CentimetersToPoints((float)Cfg.GetDouble("页面_" + P_0 + "_页眉", 1.5));
+		pageSetup.FooterDistance = App.CentimetersToPoints((float)Cfg.GetDouble("页面_" + P_0 + "_页脚", 1.75));
 	}
 
 	public static void q6BfuLcjaG()
@@ -71,9 +71,9 @@ internal static class PageSplitService
 		App.ScreenUpdating = false;
 		try
 		{
-			Cfg.m15SqmKUa9();
+			Cfg.SaveToFile();
 			Document activeDocument = App.ActiveDocument;
-			int num = PageNumberStartWindow.dXHnSRT5B2(Cfg.HYsSh2NDxY("页面_页码_起始值", 1));
+			int num = PageNumberStartWindow.dXHnSRT5B2(Cfg.GetInt("页面_页码_起始值", 1));
 			WwJfTF0CF3(activeDocument, num);
 			HeaderFooter headerFooter = activeDocument.Sections[1].Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary];
 			PageNumbers pageNumbers = headerFooter.PageNumbers;
@@ -93,7 +93,7 @@ internal static class PageSplitService
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8("插入页码失败：" + ex.Message, "IP_Assurance");
+			LoggerInitializer.ShowError("插入页码失败：" + ex.Message, "IP_Assurance");
 		}
 		finally
 		{
@@ -144,7 +144,7 @@ internal static class PageSplitService
 		try
 		{
 			App.ScreenUpdating = false;
-			if (openFileDialog.ShowDialog(WordTableToolService5.KJy58rGLXb()) != DialogResult.OK)
+			if (openFileDialog.ShowDialog(WordTableToolService5.GetOwnerWindow()) != DialogResult.OK)
 			{
 				return;
 			}
@@ -160,7 +160,7 @@ internal static class PageSplitService
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8(ex.ToString(), "IP_Assurance");
+			LoggerInitializer.ShowError(ex.ToString(), "IP_Assurance");
 		}
 		finally
 		{
@@ -169,7 +169,7 @@ internal static class PageSplitService
 		}
 		if (flag)
 		{
-			LoggerInitializer.Ay3cNuEgJo(string.Format("批量转为 PDF 完成：{0} / {1}", num, num2), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("批量转为 PDF 完成：{0} / {1}", num, num2), "IP_Assurance");
 		}
 	}
 
@@ -252,7 +252,7 @@ internal static class PageSplitService
 		try
 		{
 			App.ScreenUpdating = false;
-			if (openFileDialog.ShowDialog(WordTableToolService5.KJy58rGLXb()) != DialogResult.OK)
+			if (openFileDialog.ShowDialog(WordTableToolService5.GetOwnerWindow()) != DialogResult.OK)
 			{
 				return;
 			}
@@ -296,7 +296,7 @@ internal static class PageSplitService
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8(ex.ToString(), "IP_Assurance");
+			LoggerInitializer.ShowError(ex.ToString(), "IP_Assurance");
 		}
 		finally
 		{
@@ -315,12 +315,12 @@ internal static class PageSplitService
 		Document activeDocument = App.ActiveDocument;
 		if (string.IsNullOrEmpty(activeDocument.Path))
 		{
-			LoggerInitializer.u0kcmnykTv("请先保存当前文档", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先保存当前文档", "IP_Assurance");
 			return;
 		}
 		if (!activeDocument.Saved)
 		{
-			if (!LoggerInitializer.JWucG2ERAH("当前文档有未保存的修改。按页拆分需要先保存当前文档，是否保存并继续？", "IP_Assurance"))
+			if (!LoggerInitializer.ShowConfirm("当前文档有未保存的修改。按页拆分需要先保存当前文档，是否保存并继续？", "IP_Assurance"))
 			{
 				return;
 			}
@@ -330,7 +330,7 @@ internal static class PageSplitService
 		int num = activeDocument.ComputeStatistics(WdStatistic.wdStatisticPages, ref IncludeFootnotesAndEndnotes);
 		if (num <= 0)
 		{
-			LoggerInitializer.Ay3cNuEgJo("当前文档没有可拆分的页面。", "IP_Assurance");
+			LoggerInitializer.ShowInfo("当前文档没有可拆分的页面。", "IP_Assurance");
 			return;
 		}
 		int num2 = LUVfb1Q91y(num);
@@ -436,11 +436,11 @@ internal static class PageSplitService
 		}
 		if (flag)
 		{
-			LoggerInitializer.Ay3cNuEgJo(string.Format("按页拆分已取消，已生成 {0} / {1} 个文档。", num5, num3), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("按页拆分已取消，已生成 {0} / {1} 个文档。", num5, num3), "IP_Assurance");
 		}
 		else
 		{
-			LoggerInitializer.Ay3cNuEgJo(string.Format("按页拆分完成，共生成 {0} 个文档。", num5), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("按页拆分完成，共生成 {0} 个文档。", num5), "IP_Assurance");
 		}
 	}
 
@@ -449,12 +449,12 @@ internal static class PageSplitService
 		Document activeDocument = App.ActiveDocument;
 		if (string.IsNullOrEmpty(activeDocument.Path))
 		{
-			LoggerInitializer.u0kcmnykTv("请先保存当前文档", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先保存当前文档", "IP_Assurance");
 			return;
 		}
 		if (!activeDocument.Saved)
 		{
-			if (!LoggerInitializer.JWucG2ERAH("当前文档有未保存的修改。按指定页拆分需要先保存当前文档，是否保存并继续？", "IP_Assurance"))
+			if (!LoggerInitializer.ShowConfirm("当前文档有未保存的修改。按指定页拆分需要先保存当前文档，是否保存并继续？", "IP_Assurance"))
 			{
 				return;
 			}
@@ -464,7 +464,7 @@ internal static class PageSplitService
 		int num = activeDocument.ComputeStatistics(WdStatistic.wdStatisticPages, ref IncludeFootnotesAndEndnotes);
 		if (num <= 0)
 		{
-			LoggerInitializer.Ay3cNuEgJo("当前文档没有可拆分的页面。", "IP_Assurance");
+			LoggerInitializer.ShowInfo("当前文档没有可拆分的页面。", "IP_Assurance");
 			return;
 		}
 		IReadOnlyList<PageRange> readOnlyList = imKfSm7rVB(num);
@@ -564,11 +564,11 @@ internal static class PageSplitService
 		}
 		if (flag)
 		{
-			LoggerInitializer.Ay3cNuEgJo(string.Format("按指定页拆分已取消，已生成 {0} / {1} 个文档。", num2, count), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("按指定页拆分已取消，已生成 {0} / {1} 个文档。", num2, count), "IP_Assurance");
 		}
 		else
 		{
-			LoggerInitializer.Ay3cNuEgJo(string.Format("按指定页拆分完成，共生成 {0} 个文档。", num2), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("按指定页拆分完成，共生成 {0} 个文档。", num2), "IP_Assurance");
 		}
 	}
 
@@ -577,12 +577,12 @@ internal static class PageSplitService
 		Document activeDocument = App.ActiveDocument;
 		if (string.IsNullOrEmpty(activeDocument.Path))
 		{
-			LoggerInitializer.u0kcmnykTv("请先保存当前文档", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先保存当前文档", "IP_Assurance");
 			return;
 		}
 		if (!activeDocument.Saved)
 		{
-			if (!LoggerInitializer.JWucG2ERAH("当前文档有未保存的修改。按分节符拆分需要先保存当前文档，是否保存并继续？", "IP_Assurance"))
+			if (!LoggerInitializer.ShowConfirm("当前文档有未保存的修改。按分节符拆分需要先保存当前文档，是否保存并继续？", "IP_Assurance"))
 			{
 				return;
 			}
@@ -592,7 +592,7 @@ internal static class PageSplitService
 		int count = activeDocument.Sections.Count;
 		if (count <= 1)
 		{
-			LoggerInitializer.Ay3cNuEgJo("未发现可用于拆分的分节符。", "IP_Assurance");
+			LoggerInitializer.ShowInfo("未发现可用于拆分的分节符。", "IP_Assurance");
 			return;
 		}
 		int num = 0;
@@ -688,11 +688,11 @@ internal static class PageSplitService
 		}
 		if (flag)
 		{
-			LoggerInitializer.Ay3cNuEgJo(string.Format("按分节符拆分已取消，已生成 {0} / {1} 个文档。", num, count), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("按分节符拆分已取消，已生成 {0} / {1} 个文档。", num, count), "IP_Assurance");
 		}
 		else
 		{
-			LoggerInitializer.Ay3cNuEgJo(string.Format("按分节符拆分完成，共生成 {0} 个文档。", num), "IP_Assurance");
+			LoggerInitializer.ShowInfo(string.Format("按分节符拆分完成，共生成 {0} 个文档。", num), "IP_Assurance");
 		}
 	}
 
@@ -887,7 +887,7 @@ internal static class PageSplitService
 		try
 		{
 			ProgressWindow progressWindow = new ProgressWindow();
-			WordTableToolService5.IPf5i0ZcV4(progressWindow);
+			WordTableToolService5.ShowWpfWindow(progressWindow);
 			return progressWindow;
 		}
 		catch
@@ -963,11 +963,11 @@ internal static class PageSplitService
 		try
 		{
 			SplitPagesWindow splitPagesWindow = new SplitPagesWindow(P_0);
-			return (WordTableToolService5.NJs5HCHQjv(splitPagesWindow) == true) ? splitPagesWindow.PagesPerDocument : 0;
+			return (WordTableToolService5.ShowWpfDialog(splitPagesWindow) == true) ? splitPagesWindow.PagesPerDocument : 0;
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8("打开拆分页数窗口失败：" + ex.Message, "IP_Assurance");
+			LoggerInitializer.ShowError("打开拆分页数窗口失败：" + ex.Message, "IP_Assurance");
 			return 0;
 		}
 	}
@@ -977,11 +977,11 @@ internal static class PageSplitService
 		try
 		{
 			SplitPageRangesWindow splitPageRangesWindow = new SplitPageRangesWindow(P_0);
-			return (WordTableToolService5.NJs5HCHQjv(splitPageRangesWindow) == true) ? splitPageRangesWindow.PageRanges : null;
+			return (WordTableToolService5.ShowWpfDialog(splitPageRangesWindow) == true) ? splitPageRangesWindow.PageRanges : null;
 		}
 		catch (Exception ex)
 		{
-			LoggerInitializer.F9Ycoqv2I8("打开指定页拆分窗口失败：" + ex.Message, "IP_Assurance");
+			LoggerInitializer.ShowError("打开指定页拆分窗口失败：" + ex.Message, "IP_Assurance");
 			return null;
 		}
 	}

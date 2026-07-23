@@ -5,7 +5,7 @@ namespace FileDownloadHelper2;
 
 internal static class FileDownloadHelper2
 {
-	public static bool nejLvR3Pvv(string P_0)
+	public static bool IsHttpsUrl(string P_0)
 	{
 		if (Uri.TryCreate(P_0, UriKind.Absolute, out var result))
 		{
@@ -14,7 +14,7 @@ internal static class FileDownloadHelper2
 		return false;
 	}
 
-	public static void z26LWVWmdm(string P_0)
+	public static void DeleteFileIfExists(string P_0)
 	{
 		try
 		{

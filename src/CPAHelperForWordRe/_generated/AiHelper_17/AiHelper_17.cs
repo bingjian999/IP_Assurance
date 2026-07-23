@@ -53,7 +53,7 @@ internal static class AiHelper_17
 	{
 		if (P_1 != null)
 		{
-			AiConfigBootstrap.swCsJ4IbrL("Agent artifact published: " + (P_1.Type ?? "unknown") + " / " + (P_1.Title ?? "(no-title)"));
+			AiConfigBootstrap.LogInfo("Agent artifact published: " + (P_1.Type ?? "unknown") + " / " + (P_1.Title ?? "(no-title)"));
 			if (P_0 == null)
 			{
 				AiAssistantHost2.v7iBkI3KGG();

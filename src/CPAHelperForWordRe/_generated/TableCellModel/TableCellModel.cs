@@ -6,25 +6,25 @@ namespace TableCellModel;
 internal sealed class TableCellModel
 {
 	[CompilerGenerated]
-	private int r9MinBv3PY;
+	private int _localTableIndex;
 
 	[CompilerGenerated]
-	private int odoi79y9Yb;
+	private int _tableIndex;
 
 	[CompilerGenerated]
-	private int FTui5Ybulo;
+	private int _rowIndex;
 
 	[CompilerGenerated]
-	private int HtHic63Nby;
+	private int _columnIndex;
 
 	[CompilerGenerated]
-	private string s2aiepJZFW;
+	private string _expectedOldText;
 
 	[CompilerGenerated]
-	private string wX8iywS5mu;
+	private string _text;
 
 	[CompilerGenerated]
-	private string IRgiXB1rcA;
+	private string _newText;
 
 	[CompilerGenerated]
 	private bool JnIiFvWHqn;
@@ -34,12 +34,12 @@ internal sealed class TableCellModel
 		[CompilerGenerated]
 		get
 		{
-			return r9MinBv3PY;
+			return _localTableIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			r9MinBv3PY = value;
+			_localTableIndex = value;
 		}
 	}
 
@@ -48,12 +48,12 @@ internal sealed class TableCellModel
 		[CompilerGenerated]
 		get
 		{
-			return odoi79y9Yb;
+			return _tableIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			odoi79y9Yb = value;
+			_tableIndex = value;
 		}
 	}
 
@@ -62,12 +62,12 @@ internal sealed class TableCellModel
 		[CompilerGenerated]
 		get
 		{
-			return FTui5Ybulo;
+			return _rowIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			FTui5Ybulo = value;
+			_rowIndex = value;
 		}
 	}
 
@@ -76,12 +76,12 @@ internal sealed class TableCellModel
 		[CompilerGenerated]
 		get
 		{
-			return HtHic63Nby;
+			return _columnIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			HtHic63Nby = value;
+			_columnIndex = value;
 		}
 	}
 
@@ -90,12 +90,12 @@ internal sealed class TableCellModel
 		[CompilerGenerated]
 		get
 		{
-			return s2aiepJZFW;
+			return _expectedOldText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			s2aiepJZFW = value;
+			_expectedOldText = value;
 		}
 	}
 
@@ -104,12 +104,12 @@ internal sealed class TableCellModel
 		[CompilerGenerated]
 		get
 		{
-			return wX8iywS5mu;
+			return _text;
 		}
 		[CompilerGenerated]
 		set
 		{
-			wX8iywS5mu = value;
+			_text = value;
 		}
 	}
 
@@ -118,12 +118,12 @@ internal sealed class TableCellModel
 		[CompilerGenerated]
 		get
 		{
-			return IRgiXB1rcA;
+			return _newText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			IRgiXB1rcA = value;
+			_newText = value;
 		}
 	}
 
@@ -143,6 +143,6 @@ internal sealed class TableCellModel
 
 	public TableCellModel()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

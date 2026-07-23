@@ -22,7 +22,7 @@ internal static class WordTableToolService
 
 		public _G_c__DisplayClass21_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void hXFVEPHB6vT(object _)

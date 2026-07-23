@@ -7,64 +7,64 @@ namespace AiHelper_21;
 internal sealed class AiHelper_21
 {
 	[CompilerGenerated]
-	private int ijKiqQE1Ws;
+	private int _requestIndex;
 
 	[CompilerGenerated]
-	private int O6ZiP46CJk;
+	private int _localTableIndex;
 
 	[CompilerGenerated]
 	private int JsZiAroKeq;
 
 	[CompilerGenerated]
-	private int lRFiv2nL3K;
+	private int _columnIndex;
 
 	[CompilerGenerated]
-	private int svRiWH10vt;
+	private int _headerRowCount;
 
 	[CompilerGenerated]
-	private bool gSAi0lPkME;
+	private bool _isHeader;
 
 	[CompilerGenerated]
-	private int JkvikB8siN;
+	private int _page;
 
 	[CompilerGenerated]
-	private int h1NixOYXCD;
+	private int _rangeStart;
 
 	[CompilerGenerated]
 	private int olWidtcyQD;
 
 	[CompilerGenerated]
-	private string cY0izIkbuy;
+	private string _oldText;
 
 	[CompilerGenerated]
-	private string s4mHRqmF5T;
+	private string _expectedOldText;
 
 	[CompilerGenerated]
-	private string J74HVZByyw;
+	private string _newText;
 
 	[CompilerGenerated]
-	private bool aAaHBT13hr;
+	private bool _writable;
 
 	[CompilerGenerated]
-	private string bV8H9W2tIs;
+	private string _errorCode;
 
 	[CompilerGenerated]
-	private string k34H6vZGSe;
+	private string _errorMessage;
 
 	[CompilerGenerated]
-	private Cell Wo9HuWqKNc;
+	private Cell _cell;
 
 	public int RequestIndex
 	{
 		[CompilerGenerated]
 		get
 		{
-			return ijKiqQE1Ws;
+			return _requestIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			ijKiqQE1Ws = value;
+			_requestIndex = value;
 		}
 	}
 
@@ -73,12 +73,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return O6ZiP46CJk;
+			return _localTableIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			O6ZiP46CJk = value;
+			_localTableIndex = value;
 		}
 	}
 
@@ -101,12 +101,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return lRFiv2nL3K;
+			return _columnIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			lRFiv2nL3K = value;
+			_columnIndex = value;
 		}
 	}
 
@@ -115,12 +115,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return svRiWH10vt;
+			return _headerRowCount;
 		}
 		[CompilerGenerated]
 		set
 		{
-			svRiWH10vt = value;
+			_headerRowCount = value;
 		}
 	}
 
@@ -129,12 +129,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return gSAi0lPkME;
+			return _isHeader;
 		}
 		[CompilerGenerated]
 		set
 		{
-			gSAi0lPkME = value;
+			_isHeader = value;
 		}
 	}
 
@@ -143,12 +143,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return JkvikB8siN;
+			return _page;
 		}
 		[CompilerGenerated]
 		set
 		{
-			JkvikB8siN = value;
+			_page = value;
 		}
 	}
 
@@ -157,12 +157,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return h1NixOYXCD;
+			return _rangeStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			h1NixOYXCD = value;
+			_rangeStart = value;
 		}
 	}
 
@@ -185,12 +185,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return cY0izIkbuy;
+			return _oldText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			cY0izIkbuy = value;
+			_oldText = value;
 		}
 	}
 
@@ -199,12 +199,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return s4mHRqmF5T;
+			return _expectedOldText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			s4mHRqmF5T = value;
+			_expectedOldText = value;
 		}
 	}
 
@@ -213,12 +213,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return J74HVZByyw;
+			return _newText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			J74HVZByyw = value;
+			_newText = value;
 		}
 	}
 
@@ -227,12 +227,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return aAaHBT13hr;
+			return _writable;
 		}
 		[CompilerGenerated]
 		set
 		{
-			aAaHBT13hr = value;
+			_writable = value;
 		}
 	}
 
@@ -241,12 +241,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return bV8H9W2tIs;
+			return _errorCode;
 		}
 		[CompilerGenerated]
 		set
 		{
-			bV8H9W2tIs = value;
+			_errorCode = value;
 		}
 	}
 
@@ -255,12 +255,12 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return k34H6vZGSe;
+			return _errorMessage;
 		}
 		[CompilerGenerated]
 		set
 		{
-			k34H6vZGSe = value;
+			_errorMessage = value;
 		}
 	}
 
@@ -269,17 +269,17 @@ internal sealed class AiHelper_21
 		[CompilerGenerated]
 		get
 		{
-			return Wo9HuWqKNc;
+			return _cell;
 		}
 		[CompilerGenerated]
 		set
 		{
-			Wo9HuWqKNc = value;
+			_cell = value;
 		}
 	}
 
 	public AiHelper_21()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

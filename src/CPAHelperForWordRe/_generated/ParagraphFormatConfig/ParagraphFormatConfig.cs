@@ -12,19 +12,19 @@ internal sealed class ParagraphFormatConfig
 	public static readonly HashSet<string> CsBHPhLn0y;
 
 	[CompilerGenerated]
-	private string GlfHAvfF1j;
+	private string _fontName;
 
 	[CompilerGenerated]
-	private string e1dHveiljR;
+	private string _eastAsianFontName;
 
 	[CompilerGenerated]
-	private float? bm4HWWyTBp;
+	private float? _fontSize;
 
 	[CompilerGenerated]
-	private bool? nFbH0xEIN0;
+	private bool? _bold;
 
 	[CompilerGenerated]
-	private bool? wRDHk9NgpQ;
+	private bool? _italic;
 
 	[CompilerGenerated]
 	private string GnkHxKTUEj;
@@ -36,7 +36,7 @@ internal sealed class ParagraphFormatConfig
 	private float? bjTHzyMZHI;
 
 	[CompilerGenerated]
-	private float? YO8QRIvfii;
+	private float? _firstLineIndentCm;
 
 	[CompilerGenerated]
 	private float? TiFQVGRXmp;
@@ -45,10 +45,10 @@ internal sealed class ParagraphFormatConfig
 	private float? ccXQBKTldL;
 
 	[CompilerGenerated]
-	private float? SRSQ9qFTPA;
+	private float? _spaceAfterPt;
 
 	[CompilerGenerated]
-	private string d1UQ6J1Hw4;
+	private string _lineSpacingRule;
 
 	[CompilerGenerated]
 	private float? orUQurOjG6;
@@ -57,25 +57,25 @@ internal sealed class ParagraphFormatConfig
 	private float? ztKQDafxDo;
 
 	[CompilerGenerated]
-	private bool? dEnQTo1tJL;
+	private bool? _keepWithNext;
 
 	[CompilerGenerated]
 	private bool? MNFQgAYa67;
 
 	[CompilerGenerated]
-	private bool? dB7Q8FepNk;
+	private bool? _pageBreakBefore;
 
 	public string FontName
 	{
 		[CompilerGenerated]
 		get
 		{
-			return GlfHAvfF1j;
+			return _fontName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			GlfHAvfF1j = value;
+			_fontName = value;
 		}
 	}
 
@@ -84,12 +84,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return e1dHveiljR;
+			return _eastAsianFontName;
 		}
 		[CompilerGenerated]
 		set
 		{
-			e1dHveiljR = value;
+			_eastAsianFontName = value;
 		}
 	}
 
@@ -98,12 +98,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return bm4HWWyTBp;
+			return _fontSize;
 		}
 		[CompilerGenerated]
 		set
 		{
-			bm4HWWyTBp = value;
+			_fontSize = value;
 		}
 	}
 
@@ -112,12 +112,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return nFbH0xEIN0;
+			return _bold;
 		}
 		[CompilerGenerated]
 		set
 		{
-			nFbH0xEIN0 = value;
+			_bold = value;
 		}
 	}
 
@@ -126,12 +126,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return wRDHk9NgpQ;
+			return _italic;
 		}
 		[CompilerGenerated]
 		set
 		{
-			wRDHk9NgpQ = value;
+			_italic = value;
 		}
 	}
 
@@ -182,12 +182,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return YO8QRIvfii;
+			return _firstLineIndentCm;
 		}
 		[CompilerGenerated]
 		set
 		{
-			YO8QRIvfii = value;
+			_firstLineIndentCm = value;
 		}
 	}
 
@@ -224,12 +224,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return SRSQ9qFTPA;
+			return _spaceAfterPt;
 		}
 		[CompilerGenerated]
 		set
 		{
-			SRSQ9qFTPA = value;
+			_spaceAfterPt = value;
 		}
 	}
 
@@ -238,12 +238,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return d1UQ6J1Hw4;
+			return _lineSpacingRule;
 		}
 		[CompilerGenerated]
 		set
 		{
-			d1UQ6J1Hw4 = value;
+			_lineSpacingRule = value;
 		}
 	}
 
@@ -280,12 +280,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return dEnQTo1tJL;
+			return _keepWithNext;
 		}
 		[CompilerGenerated]
 		set
 		{
-			dEnQTo1tJL = value;
+			_keepWithNext = value;
 		}
 	}
 
@@ -308,12 +308,12 @@ internal sealed class ParagraphFormatConfig
 		[CompilerGenerated]
 		get
 		{
-			return dB7Q8FepNk;
+			return _pageBreakBefore;
 		}
 		[CompilerGenerated]
 		set
 		{
-			dB7Q8FepNk = value;
+			_pageBreakBefore = value;
 		}
 	}
 
@@ -343,12 +343,12 @@ internal sealed class ParagraphFormatConfig
 
 	public ParagraphFormatConfig()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	static ParagraphFormatConfig()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		CsBHPhLn0y = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
 		{
 			"fontName",

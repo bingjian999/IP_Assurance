@@ -6,17 +6,17 @@ namespace Helper_14;
 internal sealed class Helper_14
 {
 	[CompilerGenerated]
-	private readonly string YJyl6nLnfk;
+	private readonly string _text;
 
 	[CompilerGenerated]
-	private readonly string Esblu5elPA;
+	private readonly string _value;
 
 	public string Text
 	{
 		[CompilerGenerated]
 		get
 		{
-			return YJyl6nLnfk;
+			return _text;
 		}
 	}
 
@@ -25,15 +25,15 @@ internal sealed class Helper_14
 		[CompilerGenerated]
 		get
 		{
-			return Esblu5elPA;
+			return _value;
 		}
 	}
 
 	public Helper_14(string P_0, string P_1)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		YJyl6nLnfk = P_0 ?? string.Empty;
-		Esblu5elPA = P_1 ?? string.Empty;
+		SseStreamInitializer.InitializeRuntime();
+		_text = P_0 ?? string.Empty;
+		_value = P_1 ?? string.Empty;
 	}
 
 	public override string ToString()

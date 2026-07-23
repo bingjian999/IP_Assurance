@@ -15,7 +15,7 @@ internal static class HotkeyHookService
 	{
 		public Yr12XUFhdtS3B7K8cNg()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			CreateHandle(new CreateParams
 			{
 				Caption = "IPAssuranceWordHotKeyWindow"
@@ -45,7 +45,7 @@ internal static class HotkeyHookService
 
 	private static int wsHVswknag;
 
-	public static bool LflVUiaoHY(string P_0, SMvGfVVI8pN4lQroEEl P_1, Keys P_2, Action P_3)
+	public static bool LflVUiaoHY(string P_0, HotkeyAction P_1, Keys P_2, Action P_3)
 	{
 		if (string.IsNullOrWhiteSpace(P_0) || P_3 == null)
 		{
@@ -348,14 +348,14 @@ internal static class HotkeyHookService
 		return false;
 	}
 
-	public static bool kKcV477mFM(string P_0, SMvGfVVI8pN4lQroEEl P_1, out UiHelperService2 P_2)
+	public static bool TryRegisterHotkeyHook(string P_0, HotkeyAction P_1, out UiHelperService2 P_2)
 	{
 		P_2 = default(UiHelperService2);
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
 			return false;
 		}
-		SMvGfVVI8pN4lQroEEl sMvGfVVI8pN4lQroEEl = SMvGfVVI8pN4lQroEEl.None;
+		HotkeyAction sMvGfVVI8pN4lQroEEl = HotkeyAction.None;
 		string text = null;
 		string[] array = P_0.Replace("＋", "+").Split(new char[1] { '+' }, StringSplitOptions.RemoveEmptyEntries);
 		foreach (string text2 in array)
@@ -388,11 +388,11 @@ internal static class HotkeyHookService
 		{
 			return false;
 		}
-		if (sMvGfVVI8pN4lQroEEl == SMvGfVVI8pN4lQroEEl.None)
+		if (sMvGfVVI8pN4lQroEEl == HotkeyAction.None)
 		{
 			sMvGfVVI8pN4lQroEEl = P_1;
 		}
-		if (sMvGfVVI8pN4lQroEEl == SMvGfVVI8pN4lQroEEl.None)
+		if (sMvGfVVI8pN4lQroEEl == HotkeyAction.None)
 		{
 			return false;
 		}
@@ -431,19 +431,19 @@ internal static class HotkeyHookService
 	public static string KgeVYgBu4k(UiHelperService2 P_0)
 	{
 		List<string> list = new List<string>();
-		if ((P_0.Modifiers & (SMvGfVVI8pN4lQroEEl)2u) == (SMvGfVVI8pN4lQroEEl)2u)
+		if ((P_0.Modifiers & (HotkeyAction)2u) == (HotkeyAction)2u)
 		{
 			list.Add("Ctrl");
 		}
-		if ((P_0.Modifiers & (SMvGfVVI8pN4lQroEEl)4u) == (SMvGfVVI8pN4lQroEEl)4u)
+		if ((P_0.Modifiers & (HotkeyAction)4u) == (HotkeyAction)4u)
 		{
 			list.Add("Shift");
 		}
-		if ((P_0.Modifiers & (SMvGfVVI8pN4lQroEEl)1u) == (SMvGfVVI8pN4lQroEEl)1u)
+		if ((P_0.Modifiers & (HotkeyAction)1u) == (HotkeyAction)1u)
 		{
 			list.Add("Alt");
 		}
-		if ((P_0.Modifiers & (SMvGfVVI8pN4lQroEEl)8u) == (SMvGfVVI8pN4lQroEEl)8u)
+		if ((P_0.Modifiers & (HotkeyAction)8u) == (HotkeyAction)8u)
 		{
 			list.Add("Win");
 		}
@@ -491,9 +491,9 @@ internal static class HotkeyHookService
 		};
 	}
 
-	private static bool Q4aVfJuxv0(string P_0, out SMvGfVVI8pN4lQroEEl P_1)
+	private static bool Q4aVfJuxv0(string P_0, out HotkeyAction P_1)
 	{
-		P_1 = SMvGfVVI8pN4lQroEEl.None;
+		P_1 = HotkeyAction.None;
 		if (P_0 != null)
 		{
 			switch (P_0.Length)
@@ -562,17 +562,17 @@ internal static class HotkeyHookService
 					{
 						break;
 					}
-					P_1 = (SMvGfVVI8pN4lQroEEl)4u;
+					P_1 = (HotkeyAction)4u;
 					return true;
 				}
 				IL_0208:
-				P_1 = (SMvGfVVI8pN4lQroEEl)1u;
+				P_1 = (HotkeyAction)1u;
 				return true;
 				IL_020d:
-				P_1 = (SMvGfVVI8pN4lQroEEl)2u;
+				P_1 = (HotkeyAction)2u;
 				return true;
 				IL_0217:
-				P_1 = (SMvGfVVI8pN4lQroEEl)8u;
+				P_1 = (HotkeyAction)8u;
 				return true;
 			}
 		}
@@ -611,7 +611,7 @@ internal static class HotkeyHookService
 
 	static HotkeyHookService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		b0YVwcUdpZ = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 		e87VtAmKrn = new Dictionary<int, Action>();
 		wsHVswknag = 23040;

@@ -36,22 +36,22 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private sealed class ffokv1V4hncupjXCMk8a
 	{
 		[CompilerGenerated]
-		private int ULxV4aE1r9e;
+		private int _wordColumnIndex;
 
 		[CompilerGenerated]
-		private string b80V4qFCs3r;
+		private string _excelColumnText;
 
 		public int WordColumnIndex
 		{
 			[CompilerGenerated]
 			get
 			{
-				return ULxV4aE1r9e;
+				return _wordColumnIndex;
 			}
 			[CompilerGenerated]
 			set
 			{
-				ULxV4aE1r9e = value;
+				_wordColumnIndex = value;
 			}
 		}
 
@@ -62,53 +62,53 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			[CompilerGenerated]
 			get
 			{
-				return b80V4qFCs3r;
+				return _excelColumnText;
 			}
 			[CompilerGenerated]
 			set
 			{
-				b80V4qFCs3r = value;
+				_excelColumnText = value;
 			}
 		}
 
 		public ffokv1V4hncupjXCMk8a()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class WR0uULV4PciwXYvPdaNd : INotifyPropertyChanged
 	{
-		private bool weTV4v6h7MM;
+		private bool _isExpanded;
 
-		private bool TwOV4W9RFKy;
+		private bool _isSelected;
 
 		[CompilerGenerated]
 		private readonly ObservableCollection<WR0uULV4PciwXYvPdaNd> KWdV40XCEZg;
 
 		[CompilerGenerated]
-		private WR0uULV4PciwXYvPdaNd fEHV4kyDnOF;
+		private WR0uULV4PciwXYvPdaNd _parent;
 
 		[CompilerGenerated]
-		private TableComWriteService.eEHsHgVgzpw09onBAkve PoMV4xPNrt4;
+		private TableComWriteService.TableBindingStatus _binding;
 
 		[CompilerGenerated]
-		private string y46V4dQvJP8;
+		private string _text;
 
 		[CompilerGenerated]
-		private string M06V4zUnGVb;
+		private string _statusBadge;
 
 		[CompilerGenerated]
 		private int REqVjRKiDLT;
 
 		[CompilerGenerated]
-		private bool L2nVjVNEE6j;
+		private bool _isHeading;
 
 		[CompilerGenerated]
-		private bool EAZVjBXMI2e;
+		private bool _isTable;
 
 		[CompilerGenerated]
-		private bool fKXVj9qHeDk;
+		private bool _isError;
 
 		[CompilerGenerated]
 		private PropertyChangedEventHandler m_PropertyChanged;
@@ -127,26 +127,26 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			[CompilerGenerated]
 			get
 			{
-				return fEHV4kyDnOF;
+				return _parent;
 			}
 			[CompilerGenerated]
 			set
 			{
-				fEHV4kyDnOF = value;
+				_parent = value;
 			}
 		}
 
-		public TableComWriteService.eEHsHgVgzpw09onBAkve Binding
+		public TableComWriteService.TableBindingStatus Binding
 		{
 			[CompilerGenerated]
 			get
 			{
-				return PoMV4xPNrt4;
+				return _binding;
 			}
 			[CompilerGenerated]
 			set
 			{
-				PoMV4xPNrt4 = value;
+				_binding = value;
 			}
 		}
 
@@ -155,12 +155,12 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			[CompilerGenerated]
 			get
 			{
-				return y46V4dQvJP8;
+				return _text;
 			}
 			[CompilerGenerated]
 			set
 			{
-				y46V4dQvJP8 = value;
+				_text = value;
 			}
 		}
 
@@ -169,12 +169,12 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			[CompilerGenerated]
 			get
 			{
-				return M06V4zUnGVb;
+				return _statusBadge;
 			}
 			[CompilerGenerated]
 			set
 			{
-				M06V4zUnGVb = value;
+				_statusBadge = value;
 			}
 		}
 
@@ -197,12 +197,12 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			[CompilerGenerated]
 			get
 			{
-				return L2nVjVNEE6j;
+				return _isHeading;
 			}
 			[CompilerGenerated]
 			set
 			{
-				L2nVjVNEE6j = value;
+				_isHeading = value;
 			}
 		}
 
@@ -211,12 +211,12 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			[CompilerGenerated]
 			get
 			{
-				return EAZVjBXMI2e;
+				return _isTable;
 			}
 			[CompilerGenerated]
 			set
 			{
-				EAZVjBXMI2e = value;
+				_isTable = value;
 			}
 		}
 
@@ -225,12 +225,12 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			[CompilerGenerated]
 			get
 			{
-				return fKXVj9qHeDk;
+				return _isError;
 			}
 			[CompilerGenerated]
 			set
 			{
-				fKXVj9qHeDk = value;
+				_isError = value;
 			}
 		}
 
@@ -238,13 +238,13 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		{
 			get
 			{
-				return weTV4v6h7MM;
+				return _isExpanded;
 			}
 			set
 			{
-				if (weTV4v6h7MM != value)
+				if (_isExpanded != value)
 				{
-					weTV4v6h7MM = value;
+					_isExpanded = value;
 					Ul7V4A45fcH("IsExpanded");
 				}
 			}
@@ -254,13 +254,13 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		{
 			get
 			{
-				return TwOV4W9RFKy;
+				return _isSelected;
 			}
 			set
 			{
-				if (TwOV4W9RFKy != value)
+				if (_isSelected != value)
 				{
-					TwOV4W9RFKy = value;
+					_isSelected = value;
 					Ul7V4A45fcH("IsSelected");
 				}
 			}
@@ -303,7 +303,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 		public WR0uULV4PciwXYvPdaNd()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			KWdV40XCEZg = new ObservableCollection<WR0uULV4PciwXYvPdaNd>();
 		}
 	}
@@ -313,69 +313,69 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	{
 		public int YCyVjLWQnEc;
 
-		public ExcelSyncWindow Vd4Vjs388ul;
+		public ExcelSyncWindow excelSyncWindow;
 
 		public int hwxVjlUkQL8;
 
 		public bool OwfVjNqotwf;
 
-		public bool Gl3VjmsCxHn;
+		public bool flag;
 
 		public List<int> BnZVjocH3eE;
 
 		public _G_c__DisplayClass28_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal TableComWriteService.B8Id9rVIwgTW2spgYNvs AdqVjtn3bOl()
+		internal TableComWriteService.SyncResult AdqVjtn3bOl()
 		{
-			return TableComWriteService.v1r4oDajjF(YCyVjLWQnEc, Vd4Vjs388ul.chkSortEnabled.IsChecked == true, hwxVjlUkQL8, OwfVjNqotwf, Gl3VjmsCxHn, BnZVjocH3eE);
+			return TableComWriteService.SaveHeaderSetting(YCyVjLWQnEc, excelSyncWindow.chkSortEnabled.IsChecked == true, hwxVjlUkQL8, OwfVjNqotwf, flag, BnZVjocH3eE);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass29_0
 	{
-		public TableComWriteService.eEHsHgVgzpw09onBAkve yCkVjCuDhM5;
+		public TableComWriteService.TableBindingStatus yCkVjCuDhM5;
 
-		public int Hp6VjpxIhZG;
+		public int value;
 
-		public ExcelSyncWindow r3sVjOsNBP6;
+		public ExcelSyncWindow excelSyncWindow;
 
 		public int bdBVjnriyke;
 
-		public bool letVj7Vyv3E;
+		public bool flag;
 
-		public bool EAUVj5Fo2tZ;
+		public bool flag;
 
 		public List<int> VqiVjcFNj2A;
 
 		public _G_c__DisplayClass29_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal TableComWriteService.B8Id9rVIwgTW2spgYNvs zvxVjGNIPWX()
+		internal TableComWriteService.SyncResult zvxVjGNIPWX()
 		{
-			return TableComWriteService.bym4O8y0yd(yCkVjCuDhM5.BindingId, Hp6VjpxIhZG, r3sVjOsNBP6.chkAllSortEnabled.IsChecked == true, bdBVjnriyke, letVj7Vyv3E, EAUVj5Fo2tZ, VqiVjcFNj2A);
+			return TableComWriteService.SyncTableByLabelWithOptions(yCkVjCuDhM5.BindingId, value, excelSyncWindow.chkAllSortEnabled.IsChecked == true, bdBVjnriyke, flag, flag, VqiVjcFNj2A);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass36_0
 	{
-		public TableComWriteService.CkyBTaV87qVM3TwBrVFZ g8vVjyuYugM;
+		public TableComWriteService.ExcelPathUpdateResult g8vVjyuYugM;
 
 		public _G_c__DisplayClass36_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal TableComWriteService.B8Id9rVIwgTW2spgYNvs FeFVjeEaljg()
+		internal TableComWriteService.SyncResult FeFVjeEaljg()
 		{
-			TableComWriteService.BgnmcfV8ArSDWAKRwk0q bgnmcfV8ArSDWAKRwk0q = TableComWriteService.ebNEiWQuCH(g8vVjyuYugM);
-			return new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+			TableComWriteService.SyncOperationResult bgnmcfV8ArSDWAKRwk0q = TableComWriteService.ApplyExcelPathUpdate(g8vVjyuYugM);
+			return new TableComWriteService.SyncResult
 			{
 				Success = bgnmcfV8ArSDWAKRwk0q.Success,
 				RequiresUserAction = !bgnmcfV8ArSDWAKRwk0q.Success,
@@ -389,33 +389,33 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass58_0
 	{
-		public ExcelSyncWindow L4IVjFYA0VL;
+		public ExcelSyncWindow excelSyncWindow;
 
-		public bool VR9VjhT7fJF;
+		public bool flag;
 
 		public bool VdaVjasONDp;
 
-		public int exnVjqnH0MM;
+		public int value;
 
 		public _G_c__DisplayClass58_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void oaCVjXCqqYD()
 		{
 			try
 			{
-				if (!L4IVjFYA0VL.r7mnIQ3VfX && L4IVjFYA0VL.IsVisible)
+				if (!excelSyncWindow._bool && excelSyncWindow.IsVisible)
 				{
-					L4IVjFYA0VL.XvJOKeRLxt(VR9VjhT7fJF);
+					excelSyncWindow.XvJOKeRLxt(flag);
 				}
 			}
 			finally
 			{
 				if (VdaVjasONDp)
 				{
-					L4IVjFYA0VL.KwHOUY7w6K(exnVjqnH0MM);
+					excelSyncWindow.KwHOUY7w6K(value);
 				}
 			}
 		}
@@ -426,45 +426,45 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	{
 		public ExcelSyncWindow cexVjAsRxWj;
 
-		public string AUGVjv0lCH2;
+		public string text;
 
 		public _G_c__DisplayClass62_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void D4hVjPvPASJ()
 		{
-			cexVjAsRxWj.UJCO2ZWoW0(AUGVjv0lCH2);
+			cexVjAsRxWj.UJCO2ZWoW0(text);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass66_0
 	{
-		public string vwOVj0875AY;
+		public string text;
 
 		public _G_c__DisplayClass66_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool gKjVjWYbDZj(TableComWriteService.IqV0YlV8NdDqM9efX4pE group)
+		internal bool gKjVjWYbDZj(TableComWriteService.WorkbookBindingSummary group)
 		{
-			return string.Equals(group.ResolvedExcelPath, vwOVj0875AY, StringComparison.OrdinalIgnoreCase);
+			return string.Equals(group.ResolvedExcelPath, text, StringComparison.OrdinalIgnoreCase);
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass75_0
 	{
-		public TableComWriteService.zjEQMmV8xiap53qf2leG No1VjxXO7vN;
+		public TableComWriteService.HeadingPathItem No1VjxXO7vN;
 
 		public string ksKVjdTM071;
 
 		public _G_c__DisplayClass75_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool lyWVjku7WgL(WR0uULV4PciwXYvPdaNd existing)
@@ -480,29 +480,29 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass87_0
 	{
-		public int c73VYRUyF58;
+		public int value;
 
 		public _G_c__DisplayClass87_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
-		internal bool Vn5VjzmlJbD(TableComWriteService.l0FhISVIRyyYwtV64iqd item)
+		internal bool Vn5VjzmlJbD(TableComWriteService.ColumnMapping item)
 		{
-			return item.WordColumnIndex == c73VYRUyF58;
+			return item.WordColumnIndex == value;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass92_0
 	{
-		public Func<TableComWriteService.B8Id9rVIwgTW2spgYNvs> cASVYBwvli2;
+		public Func<TableComWriteService.SyncResult> cASVYBwvli2;
 
-		public TableComWriteService.B8Id9rVIwgTW2spgYNvs xBZVY9np7wP;
+		public TableComWriteService.SyncResult xBZVY9np7wP;
 
 		public _G_c__DisplayClass92_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void lneVYVoU6dm()
@@ -514,13 +514,13 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass93_0
 	{
-		public Func<TableComWriteService.B8Id9rVIwgTW2spgYNvs> Yb0VYumO4a9;
+		public Func<TableComWriteService.SyncResult> Yb0VYumO4a9;
 
-		public TableComWriteService.B8Id9rVIwgTW2spgYNvs gTxVYDrAlNL;
+		public TableComWriteService.SyncResult gTxVYDrAlNL;
 
 		public _G_c__DisplayClass93_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void WBPVY6j54IW()
@@ -529,39 +529,39 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		}
 	}
 
-	private readonly ObservableCollection<TableComWriteService.eEHsHgVgzpw09onBAkve> E3mn6NEThs;
+	private readonly ObservableCollection<TableComWriteService.TableBindingStatus> E3mn6NEThs;
 
 	private readonly ObservableCollection<WR0uULV4PciwXYvPdaNd> nf4nuLGTDv;
 
-	private readonly ObservableCollection<TableComWriteService.IqV0YlV8NdDqM9efX4pE> B9nnDK9dBG;
+	private readonly ObservableCollection<TableComWriteService.WorkbookBindingSummary> B9nnDK9dBG;
 
 	private readonly ObservableCollection<ffokv1V4hncupjXCMk8a> VyXnT2klLm;
 
 	private readonly ObservableCollection<ffokv1V4hncupjXCMk8a> PtTngkISNu;
 
-	private readonly DispatcherTimer s7un8F22Xj;
+	private readonly DispatcherTimer _dispatcherTimer;
 
-	private bool r7mnIQ3VfX;
+	private bool _bool;
 
 	private bool MZEniWtslN;
 
-	private bool ubhnH7KepY;
+	private bool _bool;
 
 	private bool OMKnQSfJqs;
 
-	private bool k32n1upDwO;
+	private bool _bool;
 
-	private bool UMlnrm6j8x;
+	private bool _bool;
 
-	private bool kvinJXJO8H;
+	private bool _bool;
 
-	private int W6Gn3PIlip;
+	private int _int;
 
 	private Microsoft.Office.Interop.Word.Application ClanUwKOlF;
 
-	private TableComWriteService.gMo5J5VI9LOS3nqRiEJZ bNZnKlpICU;
+	private TableComWriteService.TableSyncStatus bNZnKlpICU;
 
-	private WR0uULV4PciwXYvPdaNd e9anEqjZMJ;
+	private WR0uULV4PciwXYvPdaNd _wR0uULV4PciwXYvPdaNd;
 
 	internal System.Windows.Controls.TabControl tabSync;
 
@@ -751,30 +751,30 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	internal TextBlock txtOptionsStatus;
 
-	private bool Mven2dRYND;
+	private bool _bool;
 
-	private TableComWriteService.eEHsHgVgzpw09onBAkve SelectedBinding
+	private TableComWriteService.TableBindingStatus SelectedBinding
 	{
 		get
 		{
-			if (e9anEqjZMJ == null || !e9anEqjZMJ.IsTable)
+			if (_wR0uULV4PciwXYvPdaNd == null || !_wR0uULV4PciwXYvPdaNd.IsTable)
 			{
 				return null;
 			}
-			return e9anEqjZMJ.Binding;
+			return _wR0uULV4PciwXYvPdaNd.Binding;
 		}
 	}
 
-	private TableComWriteService.IqV0YlV8NdDqM9efX4pE SelectedDataSourceGroup => gridDataSources?.SelectedItem as TableComWriteService.IqV0YlV8NdDqM9efX4pE;
+	private TableComWriteService.WorkbookBindingSummary SelectedDataSourceGroup => gridDataSources?.SelectedItem as TableComWriteService.WorkbookBindingSummary;
 
-	private TableComWriteService.eEHsHgVgzpw09onBAkve SelectedDataSourceBinding => listDataSourceBindings?.SelectedItem as TableComWriteService.eEHsHgVgzpw09onBAkve;
+	private TableComWriteService.TableBindingStatus SelectedDataSourceBinding => listDataSourceBindings?.SelectedItem as TableComWriteService.TableBindingStatus;
 
 	public ExcelSyncWindow()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		E3mn6NEThs = new ObservableCollection<TableComWriteService.eEHsHgVgzpw09onBAkve>();
+		SseStreamInitializer.InitializeRuntime();
+		E3mn6NEThs = new ObservableCollection<TableComWriteService.TableBindingStatus>();
 		nf4nuLGTDv = new ObservableCollection<WR0uULV4PciwXYvPdaNd>();
-		B9nnDK9dBG = new ObservableCollection<TableComWriteService.IqV0YlV8NdDqM9efX4pE>();
+		B9nnDK9dBG = new ObservableCollection<TableComWriteService.WorkbookBindingSummary>();
 		VyXnT2klLm = new ObservableCollection<ffokv1V4hncupjXCMk8a>();
 		PtTngkISNu = new ObservableCollection<ffokv1V4hncupjXCMk8a>();
 		InitializeComponent();
@@ -782,11 +782,11 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		gridDataSources.ItemsSource = B9nnDK9dBG;
 		gridColumnMappings.ItemsSource = VyXnT2klLm;
 		gridAllColumnMappings.ItemsSource = PtTngkISNu;
-		s7un8F22Xj = new DispatcherTimer
+		_dispatcherTimer = new DispatcherTimer
 		{
 			Interval = TimeSpan.FromMilliseconds(150.0)
 		};
-		s7un8F22Xj.Tick += yeyOrHb3JZ;
+		_dispatcherTimer.Tick += yeyOrHb3JZ;
 		base.PreviewKeyDown += delegate(object P_0, System.Windows.Input.KeyEventArgs P_1)
 		{
 			if (P_1.Key == Key.Escape)
@@ -818,66 +818,66 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	{
 		if (bNZnKlpICU != null && bNZnKlpICU.HasBinding)
 		{
-			UCrOh343Aw("数据同步", () => TableComWriteService.XVJ45smyDw(XGtOAmBcpX), false);
+			UCrOh343Aw("数据同步", () => TableComWriteService.SyncCurrentTable(XGtOAmBcpX), false);
 		}
 		else if (bNZnKlpICU != null && bNZnKlpICU.HasWordTable)
 		{
-			UCrOh343Aw("绑定当前表", () => TableComWriteService.kKW4bxDk3L( false), true);
+			UCrOh343Aw("绑定当前表", () => TableComWriteService.BindCurrentTable( false), true);
 		}
 		else
 		{
-			UCrOh343Aw("插入Excel选区", TableComWriteService.wnb4SOWqhT, false);
+			UCrOh343Aw("插入Excel选区", TableComWriteService.InsertExcelSelectionBelow, false);
 		}
 	}
 
 	private void tbkpcqdVrT(object P_0, RoutedEventArgs P_1)
 	{
-		UCrOh343Aw("重新绑定当前表", () => TableComWriteService.kKW4bxDk3L( true), true);
+		UCrOh343Aw("重新绑定当前表", () => TableComWriteService.BindCurrentTable( true), true);
 	}
 
 	private void xifpeRxOvW(object P_0, RoutedEventArgs P_1)
 	{
-		UCrOh343Aw("拆分表", TableComWriteService.XtH4lqGh7A, true);
+		UCrOh343Aw("拆分表", TableComWriteService.SplitCurrentTable, true);
 	}
 
 	private void HSdpyZZZ4x(object P_0, RoutedEventArgs P_1)
 	{
 		if (System.Windows.MessageBox.Show(this, "确定要解除当前 Word 表格的 Excel 绑定吗？\\n\\n只会清理 Word 文档中的绑定信息，不会删除 Excel 工作簿里的名称区域。", "解除绑定", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			UCrOh343Aw("解除当前表绑定", TableComWriteService.saY4G3LNKR, true);
+			UCrOh343Aw("解除当前表绑定", TableComWriteService.UnbindCurrentTable, true);
 		}
 	}
 
 	private void aWCpXc4wCW(object P_0, RoutedEventArgs P_1)
 	{
 		_G_c__DisplayClass28_0 CS_8_locals_12 = new _G_c__DisplayClass28_0();
-		CS_8_locals_12.Vd4Vjs388ul = this;
+		CS_8_locals_12.excelSyncWindow = this;
 		ebvOFufDA6(gridColumnMappings);
-		if (dmsOy55xZ6(txtHeaderRows, chkSortEnabled, txtSortColumnIndex, cboSortDirection, chkSortPinOtherLast, VyXnT2klLm, out CS_8_locals_12.YCyVjLWQnEc, out CS_8_locals_12.hwxVjlUkQL8, out CS_8_locals_12.OwfVjNqotwf, out CS_8_locals_12.Gl3VjmsCxHn, out CS_8_locals_12.BnZVjocH3eE))
+		if (dmsOy55xZ6(txtHeaderRows, chkSortEnabled, txtSortColumnIndex, cboSortDirection, chkSortPinOtherLast, VyXnT2klLm, out CS_8_locals_12.YCyVjLWQnEc, out CS_8_locals_12.hwxVjlUkQL8, out CS_8_locals_12.OwfVjNqotwf, out CS_8_locals_12.flag, out CS_8_locals_12.BnZVjocH3eE))
 		{
-			UCrOh343Aw("保存表格配置", () => TableComWriteService.v1r4oDajjF(CS_8_locals_12.YCyVjLWQnEc, CS_8_locals_12.Vd4Vjs388ul.chkSortEnabled.IsChecked == true, CS_8_locals_12.hwxVjlUkQL8, CS_8_locals_12.OwfVjNqotwf, CS_8_locals_12.Gl3VjmsCxHn, CS_8_locals_12.BnZVjocH3eE), false);
+			UCrOh343Aw("保存表格配置", () => TableComWriteService.SaveHeaderSetting(CS_8_locals_12.YCyVjLWQnEc, CS_8_locals_12.excelSyncWindow.chkSortEnabled.IsChecked == true, CS_8_locals_12.hwxVjlUkQL8, CS_8_locals_12.OwfVjNqotwf, CS_8_locals_12.flag, CS_8_locals_12.BnZVjocH3eE), false);
 		}
 	}
 
 	private void afQpFDqfMW(object P_0, RoutedEventArgs P_1)
 	{
 		_G_c__DisplayClass29_0 CS_8_locals_15 = new _G_c__DisplayClass29_0();
-		CS_8_locals_15.r3sVjOsNBP6 = this;
+		CS_8_locals_15.excelSyncWindow = this;
 		ebvOFufDA6(gridAllColumnMappings);
 		CS_8_locals_15.yCkVjCuDhM5 = SelectedBinding;
 		if (CS_8_locals_15.yCkVjCuDhM5 == null)
 		{
-			LoggerInitializer.u0kcmnykTv("请先在左侧选择一张表。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先在左侧选择一张表。", "IP_Assurance");
 		}
-		else if (dmsOy55xZ6(txtAllHeaderRows, chkAllSortEnabled, txtAllSortColumnIndex, cboAllSortDirection, chkAllSortPinOtherLast, PtTngkISNu, out CS_8_locals_15.Hp6VjpxIhZG, out CS_8_locals_15.bdBVjnriyke, out CS_8_locals_15.letVj7Vyv3E, out CS_8_locals_15.EAUVj5Fo2tZ, out CS_8_locals_15.VqiVjcFNj2A))
+		else if (dmsOy55xZ6(txtAllHeaderRows, chkAllSortEnabled, txtAllSortColumnIndex, cboAllSortDirection, chkAllSortPinOtherLast, PtTngkISNu, out CS_8_locals_15.value, out CS_8_locals_15.bdBVjnriyke, out CS_8_locals_15.flag, out CS_8_locals_15.flag, out CS_8_locals_15.VqiVjcFNj2A))
 		{
-			UCrOh343Aw("保存表格配置", () => TableComWriteService.bym4O8y0yd(CS_8_locals_15.yCkVjCuDhM5.BindingId, CS_8_locals_15.Hp6VjpxIhZG, CS_8_locals_15.r3sVjOsNBP6.chkAllSortEnabled.IsChecked == true, CS_8_locals_15.bdBVjnriyke, CS_8_locals_15.letVj7Vyv3E, CS_8_locals_15.EAUVj5Fo2tZ, CS_8_locals_15.VqiVjcFNj2A), true);
+			UCrOh343Aw("保存表格配置", () => TableComWriteService.SyncTableByLabelWithOptions(CS_8_locals_15.yCkVjCuDhM5.BindingId, CS_8_locals_15.value, CS_8_locals_15.excelSyncWindow.chkAllSortEnabled.IsChecked == true, CS_8_locals_15.bdBVjnriyke, CS_8_locals_15.flag, CS_8_locals_15.flag, CS_8_locals_15.VqiVjcFNj2A), true);
 		}
 	}
 
 	private void QWrphxw7m1(object P_0, RoutedEventArgs P_1)
 	{
-		if (!r7mnIQ3VfX)
+		if (!_bool)
 		{
 			r5TOJtV7Bf(false, true);
 		}
@@ -885,33 +885,33 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void knGpaQGvb3(object P_0, RoutedEventArgs P_1)
 	{
-		if (!r7mnIQ3VfX && bNZnKlpICU != null && bNZnKlpICU.HasBinding)
+		if (!_bool && bNZnKlpICU != null && bNZnKlpICU.HasBinding)
 		{
-			wIcOa8l5mb("跳转Excel", TableComWriteService.VuQ4c2ipxq);
+			wIcOa8l5mb("跳转Excel", TableComWriteService.GetCurrentTableSyncStatus);
 		}
 	}
 
 	private void ERtpqoZ4JG(object P_0, RoutedEventArgs P_1)
 	{
-		UCrOh343Aw("导出全部表并绑定", () => TableComWriteService.TcXEXakPZc(XGtOAmBcpX), true);
+		UCrOh343Aw("导出全部表并绑定", () => TableComWriteService.SyncAllTables(XGtOAmBcpX), true);
 	}
 
 	private void FJXpPgme4M(object P_0, RoutedEventArgs P_1)
 	{
-		UCrOh343Aw("刷新绑定信息", TableComWriteService.nvSKNublsd, true);
+		UCrOh343Aw("刷新绑定信息", TableComWriteService.GetSyncAllTablesResult, true);
 	}
 
 	private void TT4pAnStVL(object P_0, RoutedEventArgs P_1)
 	{
-		int num = E3mn6NEThs.Count((TableComWriteService.eEHsHgVgzpw09onBAkve item) => string.Equals(item.Status, "没有需要清理的失效绑定。", StringComparison.OrdinalIgnoreCase));
+		int num = E3mn6NEThs.Count((TableComWriteService.TableBindingStatus item) => string.Equals(item.Status, "没有需要清理的失效绑定。", StringComparison.OrdinalIgnoreCase));
 		if (num == 0)
 		{
 			QmRO0PPQsB("没有需要清理的失效绑定。");
-			ExcelSyncRibbonHelper.psZcncX5UL("Excel同步", "将删除 {0} 个表格锚点丢失的绑定记录。\\n\\n不会删除 Excel 文件，也不会删除 Excel 名称区域。确定继续吗？");
+			ExcelSyncRibbonHelper.ShowSyncMessage("Excel同步", "将删除 {0} 个表格锚点丢失的绑定记录。\\n\\n不会删除 Excel 文件，也不会删除 Excel 名称区域。确定继续吗？");
 		}
 		else if (System.Windows.MessageBox.Show(this, string.Format("清理失效绑定", num), "清理失效绑定", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			UCrOh343Aw("插入Excel选区", TableComWriteService.AarKmV38oK, true);
+			UCrOh343Aw("插入Excel选区", TableComWriteService.SyncAllTablesInternal, true);
 		}
 	}
 
@@ -923,10 +923,10 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private void g5gpWglTKb(object P_0, RoutedEventArgs P_1)
 	{
 		_G_c__DisplayClass36_0 CS_8_locals_6 = new _G_c__DisplayClass36_0();
-		TableComWriteService.IqV0YlV8NdDqM9efX4pE selectedDataSourceGroup = SelectedDataSourceGroup;
+		TableComWriteService.WorkbookBindingSummary selectedDataSourceGroup = SelectedDataSourceGroup;
 		if (selectedDataSourceGroup == null)
 		{
-			LoggerInitializer.u0kcmnykTv("请先选择一个 Excel 数据源。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先选择一个 Excel 数据源。", "IP_Assurance");
 			return;
 		}
 		string fileName;
@@ -947,13 +947,13 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			}
 			fileName = openFileDialog.FileName;
 		}
-		if (TableComWriteService.aDXEHKSHuA(fileName) && System.Windows.MessageBox.Show(this, "新 Excel 文件当前正在打开。\\n\\n更换数据源会读取该文件已经保存到磁盘的内容；如果 Excel 中有未保存修改，请先保存后继续。\\n\\n是否继续？", "更换数据源", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+		if (TableComWriteService.IsExcelFile(fileName) && System.Windows.MessageBox.Show(this, "新 Excel 文件当前正在打开。\\n\\n更换数据源会读取该文件已经保存到磁盘的内容；如果 Excel 中有未保存修改，请先保存后继续。\\n\\n是否继续？", "更换数据源", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
 		{
 			return;
 		}
-		if (!TableComWriteService.G4JEIoJeN1(selectedDataSourceGroup, fileName, out CS_8_locals_6.g8vVjyuYugM, out var text))
+		if (!TableComWriteService.TryPreviewExcelPathUpdate(selectedDataSourceGroup, fileName, out CS_8_locals_6.g8vVjyuYugM, out var text))
 		{
-			ExcelSyncRibbonHelper.CsKcO7u6di(new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+			ExcelSyncRibbonHelper.ShowSyncResult(new TableComWriteService.SyncResult
 			{
 				Success = false,
 				RequiresUserAction = true,
@@ -968,8 +968,8 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		{
 			UCrOh343Aw("更换数据源", delegate
 			{
-				TableComWriteService.BgnmcfV8ArSDWAKRwk0q bgnmcfV8ArSDWAKRwk0q = TableComWriteService.ebNEiWQuCH(CS_8_locals_6.g8vVjyuYugM);
-				return new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+				TableComWriteService.SyncOperationResult bgnmcfV8ArSDWAKRwk0q = TableComWriteService.ApplyExcelPathUpdate(CS_8_locals_6.g8vVjyuYugM);
+				return new TableComWriteService.SyncResult
 				{
 					Success = bgnmcfV8ArSDWAKRwk0q.Success,
 					RequiresUserAction = !bgnmcfV8ArSDWAKRwk0q.Success,
@@ -986,7 +986,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		string text = SelectedDataSourceGroup?.ResolvedExcelPath;
 		if (string.IsNullOrWhiteSpace(text))
 		{
-			LoggerInitializer.u0kcmnykTv("当前数据源没有可打开的路径。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("当前数据源没有可打开的路径。", "IP_Assurance");
 			return;
 		}
 		try
@@ -1009,22 +1009,22 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			}
 			else
 			{
-				LoggerInitializer.u0kcmnykTv("未找到 Excel 文件或所在文件夹。", "IP_Assurance");
+				LoggerInitializer.ShowWarning("未找到 Excel 文件或所在文件夹。", "IP_Assurance");
 			}
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[ExcelSync] Open data source folder failed", ex);
-			LoggerInitializer.u0kcmnykTv("打开文件位置失败。", "IP_Assurance");
+			AiConfigBootstrap.LogError("[ExcelSync] Open data source folder failed", ex);
+			LoggerInitializer.ShowWarning("打开文件位置失败。", "IP_Assurance");
 		}
 	}
 
 	private void X2YpkbCXJI(object P_0, RoutedEventArgs P_1)
 	{
-		TableComWriteService.eEHsHgVgzpw09onBAkve selectedDataSourceBinding = SelectedDataSourceBinding;
+		TableComWriteService.TableBindingStatus selectedDataSourceBinding = SelectedDataSourceBinding;
 		if (selectedDataSourceBinding == null)
 		{
-			LoggerInitializer.u0kcmnykTv("请先在关联表中选择一张表。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先在关联表中选择一张表。", "IP_Assurance");
 			return;
 		}
 		tabAll.IsSelected = true;
@@ -1038,7 +1038,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void OWypxBxIqE(object P_0, RoutedEventArgs P_1)
 	{
-		TableComWriteService.eEHsHgVgzpw09onBAkve selectedBinding = SelectedBinding;
+		TableComWriteService.TableBindingStatus selectedBinding = SelectedBinding;
 		if (selectedBinding != null && selectedBinding.CanJumpExcel)
 		{
 			R8KOqA1Zsf(selectedBinding);
@@ -1049,20 +1049,20 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	{
 		if (SelectedBinding == null)
 		{
-			LoggerInitializer.u0kcmnykTv("请先选择一个绑定关系。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("请先选择一个绑定关系。", "IP_Assurance");
 			return;
 		}
-		UCrOh343Aw("数据同步", () => (!VhjO8cZh01(out var text, out var requiresUserAction)) ? new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+		UCrOh343Aw("数据同步", () => (!VhjO8cZh01(out var text, out var requiresUserAction)) ? new TableComWriteService.SyncResult
 		{
 			Success = false,
 			RequiresUserAction = requiresUserAction,
 			Message = (string.IsNullOrWhiteSpace(text) ? "重新绑定当前表" : text)
-		} : TableComWriteService.XVJ45smyDw(XGtOAmBcpX), false);
+		} : TableComWriteService.SyncCurrentTable(XGtOAmBcpX), false);
 	}
 
 	private void GCCpzSGYn1(object P_0, RoutedEventArgs P_1)
 	{
-		UCrOh343Aw("数据同步", () => TableComWriteService.zxS4eKlv5S(XGtOAmBcpX), false);
+		UCrOh343Aw("数据同步", () => TableComWriteService.SyncAllTablesWithOptions(XGtOAmBcpX), false);
 	}
 
 	private void EjMORiBgG9(object P_0, RoutedEventArgs P_1)
@@ -1073,11 +1073,11 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		odEOteY3dg();
 		if (ExcelDataSyncService.IsLoaded || text.StartsWith("已卸载", StringComparison.OrdinalIgnoreCase))
 		{
-			ExcelSyncRibbonHelper.psZcncX5UL(text, "Excel同步");
+			ExcelSyncRibbonHelper.ShowSyncMessage(text, "Excel同步");
 		}
 		else
 		{
-			ExcelSyncRibbonHelper.kX7c742XgE(text, "Excel同步");
+			ExcelSyncRibbonHelper.ShowSyncWarning(text, "Excel同步");
 		}
 	}
 
@@ -1092,7 +1092,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		if (!OMKnQSfJqs)
 		{
 			bool valueOrDefault = chkSyncHeaders.IsChecked == true;
-			TableComWriteService.VIP491iKru(valueOrDefault);
+			TableComWriteService.SetSyncHeadersSetting(valueOrDefault);
 			txtOptionsStatus.Text = (valueOrDefault ? "已关闭同步表头内容；后续同步只写入数据区。" : "已开启同步表头内容。");
 		}
 	}
@@ -1111,10 +1111,10 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private void Av2OunZW4w(object P_0, RoutedPropertyChangedEventArgs<object> P_1)
 	{
 		WR0uULV4PciwXYvPdaNd wR0uULV4PciwXYvPdaNd = P_1.NewValue as WR0uULV4PciwXYvPdaNd;
-		e9anEqjZMJ = ((wR0uULV4PciwXYvPdaNd != null && wR0uULV4PciwXYvPdaNd.IsTable) ? wR0uULV4PciwXYvPdaNd : null);
+		_wR0uULV4PciwXYvPdaNd = ((wR0uULV4PciwXYvPdaNd != null && wR0uULV4PciwXYvPdaNd.IsTable) ? wR0uULV4PciwXYvPdaNd : null);
 		sJTOjaskhb();
 		anROS5dIum();
-		if (!r7mnIQ3VfX && !k32n1upDwO && tabAll.IsSelected && SelectedBinding != null && NulOgKoF3O())
+		if (!_bool && !_bool && tabAll.IsSelected && SelectedBinding != null && NulOgKoF3O())
 		{
 			QmRO0PPQsB("已定位到 Word 表格。");
 		}
@@ -1140,7 +1140,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private bool VhjO8cZh01(out string P_0, out bool P_1)
 	{
-		bool num = TableComWriteService.pNqZ2V22ob(SelectedBinding, out P_0, out P_1);
+		bool num = TableComWriteService.ValidateBindingForSyncInternal(SelectedBinding, out P_0, out P_1);
 		if (!num && !string.IsNullOrWhiteSpace(P_0))
 		{
 			QmRO0PPQsB(P_0);
@@ -1152,7 +1152,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void fFuOIGKZTj(object P_0, SelectionChangedEventArgs P_1)
 	{
-		if (P_1.Source == tabSync && (tabAll.IsSelected || tabDataSources.IsSelected) && !UMlnrm6j8x && !k32n1upDwO)
+		if (P_1.Source == tabSync && (tabAll.IsSelected || tabDataSources.IsSelected) && !_bool && !_bool)
 		{
 			lmoOEgXMdh(bNZnKlpICU?.BindingId);
 		}
@@ -1163,7 +1163,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		OMKnQSfJqs = true;
 		try
 		{
-			chkSyncHeaders.IsChecked = TableComWriteService.Bek4BpHLYy();
+			chkSyncHeaders.IsChecked = TableComWriteService.GetSyncHeadersSetting();
 		}
 		finally
 		{
@@ -1173,7 +1173,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void mxOOHYibqA()
 	{
-		if (ubhnH7KepY)
+		if (_bool)
 		{
 			return;
 		}
@@ -1185,7 +1185,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		try
 		{
 			new ComAwareEventInfo(typeof(ApplicationEvents4_Event), "WindowSelectionChange").AddEventHandler(ClanUwKOlF, new ApplicationEvents4_WindowSelectionChangeEventHandler(fWpO1ohXLE));
-			ubhnH7KepY = true;
+			_bool = true;
 		}
 		catch
 		{
@@ -1194,7 +1194,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void YQpOQgxdib()
 	{
-		if (ubhnH7KepY && ClanUwKOlF != null)
+		if (_bool && ClanUwKOlF != null)
 		{
 			try
 			{
@@ -1203,14 +1203,14 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			catch
 			{
 			}
-			ubhnH7KepY = false;
+			_bool = false;
 			ClanUwKOlF = null;
 		}
 	}
 
 	private void fWpO1ohXLE(Selection P_0)
 	{
-		if (r7mnIQ3VfX || !base.IsVisible)
+		if (_bool || !base.IsVisible)
 		{
 			return;
 		}
@@ -1222,8 +1222,8 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 				{
 					gtPO3hNFRn();
 				}
-				s7un8F22Xj.Stop();
-				s7un8F22Xj.Start();
+				_dispatcherTimer.Stop();
+				_dispatcherTimer.Start();
 			}, DispatcherPriority.Background);
 		}
 		catch
@@ -1233,8 +1233,8 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void yeyOrHb3JZ(object P_0, EventArgs P_1)
 	{
-		s7un8F22Xj.Stop();
-		if (!r7mnIQ3VfX && base.IsVisible)
+		_dispatcherTimer.Stop();
+		if (!_bool && base.IsVisible)
 		{
 			r5TOJtV7Bf( false, tabCurrent.IsSelected);
 		}
@@ -1247,33 +1247,33 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private void r5TOJtV7Bf(bool P_0, bool P_1)
 	{
 		_G_c__DisplayClass58_0 CS_8_locals_13 = new _G_c__DisplayClass58_0();
-		CS_8_locals_13.L4IVjFYA0VL = this;
-		CS_8_locals_13.VR9VjhT7fJF = P_0;
+		CS_8_locals_13.excelSyncWindow = this;
+		CS_8_locals_13.flag = P_0;
 		CS_8_locals_13.VdaVjasONDp = P_1;
-		if (r7mnIQ3VfX || !base.IsVisible)
+		if (_bool || !base.IsVisible)
 		{
 			return;
 		}
-		CS_8_locals_13.exnVjqnH0MM = W6Gn3PIlip;
+		CS_8_locals_13.value = _int;
 		if (CS_8_locals_13.VdaVjasONDp)
 		{
-			CS_8_locals_13.exnVjqnH0MM = ++W6Gn3PIlip;
+			CS_8_locals_13.value = ++_int;
 			gtPO3hNFRn();
 		}
 		base.Dispatcher.BeginInvoke((Action)delegate
 		{
 			try
 			{
-				if (!CS_8_locals_13.L4IVjFYA0VL.r7mnIQ3VfX && CS_8_locals_13.L4IVjFYA0VL.IsVisible)
+				if (!CS_8_locals_13.excelSyncWindow._bool && CS_8_locals_13.excelSyncWindow.IsVisible)
 				{
-					CS_8_locals_13.L4IVjFYA0VL.XvJOKeRLxt(CS_8_locals_13.VR9VjhT7fJF);
+					CS_8_locals_13.excelSyncWindow.XvJOKeRLxt(CS_8_locals_13.flag);
 				}
 			}
 			finally
 			{
 				if (CS_8_locals_13.VdaVjasONDp)
 				{
-					CS_8_locals_13.L4IVjFYA0VL.KwHOUY7w6K(CS_8_locals_13.exnVjqnH0MM);
+					CS_8_locals_13.excelSyncWindow.KwHOUY7w6K(CS_8_locals_13.value);
 				}
 			}
 		}, DispatcherPriority.Background);
@@ -1295,7 +1295,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	{
 		try
 		{
-			if (!P_0.HasValue || P_0.Value == W6Gn3PIlip)
+			if (!P_0.HasValue || P_0.Value == _int)
 			{
 				barCurrentLoading.Visibility = Visibility.Collapsed;
 			}
@@ -1307,7 +1307,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void XvJOKeRLxt(bool P_0)
 	{
-		bNZnKlpICU = TableComWriteService.inT4f2XO4S(P_0);
+		bNZnKlpICU = TableComWriteService.GetTableSyncStatus(P_0);
 		txtCurrentCardTitle.Text = ddYOpUEEfn(bNZnKlpICU);
 		txtWordStatus.Text = zePOO1f9yx(bNZnKlpICU);
 		txtWordTable.Text = bNZnKlpICU.WordTableLabel ?? string.Empty;
@@ -1340,18 +1340,18 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	{
 		_G_c__DisplayClass62_0 CS_8_locals_4 = new _G_c__DisplayClass62_0();
 		CS_8_locals_4.cexVjAsRxWj = this;
-		if (!r7mnIQ3VfX && !k32n1upDwO)
+		if (!_bool && !_bool)
 		{
-			CS_8_locals_4.AUGVjv0lCH2 = P_0 ?? SelectedBinding?.BindingId;
-			UMlnrm6j8x = true;
-			k32n1upDwO = true;
+			CS_8_locals_4.text = P_0 ?? SelectedBinding?.BindingId;
+			_bool = true;
+			_bool = true;
 			barAllLoading.Visibility = Visibility.Visible;
 			treeBindings.IsEnabled = false;
 			txtAllSummary.Text = "正在读取当前文档绑定...";
 			anROS5dIum();
 			base.Dispatcher.BeginInvoke((Action)delegate
 			{
-				CS_8_locals_4.cexVjAsRxWj.UJCO2ZWoW0(CS_8_locals_4.AUGVjv0lCH2);
+				CS_8_locals_4.cexVjAsRxWj.UJCO2ZWoW0(CS_8_locals_4.text);
 			}, DispatcherPriority.Background);
 		}
 	}
@@ -1361,7 +1361,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		try
 		{
 			E3mn6NEThs.Clear();
-			foreach (TableComWriteService.eEHsHgVgzpw09onBAkve item in TableComWriteService.cZEKsyo7XD())
+			foreach (TableComWriteService.TableBindingStatus item in TableComWriteService.GetAllTableBindings())
 			{
 				E3mn6NEThs.Add(item);
 			}
@@ -1376,14 +1376,14 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("[ExcelSync] Load binding list failed", ex);
-			LoggerInitializer.F9Ycoqv2I8("读取绑定列表失败，请保存 Word 文档后重新打开 Excel 同步窗口。", "IP_Assurance");
+			AiConfigBootstrap.LogError("[ExcelSync] Load binding list failed", ex);
+			LoggerInitializer.ShowError("读取绑定列表失败，请保存 Word 文档后重新打开 Excel 同步窗口。", "IP_Assurance");
 		}
 		finally
 		{
 			treeBindings.IsEnabled = true;
 			barAllLoading.Visibility = Visibility.Collapsed;
-			k32n1upDwO = false;
+			_bool = false;
 			NnEO4BS9fi();
 			sJTOjaskhb();
 			s31OfhyUie();
@@ -1396,9 +1396,9 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private void NnEO4BS9fi()
 	{
 		int count = E3mn6NEThs.Count;
-		int num = E3mn6NEThs.Count((TableComWriteService.eEHsHgVgzpw09onBAkve item) => string.Equals(item.Status, "共 {0} 个绑定，正常 {1} 个，异常 {2} 个。", StringComparison.OrdinalIgnoreCase));
+		int num = E3mn6NEThs.Count((TableComWriteService.TableBindingStatus item) => string.Equals(item.Status, "共 {0} 个绑定，正常 {1} 个，异常 {2} 个。", StringComparison.OrdinalIgnoreCase));
 		txtAllSummary.Text = ((count == 0) ? "当前文档未发现 Excel 绑定关系。" : string.Format("当前绑定还没有 Word 标题层级缓存；点击“刷新绑定信息”后会按 Word 标题树归类。", count, num, count - num));
-		if (count > 0 && !E3mn6NEThs.Any((TableComWriteService.eEHsHgVgzpw09onBAkve item) => item.HeadingPath != null && item.HeadingPath.Count > 0))
+		if (count > 0 && !E3mn6NEThs.Any((TableComWriteService.TableBindingStatus item) => item.HeadingPath != null && item.HeadingPath.Count > 0))
 		{
 			txtAllStatus.Text = "选择左侧表格会定位 Word 表格；可在右侧 Excel 路径处跳转源区域。";
 		}
@@ -1410,7 +1410,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void sJTOjaskhb()
 	{
-		TableComWriteService.eEHsHgVgzpw09onBAkve selectedBinding = SelectedBinding;
+		TableComWriteService.TableBindingStatus selectedBinding = SelectedBinding;
 		txtAllDetailEmpty.Visibility = ((selectedBinding != null) ? Visibility.Collapsed : Visibility.Visible);
 		panelAllDetailContent.Visibility = ((selectedBinding == null) ? Visibility.Collapsed : Visibility.Visible);
 		if (selectedBinding != null)
@@ -1468,16 +1468,16 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private void cMdOYLAOjc()
 	{
 		_G_c__DisplayClass66_0 CS_8_locals_3 = new _G_c__DisplayClass66_0();
-		CS_8_locals_3.vwOVj0875AY = SelectedDataSourceGroup?.ResolvedExcelPath;
+		CS_8_locals_3.text = SelectedDataSourceGroup?.ResolvedExcelPath;
 		B9nnDK9dBG.Clear();
-		foreach (TableComWriteService.IqV0YlV8NdDqM9efX4pE item in YEhOZcKFuM())
+		foreach (TableComWriteService.WorkbookBindingSummary item in YEhOZcKFuM())
 		{
 			B9nnDK9dBG.Add(item);
 		}
-		TableComWriteService.IqV0YlV8NdDqM9efX4pE iqV0YlV8NdDqM9efX4pE = null;
-		if (!string.IsNullOrWhiteSpace(CS_8_locals_3.vwOVj0875AY))
+		TableComWriteService.WorkbookBindingSummary iqV0YlV8NdDqM9efX4pE = null;
+		if (!string.IsNullOrWhiteSpace(CS_8_locals_3.text))
 		{
-			iqV0YlV8NdDqM9efX4pE = B9nnDK9dBG.FirstOrDefault((TableComWriteService.IqV0YlV8NdDqM9efX4pE group) => string.Equals(group.ResolvedExcelPath, CS_8_locals_3.vwOVj0875AY, StringComparison.OrdinalIgnoreCase));
+			iqV0YlV8NdDqM9efX4pE = B9nnDK9dBG.FirstOrDefault((TableComWriteService.WorkbookBindingSummary group) => string.Equals(group.ResolvedExcelPath, CS_8_locals_3.text, StringComparison.OrdinalIgnoreCase));
 		}
 		if (iqV0YlV8NdDqM9efX4pE != null)
 		{
@@ -1489,16 +1489,16 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		}
 	}
 
-	private IList<TableComWriteService.IqV0YlV8NdDqM9efX4pE> YEhOZcKFuM()
+	private IList<TableComWriteService.WorkbookBindingSummary> YEhOZcKFuM()
 	{
-		return TableComWriteService.BCbE8b10BK(E3mn6NEThs);
+		return TableComWriteService.GroupBindingsByWorkbook(E3mn6NEThs);
 	}
 
 	private void s31OfhyUie()
 	{
 		int count = B9nnDK9dBG.Count;
-		int num = B9nnDK9dBG.Sum((TableComWriteService.IqV0YlV8NdDqM9efX4pE group) => group.BindingCount);
-		int num2 = B9nnDK9dBG.Sum((TableComWriteService.IqV0YlV8NdDqM9efX4pE group) => group.MissingPathCount);
+		int num = B9nnDK9dBG.Sum((TableComWriteService.WorkbookBindingSummary group) => group.BindingCount);
+		int num2 = B9nnDK9dBG.Sum((TableComWriteService.WorkbookBindingSummary group) => group.MissingPathCount);
 		txtDataSourceSummary.Text = ((count == 0) ? "共 {0} 个数据源，{1} 个绑定，路径异常 {2} 个。" : string.Format("当前文档未发现 Excel 数据源。", count, num, num2));
 		if (string.IsNullOrWhiteSpace(txtDataSourceStatusBar.Text))
 		{
@@ -1508,7 +1508,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void wl5OM5OnNS()
 	{
-		TableComWriteService.IqV0YlV8NdDqM9efX4pE selectedDataSourceGroup = SelectedDataSourceGroup;
+		TableComWriteService.WorkbookBindingSummary selectedDataSourceGroup = SelectedDataSourceGroup;
 		txtDataSourceEmpty.Visibility = ((selectedDataSourceGroup != null) ? Visibility.Collapsed : Visibility.Visible);
 		panelDataSourceDetailContent.Visibility = ((selectedDataSourceGroup == null) ? Visibility.Collapsed : Visibility.Visible);
 		if (selectedDataSourceGroup != null)
@@ -1519,7 +1519,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			txtDataSourceBindingCount.Text = selectedDataSourceGroup.BindingCount.ToString();
 			txtDataSourceNormalCount.Text = selectedDataSourceGroup.NormalCount.ToString();
 			txtDataSourceMissingPathCount.Text = selectedDataSourceGroup.MissingPathCount.ToString();
-			listDataSourceBindings.ItemsSource = selectedDataSourceGroup.Bindings ?? new List<TableComWriteService.eEHsHgVgzpw09onBAkve>();
+			listDataSourceBindings.ItemsSource = selectedDataSourceGroup.Bindings ?? new List<TableComWriteService.TableBindingStatus>();
 			if (listDataSourceBindings.SelectedItem == null && listDataSourceBindings.Items.Count > 0)
 			{
 				listDataSourceBindings.SelectedIndex = 0;
@@ -1542,7 +1542,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		bool flag = bNZnKlpICU != null && bNZnKlpICU.HasWordTable;
 		bool flag2 = bNZnKlpICU != null && bNZnKlpICU.HasBinding;
 		bool flag3 = bNZnKlpICU != null && bNZnKlpICU.HasExcelSelection;
-		bool isEnabled = !r7mnIQ3VfX && flag && flag2 && chkSortEnabled.IsChecked == true;
+		bool isEnabled = !_bool && flag && flag2 && chkSortEnabled.IsChecked == true;
 		if (flag2)
 		{
 			btnPrimaryCurrent.Content = "同步当前表";
@@ -1555,17 +1555,17 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		{
 			btnPrimaryCurrent.Content = "插入Excel选区";
 		}
-		btnPrimaryCurrent.IsEnabled = !r7mnIQ3VfX && (flag2 || (flag && flag3) || (!flag && flag3));
-		btnSplitCurrentTable.IsEnabled = !r7mnIQ3VfX && flag && flag2;
-		btnRebind.IsEnabled = !r7mnIQ3VfX && flag && flag2 && flag3;
-		btnUnbind.IsEnabled = !r7mnIQ3VfX && flag && flag2;
-		btnSaveHeaderSetting.IsEnabled = !r7mnIQ3VfX && flag && flag2;
-		btnRefreshExcelSelection.IsEnabled = !r7mnIQ3VfX;
-		linkCurrentBindingSource.IsEnabled = !r7mnIQ3VfX && flag2;
-		txtHeaderRows.IsEnabled = !r7mnIQ3VfX && flag && flag2;
-		gridColumnMappings.IsEnabled = !r7mnIQ3VfX && flag && flag2;
-		gridColumnMappings.IsReadOnly = !(!r7mnIQ3VfX && flag && flag2);
-		chkSortEnabled.IsEnabled = !r7mnIQ3VfX && flag && flag2;
+		btnPrimaryCurrent.IsEnabled = !_bool && (flag2 || (flag && flag3) || (!flag && flag3));
+		btnSplitCurrentTable.IsEnabled = !_bool && flag && flag2;
+		btnRebind.IsEnabled = !_bool && flag && flag2 && flag3;
+		btnUnbind.IsEnabled = !_bool && flag && flag2;
+		btnSaveHeaderSetting.IsEnabled = !_bool && flag && flag2;
+		btnRefreshExcelSelection.IsEnabled = !_bool;
+		linkCurrentBindingSource.IsEnabled = !_bool && flag2;
+		txtHeaderRows.IsEnabled = !_bool && flag && flag2;
+		gridColumnMappings.IsEnabled = !_bool && flag && flag2;
+		gridColumnMappings.IsReadOnly = !(!_bool && flag && flag2);
+		chkSortEnabled.IsEnabled = !_bool && flag && flag2;
 		txtSortColumnIndex.IsEnabled = isEnabled;
 		cboSortDirection.IsEnabled = isEnabled;
 		chkSortPinOtherLast.IsEnabled = isEnabled;
@@ -1573,10 +1573,10 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void anROS5dIum()
 	{
-		TableComWriteService.eEHsHgVgzpw09onBAkve selectedBinding = SelectedBinding;
+		TableComWriteService.TableBindingStatus selectedBinding = SelectedBinding;
 		bool flag = selectedBinding != null;
-		bool flag2 = !r7mnIQ3VfX && !k32n1upDwO && !kvinJXJO8H;
-		bool flag3 = E3mn6NEThs.Any((TableComWriteService.eEHsHgVgzpw09onBAkve item) => string.Equals(item.Status, "确定要解除当前 Word 表格的 Excel 绑定吗？\\n\\n只会清理 Word 文档中的绑定信息，不会删除 Excel 工作簿里的名称区域。", StringComparison.OrdinalIgnoreCase));
+		bool flag2 = !_bool && !_bool && !_bool;
+		bool flag3 = E3mn6NEThs.Any((TableComWriteService.TableBindingStatus item) => string.Equals(item.Status, "确定要解除当前 Word 表格的 Excel 绑定吗？\\n\\n只会清理 Word 文档中的绑定信息，不会删除 Excel 工作簿里的名称区域。", StringComparison.OrdinalIgnoreCase));
 		bool isEnabled = flag2 && flag && selectedBinding.CanSync && chkAllSortEnabled.IsChecked == true;
 		btnRefreshAll.IsEnabled = flag2;
 		linkAllDetailPath.IsEnabled = flag2 && flag && selectedBinding.CanJumpExcel;
@@ -1596,9 +1596,9 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void EohOwGuhvN()
 	{
-		TableComWriteService.IqV0YlV8NdDqM9efX4pE selectedDataSourceGroup = SelectedDataSourceGroup;
+		TableComWriteService.WorkbookBindingSummary selectedDataSourceGroup = SelectedDataSourceGroup;
 		bool flag = selectedDataSourceGroup != null;
-		bool flag2 = !r7mnIQ3VfX && !k32n1upDwO && !kvinJXJO8H;
+		bool flag2 = !_bool && !_bool && !_bool;
 		bool flag3 = flag && !string.IsNullOrWhiteSpace(selectedDataSourceGroup.ResolvedExcelPath);
 		btnRefreshDataSources.IsEnabled = flag2;
 		gridDataSources.IsEnabled = flag2;
@@ -1625,9 +1625,9 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	{
 		nf4nuLGTDv.Clear();
 		WR0uULV4PciwXYvPdaNd wR0uULV4PciwXYvPdaNd = null;
-		foreach (TableComWriteService.eEHsHgVgzpw09onBAkve item in E3mn6NEThs.OrderBy((TableComWriteService.eEHsHgVgzpw09onBAkve binding) => (binding.WordTableIndex > 0) ? binding.WordTableIndex : int.MaxValue))
+		foreach (TableComWriteService.TableBindingStatus item in E3mn6NEThs.OrderBy((TableComWriteService.TableBindingStatus binding) => (binding.WordTableIndex > 0) ? binding.WordTableIndex : int.MaxValue))
 		{
-			IList<TableComWriteService.zjEQMmV8xiap53qf2leG> list = item.HeadingPath ?? new List<TableComWriteService.zjEQMmV8xiap53qf2leG>();
+			IList<TableComWriteService.HeadingPathItem> list = item.HeadingPath ?? new List<TableComWriteService.HeadingPathItem>();
 			ObservableCollection<WR0uULV4PciwXYvPdaNd> children = nf4nuLGTDv;
 			WR0uULV4PciwXYvPdaNd parent = null;
 			if (list.Count == 0)
@@ -1647,7 +1647,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			}
 			else
 			{
-				using IEnumerator<TableComWriteService.zjEQMmV8xiap53qf2leG> enumerator2 = list.GetEnumerator();
+				using IEnumerator<TableComWriteService.HeadingPathItem> enumerator2 = list.GetEnumerator();
 				while (enumerator2.MoveNext())
 				{
 					_G_c__DisplayClass75_0 CS_8_locals_9 = new _G_c__DisplayClass75_0();
@@ -1686,7 +1686,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	private void rAUOlemBfZ(WR0uULV4PciwXYvPdaNd P_0)
 	{
 		XfbONW5dhI(nf4nuLGTDv);
-		e9anEqjZMJ = ((P_0 != null && P_0.IsTable) ? P_0 : null);
+		_wR0uULV4PciwXYvPdaNd = ((P_0 != null && P_0.IsTable) ? P_0 : null);
 		if (P_0 != null)
 		{
 			mSbOmO30nE(P_0);
@@ -1759,7 +1759,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		return null;
 	}
 
-	private static string LHnOCV7osD(TableComWriteService.CkyBTaV87qVM3TwBrVFZ P_0, bool P_1)
+	private static string LHnOCV7osD(TableComWriteService.ExcelPathUpdateResult P_0, bool P_1)
 	{
 		if (P_0 == null)
 		{
@@ -1782,7 +1782,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		{
 			list.Add(string.Empty);
 			list.Add("缺失清单：");
-			foreach (TableComWriteService.kY8DvBV8FJH80M7vjngB item in P_0.MissingItems.Take(10))
+			foreach (TableComWriteService.BindingUpdateItem item in P_0.MissingItems.Take(10))
 			{
 				list.Add("- " + (item.DisplayTitle ?? item.BindingId ?? string.Empty) + " / " + (item.ExcelName ?? string.Empty));
 			}
@@ -1796,7 +1796,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		return string.Join(Environment.NewLine, list);
 	}
 
-	private static string ddYOpUEEfn(TableComWriteService.gMo5J5VI9LOS3nqRiEJZ P_0)
+	private static string ddYOpUEEfn(TableComWriteService.TableSyncStatus P_0)
 	{
 		if (P_0 == null)
 		{
@@ -1817,7 +1817,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		return "当前表已绑定";
 	}
 
-	private static string zePOO1f9yx(TableComWriteService.gMo5J5VI9LOS3nqRiEJZ P_0)
+	private static string zePOO1f9yx(TableComWriteService.TableSyncStatus P_0)
 	{
 		if (P_0 == null)
 		{
@@ -1842,7 +1842,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		return "请在 Excel 中选择源区域后绑定当前 Word 表格。";
 	}
 
-	private static string VN9OnoyF9f(TableComWriteService.gMo5J5VI9LOS3nqRiEJZ P_0)
+	private static string VN9OnoyF9f(TableComWriteService.TableSyncStatus P_0)
 	{
 		if (P_0 == null || !P_0.HasBinding)
 		{
@@ -1855,7 +1855,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		return "表头行数：尚未识别";
 	}
 
-	private static string nWIO77Lyj2(TableComWriteService.gMo5J5VI9LOS3nqRiEJZ P_0)
+	private static string nWIO77Lyj2(TableComWriteService.TableSyncStatus P_0)
 	{
 		if (P_0 == null || !P_0.HasWordTable)
 		{
@@ -1877,7 +1877,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		return "已绑定。";
 	}
 
-	private static string LFhO5FvQ1M(TableComWriteService.gMo5J5VI9LOS3nqRiEJZ P_0)
+	private static string LFhO5FvQ1M(TableComWriteService.TableSyncStatus P_0)
 	{
 		if (P_0 == null || !P_0.HasExcelSelection)
 		{
@@ -1903,7 +1903,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		return "已检测到 Excel 当前选区。";
 	}
 
-	private static void yTAOcfuoN8(ObservableCollection<ffokv1V4hncupjXCMk8a> P_0, IList<TableComWriteService.l0FhISVIRyyYwtV64iqd> P_1, int P_2)
+	private static void yTAOcfuoN8(ObservableCollection<ffokv1V4hncupjXCMk8a> P_0, IList<TableComWriteService.ColumnMapping> P_1, int P_2)
 	{
 		if (P_0 == null)
 		{
@@ -1916,17 +1916,17 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			num = P_1.Count;
 		}
 		_G_c__DisplayClass87_0 CS_8_locals_6 = new _G_c__DisplayClass87_0();
-		CS_8_locals_6.c73VYRUyF58 = 1;
-		while (CS_8_locals_6.c73VYRUyF58 <= num)
+		CS_8_locals_6.value = 1;
+		while (CS_8_locals_6.value <= num)
 		{
-			TableComWriteService.l0FhISVIRyyYwtV64iqd l0FhISVIRyyYwtV64iqd = P_1?.FirstOrDefault((TableComWriteService.l0FhISVIRyyYwtV64iqd item) => item.WordColumnIndex == CS_8_locals_6.c73VYRUyF58);
-			int num2 = ((l0FhISVIRyyYwtV64iqd != null && l0FhISVIRyyYwtV64iqd.ExcelColumnIndex > 0) ? l0FhISVIRyyYwtV64iqd.ExcelColumnIndex : CS_8_locals_6.c73VYRUyF58);
+			TableComWriteService.ColumnMapping ColumnMapping = P_1?.FirstOrDefault((TableComWriteService.ColumnMapping item) => item.WordColumnIndex == CS_8_locals_6.value);
+			int num2 = ((ColumnMapping != null && ColumnMapping.ExcelColumnIndex > 0) ? ColumnMapping.ExcelColumnIndex : CS_8_locals_6.value);
 			P_0.Add(new ffokv1V4hncupjXCMk8a
 			{
-				WordColumnIndex = CS_8_locals_6.c73VYRUyF58,
+				WordColumnIndex = CS_8_locals_6.value,
 				ExcelColumnText = num2.ToString()
 			});
-			CS_8_locals_6.c73VYRUyF58++;
+			CS_8_locals_6.value++;
 		}
 	}
 
@@ -1935,7 +1935,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		P_1 = 0;
 		if (P_0 == null || !int.TryParse((P_0.Text ?? string.Empty).Trim(), out var result) || result < 0)
 		{
-			LoggerInitializer.u0kcmnykTv("表头行数请输入 0 或正整数。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("表头行数请输入 0 或正整数。", "IP_Assurance");
 			P_0?.Focus();
 			P_0?.SelectAll();
 			return false;
@@ -1956,7 +1956,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		}
 		if (!int.TryParse((P_2.Text ?? string.Empty).Trim(), out P_7) || P_7 < 1)
 		{
-			LoggerInitializer.u0kcmnykTv("排序列请输入 1 或更大的整数。", "IP_Assurance");
+			LoggerInitializer.ShowWarning("排序列请输入 1 或更大的整数。", "IP_Assurance");
 			P_2.Focus();
 			P_2.SelectAll();
 			return false;
@@ -1984,12 +1984,12 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			{
 				if (!int.TryParse((item.ExcelColumnText ?? string.Empty).Trim(), out var result) || result < 1)
 				{
-					LoggerInitializer.u0kcmnykTv(string.Format("第 {0} 个 Word 列的 Excel 列号请输入 1 或更大的整数。", item.WordColumnIndex), "IP_Assurance");
+					LoggerInitializer.ShowWarning(string.Format("第 {0} 个 Word 列的 Excel 列号请输入 1 或更大的整数。", item.WordColumnIndex), "IP_Assurance");
 					return false;
 				}
 				if (result <= num)
 				{
-					LoggerInitializer.u0kcmnykTv("列映射中的 Excel 列号需要从左到右递增。", "IP_Assurance");
+					LoggerInitializer.ShowWarning("列映射中的 Excel 列号需要从左到右递增。", "IP_Assurance");
 					return false;
 				}
 				P_1.Add(result);
@@ -2008,11 +2008,11 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		}
 	}
 
-	private void UCrOh343Aw(string P_0, Func<TableComWriteService.B8Id9rVIwgTW2spgYNvs> P_1, bool P_2)
+	private void UCrOh343Aw(string P_0, Func<TableComWriteService.SyncResult> P_1, bool P_2)
 	{
 		_G_c__DisplayClass92_0 CS_8_locals_7 = new _G_c__DisplayClass92_0();
 		CS_8_locals_7.cASVYBwvli2 = P_1;
-		if (r7mnIQ3VfX || CS_8_locals_7.cASVYBwvli2 == null)
+		if (_bool || CS_8_locals_7.cASVYBwvli2 == null)
 		{
 			return;
 		}
@@ -2029,7 +2029,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		try
 		{
 			CS_8_locals_7.xBZVY9np7wP = null;
-			AiHelper_7.sY9FLcxGhc(delegate
+			AiHelper_7.RunCommandWithUndo(delegate
 			{
 				CS_8_locals_7.xBZVY9np7wP = CS_8_locals_7.cASVYBwvli2();
 			}, P_0);
@@ -2044,18 +2044,18 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			{
 				QmRO0PPQsB(text2);
 			}
-			if (UMlnrm6j8x && P_2)
+			if (_bool && P_2)
 			{
 				lmoOEgXMdh(bNZnKlpICU?.BindingId ?? text);
 			}
 		}
 	}
 
-	private void wIcOa8l5mb(string P_0, Func<TableComWriteService.B8Id9rVIwgTW2spgYNvs> P_1)
+	private void wIcOa8l5mb(string P_0, Func<TableComWriteService.SyncResult> P_1)
 	{
 		_G_c__DisplayClass93_0 CS_8_locals_7 = new _G_c__DisplayClass93_0();
 		CS_8_locals_7.Yb0VYumO4a9 = P_1;
-		if (r7mnIQ3VfX || CS_8_locals_7.Yb0VYumO4a9 == null)
+		if (_bool || CS_8_locals_7.Yb0VYumO4a9 == null)
 		{
 			return;
 		}
@@ -2065,7 +2065,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		try
 		{
 			CS_8_locals_7.gTxVYDrAlNL = null;
-			AiHelper_7.iHUFttreO8(delegate
+			AiHelper_7.RunCommand(delegate
 			{
 				CS_8_locals_7.gTxVYDrAlNL = CS_8_locals_7.Yb0VYumO4a9();
 			}, P_0);
@@ -2083,11 +2083,11 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		}
 	}
 
-	private void R8KOqA1Zsf(TableComWriteService.eEHsHgVgzpw09onBAkve P_0)
+	private void R8KOqA1Zsf(TableComWriteService.TableBindingStatus P_0)
 	{
-		if (!r7mnIQ3VfX && !kvinJXJO8H && P_0 != null && P_0.CanJumpExcel)
+		if (!_bool && !_bool && P_0 != null && P_0.CanJumpExcel)
 		{
-			kvinJXJO8H = true;
+			_bool = true;
 			base.Cursor = System.Windows.Input.Cursors.Wait;
 			QmRO0PPQsB("正在打开 Excel 并定位源区域，请稍候...");
 			anROS5dIum();
@@ -2097,23 +2097,23 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			bool requiresUserAction = false;
 			try
 			{
-				flag = TableComWriteService.jfJEYZIKi1(P_0, out empty, out requiresUserAction);
+				flag = TableComWriteService.ValidateBindingSyncInternal(P_0, out empty, out requiresUserAction);
 			}
 			finally
 			{
-				kvinJXJO8H = false;
-				base.Cursor = (r7mnIQ3VfX ? System.Windows.Input.Cursors.Wait : null);
+				_bool = false;
+				base.Cursor = (_bool ? System.Windows.Input.Cursors.Wait : null);
 				anROS5dIum();
 			}
 			if (flag)
 			{
 				QmRO0PPQsB("已定位到 Excel 区域。");
-				UiHelperService.SeXce6fgLN("已定位到 Excel 区域。", "Excel同步");
+				UiHelperService.ShowToastInfo("已定位到 Excel 区域。", "Excel同步");
 				return;
 			}
 			string text = (string.IsNullOrWhiteSpace(empty) ? "未能定位到 Excel 区域。" : empty);
 			QmRO0PPQsB(text);
-			ExcelSyncRibbonHelper.CsKcO7u6di(new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+			ExcelSyncRibbonHelper.ShowSyncResult(new TableComWriteService.SyncResult
 			{
 				Success = false,
 				RequiresUserAction = requiresUserAction,
@@ -2122,12 +2122,12 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		}
 	}
 
-	private void AJLOPDSt5a(TableComWriteService.B8Id9rVIwgTW2spgYNvs P_0)
+	private void AJLOPDSt5a(TableComWriteService.SyncResult P_0)
 	{
 		if (P_0 != null)
 		{
 			QmRO0PPQsB(P_0.Message ?? string.Empty);
-			ExcelSyncRibbonHelper.CsKcO7u6di(P_0, "Excel同步");
+			ExcelSyncRibbonHelper.ShowSyncResult(P_0, "Excel同步");
 		}
 	}
 
@@ -2198,7 +2198,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 
 	private void nSaOWTWy29(bool P_0)
 	{
-		r7mnIQ3VfX = P_0;
+		_bool = P_0;
 		if (P_0)
 		{
 			KwHOUY7w6K();
@@ -2235,9 +2235,9 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	[DebuggerNonUserCode]
 	public void InitializeComponent()
 	{
-		if (!Mven2dRYND)
+		if (!_bool)
 		{
-			Mven2dRYND = true;
+			_bool = true;
 			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/excelsyncwindow.xaml", UriKind.Relative);
 			System.Windows.Application.LoadComponent(this, resourceLocator);
 		}
@@ -2566,7 +2566,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 			txtOptionsStatus = (TextBlock)target;
 			break;
 		default:
-			Mven2dRYND = true;
+			_bool = true;
 			break;
 		}
 	}
@@ -2603,36 +2603,36 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 	}
 
 	[CompilerGenerated]
-	private TableComWriteService.B8Id9rVIwgTW2spgYNvs B8vOzIRuaO()
+	private TableComWriteService.SyncResult B8vOzIRuaO()
 	{
-		return TableComWriteService.XVJ45smyDw(XGtOAmBcpX);
+		return TableComWriteService.SyncCurrentTable(XGtOAmBcpX);
 	}
 
 	[CompilerGenerated]
-	private TableComWriteService.B8Id9rVIwgTW2spgYNvs ttlnRHBwlD()
+	private TableComWriteService.SyncResult ttlnRHBwlD()
 	{
-		return TableComWriteService.TcXEXakPZc(XGtOAmBcpX);
+		return TableComWriteService.SyncAllTables(XGtOAmBcpX);
 	}
 
 	[CompilerGenerated]
-	private TableComWriteService.B8Id9rVIwgTW2spgYNvs hi9nVctXsA()
+	private TableComWriteService.SyncResult hi9nVctXsA()
 	{
 		if (!VhjO8cZh01(out var text, out var requiresUserAction))
 		{
-			return new TableComWriteService.B8Id9rVIwgTW2spgYNvs
+			return new TableComWriteService.SyncResult
 			{
 				Success = false,
 				RequiresUserAction = requiresUserAction,
 				Message = (string.IsNullOrWhiteSpace(text) ? "未能定位到选中的 Word 表格，无法同步选中表。" : text)
 			};
 		}
-		return TableComWriteService.XVJ45smyDw(XGtOAmBcpX);
+		return TableComWriteService.SyncCurrentTable(XGtOAmBcpX);
 	}
 
 	[CompilerGenerated]
-	private TableComWriteService.B8Id9rVIwgTW2spgYNvs NmBnBxPu59()
+	private TableComWriteService.SyncResult NmBnBxPu59()
 	{
-		return TableComWriteService.zxS4eKlv5S(XGtOAmBcpX);
+		return TableComWriteService.SyncAllTablesWithOptions(XGtOAmBcpX);
 	}
 
 	[CompilerGenerated]
@@ -2642,7 +2642,7 @@ public sealed class ExcelSyncWindow : System.Windows.Window, IComponentConnector
 		{
 			gtPO3hNFRn();
 		}
-		s7un8F22Xj.Stop();
-		s7un8F22Xj.Start();
+		_dispatcherTimer.Stop();
+		_dispatcherTimer.Start();
 	}
 }

@@ -29,23 +29,23 @@ internal sealed class ScreenshotCaptureHelper3
 	{
 		public Form xOadtJIvHV;
 
-		public Helper_16 QH5dLJJKUU;
+		public Helper_16 helper_16;
 
-		public string vEydsAdH7C;
+		public string text;
 
-		public string O96dl7ylv6;
+		public string text;
 
-		public string ak5dNExhHw;
+		public string text;
 
 		public ImageAssetInfo umNdmxJMDT;
 
-		public string e4BdoEk6pu;
+		public string text;
 
-		public Exception mSCdGE1K6J;
+		public Exception exception;
 
 		public _G_c__DisplayClass14_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void w03dw18Z2c()
@@ -53,54 +53,54 @@ internal sealed class ScreenshotCaptureHelper3
 			try
 			{
 				_G_c__DisplayClass14_1 CS_8_locals_42 = new _G_c__DisplayClass14_1();
-				CS_8_locals_42.Am8dnU3Kek = this;
-				CS_8_locals_42.fYAdpk6kMZ = new Form();
+				CS_8_locals_42._G_c__DisplayClass14_0 = this;
+				CS_8_locals_42.form = new Form();
 				try
 				{
-					CS_8_locals_42.JsPdOuZl9d = new WebView2();
+					CS_8_locals_42.webView = new WebView2();
 					try
 					{
-						xOadtJIvHV = CS_8_locals_42.fYAdpk6kMZ;
-						CS_8_locals_42.fYAdpk6kMZ.FormBorderStyle = FormBorderStyle.None;
-						CS_8_locals_42.fYAdpk6kMZ.StartPosition = FormStartPosition.Manual;
-						CS_8_locals_42.fYAdpk6kMZ.Location = new Point(-32000, -32000);
-						CS_8_locals_42.fYAdpk6kMZ.ClientSize = new Size(QH5dLJJKUU.PixelWidth, QH5dLJJKUU.PixelHeight);
-						CS_8_locals_42.fYAdpk6kMZ.ShowInTaskbar = false;
-						CS_8_locals_42.fYAdpk6kMZ.Text = "IP_Assurance HTML Visual Renderer";
-						CS_8_locals_42.JsPdOuZl9d.Dock = DockStyle.Fill;
-						CS_8_locals_42.JsPdOuZl9d.CreationProperties = new CoreWebView2CreationProperties
+						xOadtJIvHV = CS_8_locals_42.form;
+						CS_8_locals_42.form.FormBorderStyle = FormBorderStyle.None;
+						CS_8_locals_42.form.StartPosition = FormStartPosition.Manual;
+						CS_8_locals_42.form.Location = new Point(-32000, -32000);
+						CS_8_locals_42.form.ClientSize = new Size(helper_16.PixelWidth, helper_16.PixelHeight);
+						CS_8_locals_42.form.ShowInTaskbar = false;
+						CS_8_locals_42.form.Text = "IP_Assurance HTML Visual Renderer";
+						CS_8_locals_42.webView.Dock = DockStyle.Fill;
+						CS_8_locals_42.webView.CreationProperties = new CoreWebView2CreationProperties
 						{
-							UserDataFolder = AiSseStreamService.mSfs9VWIdb("WebView2", "HtmlVisualRenderer", Process.GetCurrentProcess().Id.ToString())
+							UserDataFolder = AiSseStreamService.GetUserDataPath("WebView2", "HtmlVisualRenderer", Process.GetCurrentProcess().Id.ToString())
 						};
-						CS_8_locals_42.fYAdpk6kMZ.Controls.Add(CS_8_locals_42.JsPdOuZl9d);
-						CS_8_locals_42.fYAdpk6kMZ.Shown += async delegate
+						CS_8_locals_42.form.Controls.Add(CS_8_locals_42.webView);
+						CS_8_locals_42.form.Shown += async delegate
 						{
 							try
 							{
-								await usK1uGbyeh(CS_8_locals_42.JsPdOuZl9d, CS_8_locals_42.Am8dnU3Kek.vEydsAdH7C, CS_8_locals_42.Am8dnU3Kek.O96dl7ylv6, CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelWidth, CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
-								pqB1TXqQGQ(CS_8_locals_42.Am8dnU3Kek.O96dl7ylv6, CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelWidth, CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelHeight);
-								FileInfo fileInfo = new FileInfo(CS_8_locals_42.Am8dnU3Kek.O96dl7ylv6);
+								await usK1uGbyeh(CS_8_locals_42.webView, CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
+								pqB1TXqQGQ(CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight);
+								FileInfo fileInfo = new FileInfo(CS_8_locals_42._G_c__DisplayClass14_0.text);
 								if (!fileInfo.Exists || fileInfo.Length == 0L)
 								{
 									throw new InvalidOperationException("Word document preview prepared.");
 								}
 								int width;
 								int height;
-								using (Image image = Image.FromFile(CS_8_locals_42.Am8dnU3Kek.O96dl7ylv6))
+								using (Image image = Image.FromFile(CS_8_locals_42._G_c__DisplayClass14_0.text))
 								{
 									width = image.Width;
 									height = image.Height;
 								}
-								if (Math.Abs(width - CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelWidth) > 2 || Math.Abs(height - CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelHeight) > 2)
+								if (Math.Abs(width - CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth) > 2 || Math.Abs(height - CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight) > 2)
 								{
-									throw new InvalidOperationException(string.Format("IP_Assurance HTML Visual Renderer", CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelWidth, CS_8_locals_42.Am8dnU3Kek.QH5dLJJKUU.PixelHeight, width, height));
+									throw new InvalidOperationException(string.Format("IP_Assurance HTML Visual Renderer", CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_42._G_c__DisplayClass14_0.helper_16.PixelHeight, width, height));
 								}
-								File.WriteAllText(CS_8_locals_42.Am8dnU3Kek.ak5dNExhHw, CS_8_locals_42.Am8dnU3Kek.vEydsAdH7C, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-								CS_8_locals_42.Am8dnU3Kek.umNdmxJMDT = new ImageAssetInfo
+								File.WriteAllText(CS_8_locals_42._G_c__DisplayClass14_0.text, CS_8_locals_42._G_c__DisplayClass14_0.text, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+								CS_8_locals_42._G_c__DisplayClass14_0.umNdmxJMDT = new ImageAssetInfo
 								{
-									PngPath = CS_8_locals_42.Am8dnU3Kek.O96dl7ylv6,
-									SourcePath = CS_8_locals_42.Am8dnU3Kek.ak5dNExhHw,
-									SourceHash = CS_8_locals_42.Am8dnU3Kek.e4BdoEk6pu,
+									PngPath = CS_8_locals_42._G_c__DisplayClass14_0.text,
+									SourcePath = CS_8_locals_42._G_c__DisplayClass14_0.text,
+									SourceHash = CS_8_locals_42._G_c__DisplayClass14_0.text,
 									PixelWidth = width,
 									PixelHeight = height,
 									PngBytes = fileInfo.Length
@@ -108,34 +108,34 @@ internal sealed class ScreenshotCaptureHelper3
 							}
 							catch (Exception ex2)
 							{
-								CS_8_locals_42.Am8dnU3Kek.mSCdGE1K6J = ex2;
+								CS_8_locals_42._G_c__DisplayClass14_0.exception = ex2;
 							}
 							finally
 							{
-								CS_8_locals_42.fYAdpk6kMZ.Close();
+								CS_8_locals_42.form.Close();
 							}
 						};
-						Application.Run(CS_8_locals_42.fYAdpk6kMZ);
+						Application.Run(CS_8_locals_42.form);
 					}
 					finally
 					{
-						if (CS_8_locals_42.JsPdOuZl9d != null)
+						if (CS_8_locals_42.webView != null)
 						{
-							((IDisposable)CS_8_locals_42.JsPdOuZl9d).Dispose();
+							((IDisposable)CS_8_locals_42.webView).Dispose();
 						}
 					}
 				}
 				finally
 				{
-					if (CS_8_locals_42.fYAdpk6kMZ != null)
+					if (CS_8_locals_42.form != null)
 					{
-						((IDisposable)CS_8_locals_42.fYAdpk6kMZ).Dispose();
+						((IDisposable)CS_8_locals_42.form).Dispose();
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				mSCdGE1K6J = ex;
+				exception = ex;
 			}
 			finally
 			{
@@ -147,57 +147,57 @@ internal sealed class ScreenshotCaptureHelper3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass14_1
 	{
-		public Form fYAdpk6kMZ;
+		public Form form;
 
-		public WebView2 JsPdOuZl9d;
+		public WebView2 webView;
 
-		public _G_c__DisplayClass14_0 Am8dnU3Kek;
+		public _G_c__DisplayClass14_0 _G_c__DisplayClass14_0;
 
 		public _G_c__DisplayClass14_1()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal async void ry4dCGg4Z6(object sender, EventArgs args)
 		{
 			try
 			{
-				await usK1uGbyeh(JsPdOuZl9d, Am8dnU3Kek.vEydsAdH7C, Am8dnU3Kek.O96dl7ylv6, Am8dnU3Kek.QH5dLJJKUU.PixelWidth, Am8dnU3Kek.QH5dLJJKUU.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
-				pqB1TXqQGQ(Am8dnU3Kek.O96dl7ylv6, Am8dnU3Kek.QH5dLJJKUU.PixelWidth, Am8dnU3Kek.QH5dLJJKUU.PixelHeight);
-				FileInfo fileInfo = new FileInfo(Am8dnU3Kek.O96dl7ylv6);
+				await usK1uGbyeh(webView, _G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
+				pqB1TXqQGQ(_G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight);
+				FileInfo fileInfo = new FileInfo(_G_c__DisplayClass14_0.text);
 				if (!fileInfo.Exists || fileInfo.Length == 0L)
 				{
 					throw new InvalidOperationException("WebView2 did not produce a PNG image.");
 				}
 				int width;
 				int height;
-				using (Image image = Image.FromFile(Am8dnU3Kek.O96dl7ylv6))
+				using (Image image = Image.FromFile(_G_c__DisplayClass14_0.text))
 				{
 					width = image.Width;
 					height = image.Height;
 				}
-				if (Math.Abs(width - Am8dnU3Kek.QH5dLJJKUU.PixelWidth) > 2 || Math.Abs(height - Am8dnU3Kek.QH5dLJJKUU.PixelHeight) > 2)
+				if (Math.Abs(width - _G_c__DisplayClass14_0.helper_16.PixelWidth) > 2 || Math.Abs(height - _G_c__DisplayClass14_0.helper_16.PixelHeight) > 2)
 				{
-					throw new InvalidOperationException(string.Format("Rendered PNG size mismatch. Expected {0}x{1}, actual {2}x{3}.", Am8dnU3Kek.QH5dLJJKUU.PixelWidth, Am8dnU3Kek.QH5dLJJKUU.PixelHeight, width, height));
+					throw new InvalidOperationException(string.Format("Rendered PNG size mismatch. Expected {0}x{1}, actual {2}x{3}.", _G_c__DisplayClass14_0.helper_16.PixelWidth, _G_c__DisplayClass14_0.helper_16.PixelHeight, width, height));
 				}
-				File.WriteAllText(Am8dnU3Kek.ak5dNExhHw, Am8dnU3Kek.vEydsAdH7C, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-				Am8dnU3Kek.umNdmxJMDT = new ImageAssetInfo
+				File.WriteAllText(_G_c__DisplayClass14_0.text, _G_c__DisplayClass14_0.text, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+				_G_c__DisplayClass14_0.umNdmxJMDT = new ImageAssetInfo
 				{
-					PngPath = Am8dnU3Kek.O96dl7ylv6,
-					SourcePath = Am8dnU3Kek.ak5dNExhHw,
-					SourceHash = Am8dnU3Kek.e4BdoEk6pu,
+					PngPath = _G_c__DisplayClass14_0.text,
+					SourcePath = _G_c__DisplayClass14_0.text,
+					SourceHash = _G_c__DisplayClass14_0.text,
 					PixelWidth = width,
 					PixelHeight = height,
 					PngBytes = fileInfo.Length
 				};
 			}
-			catch (Exception mSCdGE1K6J)
+			catch (Exception exception)
 			{
-				Am8dnU3Kek.mSCdGE1K6J = mSCdGE1K6J;
+				_G_c__DisplayClass14_0.exception = exception;
 			}
 			finally
 			{
-				fYAdpk6kMZ.Close();
+				form.Close();
 			}
 		}
 	}
@@ -205,7 +205,7 @@ internal sealed class ScreenshotCaptureHelper3
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass15_0
 	{
-		public CoreWebView2 JbLd5JvlJj;
+		public CoreWebView2 coreWebView2;
 
 		public EventHandler<CoreWebView2NavigationCompletedEventArgs> zBZdc5AXK9;
 
@@ -213,12 +213,12 @@ internal sealed class ScreenshotCaptureHelper3
 
 		public _G_c__DisplayClass15_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void LOXd74s6Kf(object sender, CoreWebView2NavigationCompletedEventArgs args)
 		{
-			JbLd5JvlJj.NavigationCompleted -= zBZdc5AXK9;
+			coreWebView2.NavigationCompleted -= zBZdc5AXK9;
 			XuOde93ZeH.TrySetResult(args);
 		}
 	}
@@ -237,7 +237,7 @@ internal sealed class ScreenshotCaptureHelper3
 
 	private static readonly Regex ulT1Ux7OkM;
 
-	public ImageAssetInfo vl619tBFs5(Helper_16 P_0)
+	public ImageAssetInfo RenderHtmlToPng(Helper_16 P_0)
 	{
 		eBW1ghIdqq(P_0);
 		DjW1H937bG.Wait();
@@ -254,14 +254,14 @@ internal sealed class ScreenshotCaptureHelper3
 	private static ImageAssetInfo H6916YM8wK(Helper_16 P_0)
 	{
 		_G_c__DisplayClass14_0 CS_8_locals_47 = new _G_c__DisplayClass14_0();
-		CS_8_locals_47.QH5dLJJKUU = P_0;
-		CS_8_locals_47.e4BdoEk6pu = ofk1IFrjhT(CS_8_locals_47.QH5dLJJKUU.HtmlFragment);
-		CS_8_locals_47.vEydsAdH7C = UNc18HvUui(CS_8_locals_47.QH5dLJJKUU);
-		string path = AiSseStreamService.XOes64flqb("AI", "HtmlVisuals");
-		string path2 = AiSseStreamService.mSfs9VWIdb("Agent", "html-visuals");
-		CS_8_locals_47.O96dl7ylv6 = Path.Combine(path, "html-visual-" + Guid.NewGuid().ToString("N") + ".png");
-		CS_8_locals_47.ak5dNExhHw = Path.Combine(path2, CS_8_locals_47.e4BdoEk6pu + ".html");
-		CS_8_locals_47.mSCdGE1K6J = null;
+		CS_8_locals_47.helper_16 = P_0;
+		CS_8_locals_47.text = ofk1IFrjhT(CS_8_locals_47.helper_16.HtmlFragment);
+		CS_8_locals_47.text = UNc18HvUui(CS_8_locals_47.helper_16);
+		string path = AiSseStreamService.GetTempPath("AI", "HtmlVisuals");
+		string path2 = AiSseStreamService.GetUserDataPath("Agent", "html-visuals");
+		CS_8_locals_47.text = Path.Combine(path, "html-visual-" + Guid.NewGuid().ToString("N") + ".png");
+		CS_8_locals_47.text = Path.Combine(path2, CS_8_locals_47.text + ".html");
+		CS_8_locals_47.exception = null;
 		CS_8_locals_47.umNdmxJMDT = null;
 		CS_8_locals_47.xOadtJIvHV = null;
 		Thread thread = new Thread((ThreadStart)delegate
@@ -269,54 +269,54 @@ internal sealed class ScreenshotCaptureHelper3
 			try
 			{
 				_G_c__DisplayClass14_1 CS_8_locals_69 = new _G_c__DisplayClass14_1();
-				CS_8_locals_69.Am8dnU3Kek = CS_8_locals_47;
-				CS_8_locals_69.fYAdpk6kMZ = new Form();
+				CS_8_locals_69._G_c__DisplayClass14_0 = CS_8_locals_47;
+				CS_8_locals_69.form = new Form();
 				try
 				{
-					CS_8_locals_69.JsPdOuZl9d = new WebView2();
+					CS_8_locals_69.webView = new WebView2();
 					try
 					{
-						CS_8_locals_47.xOadtJIvHV = CS_8_locals_69.fYAdpk6kMZ;
-						CS_8_locals_69.fYAdpk6kMZ.FormBorderStyle = FormBorderStyle.None;
-						CS_8_locals_69.fYAdpk6kMZ.StartPosition = FormStartPosition.Manual;
-						CS_8_locals_69.fYAdpk6kMZ.Location = new Point(-32000, -32000);
-						CS_8_locals_69.fYAdpk6kMZ.ClientSize = new Size(CS_8_locals_47.QH5dLJJKUU.PixelWidth, CS_8_locals_47.QH5dLJJKUU.PixelHeight);
-						CS_8_locals_69.fYAdpk6kMZ.ShowInTaskbar = false;
-						CS_8_locals_69.fYAdpk6kMZ.Text = "CPAHelper.HtmlVisualRenderer";
-						CS_8_locals_69.JsPdOuZl9d.Dock = DockStyle.Fill;
-						CS_8_locals_69.JsPdOuZl9d.CreationProperties = new CoreWebView2CreationProperties
+						CS_8_locals_47.xOadtJIvHV = CS_8_locals_69.form;
+						CS_8_locals_69.form.FormBorderStyle = FormBorderStyle.None;
+						CS_8_locals_69.form.StartPosition = FormStartPosition.Manual;
+						CS_8_locals_69.form.Location = new Point(-32000, -32000);
+						CS_8_locals_69.form.ClientSize = new Size(CS_8_locals_47.helper_16.PixelWidth, CS_8_locals_47.helper_16.PixelHeight);
+						CS_8_locals_69.form.ShowInTaskbar = false;
+						CS_8_locals_69.form.Text = "CPAHelper.HtmlVisualRenderer";
+						CS_8_locals_69.webView.Dock = DockStyle.Fill;
+						CS_8_locals_69.webView.CreationProperties = new CoreWebView2CreationProperties
 						{
-							UserDataFolder = AiSseStreamService.mSfs9VWIdb("HTML visual rendering timed out after 30 seconds.", "HTML visual rendering failed: ", Process.GetCurrentProcess().Id.ToString())
+							UserDataFolder = AiSseStreamService.GetUserDataPath("HTML visual rendering timed out after 30 seconds.", "HTML visual rendering failed: ", Process.GetCurrentProcess().Id.ToString())
 						};
-						CS_8_locals_69.fYAdpk6kMZ.Controls.Add(CS_8_locals_69.JsPdOuZl9d);
-						CS_8_locals_69.fYAdpk6kMZ.Shown += async delegate
+						CS_8_locals_69.form.Controls.Add(CS_8_locals_69.webView);
+						CS_8_locals_69.form.Shown += async delegate
 						{
 							try
 							{
-								await usK1uGbyeh(CS_8_locals_69.JsPdOuZl9d, CS_8_locals_69.Am8dnU3Kek.vEydsAdH7C, CS_8_locals_69.Am8dnU3Kek.O96dl7ylv6, CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelWidth, CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
-								pqB1TXqQGQ(CS_8_locals_69.Am8dnU3Kek.O96dl7ylv6, CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelWidth, CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelHeight);
-								FileInfo fileInfo = new FileInfo(CS_8_locals_69.Am8dnU3Kek.O96dl7ylv6);
+								await usK1uGbyeh(CS_8_locals_69.webView, CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight).ConfigureAwait(continueOnCapturedContext: true);
+								pqB1TXqQGQ(CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight);
+								FileInfo fileInfo = new FileInfo(CS_8_locals_69._G_c__DisplayClass14_0.text);
 								if (!fileInfo.Exists || fileInfo.Length == 0L)
 								{
 									throw new InvalidOperationException("HTML visual rendering completed without a result.");
 								}
 								int width;
 								int height;
-								using (Image image = Image.FromFile(CS_8_locals_69.Am8dnU3Kek.O96dl7ylv6))
+								using (Image image = Image.FromFile(CS_8_locals_69._G_c__DisplayClass14_0.text))
 								{
 									width = image.Width;
 									height = image.Height;
 								}
-								if (Math.Abs(width - CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelWidth) > 2 || Math.Abs(height - CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelHeight) > 2)
+								if (Math.Abs(width - CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth) > 2 || Math.Abs(height - CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight) > 2)
 								{
-									throw new InvalidOperationException(string.Format("AI", CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelWidth, CS_8_locals_69.Am8dnU3Kek.QH5dLJJKUU.PixelHeight, width, height));
+									throw new InvalidOperationException(string.Format("AI", CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelWidth, CS_8_locals_69._G_c__DisplayClass14_0.helper_16.PixelHeight, width, height));
 								}
-								File.WriteAllText(CS_8_locals_69.Am8dnU3Kek.ak5dNExhHw, CS_8_locals_69.Am8dnU3Kek.vEydsAdH7C, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-								CS_8_locals_69.Am8dnU3Kek.umNdmxJMDT = new ImageAssetInfo
+								File.WriteAllText(CS_8_locals_69._G_c__DisplayClass14_0.text, CS_8_locals_69._G_c__DisplayClass14_0.text, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+								CS_8_locals_69._G_c__DisplayClass14_0.umNdmxJMDT = new ImageAssetInfo
 								{
-									PngPath = CS_8_locals_69.Am8dnU3Kek.O96dl7ylv6,
-									SourcePath = CS_8_locals_69.Am8dnU3Kek.ak5dNExhHw,
-									SourceHash = CS_8_locals_69.Am8dnU3Kek.e4BdoEk6pu,
+									PngPath = CS_8_locals_69._G_c__DisplayClass14_0.text,
+									SourcePath = CS_8_locals_69._G_c__DisplayClass14_0.text,
+									SourceHash = CS_8_locals_69._G_c__DisplayClass14_0.text,
 									PixelWidth = width,
 									PixelHeight = height,
 									PngBytes = fileInfo.Length
@@ -324,34 +324,34 @@ internal sealed class ScreenshotCaptureHelper3
 							}
 							catch (Exception mSCdGE1K6J2)
 							{
-								CS_8_locals_69.Am8dnU3Kek.mSCdGE1K6J = mSCdGE1K6J2;
+								CS_8_locals_69._G_c__DisplayClass14_0.exception = mSCdGE1K6J2;
 							}
 							finally
 							{
-								CS_8_locals_69.fYAdpk6kMZ.Close();
+								CS_8_locals_69.form.Close();
 							}
 						};
-						Application.Run(CS_8_locals_69.fYAdpk6kMZ);
+						Application.Run(CS_8_locals_69.form);
 					}
 					finally
 					{
-						if (CS_8_locals_69.JsPdOuZl9d != null)
+						if (CS_8_locals_69.webView != null)
 						{
-							((IDisposable)CS_8_locals_69.JsPdOuZl9d).Dispose();
+							((IDisposable)CS_8_locals_69.webView).Dispose();
 						}
 					}
 				}
 				finally
 				{
-					if (CS_8_locals_69.fYAdpk6kMZ != null)
+					if (CS_8_locals_69.form != null)
 					{
-						((IDisposable)CS_8_locals_69.fYAdpk6kMZ).Dispose();
+						((IDisposable)CS_8_locals_69.form).Dispose();
 					}
 				}
 			}
-			catch (Exception mSCdGE1K6J)
+			catch (Exception exception)
 			{
-				CS_8_locals_47.mSCdGE1K6J = mSCdGE1K6J;
+				CS_8_locals_47.exception = exception;
 			}
 			finally
 			{
@@ -376,17 +376,17 @@ internal sealed class ScreenshotCaptureHelper3
 			{
 			}
 			thread.Join(2000);
-			BmE1iWh1tY(CS_8_locals_47.O96dl7ylv6);
+			DeleteTempPng(CS_8_locals_47.text);
 			throw new TimeoutException("Agent");
 		}
-		if (CS_8_locals_47.mSCdGE1K6J != null)
+		if (CS_8_locals_47.exception != null)
 		{
-			BmE1iWh1tY(CS_8_locals_47.O96dl7ylv6);
-			throw new InvalidOperationException("html-visuals" + CS_8_locals_47.mSCdGE1K6J.Message, CS_8_locals_47.mSCdGE1K6J);
+			DeleteTempPng(CS_8_locals_47.text);
+			throw new InvalidOperationException("html-visuals" + CS_8_locals_47.exception.Message, CS_8_locals_47.exception);
 		}
 		if (CS_8_locals_47.umNdmxJMDT == null)
 		{
-			BmE1iWh1tY(CS_8_locals_47.O96dl7ylv6);
+			DeleteTempPng(CS_8_locals_47.text);
 			throw new InvalidOperationException("html-visual-");
 		}
 		return CS_8_locals_47.umNdmxJMDT;
@@ -396,15 +396,15 @@ internal sealed class ScreenshotCaptureHelper3
 	{
 		_G_c__DisplayClass15_0 CS_8_locals_21 = new _G_c__DisplayClass15_0();
 		await P_0.EnsureCoreWebView2Async();
-		CS_8_locals_21.JbLd5JvlJj = P_0.CoreWebView2;
-		CS_8_locals_21.JbLd5JvlJj.Settings.IsScriptEnabled = false;
-		CS_8_locals_21.JbLd5JvlJj.Settings.IsWebMessageEnabled = false;
-		CS_8_locals_21.JbLd5JvlJj.Settings.AreDefaultContextMenusEnabled = false;
-		CS_8_locals_21.JbLd5JvlJj.Settings.AreDefaultScriptDialogsEnabled = false;
-		CS_8_locals_21.JbLd5JvlJj.Settings.AreDevToolsEnabled = false;
-		CS_8_locals_21.JbLd5JvlJj.Settings.IsStatusBarEnabled = false;
-		CS_8_locals_21.JbLd5JvlJj.Settings.IsZoomControlEnabled = false;
-		CS_8_locals_21.JbLd5JvlJj.NavigationStarting += delegate(object sender, CoreWebView2NavigationStartingEventArgs args)
+		CS_8_locals_21.coreWebView2 = P_0.CoreWebView2;
+		CS_8_locals_21.coreWebView2.Settings.IsScriptEnabled = false;
+		CS_8_locals_21.coreWebView2.Settings.IsWebMessageEnabled = false;
+		CS_8_locals_21.coreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+		CS_8_locals_21.coreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
+		CS_8_locals_21.coreWebView2.Settings.AreDevToolsEnabled = false;
+		CS_8_locals_21.coreWebView2.Settings.IsStatusBarEnabled = false;
+		CS_8_locals_21.coreWebView2.Settings.IsZoomControlEnabled = false;
+		CS_8_locals_21.coreWebView2.NavigationStarting += delegate(object sender, CoreWebView2NavigationStartingEventArgs args)
 		{
 			if (!string.Equals(args.Uri, "N", StringComparison.OrdinalIgnoreCase) && (string.IsNullOrWhiteSpace(args.Uri) || !args.Uri.StartsWith(".png", StringComparison.OrdinalIgnoreCase)))
 			{
@@ -415,20 +415,20 @@ internal sealed class ScreenshotCaptureHelper3
 		CS_8_locals_21.zBZdc5AXK9 = null;
 		CS_8_locals_21.zBZdc5AXK9 = delegate(object sender, CoreWebView2NavigationCompletedEventArgs args)
 		{
-			CS_8_locals_21.JbLd5JvlJj.NavigationCompleted -= CS_8_locals_21.zBZdc5AXK9;
+			CS_8_locals_21.coreWebView2.NavigationCompleted -= CS_8_locals_21.zBZdc5AXK9;
 			CS_8_locals_21.XuOde93ZeH.TrySetResult(args);
 		};
-		CS_8_locals_21.JbLd5JvlJj.NavigationCompleted += CS_8_locals_21.zBZdc5AXK9;
-		CS_8_locals_21.JbLd5JvlJj.NavigateToString(P_1);
+		CS_8_locals_21.coreWebView2.NavigationCompleted += CS_8_locals_21.zBZdc5AXK9;
+		CS_8_locals_21.coreWebView2.NavigateToString(P_1);
 		CoreWebView2NavigationCompletedEventArgs e = await CS_8_locals_21.XuOde93ZeH.Task.ConfigureAwait(continueOnCapturedContext: true);
 		if (!e.IsSuccess)
 		{
 			throw new InvalidOperationException(".html" + e.WebErrorStatus);
 		}
 		await Task.Delay(350).ConfigureAwait(continueOnCapturedContext: true);
-		await V9S1Drrpqv(P_0, CS_8_locals_21.JbLd5JvlJj, P_3, P_4).ConfigureAwait(continueOnCapturedContext: true);
+		await V9S1Drrpqv(P_0, CS_8_locals_21.coreWebView2, P_3, P_4).ConfigureAwait(continueOnCapturedContext: true);
 		using FileStream stream = new FileStream(P_2, FileMode.Create, FileAccess.Write, FileShare.Read);
-		await CS_8_locals_21.JbLd5JvlJj.CapturePreviewAsync(CoreWebView2CapturePreviewImageFormat.Png, stream).ConfigureAwait(continueOnCapturedContext: true);
+		await CS_8_locals_21.coreWebView2.CapturePreviewAsync(CoreWebView2CapturePreviewImageFormat.Png, stream).ConfigureAwait(continueOnCapturedContext: true);
 		await stream.FlushAsync().ConfigureAwait(continueOnCapturedContext: true);
 	}
 
@@ -491,7 +491,7 @@ internal sealed class ScreenshotCaptureHelper3
 		}
 		finally
 		{
-			BmE1iWh1tY(text);
+			DeleteTempPng(text);
 		}
 	}
 
@@ -571,7 +571,7 @@ internal sealed class ScreenshotCaptureHelper3
 		return stringBuilder.ToString();
 	}
 
-	public static void BmE1iWh1tY(string P_0)
+	public static void DeleteTempPng(string P_0)
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
@@ -591,12 +591,12 @@ internal sealed class ScreenshotCaptureHelper3
 
 	public ScreenshotCaptureHelper3()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	static ScreenshotCaptureHelper3()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		DjW1H937bG = new SemaphoreSlim(1, 1);
 		MBr1QWZKDB = new Regex("<\\\\s*(script|iframe|frame|frameset|object|embed|link|base|meta)\\\\b", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
 		NCJ11K8E2o = new Regex("\\\\bon[a-z0-9_-]+\\\\s*=", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);

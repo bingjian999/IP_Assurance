@@ -38,7 +38,7 @@ internal sealed class FileDownloadHelper
 
 		public j5N1K5VEmu1I1WqebZZK()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			bupVEohxDif = new Helper_22();
 		}
 	}
@@ -103,7 +103,7 @@ internal sealed class FileDownloadHelper
 		{
 			GjctDgWXbD = gjctDgWXbD2;
 			Bjmt9SQa8r();
-			AiConfigBootstrap.swCsJ4IbrL("[AI Config] Migrated host AI config to shared path: " + SharedConfigPath);
+			AiConfigBootstrap.LogInfo("[AI Config] Migrated host AI config to shared path: " + SharedConfigPath);
 		}
 		else
 		{
@@ -133,7 +133,7 @@ internal sealed class FileDownloadHelper
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AI Config] Shared config load failed, falling back to host config: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AI Config] Shared config load failed, falling back to host config: " + ex.Message);
 			return false;
 		}
 	}
@@ -164,7 +164,7 @@ internal sealed class FileDownloadHelper
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AI Config] Host AI config migration skipped: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AI Config] Host AI config migration skipped: " + ex.Message);
 			return false;
 		}
 	}
@@ -200,7 +200,7 @@ internal sealed class FileDownloadHelper
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[AI Config] Legacy AI assistant migration skipped: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[AI Config] Legacy AI assistant migration skipped: " + ex.Message);
 			return false;
 		}
 	}
@@ -218,14 +218,14 @@ internal sealed class FileDownloadHelper
 
 	public FileDownloadHelper()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		KwqtuCnaQw = new object();
 		GjctDgWXbD = new Helper_22();
 	}
 
 	static FileDownloadHelper()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		BTjt6fAYGp = new Lazy<FileDownloadHelper>(() => new FileDownloadHelper());
 	}
 }

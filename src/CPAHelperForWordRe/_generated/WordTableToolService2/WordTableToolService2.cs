@@ -7,61 +7,61 @@ namespace WordTableToolService2;
 internal sealed class WordTableToolService2
 {
 	[CompilerGenerated]
-	private int DVsHgo7gNG;
+	private int _localTableIndex;
 
 	[CompilerGenerated]
-	private int He7H8QydB8;
+	private int _anchorRowIndex;
 
 	[CompilerGenerated]
-	private int zX2HIiJYts;
+	private int _anchorColumnIndex;
 
 	[CompilerGenerated]
 	private string KyRHiqXGKV;
 
 	[CompilerGenerated]
-	private int r1YHHnZg4W;
+	private int _count;
 
 	[CompilerGenerated]
-	private bool OCYHQ0JhMC;
+	private bool _useTrackChanges;
 
 	[CompilerGenerated]
-	private string KHkH1vqlAD;
+	private string _expectedAnchorText;
 
 	[CompilerGenerated]
-	private string as5HrCDKn1;
+	private string _anchorRowText;
 
 	[CompilerGenerated]
 	private int imyHJsMWX7;
 
 	[CompilerGenerated]
-	private int WSYH3dMtkU;
+	private int _columnsBefore;
 
 	[CompilerGenerated]
-	private int zm1HUlNBCY;
+	private int _anchorRangeStart;
 
 	[CompilerGenerated]
 	private int FRiHKGgTaQ;
 
 	[CompilerGenerated]
-	private int GQ0HEYhrhv;
+	private int _page;
 
 	[CompilerGenerated]
-	private Table MXwH2dPdRw;
+	private Table _table;
 
 	[CompilerGenerated]
-	private Cell CEdH4maGGu;
+	private Cell _anchorCell;
 
 	public int LocalTableIndex
 	{
 		[CompilerGenerated]
 		get
 		{
-			return DVsHgo7gNG;
+			return _localTableIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			DVsHgo7gNG = value;
+			_localTableIndex = value;
 		}
 	}
 
@@ -70,12 +70,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return He7H8QydB8;
+			return _anchorRowIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			He7H8QydB8 = value;
+			_anchorRowIndex = value;
 		}
 	}
 
@@ -84,12 +84,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return zX2HIiJYts;
+			return _anchorColumnIndex;
 		}
 		[CompilerGenerated]
 		set
 		{
-			zX2HIiJYts = value;
+			_anchorColumnIndex = value;
 		}
 	}
 
@@ -112,12 +112,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return r1YHHnZg4W;
+			return _count;
 		}
 		[CompilerGenerated]
 		set
 		{
-			r1YHHnZg4W = value;
+			_count = value;
 		}
 	}
 
@@ -126,12 +126,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return OCYHQ0JhMC;
+			return _useTrackChanges;
 		}
 		[CompilerGenerated]
 		set
 		{
-			OCYHQ0JhMC = value;
+			_useTrackChanges = value;
 		}
 	}
 
@@ -140,12 +140,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return KHkH1vqlAD;
+			return _expectedAnchorText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			KHkH1vqlAD = value;
+			_expectedAnchorText = value;
 		}
 	}
 
@@ -154,12 +154,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return as5HrCDKn1;
+			return _anchorRowText;
 		}
 		[CompilerGenerated]
 		set
 		{
-			as5HrCDKn1 = value;
+			_anchorRowText = value;
 		}
 	}
 
@@ -182,12 +182,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return WSYH3dMtkU;
+			return _columnsBefore;
 		}
 		[CompilerGenerated]
 		set
 		{
-			WSYH3dMtkU = value;
+			_columnsBefore = value;
 		}
 	}
 
@@ -196,12 +196,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return zm1HUlNBCY;
+			return _anchorRangeStart;
 		}
 		[CompilerGenerated]
 		set
 		{
-			zm1HUlNBCY = value;
+			_anchorRangeStart = value;
 		}
 	}
 
@@ -224,12 +224,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return GQ0HEYhrhv;
+			return _page;
 		}
 		[CompilerGenerated]
 		set
 		{
-			GQ0HEYhrhv = value;
+			_page = value;
 		}
 	}
 
@@ -238,12 +238,12 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return MXwH2dPdRw;
+			return _table;
 		}
 		[CompilerGenerated]
 		set
 		{
-			MXwH2dPdRw = value;
+			_table = value;
 		}
 	}
 
@@ -252,17 +252,17 @@ internal sealed class WordTableToolService2
 		[CompilerGenerated]
 		get
 		{
-			return CEdH4maGGu;
+			return _anchorCell;
 		}
 		[CompilerGenerated]
 		set
 		{
-			CEdH4maGGu = value;
+			_anchorCell = value;
 		}
 	}
 
 	public WordTableToolService2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 }

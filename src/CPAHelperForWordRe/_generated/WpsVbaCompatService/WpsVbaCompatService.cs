@@ -21,22 +21,22 @@ internal sealed class WpsVbaCompatService
 	private sealed class oWlUArVDqaaXQZpBqfXR
 	{
 		[CompilerGenerated]
-		private string BtvVDPrWS4J;
+		private string _name;
 
 		[CompilerGenerated]
-		private bool y8NVDAxPHEo;
+		private bool _hasParameters;
 
 		public string Name
 		{
 			[CompilerGenerated]
 			get
 			{
-				return BtvVDPrWS4J;
+				return _name;
 			}
 			[CompilerGenerated]
 			set
 			{
-				BtvVDPrWS4J = value;
+				_name = value;
 			}
 		}
 
@@ -45,46 +45,46 @@ internal sealed class WpsVbaCompatService
 			[CompilerGenerated]
 			get
 			{
-				return y8NVDAxPHEo;
+				return _hasParameters;
 			}
 			[CompilerGenerated]
 			set
 			{
-				y8NVDAxPHEo = value;
+				_hasParameters = value;
 			}
 		}
 
 		public oWlUArVDqaaXQZpBqfXR()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	private sealed class RP3HO3VDvRbxmE03MaWl
 	{
 		[CompilerGenerated]
-		private string A9WVDW25cbh;
+		private string _documentName;
 
 		[CompilerGenerated]
-		private string gjVVD07TgyQ;
+		private string _documentFullName;
 
 		[CompilerGenerated]
 		private int BHaVDkXuHxH;
 
 		[CompilerGenerated]
-		private int EH6VDxhQrLa;
+		private int _selectionEnd;
 
 		public string DocumentName
 		{
 			[CompilerGenerated]
 			get
 			{
-				return A9WVDW25cbh;
+				return _documentName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				A9WVDW25cbh = value;
+				_documentName = value;
 			}
 		}
 
@@ -93,12 +93,12 @@ internal sealed class WpsVbaCompatService
 			[CompilerGenerated]
 			get
 			{
-				return gjVVD07TgyQ;
+				return _documentFullName;
 			}
 			[CompilerGenerated]
 			set
 			{
-				gjVVD07TgyQ = value;
+				_documentFullName = value;
 			}
 		}
 
@@ -121,39 +121,39 @@ internal sealed class WpsVbaCompatService
 			[CompilerGenerated]
 			get
 			{
-				return EH6VDxhQrLa;
+				return _selectionEnd;
 			}
 			[CompilerGenerated]
 			set
 			{
-				EH6VDxhQrLa = value;
+				_selectionEnd = value;
 			}
 		}
 
 		public RP3HO3VDvRbxmE03MaWl()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass10_0
 	{
-		public Document rT4VTRei3P0;
+		public Document doc;
 
 		public _G_c__DisplayClass10_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string hsFVDdt9S8M()
 		{
-			return rT4VTRei3P0.FullName;
+			return doc.FullName;
 		}
 
 		internal string xBlVDz1T55k()
 		{
-			return rT4VTRei3P0.Name;
+			return doc.Name;
 		}
 	}
 
@@ -164,12 +164,12 @@ internal sealed class WpsVbaCompatService
 
 		public _G_c__DisplayClass14_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal T t6bVTVe8sHA(Microsoft.Office.Interop.Word.Application app)
 		{
-			string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+			string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				throw new InvalidOperationException(text);
@@ -181,13 +181,13 @@ internal sealed class WpsVbaCompatService
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass6_0
 	{
-		public string ORRVT9wefPb;
+		public string text;
 
-		public oWlUArVDqaaXQZpBqfXR EWVVT67lkGF;
+		public oWlUArVDqaaXQZpBqfXR oWlUArVDqaaXQZpBqfXR;
 
 		public _G_c__DisplayClass6_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal string AT2VTB4UV5B(Microsoft.Office.Interop.Word.Application app)
@@ -206,7 +206,7 @@ internal sealed class WpsVbaCompatService
 			try
 			{
 				rP3HO3VDvRbxmE03MaWl = R8K36HVqty(app);
-				document = DocumentLifecycleGuard.zrqujYgRXw(app);
+				document = DocumentLifecycleGuard.GetActiveDocument(app);
 				if (document == null)
 				{
 					throw new InvalidOperationException("未找到活动 Word 文档，请先打开一个文档再运行代码。");
@@ -219,7 +219,7 @@ internal sealed class WpsVbaCompatService
 				string text = "IPAssuranceWordModule_" + Guid.NewGuid().ToString("N").Substring(0, 8);
 				vBComponent = vBProject.VBComponents.Add(vbext_ComponentType.vbext_ct_StdModule);
 				vBComponent.Name = text;
-				vBComponent.CodeModule.AddFromString(ORRVT9wefPb);
+				vBComponent.CodeModule.AddFromString(text);
 				try
 				{
 					app.UndoRecord.StartCustomRecord("AI执行Word VBA代码片段");
@@ -230,7 +230,7 @@ internal sealed class WpsVbaCompatService
 				}
 				try
 				{
-					string macroName = text + "." + EWVVT67lkGF.Name;
+					string macroName = text + "." + oWlUArVDqaaXQZpBqfXR.Name;
 					object varg = Type.Missing;
 					object varg2 = Type.Missing;
 					object varg3 = Type.Missing;
@@ -269,7 +269,7 @@ internal sealed class WpsVbaCompatService
 				}
 				RQW3BQ6tRO(vBProject, vBComponent);
 				vBComponent = null;
-				return "VBA 代码执行成功。\\n入口过程：" + EWVVT67lkGF.Name + "\\n文档：" + document.Name;
+				return "VBA 代码执行成功。\\n入口过程：" + oWlUArVDqaaXQZpBqfXR.Name + "\\n文档：" + document.Name;
 			}
 			catch (COMException ex2)
 			{
@@ -330,20 +330,20 @@ internal sealed class WpsVbaCompatService
 
 	private static readonly Regex nQm3IPMNhu;
 
-	private readonly AiTargetBinder G6T3iub9oa;
+	private readonly AiTargetBinder _aiTargetBinder;
 
-	private readonly WordTableToolService4 D8c3HsQYl2;
+	private readonly WordTableToolService4 _wordTableToolService4;
 
 	public WpsVbaCompatService() : this(null)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	public WpsVbaCompatService(AiTargetBinder P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		G6T3iub9oa = P_0;
-		D8c3HsQYl2 = new WordTableToolService4(P_0);
+		SseStreamInitializer.InitializeRuntime();
+		_aiTargetBinder = P_0;
+		_wordTableToolService4 = new WordTableToolService4(P_0);
 	}
 
 	public string R1tJz1VIhA(string P_0)
@@ -375,17 +375,17 @@ internal sealed class WpsVbaCompatService
 	public string zer3R7UqTK(string P_0)
 	{
 		_G_c__DisplayClass6_0 CS_8_locals_9 = new _G_c__DisplayClass6_0();
-		CS_8_locals_9.ORRVT9wefPb = P_0;
-		if (string.IsNullOrWhiteSpace(CS_8_locals_9.ORRVT9wefPb))
+		CS_8_locals_9.text = P_0;
+		if (string.IsNullOrWhiteSpace(CS_8_locals_9.text))
 		{
 			return "执行失败：VBA 代码不能为空。";
 		}
-		CS_8_locals_9.EWVVT67lkGF = yHA3Vrmjt9(CS_8_locals_9.ORRVT9wefPb);
-		if (CS_8_locals_9.EWVVT67lkGF == null)
+		CS_8_locals_9.oWlUArVDqaaXQZpBqfXR = yHA3Vrmjt9(CS_8_locals_9.text);
+		if (CS_8_locals_9.oWlUArVDqaaXQZpBqfXR == null)
 		{
 			return "执行失败：代码中未找到有效的 Sub 过程。请确保代码包含一个 Sub ... End Sub 入口。";
 		}
-		if (CS_8_locals_9.EWVVT67lkGF.HasParameters)
+		if (CS_8_locals_9.oWlUArVDqaaXQZpBqfXR.HasParameters)
 		{
 			return "执行失败：入口 Sub 不能带参数。";
 		}
@@ -405,7 +405,7 @@ internal sealed class WpsVbaCompatService
 			try
 			{
 				rP3HO3VDvRbxmE03MaWl = R8K36HVqty(app);
-				document = DocumentLifecycleGuard.zrqujYgRXw(app);
+				document = DocumentLifecycleGuard.GetActiveDocument(app);
 				if (document == null)
 				{
 					throw new InvalidOperationException("验证失败：代码中未找到有效的 Sub 过程。请确保代码包含一个 Sub ... End Sub 入口。");
@@ -418,7 +418,7 @@ internal sealed class WpsVbaCompatService
 				string text = "验证失败：入口 Sub 不能带参数。请使用无参数 Sub，并在代码内部读取 ActiveDocument 或 Selection。" + Guid.NewGuid().ToString("End Sub").Substring(0, 8);
 				vBComponent = vBProject.VBComponents.Add(vbext_ComponentType.vbext_ct_StdModule);
 				vBComponent.Name = text;
-				vBComponent.CodeModule.AddFromString(CS_8_locals_9.ORRVT9wefPb);
+				vBComponent.CodeModule.AddFromString(CS_8_locals_9.text);
 				try
 				{
 					app.UndoRecord.StartCustomRecord("验证失败：代码中未找到 End Sub。");
@@ -429,7 +429,7 @@ internal sealed class WpsVbaCompatService
 				}
 				try
 				{
-					string macroName = text + "Application.ScreenUpdating" + CS_8_locals_9.EWVVT67lkGF.Name;
+					string macroName = text + "Application.ScreenUpdating" + CS_8_locals_9.oWlUArVDqaaXQZpBqfXR.Name;
 					object varg = Type.Missing;
 					object varg2 = Type.Missing;
 					object varg3 = Type.Missing;
@@ -468,7 +468,7 @@ internal sealed class WpsVbaCompatService
 				}
 				RQW3BQ6tRO(vBProject, vBComponent);
 				vBComponent = null;
-				return "验证通过。入口过程名：" + CS_8_locals_9.EWVVT67lkGF.Name + "执行失败：VBA 代码不能为空。" + document.Name;
+				return "验证通过。入口过程名：" + CS_8_locals_9.oWlUArVDqaaXQZpBqfXR.Name + "执行失败：VBA 代码不能为空。" + document.Name;
 			}
 			catch (COMException ex2)
 			{
@@ -563,7 +563,7 @@ internal sealed class WpsVbaCompatService
 		}
 		P_1.Activate();
 		WordWindowInfo current = DocumentLifecycleGuard.Current;
-		if (!DocumentLifecycleGuard.Se3uYFg09e(P_1) || current == null)
+		if (!DocumentLifecycleGuard.IsCurrentDocument(P_1) || current == null)
 		{
 			return;
 		}
@@ -587,16 +587,16 @@ internal sealed class WpsVbaCompatService
 		try
 		{
 			_G_c__DisplayClass10_0 CS_8_locals_4 = new _G_c__DisplayClass10_0();
-			CS_8_locals_4.rT4VTRei3P0 = P_0?.ActiveDocument;
+			CS_8_locals_4.doc = P_0?.ActiveDocument;
 			Selection selection = P_0?.Selection;
-			if (CS_8_locals_4.rT4VTRei3P0 == null || selection?.Range == null)
+			if (CS_8_locals_4.doc == null || selection?.Range == null)
 			{
 				return null;
 			}
 			return new RP3HO3VDvRbxmE03MaWl
 			{
-				DocumentFullName = eFq3DxlR5e(() => CS_8_locals_4.rT4VTRei3P0.FullName),
-				DocumentName = eFq3DxlR5e(() => CS_8_locals_4.rT4VTRei3P0.Name),
+				DocumentFullName = eFq3DxlR5e(() => CS_8_locals_4.doc.FullName),
+				DocumentName = eFq3DxlR5e(() => CS_8_locals_4.doc.Name),
 				SelectionStart = selection.Range.Start,
 				SelectionEnd = selection.Range.End
 			};
@@ -615,7 +615,7 @@ internal sealed class WpsVbaCompatService
 		}
 		try
 		{
-			Document document = DocumentLifecycleGuard.zrqujYgRXw(P_0, (!string.IsNullOrWhiteSpace(P_1.DocumentFullName)) ? P_1.DocumentFullName : P_1.DocumentName);
+			Document document = DocumentLifecycleGuard.GetActiveDocument(P_0, (!string.IsNullOrWhiteSpace(P_1.DocumentFullName)) ? P_1.DocumentFullName : P_1.DocumentName);
 			document.Activate();
 			int start = document.Content.Start;
 			int end = document.Content.End;
@@ -662,9 +662,9 @@ internal sealed class WpsVbaCompatService
 		CS_8_locals_2.action = P_1;
 		try
 		{
-			return D8c3HsQYl2.MdXJlVhPku("失败：" + P_0, delegate(Microsoft.Office.Interop.Word.Application app)
+			return _wordTableToolService4.MdXJlVhPku("失败：" + P_0, delegate(Microsoft.Office.Interop.Word.Application app)
 			{
-				string text = WordAgentRuntimeGuard2.gEFJbNPT5J(app);
+				string text = WordAgentRuntimeGuard2.GetNotReadyMessage(app);
 				if (!string.IsNullOrWhiteSpace(text))
 				{
 					throw new InvalidOperationException(text);
@@ -674,14 +674,14 @@ internal sealed class WpsVbaCompatService
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.ujWsURly3F("失败：" + P_0 + "失败：" + ex.Message);
+			AiConfigBootstrap.LogError("失败：" + P_0 + "失败：" + ex.Message);
 			throw new InvalidOperationException(P_0 + "失败：" + ex.Message, ex);
 		}
 	}
 
 	static WpsVbaCompatService()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		nQm3IPMNhu = new Regex("^\\s*(?:(Public|Private|Friend|Static)\\s+|\\s+)*Sub\\s+([\\p{L}_][\\p{L}\\p{N}_]*)\\s*(?:\\(([^)]*)\\))?", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
 	}
 }

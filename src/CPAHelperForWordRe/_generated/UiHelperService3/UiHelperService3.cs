@@ -25,7 +25,7 @@ internal sealed class UiHelperService3 : Form
 
 	private struct s64GrAVY4oaB7t7vkJ1d
 	{
-		public YB3JfAVY2lmMnyG9udwr ChOVYjPu31X;
+		public YB3JfAVY2lmMnyG9udwr yB3JfAVY2lmMnyG9udwr;
 
 		public string vlwVYYOlrqX;
 
@@ -34,15 +34,15 @@ internal sealed class UiHelperService3 : Form
 
 	private struct DrhxL2VYZcXZxBQhNUGG
 	{
-		public AiHelper_10 of8VYfaPeTc;
+		public AiHelper_10 aiHelper_10;
 
-		public string pq5VYMZv5OC;
+		public string text;
 
 		public Rectangle ybLVYbRtSje;
 
-		public Rectangle SW3VYSDk01u;
+		public Rectangle rectangle;
 
-		public Rectangle poEVYwtO3x5;
+		public Rectangle rectangle;
 	}
 
 	private sealed class k1OnlOVYt3JiSMCcv4U3
@@ -54,7 +54,7 @@ internal sealed class UiHelperService3 : Form
 		private int IDTVYsQZcoh;
 
 		[CompilerGenerated]
-		private int MH8VYlLwdCN;
+		private int _desiredHeight;
 
 		public List<DrhxL2VYZcXZxBQhNUGG> Items
 		{
@@ -84,62 +84,62 @@ internal sealed class UiHelperService3 : Form
 			[CompilerGenerated]
 			get
 			{
-				return MH8VYlLwdCN;
+				return _desiredHeight;
 			}
 			[CompilerGenerated]
 			set
 			{
-				MH8VYlLwdCN = value;
+				_desiredHeight = value;
 			}
 		}
 
 		public k1OnlOVYt3JiSMCcv4U3()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 			gU0VYL38pjI = new List<DrhxL2VYZcXZxBQhNUGG>();
 		}
 	}
 
 	private struct KHeUdEVYNDni2Diabntx
 	{
-		public int PqJVYmgY8lv;
+		public int value;
 
-		public int FmqVYonrr9g;
+		public int value;
 
 		public int RowHeight;
 
-		public int CuFVYG528HT;
+		public int value;
 
-		public int pe4VYC59EsN;
+		public int value;
 
-		public int g86VYpK8dCP;
+		public int value;
 
 		public int CornerRadius;
 
-		public int PdaVYOmc3Qp;
+		public int value;
 
-		public int nVvVYnq2XcR;
+		public int value;
 
-		public int BdiVY7kur0X;
+		public int value;
 
-		public int Ca9VY5sTaIJ;
+		public int value;
 	}
 
-	private readonly ToolTip VrW7p1dBMe;
+	private readonly ToolTip _toolTip;
 
 	private List<AiHelper_10> TkZ7O3mOur;
 
-	private string brO7nJV04A;
+	private string _string;
 
-	private string X6g77iWGC1;
+	private string _string;
 
-	private Font yDE75Ov4SO;
+	private Font _font;
 
-	private string dKZ7ctgndt;
+	private string _string;
 
-	private float STM7eDv8TH;
+	private float _float;
 
-	private KHeUdEVYNDni2Diabntx iSb7yJM0N8;
+	private KHeUdEVYNDni2Diabntx _kHeUdEVYNDni2Diabntx;
 
 	protected override bool ShowWithoutActivation => true;
 
@@ -153,12 +153,12 @@ internal sealed class UiHelperService3 : Form
 		}
 	}
 
-	private float ScaleRatio => (yDE75Ov4SO?.Size ?? 9f) / 9f;
+	private float ScaleRatio => (_font?.Size ?? 9f) / 9f;
 
 	public UiHelperService3()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		VrW7p1dBMe = new ToolTip();
+		SseStreamInitializer.InitializeRuntime();
+		_toolTip = new ToolTip();
 		TkZ7O3mOur = new List<AiHelper_10>();
 		SetStyle(ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, value: true);
 		base.FormBorderStyle = FormBorderStyle.None;
@@ -185,12 +185,12 @@ internal sealed class UiHelperService3 : Form
 		DNm7LNT9WI();
 		if (!base.Visible)
 		{
-			ScreenshotCaptureHelper2.eq5dmBARf(base.Handle, 4);
+			ScreenshotCaptureHelper2.CaptureScreen(base.Handle, 4);
 			base.Visible = true;
 		}
 	}
 
-	public void S4772UKB1s()
+	public void LoadConfig()
 	{
 		base.Visible = false;
 	}
@@ -207,7 +207,7 @@ internal sealed class UiHelperService3 : Form
 		DNm7LNT9WI();
 		if (P_0 <= 0)
 		{
-			return iSb7yJM0N8.PqJVYmgY8lv;
+			return _kHeUdEVYNDni2Diabntx.value;
 		}
 		using Graphics graphics = CreateGraphics();
 		return bpQ7Z6Vn1c(graphics, P_0).DesiredHeight;
@@ -222,7 +222,7 @@ internal sealed class UiHelperService3 : Form
 		}
 		using Graphics graphics = CreateGraphics();
 		int val = R9D7MNqcbg(graphics);
-		return Math.Min(P_0, Math.Max(iSb7yJM0N8.pe4VYC59EsN * 2 + 1, val));
+		return Math.Min(P_0, Math.Max(_kHeUdEVYNDni2Diabntx.value * 2 + 1, val));
 	}
 
 	protected override void OnPaint(PaintEventArgs P_0)
@@ -249,13 +249,13 @@ internal sealed class UiHelperService3 : Form
 		base.OnMouseMove(P_0);
 		s64GrAVY4oaB7t7vkJ1d s64GrAVY4oaB7t7vkJ1d2 = t3R7wwREte(P_0.Location);
 		string vlwVYYOlrqX = s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX;
-		string text = ((s64GrAVY4oaB7t7vkJ1d2.ChOVYjPu31X == (YB3JfAVY2lmMnyG9udwr)2) ? s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX : null);
-		Cursor = ((s64GrAVY4oaB7t7vkJ1d2.ChOVYjPu31X == YB3JfAVY2lmMnyG9udwr.None) ? Cursors.Default : Cursors.Hand);
-		VrW7p1dBMe.SetToolTip(this, s64GrAVY4oaB7t7vkJ1d2.ToolTip ?? string.Empty);
-		if (vlwVYYOlrqX != brO7nJV04A || text != X6g77iWGC1)
+		string text = ((s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == (YB3JfAVY2lmMnyG9udwr)2) ? s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX : null);
+		Cursor = ((s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == YB3JfAVY2lmMnyG9udwr.None) ? Cursors.Default : Cursors.Hand);
+		_toolTip.SetToolTip(this, s64GrAVY4oaB7t7vkJ1d2.ToolTip ?? string.Empty);
+		if (vlwVYYOlrqX != _string || text != _string)
 		{
-			brO7nJV04A = vlwVYYOlrqX;
-			X6g77iWGC1 = text;
+			_string = vlwVYYOlrqX;
+			_string = text;
 			Invalidate();
 		}
 	}
@@ -263,8 +263,8 @@ internal sealed class UiHelperService3 : Form
 	protected override void OnMouseLeave(EventArgs P_0)
 	{
 		base.OnMouseLeave(P_0);
-		brO7nJV04A = null;
-		X6g77iWGC1 = null;
+		_string = null;
+		_string = null;
 		Cursor = Cursors.Default;
 		Invalidate();
 	}
@@ -275,11 +275,11 @@ internal sealed class UiHelperService3 : Form
 		if (P_0.Button == MouseButtons.Left)
 		{
 			s64GrAVY4oaB7t7vkJ1d s64GrAVY4oaB7t7vkJ1d2 = t3R7wwREte(P_0.Location);
-			if (s64GrAVY4oaB7t7vkJ1d2.ChOVYjPu31X == (YB3JfAVY2lmMnyG9udwr)2)
+			if (s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == (YB3JfAVY2lmMnyG9udwr)2)
 			{
 				AiHelper_13.hMTU1YUAHc(s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX);
 			}
-			else if (s64GrAVY4oaB7t7vkJ1d2.ChOVYjPu31X == (YB3JfAVY2lmMnyG9udwr)1)
+			else if (s64GrAVY4oaB7t7vkJ1d2.yB3JfAVY2lmMnyG9udwr == (YB3JfAVY2lmMnyG9udwr)1)
 			{
 				AiHelper_13.fgqUQKfffo(s64GrAVY4oaB7t7vkJ1d2.vlwVYYOlrqX);
 			}
@@ -288,43 +288,43 @@ internal sealed class UiHelperService3 : Form
 
 	private k1OnlOVYt3JiSMCcv4U3 bpQ7Z6Vn1c(Graphics P_0, int P_1)
 	{
-		int num = Math.Max(P_1, iSb7yJM0N8.pe4VYC59EsN * 2 + 1);
-		int num2 = iSb7yJM0N8.pe4VYC59EsN;
+		int num = Math.Max(P_1, _kHeUdEVYNDni2Diabntx.value * 2 + 1);
+		int num2 = _kHeUdEVYNDni2Diabntx.value;
 		int num3 = 0;
 		k1OnlOVYt3JiSMCcv4U3 k1OnlOVYt3JiSMCcv4U4 = new k1OnlOVYt3JiSMCcv4U3();
 		foreach (AiHelper_10 item in TkZ7O3mOur)
 		{
 			string text = oQE7t3oZKo(item);
 			int num4 = wZO7fDKJMZ(P_0, text);
-			if (num2 > iSb7yJM0N8.pe4VYC59EsN && num2 + num4 > num - iSb7yJM0N8.pe4VYC59EsN)
+			if (num2 > _kHeUdEVYNDni2Diabntx.value && num2 + num4 > num - _kHeUdEVYNDni2Diabntx.value)
 			{
 				num3++;
-				num2 = iSb7yJM0N8.pe4VYC59EsN;
+				num2 = _kHeUdEVYNDni2Diabntx.value;
 			}
-			int num5 = num3 * iSb7yJM0N8.RowHeight + (iSb7yJM0N8.RowHeight - iSb7yJM0N8.FmqVYonrr9g) / 2;
-			Rectangle ybLVYbRtSje = new Rectangle(num2, num5, num4, iSb7yJM0N8.FmqVYonrr9g);
-			Rectangle poEVYwtO3x = new Rectangle(ybLVYbRtSje.Right - iSb7yJM0N8.PdaVYOmc3Qp - iSb7yJM0N8.nVvVYnq2XcR, ybLVYbRtSje.Top + (ybLVYbRtSje.Height - iSb7yJM0N8.PdaVYOmc3Qp) / 2, iSb7yJM0N8.PdaVYOmc3Qp, iSb7yJM0N8.PdaVYOmc3Qp);
-			Rectangle sW3VYSDk01u = Rectangle.FromLTRB(ybLVYbRtSje.Left + iSb7yJM0N8.CuFVYG528HT, ybLVYbRtSje.Top + iSb7yJM0N8.Ca9VY5sTaIJ, Math.Max(ybLVYbRtSje.Left + iSb7yJM0N8.CuFVYG528HT, poEVYwtO3x.Left - iSb7yJM0N8.BdiVY7kur0X), ybLVYbRtSje.Bottom + iSb7yJM0N8.Ca9VY5sTaIJ);
+			int num5 = num3 * _kHeUdEVYNDni2Diabntx.RowHeight + (_kHeUdEVYNDni2Diabntx.RowHeight - _kHeUdEVYNDni2Diabntx.value) / 2;
+			Rectangle ybLVYbRtSje = new Rectangle(num2, num5, num4, _kHeUdEVYNDni2Diabntx.value);
+			Rectangle poEVYwtO3x = new Rectangle(ybLVYbRtSje.Right - _kHeUdEVYNDni2Diabntx.value - _kHeUdEVYNDni2Diabntx.value, ybLVYbRtSje.Top + (ybLVYbRtSje.Height - _kHeUdEVYNDni2Diabntx.value) / 2, _kHeUdEVYNDni2Diabntx.value, _kHeUdEVYNDni2Diabntx.value);
+			Rectangle sW3VYSDk01u = Rectangle.FromLTRB(ybLVYbRtSje.Left + _kHeUdEVYNDni2Diabntx.value, ybLVYbRtSje.Top + _kHeUdEVYNDni2Diabntx.value, Math.Max(ybLVYbRtSje.Left + _kHeUdEVYNDni2Diabntx.value, poEVYwtO3x.Left - _kHeUdEVYNDni2Diabntx.value), ybLVYbRtSje.Bottom + _kHeUdEVYNDni2Diabntx.value);
 			k1OnlOVYt3JiSMCcv4U4.Items.Add(new DrhxL2VYZcXZxBQhNUGG
 			{
-				of8VYfaPeTc = item,
-				pq5VYMZv5OC = text,
+				aiHelper_10 = item,
+				text = text,
 				ybLVYbRtSje = ybLVYbRtSje,
-				SW3VYSDk01u = sW3VYSDk01u,
-				poEVYwtO3x5 = poEVYwtO3x
+				rectangle = sW3VYSDk01u,
+				rectangle = poEVYwtO3x
 			});
-			num2 += num4 + iSb7yJM0N8.g86VYpK8dCP;
+			num2 += num4 + _kHeUdEVYNDni2Diabntx.value;
 		}
 		k1OnlOVYt3JiSMCcv4U4.RowCount = ((TkZ7O3mOur.Count == 0) ? 1 : (num3 + 1));
-		k1OnlOVYt3JiSMCcv4U4.DesiredHeight = Math.Max(iSb7yJM0N8.PqJVYmgY8lv, k1OnlOVYt3JiSMCcv4U4.RowCount * iSb7yJM0N8.RowHeight);
+		k1OnlOVYt3JiSMCcv4U4.DesiredHeight = Math.Max(_kHeUdEVYNDni2Diabntx.value, k1OnlOVYt3JiSMCcv4U4.RowCount * _kHeUdEVYNDni2Diabntx.RowHeight);
 		return k1OnlOVYt3JiSMCcv4U4;
 	}
 
 	private int wZO7fDKJMZ(Graphics P_0, string P_1)
 	{
-		int num = TextRenderer.MeasureText(P_0, P_1 ?? string.Empty, Font).Width + iSb7yJM0N8.CuFVYG528HT * 2 + iSb7yJM0N8.PdaVYOmc3Qp + iSb7yJM0N8.nVvVYnq2XcR * 2;
+		int num = TextRenderer.MeasureText(P_0, P_1 ?? string.Empty, Font).Width + _kHeUdEVYNDni2Diabntx.value * 2 + _kHeUdEVYNDni2Diabntx.value + _kHeUdEVYNDni2Diabntx.value * 2;
 		Helper_1 officeTab = TableBorderConfig.Current.Config.OfficeTab;
-		officeTab.O77tY1qK6N();
+		officeTab.AdjustHeight();
 		if (officeTab.FuAtZSN641())
 		{
 			return Math.Min(num, jTo7oGwydx(officeTab.TabMaxWidth));
@@ -334,13 +334,13 @@ internal sealed class UiHelperService3 : Form
 
 	private int R9D7MNqcbg(Graphics P_0)
 	{
-		int num = iSb7yJM0N8.pe4VYC59EsN * 2;
+		int num = _kHeUdEVYNDni2Diabntx.value * 2;
 		for (int i = 0; i < TkZ7O3mOur.Count; i++)
 		{
 			num += wZO7fDKJMZ(P_0, oQE7t3oZKo(TkZ7O3mOur[i]));
 			if (i < TkZ7O3mOur.Count - 1)
 			{
-				num += iSb7yJM0N8.g86VYpK8dCP;
+				num += _kHeUdEVYNDni2Diabntx.value;
 			}
 		}
 		return num;
@@ -348,12 +348,12 @@ internal sealed class UiHelperService3 : Form
 
 	private void Doh7bjag9i(Graphics P_0, DrhxL2VYZcXZxBQhNUGG P_1)
 	{
-		bool isActive = P_1.of8VYfaPeTc.IsActive;
-		bool flag = P_1.of8VYfaPeTc.Key == brO7nJV04A;
+		bool isActive = P_1.aiHelper_10.IsActive;
+		bool flag = P_1.aiHelper_10.Key == _string;
 		Color color = (isActive ? Color.White : (flag ? Color.FromArgb(248, 250, 253) : Color.FromArgb(235, 239, 245)));
 		Color color2 = (isActive ? Color.FromArgb(183, 194, 210) : Color.FromArgb(211, 218, 229));
 		Color foreColor = (isActive ? Color.FromArgb(30, 32, 36) : Color.FromArgb(82, 88, 98));
-		using (GraphicsPath path = SOF7muKw5d(P_1.ybLVYbRtSje, iSb7yJM0N8.CornerRadius))
+		using (GraphicsPath path = SOF7muKw5d(P_1.ybLVYbRtSje, _kHeUdEVYNDni2Diabntx.CornerRadius))
 		{
 			using SolidBrush brush = new SolidBrush(color);
 			using Pen pen = new Pen(color2);
@@ -369,8 +369,8 @@ internal sealed class UiHelperService3 : Form
 			using SolidBrush brush3 = new SolidBrush(Color.White);
 			P_0.FillRectangle(brush3, P_1.ybLVYbRtSje.Left + 1, P_1.ybLVYbRtSje.Bottom - 2, Math.Max(1, P_1.ybLVYbRtSje.Width - 2), 3);
 		}
-		TextRenderer.DrawText(P_0, P_1.pq5VYMZv5OC, Font, P_1.SW3VYSDk01u, foreColor, TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
-		BSR7SPwLy0(P_0, P_1.poEVYwtO3x5, P_1.of8VYfaPeTc.Key == X6g77iWGC1, isActive);
+		TextRenderer.DrawText(P_0, P_1.text, Font, P_1.rectangle, foreColor, TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
+		BSR7SPwLy0(P_0, P_1.rectangle, P_1.aiHelper_10.Key == _string, isActive);
 	}
 
 	private void BSR7SPwLy0(Graphics P_0, Rectangle P_1, bool P_2, bool P_3)
@@ -397,21 +397,21 @@ internal sealed class UiHelperService3 : Form
 				Rectangle ybLVYbRtSje = item.ybLVYbRtSje;
 				if (ybLVYbRtSje.Contains(P_0))
 				{
-					string toolTip = (string.IsNullOrWhiteSpace(item.of8VYfaPeTc.FullName) ? item.of8VYfaPeTc.Name : item.of8VYfaPeTc.FullName);
-					ybLVYbRtSje = item.poEVYwtO3x5;
+					string toolTip = (string.IsNullOrWhiteSpace(item.aiHelper_10.FullName) ? item.aiHelper_10.Name : item.aiHelper_10.FullName);
+					ybLVYbRtSje = item.rectangle;
 					if (ybLVYbRtSje.Contains(P_0))
 					{
 						return new s64GrAVY4oaB7t7vkJ1d
 						{
-							ChOVYjPu31X = (YB3JfAVY2lmMnyG9udwr)2,
-							vlwVYYOlrqX = item.of8VYfaPeTc.Key,
-							ToolTip = "关闭 " + item.of8VYfaPeTc.Name
+							yB3JfAVY2lmMnyG9udwr = (YB3JfAVY2lmMnyG9udwr)2,
+							vlwVYYOlrqX = item.aiHelper_10.Key,
+							ToolTip = "关闭 " + item.aiHelper_10.Name
 						};
 					}
 					return new s64GrAVY4oaB7t7vkJ1d
 					{
-						ChOVYjPu31X = (YB3JfAVY2lmMnyG9udwr)1,
-						vlwVYYOlrqX = item.of8VYfaPeTc.Key,
+						yB3JfAVY2lmMnyG9udwr = (YB3JfAVY2lmMnyG9udwr)1,
+						vlwVYYOlrqX = item.aiHelper_10.Key,
 						ToolTip = toolTip
 					};
 				}
@@ -419,7 +419,7 @@ internal sealed class UiHelperService3 : Form
 		}
 		return new s64GrAVY4oaB7t7vkJ1d
 		{
-			ChOVYjPu31X = YB3JfAVY2lmMnyG9udwr.None
+			yB3JfAVY2lmMnyG9udwr = YB3JfAVY2lmMnyG9udwr.None
 		};
 	}
 
@@ -431,7 +431,7 @@ internal sealed class UiHelperService3 : Form
 			text = Path.GetFileName(P_0.FullName);
 		}
 		Helper_1 officeTab = TableBorderConfig.Current.Config.OfficeTab;
-		officeTab.O77tY1qK6N();
+		officeTab.AdjustHeight();
 		if (officeTab.FuAtZSN641() && text.Length > officeTab.DocumentNamePrefixLength)
 		{
 			text = text.Substring(0, officeTab.DocumentNamePrefixLength) + "..";
@@ -442,34 +442,34 @@ internal sealed class UiHelperService3 : Form
 	private void DNm7LNT9WI()
 	{
 		Helper_1 officeTab = TableBorderConfig.Current.Config.OfficeTab;
-		officeTab.O77tY1qK6N();
+		officeTab.AdjustHeight();
 		string text = (string.IsNullOrWhiteSpace(officeTab.FontName) ? "Microsoft YaHei UI" : officeTab.FontName);
 		float num = Math.Max(7f, Math.Min(18f, (float)officeTab.FontSize));
-		if (yDE75Ov4SO == null || !string.Equals(dKZ7ctgndt, text, StringComparison.Ordinal) || Math.Abs(STM7eDv8TH - num) > 0.01f)
+		if (_font == null || !string.Equals(_string, text, StringComparison.Ordinal) || Math.Abs(_float - num) > 0.01f)
 		{
 			Font font = MRy7syHbkg(text, num);
-			Font font2 = yDE75Ov4SO;
-			yDE75Ov4SO = font;
-			dKZ7ctgndt = text;
-			STM7eDv8TH = num;
+			Font font2 = _font;
+			_font = font;
+			_string = text;
+			_float = num;
 			Font = font;
 			font2?.Dispose();
 		}
 		int num2 = TextRenderer.MeasureText("Mg", Font).Height;
 		int num3 = Math.Max(jTo7oGwydx(20), num2 + jTo7oGwydx(10));
-		iSb7yJM0N8 = new KHeUdEVYNDni2Diabntx
+		_kHeUdEVYNDni2Diabntx = new KHeUdEVYNDni2Diabntx
 		{
-			PqJVYmgY8lv = Math.Max(jTo7oGwydx(26), officeTab.Height),
-			FmqVYonrr9g = num3,
+			value = Math.Max(jTo7oGwydx(26), officeTab.Height),
+			value = num3,
 			RowHeight = Math.Max(jTo7oGwydx(26), num3),
-			CuFVYG528HT = jTo7oGwydx(14),
-			pe4VYC59EsN = jTo7oGwydx(6),
-			g86VYpK8dCP = jTo7oGwydx(2),
+			value = jTo7oGwydx(14),
+			value = jTo7oGwydx(6),
+			value = jTo7oGwydx(2),
 			CornerRadius = jTo7oGwydx(4),
-			PdaVYOmc3Qp = Math.Min(jTo7oGwydx(12), Math.Max(8, num3 - jTo7oGwydx(6))),
-			nVvVYnq2XcR = jTo7oGwydx(5),
-			BdiVY7kur0X = jTo7oGwydx(4),
-			Ca9VY5sTaIJ = jTo7oGwydx(1)
+			value = Math.Min(jTo7oGwydx(12), Math.Max(8, num3 - jTo7oGwydx(6))),
+			value = jTo7oGwydx(5),
+			value = jTo7oGwydx(4),
+			value = jTo7oGwydx(1)
 		};
 	}
 
@@ -577,8 +577,8 @@ internal sealed class UiHelperService3 : Form
 	{
 		if (P_0)
 		{
-			VrW7p1dBMe.Dispose();
-			yDE75Ov4SO?.Dispose();
+			_toolTip.Dispose();
+			_font?.Dispose();
 		}
 		base.Dispose(P_0);
 	}

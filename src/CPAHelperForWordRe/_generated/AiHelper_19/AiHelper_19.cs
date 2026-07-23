@@ -13,17 +13,17 @@ namespace AiHelper_19;
 
 internal sealed class AiHelper_19
 {
-	private readonly WordTableToolService4 fjx3Sq943n;
+	private readonly WordTableToolService4 _wordTableToolService4;
 
 	public AiHelper_19() : this(new WordTableToolService4())
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	public AiHelper_19(WordTableToolService4 P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		fjx3Sq943n = P_0 ?? throw new ArgumentNullException("executor");
+		SseStreamInitializer.InitializeRuntime();
+		_wordTableToolService4 = P_0 ?? throw new ArgumentNullException("executor");
 	}
 
 	public AgentInstructionContext QhF3fbjxg1()
@@ -35,7 +35,7 @@ internal sealed class AiHelper_19
 		}
 		try
 		{
-			return fjx3Sq943n.MdXJlVhPku("instruction_context", delegate(Application app)
+			return _wordTableToolService4.MdXJlVhPku("instruction_context", delegate(Application app)
 			{
 				AgentInstructionContext agentInstructionContext = new AgentInstructionContext();
 				Document activeDocument = app.ActiveDocument;

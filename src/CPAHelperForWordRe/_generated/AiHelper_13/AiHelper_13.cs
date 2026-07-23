@@ -29,11 +29,11 @@ internal static class AiHelper_13
 
 		public long zMMVTbLXwD5;
 
-		public Helper_5 FR3VTS5Zdu5;
+		public Helper_5 helper_5;
 
 		public _G_c__DisplayClass30_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal bool BDrVTfvvg4V(IntPtr child, IntPtr _)
@@ -71,7 +71,7 @@ internal static class AiHelper_13
 				if (num > zMMVTbLXwD5)
 				{
 					zMMVTbLXwD5 = num;
-					FR3VTS5Zdu5 = fR3VTS5Zdu;
+					helper_5 = fR3VTS5Zdu;
 				}
 			}
 			catch
@@ -87,7 +87,7 @@ internal static class AiHelper_13
 
 	private static bool FwQU5E6mY2;
 
-	private static UiHelperService3 ti2UcLLTOF;
+	private static UiHelperService3 ConfigLoader;
 
 	private static string NdIUeZlnm4;
 
@@ -115,7 +115,7 @@ internal static class AiHelper_13
 			JSMUHT53aW();
 			oYhUKFtht4();
 			fjWUni4xwA.Start();
-			TableBorderConfig.Instance.wpmS5yUw9A(delegate(AiHelper_12 c)
+			TableBorderConfig.Instance.UpdateConfig(delegate(AiHelper_12 c)
 			{
 				c.OfficeTab.Enabled = true;
 			});
@@ -127,9 +127,9 @@ internal static class AiHelper_13
 	{
 		FwQU5E6mY2 = false;
 		fjWUni4xwA.Stop();
-		ti2UcLLTOF?.S4772UKB1s();
+		ConfigLoader?.LoadConfig();
 		aBgUjMZb6b();
-		TableBorderConfig.Instance.wpmS5yUw9A(delegate(AiHelper_12 c)
+		TableBorderConfig.Instance.UpdateConfig(delegate(AiHelper_12 c)
 		{
 			c.OfficeTab.Enabled = false;
 		});
@@ -154,11 +154,11 @@ internal static class AiHelper_13
 		fjWUni4xwA.Stop();
 		iQKUJu2YEc();
 		aBgUjMZb6b();
-		if (ti2UcLLTOF != null)
+		if (ConfigLoader != null)
 		{
-			ti2UcLLTOF.Close();
+			ConfigLoader.Close();
 		}
-		ti2UcLLTOF = null;
+		ConfigLoader = null;
 		fnoUyv1bhu = Rectangle.Empty;
 		WX1UXkkRIZ = IntPtr.Zero;
 		VtBUFW0YVW = IntPtr.Zero;
@@ -168,9 +168,9 @@ internal static class AiHelper_13
 
 	public static void JSMUHT53aW()
 	{
-		if (ti2UcLLTOF != null && !ti2UcLLTOF.IsDisposed)
+		if (ConfigLoader != null && !ConfigLoader.IsDisposed)
 		{
-			ti2UcLLTOF.WNa744ZxJ3(wa8ULVjivm());
+			ConfigLoader.WNa744ZxJ3(wa8ULVjivm());
 		}
 	}
 
@@ -189,7 +189,7 @@ internal static class AiHelper_13
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[OfficeTab] Activate document failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[OfficeTab] Activate document failed: " + ex.Message);
 		}
 	}
 
@@ -208,7 +208,7 @@ internal static class AiHelper_13
 		}
 		catch (Exception ex)
 		{
-			AiConfigBootstrap.z7Us3dJ6Cl("[OfficeTab] Close document failed: " + ex.Message);
+			AiConfigBootstrap.LogWarn("[OfficeTab] Close document failed: " + ex.Message);
 		}
 		finally
 		{
@@ -257,19 +257,19 @@ internal static class AiHelper_13
 
 	private static void Oh4U3Zi9ay()
 	{
-		if (ti2UcLLTOF == null || ti2UcLLTOF.IsDisposed)
+		if (ConfigLoader == null || ConfigLoader.IsDisposed)
 		{
-			ti2UcLLTOF = new UiHelperService3();
-			ti2UcLLTOF.FormClosed += delegate
+			ConfigLoader = new UiHelperService3();
+			ConfigLoader.FormClosed += delegate
 			{
-				ti2UcLLTOF = null;
+				ConfigLoader = null;
 			};
 		}
 	}
 
 	private static void a3lUUeMMTx(object P_0, EventArgs P_1)
 	{
-		if (!FwQU5E6mY2 || ti2UcLLTOF == null || ti2UcLLTOF.IsDisposed)
+		if (!FwQU5E6mY2 || ConfigLoader == null || ConfigLoader.IsDisposed)
 		{
 			return;
 		}
@@ -277,7 +277,7 @@ internal static class AiHelper_13
 		{
 			if (TableBorderConfig.Current.Config.OfficeTab.AutoHideOnDeactivate && !zTdUwGdqmA())
 			{
-				ti2UcLLTOF.S4772UKB1s();
+				ConfigLoader.LoadConfig();
 				aBgUjMZb6b();
 				return;
 			}
@@ -296,33 +296,33 @@ internal static class AiHelper_13
 
 	private static bool oYhUKFtht4()
 	{
-		if (ti2UcLLTOF == null || ti2UcLLTOF.IsDisposed || App == null)
+		if (ConfigLoader == null || ConfigLoader.IsDisposed || App == null)
 		{
 			return false;
 		}
 		IntPtr intPtr = cgkUbBGhw1();
 		if (intPtr == IntPtr.Zero)
 		{
-			ti2UcLLTOF.S4772UKB1s();
+			ConfigLoader.LoadConfig();
 			aBgUjMZb6b();
 			return false;
 		}
 		if (!X5JUYxFvGK(intPtr, out var n9oC7GUxmq3PwnPT976))
 		{
-			ti2UcLLTOF.S4772UKB1s();
+			ConfigLoader.LoadConfig();
 			aBgUjMZb6b();
 			return false;
 		}
-		int num = ti2UcLLTOF.o1Y7jLQCiS(n9oC7GUxmq3PwnPT976.vBSKBPTg82.Width);
+		int num = ConfigLoader.o1Y7jLQCiS(n9oC7GUxmq3PwnPT976.vBSKBPTg82.Width);
 		if (!S71UEc0wa2(n9oC7GUxmq3PwnPT976, num, out var rectangle))
 		{
-			ti2UcLLTOF.S4772UKB1s();
+			ConfigLoader.LoadConfig();
 			aBgUjMZb6b();
 			return false;
 		}
 		if (rectangle.Width <= 80 || rectangle.Height <= 12)
 		{
-			ti2UcLLTOF.S4772UKB1s();
+			ConfigLoader.LoadConfig();
 			aBgUjMZb6b();
 			return false;
 		}
@@ -330,7 +330,7 @@ internal static class AiHelper_13
 		{
 			try
 			{
-				ScreenshotCaptureHelper2.r8rV8AwJBn(ti2UcLLTOF.Handle, -8, intPtr);
+				ScreenshotCaptureHelper2.r8rV8AwJBn(ConfigLoader.Handle, -8, intPtr);
 			}
 			catch
 			{
@@ -339,35 +339,35 @@ internal static class AiHelper_13
 		}
 		if (fnoUyv1bhu != rectangle)
 		{
-			ScreenshotCaptureHelper2.qVGVVA8Epe(ti2UcLLTOF.Handle, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
+			ScreenshotCaptureHelper2.qVGVVA8Epe(ConfigLoader.Handle, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
 			fnoUyv1bhu = rectangle;
 		}
-		ti2UcLLTOF.lr57EfRfpj();
+		ConfigLoader.lr57EfRfpj();
 		return true;
 	}
 
 	private static bool S71UEc0wa2(Helper_5 P_0, int P_1, out Rectangle P_2)
 	{
 		P_2 = Rectangle.Empty;
-		if (P_0.gT5UziDMSM == IntPtr.Zero || P_0.H3wKRbItAK == IntPtr.Zero)
+		if (P_0.intPtr == IntPtr.Zero || P_0.intPtr == IntPtr.Zero)
 		{
 			return false;
 		}
-		if (VtBUFW0YVW != IntPtr.Zero && VtBUFW0YVW != P_0.gT5UziDMSM)
+		if (VtBUFW0YVW != IntPtr.Zero && VtBUFW0YVW != P_0.intPtr)
 		{
 			aBgUjMZb6b();
 		}
 		if (VtBUFW0YVW == IntPtr.Zero)
 		{
-			VtBUFW0YVW = P_0.gT5UziDMSM;
-			iL8UhoLpQ1 = P_0.H3wKRbItAK;
+			VtBUFW0YVW = P_0.intPtr;
+			iL8UhoLpQ1 = P_0.intPtr;
 			ULDUaIQyxK = P_0.vBSKBPTg82;
 		}
-		if (iL8UhoLpQ1 != P_0.H3wKRbItAK)
+		if (iL8UhoLpQ1 != P_0.intPtr)
 		{
 			aBgUjMZb6b();
-			VtBUFW0YVW = P_0.gT5UziDMSM;
-			iL8UhoLpQ1 = P_0.H3wKRbItAK;
+			VtBUFW0YVW = P_0.intPtr;
+			iL8UhoLpQ1 = P_0.intPtr;
 			ULDUaIQyxK = P_0.vBSKBPTg82;
 		}
 		D2OU2UZetx(P_0, P_1);
@@ -382,14 +382,14 @@ internal static class AiHelper_13
 			return false;
 		}
 		Rectangle rectangle = new Rectangle(uLDUaIQyxK.Left, uLDUaIQyxK.Top + P_1, uLDUaIQyxK.Width, num);
-		ScreenshotCaptureHelper2.qVGVVA8Epe(P_0.gT5UziDMSM, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
+		ScreenshotCaptureHelper2.qVGVVA8Epe(P_0.intPtr, IntPtr.Zero, rectangle.Left, rectangle.Top, rectangle.Width, rectangle.Height, 80);
 		P_2 = new Rectangle(point.X + uLDUaIQyxK.Left, point.Y + uLDUaIQyxK.Top, uLDUaIQyxK.Width, P_1);
 		return true;
 	}
 
 	private static void D2OU2UZetx(Helper_5 P_0, int P_1)
 	{
-		if (VtBUFW0YVW != P_0.gT5UziDMSM || ULDUaIQyxK == Rectangle.Empty)
+		if (VtBUFW0YVW != P_0.intPtr || ULDUaIQyxK == Rectangle.Empty)
 		{
 			return;
 		}
@@ -448,7 +448,7 @@ internal static class AiHelper_13
 			return false;
 		}
 		CS_8_locals_12.zKmVTMLMmqG = Rectangle.FromLTRB(g776GxFFqI1ndqZk2gX.Left, g776GxFFqI1ndqZk2gX.Top, g776GxFFqI1ndqZk2gX.Right, g776GxFFqI1ndqZk2gX.Bottom);
-		CS_8_locals_12.FR3VTS5Zdu5 = default(Helper_5);
+		CS_8_locals_12.helper_5 = default(Helper_5);
 		CS_8_locals_12.zMMVTbLXwD5 = 0L;
 		ScreenshotCaptureHelper2.sUYV6arCCC(P_0, delegate(IntPtr child, IntPtr _)
 		{
@@ -485,7 +485,7 @@ internal static class AiHelper_13
 				if (num > CS_8_locals_12.zMMVTbLXwD5)
 				{
 					CS_8_locals_12.zMMVTbLXwD5 = num;
-					CS_8_locals_12.FR3VTS5Zdu5 = fR3VTS5Zdu;
+					CS_8_locals_12.helper_5 = fR3VTS5Zdu;
 				}
 			}
 			catch
@@ -493,11 +493,11 @@ internal static class AiHelper_13
 			}
 			return true;
 		}, IntPtr.Zero);
-		if (CS_8_locals_12.FR3VTS5Zdu5.gT5UziDMSM == IntPtr.Zero)
+		if (CS_8_locals_12.helper_5.intPtr == IntPtr.Zero)
 		{
 			return false;
 		}
-		P_1 = CS_8_locals_12.FR3VTS5Zdu5;
+		P_1 = CS_8_locals_12.helper_5;
 		return true;
 	}
 
@@ -520,9 +520,9 @@ internal static class AiHelper_13
 		Rectangle sl2KVgL5Cf = Rectangle.FromLTRB(g776GxFFqI1ndqZk2gX.Left, g776GxFFqI1ndqZk2gX.Top, g776GxFFqI1ndqZk2gX.Right, g776GxFFqI1ndqZk2gX.Bottom);
 		P_1 = new Helper_5
 		{
-			gT5UziDMSM = P_0,
-			H3wKRbItAK = intPtr,
-			Sl2KVgL5Cf = sl2KVgL5Cf,
+			intPtr = P_0,
+			intPtr = intPtr,
+			rectangle = sl2KVgL5Cf,
 			vBSKBPTg82 = new Rectangle(sl2KVgL5Cf.Left - point.X, sl2KVgL5Cf.Top - point.Y, sl2KVgL5Cf.Width, sl2KVgL5Cf.Height)
 		};
 		return true;
@@ -597,7 +597,7 @@ internal static class AiHelper_13
 			if (!(intPtr2 == intPtr))
 			{
 				IntPtr value = intPtr2;
-				IntPtr? obj = ti2UcLLTOF?.Handle;
+				IntPtr? obj = ConfigLoader?.Handle;
 				if (!(value == obj))
 				{
 					ScreenshotCaptureHelper2.Kl5V9YsO3Z(intPtr, out var num);
@@ -781,7 +781,7 @@ internal static class AiHelper_13
 
 	static AiHelper_13()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		fjWUni4xwA = new Timer
 		{
 			Interval = 220

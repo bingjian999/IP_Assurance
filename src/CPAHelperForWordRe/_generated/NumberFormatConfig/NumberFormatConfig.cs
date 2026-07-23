@@ -34,10 +34,10 @@ internal sealed class NumberFormatConfig : Helper_2
 	private sealed class Ws1A6IV2tQ3IY0xZETbe
 	{
 		[CompilerGenerated]
-		private string xf7V2lP7s2q;
+		private string _paragraphPreset;
 
 		[CompilerGenerated]
-		private string aTfV2N9tHSZ;
+		private string _tablePreset;
 
 		[JsonProperty("段落方案")]
 		public string ParagraphPreset
@@ -45,12 +45,12 @@ internal sealed class NumberFormatConfig : Helper_2
 			[CompilerGenerated]
 			get
 			{
-				return xf7V2lP7s2q;
+				return _paragraphPreset;
 			}
 			[CompilerGenerated]
 			set
 			{
-				xf7V2lP7s2q = value;
+				_paragraphPreset = value;
 			}
 		}
 
@@ -60,104 +60,104 @@ internal sealed class NumberFormatConfig : Helper_2
 			[CompilerGenerated]
 			get
 			{
-				return aTfV2N9tHSZ;
+				return _tablePreset;
 			}
 			[CompilerGenerated]
 			set
 			{
-				aTfV2N9tHSZ = value;
+				_tablePreset = value;
 			}
 		}
 
 		public Ws1A6IV2tQ3IY0xZETbe()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
-			xf7V2lP7s2q = string.Empty;
-			aTfV2N9tHSZ = string.Empty;
+			SseStreamInitializer.InitializeRuntime();
+			_paragraphPreset = string.Empty;
+			_tablePreset = string.Empty;
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass187_0
 	{
-		public string LeMV2hqWLSR;
+		public string text;
 
-		public NumberFormatConfig ptIV2aYh6P8;
+		public NumberFormatConfig numberFormatConfig;
 
 		public _G_c__DisplayClass187_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void ylgV2FbVgb8(AiHelper_12 config)
 		{
-			config.System.TabName = LeMV2hqWLSR;
-			config.System.DisableAutomaticStyleUpdate = ptIV2aYh6P8.DisableAutomaticStyleUpdate;
-			config.Legacy["数字_除以一万_自定义"] = x5PolLGHZO(ptIV2aYh6P8.DivideText, "10000");
-			config.Legacy["数字_除以一万_执行添加万"] = (ptIV2aYh6P8.AppendUnit ? "0" : "1");
-			config.Legacy["数字_添加万字_添加的字符"] = (string.IsNullOrWhiteSpace(ptIV2aYh6P8.UnitText) ? "万" : ptIV2aYh6P8.UnitText.Trim());
-			config.Legacy["数字_乘以一百_自定义"] = x5PolLGHZO(ptIV2aYh6P8.MultiplyText, "100");
-			config.Legacy["数字_乘以一百_执行添加%"] = (ptIV2aYh6P8.AddPercent ? "0" : "1");
+			config.System.TabName = text;
+			config.System.DisableAutomaticStyleUpdate = numberFormatConfig.DisableAutomaticStyleUpdate;
+			config.Legacy["数字_除以一万_自定义"] = x5PolLGHZO(numberFormatConfig.DivideText, "10000");
+			config.Legacy["数字_除以一万_执行添加万"] = (numberFormatConfig.AppendUnit ? "0" : "1");
+			config.Legacy["数字_添加万字_添加的字符"] = (string.IsNullOrWhiteSpace(numberFormatConfig.UnitText) ? "万" : numberFormatConfig.UnitText.Trim());
+			config.Legacy["数字_乘以一百_自定义"] = x5PolLGHZO(numberFormatConfig.MultiplyText, "100");
+			config.Legacy["数字_乘以一百_执行添加%"] = (numberFormatConfig.AddPercent ? "0" : "1");
 		}
 	}
 
 	[CompilerGenerated]
 	private sealed class _G_c__DisplayClass189_0
 	{
-		public bool L6fV2Pys4aB;
+		public bool flag;
 
-		public NumberFormatConfig qPFV2A9oLbQ;
+		public NumberFormatConfig numberFormatConfig;
 
-		public double rTAV2vGOpg1;
+		public double double;
 
-		public string uI6V2WqGCb0;
+		public string text;
 
-		public int NDAV20y5qpW;
+		public int value;
 
-		public string nOFV2kI0ZwG;
+		public string text;
 
 		public _G_c__DisplayClass189_0()
 		{
-			SseStreamInitializer.AlBVL0oCCKQ();
+			SseStreamInitializer.InitializeRuntime();
 		}
 
 		internal void x8NV2qhjkXY(AiHelper_12 config)
 		{
-			config.OfficeTab.Enabled = L6fV2Pys4aB;
-			config.OfficeTab.AutoHideOnDeactivate = qPFV2A9oLbQ.OfficeTabAutoHide;
-			config.OfficeTab.FontSize = rTAV2vGOpg1;
-			config.OfficeTab.DocumentNameDisplayMode = uI6V2WqGCb0;
-			config.OfficeTab.DocumentNamePrefixLength = NDAV20y5qpW;
-			config.OfficeTab.ActiveAccentColor = nOFV2kI0ZwG;
-			config.OfficeTab.O77tY1qK6N();
+			config.OfficeTab.Enabled = flag;
+			config.OfficeTab.AutoHideOnDeactivate = numberFormatConfig.OfficeTabAutoHide;
+			config.OfficeTab.FontSize = double;
+			config.OfficeTab.DocumentNameDisplayMode = text;
+			config.OfficeTab.DocumentNamePrefixLength = value;
+			config.OfficeTab.ActiveAccentColor = text;
+			config.OfficeTab.AdjustHeight();
 		}
 	}
 
 	private static readonly System.Drawing.Color t1focbbthA;
 
-	private readonly HDS8hJGbnCWyNGfO01j PrQoecnRbN;
+	private readonly HDS8hJGbnCWyNGfO01j LoggerService;
 
-	private readonly string tvuoyvY3Eq;
+	private readonly string _string;
 
 	private readonly string yenoXGmBxE;
 
-	private readonly string cg9oF4E6Xv;
+	private readonly string _string;
 
-	private bool lElohbQX4o;
+	private bool _bool;
 
 	private string b7joa4fj3r;
 
-	private string HYsoq5Sx1h;
+	private string _divideText;
 
 	private string OOSoPcsrhc;
 
-	private string Y5CoATS0cH;
+	private string _multiplyText;
 
 	private string WGhovnfRlX;
 
 	private string xIVoWtKZPm;
 
-	private string gLgo0FIRkC;
+	private string _prefixLength;
 
 	private bool eJJokIRFjU;
 
@@ -165,17 +165,17 @@ internal sealed class NumberFormatConfig : Helper_2
 
 	private bool KMbodUwlA3;
 
-	private bool ILwoz87TSL;
+	private bool _officeTabEnabled;
 
 	private bool xQyGRqjYCF;
 
-	private int kJ3GVhMIOe;
+	private int _accentWordColor;
 
-	private string LJHGBmFt1h;
+	private string _selectedFormatPreset;
 
-	private string hNxG9c0CYn;
+	private string _selectedParagraphPreset;
 
-	private string jWDG67kqeH;
+	private string _selectedTablePreset;
 
 	private string GSTGuwNw31;
 
@@ -184,7 +184,7 @@ internal sealed class NumberFormatConfig : Helper_2
 	private string cCqGTbbknq;
 
 	[CompilerGenerated]
-	private Action wLBGgw42dF;
+	private Action _action;
 
 	[CompilerGenerated]
 	private readonly ObservableCollection<string> TX8G8XOruX;
@@ -202,16 +202,16 @@ internal sealed class NumberFormatConfig : Helper_2
 	private readonly string grNGQdmWDO;
 
 	[CompilerGenerated]
-	private readonly string MZkG1vMpBn;
+	private readonly string _string;
 
 	[CompilerGenerated]
 	private ICommand IGyGrngUoZ;
 
 	[CompilerGenerated]
-	private ICommand Ha5GJCXbiw;
+	private ICommand _openConfigCommand;
 
 	[CompilerGenerated]
-	private ICommand GPFG3kB02X;
+	private ICommand _openTemplateCommand;
 
 	[CompilerGenerated]
 	private ICommand xObGUGLQdn;
@@ -220,13 +220,13 @@ internal sealed class NumberFormatConfig : Helper_2
 	private ICommand aUTGKlxVGh;
 
 	[CompilerGenerated]
-	private ICommand uYDGEF9N5Q;
+	private ICommand _newFormatPresetCommand;
 
 	[CompilerGenerated]
-	private ICommand PFLG2hwe07;
+	private ICommand _deleteFormatPresetCommand;
 
 	[CompilerGenerated]
-	private ICommand en5G4xxmsd;
+	private ICommand _saveFormatPresetCommand;
 
 	[CompilerGenerated]
 	private ICommand MefGjGgrcX;
@@ -238,7 +238,7 @@ internal sealed class NumberFormatConfig : Helper_2
 	private ICommand WuKGZletED;
 
 	[CompilerGenerated]
-	private ICommand YruGf3bi7D;
+	private ICommand _importLegacyCommand;
 
 	[CompilerGenerated]
 	private ICommand ERRGMkeuEj;
@@ -293,7 +293,7 @@ internal sealed class NumberFormatConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return MZkG1vMpBn;
+			return _string;
 		}
 	}
 
@@ -316,12 +316,12 @@ internal sealed class NumberFormatConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return Ha5GJCXbiw;
+			return _openConfigCommand;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			Ha5GJCXbiw = value;
+			_openConfigCommand = value;
 		}
 	}
 
@@ -330,12 +330,12 @@ internal sealed class NumberFormatConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return GPFG3kB02X;
+			return _openTemplateCommand;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			GPFG3kB02X = value;
+			_openTemplateCommand = value;
 		}
 	}
 
@@ -372,12 +372,12 @@ internal sealed class NumberFormatConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return uYDGEF9N5Q;
+			return _newFormatPresetCommand;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			uYDGEF9N5Q = value;
+			_newFormatPresetCommand = value;
 		}
 	}
 
@@ -386,12 +386,12 @@ internal sealed class NumberFormatConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return PFLG2hwe07;
+			return _deleteFormatPresetCommand;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			PFLG2hwe07 = value;
+			_deleteFormatPresetCommand = value;
 		}
 	}
 
@@ -400,12 +400,12 @@ internal sealed class NumberFormatConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return en5G4xxmsd;
+			return _saveFormatPresetCommand;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			en5G4xxmsd = value;
+			_saveFormatPresetCommand = value;
 		}
 	}
 
@@ -456,12 +456,12 @@ internal sealed class NumberFormatConfig : Helper_2
 		[CompilerGenerated]
 		get
 		{
-			return YruGf3bi7D;
+			return _importLegacyCommand;
 		}
 		[CompilerGenerated]
 		private set
 		{
-			YruGf3bi7D = value;
+			_importLegacyCommand = value;
 		}
 	}
 
@@ -507,11 +507,11 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return HYsoq5Sx1h;
+			return _divideText;
 		}
 		set
 		{
-			MrCsWWMvwp(ref HYsoq5Sx1h, value, "DivideText");
+			MrCsWWMvwp(ref _divideText, value, "DivideText");
 		}
 	}
 
@@ -543,11 +543,11 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return Y5CoATS0cH;
+			return _multiplyText;
 		}
 		set
 		{
-			MrCsWWMvwp(ref Y5CoATS0cH, value, "MultiplyText");
+			MrCsWWMvwp(ref _multiplyText, value, "MultiplyText");
 		}
 	}
 
@@ -567,11 +567,11 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return ILwoz87TSL;
+			return _officeTabEnabled;
 		}
 		set
 		{
-			MrCsWWMvwp(ref ILwoz87TSL, value, "OfficeTabEnabled");
+			MrCsWWMvwp(ref _officeTabEnabled, value, "OfficeTabEnabled");
 		}
 	}
 
@@ -652,11 +652,11 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return gLgo0FIRkC;
+			return _prefixLength;
 		}
 		set
 		{
-			MrCsWWMvwp(ref gLgo0FIRkC, value, "PrefixLength");
+			MrCsWWMvwp(ref _prefixLength, value, "PrefixLength");
 		}
 	}
 
@@ -664,11 +664,11 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return kJ3GVhMIOe;
+			return _accentWordColor;
 		}
 		set
 		{
-			if (MrCsWWMvwp(ref kJ3GVhMIOe, value, "AccentWordColor"))
+			if (MrCsWWMvwp(ref _accentWordColor, value, "AccentWordColor"))
 			{
 				fpVsxno8nm("AccentColorBrush");
 				fpVsxno8nm("AccentForegroundBrush");
@@ -697,13 +697,13 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return LJHGBmFt1h;
+			return _selectedFormatPreset;
 		}
 		set
 		{
-			if (!lElohbQX4o && !string.Equals(LJHGBmFt1h, value, StringComparison.Ordinal))
+			if (!_bool && !string.Equals(_selectedFormatPreset, value, StringComparison.Ordinal))
 			{
-				LJHGBmFt1h = value;
+				_selectedFormatPreset = value;
 				fpVsxno8nm("SelectedFormatPreset");
 				SLxo1Aemn2();
 			}
@@ -714,11 +714,11 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return hNxG9c0CYn;
+			return _selectedParagraphPreset;
 		}
 		set
 		{
-			MrCsWWMvwp(ref hNxG9c0CYn, value, "SelectedParagraphPreset");
+			MrCsWWMvwp(ref _selectedParagraphPreset, value, "SelectedParagraphPreset");
 		}
 	}
 
@@ -726,11 +726,11 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		get
 		{
-			return jWDG67kqeH;
+			return _selectedTablePreset;
 		}
 		set
 		{
-			MrCsWWMvwp(ref jWDG67kqeH, value, "SelectedTablePreset");
+			MrCsWWMvwp(ref _selectedTablePreset, value, "SelectedTablePreset");
 		}
 	}
 
@@ -787,20 +787,20 @@ internal sealed class NumberFormatConfig : Helper_2
 
 	public NumberFormatConfig(HDS8hJGbnCWyNGfO01j P_0)
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
-		tvuoyvY3Eq = AiSseStreamService.mSfs9VWIdb("config", "格式方案预设");
-		yenoXGmBxE = AiSseStreamService.mSfs9VWIdb("config", "段落预设");
-		cg9oF4E6Xv = AiSseStreamService.mSfs9VWIdb("config", "表格预设");
+		SseStreamInitializer.InitializeRuntime();
+		_string = AiSseStreamService.GetUserDataPath("config", "格式方案预设");
+		yenoXGmBxE = AiSseStreamService.GetUserDataPath("config", "段落预设");
+		_string = AiSseStreamService.GetUserDataPath("config", "表格预设");
 		TGjGINXrH6 = new ObservableCollection<string>();
 		fmQGiKAWHR = new ObservableCollection<string>();
 		YRgGHs8AQj = new ObservableCollection<string>();
-		PrQoecnRbN = P_0 ?? throw new ArgumentNullException("dialogs");
+		LoggerService = P_0 ?? throw new ArgumentNullException("dialogs");
 		TX8G8XOruX = new ObservableCollection<string>(new string[1]
 		{
 			"IP_Assurance"
 		});
 		grNGQdmWDO = AiSseStreamService.ConfigDir;
-		MZkG1vMpBn = AiSseStreamService.TemplateDir;
+		_string = AiSseStreamService.TemplateDir;
 		oEJoDtr7bC();
 		nsdoTAS1ad();
 		alCo8L4IJR();
@@ -812,13 +812,13 @@ internal sealed class NumberFormatConfig : Helper_2
 	[CompilerGenerated]
 	public void iVQon5Xo9R(Action P_0)
 	{
-		Action action = wLBGgw42dF;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Combine(action2, P_0);
-			action = Interlocked.CompareExchange(ref wLBGgw42dF, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -827,13 +827,13 @@ internal sealed class NumberFormatConfig : Helper_2
 	[CompilerGenerated]
 	public void pp0o7YFtih(Action P_0)
 	{
-		Action action = wLBGgw42dF;
+		Action action = _action;
 		Action action2;
 		do
 		{
 			action2 = action;
 			Action value = (Action)Delegate.Remove(action2, P_0);
-			action = Interlocked.CompareExchange(ref wLBGgw42dF, value, action2);
+			action = Interlocked.CompareExchange(ref _action, value, action2);
 		}
 		while ((object)action != action2);
 	}
@@ -866,7 +866,7 @@ internal sealed class NumberFormatConfig : Helper_2
 		ImportLegacyCommand = new DelegateCommand(W8Wo28jdEx);
 		CloseCommand = new DelegateCommand((Action)delegate
 		{
-			wLBGgw42dF?.Invoke();
+			_action?.Invoke();
 		}, (Func<bool>)null);
 	}
 
@@ -874,36 +874,36 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		TabName = TLoosVHoT2(TableBorderConfig.Current.Config.System.TabName);
 		DisableAutomaticStyleUpdate = TableBorderConfig.Current.Config.System.DisableAutomaticStyleUpdate;
-		DivideText = x5PolLGHZO(TableBorderConfig.Current.KxPSXHwy4c("数字_除以一万_自定义", "10000"), "10000");
-		AppendUnit = TableBorderConfig.Current.HYsSh2NDxY("数字_除以一万_执行添加万") != 0;
-		UnitText = TableBorderConfig.Current.KxPSXHwy4c("数字_添加万字_添加的字符", "万");
-		MultiplyText = x5PolLGHZO(TableBorderConfig.Current.KxPSXHwy4c("数字_乘以一百_自定义", "100"), "100");
-		AddPercent = TableBorderConfig.Current.HYsSh2NDxY("数字_乘以一百_执行添加%") != 0;
+		DivideText = x5PolLGHZO(TableBorderConfig.Current.GetString("数字_除以一万_自定义", "10000"), "10000");
+		AppendUnit = TableBorderConfig.Current.GetInt("数字_除以一万_执行添加万") != 0;
+		UnitText = TableBorderConfig.Current.GetString("数字_添加万字_添加的字符", "万");
+		MultiplyText = x5PolLGHZO(TableBorderConfig.Current.GetString("数字_乘以一百_自定义", "100"), "100");
+		AddPercent = TableBorderConfig.Current.GetInt("数字_乘以一百_执行添加%") != 0;
 	}
 
 	private void WpvogYRv6E()
 	{
 		_G_c__DisplayClass187_0 CS_8_locals_10 = new _G_c__DisplayClass187_0();
-		CS_8_locals_10.ptIV2aYh6P8 = this;
-		CS_8_locals_10.LeMV2hqWLSR = TLoosVHoT2(TabName);
-		TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 config)
+		CS_8_locals_10.numberFormatConfig = this;
+		CS_8_locals_10.text = TLoosVHoT2(TabName);
+		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 config)
 		{
-			config.System.TabName = CS_8_locals_10.LeMV2hqWLSR;
-			config.System.DisableAutomaticStyleUpdate = CS_8_locals_10.ptIV2aYh6P8.DisableAutomaticStyleUpdate;
-			config.Legacy["数字_除以一万_自定义"] = x5PolLGHZO(CS_8_locals_10.ptIV2aYh6P8.DivideText, "10000");
-			config.Legacy["数字_除以一万_执行添加万"] = (CS_8_locals_10.ptIV2aYh6P8.AppendUnit ? "0" : "1");
-			config.Legacy["数字_添加万字_添加的字符"] = (string.IsNullOrWhiteSpace(CS_8_locals_10.ptIV2aYh6P8.UnitText) ? "万" : CS_8_locals_10.ptIV2aYh6P8.UnitText.Trim());
-			config.Legacy["数字_乘以一百_自定义"] = x5PolLGHZO(CS_8_locals_10.ptIV2aYh6P8.MultiplyText, "100");
-			config.Legacy["数字_乘以一百_执行添加%"] = (CS_8_locals_10.ptIV2aYh6P8.AddPercent ? "0" : "1");
+			config.System.TabName = CS_8_locals_10.text;
+			config.System.DisableAutomaticStyleUpdate = CS_8_locals_10.numberFormatConfig.DisableAutomaticStyleUpdate;
+			config.Legacy["数字_除以一万_自定义"] = x5PolLGHZO(CS_8_locals_10.numberFormatConfig.DivideText, "10000");
+			config.Legacy["数字_除以一万_执行添加万"] = (CS_8_locals_10.numberFormatConfig.AppendUnit ? "0" : "1");
+			config.Legacy["数字_添加万字_添加的字符"] = (string.IsNullOrWhiteSpace(CS_8_locals_10.numberFormatConfig.UnitText) ? "万" : CS_8_locals_10.numberFormatConfig.UnitText.Trim());
+			config.Legacy["数字_乘以一百_自定义"] = x5PolLGHZO(CS_8_locals_10.numberFormatConfig.MultiplyText, "100");
+			config.Legacy["数字_乘以一百_执行添加%"] = (CS_8_locals_10.numberFormatConfig.AddPercent ? "0" : "1");
 		});
 		Ribbon1.PMEckKFWry();
-		PrQoecnRbN.tfDVL1SJK0M("常规设置已保存。", "IP_Assurance");
+		LoggerService.LogWarning("常规设置已保存。", "IP_Assurance");
 	}
 
 	private void alCo8L4IJR()
 	{
 		Helper_1 officeTab = TableBorderConfig.Current.Config.OfficeTab;
-		officeTab.O77tY1qK6N();
+		officeTab.AdjustHeight();
 		OfficeTabEnabled = officeTab.Enabled;
 		OfficeTabAutoHide = officeTab.AutoHideOnDeactivate;
 		OfficeTabSize = Math.Max(7.0, Math.Min(18.0, officeTab.FontSize)).ToString("0.#", CultureInfo.InvariantCulture);
@@ -915,36 +915,36 @@ internal sealed class NumberFormatConfig : Helper_2
 	private void bUAoIIp7Pr()
 	{
 		_G_c__DisplayClass189_0 CS_8_locals_22 = new _G_c__DisplayClass189_0();
-		CS_8_locals_22.qPFV2A9oLbQ = this;
-		if (!double.TryParse((OfficeTabSize ?? string.Empty).Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out CS_8_locals_22.rTAV2vGOpg1) || CS_8_locals_22.rTAV2vGOpg1 < 7.0 || CS_8_locals_22.rTAV2vGOpg1 > 18.0)
+		CS_8_locals_22.numberFormatConfig = this;
+		if (!double.TryParse((OfficeTabSize ?? string.Empty).Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out CS_8_locals_22.double) || CS_8_locals_22.double < 7.0 || CS_8_locals_22.double > 18.0)
 		{
-			PrQoecnRbN.GZdVLrQIdas("标签大小必须在 7 ~ 18 之间。", "IP_Assurance");
+			LoggerService.LogMessage("标签大小必须在 7 ~ 18 之间。", "IP_Assurance");
 			return;
 		}
-		CS_8_locals_22.NDAV20y5qpW = TableBorderConfig.Current.Config.OfficeTab.DocumentNamePrefixLength;
-		if (IsPrefixNameMode && (!int.TryParse((PrefixLength ?? string.Empty).Trim(), out CS_8_locals_22.NDAV20y5qpW) || CS_8_locals_22.NDAV20y5qpW < 1 || CS_8_locals_22.NDAV20y5qpW > 120))
+		CS_8_locals_22.value = TableBorderConfig.Current.Config.OfficeTab.DocumentNamePrefixLength;
+		if (IsPrefixNameMode && (!int.TryParse((PrefixLength ?? string.Empty).Trim(), out CS_8_locals_22.value) || CS_8_locals_22.value < 1 || CS_8_locals_22.value > 120))
 		{
-			PrQoecnRbN.GZdVLrQIdas("文件名前 N 位必须在 1 ~ 120 之间。", "IP_Assurance");
+			LoggerService.LogMessage("文件名前 N 位必须在 1 ~ 120 之间。", "IP_Assurance");
 			return;
 		}
-		if (!IsPrefixNameMode && (!int.TryParse((PrefixLength ?? string.Empty).Trim(), out CS_8_locals_22.NDAV20y5qpW) || CS_8_locals_22.NDAV20y5qpW < 1 || CS_8_locals_22.NDAV20y5qpW > 120))
+		if (!IsPrefixNameMode && (!int.TryParse((PrefixLength ?? string.Empty).Trim(), out CS_8_locals_22.value) || CS_8_locals_22.value < 1 || CS_8_locals_22.value > 120))
 		{
-			CS_8_locals_22.NDAV20y5qpW = 12;
+			CS_8_locals_22.value = 12;
 		}
-		CS_8_locals_22.uI6V2WqGCb0 = DocumentNameMode;
-		CS_8_locals_22.nOFV2kI0ZwG = AccentColorText;
-		CS_8_locals_22.L6fV2Pys4aB = OfficeTabEnabled;
-		TableBorderConfig.Current.wpmS5yUw9A(delegate(AiHelper_12 config)
+		CS_8_locals_22.text = DocumentNameMode;
+		CS_8_locals_22.text = AccentColorText;
+		CS_8_locals_22.flag = OfficeTabEnabled;
+		TableBorderConfig.Current.UpdateConfig(delegate(AiHelper_12 config)
 		{
-			config.OfficeTab.Enabled = CS_8_locals_22.L6fV2Pys4aB;
-			config.OfficeTab.AutoHideOnDeactivate = CS_8_locals_22.qPFV2A9oLbQ.OfficeTabAutoHide;
-			config.OfficeTab.FontSize = CS_8_locals_22.rTAV2vGOpg1;
-			config.OfficeTab.DocumentNameDisplayMode = CS_8_locals_22.uI6V2WqGCb0;
-			config.OfficeTab.DocumentNamePrefixLength = CS_8_locals_22.NDAV20y5qpW;
-			config.OfficeTab.ActiveAccentColor = CS_8_locals_22.nOFV2kI0ZwG;
-			config.OfficeTab.O77tY1qK6N();
+			config.OfficeTab.Enabled = CS_8_locals_22.flag;
+			config.OfficeTab.AutoHideOnDeactivate = CS_8_locals_22.numberFormatConfig.OfficeTabAutoHide;
+			config.OfficeTab.FontSize = CS_8_locals_22.double;
+			config.OfficeTab.DocumentNameDisplayMode = CS_8_locals_22.text;
+			config.OfficeTab.DocumentNamePrefixLength = CS_8_locals_22.value;
+			config.OfficeTab.ActiveAccentColor = CS_8_locals_22.text;
+			config.OfficeTab.AdjustHeight();
 		});
-		if (CS_8_locals_22.L6fV2Pys4aB)
+		if (CS_8_locals_22.flag)
 		{
 			AiHelper_13.EnuUgD338d();
 		}
@@ -952,12 +952,12 @@ internal sealed class NumberFormatConfig : Helper_2
 		{
 			AiHelper_13.J4IU837YfN();
 		}
-		PrQoecnRbN.tfDVL1SJK0M("OfficeTab 设置已保存。", "IP_Assurance");
+		LoggerService.LogWarning("OfficeTab 设置已保存。", "IP_Assurance");
 	}
 
 	private void n8GoiGX41T()
 	{
-		int? num = PrQoecnRbN.KutVLHOhcIC(AccentWordColor);
+		int? num = LoggerService.KutVLHOhcIC(AccentWordColor);
 		if (num.HasValue)
 		{
 			AccentWordColor = num.Value;
@@ -966,24 +966,24 @@ internal sealed class NumberFormatConfig : Helper_2
 
 	private void y1poHfQNQI()
 	{
-		lElohbQX4o = true;
+		_bool = true;
 		Pr8ofEECQT(ParagraphPresetNames, PresetNames(yenoXGmBxE));
-		Pr8ofEECQT(TablePresetNames, PresetNames(cg9oF4E6Xv));
-		SelectedParagraphPreset = QbjoMRR6bb(TableBorderConfig.Current.KxPSXHwy4c("段落配置_方案名", string.Empty), yenoXGmBxE, ParagraphPresetNames);
-		SelectedTablePreset = QbjoMRR6bb(TableBorderConfig.Current.KxPSXHwy4c("表格配置_方案名", string.Empty), cg9oF4E6Xv, TablePresetNames);
-		maHoQJdq3X(TableBorderConfig.Current.KxPSXHwy4c("格式方案_方案名", string.Empty));
-		lElohbQX4o = false;
+		Pr8ofEECQT(TablePresetNames, PresetNames(_string));
+		SelectedParagraphPreset = QbjoMRR6bb(TableBorderConfig.Current.GetString("段落配置_方案名", string.Empty), yenoXGmBxE, ParagraphPresetNames);
+		SelectedTablePreset = QbjoMRR6bb(TableBorderConfig.Current.GetString("表格配置_方案名", string.Empty), _string, TablePresetNames);
+		maHoQJdq3X(TableBorderConfig.Current.GetString("格式方案_方案名", string.Empty));
+		_bool = false;
 		SLxo1Aemn2();
 	}
 
 	private void maHoQJdq3X(string P_0 = "")
 	{
-		bool flag = lElohbQX4o;
-		lElohbQX4o = true;
-		Pr8ofEECQT(FormatPresetNames, PresetNames(tvuoyvY3Eq));
-		LJHGBmFt1h = ((!string.IsNullOrWhiteSpace(P_0) && File.Exists(poVob2bYv1(P_0))) ? P_0 : FormatPresetNames.FirstOrDefault());
+		bool flag = _bool;
+		_bool = true;
+		Pr8ofEECQT(FormatPresetNames, PresetNames(_string));
+		_selectedFormatPreset = ((!string.IsNullOrWhiteSpace(P_0) && File.Exists(poVob2bYv1(P_0))) ? P_0 : FormatPresetNames.FirstOrDefault());
 		fpVsxno8nm("SelectedFormatPreset");
-		lElohbQX4o = flag;
+		_bool = flag;
 	}
 
 	private void SLxo1Aemn2()
@@ -1009,9 +1009,9 @@ internal sealed class NumberFormatConfig : Helper_2
 	private void ALrorHr6pU()
 	{
 		// 格式配置功能已移除
-		if (false && NukoYJMKKG(SelectedParagraphPreset, yenoXGmBxE, "段落方案") && NukoYJMKKG(SelectedTablePreset, cg9oF4E6Xv, "表格方案"))
+		if (false && NukoYJMKKG(SelectedParagraphPreset, yenoXGmBxE, "段落方案") && NukoYJMKKG(SelectedTablePreset, _string, "表格方案"))
 		{
-			string text = PrQoecnRbN.hveVL8NJXjM("新建格式方案", "请输入组合方案名称：", "年报");
+			string text = LoggerService.hveVL8NJXjM("新建格式方案", "请输入组合方案名称：", "年报");
 			if (!string.IsNullOrWhiteSpace(text))
 			{
 				string text2 = shwoZ8pDWQ(text);
@@ -1033,9 +1033,9 @@ internal sealed class NumberFormatConfig : Helper_2
 		string selectedFormatPreset = SelectedFormatPreset;
 		if (string.IsNullOrWhiteSpace(selectedFormatPreset))
 		{
-			PrQoecnRbN.GZdVLrQIdas("请先选择要删除的组合方案。", "格式方案");
+			LoggerService.LogMessage("请先选择要删除的组合方案。", "格式方案");
 		}
-		else if (PrQoecnRbN.LDCVLQYyCaG("确定删除组合方案“" + selectedFormatPreset + "”吗？段落和表格预设本身不会被删除。", "格式方案"))
+		else if (LoggerService.LDCVLQYyCaG("确定删除组合方案“" + selectedFormatPreset + "”吗？段落和表格预设本身不会被删除。", "格式方案"))
 		{
 			string path = poVob2bYv1(selectedFormatPreset);
 			if (File.Exists(path))
@@ -1055,10 +1055,10 @@ internal sealed class NumberFormatConfig : Helper_2
 		P_1 = null;
 		if (string.IsNullOrWhiteSpace(SelectedFormatPreset))
 		{
-			PrQoecnRbN.GZdVLrQIdas("请先新建或选择一个组合方案。", "格式方案");
+			LoggerService.LogMessage("请先新建或选择一个组合方案。", "格式方案");
 			return false;
 		}
-		if (!NukoYJMKKG(SelectedParagraphPreset, yenoXGmBxE, "段落方案") || !NukoYJMKKG(SelectedTablePreset, cg9oF4E6Xv, "表格方案"))
+		if (!NukoYJMKKG(SelectedParagraphPreset, yenoXGmBxE, "段落方案") || !NukoYJMKKG(SelectedTablePreset, _string, "表格方案"))
 		{
 			return false;
 		}
@@ -1070,7 +1070,7 @@ internal sealed class NumberFormatConfig : Helper_2
 		xDhowQErhb(poVob2bYv1(SelectedFormatPreset), P_1);
 		if (P_0)
 		{
-			PrQoecnRbN.tfDVL1SJK0M("组合方案已保存。", "格式方案");
+			LoggerService.LogWarning("组合方案已保存。", "格式方案");
 		}
 		return true;
 	}
@@ -1084,18 +1084,18 @@ internal sealed class NumberFormatConfig : Helper_2
 			return;
 		}
 		string text = Path.Combine(yenoXGmBxE, ws1A6IV2tQ3IY0xZETbe.ParagraphPreset + ".json");
-		string text2 = Path.Combine(cg9oF4E6Xv, ws1A6IV2tQ3IY0xZETbe.TablePreset + ".json");
+		string text2 = Path.Combine(_string, ws1A6IV2tQ3IY0xZETbe.TablePreset + ".json");
 		if (!File.Exists(text))
 		{
-			PrQoecnRbN.GZdVLrQIdas("引用的段落方案不存在：" + ws1A6IV2tQ3IY0xZETbe.ParagraphPreset + "。请重新选择后再应用。", "格式方案");
+			LoggerService.LogMessage("引用的段落方案不存在：" + ws1A6IV2tQ3IY0xZETbe.ParagraphPreset + "。请重新选择后再应用。", "格式方案");
 			return;
 		}
 		if (!File.Exists(text2))
 		{
-			PrQoecnRbN.GZdVLrQIdas("引用的表格方案不存在：" + ws1A6IV2tQ3IY0xZETbe.TablePreset + "。请重新选择后再应用。", "格式方案");
+			LoggerService.LogMessage("引用的表格方案不存在：" + ws1A6IV2tQ3IY0xZETbe.TablePreset + "。请重新选择后再应用。", "格式方案");
 			return;
 		}
-		Dictionary<string, object> dictionary = TableBorderConfig.Current.dnEScXBL9Y();
+		Dictionary<string, object> dictionary = TableBorderConfig.Current.GetAllLegacy();
 		foreach (KeyValuePair<string, string> item in from pair in H6sotUh3Xu(text)
 			where pair.Key.StartsWith("段落配置_方案名", StringComparison.Ordinal)
 			select pair)
@@ -1112,9 +1112,9 @@ internal sealed class NumberFormatConfig : Helper_2
 		dictionary["段落配置_当前方案"] = ws1A6IV2tQ3IY0xZETbe.TablePreset;
 		dictionary["已应用组合方案：“"] = SelectedFormatPreset;
 		dictionary.Remove("”。如已打开表格/段落配置窗口，请重新打开查看最新配置。");
-		TableBorderConfig.Current.TTVSewUqXZ(dictionary);
+		TableBorderConfig.Current.SetAllLegacy(dictionary);
 		FormatStatus = "格式方案已应用。后续执行段落/表格调整时将使用该组合配置。" + SelectedFormatPreset + "格式方案";
-		PrQoecnRbN.tfDVL1SJK0M("格式方案已应用。", "IP_Assurance");
+		LoggerService.LogWarning("格式方案已应用。", "IP_Assurance");
 	}
 
 	private void tfQoKfDq6l()
@@ -1129,7 +1129,7 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		// 旧版迁移功能已移除
 		return;
-		string text = PrQoecnRbN.BxkVLIlDE06("选择旧版 Word 配置文件");
+		string text = LoggerService.BxkVLIlDE06("选择旧版 Word 配置文件");
 		if (text != null)
 		{
 			dsVo4i4N02(text, "已选择旧版配置文件。");
@@ -1142,7 +1142,7 @@ internal sealed class NumberFormatConfig : Helper_2
 		return;
 		if (!CanImportLegacy)
 		{
-			PrQoecnRbN.GZdVLrQIdas("未找到旧版 config.json。请先点击“重新检测”或“选择文件”。", "旧版配置迁移");
+			LoggerService.LogMessage("未找到旧版 config.json。请先点击“重新检测”或“选择文件”。", "旧版配置迁移");
 			return;
 		}
 		try
@@ -1150,19 +1150,19 @@ internal sealed class NumberFormatConfig : Helper_2
 			FormatConfigBase a6h5sUwLEOvWuLQLmiB = LegacyConfigMigrator.TgvwKZvsfr(LegacyConfigPath);
 			if (!a6h5sUwLEOvWuLQLmiB.HasMigratableItems)
 			{
-				PrQoecnRbN.GZdVLrQIdas("旧版配置中没有找到可迁移的表格/段落配置或预设。", "旧版配置迁移");
+				LoggerService.LogMessage("旧版配置中没有找到可迁移的表格/段落配置或预设。", "旧版配置迁移");
 			}
-			else if (PrQoecnRbN.LDCVLQYyCaG(axQoGw5nbK(a6h5sUwLEOvWuLQLmiB), "旧版配置迁移"))
+			else if (LoggerService.LDCVLQYyCaG(axQoGw5nbK(a6h5sUwLEOvWuLQLmiB), "旧版配置迁移"))
 			{
 				ConfigMigrationResult yjZ4lmw7an9JOgXHIuS = LegacyConfigMigrator.gTQwEdX7kI(a6h5sUwLEOvWuLQLmiB);
 				LegacyMigrationStatus = grIoCml6cK(yjZ4lmw7an9JOgXHIuS);
 				if (yjZ4lmw7an9JOgXHIuS.HasFailures)
 				{
-					PrQoecnRbN.GZdVLrQIdas(LegacyMigrationStatus, "旧版配置迁移");
+					LoggerService.LogMessage(LegacyMigrationStatus, "旧版配置迁移");
 				}
 				else
 				{
-					PrQoecnRbN.tfDVL1SJK0M(LegacyMigrationStatus, "旧版配置迁移");
+					LoggerService.LogWarning(LegacyMigrationStatus, "旧版配置迁移");
 				}
 				y1poHfQNQI();
 			}
@@ -1170,7 +1170,7 @@ internal sealed class NumberFormatConfig : Helper_2
 		catch (Exception ex)
 		{
 			LegacyMigrationStatus = "导入失败：" + ex.Message;
-			PrQoecnRbN.ULjVLJjCx1c("旧版配置导入失败：\r\n" + ex.Message, "旧版配置迁移");
+			LoggerService.LogDebugMessage("旧版配置导入失败：\r\n" + ex.Message, "旧版配置迁移");
 		}
 	}
 
@@ -1190,7 +1190,7 @@ internal sealed class NumberFormatConfig : Helper_2
 		{
 			return "组合方案“" + P_0 + "”引用的段落方案不存在：" + P_1.ParagraphPreset + "。";
 		}
-		if (!File.Exists(Path.Combine(cg9oF4E6Xv, P_1.TablePreset + ".json")))
+		if (!File.Exists(Path.Combine(_string, P_1.TablePreset + ".json")))
 		{
 			return "组合方案“" + P_0 + "”引用的表格方案不存在：" + P_1.TablePreset + "。";
 		}
@@ -1201,12 +1201,12 @@ internal sealed class NumberFormatConfig : Helper_2
 	{
 		if (string.IsNullOrWhiteSpace(P_0))
 		{
-			PrQoecnRbN.GZdVLrQIdas("请选择" + P_2 + "。", "格式方案");
+			LoggerService.LogMessage("请选择" + P_2 + "。", "格式方案");
 			return false;
 		}
 		if (!File.Exists(Path.Combine(P_1, P_0 + ".json")))
 		{
-			PrQoecnRbN.GZdVLrQIdas(P_2 + "不存在：" + P_0 + "。请重新选择。", "格式方案");
+			LoggerService.LogMessage(P_2 + "不存在：" + P_0 + "。请重新选择。", "格式方案");
 			return false;
 		}
 		return true;
@@ -1266,7 +1266,7 @@ internal sealed class NumberFormatConfig : Helper_2
 
 	private string poVob2bYv1(string P_0)
 	{
-		return Path.Combine(tvuoyvY3Eq, (P_0 ?? string.Empty) + ".json");
+		return Path.Combine(_string, (P_0 ?? string.Empty) + ".json");
 	}
 
 	private static Ws1A6IV2tQ3IY0xZETbe h2BoSGsBMl(string P_0)
@@ -1286,7 +1286,7 @@ internal sealed class NumberFormatConfig : Helper_2
 
 	private static void ghuoLu1TgQ(string P_0)
 	{
-		AiSseStreamService.i24sVuaOic(P_0);
+		AiSseStreamService.EnsureDirectory(P_0);
 		Process.Start(new ProcessStartInfo("explorer.exe", P_0)
 		{
 			UseShellExecute = true
@@ -1382,7 +1382,7 @@ internal sealed class NumberFormatConfig : Helper_2
 
 	static NumberFormatConfig()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		t1focbbthA = System.Drawing.Color.FromArgb(43, 116, 242);
 	}
 
@@ -1398,6 +1398,6 @@ internal sealed class NumberFormatConfig : Helper_2
 	[CompilerGenerated]
 	private void QgtoOpG1wP()
 	{
-		wLBGgw42dF?.Invoke();
+		_action?.Invoke();
 	}
 }

@@ -23,12 +23,12 @@ internal class AiSseStreamService2
 
 	public AiSseStreamService2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 	}
 
 	static AiSseStreamService2()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		jWYVSMB4Mr2 = typeof(AiSseStreamService2).Assembly.ManifestModule;
 	}
 }

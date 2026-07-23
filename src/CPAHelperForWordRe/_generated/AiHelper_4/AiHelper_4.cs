@@ -15,17 +15,17 @@ internal static class AiHelper_4
 	{
 		public IntPtr cfnFPfMCaI;
 
-		public int HXnFAfQ2Me;
+		public int value;
 
-		public IntPtr aIbFvfYn6O;
+		public IntPtr intPtr;
 
-		public IntPtr gxbFWbUp1F;
+		public IntPtr intPtr;
 
-		public int Uw6F0NqWdp;
+		public int value;
 
 		public int jRuFkSXreX;
 
-		public int UWUFxie1Ta;
+		public int value;
 	}
 
 	private static readonly HashSet<IntPtr> cAfVPkJWlC;
@@ -134,7 +134,7 @@ internal static class AiHelper_4
 		if (!oAbV0G1jGw && P_0 == 0 && P_1 == (IntPtr)1)
 		{
 			L4uBarFqRh3JxJg1SCu structure = (L4uBarFqRh3JxJg1SCu)Marshal.PtrToStructure(P_2, typeof(L4uBarFqRh3JxJg1SCu));
-			if (gfRV5NHHnD(structure.HXnFAfQ2Me) && qMMVcyk2oU(structure.cfnFPfMCaI))
+			if (gfRV5NHHnD(structure.value) && qMMVcyk2oU(structure.cfnFPfMCaI))
 			{
 				oAbV0G1jGw = true;
 				try
@@ -146,7 +146,7 @@ internal static class AiHelper_4
 				{
 					oAbV0G1jGw = false;
 				}
-				structure.HXnFAfQ2Me = 0;
+				structure.value = 0;
 				Marshal.StructureToPtr(structure, P_2, fDeleteOld: false);
 			}
 		}
@@ -212,7 +212,7 @@ internal static class AiHelper_4
 
 	static AiHelper_4()
 	{
-		SseStreamInitializer.AlBVL0oCCKQ();
+		SseStreamInitializer.InitializeRuntime();
 		cAfVPkJWlC = new HashSet<IntPtr>();
 		iEsVA3v1o8 = new Dictionary<Window, IntPtr>();
 		KFhVvRQQW6 = IntPtr.Zero;
