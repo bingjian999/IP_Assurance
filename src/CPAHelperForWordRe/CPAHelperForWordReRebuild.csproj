@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CPAHelperForWordRe</RootNamespace>
+    <AssemblyName>CPAHelperForWordReRebuild</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>false</Deterministic>
+    <NoWarn>CS0168;CS0219;CS0414;CS0649;CS0162;CS8019;CS0108;CS0114;CS0067;CS1998;CS4014;CS0436;CS0105</NoWarn>
+    <WarningLevel>1</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoStdLib>false</NoStdLib>
+    <LangVersion>latest</LangVersion>
+    <!-- 第三方 DLL 目录 (相对于项目文件的路径) -->
+    <RefDir>$(MSBuildThisFileDirectory)..\..\lib</RefDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <!-- Framework 引用 -->
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="System.Windows.Forms.Integration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Security" />
+    <!-- Office / VSTO (GAC) -->
+    <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.Office.Tools.Word.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- 第三方 DLL：引用 release 目录全部 -->
+    <Reference Include="Anthropic"><HintPath>$(RefDir)\Anthropic.dll</HintPath></Reference>
+    <Reference Include="OpenAI"><HintPath>$(RefDir)\OpenAI.dll</HintPath></Reference>
+    <Reference Include="EPPlus"><HintPath>$(RefDir)\EPPlus.dll</HintPath></Reference>
+    <Reference Include="Markdig"><HintPath>$(RefDir)\Markdig.dll</HintPath></Reference>
+    <Reference Include="Newtonsoft.Json"><HintPath>$(RefDir)\Newtonsoft.Json.dll</HintPath></Reference>
+    <Reference Include="Google.Protobuf"><HintPath>$(RefDir)\Google.Protobuf.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core"><HintPath>$(RefDir)\Microsoft.Web.WebView2.Core.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms"><HintPath>$(RefDir)\Microsoft.Web.WebView2.WinForms.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf"><HintPath>$(RefDir)\Microsoft.Web.WebView2.Wpf.dll</HintPath></Reference>
+    <Reference Include="ModelContextProtocol"><HintPath>$(RefDir)\ModelContextProtocol.dll</HintPath></Reference>
+    <Reference Include="ModelContextProtocol.Core"><HintPath>$(RefDir)\ModelContextProtocol.Core.dll</HintPath></Reference>
+    <Reference Include="Microsoft.ML.Tokenizers"><HintPath>$(RefDir)\Microsoft.ML.Tokenizers.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.AI"><HintPath>$(RefDir)\Microsoft.Extensions.AI.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.AI.Abstractions"><HintPath>$(RefDir)\Microsoft.Extensions.AI.Abstractions.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Configuration"><HintPath>$(RefDir)\Microsoft.Extensions.Configuration.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection"><HintPath>$(RefDir)\Microsoft.Extensions.DependencyInjection.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Logging"><HintPath>$(RefDir)\Microsoft.Extensions.Logging.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions"><HintPath>$(RefDir)\Microsoft.Extensions.Logging.Abstractions.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Options"><HintPath>$(RefDir)\Microsoft.Extensions.Options.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Primitives"><HintPath>$(RefDir)\Microsoft.Extensions.Primitives.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory"><HintPath>$(RefDir)\Microsoft.Extensions.Caching.Memory.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Http"><HintPath>$(RefDir)\Microsoft.Extensions.Http.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical"><HintPath>$(RefDir)\Microsoft.Extensions.FileProviders.Physical.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing"><HintPath>$(RefDir)\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json"><HintPath>$(RefDir)\Microsoft.Extensions.Configuration.Json.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions"><HintPath>$(RefDir)\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions"><HintPath>$(RefDir)\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions"><HintPath>$(RefDir)\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Configuration"><HintPath>$(RefDir)\Microsoft.Extensions.Logging.Configuration.dll</HintPath></Reference>
+    <Reference Include="Microsoft.Extensions.Http.Polly"><HintPath>$(RefDir)\Microsoft.Extensions.Http.Polly.dll</HintPath></Reference>
+    <Reference Include="Polly"><HintPath>$(RefDir)\Polly.dll</HintPath></Reference>
+    <Reference Include="Polly.Core"><HintPath>$(RefDir)\Polly.Core.dll</HintPath></Reference>
+    <Reference Include="System.Buffers"><HintPath>$(RefDir)\System.Buffers.dll</HintPath></Reference>
+    <Reference Include="System.Memory"><HintPath>$(RefDir)\System.Memory.dll</HintPath></Reference>
+    <Reference Include="System.Numerics.Vectors"><HintPath>$(RefDir)\System.Numerics.Vectors.dll</HintPath></Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe"><HintPath>$(RefDir)\System.Runtime.CompilerServices.Unsafe.dll</HintPath></Reference>
+    <Reference Include="System.Threading.Channels"><HintPath>$(RefDir)\System.Threading.Channels.dll</HintPath></Reference>
+    <Reference Include="System.Threading.Tasks.Extensions"><HintPath>$(RefDir)\System.Threading.Tasks.Extensions.dll</HintPath></Reference>
+    <Reference Include="System.ValueTuple"><HintPath>$(RefDir)\System.ValueTuple.dll</HintPath></Reference>
+    <Reference Include="System.Text.Encodings.Web"><HintPath>$(RefDir)\System.Text.Encodings.Web.dll</HintPath></Reference>
+    <Reference Include="System.Text.Json"><HintPath>$(RefDir)\System.Text.Json.dll</HintPath></Reference>
+    <Reference Include="System.Formats.Asn1"><HintPath>$(RefDir)\System.Formats.Asn1.dll</HintPath></Reference>
+    <Reference Include="System.IO.Pipelines"><HintPath>$(RefDir)\System.IO.Pipelines.dll</HintPath></Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource"><HintPath>$(RefDir)\System.Diagnostics.DiagnosticSource.dll</HintPath></Reference>
+    <Reference Include="System.Drawing.Common"><HintPath>$(RefDir)\System.Drawing.Common.dll</HintPath></Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs"><HintPath>$(RefDir)\System.Security.Cryptography.Pkcs.dll</HintPath></Reference>
+    <Reference Include="System.Security.Cryptography.Xml"><HintPath>$(RefDir)\System.Security.Cryptography.Xml.dll</HintPath></Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData"><HintPath>$(RefDir)\System.Security.Cryptography.ProtectedData.dll</HintPath></Reference>
+    <Reference Include="System.CodeDom"><HintPath>$(RefDir)\System.CodeDom.dll</HintPath></Reference>
+    <Reference Include="System.Management"><HintPath>$(RefDir)\System.Management.dll</HintPath></Reference>
+    <Reference Include="System.Net.Http.Json"><HintPath>$(RefDir)\System.Net.Http.Json.dll</HintPath></Reference>
+    <Reference Include="System.Collections.Immutable"><HintPath>$(RefDir)\System.Collections.Immutable.dll</HintPath></Reference>
+    <Reference Include="System.Configuration.ConfigurationManager"><HintPath>$(RefDir)\System.Configuration.ConfigurationManager.dll</HintPath></Reference>
+    <Reference Include="System.Net.WebSockets"><HintPath>$(RefDir)\System.Net.WebSockets.dll</HintPath></Reference>
+    <Reference Include="System.Net.WebSockets.Client"><HintPath>$(RefDir)\System.Net.WebSockets.Client.dll</HintPath></Reference>
+    <Reference Include="System.Windows.Extensions"><HintPath>$(RefDir)\System.Windows.Extensions.dll</HintPath></Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="**\*.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,49 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# ClickOnce / VSTO
+*.vsto
+*.manifest
+*.application
+*.pfx
+*.snk
+
+# Build artifacts
+*.dll
+*.pdb
+*.exe
+*.cache
+
+# But keep lib DLLs (third-party references)
+!lib/*.dll
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE
+.idea/
+*.swp
+*~

@@ -1,0 +1,157 @@
+using System;
+using System.CodeDom.Compiler;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Markup;
+using System.Windows.Media;
+using EF4JHh6WXLdDqp0W9j7;
+using hJKpQrVSwRwMyI2RyDQN;
+using kRagWN68VotwykWvTA1;
+using ndRERvVtEjasqN2cQqiN;
+
+namespace CPAHelperForWordRe.UI.Forms.General;
+
+public sealed class IntranetLoginWindow : Window, IComponentConnector
+{
+	internal TextBlock txtDescription;
+
+	internal TextBox txtUsername;
+
+	internal PasswordBox txtPassword;
+
+	internal CheckBox chkAutoLogin;
+
+	internal Button btnLogin;
+
+	internal TextBlock txtStatus;
+
+	private bool N9H7PIyo2r;
+
+	public IntranetLoginWindow(string rememberedUsername, string rememberedPassword, bool autoLoginEnabled, string description, string initialStatus)
+	{
+		hdFXkSVtKBHNJ9MQ8VcZ.AlBVL0oCCKQ();
+		InitializeComponent();
+		txtUsername.Text = rememberedUsername ?? string.Empty;
+		txtPassword.Password = rememberedPassword ?? string.Empty;
+		chkAutoLogin.IsChecked = autoLoginEnabled;
+		txtDescription.Text = (string.IsNullOrWhiteSpace(description) ? "当前为内网环境，请登录后继续使用 AI 助手。" : description);
+		if (!string.IsNullOrWhiteSpace(initialStatus))
+		{
+			zhF7qbinaC(initialStatus, Brushes.IndianRed);
+		}
+		base.Loaded += CX27XTeWB7;
+		base.PreviewKeyDown += ldx7FsEjpn;
+	}
+
+	private void CX27XTeWB7(object P_0, RoutedEventArgs P_1)
+	{
+		if (string.IsNullOrWhiteSpace(txtUsername.Text))
+		{
+			txtUsername.Focus();
+		}
+		else
+		{
+			txtPassword.Focus();
+		}
+	}
+
+	private void ldx7FsEjpn(object P_0, KeyEventArgs P_1)
+	{
+		if (P_1.Key == Key.Escape)
+		{
+			base.DialogResult = false;
+			Close();
+		}
+		else if (P_1.Key == Key.Return)
+		{
+			P_1.Handled = true;
+			C3V7h0pX9w(this, new RoutedEventArgs());
+		}
+	}
+
+	private async void C3V7h0pX9w(object P_0, RoutedEventArgs P_1)
+	{
+		qwP7aYKtCt( true, "登录", Brushes.DodgerBlue);
+		try
+		{
+			UJ41Qj6vhvynNA1tocZ uJ41Qj6vhvynNA1tocZ = await TLTW0G6ghg2cXG3MkV9.Instance.JrZ6E71S29(txtUsername.Text, txtPassword.Password, chkAutoLogin.IsChecked == true).ConfigureAwait(continueOnCapturedContext: true);
+			if (uJ41Qj6vhvynNA1tocZ.Succeeded)
+			{
+				base.DialogResult = true;
+				Close();
+			}
+			else
+			{
+				qwP7aYKtCt( false, string.IsNullOrWhiteSpace(uJ41Qj6vhvynNA1tocZ.Message) ? "登录中..." : uJ41Qj6vhvynNA1tocZ.Message, Brushes.IndianRed);
+			}
+		}
+		catch (Exception ex)
+		{
+			qwP7aYKtCt( false, "/CPAHelperForWordRe;component/ui/forms/general/intranetloginwindow.xaml" + ex.Message, Brushes.IndianRed);
+		}
+	}
+
+	private void qwP7aYKtCt(bool P_0, string P_1, Brush P_2)
+	{
+		btnLogin.IsEnabled = !P_0;
+		txtUsername.IsEnabled = !P_0;
+		txtPassword.IsEnabled = !P_0;
+		chkAutoLogin.IsEnabled = !P_0;
+		btnLogin.Content = (P_0 ? "登录" : "登录中...");
+		zhF7qbinaC(P_1, P_2);
+	}
+
+	private void zhF7qbinaC(string P_0, Brush P_1)
+	{
+		txtStatus.Text = P_0 ?? string.Empty;
+		txtStatus.Foreground = P_1 ?? Brushes.DimGray;
+		txtStatus.Visibility = (string.IsNullOrWhiteSpace(P_0) ? Visibility.Collapsed : Visibility.Visible);
+	}
+
+	[DebuggerNonUserCode]
+	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
+	public void InitializeComponent()
+	{
+		if (!N9H7PIyo2r)
+		{
+			N9H7PIyo2r = true;
+			Uri resourceLocator = new Uri("/CPAHelperForWordRe;component/ui/forms/general/intranetloginwindow.xaml", UriKind.Relative);
+			Application.LoadComponent(this, resourceLocator);
+		}
+	}
+
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	[DebuggerNonUserCode]
+	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
+	void IComponentConnector.Connect(int connectionId, object target)
+	{
+		switch (connectionId)
+		{
+		case 1:
+			txtDescription = (TextBlock)target;
+			break;
+		case 2:
+			txtUsername = (TextBox)target;
+			break;
+		case 3:
+			txtPassword = (PasswordBox)target;
+			break;
+		case 4:
+			chkAutoLogin = (CheckBox)target;
+			break;
+		case 5:
+			btnLogin = (Button)target;
+			btnLogin.Click += C3V7h0pX9w;
+			break;
+		case 6:
+			txtStatus = (TextBlock)target;
+			break;
+		default:
+			N9H7PIyo2r = true;
+			break;
+		}
+	}
+}
