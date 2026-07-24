@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -2271,13 +2271,13 @@ internal sealed class BatchReplaceService2
 					}
 				})).ToList();
 			Dictionary<string, object> dictionary = BuildDocumentInfo(CS_8_locals_10.DocumentSearchContext);
-			dictionary["outlineLevel"] = text ?? string.Empty;
-			dictionary["matchMode"] = ((value <= 0) ? ((int?)null) : new int?(value));
-			dictionary["returned"] = CS_8_locals_10.text;
-			dictionary["truncated"] = list.Count;
-			dictionary["matches"] = list.Count >= num;
-			dictionary["Word heading find completed."] = list;
-			return AiHelper_5.CreateSuccess("startParagraphIndex is out of range.", dictionary);
+			dictionary["headingText"] = text ?? string.Empty;
+			dictionary["outlineLevel"] = ((value <= 0) ? ((int?)null) : new int?(value));
+			dictionary["matchMode"] = CS_8_locals_10.text;
+			dictionary["returned"] = list.Count;
+			dictionary["truncated"] = list.Count >= num;
+			dictionary["matches"] = list;
+			return AiHelper_5.CreateSuccess("Word heading find completed.", dictionary);
 		}
 
 		internal bool GetOutlineLevel(ParagraphInfo p)
@@ -3216,15 +3216,15 @@ internal sealed class BatchReplaceService2
 		{
 			int num = ClampWithDefault(CS_8_locals_2.value, 240, 2000);
 			Dictionary<string, object> dictionary = BuildDocumentInfo(context);
-			dictionary["get_current_word_context"] = null;
-			dictionary["preview_word_document"] = null;
-			dictionary["preview_word_selection"] = false;
-			dictionary["read_word_range"] = context.Paragraphs.Count;
-			dictionary["rangeStart/rangeEnd 参数无效。"] = context.Tables.Count;
-			dictionary["invalid_arguments"] = context.Comments.Count;
-			dictionary["read_word_tables_in_range"] = context.TrackRevisions;
-			dictionary["read_word_tables_in_range failed"] = BuildSelectionInfo(context.Selection, num);
-			return AiHelper_5.CreateSuccess("word_read_error", dictionary);
+			dictionary["pageCount"] = null;
+			dictionary["wordCount"] = null;
+			dictionary["statisticsIncluded"] = false;
+			dictionary["paragraphCount"] = context.Paragraphs.Count;
+			dictionary["tableCount"] = context.Tables.Count;
+			dictionary["commentCount"] = context.Comments.Count;
+			dictionary["trackRevisions"] = context.TrackRevisions;
+			dictionary["selection"] = BuildSelectionInfo(context.Selection, num);
+			return AiHelper_5.CreateSuccess("Word context read.", dictionary);
 		});
 	}
 
@@ -3252,17 +3252,17 @@ internal sealed class BatchReplaceService2
 			List<object> list4 = (from p in context.Paragraphs.Where((ParagraphInfo p) => p.IsHeading && p.OutlineLevel == 1 && !string.IsNullOrWhiteSpace(p.Text)).Take(num2)
 				select BuildParagraphInfo(p, CS_8_locals_15.value)).ToList();
 			Dictionary<string, object> dictionary = BuildDocumentInfo(context);
-			dictionary["无法从该表格的 WordOpenXML 中解析表格结构。"] = context.Paragraphs.Count;
-			dictionary["document"] = context.Tables.Count;
-			dictionary["documentFullName"] = context.Comments.Count;
-			dictionary["documentSaved"] = context.TrackRevisions;
-			dictionary["rangeStart"] = BuildSelectionInfo(context.Selection, num3);
-			dictionary["rangeEnd"] = 1;
-			dictionary["selectedTableCount"] = list4;
-			dictionary["returnedTables"] = list2;
-			dictionary["truncated"] = list3;
-			dictionary["coordinateSystem"] = list.Count > list2.Count + list3.Count || list4.Count >= num2;
-			return AiHelper_5.CreateSuccess("localTableIndex,rowIndex,columnIndex are 1-based within the referenced Word range.", dictionary);
+			dictionary["paragraphCount"] = context.Paragraphs.Count;
+			dictionary["tableCount"] = context.Tables.Count;
+			dictionary["commentCount"] = context.Comments.Count;
+			dictionary["trackRevisions"] = context.TrackRevisions;
+			dictionary["selection"] = BuildSelectionInfo(context.Selection, num3);
+			dictionary["headingLevel"] = 1;
+			dictionary["headings"] = list4;
+			dictionary["head"] = list2;
+			dictionary["tail"] = list3;
+			dictionary["truncated"] = list.Count > list2.Count + list3.Count || list4.Count >= num2;
+			return AiHelper_5.CreateSuccess("Word document preview prepared.", dictionary);
 		});
 	}
 
@@ -3281,11 +3281,11 @@ internal sealed class BatchReplaceService2
 					return rangeResult.Error;
 				}
 				int num = ClampWithDefault(CS_8_locals_4.value, 6000, 30000);
-				return AiHelper_5.CreateSuccess("writeTool", BuildRangeInfo(rangeResult, num, null));
+				return AiHelper_5.CreateSuccess("Word selection preview prepared.", BuildRangeInfo(rangeResult, num, null));
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.CreateExceptionError("fill_word_table_cells_by_model", "structureEditTools", ex);
+				return AiHelper_5.CreateExceptionError("preview_word_selection failed", "word_read_error", ex);
 			}
 		});
 	}
@@ -3303,7 +3303,7 @@ internal sealed class BatchReplaceService2
 			{
 				if (CS_8_locals_13.value < 0 || CS_8_locals_13.value < CS_8_locals_13.value)
 				{
-					return AiHelper_5.CreateError("insert_word_table_rows_by_model", "fill_word_table_cells_by_model", new
+					return AiHelper_5.CreateError("rangeStart/rangeEnd 参数无效。", "invalid_arguments", new
 					{
 						rangeStart = CS_8_locals_13.value,
 						rangeEnd = CS_8_locals_13.value
@@ -3315,11 +3315,11 @@ internal sealed class BatchReplaceService2
 					return rangeResult.Error;
 				}
 				int num = ClampWithDefault(CS_8_locals_13.value, 30000, 30000);
-				return AiHelper_5.CreateSuccess("tables", BuildRangeInfo(rangeResult, num, 0));
+				return AiHelper_5.CreateSuccess("Word range read.", BuildRangeInfo(rangeResult, num, 0));
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.CreateExceptionError("No tables found in range.", "Word range tables read.", ex);
+				return AiHelper_5.CreateExceptionError("read_word_range failed", "word_read_error", ex);
 			}
 		});
 	}
@@ -3394,7 +3394,7 @@ internal sealed class BatchReplaceService2
 			};
 			dictionary["tables"] = list;
 			Dictionary<string, object> dictionary2 = dictionary;
-			return AiHelper_5.CreateSuccess((instance3.TotalTablesInRange > 0) ? "No tables found in range." : "Word range tables read.", dictionary2);
+			return AiHelper_5.CreateSuccess((instance3.TotalTablesInRange > 0) ? "Word range tables read." : "No tables found in range.", dictionary2);
 		}
 		catch (Exception ex2)
 		{
@@ -3416,7 +3416,7 @@ internal sealed class BatchReplaceService2
 			CS_8_locals_26.lEXVVebWsnI = Math.Max(1, (CS_8_locals_22.value <= 0) ? 1 : CS_8_locals_22.value);
 			if (CS_8_locals_26.lEXVVebWsnI > count)
 			{
-				return AiHelper_5.CreateError("read_word_tables_in_range parse failed", "word_read_error", new
+				return AiHelper_5.CreateError("startParagraphIndex is out of range.", "invalid_arguments", new
 				{
 					totalParagraphs = count
 				});
@@ -3425,7 +3425,7 @@ internal sealed class BatchReplaceService2
 			{
 				if (CS_8_locals_22.value < CS_8_locals_26.lEXVVebWsnI)
 				{
-					return AiHelper_5.CreateError("read_word_paragraphs", "read_word_outline");
+					return AiHelper_5.CreateError("endParagraphIndex must be greater than or equal to startParagraphIndex.", "invalid_arguments");
 				}
 				CS_8_locals_26.value = Math.Min(count, CS_8_locals_22.value);
 			}
@@ -3439,13 +3439,13 @@ internal sealed class BatchReplaceService2
 				where p.ParagraphIndex >= CS_8_locals_26.lEXVVebWsnI && p.ParagraphIndex <= CS_8_locals_26.value
 				select BuildParagraphInfo(p, CS_8_locals_26.bpvVVXkrWNt)).ToList();
 			Dictionary<string, object> dictionary = BuildDocumentInfo(context);
-			dictionary["read_word_section"] = count;
-			dictionary["read_word_tables"] = CS_8_locals_26.lEXVVebWsnI;
-			dictionary["read_word_comments"] = CS_8_locals_26.value;
-			dictionary["find_word_heading"] = list.Count;
-			dictionary["find_word_text"] = CS_8_locals_22.value <= 0 && CS_8_locals_26.value < count;
-			dictionary["find_word_regex"] = list;
-			return AiHelper_5.CreateSuccess("find_word_table_text", dictionary);
+			dictionary["totalParagraphs"] = count;
+			dictionary["startParagraphIndex"] = CS_8_locals_26.lEXVVebWsnI;
+			dictionary["endParagraphIndex"] = CS_8_locals_26.value;
+			dictionary["returned"] = list.Count;
+			dictionary["truncated"] = CS_8_locals_22.value <= 0 && CS_8_locals_26.value < count;
+			dictionary["paragraphs"] = list;
+			return AiHelper_5.CreateSuccess("Word paragraphs read.", dictionary);
 		});
 	}
 
@@ -3467,13 +3467,13 @@ internal sealed class BatchReplaceService2
 				select p).Take(num).ToList();
 			int num2 = list.Count((ParagraphInfo p) => p.IsHeading);
 			Dictionary<string, object> dictionary = BuildDocumentInfo(context);
-			dictionary[" failed"] = CS_8_locals_13.value;
-			dictionary["word_read_error"] = CS_8_locals_11.KEWVVqEbglr;
-			dictionary["word_openxml_com"] = num2;
-			dictionary["当前没有打开的 Word 文档。"] = list.Count;
-			dictionary["no_document"] = list.Count >= num;
-			dictionary["document"] = list.Select((ParagraphInfo p) => BuildParagraphInfo(p, 240)).ToList();
-			return AiHelper_5.CreateSuccess("documentFullName", dictionary);
+			dictionary["maxOutlineLevel"] = CS_8_locals_13.value;
+			dictionary["includeBodyText"] = CS_8_locals_11.KEWVVqEbglr;
+			dictionary["headings"] = num2;
+			dictionary["returned"] = list.Count;
+			dictionary["truncated"] = list.Count >= num;
+			dictionary["items"] = list.Select((ParagraphInfo p) => BuildParagraphInfo(p, 240)).ToList();
+			return AiHelper_5.CreateSuccess("Word outline read.", dictionary);
 		});
 	}
 
@@ -3495,11 +3495,11 @@ internal sealed class BatchReplaceService2
 			CS_8_locals_29.ParagraphInfo = GetText7(context, CS_8_locals_26.text, CS_8_locals_26.value, CS_8_locals_26.value, CS_8_locals_26.text);
 			if (CS_8_locals_29.ParagraphInfo == null)
 			{
-				return AiHelper_5.CreateError("documentSaved", "document");
+				return AiHelper_5.CreateError("未找到匹配的标题段落。", "not_found");
 			}
 			if (!CS_8_locals_29.ParagraphInfo.IsHeading)
 			{
-				return AiHelper_5.CreateError("documentFullName", "documentSaved", new
+				return AiHelper_5.CreateError("目标段落不是 Word 标题/大纲段落。", "invalid_arguments", new
 				{
 					headingParagraphIndex = CS_8_locals_29.ParagraphInfo.ParagraphIndex
 				});
@@ -3524,7 +3524,7 @@ internal sealed class BatchReplaceService2
 					ParagraphInfo paragraph = block.Paragraph;
 					list.Add(new DocumentBlockData
 					{
-						Type = "body",
+						Type = "paragraph",
 						RangeStart = 0,
 						Data = BuildParagraphInfo(paragraph, num2)
 					});
@@ -3533,7 +3533,7 @@ internal sealed class BatchReplaceService2
 				{
 					list.Add(new DocumentBlockData
 					{
-						Type = "heading",
+						Type = "table",
 						RangeStart = 0,
 						Data = BuildTableMatrixInfo(context, block.Table, num3, num4)
 					});
@@ -3560,34 +3560,34 @@ internal sealed class BatchReplaceService2
 					data = block.Data
 				};
 				list2.Add(item);
-				if (block.Type == "openxml_unavailable")
+				if (block.Type == "paragraph")
 				{
 					list3.Add(block.Data);
 				}
-				else if (block.Type == "document")
+				else if (block.Type == "table")
 				{
 					list4.Add(block.Data);
 				}
 			}
 			bool flag = num7 < list.Count;
 			Dictionary<string, object> dictionary = BuildDocumentInfo(context);
-			dictionary["documentFullName"] = BuildParagraphInfo(CS_8_locals_29.ParagraphInfo, 500);
-			dictionary["documentSaved"] = CS_8_locals_29.ParagraphInfo.ParagraphIndex;
-			dictionary["page"] = num;
+			dictionary["heading"] = BuildParagraphInfo(CS_8_locals_29.ParagraphInfo, 500);
+			dictionary["startParagraphIndex"] = CS_8_locals_29.ParagraphInfo.ParagraphIndex;
+			dictionary["endParagraphIndex"] = num;
 			dictionary["rangeStart"] = 0;
 			dictionary["rangeEnd"] = 0;
-			dictionary["characters"] = num5;
-			dictionary["truncated"] = list.Count;
-			dictionary["text"] = list2.Count;
-			dictionary["paragraphIndex"] = flag;
-			dictionary["index"] = (flag ? new int?(num7) : ((int?)null));
-			dictionary["altTextTitle"] = list3.Count;
-			dictionary["altTextDescription"] = list4.Count;
-			dictionary["rows"] = flag;
-			dictionary["columns"] = list2;
-			dictionary["returnedRows"] = list3;
-			dictionary["returnedColumns"] = list4;
-			return AiHelper_5.CreateSuccess("page", dictionary);
+			dictionary["startBlock"] = num5;
+			dictionary["totalBlocks"] = list.Count;
+			dictionary["returnedBlocks"] = list2.Count;
+			dictionary["hasMore"] = flag;
+			dictionary["nextStartBlock"] = (flag ? new int?(num7) : ((int?)null));
+			dictionary["returnedParagraphs"] = list3.Count;
+			dictionary["returnedTables"] = list4.Count;
+			dictionary["truncated"] = flag;
+			dictionary["blocks"] = list2;
+			dictionary["paragraphs"] = list3;
+			dictionary["tables"] = list4;
+			return AiHelper_5.CreateSuccess("Word section read.", dictionary);
 		});
 	}
 
@@ -3607,15 +3607,15 @@ internal sealed class BatchReplaceService2
 			if (count == 0)
 			{
 				Dictionary<string, object> dictionary = BuildDocumentInfo(CS_8_locals_34.DocumentSearchContext);
-				dictionary["paragraphIndex"] = 0;
-				dictionary["rangeStart"] = new object[0];
-				return AiHelper_5.CreateSuccess("rangeEnd", dictionary);
+				dictionary["totalTables"] = 0;
+				dictionary["tables"] = new object[0];
+				return AiHelper_5.CreateSuccess("No tables found.", dictionary);
 			}
 			CS_8_locals_34.NaoVBrVDusK = ((CS_8_locals_24.tableIndex <= 0) ? 1 : CS_8_locals_24.tableIndex);
 			CS_8_locals_34.value = ((CS_8_locals_24.tableIndex > 0) ? CS_8_locals_24.tableIndex : Math.Min(count, ClampWithDefault(CS_8_locals_24.value, 5, 100)));
 			if (CS_8_locals_34.NaoVBrVDusK < 1 || CS_8_locals_34.NaoVBrVDusK > count)
 			{
-				return AiHelper_5.CreateError("actionableRange", "rangeSource", new
+				return AiHelper_5.CreateError("tableIndex is out of range.", "invalid_arguments", new
 				{
 					totalTables = count
 				});
@@ -3627,10 +3627,10 @@ internal sealed class BatchReplaceService2
 				where t.TableIndex >= CS_8_locals_34.NaoVBrVDusK && t.TableIndex <= CS_8_locals_34.value
 				select BuildTableMatrixInfo(CS_8_locals_34.DocumentSearchContext, t, CS_8_locals_34.value, CS_8_locals_34.value, CS_8_locals_34.xEiVBEoubwj)).ToList();
 			Dictionary<string, object> dictionary2 = BuildDocumentInfo(CS_8_locals_34.DocumentSearchContext);
-			dictionary2["openxml_unavailable"] = count;
-			dictionary2["word_com_table_range"] = list.Count;
-			dictionary2["previousParagraph"] = list;
-			return AiHelper_5.CreateSuccess("nextParagraph", dictionary2);
+			dictionary2["totalTables"] = count;
+			dictionary2["returned"] = list.Count;
+			dictionary2["tables"] = list;
+			return AiHelper_5.CreateSuccess("Word tables read.", dictionary2);
 		});
 	}
 
@@ -3650,11 +3650,11 @@ internal sealed class BatchReplaceService2
 					commentText = c.Text
 				})).ToList();
 			Dictionary<string, object> dictionary = BuildDocumentInfo(context);
-			dictionary["truncated"] = context.Comments.Count;
-			dictionary["rowsData"] = list.Count;
-			dictionary["cellsFlat"] = list.Count >= num;
-			dictionary["markdown"] = list;
-			return AiHelper_5.CreateSuccess("rawText", dictionary);
+			dictionary["totalComments"] = context.Comments.Count;
+			dictionary["returned"] = list.Count;
+			dictionary["truncated"] = list.Count >= num;
+			dictionary["comments"] = list;
+			return AiHelper_5.CreateSuccess("Word comments read.", dictionary);
 		});
 	}
 
@@ -3671,7 +3671,7 @@ internal sealed class BatchReplaceService2
 			CS_8_locals_23._G_c__DisplayClass17_0 = CS_8_locals_19;
 			CS_8_locals_23.DocumentSearchContext = context;
 			int num = ClampWithDefault(CS_8_locals_19.value, 50, 300);
-			CS_8_locals_23.text = (CS_8_locals_19.uUNVBfrqteP ?? "hasMergedOrUnavailableCells").Trim().ToLowerInvariant();
+			CS_8_locals_23.text = (CS_8_locals_19.uUNVBfrqteP ?? "contains").Trim().ToLowerInvariant();
 			List<object> list = ((IEnumerable<object>)(from p in (from p in CS_8_locals_23.DocumentSearchContext.Paragraphs
 					where p.IsHeading
 					where CS_8_locals_19.value <= 0 || p.OutlineLevel == CS_8_locals_19.value
@@ -3688,18 +3688,18 @@ internal sealed class BatchReplaceService2
 					text = p.Text,
 					sectionReadHint = new
 					{
-						tool = "expandedMergedCells",
+						tool = "query",
 						headingParagraphIndex = p.ParagraphIndex
 					}
 				})).ToList();
 			Dictionary<string, object> dictionary = BuildDocumentInfo(CS_8_locals_23.DocumentSearchContext);
-			dictionary["warnings"] = CS_8_locals_19.text ?? string.Empty;
-			dictionary["localTableIndex"] = ((CS_8_locals_19.value <= 0) ? ((int?)null) : new int?(CS_8_locals_19.value));
-			dictionary["rangeStart"] = CS_8_locals_23.text;
-			dictionary["rangeEnd"] = list.Count;
-			dictionary["page"] = list.Count >= num;
-			dictionary["actionableRange"] = list;
-			return AiHelper_5.CreateSuccess("rangeSource", dictionary);
+			dictionary["headingText"] = CS_8_locals_19.text ?? string.Empty;
+			dictionary["outlineLevel"] = ((CS_8_locals_19.value <= 0) ? ((int?)null) : new int?(CS_8_locals_19.value));
+			dictionary["matchMode"] = CS_8_locals_23.text;
+			dictionary["returned"] = list.Count;
+			dictionary["truncated"] = list.Count >= num;
+			dictionary["matches"] = list;
+			return AiHelper_5.CreateSuccess("Word heading find completed.", dictionary);
 		});
 	}
 
@@ -3714,7 +3714,7 @@ internal sealed class BatchReplaceService2
 		{
 			if (string.IsNullOrWhiteSpace(CS_8_locals_9.text))
 			{
-				return AiHelper_5.CreateError("word_com_selection_table_range", "rows");
+				return AiHelper_5.CreateError("text must not be empty.", "invalid_arguments");
 			}
 			int num = ClampWithDefault(CS_8_locals_9.value, 100, 500);
 			StringComparison stringComparison = ((!CS_8_locals_9.flag) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
@@ -3727,7 +3727,7 @@ internal sealed class BatchReplaceService2
 				}
 				moDrKNabHo(paragraph, CS_8_locals_9.text, stringComparison, CS_8_locals_9.flag, num, list);
 			}
-			return AiHelper_5.CreateSuccess("columns", Find4(context, list, num));
+			return AiHelper_5.CreateSuccess("Word text find completed.", Find4(context, list, num));
 		});
 	}
 
@@ -3741,7 +3741,7 @@ internal sealed class BatchReplaceService2
 		{
 			if (string.IsNullOrWhiteSpace(CS_8_locals_7.text))
 			{
-				return AiHelper_5.CreateError("returnedRows", "returnedColumns");
+				return AiHelper_5.CreateError("pattern must not be empty.", "invalid_arguments");
 			}
 			int num = ClampWithDefault(CS_8_locals_7.wjoVBnKCVJt, 100, 500);
 			RegexOptions options = ((!CS_8_locals_7.flag) ? RegexOptions.IgnoreCase : RegexOptions.None);
@@ -3769,7 +3769,7 @@ internal sealed class BatchReplaceService2
 					});
 				}
 			}
-			return AiHelper_5.CreateSuccess("headerRowCount", Find4(context, list, num));
+			return AiHelper_5.CreateSuccess("Word regex find completed.", Find4(context, list, num));
 		});
 	}
 
@@ -3783,7 +3783,7 @@ internal sealed class BatchReplaceService2
 		{
 			if (string.IsNullOrWhiteSpace(CS_8_locals_9.text))
 			{
-				return AiHelper_5.CreateError("rowsData", "cellsFlat");
+				return AiHelper_5.CreateError("text must not be empty.", "invalid_arguments");
 			}
 			int num = ClampWithDefault(CS_8_locals_9.value, 100, 500);
 			StringComparison comparisonType = ((!CS_8_locals_9.flag) ? StringComparison.CurrentCultureIgnoreCase : StringComparison.CurrentCulture);
@@ -3826,12 +3826,12 @@ internal sealed class BatchReplaceService2
 				}
 			}
 			Dictionary<string, object> dictionary = BuildDocumentInfo(context);
-			dictionary["fillableCells"] = false;
-			dictionary["mergedCells"] = "markdown";
-			dictionary["rawText"] = list.Count;
-			dictionary["hasMergedOrUnavailableCells"] = list.Count >= num;
-			dictionary["expandedMergedCells"] = list;
-			return AiHelper_5.CreateSuccess("truncated", dictionary);
+			dictionary["actionableRange"] = false;
+			dictionary["rangeWarning"] = "该查找结果不包含可用于写入的 Word Range；如需批注、选中或替换，请使用 find_word_text 获取真实 Range。";
+			dictionary["returned"] = list.Count;
+			dictionary["truncated"] = list.Count >= num;
+			dictionary["matches"] = list;
+			return AiHelper_5.CreateSuccess("Word table text find completed.", dictionary);
 		});
 	}
 
@@ -3900,7 +3900,7 @@ internal sealed class BatchReplaceService2
 			string text4 = TryEvaluateString(() => CS_8_locals_7.VSQVBPeQEih.Content.WordOpenXML);
 			if (string.IsNullOrWhiteSpace(text4))
 			{
-				throw new InvalidDataException("writeCoordinateExample");
+				throw new InvalidDataException("Word content snapshot is empty.");
 			}
 			return new DocumentContextSnapshot
 			{
@@ -3939,7 +3939,7 @@ internal sealed class BatchReplaceService2
 			Selection selection = app?.Selection;
 			return (selection == null || selection.Range == null) ? new DocumentOperationResult
 			{
-				Error = AiHelper_5.CreateError("1-based rowIndex from cellsFlat/fillableCells", "1-based columnIndex from cellsFlat/fillableCells")
+				Error = AiHelper_5.CreateError("当前没有选中的 Word 区域。", "no_selection")
 			} : ReadRangeFromDocument(document, selection.Range);
 		});
 	}
@@ -4069,7 +4069,7 @@ internal sealed class BatchReplaceService2
 			{
 				return new RangeReadResult
 				{
-					Error = AiHelper_5.CreateError("oldText from fillableCells", "new cell text", new
+					Error = AiHelper_5.CreateError("rangeStart/rangeEnd 超出文档范围或顺序无效。", "invalid_arguments", new
 					{
 						rangeStart = CS_8_locals_21.value,
 						rangeEnd = CS_8_locals_21.value,
@@ -4198,7 +4198,7 @@ internal sealed class BatchReplaceService2
 		{
 			paragraphIndex = P_0.ParagraphIndex,
 			isHeading = P_0.IsHeading,
-			outlineKind = (P_0.IsHeading ? "body" : "heading"),
+			outlineKind = (P_0.IsHeading ? "heading" : "body"),
 			outlineLevel = num,
 			rawOutlineLevel = num,
 			rangeStart = (int?)null,
@@ -4282,7 +4282,7 @@ internal sealed class BatchReplaceService2
 		dictionary["rangeStart"] = (flag ? new int?(value.RangeStart) : ((int?)null));
 		dictionary["rangeEnd"] = (flag ? new int?(value.RangeEnd) : ((int?)null));
 		dictionary["actionableRange"] = flag;
-		dictionary["rangeSource"] = (flag ? "openxml_unavailable" : "word_com_table_range");
+		dictionary["rangeSource"] = (flag ? "word_com_table_range" : "openxml_unavailable");
 		dictionary["previousParagraph"] = FindInDocument(P_0, P_1.TableIndex, -1);
 		dictionary["nextParagraph"] = FindInDocument(P_0, P_1.TableIndex, 1);
 		dictionary["truncated"] = P_1.Matrix.Count > num || (P_1.Matrix.Count > 0 && P_1.Matrix.Max((List<string> r) => r.Count) > num2);
@@ -4302,10 +4302,10 @@ internal sealed class BatchReplaceService2
 			text = c.Text
 		})).ToList();
 		dictionary["rawText"] = BuildMarkdownTable(list);
-		dictionary["hasMergedOrUnavailableCells"] = TruncateWithEllipsis(P_1.RawText, 3000);
+		dictionary["rawTextExcerpt"] = TruncateWithEllipsis(P_1.RawText, 3000);
+		dictionary["hasMergedOrUnavailableCells"] = P_1.HasMergedCells;
 		dictionary["expandedMergedCells"] = P_1.HasMergedCells;
-		dictionary["warnings"] = P_1.HasMergedCells;
-		dictionary["未能读取该表格的真实 Word COM 单元格坐标，写入工具可能无法定位。"] = new string[0];
+		dictionary["coordinateWarnings"] = new string[0];
 		return dictionary;
 	}
 
@@ -4356,36 +4356,36 @@ internal sealed class BatchReplaceService2
 		Dictionary<string, TableCellInfo> dictionary = BuildCellDictionaryFromTable(CS_8_locals_25.tableStructureInfo);
 		List<Dictionary<string, object>> list4 = BuildCellInfoList(CS_8_locals_25.DocumentContextInfo, CS_8_locals_25.tableStructureInfo.LocalTableIndex, num6, num2, num3, dictionary);
 		List<object> value = ((IEnumerable<object>)(from item in list4
-			where string.Equals(GetDictionaryString(item, "localTableIndex"), "rangeStart", StringComparison.Ordinal) && GetDictionaryBool(item, "rangeEnd")
+			where string.Equals(GetDictionaryString(item, "cellKind"), "origin", StringComparison.Ordinal) && GetDictionaryBool(item, "defaultWritable")
 			select new Dictionary<string, object>
 			{
-				["page"] = GetDictionaryString(item, "actionableRange"),
-				["rangeSource"] = CS_8_locals_25.tableStructureInfo.LocalTableIndex,
-				["word_com_selection_table_range"] = GetDictionaryInt(item, "rows"),
-				["columns"] = GetDictionaryInt(item, "returnedRows"),
-				["returnedColumns"] = GetDictionaryBool(item, "headerRowCount"),
-				["rowsData"] = false,
-				["cellsFlat"] = GetDictionaryString(item, "fillableCells"),
-				["mergedCells"] = item["markdown"],
-				["rawText"] = item["hasMergedOrUnavailableCells"],
-				["expandedMergedCells"] = item["truncated"]
+				["cellId"] = GetDictionaryString(item, "cellId"),
+				["localTableIndex"] = CS_8_locals_25.tableStructureInfo.LocalTableIndex,
+				["rowIndex"] = GetDictionaryInt(item, "rowIndex"),
+				["columnIndex"] = GetDictionaryInt(item, "columnIndex"),
+				["isHeader"] = GetDictionaryBool(item, "isHeader"),
+				["requiresAllowHeaderEdit"] = false,
+				["oldText"] = GetDictionaryString(item, "text"),
+				["columnHeaderPath"] = item["columnHeaderPath"],
+				["rowLabelPath"] = item["rowLabelPath"],
+				["rowLeftContext"] = item["rowLeftContext"]
 			})).ToList();
 		Dictionary<string, object> dictionary2 = BuildTableInfoDict(CS_8_locals_25.DocumentContextInfo);
-		dictionary2["writeCoordinateExample"] = CS_8_locals_25.tableStructureInfo.LocalTableIndex;
-		dictionary2["1-based rowIndex from cellsFlat/fillableCells"] = CS_8_locals_25.tableStructureInfo.RangeStart;
-		dictionary2["1-based columnIndex from cellsFlat/fillableCells"] = CS_8_locals_25.tableStructureInfo.RangeEnd;
-		dictionary2["oldText from fillableCells"] = CS_8_locals_25.tableStructureInfo.Page;
-		dictionary2["new cell text"] = CS_8_locals_25.tableStructureInfo.RangeEnd >= CS_8_locals_25.tableStructureInfo.RangeStart;
+		dictionary2["localTableIndex"] = CS_8_locals_25.tableStructureInfo.LocalTableIndex;
+		dictionary2["rangeStart"] = CS_8_locals_25.tableStructureInfo.RangeStart;
+		dictionary2["rangeEnd"] = CS_8_locals_25.tableStructureInfo.RangeEnd;
+		dictionary2["page"] = CS_8_locals_25.tableStructureInfo.Page;
+		dictionary2["actionableRange"] = CS_8_locals_25.tableStructureInfo.RangeEnd >= CS_8_locals_25.tableStructureInfo.RangeStart;
 		dictionary2["warnings"] = "未能读取该表格的真实 Word COM 单元格坐标，写入工具可能无法定位。";
-		dictionary2["cellId"] = count;
-		dictionary2["cellKind"] = num;
-		dictionary2["origin"] = num2;
-		dictionary2["localTableIndex"] = num3;
-		dictionary2["rowIndex"] = num6;
-		dictionary2["columnIndex"] = FlattenMatrix(list);
-		dictionary2["rowSpan"] = list4;
-		dictionary2["columnSpan"] = value;
-		dictionary2["isHeader"] = ((IEnumerable<object>)list3.Select((MergedCellRange m) => new
+		dictionary2["rows"] = count;
+		dictionary2["columns"] = num;
+		dictionary2["returnedRows"] = num2;
+		dictionary2["returnedColumns"] = num3;
+		dictionary2["headerRowCount"] = num6;
+		dictionary2["rowsData"] = FlattenMatrix(list);
+		dictionary2["cellsFlat"] = list4;
+		dictionary2["fillableCells"] = value;
+		dictionary2["expandedMergedCells"] = ((IEnumerable<object>)list3.Select((MergedCellRange m) => new
 		{
 			startRow = m.StartRow,
 			startColumn = m.StartColumn,
@@ -4393,18 +4393,18 @@ internal sealed class BatchReplaceService2
 			endColumn = m.EndColumn,
 			text = (FindCellAtPosition(CS_8_locals_25.DocumentContextInfo, m.StartRow, m.StartColumn)?.Text ?? string.Empty)
 		})).ToList();
-		dictionary2["requiresAllowHeaderEdit"] = BuildMarkdownTable(list);
-		dictionary2["defaultWritable"] = TruncateWithEllipsis(CS_8_locals_25.DocumentContextInfo.RawText, 3000);
-		dictionary2["page"] = CS_8_locals_25.DocumentContextInfo.HasMergedCells;
-		dictionary2["rangeStart"] = CS_8_locals_25.DocumentContextInfo.HasMergedCells;
-		dictionary2["rangeEnd"] = count > num2 || num > num3;
-		dictionary2["actionableRange"] = new
+		dictionary2["markdown"] = BuildMarkdownTable(list);
+		dictionary2["rawTextExcerpt"] = TruncateWithEllipsis(CS_8_locals_25.DocumentContextInfo.RawText, 3000);
+		dictionary2["hasMergedOrUnavailableCells"] = CS_8_locals_25.DocumentContextInfo.HasMergedCells;
+		dictionary2["coordinateWarnings"] = CS_8_locals_25.DocumentContextInfo.HasMergedCells;
+		dictionary2["truncated"] = count > num2 || num > num3;
+		dictionary2["writeCoordinateExample"] = new
 		{
 			localTableIndex = CS_8_locals_25.tableStructureInfo.LocalTableIndex,
-			rowIndex = "rangeSource",
-			columnIndex = "unavailable",
-			expectedOldText = "word_com_table_cell",
-			text = "text"
+			rowIndex = "1-based rowIndex from cellsFlat/fillableCells",
+			columnIndex = "1-based columnIndex from cellsFlat/fillableCells",
+			expectedOldText = "oldText from fillableCells",
+			text = "new cell text"
 		};
 		dictionary2["columnHeaderPath"] = ((dictionary.Count != 0) ? new string[0] : new string[1] { "rowLabelPath" });
 		return dictionary2;
@@ -4439,7 +4439,7 @@ internal sealed class BatchReplaceService2
 					["rangeStart"] = (flag ? new int?(value.RangeStart) : ((int?)null)),
 					["rangeEnd"] = (flag ? new int?(value.RangeEnd) : ((int?)null)),
 					["actionableRange"] = flag,
-					["rangeSource"] = (flag ? "unavailable" : "word_com_table_cell"),
+					["rangeSource"] = (flag ? "word_com_table_cell" : "unavailable"),
 					["text"] = item.Text ?? string.Empty,
 					["columnHeaderPath"] = CollectContextStrings2(P_0, item.RowIndex, item.ColumnIndex, P_2),
 					["rowLabelPath"] = CollectContextStrings3(P_0, item.RowIndex, item.ColumnIndex, P_2),
@@ -4494,7 +4494,7 @@ internal sealed class BatchReplaceService2
 			}
 		}
 		return (from item in list
-			orderby GetDictionaryInt(item, "rowLeftContext"), GetDictionaryInt(item, "writeCoordinate"), (!string.Equals(GetDictionaryString(item, "cellId"), "cellKind", StringComparison.Ordinal)) ? 1 : 0
+			orderby GetDictionaryInt(item, "rowIndex"), GetDictionaryInt(item, "columnIndex"), (!string.Equals(GetDictionaryString(item, "cellKind"), "mergedInterior", StringComparison.Ordinal)) ? 1 : 0
 			select item).ToList();
 	}
 

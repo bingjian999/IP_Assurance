@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -212,17 +212,17 @@ internal sealed class CliCommandService : IToolProvider
 		CS_8_locals_8._timeoutSeconds = timeoutSeconds;
 		if (string.IsNullOrWhiteSpace(command))
 		{
-			return AiHelper_5.CreateError("CLI", "RunCliCommand");
+			return AiHelper_5.CreateError("command 涓嶈兘涓虹┖銆?, "invalid_arguments");
 		}
 		if (IsDangerousCommand(command))
 		{
-			return AiHelper_5.CreateError("run_cli_command", "RunExeCommand");
+			return AiHelper_5.CreateError("鎷掔粷鎵ц鍗遍櫓鍛戒护銆?, "dangerous_command");
 		}
 		try
 		{
 			CS_8_locals_8.text = ResolveWorkingDirectory(cwd);
 			CS_8_locals_8._encodedCommand = Convert.ToBase64String(Encoding.Unicode.GetBytes(command));
-			CliExecutionResult cliResult = await Task.Run(() => RunProcess(GetPowerShellPath(), "run_exe_command" + CS_8_locals_8._encodedCommand, CS_8_locals_8.text, ClampTimeout(CS_8_locals_8._timeoutSeconds))).ConfigureAwait(continueOnCapturedContext: false);
+			CliExecutionResult cliResult = await Task.Run(() => RunProcess(GetPowerShellPath(), "-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand " + CS_8_locals_8._encodedCommand, CS_8_locals_8.text, ClampTimeout(CS_8_locals_8._timeoutSeconds))).ConfigureAwait(continueOnCapturedContext: false);
 			LogCliExecution("run_cli_command", command, CS_8_locals_8.text, cliResult);
 			return AiHelper_5.CreateSuccess("cli", new
 			{
@@ -236,7 +236,7 @@ internal sealed class CliCommandService : IToolProvider
 		}
 		catch (Exception ex)
 		{
-			return AiHelper_5.CreateExceptionError("risk.filesystem", "risk.high", ex);
+			return AiHelper_5.CreateExceptionError("run_cli_command", "cli_error", ex);
 		}
 	}
 
@@ -248,15 +248,15 @@ internal sealed class CliCommandService : IToolProvider
 		CS_8_locals_15.value = timeoutSeconds;
 		if (string.IsNullOrWhiteSpace(exePath))
 		{
-			return AiHelper_5.CreateError("执行非交互式 Windows PowerShell 命令；用于文件/脚本辅助，不绕过 Word 专用工具。", "run_exe_command");
+			return AiHelper_5.CreateError("exePath 不能为空。", "invalid_arguments");
 		}
 		try
 		{
 			CS_8_locals_15._workingDirectory = ResolveWorkingDirectory(cwd);
 			CS_8_locals_15._exePath = ResolveExePath(exePath, CS_8_locals_15._workingDirectory);
 			CliExecutionResult cliResult = await Task.Run(() => RunProcess(CS_8_locals_15._exePath, CS_8_locals_15._arguments ?? string.Empty, CS_8_locals_15._workingDirectory, ClampTimeout(CS_8_locals_15.value))).ConfigureAwait(continueOnCapturedContext: false);
-			LogCliExecution("cli", CS_8_locals_15._exePath + "risk.filesystem" + (CS_8_locals_15._arguments ?? string.Empty), CS_8_locals_15._workingDirectory, cliResult);
-			return AiHelper_5.CreateSuccess("risk.high", new
+			LogCliExecution("cli", CS_8_locals_15._exePath + " " + (CS_8_locals_15._arguments ?? string.Empty), CS_8_locals_15._workingDirectory, cliResult);
+			return AiHelper_5.CreateSuccess("cli", new
 			{
 				exePath = CS_8_locals_15._exePath,
 				arguments = (CS_8_locals_15._arguments ?? string.Empty),
@@ -269,7 +269,7 @@ internal sealed class CliCommandService : IToolProvider
 		}
 		catch (Exception ex)
 		{
-			return AiHelper_5.CreateExceptionError("直接执行非交互式 Windows 可执行文件；不经过 shell，不绕过 Word 专用工具。", "Agent", ex);
+			return AiHelper_5.CreateExceptionError("run_exe_command", "cli_error", ex);
 		}
 	}
 

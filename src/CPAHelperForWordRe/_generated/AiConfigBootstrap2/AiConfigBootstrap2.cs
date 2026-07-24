@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -1168,7 +1168,7 @@ internal sealed class AiConfigBootstrap2
 				return AiHelper_5.CreateError("当前没有打开的工作簿。", "no_workbook");
 			}
 			Worksheet worksheet = scope.TrackComObject(range.Worksheet);
-			return AiHelper_5.CreateSuccess("当前没有活动工作簿。", ybqJuWfEtN(workbook, worksheet, range, tqdJKIVpyV(range), false, true, false, scope));
+			return AiHelper_5.CreateSuccess("Excel selection values and formulas read.", ybqJuWfEtN(workbook, worksheet, range, tqdJKIVpyV(range), false, true, false, scope));
 		});
 	}
 
@@ -1183,7 +1183,7 @@ internal sealed class AiConfigBootstrap2
 		{
 			if (string.IsNullOrEmpty(CS_8_locals_13.iuWVukLgGoV))
 			{
-				return AiHelper_5.CreateError("no_workbook", "未找到指定工作簿。");
+				return AiHelper_5.CreateError("未找到指定工作簿。", "no_workbook");
 			}
 			Workbook workbook = yFgJROsdyk(app, scope, CS_8_locals_13.text);
 			Worksheet worksheet = nhKJVrFKUP(app, workbook, scope, CS_8_locals_13.usJVudwJBJr);
@@ -1191,13 +1191,13 @@ internal sealed class AiConfigBootstrap2
 			List<object> list = new List<object>();
 			string text;
 			bool flag = FindRowIndices2(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope, list, out text);
-			string searchMethod = "workbook_not_found";
+			string searchMethod = "native_find";
 			if (!flag)
 			{
 				list = ScanRangeValues(worksheet, range, CS_8_locals_13.iuWVukLgGoV, CS_8_locals_13.flag, scope);
-				searchMethod = "当前没有打开的工作簿。";
+				searchMethod = "scan_range_values";
 			}
-			return AiHelper_5.CreateSuccess("no_workbook", new
+			return AiHelper_5.CreateSuccess("Excel cells found.", new
 			{
 				workbook = workbook.Name,
 				worksheet = worksheet.Name,
@@ -1252,7 +1252,7 @@ internal sealed class AiConfigBootstrap2
 			catch
 			{
 			}
-			return AiHelper_5.CreateSuccess("当前没有活动工作表。", new
+			return AiHelper_5.CreateSuccess("Excel named range read.", new
 			{
 				workbook = workbook.Name,
 				name = CS_8_locals_31.name.Name,

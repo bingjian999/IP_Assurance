@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -1609,7 +1609,7 @@ internal sealed class BatchReplaceService3
 							threadCommentIndex = GetCommentThreadIndex(CS_8_locals_34.scopeComment)
 						});
 					}
-					return AiHelper_5.CreateSuccess("当前批注原文与 expectedScopeText 不一致。请重新读取批注后再回复。", BuildCommentReplyInfo(CS_8_locals_34.doc, CS_8_locals_34.scopeComment, CS_8_locals_34.TargetComment, comment, CS_8_locals_34.ReplyText));
+					return AiHelper_5.CreateSuccess("Word comment reply added.", BuildCommentReplyInfo(CS_8_locals_34.doc, CS_8_locals_34.scopeComment, CS_8_locals_34.TargetComment, comment, CS_8_locals_34.ReplyText));
 				}
 				catch (Exception ex)
 				{
@@ -2337,7 +2337,7 @@ internal sealed class BatchReplaceService3
 				int num = Math.Max(CS_8_locals_32.TargetParagraph.Range.Start, CS_8_locals_32.TargetParagraph.Range.End - 1);
 				duplicate.SetRange(num, num);
 				duplicate.InsertAfter("after" + CS_8_locals_32.InsertText);
-				return AiHelper_5.CreateSuccess("position 只支持 before 或 after。", new
+				return AiHelper_5.CreateSuccess("Word paragraph inserted.", new
 				{
 					document = CS_8_locals_32.doc.Name,
 					documentFullName = CS_8_locals_32.doc.FullName,
@@ -2976,7 +2976,7 @@ internal sealed class BatchReplaceService3
 			{
 				if (!tryInsertRowsAtAnchor(CS_8_locals_42.WordApplication, CS_8_locals_42.TableToolService.AnchorCell, CS_8_locals_42.TableToolService.Position, CS_8_locals_42.TableToolService.Count, out var error))
 				{
-					return AiHelper_5.CreateError("AI 表格插行", "preview", new
+					return AiHelper_5.CreateError("表格插行失败。", "table_row_insert_failed", new
 					{
 						rangeStart = CS_8_locals_42.outerScope.RangeStart,
 						rangeEnd = CS_8_locals_42.outerScope.RangeEnd,
@@ -2988,7 +2988,7 @@ internal sealed class BatchReplaceService3
 					});
 				}
 				HbPTWYrAup(CS_8_locals_42.TableToolService.Table, out var rowsAfter, out var columnsAfter);
-				return AiHelper_5.CreateSuccess("preview", new
+				return AiHelper_5.CreateSuccess("Model table row insert executed.", new
 				{
 					document = CS_8_locals_42.doc.Name,
 					documentFullName = CS_8_locals_42.doc.FullName,
@@ -3178,7 +3178,7 @@ internal sealed class BatchReplaceService3
 				_G_c__DisplayClass37_2 CS_8_locals_52 = new _G_c__DisplayClass37_2();
 				if (!tryInsertTableAtParagraph(CS_8_locals_48.doc, CS_8_locals_48.TableEditService, out CS_8_locals_52.TargetTable, out var error))
 				{
-					return AiHelper_5.CreateError("AI 插入表格", "preview", new
+					return AiHelper_5.CreateError("插入 Word 表格失败。", "table_insert_failed", new
 					{
 						rangeStart = CS_8_locals_48.ClosureScope.RangeStart,
 						rangeEnd = CS_8_locals_48.ClosureScope.rangeEnd,
@@ -3195,7 +3195,7 @@ internal sealed class BatchReplaceService3
 					flag = EOXTyRsfXn(CS_8_locals_52.TargetTable, out text2);
 					if (!flag)
 					{
-						return AiHelper_5.CreateError("preview", "execute", new
+						return AiHelper_5.CreateError("琛ㄦ牸宸叉彃鍏ワ紝浣嗕竴閿〃鏍艰皟鏁村け璐ャ€?, "table_inserted_adjust_failed", new
 						{
 							rangeStart = CS_8_locals_48.ClosureScope.RangeStart,
 							rangeEnd = CS_8_locals_48.ClosureScope.rangeEnd,
@@ -3213,7 +3213,7 @@ internal sealed class BatchReplaceService3
 				int num = tryGetValueOrDefault(() => CS_8_locals_52.TargetTable.Range.Start, 0);
 				int num2 = tryGetValueOrDefault(() => CS_8_locals_52.TargetTable.Range.End, 0);
 				HbPTWYrAup(CS_8_locals_52.TargetTable, out var num3, out var num4);
-				return AiHelper_5.CreateSuccess("mode 仅支持 preview 或 execute。", new
+				return AiHelper_5.CreateSuccess("Word table inserted.", new
 				{
 					document = CS_8_locals_48.doc.Name,
 					documentFullName = CS_8_locals_48.doc.FullName,
@@ -3495,7 +3495,7 @@ internal sealed class BatchReplaceService3
 					object MatchAlefHamza = Type.Missing;
 					object MatchControl = Type.Missing;
 					find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl);
-					return AiHelper_5.CreateSuccess("findText must not be empty.", new
+					return AiHelper_5.CreateSuccess("Batch replace executed.", new
 					{
 						document = CS_8_locals_34.doc.Name,
 						documentFullName = CS_8_locals_34.doc.FullName,
@@ -4903,7 +4903,7 @@ internal sealed class BatchReplaceService3
 			int num3 = ((CS_8_locals_15.startTableIndex > 0) ? CS_8_locals_15.startTableIndex : Math.Min(num, ClampValue(CS_8_locals_15.maxTableCount, 5, 100)));
 			if (num2 < 1 || num2 > num)
 			{
-				return AiHelper_5.CreateError("continue", "AI 修订替换", new
+				return AiHelper_5.CreateError("tableIndex is out of range.", "invalid_arguments", new
 				{
 					totalTables = num
 				});
@@ -4915,7 +4915,7 @@ internal sealed class BatchReplaceService3
 			{
 				list.Add(buildTableInfo(CS_8_locals_19.doc.Tables[num6], num6, num4, num5));
 			}
-			return AiHelper_5.CreateSuccess("Word 应用或目标文档不可用。", new
+			return AiHelper_5.CreateSuccess("Word tables read.", new
 			{
 				document = CS_8_locals_19.doc.Name,
 				documentFullName = CS_8_locals_19.doc.FullName,
@@ -5352,7 +5352,7 @@ internal sealed class BatchReplaceService3
 				Range range = CS_8_locals_20.ComputedRange;
 				object Text = CS_8_locals_20.ClosureScope.CommentText.Trim();
 				Comment comment = comments.Add(range, ref Text);
-				return AiHelper_5.CreateSuccess("当前没有打开的 Word 文档。", BuildCommentAddedInfo(CS_8_locals_20.doc, CS_8_locals_20.ComputedRange, comment.Index, CS_8_locals_20.ClosureScope.CommentText));
+				return AiHelper_5.CreateSuccess("Word comment added.", BuildCommentAddedInfo(CS_8_locals_20.doc, CS_8_locals_20.ComputedRange, comment.Index, CS_8_locals_20.ClosureScope.CommentText));
 			});
 		});
 	}
@@ -5385,7 +5385,7 @@ internal sealed class BatchReplaceService3
 				Range range = CS_8_locals_22.ComputedRange;
 				object Text = CS_8_locals_22.ClosureScope.commentText.Trim();
 				Comment comment = comments.Add(range, ref Text);
-				return AiHelper_5.CreateSuccess("未找到指定 index 的 Word 批注。请重新读取批注后再回复。", BuildCommentAddedInfo(CS_8_locals_22.doc, CS_8_locals_22.ComputedRange, comment.Index, CS_8_locals_22.ClosureScope.commentText));
+				return AiHelper_5.CreateSuccess("Word comment added.", BuildCommentAddedInfo(CS_8_locals_22.doc, CS_8_locals_22.ComputedRange, comment.Index, CS_8_locals_22.ClosureScope.commentText));
 			});
 		});
 	}
@@ -5414,7 +5414,7 @@ internal sealed class BatchReplaceService3
 				Range range = CS_8_locals_29.TargetCell.Range;
 				object Text = CS_8_locals_29.ClosureScope.CommentText.Trim();
 				Comment comment = comments.Add(range, ref Text);
-				return AiHelper_5.CreateSuccess("commentToken 格式无效。请使用 read_word_comments 返回的 commentToken。", new
+				return AiHelper_5.CreateSuccess("Word table cell comment added.", new
 				{
 					document = CS_8_locals_29.doc.Name,
 					documentFullName = CS_8_locals_29.doc.FullName,
@@ -5659,14 +5659,14 @@ internal sealed class BatchReplaceService3
 			string a = (CS_8_locals_45.OperationMode ?? "preview_word_document").Trim().ToLowerInvariant();
 			if (!string.Equals(a, "preview_word_selection", StringComparison.Ordinal) && !string.Equals(a, "read_word_range", StringComparison.Ordinal))
 			{
-				return AiHelper_5.CreateError("read_word_paragraphs", "read_word_outline", new
+				return AiHelper_5.CreateError("mode 浠呮敮鎸?preview 鎴?execute銆?, "invalid_arguments", new
 				{
 					mode = CS_8_locals_45.OperationMode
 				});
 			}
 			if (string.Equals(a, "read_word_section", StringComparison.Ordinal) && string.IsNullOrWhiteSpace(CS_8_locals_45.ExpectedPreviewToken))
 			{
-				return AiHelper_5.CreateError("read_word_tables", "read_word_comments");
+				return AiHelper_5.CreateError("鎵ц妯″瀷濉〃鍓嶅繀椤诲厛璋冪敤 mode=preview锛屽苟鎶?previewToken 浼犲叆 execute銆?, "preview_required");
 			}
 			List<TableCellModel> list;
 			AiHelper_5 insertResult = XIPTkGpqwW(CS_8_locals_45.ConfigJson, out list);
@@ -5682,7 +5682,7 @@ internal sealed class BatchReplaceService3
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.CreateError("reply_word_comment", "find_word_heading", new
+				return AiHelper_5.CreateError("rangeStart/rangeEnd 瓒呭嚭鏂囨。鑼冨洿鎴栭『搴忔棤鏁堛€?, "invalid_arguments", new
 				{
 					rangeStart = CS_8_locals_45.RangeStart,
 					rangeEnd = CS_8_locals_45.RangeEnd,
@@ -5699,15 +5699,15 @@ internal sealed class BatchReplaceService3
 			object obj = iLJTdpgWxW(CS_8_locals_69.doc, CS_8_locals_45.RangeStart, CS_8_locals_45.RangeEnd, CS_8_locals_45.AllowHeaderEdit, CS_8_locals_45.UseTrackChanges, CS_8_locals_69.PreviewToken, CS_8_locals_69.CellChangeList);
 			if (string.Equals(a, "find_word_text", StringComparison.Ordinal))
 			{
-				return AiHelper_5.CreateSuccess("find_word_regex", obj);
+				return AiHelper_5.CreateSuccess("Model table cell fill preview prepared.", obj);
 			}
 			if (CS_8_locals_69.CellChangeList.Count((AiHelper_21 change) => !change.Writable) > 0)
 			{
-				return AiHelper_5.CreateError("find_word_table_text", "select_word_range", obj);
+				return AiHelper_5.CreateError("褰撳墠濉〃璇锋眰涓瓨鍦ㄤ笉鍙啓鍗曞厓鏍硷紝宸插仠姝㈡墽琛屻€傝鏍规嵁 preview 缁撴灉淇鍚庨噸璇曘€?, "model_cell_not_writable", obj);
 			}
 			if (!ValidatePreviewToken(CS_8_locals_69.PreviewToken, CS_8_locals_45.ExpectedPreviewToken))
 			{
-				return AiHelper_5.CreateError("select_word_table", "add_word_comment_at_selection", new
+				return AiHelper_5.CreateError("褰撳墠琛ㄦ牸鏃у€兼垨鍧愭爣涓庨瑙堢粨鏋滀笉涓€鑷达紝宸插仠姝㈡墽琛屻€傝閲嶆柊 preview 鍚庡啀 execute銆?, "preview_mismatch", new
 				{
 					rangeStart = CS_8_locals_45.RangeStart,
 					rangeEnd = CS_8_locals_45.RangeEnd,
@@ -5749,7 +5749,7 @@ internal sealed class BatchReplaceService3
 						error = (flag ? null : text)
 					});
 				}
-				return AiHelper_5.CreateSuccess("add_word_comment_at_range", new
+				return AiHelper_5.CreateSuccess("AI 妯″瀷濉〃", new
 				{
 					document = CS_8_locals_69.doc.Name,
 					documentFullName = CS_8_locals_69.doc.FullName,
@@ -5787,7 +5787,7 @@ internal sealed class BatchReplaceService3
 			string a = (CS_8_locals_53.OperationMode ?? "add_word_comment_at_table_cell").Trim().ToLowerInvariant();
 			if (!string.Equals(a, "insert_word_paragraph", StringComparison.Ordinal) && !string.Equals(a, "set_word_paragraph_outline_level", StringComparison.Ordinal))
 			{
-				return AiHelper_5.CreateError("fill_word_table_cells_by_model", "insert_word_table_rows_by_model", new
+				return AiHelper_5.CreateError("mode 浠呮敮鎸?preview 鎴?execute銆?, "invalid_arguments", new
 				{
 					mode = CS_8_locals_53.OperationMode
 				});
@@ -5795,14 +5795,14 @@ internal sealed class BatchReplaceService3
 			string text = ParsePosition(CS_8_locals_53.PositionParam);
 			if (text == null)
 			{
-				return AiHelper_5.CreateError("insert_word_table_at_range", "replace_word_range_with_track_changes", new
+				return AiHelper_5.CreateError("position 浠呮敮鎸?before 鎴?after銆?, "invalid_arguments", new
 				{
 					position = CS_8_locals_53.PositionParam
 				});
 			}
 			if (CS_8_locals_53.InsertCount < 1 || CS_8_locals_53.InsertCount > 20)
 			{
-				return AiHelper_5.CreateError("replace_word_selection_with_track_changes", "batch_replace_word_text_execute", new
+				return AiHelper_5.CreateError("count 蹇呴』鍦?1 鍒?20 涔嬮棿銆?, "invalid_arguments", new
 				{
 					count = CS_8_locals_53.InsertCount,
 					min = 1,
@@ -5811,7 +5811,7 @@ internal sealed class BatchReplaceService3
 			}
 			if (string.Equals(a, "export_word_comments", StringComparison.Ordinal) && string.IsNullOrWhiteSpace(CS_8_locals_53.ExpectedPreviewToken))
 			{
-				return AiHelper_5.CreateError("adjust_selected_word_tables_format", "adjust_selected_word_paragraphs_format");
+				return AiHelper_5.CreateError("鎵ц妯″瀷琛ㄦ牸鎻掕鍓嶅繀椤诲厛璋冪敤 mode=preview锛屽苟鎶?previewToken 浼犲叆 execute銆?, "preview_required");
 			}
 			CS_8_locals_80.doc = GetActiveDocument(CS_8_locals_80.WordApplication);
 			Range range;
@@ -5821,7 +5821,7 @@ internal sealed class BatchReplaceService3
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.CreateError("表格_", "Word table adjustment config read.", new
+				return AiHelper_5.CreateError("rangeStart/rangeEnd 超出文档范围或顺序无效。", "invalid_arguments", new
 				{
 					rangeStart = CS_8_locals_53.RangeStart,
 					rangeEnd = CS_8_locals_53.RangeEnd,
@@ -5838,9 +5838,9 @@ internal sealed class BatchReplaceService3
 			object obj = buildRowInsertResult(CS_8_locals_80.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.RangeEnd, CS_8_locals_80.PreviewToken, CS_8_locals_80.TableToolService);
 			if (string.Equals(a, "table", StringComparison.Ordinal))
 			{
-				return AiHelper_5.CreateSuccess("表格配置_方案名", obj);
+				return AiHelper_5.CreateSuccess("Model table row insert preview prepared.", obj);
 			}
-			return (!ValidatePreviewToken(CS_8_locals_80.PreviewToken, CS_8_locals_53.ExpectedPreviewToken)) ? AiHelper_5.CreateError("表格_单元格_上边距", "0", new
+			return (!ValidatePreviewToken(CS_8_locals_80.PreviewToken, CS_8_locals_53.ExpectedPreviewToken)) ? AiHelper_5.CreateError("当前表格锚点或结构与预览结果不一致，已停止执行。请重新 preview 后再 execute。", "preview_mismatch", new
 			{
 				rangeStart = CS_8_locals_53.RangeStart,
 				rangeEnd = CS_8_locals_53.RangeEnd,
@@ -5851,7 +5851,7 @@ internal sealed class BatchReplaceService3
 			{
 				if (!tryInsertRowsAtAnchor(CS_8_locals_80.WordApplication, CS_8_locals_80.TableToolService.AnchorCell, CS_8_locals_80.TableToolService.Position, CS_8_locals_80.TableToolService.Count, out var error))
 				{
-					return AiHelper_5.CreateError("表格_单元格_下边距", "0", new
+					return AiHelper_5.CreateError("表格插行失败。", "table_row_insert_failed", new
 					{
 						rangeStart = CS_8_locals_80.outerScope.RangeStart,
 						rangeEnd = CS_8_locals_80.outerScope.RangeEnd,
@@ -5863,7 +5863,7 @@ internal sealed class BatchReplaceService3
 					});
 				}
 				HbPTWYrAup(CS_8_locals_80.TableToolService.Table, out var rowsAfter, out var columnsAfter);
-				return AiHelper_5.CreateSuccess("表格_单元格_左边距", new
+				return AiHelper_5.CreateSuccess("Model table row insert executed.", new
 				{
 					document = CS_8_locals_80.doc.Name,
 					documentFullName = CS_8_locals_80.doc.FullName,
@@ -5905,7 +5905,7 @@ internal sealed class BatchReplaceService3
 			string a = (CS_8_locals_53.OperationMode ?? "表格_单元格_右边距").Trim().ToLowerInvariant();
 			if (!string.Equals(a, "7", StringComparison.Ordinal) && !string.Equals(a, "表格_单元格_底色", StringComparison.Ordinal))
 			{
-				return AiHelper_5.CreateError("-16777216", "表格_行_行高", new
+				return AiHelper_5.CreateError("mode 仅支持 preview 或 execute。", "invalid_arguments", new
 				{
 					mode = CS_8_locals_53.OperationMode
 				});
@@ -5913,14 +5913,14 @@ internal sealed class BatchReplaceService3
 			string text = NormalizeConfigKey(CS_8_locals_53.placement);
 			if (text == null)
 			{
-				return AiHelper_5.CreateError("0.7", "表格_宽度模式", new
+				return AiHelper_5.CreateError("placement 仅支持 replace_empty_paragraph、before 或 after。", "invalid_arguments", new
 				{
 					placement = CS_8_locals_53.placement
 				});
 			}
 			if (CS_8_locals_53.rowCount < 1 || CS_8_locals_53.rowCount > 200)
 			{
-				return AiHelper_5.CreateError("自适应宽度", "表格_最大列宽_宽度", new
+				return AiHelper_5.CreateError("rows 必须在 1 到 200 之间。", "invalid_arguments", new
 				{
 					rows = CS_8_locals_53.rowCount,
 					min = 1,
@@ -5929,7 +5929,7 @@ internal sealed class BatchReplaceService3
 			}
 			if (CS_8_locals_53.columnCount < 1 || CS_8_locals_53.columnCount > 63)
 			{
-				return AiHelper_5.CreateError("18.5", "表格_段落格式_中文字体", new
+				return AiHelper_5.CreateError("columns 必须在 1 到 63 之间。", "invalid_arguments", new
 				{
 					columns = CS_8_locals_53.columnCount,
 					min = 1,
@@ -5938,7 +5938,7 @@ internal sealed class BatchReplaceService3
 			}
 			if (string.Equals(a, "宋体", StringComparison.Ordinal) && string.IsNullOrWhiteSpace(CS_8_locals_53.ExpectedPreviewToken))
 			{
-				return AiHelper_5.CreateError("表格_段落格式_西文字体", "宋体");
+				return AiHelper_5.CreateError("执行插入表格前必须先调用 mode=preview，并把 previewToken 传入 execute。", "preview_required");
 			}
 			CS_8_locals_87.doc = GetActiveDocument(app);
 			Range range;
@@ -5948,7 +5948,7 @@ internal sealed class BatchReplaceService3
 			}
 			catch (Exception ex)
 			{
-				return AiHelper_5.CreateError("表格_段落格式_字号", "9", new
+				return AiHelper_5.CreateError("rangeStart/rangeEnd 超出文档范围或顺序无效。", "invalid_arguments", new
 				{
 					rangeStart = CS_8_locals_53.RangeStart,
 					rangeEnd = CS_8_locals_53.rangeEnd,
@@ -5965,9 +5965,9 @@ internal sealed class BatchReplaceService3
 			object obj = BuildResultObject(CS_8_locals_87.doc, CS_8_locals_53.RangeStart, CS_8_locals_53.rangeEnd, CS_8_locals_87.PreviewToken, CS_8_locals_87.TableEditService);
 			if (string.Equals(a, "表格_段落格式_加粗", StringComparison.Ordinal))
 			{
-				return AiHelper_5.CreateSuccess("1", obj);
+				return AiHelper_5.CreateSuccess("Word table insert preview prepared.", obj);
 			}
-			return (!ValidatePreviewToken(CS_8_locals_87.PreviewToken, CS_8_locals_53.ExpectedPreviewToken)) ? AiHelper_5.CreateError("表格_段落格式_行距样式", "4", new
+			return (!ValidatePreviewToken(CS_8_locals_87.PreviewToken, CS_8_locals_53.ExpectedPreviewToken)) ? AiHelper_5.CreateError("当前插表位置与预览结果不一致，已停止执行。请重新 preview 后再 execute。", "preview_mismatch", new
 			{
 				rangeStart = CS_8_locals_53.RangeStart,
 				rangeEnd = CS_8_locals_53.rangeEnd,
@@ -5979,7 +5979,7 @@ internal sealed class BatchReplaceService3
 				_G_c__DisplayClass37_2 CS_8_locals_91 = new _G_c__DisplayClass37_2();
 				if (!tryInsertTableAtParagraph(CS_8_locals_87.doc, CS_8_locals_87.TableEditService, out CS_8_locals_91.TargetTable, out var error))
 				{
-					return AiHelper_5.CreateError("表格_段落格式_行距值", "18", new
+					return AiHelper_5.CreateError("插入 Word 表格失败。", "table_insert_failed", new
 					{
 						rangeStart = CS_8_locals_87.ClosureScope.RangeStart,
 						rangeEnd = CS_8_locals_87.ClosureScope.rangeEnd,
@@ -5996,7 +5996,7 @@ internal sealed class BatchReplaceService3
 					flag = EOXTyRsfXn(CS_8_locals_91.TargetTable, out text2);
 					if (!flag)
 					{
-						return AiHelper_5.CreateError("表格_段落格式_段前距单位", "行", new
+						return AiHelper_5.CreateError("表格已插入，但一键表格调整失败。", "table_inserted_adjust_failed", new
 						{
 							rangeStart = CS_8_locals_87.ClosureScope.RangeStart,
 							rangeEnd = CS_8_locals_87.ClosureScope.rangeEnd,
@@ -6014,7 +6014,7 @@ internal sealed class BatchReplaceService3
 				int num = tryGetValueOrDefault(() => CS_8_locals_91.TargetTable.Range.Start, 0);
 				int num2 = tryGetValueOrDefault(() => CS_8_locals_91.TargetTable.Range.End, 0);
 				HbPTWYrAup(CS_8_locals_91.TargetTable, out var num3, out var num4);
-				return AiHelper_5.CreateSuccess("表格_段落格式_段前距", new
+				return AiHelper_5.CreateSuccess("Word table inserted.", new
 				{
 					document = CS_8_locals_87.doc.Name,
 					documentFullName = CS_8_locals_87.doc.FullName,
@@ -6072,9 +6072,9 @@ internal sealed class BatchReplaceService3
 			Selection selection = app.Selection;
 			if (selection == null || selection.Range == null || string.IsNullOrWhiteSpace(NormalizeText(selection.Range.Text)))
 			{
-				return AiHelper_5.CreateError("表格_合计处理_下划线", "3");
+				return AiHelper_5.CreateError("当前没有选中的内容。", "empty_selection");
 			}
-			return (!IsRangeValid(selection.Range)) ? AiHelper_5.CreateError("表格_小计处理_下划线", "1") : ExecuteOperation(app, document, selection.Range, CS_8_locals_2.ConfigJson ?? string.Empty);
+			return (!IsRangeValid(selection.Range)) ? AiHelper_5.CreateError("当前选区范围无效。", "invalid_arguments") : ExecuteOperation(app, document, selection.Range, CS_8_locals_2.ConfigJson ?? string.Empty);
 		});
 	}
 
@@ -6095,7 +6095,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_44.wordApplication = app;
 			if (string.IsNullOrEmpty(CS_8_locals_12.FindText))
 			{
-				return AiHelper_5.CreateError("表格_合计小计处理_下划线包含文字", "表格_合计处理_下划线包含合计");
+				return AiHelper_5.CreateError("findText 不能为空。", "invalid_arguments");
 			}
 			CS_8_locals_44.doc = GetActiveDocument(CS_8_locals_44.wordApplication);
 			Document document = CS_8_locals_44.doc;
@@ -6142,7 +6142,7 @@ internal sealed class BatchReplaceService3
 					object MatchAlefHamza = Type.Missing;
 					object MatchControl = Type.Missing;
 					find.Execute(ref FindText, ref MatchCase, ref MatchWholeWord, ref MatchWildcards, ref MatchSoundsLike, ref MatchAllWordForms, ref Forward, ref Wrap, ref Format, ref ReplaceWith, ref Replace, ref MatchKashida, ref MatchDiacritics, ref MatchAlefHamza, ref MatchControl);
-					return AiHelper_5.CreateSuccess("表格_合计处理_加粗", new
+					return AiHelper_5.CreateSuccess("Batch replace executed.", new
 					{
 						document = CS_8_locals_44.doc.Name,
 						documentFullName = CS_8_locals_44.doc.FullName,
@@ -6177,7 +6177,7 @@ internal sealed class BatchReplaceService3
 			_G_c__DisplayClass41_0 CS_8_locals_4 = new _G_c__DisplayClass41_0();
 			CS_8_locals_4.doc = GetActiveDocument(app);
 			TableValidationService.ExportCommentsToExcel();
-			return AiHelper_5.CreateSuccess("表格_小计处理_加粗", new
+			return AiHelper_5.CreateSuccess("Word comments exported.", new
 			{
 				document = CS_8_locals_4.doc.Name,
 				documentFullName = CS_8_locals_4.doc.FullName,
@@ -6196,15 +6196,15 @@ internal sealed class BatchReplaceService3
 			document.Activate();
 			if (CS_8_locals_7.WordApplication.Selection == null || CS_8_locals_7.WordApplication.Selection.Range == null || !IsRangeValid(CS_8_locals_7.WordApplication.Selection.Range))
 			{
-				return AiHelper_5.CreateError("0", "表格_合计小计处理_加粗包含文字");
+				return AiHelper_5.CreateError("当前没有选中的内容。", "empty_selection");
 			}
 			int num = ComputeIntValue(() => CS_8_locals_7.WordApplication.Selection.Tables.Count);
 			if (num <= 0)
 			{
-				return AiHelper_5.CreateError("表格_合计处理_加粗包含合计", "0");
+				return AiHelper_5.CreateError("当前选区中没有表格。", "empty_selection");
 			}
 			executeWithUndoRecord(CS_8_locals_7.WordApplication, "read_word_table_adjustment_config failed", BatchTableAdjustService.BatchAdjustTables);
-			return AiHelper_5.CreateSuccess("config_error", new
+			return AiHelper_5.CreateSuccess("Selected tables format adjusted.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6224,15 +6224,15 @@ internal sealed class BatchReplaceService3
 			document.Activate();
 			if (CS_8_locals_7.WordApplication.Selection == null || CS_8_locals_7.WordApplication.Selection.Range == null || !IsRangeValid(CS_8_locals_7.WordApplication.Selection.Range))
 			{
-				return AiHelper_5.CreateError("一级", "二级");
+				return AiHelper_5.CreateError("当前没有选中的内容。", "empty_selection");
 			}
 			int num = ComputeIntValue(() => CS_8_locals_7.WordApplication.Selection.Paragraphs.Count);
 			if (num <= 0)
 			{
-				return AiHelper_5.CreateError("三级", "四级");
+				return AiHelper_5.CreateError("当前选区中没有段落。", "empty_selection");
 			}
 			executeWithUndoRecord(CS_8_locals_7.WordApplication, "五级", BatchReplaceService.FormatSelectionParagraphs);
-			return AiHelper_5.CreateSuccess("其他", new
+			return AiHelper_5.CreateSuccess("Selected paragraphs format adjusted.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6349,7 +6349,7 @@ internal sealed class BatchReplaceService3
 			Document document = GetActiveDocument(app);
 			CS_8_locals_30.TargetTable = GetTableByIndex(app, document, CS_8_locals_6.TableIndex);
 			int tableIndex = GetTableIndex(document, CS_8_locals_30.TargetTable);
-			return AiHelper_5.CreateSuccess("表前单位", new
+			return AiHelper_5.CreateSuccess("Word table format inspected.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6399,7 +6399,7 @@ internal sealed class BatchReplaceService3
 			Paragraph paragraph = ((CS_8_locals_6.ParagraphIndex > 0) ? GetParagraphByIndex(document, CS_8_locals_6.ParagraphIndex) : GetFirstParagraph(app, document));
 			int? paragraphIndex = ((CS_8_locals_6.ParagraphIndex > 0) ? new int?(CS_8_locals_6.ParagraphIndex) : FindParagraphIndex(document, paragraph.Range.Start));
 			int num = GetOutlineLevel(paragraph);
-			return AiHelper_5.CreateSuccess("表后注释", new
+			return AiHelper_5.CreateSuccess("Word paragraph format inspected.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6440,11 +6440,11 @@ internal sealed class BatchReplaceService3
 				return operationResult;
 			}
 			List<AiHelper_1> list = CollectParagraphs(app, document, CS_8_locals_12.ParagraphIndex, CS_8_locals_12.ParagraphIndex);
-			return (list.Count == 0) ? AiHelper_5.CreateError("表后段落", "Word paragraph adjustment config read.", new
+			return (list.Count == 0) ? AiHelper_5.CreateError("当前没有可设置格式的段落。", "no_paragraph_selection", new
 			{
 				startParagraphIndex = CS_8_locals_12.ParagraphIndex,
 				endParagraphIndex = CS_8_locals_12.ParagraphIndex
-			}) : AiHelper_5.CreateSuccess("paragraph", new
+			}) : AiHelper_5.CreateSuccess("Word paragraph format change preview prepared.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6470,7 +6470,7 @@ internal sealed class BatchReplaceService3
 			_G_c__DisplayClass49_1 CS_8_locals_30 = new _G_c__DisplayClass49_1();
 			if (CS_8_locals_23.ExpectedCount < 0)
 			{
-				return AiHelper_5.CreateError("段落配置_方案名", "段落配置_当前方案");
+				return AiHelper_5.CreateError("执行段落格式修改前必须先调用 preview_word_paragraph_format_change，并把 expectedChangeCount 传入执行工具。", "preview_required");
 			}
 			AiHelper_5 insertResult = parseParagraphFormatConfig(CS_8_locals_23.ConfigJson, out CS_8_locals_30.paragraphFormatConfig);
 			if (insertResult != null)
@@ -6486,7 +6486,7 @@ internal sealed class BatchReplaceService3
 			CS_8_locals_30.ParagraphList = CollectParagraphs(app, document, CS_8_locals_23.startParagraphIndex, CS_8_locals_23.ParagraphIndex);
 			if (CS_8_locals_30.ParagraphList.Count != CS_8_locals_23.ExpectedCount)
 			{
-				return AiHelper_5.CreateError("段落_", "read_word_paragraph_adjustment_config failed", new
+				return AiHelper_5.CreateError("当前段落数量与预览结果不一致，已停止执行。请重新预览后再执行。", "preview_mismatch", new
 				{
 					expectedChangeCount = CS_8_locals_23.ExpectedCount,
 					currentChangeCount = CS_8_locals_30.ParagraphList.Count
@@ -6520,7 +6520,7 @@ internal sealed class BatchReplaceService3
 					});
 				}
 			});
-			return AiHelper_5.CreateSuccess("inspect_word_table_format", new
+			return AiHelper_5.CreateSuccess("Word paragraph format changed.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6554,7 +6554,7 @@ internal sealed class BatchReplaceService3
 			Range range;
 			string target;
 			AiHelper_5 operationResult = ResolveTableCell(document, table, CS_8_locals_7.CellSelector, out range, out target);
-			return (operationResult != null) ? operationResult : AiHelper_5.CreateSuccess("inspect_word_paragraph_format", new
+			return (operationResult != null) ? operationResult : AiHelper_5.CreateSuccess("Word table format change preview prepared.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -6581,11 +6581,11 @@ internal sealed class BatchReplaceService3
 			_G_c__DisplayClass51_1 CS_8_locals_27 = new _G_c__DisplayClass51_1();
 			if (CS_8_locals_23.ExpectedCount < 0)
 			{
-				return AiHelper_5.CreateError("preview_word_paragraph_format_change", "apply_word_paragraph_format_change");
+				return AiHelper_5.CreateError("鎵ц琛ㄦ牸鏍煎紡淇敼鍓嶅繀椤诲厛璋冪敤 preview_word_table_format_change锛屽苟鎶?expectedChangeCount 浼犲叆鎵ц宸ュ叿銆?, "preview_required");
 			}
 			if (CS_8_locals_23.ExpectedCount != 1)
 			{
-				return AiHelper_5.CreateError("preview_word_table_format_change", "apply_word_table_format_change", new
+				return AiHelper_5.CreateError("褰撳墠琛ㄦ牸鏍煎紡淇敼棰勬湡鏁伴噺涓嶄竴鑷达紝宸插仠姝㈡墽琛屻€傝閲嶆柊棰勮鍚庡啀鎵ц銆?, "preview_mismatch", new
 				{
 					expectedChangeCount = CS_8_locals_23.ExpectedCount,
 					currentChangeCount = 1
@@ -6616,7 +6616,7 @@ internal sealed class BatchReplaceService3
 				ApplyTableChanges(CS_8_locals_27.TargetTable, CS_8_locals_27.ComputedRange, CS_8_locals_27.tableConfig);
 			});
 			object after = BuildRangeSnapshot(CS_8_locals_27.TargetTable, CS_8_locals_27.ComputedRange);
-			return AiHelper_5.CreateSuccess("invalid_arguments", new
+			return AiHelper_5.CreateSuccess("Word table format changed.", new
 			{
 				document = document.Name,
 				documentFullName = document.FullName,
@@ -9836,7 +9836,7 @@ internal sealed class BatchReplaceService3
 				string text = NormalizeText(CS_8_locals_16.TargetRange.Text);
 				int start = CS_8_locals_16.TargetRange.Start;
 				CS_8_locals_16.TargetRange.Text = CS_8_locals_16.ReplacementText ?? string.Empty;
-				return AiHelper_5.CreateSuccess("invalid_arguments", new
+				return AiHelper_5.CreateSuccess("Word table format changed.", new
 				{
 					document = CS_8_locals_16.doc.Name,
 					documentFullName = CS_8_locals_16.doc.FullName,
